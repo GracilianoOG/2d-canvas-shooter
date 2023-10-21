@@ -1,17 +1,10 @@
-class Player {
+import { Square } from "./Square.js";
+
+class Player extends Square {
   constructor(x, y, width, height, speed, color, keys) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.color = color;
+    super(x, y, width, height, color);
     this.speed = speed;
     this.keys = keys;
-  }
-
-  draw(ctx) {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
   move(canvasWidth, canvasHeight) {
