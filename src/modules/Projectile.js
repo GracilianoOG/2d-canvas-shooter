@@ -5,6 +5,7 @@ class Projectile extends Circle {
     super(x, y, radius, color);
     this.speed = speed;
     this.angle = angle;
+    this.hasCollided = false;
   }
 
   move() {
