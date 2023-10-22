@@ -7,7 +7,15 @@ scene.height = innerHeight;
 const ctx = scene.getContext("2d");
 const keys = {};
 const player = new Player(50, 50, 30, 30, 6, "white", keys);
-const bullets = [];
+let bullets = [];
+
+const checkBulletOutOfBounds = (bullet) => {
+  const { x, y, radius } = bullet;
+
+  if(x < -radius || x > scene.width + radius || y < -radius || y > scene.height + radius) {
+    bullet.hasCollided = true;
+  }
+}
 
 document.addEventListener("keydown", ({ code }) => {
   keys[code] = true;
@@ -27,14 +35,19 @@ document.addEventListener("click", ({ clientX, clientY }) => {
   bullets.push(
     new Projectile(playerCenterX, playerCenterY, 5, 20, angle, "yellow")
   );
+
+  console.log(bullets);
 });
 
 const animate = () => {
   ctx.clearRect(0, 0, scene.width, scene.height);
   requestAnimationFrame(animate);
   for(let i = 0; i < bullets.length; i++) {
-    bullets[i].update(ctx);
+    const bullet = bullets[i];
+    bullet.update(ctx);
+    checkBulletOutOfBounds(bullet);
   }
+  bullets = bullets.filter(bullet => !bullet.hasCollided);
   player.update(ctx, scene.width, scene.height);
 }
 
