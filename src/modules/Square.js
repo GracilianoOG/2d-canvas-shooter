@@ -1,10 +1,10 @@
-class Square {
+import { Shape } from "./Shape.js";
+
+class Square extends Shape {
   constructor(x, y, width, height, color) {
-    this.x = x;
-    this.y = y;
+    super(x, y, color);
     this.width = width;
     this.height = height;
-    this.color = color;
   }
 
   draw(ctx) {
