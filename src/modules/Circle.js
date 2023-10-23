@@ -1,9 +1,19 @@
 import { Shape } from "./Shape.js";
 
 class Circle extends Shape {
+  #radius;
+
   constructor(x, y, radius, color) {
     super(x, y, color);
-    this.radius = radius;
+    this.#radius = radius;
+  }
+
+  set radius(radius) {
+    this.#radius = radius;
+  }
+
+  get radius() {
+    return this.#radius;
   }
 
   draw(ctx) {
