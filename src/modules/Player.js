@@ -1,10 +1,29 @@
 import { Square } from "./Square.js";
 
 class Player extends Square {
+  #speed;
+  #keys;
+
   constructor(x, y, width, height, speed, color, keys) {
     super(x, y, width, height, color);
-    this.speed = speed;
-    this.keys = keys;
+    this.#speed = speed;
+    this.#keys = keys;
+  }
+
+  set speed(speed) {
+    this.#speed = speed;
+  }
+
+  set keys(keys) {
+    this.#keys = keys;
+  }
+
+  get speed() {
+    return this.#speed;
+  }
+
+  get keys() {
+    return this.#keys;
   }
 
   move(canvasWidth, canvasHeight) {
