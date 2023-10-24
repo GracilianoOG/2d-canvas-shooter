@@ -26,33 +26,49 @@ class Player extends Square {
     return this.#keys;
   }
 
+  moveLeft() {
+    this.x -= this.speed;
+    if(this.x < 0) {
+      this.x = 0;
+    }
+  }
+
+  moveRight(canvasWidth) {
+    this.x += this.speed;
+    if(this.x + this.width > canvasWidth) {
+      this.x = canvasWidth - this.width;
+    }
+  }
+
+  moveUp() {
+    this.y -= this.speed;
+    if(this.y < 0) {
+      this.y = 0;
+    }
+  }
+
+  moveDown(canvasHeight) {
+    this.y += this.speed;
+    if(this.y + this.height > canvasHeight) {
+      this.y = canvasHeight - this.height;
+    }
+  }
+
   move(canvasWidth, canvasHeight) {
-    if(this.keys["KeyA"] && this.x >= 0) {
-      this.x -= this.speed;
-      if(this.x < 0) {
-        this.x = 0;
-      }
+    if(this.keys["KeyA"]) {
+      this.moveLeft();
     }
 
-    if(this.keys["KeyD"] && this.x + this.width <= canvasWidth) {
-      this.x += this.speed;
-      if(this.x + this.width > canvasWidth) {
-        this.x = canvasWidth - this.width;
-      }
+    if(this.keys["KeyD"]) {
+      this.moveRight(canvasWidth);
     }
 
-    if(this.keys["KeyW"] && this.y >= 0) {
-      this.y -= this.speed;
-      if(this.y < 0) {
-        this.y = 0;
-      }
+    if(this.keys["KeyW"]) {
+      this.moveUp();
     }
 
-    if(this.keys["KeyS"] && this.y + this.height <= canvasHeight) {
-      this.y += this.speed;
-      if(this.y + this.height > canvasHeight) {
-        this.y = canvasHeight - this.height;
-      }
+    if(this.keys["KeyS"]) {
+      this.moveDown(canvasHeight);
     }
   }
 
