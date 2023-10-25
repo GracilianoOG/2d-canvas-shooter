@@ -16,7 +16,7 @@ class Player extends Square {
     return this.#speed;
   }
 
-  update(ctx, canvasWidth, canvasHeight) {
+  update(ctx) {
     this.draw(ctx);
   }
 }
