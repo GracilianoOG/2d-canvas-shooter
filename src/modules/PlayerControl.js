@@ -1,12 +1,14 @@
 class PlayerControl {
   #player;
   #screen;
+  #ctx;
   #keys = {};
   #bulletControl;
 
   constructor(player, screen, bulletControl) {
     this.#player = player;
     this.#screen = screen;
+    this.#ctx = this.#screen.getContext("2d");
     this.#bulletControl = bulletControl;
 
     document.addEventListener("keydown", ({ code }) => {
@@ -50,7 +52,7 @@ class PlayerControl {
     }
   }
 
-  move() {
+  #move() {
     if(this.#keys["KeyA"]) {
       this.#moveLeft();
     }
@@ -66,6 +68,11 @@ class PlayerControl {
     if(this.#keys["KeyS"]) {
       this.#moveDown(this.#screen.height);
     }
+  }
+
+  update() {
+    this.#move();
+    this.#player.update(this.#ctx);
   }
 
   #shoot({ clientX, clientY }) {
