@@ -1,14 +1,13 @@
-import { Projectile } from "./Projectile.js";
-
 class PlayerControl {
   #player;
   #screen;
   #keys = {};
-  #bullets = [];
+  #bulletControl;
 
-  constructor(player, screen) {
+  constructor(player, screen, bulletControl) {
     this.#player = player;
     this.#screen = screen;
+    this.#bulletControl = bulletControl;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -21,14 +20,6 @@ class PlayerControl {
     document.addEventListener("click", (e) => {
       this.#shoot(e);
     });
-  }
-
-  set bullets(bullets) {
-    this.#bullets = bullets;
-  }
-
-  get bullets() {
-    return this.#bullets;
   }
 
   #moveLeft() {
@@ -83,10 +74,7 @@ class PlayerControl {
       const dirX = clientX - playerCenterX;
       const dirY = clientY - playerCenterY;
       const angle = Math.atan2(dirY, dirX);
-
-      this.#bullets.push(
-        new Projectile(playerCenterX, playerCenterY, 5, 20, angle, "yellow")
-      );
+      this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, "yellow");
   }
 }
 
