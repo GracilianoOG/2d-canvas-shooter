@@ -14,8 +14,7 @@ const animate = () => {
   ctx.clearRect(0, 0, scene.width, scene.height);
   requestAnimationFrame(animate);
   bulletControl.update();
-  player.update(ctx);
-  playerControl.move();
+  playerControl.update();
 }
 
 animate();
