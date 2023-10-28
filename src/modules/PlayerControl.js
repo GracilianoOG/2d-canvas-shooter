@@ -76,8 +76,7 @@ class PlayerControl {
   }
 
   #shoot({ clientX, clientY }) {
-      const playerCenterX = this.#player.x + this.#player.width / 2;
-      const playerCenterY = this.#player.y + this.#player.height / 2;
+      const { x: playerCenterX, y: playerCenterY } = this.#player.center;
       const dirX = clientX - playerCenterX;
       const dirY = clientY - playerCenterY;
       const angle = Math.atan2(dirY, dirX);

@@ -11,10 +11,8 @@ class Enemy extends Circle {
   }
 
   move() {
-    const targetCenterX = this.#target.x + this.#target.width / 2;
-    const targetCenterY = this.#target.y + this.#target.height / 2;
-    const dirX = targetCenterX - this.x;
-    const dirY = targetCenterY - this.y;
+    const dirX = this.#target.center.x - this.x;
+    const dirY = this.#target.center.y - this.y;
     const angle = Math.atan2(dirY, dirX);
     if(Math.hypot(dirX, dirY) > this.#speed) {
       this.x += Math.cos(angle) * this.#speed;
