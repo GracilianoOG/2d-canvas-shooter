@@ -25,15 +25,19 @@ class EnemyControl {
     return [xPos, yPos];
   }
 
+  #createEnemy() {
+    const enemySize = 20;
+    const coords = Math.random() > .5 ? this.#createVerticalEnemy(enemySize) : this.#createHorizontalEnemy(enemySize);
+    this.#enemies.push(
+      new Enemy(coords[0], coords[1], enemySize, 3, "red", this.#target)
+    );
+  }
+
   startEnemySpawn(secondsToSpawn) {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
     }
-    this.#intervalId = setInterval(() => {
-      const enemySize = 20;
-      const coords = Math.random() > .5 ? this.#createVerticalEnemy(enemySize) : this.#createHorizontalEnemy(enemySize);
-      this.#enemies.push(new Enemy(coords[0], coords[1], enemySize, 3, "red", this.#target));
-    }, secondsToSpawn * 1000);
+    this.#intervalId = setInterval(() => this.#createEnemy(), secondsToSpawn * 1000);
   }
 
   stopEnemySpawn() {
