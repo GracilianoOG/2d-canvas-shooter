@@ -1,4 +1,4 @@
-import { Projectile } from "./Projectile.js";
+import { Bullet } from "./Bullet.js";
 
 class BulletControl {
   #bullets = [];
@@ -28,7 +28,7 @@ class BulletControl {
 
   createBullet(x, y, size, angle, speed, color) {
     this.#bullets.push(
-      new Projectile(x, y, size, angle, speed, color)
+      new Bullet(x, y, size, angle, speed, color)
     );
   }
 

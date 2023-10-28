@@ -2,21 +2,15 @@ import { Circle } from "./Circle.js";
 
 class Projectile extends Circle {
   #speed;
-  #angle;
   #hasCollided = false;
 
-  constructor(x, y, radius, speed, angle, color) {
+  constructor(x, y, radius, speed, color) {
     super(x, y, radius, color);
     this.#speed = speed;
-    this.#angle = angle;
   }
 
   set speed(speed) {
     this.#speed = speed;
-  }
-
-  set angle(angle) {
-    this.#angle = angle;
   }
 
   set hasCollided(hasCollided) {
@@ -27,22 +21,8 @@ class Projectile extends Circle {
     return this.#speed;
   }
 
-  get angle() {
-    return this.#angle;
-  }
-
   get hasCollided() {
     return this.#hasCollided;
-  }
-
-  move() {
-    this.x += Math.cos(this.angle) * this.speed;
-    this.y += Math.sin(this.angle) * this.speed;
-  }
-
-  update(ctx) {
-    this.draw(ctx);
-    this.move();
   }
 }
 
