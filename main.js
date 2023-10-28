@@ -20,7 +20,7 @@ const animate = () => {
   enemyControl.update();
 }
 
-enemyControl.startEnemySpawn();
+enemyControl.startEnemySpawn(.4);
 
 setTimeout(() => enemyControl.stopEnemySpawn(), 6000);
 
