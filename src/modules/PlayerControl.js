@@ -81,7 +81,7 @@ class PlayerControl {
       const dirX = clientX - playerCenterX;
       const dirY = clientY - playerCenterY;
       const angle = Math.atan2(dirY, dirX);
-      this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, "yellow");
+      this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color);
   }
 }
 
