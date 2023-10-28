@@ -26,6 +26,12 @@ class Square extends Shape {
     return this.#height;
   }
 
+  get center() {
+    const xCenter = this.x + this.width / 2;
+    const yCenter = this.y + this.height / 2;
+    return { x: xCenter, y: yCenter };
+  }
+
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
