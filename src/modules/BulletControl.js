@@ -18,7 +18,7 @@ class BulletControl {
     return this.#bullets;
   }
 
-  #checkBulletOutOfBounds = (bullet, screen) => {
+  #checkBulletOutOfBounds(bullet, screen) {
     const { x, y, radius } = bullet;
   
     if(x < -radius || x > screen.width + radius || y < -radius || y > screen.height + radius) {
