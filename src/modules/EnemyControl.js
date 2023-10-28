@@ -7,9 +7,9 @@ class EnemyControl {
   #target;
   #intervalId;
 
-  constructor(screen, target) {
-    this.#screen = screen;
+  constructor(target, screen) {
     this.#target = target;
+    this.#screen = screen;
     this.#ctx = this.#screen.getContext("2d");
   }
 
