@@ -33,11 +33,32 @@ class EnemyControl {
     return [xPos, yPos];
   }
 
+  #randomizeEnemy() {
+    const randomSeed = Math.floor(Math.random() * 3);
+    let randomEnemy;
+
+    switch(randomSeed) {
+      case 0:
+        randomEnemy = { hp: 10, radius: 14, speed: 5, color: "#f210c8" };
+        break;
+      case 1:
+        randomEnemy = { hp: 20, radius: 18, speed: 4, color: "#ff0000" };
+        break;
+      case 2:
+        randomEnemy = { hp: 40, radius: 25, speed: 3, color: "#10b2f2" };
+        break;
+      default:
+        throw `There isn't an enemy with the seed: ${randomSeed}`;
+    }
+
+    return randomEnemy;
+  }
+
   #createEnemy() {
-    const enemySize = 20;
-    const coords = Math.random() > .5 ? this.#createVerticalEnemy(enemySize) : this.#createHorizontalEnemy(enemySize);
+    const { hp, radius, speed, color } = this.#randomizeEnemy();
+    const coords = Math.random() > .5 ? this.#createVerticalEnemy(radius) : this.#createHorizontalEnemy(radius);
     this.#enemies.push(
-      new Enemy(coords[0], coords[1], enemySize, 3, "red", 20, this.#target)
+      new Enemy(coords[0], coords[1], radius, speed, color, hp, this.#target)
     );
   }
 
