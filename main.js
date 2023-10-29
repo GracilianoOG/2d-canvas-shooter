@@ -2,6 +2,7 @@ import { PlayerControl } from "./src/modules/PlayerControl.js";
 import { Player } from "./src/modules/Player.js";
 import { BulletControl } from "./src/modules/BulletControl.js";
 import { EnemyControl } from "./src/modules/EnemyControl.js";
+import { Collision } from "./src/modules/Collision.js";
 
 const scene = document.querySelector("#scene");
 scene.width = innerWidth;
@@ -18,6 +19,7 @@ const animate = () => {
   bulletControl.update();
   playerControl.update();
   enemyControl.update();
+  Collision.manageCollision(enemyControl, bulletControl);
 }
 
 enemyControl.startEnemySpawn(.4);
