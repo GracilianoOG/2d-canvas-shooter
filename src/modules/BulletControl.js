@@ -26,9 +26,9 @@ class BulletControl {
     }
   }
 
-  createBullet(x, y, size, angle, speed, color) {
+  createBullet(x, y, radius, speed, angle, color) {
     this.#bullets.push(
-      new Bullet(x, y, size, angle, speed, color)
+      new Bullet(x, y, radius, speed, angle, color)
     );
   }
 
