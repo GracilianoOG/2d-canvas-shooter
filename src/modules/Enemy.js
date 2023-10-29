@@ -3,11 +3,21 @@ import { Projectile } from "./Projectile.js";
 class Enemy extends Projectile {
   #target;
   #maxSpeed;
+  #health;
 
-  constructor(x, y, radius, speed, color, target) {
+  constructor(x, y, radius, speed, color, health, target) {
     super(x, y, radius, speed, color);
     this.#target = target;
+    this.#health = health;
     this.#maxSpeed = speed;
+  }
+
+  set health(health) {
+    this.#health = health;
+  }
+
+  get health() {
+    return this.#health;
   }
 
   move() {

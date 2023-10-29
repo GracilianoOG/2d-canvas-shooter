@@ -37,7 +37,7 @@ class EnemyControl {
     const enemySize = 20;
     const coords = Math.random() > .5 ? this.#createVerticalEnemy(enemySize) : this.#createHorizontalEnemy(enemySize);
     this.#enemies.push(
-      new Enemy(coords[0], coords[1], enemySize, 3, "red", this.#target)
+      new Enemy(coords[0], coords[1], enemySize, 3, "red", 20, this.#target)
     );
   }
 
