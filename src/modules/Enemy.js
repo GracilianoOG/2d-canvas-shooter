@@ -2,10 +2,12 @@ import { Projectile } from "./Projectile.js";
 
 class Enemy extends Projectile {
   #target;
+  #maxSpeed;
 
   constructor(x, y, radius, speed, color, target) {
     super(x, y, radius, speed, color);
     this.#target = target;
+    this.#maxSpeed = speed;
   }
 
   move() {
@@ -15,6 +17,9 @@ class Enemy extends Projectile {
     if(Math.hypot(dirX, dirY) > this.speed) {
       this.x += Math.cos(angle) * this.speed;
       this.y += Math.sin(angle) * this.speed;
+    }
+    if(this.speed < this.#maxSpeed) {
+      this.speed += .1;
     }
   }
 

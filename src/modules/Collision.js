@@ -6,7 +6,8 @@ class Collision {
         const bullet = bulletControl.bullets[j];
 
         if(Collision.detectCircleCollision(enemy, bullet) && !bullet.hasCollided) {
-          enemy.hasCollided = true;
+          // enemy.hasCollided = true;
+          enemy.speed = -1;
           bullet.hasCollided = true;
         }
       }
