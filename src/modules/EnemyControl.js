@@ -45,7 +45,7 @@ class EnemyControl {
         randomEnemy = { hp: 20, radius: 18, speed: 4, color: "#ff0000" };
         break;
       case 2:
-        randomEnemy = { hp: 40, radius: 25, speed: 3, color: "#10b2f2" };
+        randomEnemy = { hp: 30, radius: 25, speed: 3, color: "#10b2f2" };
         break;
       default:
         throw `There isn't an enemy with the seed: ${randomSeed}`;
