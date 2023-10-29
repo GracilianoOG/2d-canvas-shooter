@@ -13,6 +13,14 @@ class EnemyControl {
     this.#ctx = this.#screen.getContext("2d");
   }
 
+  set enemies(enemies) {
+    this.#enemies = enemies;
+  }
+
+  get enemies() {
+    return this.#enemies;
+  }
+
   #createHorizontalEnemy(enemySize) {
     const xPos = Math.floor(Math.random() * this.#screen.width);
     const yPos = Math.random() > .5 ? -enemySize : this.#screen.height + enemySize;
@@ -33,6 +41,10 @@ class EnemyControl {
     );
   }
 
+  #deleteEnemies() {
+    this.#enemies = this.#enemies.filter(bullet => !bullet.hasCollided);
+  }
+
   startEnemySpawn(secondsToSpawn) {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
@@ -47,6 +59,7 @@ class EnemyControl {
 
   update() {
     this.#enemies.forEach(enemy => enemy.update(this.#ctx));
+    this.#deleteEnemies();
   }
 }
 
