@@ -4,12 +4,14 @@ class Enemy extends Projectile {
   #target;
   #maxSpeed;
   #health;
+  #mainColor;
 
   constructor(x, y, radius, speed, color, health, target) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
+    this.#mainColor = color;
   }
 
   set health(health) {
@@ -27,6 +29,7 @@ class Enemy extends Projectile {
     }
     this.speed = -1;
     this.radius = this.radius * .9;
+    this.color = "#fff";
   }
 
   move() {
@@ -42,6 +45,9 @@ class Enemy extends Projectile {
       if(this.speed > this.#maxSpeed) {
         this.speed = this.#maxSpeed;
       }
+    }
+    if(this.color != this.#mainColor && this.speed > 0) {
+      this.color = this.#mainColor;
     }
   }
 
