@@ -1,7 +1,10 @@
 class Collision {
   static manageCollision(enemyControl, bulletControl) {
-    for(let i = 0; i < enemyControl.enemies.length; i++) {
-      for(let j = 0; j < bulletControl.bullets.length; j++) {
+    const enemiesLength = enemyControl.enemies.length;
+    const bulletsLength = bulletControl.bullets.length;
+
+    for(let i = 0; i < enemiesLength; i++) {
+      for(let j = 0; j < bulletsLength; j++) {
         const enemy = enemyControl.enemies[i];
         const bullet = bulletControl.bullets[j];
 
