@@ -79,7 +79,11 @@ class EnemyControl {
   }
 
   update() {
-    this.#enemies.forEach(enemy => enemy.update(this.#ctx));
+    const enemiesLength = this.#enemies.length;
+
+    for(let i = 0; i < enemiesLength; i++) {
+      this.#enemies[i].update(this.#ctx);
+    }
     this.#deleteEnemies();
   }
 }
