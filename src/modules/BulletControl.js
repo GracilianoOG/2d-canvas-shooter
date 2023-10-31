@@ -37,7 +37,9 @@ class BulletControl {
   }
 
   update() {
-    for(let i = 0; i < this.#bullets.length; i++) {
+    const bulletsLength = this.#bullets.length;
+    
+    for(let i = 0; i < bulletsLength; i++) {
       const bullet = this.#bullets[i];
       bullet.update(this.#ctx);
       this.#checkBulletOutOfBounds(bullet, this.#screen);
