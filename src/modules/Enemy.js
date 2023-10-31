@@ -39,6 +39,9 @@ class Enemy extends Projectile {
     }
     if(this.speed < this.#maxSpeed) {
       this.speed += .1;
+      if(this.speed > this.#maxSpeed) {
+        this.speed = this.#maxSpeed;
+      }
     }
   }
 
