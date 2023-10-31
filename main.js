@@ -14,7 +14,8 @@ const playerControl = new PlayerControl(player, scene, bulletControl);
 const enemyControl = new EnemyControl(player, scene);
 
 const animate = () => {
-  ctx.clearRect(0, 0, scene.width, scene.height);
+  ctx.fillStyle = "rgba(0, 0, 0, .4)";
+  ctx.fillRect(0, 0, scene.width, scene.height);
   requestAnimationFrame(animate);
   bulletControl.update();
   playerControl.update();
