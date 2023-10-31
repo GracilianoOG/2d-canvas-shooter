@@ -4,10 +4,11 @@ class Collision {
     const bulletsLength = bulletControl.bullets.length;
 
     for(let i = 0; i < enemiesLength; i++) {
-      for(let j = 0; j < bulletsLength; j++) {
-        const enemy = enemyControl.enemies[i];
-        const bullet = bulletControl.bullets[j];
+      const enemy = enemyControl.enemies[i];
 
+      for(let j = 0; j < bulletsLength; j++) {
+        const bullet = bulletControl.bullets[j];
+        
         if(!bullet.hasCollided && Collision.detectCircleCollision(enemy, bullet)) {
           bullet.hasCollided = true;
           enemy.takeDamage(10);
