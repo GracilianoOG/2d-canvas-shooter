@@ -32,7 +32,7 @@ class Enemy extends Projectile {
     this.color = "#fff";
   }
 
-  move() {
+  #followPlayer() {
     const dirX = this.#target.center.x - this.x;
     const dirY = this.#target.center.y - this.y;
     const angle = Math.atan2(dirY, dirX);
@@ -40,15 +40,27 @@ class Enemy extends Projectile {
       this.x += Math.cos(angle) * this.speed;
       this.y += Math.sin(angle) * this.speed;
     }
+  }
+
+  #increaseSpeed() {
     if(this.speed < this.#maxSpeed) {
       this.speed += .1;
       if(this.speed > this.#maxSpeed) {
         this.speed = this.#maxSpeed;
       }
     }
+  }
+
+  #returnOriginalColor() {
     if(this.color != this.#mainColor && this.speed > 0) {
       this.color = this.#mainColor;
     }
+  }
+
+  move() {
+    this.#followPlayer();
+    this.#increaseSpeed();
+    this.#returnOriginalColor();
   }
 
   update(ctx) {
