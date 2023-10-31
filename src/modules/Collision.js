@@ -5,7 +5,7 @@ class Collision {
         const enemy = enemyControl.enemies[i];
         const bullet = bulletControl.bullets[j];
 
-        if(Collision.detectCircleCollision(enemy, bullet) && !bullet.hasCollided) {
+        if(!bullet.hasCollided && Collision.detectCircleCollision(enemy, bullet)) {
           bullet.hasCollided = true;
           enemy.takeDamage(10);
         }
