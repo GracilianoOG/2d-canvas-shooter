@@ -20,6 +20,15 @@ class Enemy extends Projectile {
     return this.#health;
   }
 
+  takeDamage(damage) {
+    this.health -= damage;
+    if(this.health <= 0) {
+      this.hasCollided = true;
+    }
+    this.speed = -1;
+    this.radius = this.radius * .9;
+  }
+
   move() {
     const dirX = this.#target.center.x - this.x;
     const dirY = this.#target.center.y - this.y;

@@ -7,12 +7,7 @@ class Collision {
 
         if(Collision.detectCircleCollision(enemy, bullet) && !bullet.hasCollided) {
           bullet.hasCollided = true;
-          enemy.health -= 10;
-          if(enemy.health <= 0) {
-            enemy.hasCollided = true;
-          }
-          enemy.speed = -1;
-          enemy.radius = enemy.radius * .9;
+          enemy.takeDamage(10);
         }
       }
     }
