@@ -76,11 +76,11 @@ class PlayerControl {
   }
 
   #shoot({ clientX, clientY }) {
-      const { x: playerCenterX, y: playerCenterY } = this.#player.center;
-      const dirX = clientX - playerCenterX;
-      const dirY = clientY - playerCenterY;
-      const angle = Math.atan2(dirY, dirX);
-      this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color);
+    const { x: playerCenterX, y: playerCenterY } = this.#player.center;
+    const dirX = clientX - playerCenterX;
+    const dirY = clientY - playerCenterY;
+    const angle = Math.atan2(dirY, dirX);
+    this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color);
   }
 }
 
