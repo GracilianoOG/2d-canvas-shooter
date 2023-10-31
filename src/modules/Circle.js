@@ -2,6 +2,7 @@ import { Shape } from "./Shape.js";
 
 class Circle extends Shape {
   #radius;
+  #PI = Math.PI;
 
   constructor(x, y, radius, color) {
     super(x, y, color);
@@ -19,7 +20,7 @@ class Circle extends Shape {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.radius, 0, this.#PI * 2);
     ctx.fill();
   }
 }
