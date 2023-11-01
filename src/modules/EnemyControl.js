@@ -65,7 +65,11 @@ class EnemyControl {
   }
 
   #deleteEnemies() {
-    this.#enemies = this.#enemies.filter(enemy => !enemy.hasCollided);
+    for(let i = 0; i < this.#enemies.length; i++) {
+      if(this.#enemies[i].hasCollided) {
+        this.#enemies.splice(i, 1);
+      }
+    }
   }
 
   startEnemySpawn(secondsToSpawn) {
