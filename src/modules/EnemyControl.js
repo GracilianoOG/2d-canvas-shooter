@@ -7,10 +7,10 @@ class EnemyControl {
   #target;
   #intervalId;
 
-  constructor(target, canvas) {
-    this.#target = target;
+  constructor({ player, canvas, context }) {
+    this.#target = player;
     this.#canvas = canvas;
-    this.#ctx = this.#canvas.getContext("2d");
+    this.#ctx = context;
   }
 
   set enemies(enemies) {
