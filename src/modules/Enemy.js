@@ -25,7 +25,7 @@ class Enemy extends Projectile {
   takeDamage(damage) {
     this.health -= damage;
     if(this.health <= 0) {
-      this.hasCollided = true;
+      this.toDestroy = true;
     }
     this.speed = -1;
     this.radius = this.radius * .9;

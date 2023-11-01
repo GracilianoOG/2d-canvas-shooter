@@ -9,8 +9,8 @@ class Collision {
       for(let j = 0; j < bulletsLength; j++) {
         const bullet = bullets[j];
         
-        if(!bullet.hasCollided && Collision.detectCircleCollision(enemy, bullet)) {
-          bullet.hasCollided = true;
+        if(!bullet.toDestroy && Collision.detectCircleCollision(enemy, bullet)) {
+          bullet.toDestroy = true;
           enemy.takeDamage(10);
         }
       }

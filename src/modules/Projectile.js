@@ -2,7 +2,7 @@ import { Circle } from "./Circle.js";
 
 class Projectile extends Circle {
   #speed;
-  #hasCollided = false;
+  #toDestroy = false;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, color);
@@ -13,16 +13,16 @@ class Projectile extends Circle {
     this.#speed = speed;
   }
 
-  set hasCollided(hasCollided) {
-    this.#hasCollided = hasCollided;
+  set toDestroy(toDestroy) {
+    this.#toDestroy = toDestroy;
   }
 
   get speed() {
     return this.#speed;
   }
 
-  get hasCollided() {
-    return this.#hasCollided;
+  get toDestroy() {
+    return this.#toDestroy;
   }
 }
 

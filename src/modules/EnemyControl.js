@@ -59,7 +59,7 @@ class EnemyControl {
 
   #deleteEnemies() {
     for(let i = 0; i < this.#enemies.length; i++) {
-      if(this.#enemies[i].hasCollided) {
+      if(this.#enemies[i].toDestroy) {
         this.#enemies.splice(i, 1);
       }
     }

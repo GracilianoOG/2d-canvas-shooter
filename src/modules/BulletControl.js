@@ -13,13 +13,13 @@ class BulletControl {
     const { x, y, radius } = bullet;
   
     if(x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius) {
-      bullet.hasCollided = true;
+      bullet.toDestroy = true;
     }
   }
 
   #deleteBullets() {
     for(let i = 0; i < this.#bullets.length; i++) {
-      if(this.#bullets[i].hasCollided) {
+      if(this.#bullets[i].toDestroy) {
         this.#bullets.splice(i, 1);
       }
     }
