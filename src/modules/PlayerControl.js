@@ -5,10 +5,10 @@ class PlayerControl {
   #keys = {};
   #bulletControl;
 
-  constructor(player, canvas, bulletControl) {
-    this.#player = player;
-    this.#canvas = canvas;
-    this.#ctx = this.#canvas.getContext("2d");
+  constructor(gameState, bulletControl) {
+    this.#player = gameState.player;
+    this.#canvas = gameState.canvas;
+    this.#ctx = gameState.context;
     this.#bulletControl = bulletControl;
 
     document.addEventListener("keydown", ({ code }) => {

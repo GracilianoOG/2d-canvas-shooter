@@ -4,6 +4,7 @@ import { BulletControl } from "./src/modules/BulletControl.js";
 import { EnemyControl } from "./src/modules/EnemyControl.js";
 import { Collision } from "./src/modules/Collision.js";
 import { Canvas } from "./src/modules/Canvas.js";
+import { GameState } from "./src/modules/GameState.js";
 
 // Canvas
 const canvasObj = new Canvas(
@@ -21,9 +22,12 @@ const player = new Player(
   playerSize, playerSize, 6, "white"
 );
 
+// GameState
+const gameState = new GameState(canvas, player);
+
 // Controllers
 const bulletControl = new BulletControl(canvas);
-const playerControl = new PlayerControl(player, canvas, bulletControl);
+const playerControl = new PlayerControl(gameState, bulletControl);
 const enemyControl = new EnemyControl(player, canvas);
 
 // Animation
