@@ -1,13 +1,13 @@
 class Collision {
-  static manageCollision(enemyControl, bulletControl) {
-    const enemiesLength = enemyControl.enemies.length;
-    const bulletsLength = bulletControl.bullets.length;
+  static manageCollision({ enemies, bullets }) {
+    const enemiesLength = enemies.length;
+    const bulletsLength = bullets.length;
 
     for(let i = 0; i < enemiesLength; i++) {
-      const enemy = enemyControl.enemies[i];
+      const enemy = enemies[i];
 
       for(let j = 0; j < bulletsLength; j++) {
-        const bullet = bulletControl.bullets[j];
+        const bullet = bullets[j];
         
         if(!bullet.hasCollided && Collision.detectCircleCollision(enemy, bullet)) {
           bullet.hasCollided = true;

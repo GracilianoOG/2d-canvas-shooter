@@ -38,7 +38,7 @@ const animate = () => {
   bulletControl.update();
   playerControl.update();
   enemyControl.update();
-  Collision.manageCollision(enemyControl, bulletControl);
+  Collision.manageCollision(gameState);
 }
 
 enemyControl.startEnemySpawn(.4);
