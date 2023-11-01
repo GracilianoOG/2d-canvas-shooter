@@ -3,6 +3,7 @@ class GameState {
   #context;
   #player;
   #bullets = [];
+  #enemies = [];
 
   constructor(canvas, player) {
     this.#canvas = canvas;
@@ -24,6 +25,10 @@ class GameState {
 
   get bullets() {
     return this.#bullets;
+  }
+
+  get enemies() {
+    return this.#enemies;
   }
 }
 

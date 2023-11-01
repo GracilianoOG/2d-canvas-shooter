@@ -1,16 +1,17 @@
 import { Enemy } from "./Enemy.js";
 
 class EnemyControl {
-  #enemies = [];
+  #enemies;
   #canvas;
   #ctx;
   #target;
   #intervalId;
 
-  constructor({ player, canvas, context }) {
+  constructor({ player, canvas, context, enemies }) {
     this.#target = player;
     this.#canvas = canvas;
     this.#ctx = context;
+    this.#enemies = enemies;
   }
 
   set enemies(enemies) {
