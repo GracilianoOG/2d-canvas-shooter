@@ -8,8 +8,8 @@ const scene = document.querySelector("#scene");
 scene.width = innerWidth;
 scene.height = innerHeight;
 const ctx = scene.getContext("2d");
-const bulletControl = new BulletControl(scene);
 const player = new Player(scene.width / 2, scene.height / 2, 30, 30, 6, "white");
+const bulletControl = new BulletControl(scene);
 const playerControl = new PlayerControl(player, scene, bulletControl);
 const enemyControl = new EnemyControl(player, scene);
 
@@ -24,7 +24,5 @@ const animate = () => {
 }
 
 enemyControl.startEnemySpawn(.4);
-
-// setTimeout(() => enemyControl.stopEnemySpawn(), 6000);
 
 animate();
