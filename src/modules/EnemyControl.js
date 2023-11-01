@@ -65,7 +65,7 @@ class EnemyControl {
   }
 
   #deleteEnemies() {
-    this.#enemies = this.#enemies.filter(bullet => !bullet.hasCollided);
+    this.#enemies = this.#enemies.filter(enemy => !enemy.hasCollided);
   }
 
   startEnemySpawn(secondsToSpawn) {
