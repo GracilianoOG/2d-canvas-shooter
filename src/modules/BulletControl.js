@@ -2,12 +2,12 @@ import { Bullet } from "./Bullet.js";
 
 class BulletControl {
   #bullets = [];
-  #screen;
+  #canvas;
   #ctx;
 
-  constructor(screen) {
-    this.#screen = screen;
-    this.#ctx = this.#screen.getContext("2d");
+  constructor(canvas) {
+    this.#canvas = canvas;
+    this.#ctx = this.#canvas.getContext("2d");
   }
 
   set bullets(bullets) {
@@ -18,10 +18,10 @@ class BulletControl {
     return this.#bullets;
   }
 
-  #checkBulletOutOfBounds(bullet, screen) {
+  #checkBulletOutOfBounds(bullet, canvas) {
     const { x, y, radius } = bullet;
   
-    if(x < -radius || x > screen.width + radius || y < -radius || y > screen.height + radius) {
+    if(x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius) {
       bullet.hasCollided = true;
     }
   }
@@ -42,7 +42,7 @@ class BulletControl {
     for(let i = 0; i < bulletsLength; i++) {
       const bullet = this.#bullets[i];
       bullet.update(this.#ctx);
-      this.#checkBulletOutOfBounds(bullet, this.#screen);
+      this.#checkBulletOutOfBounds(bullet, this.#canvas);
     }
     this.#deleteBullets();
   }

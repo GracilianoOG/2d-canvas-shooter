@@ -2,15 +2,15 @@ import { Enemy } from "./Enemy.js";
 
 class EnemyControl {
   #enemies = [];
-  #screen;
+  #canvas;
   #ctx;
   #target;
   #intervalId;
 
-  constructor(target, screen) {
+  constructor(target, canvas) {
     this.#target = target;
-    this.#screen = screen;
-    this.#ctx = this.#screen.getContext("2d");
+    this.#canvas = canvas;
+    this.#ctx = this.#canvas.getContext("2d");
   }
 
   set enemies(enemies) {
@@ -22,14 +22,14 @@ class EnemyControl {
   }
 
   #createHorizontalEnemy(enemySize) {
-    const xPos = Math.floor(Math.random() * this.#screen.width);
-    const yPos = Math.random() > .5 ? -enemySize : this.#screen.height + enemySize;
+    const xPos = Math.floor(Math.random() * this.#canvas.width);
+    const yPos = Math.random() > .5 ? -enemySize : this.#canvas.height + enemySize;
     return [xPos, yPos];
   }
   
   #createVerticalEnemy(enemySize) {
-    const xPos = Math.random() > .5 ? -enemySize : this.#screen.width + enemySize;
-    const yPos = Math.floor(Math.random() * this.#screen.height);
+    const xPos = Math.random() > .5 ? -enemySize : this.#canvas.width + enemySize;
+    const yPos = Math.floor(Math.random() * this.#canvas.height);
     return [xPos, yPos];
   }
 

@@ -1,14 +1,14 @@
 class PlayerControl {
   #player;
-  #screen;
+  #canvas;
   #ctx;
   #keys = {};
   #bulletControl;
 
-  constructor(player, screen, bulletControl) {
+  constructor(player, canvas, bulletControl) {
     this.#player = player;
-    this.#screen = screen;
-    this.#ctx = this.#screen.getContext("2d");
+    this.#canvas = canvas;
+    this.#ctx = this.#canvas.getContext("2d");
     this.#bulletControl = bulletControl;
 
     document.addEventListener("keydown", ({ code }) => {
@@ -58,7 +58,7 @@ class PlayerControl {
     }
 
     if(this.#keys["KeyD"]) {
-      this.#moveRight(this.#screen.width);
+      this.#moveRight(this.#canvas.width);
     }
 
     if(this.#keys["KeyW"]) {
@@ -66,7 +66,7 @@ class PlayerControl {
     }
 
     if(this.#keys["KeyS"]) {
-      this.#moveDown(this.#screen.height);
+      this.#moveDown(this.#canvas.height);
     }
   }
 
