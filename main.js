@@ -8,7 +8,12 @@ const canvas = document.querySelector("#canvas");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 const ctx = canvas.getContext("2d");
-const player = new Player(canvas.width / 2, canvas.height / 2, 30, 30, 6, "white");
+const playerSize = 30;
+const player = new Player(
+  canvas.width/2 - playerSize/2, 
+  canvas.height/2 - playerSize/2, 
+  playerSize, playerSize, 6, "white"
+);
 const bulletControl = new BulletControl(canvas);
 const playerControl = new PlayerControl(player, canvas, bulletControl);
 const enemyControl = new EnemyControl(player, canvas);
