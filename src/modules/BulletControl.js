@@ -11,26 +11,12 @@ class BulletControl {
     this.#bullets = bullets;
   }
 
-  set bullets(bullets) {
-    this.#bullets = bullets;
-  }
-
-  get bullets() {
-    return this.#bullets;
-  }
-
   #checkBulletOutOfBounds(bullet, canvas) {
     const { x, y, radius } = bullet;
   
     if(x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius) {
       bullet.hasCollided = true;
     }
-  }
-
-  createBullet(x, y, radius, speed, angle, color) {
-    this.#bullets.push(
-      new Bullet(x, y, radius, speed, angle, color)
-    );
   }
 
   #deleteBullets() {

@@ -14,14 +14,6 @@ class EnemyControl {
     this.#enemies = enemies;
   }
 
-  set enemies(enemies) {
-    this.#enemies = enemies;
-  }
-
-  get enemies() {
-    return this.#enemies;
-  }
-
   #createEnemyPosition(enemySize) {
     let xPos, yPos;
 
