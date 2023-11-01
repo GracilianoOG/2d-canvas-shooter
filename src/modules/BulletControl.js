@@ -1,13 +1,14 @@
 import { Bullet } from "./Bullet.js";
 
 class BulletControl {
-  #bullets = [];
+  #bullets;
   #canvas;
   #ctx;
 
-  constructor(canvas) {
+  constructor({ canvas, context, bullets }) {
     this.#canvas = canvas;
-    this.#ctx = this.#canvas.getContext("2d");
+    this.#ctx = context;
+    this.#bullets = bullets;
   }
 
   set bullets(bullets) {
@@ -33,7 +34,11 @@ class BulletControl {
   }
 
   #deleteBullets() {
-    this.#bullets = this.#bullets.filter(bullet => !bullet.hasCollided);
+    for(let i = 0; i < this.#bullets.length; i++) {
+      if(this.#bullets[i].hasCollided) {
+        this.#bullets.splice(i, 1);
+      }
+    }
   }
 
   update() {
