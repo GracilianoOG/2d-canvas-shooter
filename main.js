@@ -4,19 +4,19 @@ import { BulletControl } from "./src/modules/BulletControl.js";
 import { EnemyControl } from "./src/modules/EnemyControl.js";
 import { Collision } from "./src/modules/Collision.js";
 
-const scene = document.querySelector("#scene");
-scene.width = innerWidth;
-scene.height = innerHeight;
-const ctx = scene.getContext("2d");
-const player = new Player(scene.width / 2, scene.height / 2, 30, 30, 6, "white");
-const bulletControl = new BulletControl(scene);
-const playerControl = new PlayerControl(player, scene, bulletControl);
-const enemyControl = new EnemyControl(player, scene);
+const canvas = document.querySelector("#canvas");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+const ctx = canvas.getContext("2d");
+const player = new Player(canvas.width / 2, canvas.height / 2, 30, 30, 6, "white");
+const bulletControl = new BulletControl(canvas);
+const playerControl = new PlayerControl(player, canvas, bulletControl);
+const enemyControl = new EnemyControl(player, canvas);
 
 const animate = () => {
-  ctx.fillStyle = "rgba(0, 0, 0, .4)";
-  ctx.fillRect(0, 0, scene.width, scene.height);
   requestAnimationFrame(animate);
+  ctx.fillStyle = "rgba(0, 0, 0, .4)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   bulletControl.update();
   playerControl.update();
   enemyControl.update();
