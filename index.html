@@ -11,17 +11,20 @@
       padding: 0;
     }
 
-    div {
+    body {
+      line-height: 0;
+    }
+
+    #game-container {
       background-color: #000;
       display: inline-block;
-      line-height: 0;
     }
   </style>
 </head>
 <body>
-  <div>
+  <main id="game-container">
     <canvas id="scene"></canvas>
-  </div>
+  </main>
   <script type="module" src="./main.js"></script>
 </body>
 </html>
