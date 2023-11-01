@@ -21,15 +21,17 @@ class EnemyControl {
     return this.#enemies;
   }
 
-  #createHorizontalEnemy(enemySize) {
-    const xPos = Math.floor(Math.random() * this.#canvas.width);
-    const yPos = Math.random() > .5 ? -enemySize : this.#canvas.height + enemySize;
-    return [xPos, yPos];
-  }
-  
-  #createVerticalEnemy(enemySize) {
-    const xPos = Math.random() > .5 ? -enemySize : this.#canvas.width + enemySize;
-    const yPos = Math.floor(Math.random() * this.#canvas.height);
+  #createEnemyPosition(enemySize) {
+    let xPos, yPos;
+
+    if(Math.random() > .5) {
+      xPos = Math.random() > .5 ? -enemySize : this.#canvas.width + enemySize;
+      yPos = Math.floor(Math.random() * this.#canvas.height);
+      return [xPos, yPos];
+    }
+
+    xPos = Math.floor(Math.random() * this.#canvas.width);
+    yPos = Math.random() > .5 ? -enemySize : this.#canvas.height + enemySize;
     return [xPos, yPos];
   }
 
@@ -56,7 +58,7 @@ class EnemyControl {
 
   #createEnemy() {
     const { hp, radius, speed, color } = this.#randomizeEnemy();
-    const coords = Math.random() > .5 ? this.#createVerticalEnemy(radius) : this.#createHorizontalEnemy(radius);
+    const coords = this.#createEnemyPosition(radius);
     this.#enemies.push(
       new Enemy(coords[0], coords[1], radius, speed, color, hp, this.#target)
     );
