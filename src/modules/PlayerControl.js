@@ -1,15 +1,17 @@
+import { Bullet } from "./Bullet.js";
+
 class PlayerControl {
   #player;
   #canvas;
   #ctx;
   #keys = {};
-  #bulletControl;
+  #bullets;
 
-  constructor(gameState, bulletControl) {
-    this.#player = gameState.player;
-    this.#canvas = gameState.canvas;
-    this.#ctx = gameState.context;
-    this.#bulletControl = bulletControl;
+  constructor({ player, canvas, context, bullets }) {
+    this.#player = player;
+    this.#canvas = canvas;
+    this.#ctx = context;
+    this.#bullets = bullets;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -80,7 +82,7 @@ class PlayerControl {
     const dirX = clientX - playerCenterX;
     const dirY = clientY - playerCenterY;
     const angle = Math.atan2(dirY, dirX);
-    this.#bulletControl.createBullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color);
+    this.#bullets.push(new Bullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color));
   }
 }
 

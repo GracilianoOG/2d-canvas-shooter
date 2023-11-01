@@ -27,7 +27,7 @@ const gameState = new GameState(canvas, player);
 
 // Controllers
 const bulletControl = new BulletControl(gameState);
-const playerControl = new PlayerControl(gameState, bulletControl);
+const playerControl = new PlayerControl(gameState);
 const enemyControl = new EnemyControl(player, canvas);
 
 // Animation
