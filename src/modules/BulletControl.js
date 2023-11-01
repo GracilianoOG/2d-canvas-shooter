@@ -1,5 +1,3 @@
-import { Bullet } from "./Bullet.js";
-
 class BulletControl {
   #bullets;
   #canvas;
