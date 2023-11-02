@@ -1,3 +1,4 @@
+import { Collision } from "./Collision.js";
 import { Shape } from "./Shape.js";
 
 class Circle extends Shape {
@@ -22,6 +23,13 @@ class Circle extends Shape {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, this.#PI * 2);
     ctx.fill();
+  }
+
+  collidedWith(object) {
+    if(object instanceof Circle) {
+      return Collision.detectCircleCollision(this, object);
+    }
+    return Collision.detectCircleSquareCollision(this, object);
   }
 }
 
