@@ -2,7 +2,6 @@ import { PlayerControl } from "./src/modules/PlayerControl.js";
 import { Player } from "./src/modules/Player.js";
 import { BulletControl } from "./src/modules/BulletControl.js";
 import { EnemyControl } from "./src/modules/EnemyControl.js";
-import { Collision } from "./src/modules/Collision.js";
 import { Canvas } from "./src/modules/Canvas.js";
 import { GameState } from "./src/modules/GameState.js";
 
@@ -38,7 +37,6 @@ const animate = () => {
   bulletControl.update();
   playerControl.update();
   enemyControl.update();
-  Collision.manageCollision(gameState);
 }
 
 enemyControl.startEnemySpawn(.4);
