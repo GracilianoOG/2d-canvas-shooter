@@ -1,12 +1,14 @@
 class BulletControl {
   #bullets;
+  #enemies;
   #canvas;
   #ctx;
 
-  constructor({ canvas, context, bullets }) {
+  constructor({ canvas, context, bullets, enemies }) {
     this.#canvas = canvas;
     this.#ctx = context;
     this.#bullets = bullets;
+    this.#enemies = enemies;
   }
 
   #checkBulletOutOfBounds(bullet, canvas) {
@@ -25,6 +27,19 @@ class BulletControl {
     }
   }
 
+  #checkEnemyCollision(bullet) {
+    const enemiesLength = this.#enemies.length;
+
+    for(let j = 0; j < enemiesLength; j++) {
+      const enemy = this.#enemies[j];
+      
+      if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
+        bullet.toDestroy = true;
+        enemy.takeDamage(10);
+      }
+    }
+  }
+
   update() {
     const bulletsLength = this.#bullets.length;
     
@@ -32,6 +47,7 @@ class BulletControl {
       const bullet = this.#bullets[i];
       bullet.update(this.#ctx);
       this.#checkBulletOutOfBounds(bullet, this.#canvas);
+      this.#checkEnemyCollision(bullet);
     }
     this.#deleteBullets();
   }
