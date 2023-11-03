@@ -18,6 +18,10 @@ class Circle extends Shape {
     return this.#radius;
   }
 
+  get PI() {
+    return this.#PI;
+  }
+
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();
