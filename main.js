@@ -42,6 +42,9 @@ const animate = () => {
   particleControl.update();
 }
 
-enemyControl.startEnemySpawn(.4);
+const init = () => {
+  enemyControl.startEnemySpawn(.4);
+  animate();
+}
 
-animate();
+init();
