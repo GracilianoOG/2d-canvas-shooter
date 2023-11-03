@@ -1,14 +1,16 @@
 class BulletControl {
   #bullets;
   #enemies;
+  #particles;
   #canvas;
   #ctx;
 
-  constructor({ canvas, context, bullets, enemies }) {
+  constructor({ canvas, context, bullets, enemies, particles }) {
     this.#canvas = canvas;
     this.#ctx = context;
     this.#bullets = bullets;
     this.#enemies = enemies;
+    this.#particles = particles;
   }
 
   #checkBulletOutOfBounds(bullet, canvas) {
@@ -36,6 +38,7 @@ class BulletControl {
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
         bullet.toDestroy = true;
         enemy.takeDamage(10);
+        this.#particles.push(...enemy.bleed(15, 8, 5));
       }
     }
   }
