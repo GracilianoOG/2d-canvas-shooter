@@ -1,3 +1,4 @@
+import { Particle } from "./Particle.js";
 import { Projectile } from "./Projectile.js";
 
 class Enemy extends Projectile {
@@ -30,6 +31,16 @@ class Enemy extends Projectile {
     this.speed = -1;
     this.radius = this.radius * .9;
     this.color = "#fff";
+  }
+
+  bleed(amount, size, speed) {
+    const particles = [];
+
+    for(let i = 0; i < amount; i++) {
+      particles.push(new Particle(this.x, this.y, size, speed, this.#mainColor));
+    }
+
+    return particles;
   }
 
   #followPlayer() {
