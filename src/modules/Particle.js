@@ -1,7 +1,7 @@
 import { Projectile } from "./Projectile.js";
 
 class Particle extends Projectile {
-  #angle = Math.random() * 2 * Math.PI;
+  #angle = Math.random() * 2 * this.PI;
   #randomizer = Math.random();
 
   constructor(x, y, radius, speed, color) {
