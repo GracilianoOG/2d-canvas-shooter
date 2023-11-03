@@ -4,6 +4,7 @@ import { BulletControl } from "./src/modules/BulletControl.js";
 import { EnemyControl } from "./src/modules/EnemyControl.js";
 import { Canvas } from "./src/modules/Canvas.js";
 import { GameState } from "./src/modules/GameState.js";
+import { ParticleControl } from "./src/modules/ParticleControl.js";
 
 // Canvas
 const canvasObj = new Canvas(
@@ -28,6 +29,7 @@ const gameState = new GameState(canvas, player);
 const bulletControl = new BulletControl(gameState);
 const playerControl = new PlayerControl(gameState);
 const enemyControl = new EnemyControl(gameState);
+const particleControl = new ParticleControl(gameState);
 
 // Animation
 const animate = () => {
@@ -37,6 +39,7 @@ const animate = () => {
   bulletControl.update();
   playerControl.update();
   enemyControl.update();
+  particleControl.update();
 }
 
 enemyControl.startEnemySpawn(.4);
