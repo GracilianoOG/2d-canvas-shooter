@@ -38,7 +38,7 @@ class BulletControl {
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
         bullet.toDestroy = true;
         enemy.takeDamage(10);
-        this.#particles.push(...enemy.bleed(15, 8, 5));
+        this.#particles.push(...enemy.bleed(enemy.health > 0 ? 8 : 16, 8, 5));
       }
     }
   }
