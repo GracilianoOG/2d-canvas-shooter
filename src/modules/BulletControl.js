@@ -23,7 +23,7 @@ class BulletControl {
   }
 
   #deleteBullets() {
-    for(let i = 0; i < this.#bullets.length; i++) {
+    for(let i = this.#bullets.length - 1; i >= 0; i--) {
       if(this.#bullets[i].toDestroy) {
         this.#bullets.splice(i, 1);
       }

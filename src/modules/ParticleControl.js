@@ -8,7 +8,7 @@ class ParticleControl {
   }
 
   #deleteParticles() {
-    for(let i = 0; i < this.#particles.length; i++) {
+    for(let i = this.#particles.length - 1; i >= 0; i--) {
       if(this.#particles[i].toDestroy) {
         this.#particles.splice(i, 1);
       }
