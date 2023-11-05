@@ -6,12 +6,16 @@ class PlayerControl {
   #ctx;
   #keys = {};
   #bullets;
+  #enemies;
+  #particles;
 
-  constructor({ player, canvas, context, bullets }) {
+  constructor({ player, canvas, context, bullets, enemies, particles }) {
     this.#player = player;
     this.#canvas = canvas;
     this.#ctx = context;
     this.#bullets = bullets;
+    this.#enemies = enemies;
+    this.#particles = particles;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -22,6 +26,9 @@ class PlayerControl {
     });
     
     document.addEventListener("click", (e) => {
+      if(this.#isPlayerDead()) {
+        return;
+      }
       this.#shoot(e);
     });
   }
@@ -72,9 +79,24 @@ class PlayerControl {
     }
   }
 
+  #isPlayerDead() {
+    return this.#player.isDead;
+  }
+
   update() {
+    if(this.#isPlayerDead()) {
+      return;
+    }
     this.#move();
     this.#player.update(this.#ctx);
+
+    for(let i = 0; i < this.#enemies.length; i++) {
+      if(this.#player.collidedWith(this.#enemies[i])) {
+        this.#player.isDead = true;
+        this.#particles.push(...this.#player.bleed(20, 8, 6));
+        break;
+      }
+    }
   }
 
   #shoot({ clientX, clientY }) {
