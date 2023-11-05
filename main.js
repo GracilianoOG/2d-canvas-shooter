@@ -26,10 +26,10 @@ const player = new Player(
 const gameState = new GameState(canvas, player);
 
 // Controllers
-const bulletControl = new BulletControl(gameState);
-const playerControl = new PlayerControl(gameState);
-const enemyControl = new EnemyControl(gameState);
-const particleControl = new ParticleControl(gameState);
+const bulletControl = new BulletControl(gameState.gameObjects);
+const playerControl = new PlayerControl(gameState.gameObjects);
+const enemyControl = new EnemyControl(gameState.gameObjects);
+const particleControl = new ParticleControl(gameState.gameObjects);
 
 // Animation
 const animate = () => {

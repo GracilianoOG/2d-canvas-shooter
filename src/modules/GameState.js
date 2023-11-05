@@ -1,40 +1,19 @@
 class GameState {
-  #canvas;
-  #context;
-  #player;
-  #bullets = [];
-  #enemies = [];
-  #particles = [];
+  #gameObjects = {
+    bullets: [],
+    enemies: [],
+    particles: []
+  };
 
   constructor(canvas, player) {
-    this.#canvas = canvas;
-    this.#context = canvas.getContext("2d");
-    this.#player = player;
+    this.#gameObjects.canvas = canvas;
+    this.#gameObjects.context = canvas.getContext("2d");
+    this.#gameObjects.player = player;
   }
 
-  get canvas() {
-    return this.#canvas;
-  }
-
-  get context() {
-    return this.#context;
-  }
-
-  get player() {
-    return this.#player;
-  }
-
-  get bullets() {
-    return this.#bullets;
-  }
-
-  get enemies() {
-    return this.#enemies;
-  }
-
-  get particles() {
-    return this.#particles;
+  get gameObjects() {
+    return this.#gameObjects;
   }
 }
 
-export { GameState }
+export { GameState };
