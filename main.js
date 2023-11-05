@@ -15,11 +15,11 @@ const canvasObj = new Canvas(
 const { canvas, context: ctx } = canvasObj;
 
 // Player
-const playerSize = 30;
+const playerRadius = 15;
 const player = new Player(
-  canvas.width/2 - playerSize/2, 
-  canvas.height/2 - playerSize/2, 
-  playerSize, playerSize, 6, "white"
+  canvas.width/2 - playerRadius, 
+  canvas.height/2 - playerRadius, 
+  playerRadius, 6, "#fff"
 );
 
 // GameState

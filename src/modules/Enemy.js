@@ -44,8 +44,8 @@ class Enemy extends Projectile {
   }
 
   #followPlayer() {
-    const dirX = this.#target.center.x - this.x;
-    const dirY = this.#target.center.y - this.y;
+    const dirX = this.#target.x - this.x;
+    const dirY = this.#target.y - this.y;
     const angle = Math.atan2(dirY, dirX);
     if(Math.hypot(dirX, dirY) > this.speed) {
       this.x += Math.cos(angle) * this.speed;

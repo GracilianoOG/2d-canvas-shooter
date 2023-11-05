@@ -1,10 +1,10 @@
-import { Square } from "./Square.js";
+import { Circle } from "./Circle.js";
 
-class Player extends Square {
+class Player extends Circle {
   #speed;
 
-  constructor(x, y, width, height, speed, color) {
-    super(x, y, width, height, color);
+  constructor(x, y, radius, speed, color) {
+    super(x, y, radius, color);
     this.#speed = speed;
   }
 
