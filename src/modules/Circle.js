@@ -1,4 +1,3 @@
-import { Collision } from "./Collision.js";
 import { Shape } from "./Shape.js";
 
 class Circle extends Shape {
@@ -30,10 +29,10 @@ class Circle extends Shape {
   }
 
   collidedWith(object) {
-    if(object instanceof Circle) {
-      return Collision.detectCircleCollision(this, object);
+    if(Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius) {
+      return true;
     }
-    return Collision.detectCircleSquareCollision(this, object);
+    return false;
   }
 }
 
