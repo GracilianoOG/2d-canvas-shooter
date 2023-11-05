@@ -13,12 +13,13 @@ class BulletControl {
     this.#particles = particles;
   }
 
-  #checkBulletOutOfBounds(bullet, canvas) {
+  #isBulletOutOfBounds(bullet, canvas) {
     const { x, y, radius } = bullet;
   
     if(x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius) {
-      bullet.toDestroy = true;
+      return true;
     }
+    return false;
   }
 
   #deleteBullets() {
@@ -29,18 +30,19 @@ class BulletControl {
     }
   }
 
-  #checkEnemyCollision(bullet) {
+  #hasEnemyCollided(bullet) {
     const enemiesLength = this.#enemies.length;
 
-    for(let j = 0; j < enemiesLength; j++) {
-      const enemy = this.#enemies[j];
+    for(let i = 0; i < enemiesLength; i++) {
+      const enemy = this.#enemies[i];
       
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
-        bullet.toDestroy = true;
         enemy.takeDamage(10);
         this.#particles.push(...enemy.bleed(enemy.health > 0 ? 8 : 16, 8, 5));
+        return true;
       }
     }
+    return false;
   }
 
   update() {
@@ -49,8 +51,12 @@ class BulletControl {
     for(let i = 0; i < bulletsLength; i++) {
       const bullet = this.#bullets[i];
       bullet.update(this.#ctx);
-      this.#checkBulletOutOfBounds(bullet, this.#canvas);
-      this.#checkEnemyCollision(bullet);
+      if(
+        this.#hasEnemyCollided(bullet) ||
+        this.#isBulletOutOfBounds(bullet, this.#canvas)
+      ) {
+        bullet.toDestroy = true;
+      }
     }
     this.#deleteBullets();
   }
