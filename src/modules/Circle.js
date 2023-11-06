@@ -29,10 +29,7 @@ class Circle extends Shape {
   }
 
   collidedWith(object) {
-    if(Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius) {
-      return true;
-    }
-    return false;
+    return Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius;
   }
 }
 
