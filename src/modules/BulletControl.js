@@ -15,11 +15,7 @@ class BulletControl {
 
   #isBulletOutOfBounds(bullet, canvas) {
     const { x, y, radius } = bullet;
-  
-    if(x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius) {
-      return true;
-    }
-    return false;
+    return x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius;
   }
 
   #deleteBullets() {
