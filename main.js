@@ -34,12 +34,27 @@ const particleControl = new ParticleControl(gameState.gameObjects);
 // Animation
 const animate = () => {
   requestAnimationFrame(animate);
+  updateCanvas();
+  updateObjects();
+  cleanUpObjects();
+}
+
+const updateCanvas = () => {
   ctx.fillStyle = "rgba(0, 0, 0, .4)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  bulletControl.update();
+}
+
+const updateObjects = () => {
   playerControl.update();
+  bulletControl.update();
   enemyControl.update();
   particleControl.update();
+}
+
+const cleanUpObjects = () => {
+  gameState.destroyObjects(gameState.gameObjects.bullets);
+  gameState.destroyObjects(gameState.gameObjects.enemies);
+  gameState.destroyObjects(gameState.gameObjects.particles);
 }
 
 const init = () => {

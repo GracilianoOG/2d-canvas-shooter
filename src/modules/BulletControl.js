@@ -14,16 +14,9 @@ class BulletControl {
   }
 
   #isBulletOutOfBounds(bullet, canvas) {
-    const { x, y, radius } = bullet;
-    return x < -radius || x > canvas.width + radius || y < -radius || y > canvas.height + radius;
-  }
-
-  #deleteBullets() {
-    for(let i = this.#bullets.length - 1; i >= 0; i--) {
-      if(this.#bullets[i].toDestroy) {
-        this.#bullets.splice(i, 1);
-      }
-    }
+    const { x: bx, y: by, radius: br } = bullet;
+    const { width: cw, height: ch } = canvas;
+    return bx < -br || bx > cw + br || by < -br || by > ch + br;
   }
 
   #hasEnemyCollided(bullet) {
@@ -54,7 +47,6 @@ class BulletControl {
         bullet.toDestroy = true;
       }
     }
-    this.#deleteBullets();
   }
 }
 

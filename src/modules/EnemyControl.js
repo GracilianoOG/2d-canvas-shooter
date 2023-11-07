@@ -57,14 +57,6 @@ class EnemyControl {
     );
   }
 
-  #deleteEnemies() {
-    for(let i = this.#enemies.length - 1; i >= 0; i--) {
-      if(this.#enemies[i].toDestroy) {
-        this.#enemies.splice(i, 1);
-      }
-    }
-  }
-
   startEnemySpawn(secondsToSpawn) {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
@@ -83,7 +75,6 @@ class EnemyControl {
     for(let i = 0; i < enemiesLength; i++) {
       this.#enemies[i].update(this.#ctx);
     }
-    this.#deleteEnemies();
   }
 }
 
