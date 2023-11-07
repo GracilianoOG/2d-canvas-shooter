@@ -1,5 +1,4 @@
 import { Circle } from "./Circle.js";
-import { Particle } from "./Particle.js";
 
 class Player extends Circle {
   #speed;

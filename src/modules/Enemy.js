@@ -1,4 +1,3 @@
-import { Particle } from "./Particle.js";
 import { Projectile } from "./Projectile.js";
 
 class Enemy extends Projectile {
