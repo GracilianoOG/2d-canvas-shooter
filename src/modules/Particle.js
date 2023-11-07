@@ -8,6 +8,16 @@ class Particle extends Projectile {
     super(x, y, radius, speed, color);
   }
 
+  static createParticles(x, y, size, speed, color, amount) {
+    const particles = [];
+
+    for(let i = 0; i < amount; i++) {
+      particles.push(new Particle(x, y, size, speed, color));
+    }
+
+    return particles;
+  }
+
   #shrink() {
     if(!this.toDestroy) {
       const shrunkRadius = this.radius - .2;
