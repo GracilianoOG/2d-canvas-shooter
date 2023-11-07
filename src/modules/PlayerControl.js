@@ -90,11 +90,10 @@ class PlayerControl {
     this.#move();
     this.#player.update(this.#ctx);
 
-    for(let i = 0; i < this.#enemies.length; i++) {
+    for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
         this.#player.isDead = true;
         this.#particles.push(...this.#player.bleed(20, 8, 6));
-        break;
       }
     }
   }
