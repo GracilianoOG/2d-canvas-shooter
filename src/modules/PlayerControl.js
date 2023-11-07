@@ -1,4 +1,5 @@
 import { Bullet } from "./Bullet.js";
+import { Particle } from "./Particle.js";
 
 class PlayerControl {
   #player;
@@ -92,8 +93,11 @@ class PlayerControl {
 
     for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
+        const { x, y, color } = this.#player;
         this.#player.isDead = true;
-        this.#particles.push(...this.#player.bleed(20, 8, 6));
+        this.#particles.push(
+          ...Particle.createParticles(x, y, 8, 6, color, 20)
+        );
       }
     }
   }

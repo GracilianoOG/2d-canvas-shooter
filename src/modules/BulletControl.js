@@ -1,3 +1,5 @@
+import { Particle } from "./Particle.js";
+
 class BulletControl {
   #bullets;
   #enemies;
@@ -20,8 +22,11 @@ class BulletControl {
       const enemy = this.#enemies[i];
       
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
+        const { x, y, baseColor, health } = enemy;
         enemy.takeDamage(10);
-        this.#particles.push(...enemy.bleed(enemy.health > 0 ? 8 : 16, 8, 5));
+        this.#particles.push(
+          ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
+        );
         return true;
       }
     }

@@ -15,6 +15,10 @@ class Enemy extends Projectile {
     this.#baseColor = color;
   }
 
+  get baseColor() {
+    return this.#baseColor;
+  }
+
   set health(health) {
     this.#health = health;
   }
@@ -31,16 +35,6 @@ class Enemy extends Projectile {
     this.speed = -1;
     this.radius = this.radius * .9;
     this.color = "#fff";
-  }
-
-  bleed(amount, size, speed) {
-    const particles = [];
-
-    for(let i = 0; i < amount; i++) {
-      particles.push(new Particle(this.x, this.y, size, speed, this.#baseColor));
-    }
-
-    return particles;
   }
 
   #followPlayer() {

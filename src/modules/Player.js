@@ -26,16 +26,6 @@ class Player extends Circle {
     return this.#isDead;
   }
 
-  bleed(amount, size, speed) {
-    const particles = [];
-
-    for(let i = 0; i < amount; i++) {
-      particles.push(new Particle(this.x, this.y, size, speed, this.color));
-    }
-
-    return particles;
-  }
-
   update(ctx) {
     this.draw(ctx);
   }
