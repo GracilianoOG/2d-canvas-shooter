@@ -84,13 +84,7 @@ class PlayerControl {
     return this.#player.isDead;
   }
 
-  update() {
-    if(this.#isPlayerDead()) {
-      return;
-    }
-    this.#move();
-    this.#player.update(this.#ctx);
-
+  #killPlayer() {
     for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
         const { x, y, color } = this.#player;
@@ -100,6 +94,15 @@ class PlayerControl {
         );
       }
     }
+  }
+
+  update() {
+    if(this.#isPlayerDead()) {
+      return;
+    }
+    this.#move();
+    this.#player.update(this.#ctx);
+    this.#killPlayer();
   }
 
   #shoot({ clientX, clientY }) {
