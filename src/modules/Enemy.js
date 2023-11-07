@@ -68,7 +68,7 @@ class Enemy extends Projectile {
     }
   }
 
-  move() {
+  #move() {
     this.#followPlayer();
     this.#increaseSpeed();
     this.#returnOriginalColor();
@@ -76,7 +76,7 @@ class Enemy extends Projectile {
 
   update(ctx) {
     this.draw(ctx);
-    this.move();
+    this.#move();
   }
 }
 
