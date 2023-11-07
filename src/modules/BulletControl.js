@@ -13,12 +13,6 @@ class BulletControl {
     this.#particles = particles;
   }
 
-  #isBulletOutOfBounds(bullet, canvas) {
-    const { x: bx, y: by, radius: br } = bullet;
-    const { width: cw, height: ch } = canvas;
-    return bx < -br || bx > cw + br || by < -br || by > ch + br;
-  }
-
   #hasEnemyCollided(bullet) {
     const enemiesLength = this.#enemies.length;
 
@@ -42,7 +36,7 @@ class BulletControl {
       bullet.update(this.#ctx);
       if(
         this.#hasEnemyCollided(bullet) ||
-        this.#isBulletOutOfBounds(bullet, this.#canvas)
+        bullet.isOutOfCanvas(this.#canvas)
       ) {
         bullet.toDestroy = true;
       }

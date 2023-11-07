@@ -16,6 +16,12 @@ class Bullet extends Projectile {
     return this.#angle;
   }
 
+  isOutOfCanvas(canvas) {
+    const { x: bx, y: by, radius: br } = this;
+    const { width: cw, height: ch } = canvas;
+    return bx < -br || bx > cw + br || by < -br || by > ch + br;
+  }
+
   move() {
     this.x += Math.cos(this.angle) * this.speed;
     this.y += Math.sin(this.angle) * this.speed;
