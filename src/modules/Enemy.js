@@ -5,14 +5,14 @@ class Enemy extends Projectile {
   #target;
   #maxSpeed;
   #health;
-  #mainColor;
+  #baseColor;
 
   constructor(x, y, radius, speed, color, health, target) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
-    this.#mainColor = color;
+    this.#baseColor = color;
   }
 
   set health(health) {
@@ -37,7 +37,7 @@ class Enemy extends Projectile {
     const particles = [];
 
     for(let i = 0; i < amount; i++) {
-      particles.push(new Particle(this.x, this.y, size, speed, this.#mainColor));
+      particles.push(new Particle(this.x, this.y, size, speed, this.#baseColor));
     }
 
     return particles;
@@ -63,8 +63,8 @@ class Enemy extends Projectile {
   }
 
   #returnOriginalColor() {
-    if(this.color != this.#mainColor && this.speed > 0) {
-      this.color = this.#mainColor;
+    if(this.color != this.#baseColor && this.speed > 0) {
+      this.color = this.#baseColor;
     }
   }
 
