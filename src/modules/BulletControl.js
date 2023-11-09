@@ -15,6 +15,14 @@ class BulletControl {
     this.#particles = particles;
   }
 
+  #damageEnemy(enemy) {
+    const { x, y, baseColor, health } = enemy;
+    enemy.takeDamage(10);
+    this.#particles.push(
+      ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
+    );
+  }
+
   #hasEnemyCollided(bullet) {
     const enemiesLength = this.#enemies.length;
 
@@ -22,11 +30,7 @@ class BulletControl {
       const enemy = this.#enemies[i];
       
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
-        const { x, y, baseColor, health } = enemy;
-        enemy.takeDamage(10);
-        this.#particles.push(
-          ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
-        );
+        this.#damageEnemy(enemy);
         return true;
       }
     }
