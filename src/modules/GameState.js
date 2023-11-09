@@ -1,18 +1,18 @@
 class GameState {
-  #gameObjects = {
+  #objects = {
     bullets: [],
     enemies: [],
     particles: []
   };
 
   constructor(canvas, player) {
-    this.#gameObjects.canvas = canvas;
-    this.#gameObjects.context = canvas.getContext("2d");
-    this.#gameObjects.player = player;
+    this.#objects.canvas = canvas;
+    this.#objects.context = canvas.getContext("2d");
+    this.#objects.player = player;
   }
 
-  get gameObjects() {
-    return this.#gameObjects;
+  get objects() {
+    return this.#objects;
   }
 
   destroyObjects(array) {

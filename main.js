@@ -26,10 +26,10 @@ const player = new Player(
 const gameState = new GameState(canvas, player);
 
 // Controllers
-const bulletControl = new BulletControl(gameState.gameObjects);
-const playerControl = new PlayerControl(gameState.gameObjects);
-const enemyControl = new EnemyControl(gameState.gameObjects);
-const particleControl = new ParticleControl(gameState.gameObjects);
+const bulletControl = new BulletControl(gameState.objects);
+const playerControl = new PlayerControl(gameState.objects);
+const enemyControl = new EnemyControl(gameState.objects);
+const particleControl = new ParticleControl(gameState.objects);
 
 // Animation
 const animate = () => {
@@ -52,9 +52,9 @@ const updateObjects = () => {
 }
 
 const cleanUpObjects = () => {
-  gameState.destroyObjects(gameState.gameObjects.bullets);
-  gameState.destroyObjects(gameState.gameObjects.enemies);
-  gameState.destroyObjects(gameState.gameObjects.particles);
+  gameState.destroyObjects(gameState.objects.bullets);
+  gameState.destroyObjects(gameState.objects.enemies);
+  gameState.destroyObjects(gameState.objects.particles);
 }
 
 const init = () => {
