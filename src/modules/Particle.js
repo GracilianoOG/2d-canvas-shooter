@@ -4,10 +4,6 @@ class Particle extends Projectile {
   #angle = Math.random() * 2 * this.PI;
   #randomizer = Math.random();
 
-  constructor(x, y, radius, speed, color) {
-    super(x, y, radius, speed, color);
-  }
-
   static createParticles(x, y, size, speed, color, amount) {
     const particles = [];
 
@@ -16,6 +12,10 @@ class Particle extends Projectile {
     }
 
     return particles;
+  }
+
+  constructor(x, y, radius, speed, color) {
+    super(x, y, radius, speed, color);
   }
 
   #shrink() {

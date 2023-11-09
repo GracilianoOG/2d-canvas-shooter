@@ -8,12 +8,12 @@ class Bullet extends Projectile {
     this.#angle = angle;
   }
 
-  set angle(angle) {
-    this.#angle = angle;
-  }
-
   get angle() {
     return this.#angle;
+  }
+
+  set angle(angle) {
+    this.#angle = angle;
   }
 
   #isOutOfCanvas(canvas) {

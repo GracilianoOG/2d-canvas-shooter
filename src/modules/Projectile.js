@@ -9,20 +9,20 @@ class Projectile extends Circle {
     this.#speed = speed;
   }
 
-  set speed(speed) {
-    this.#speed = speed;
-  }
-
-  set toDestroy(toDestroy) {
-    this.#toDestroy = toDestroy;
-  }
-
   get speed() {
     return this.#speed;
   }
 
+  set speed(speed) {
+    this.#speed = speed;
+  }
+
   get toDestroy() {
     return this.#toDestroy;
+  }
+
+  set toDestroy(toDestroy) {
+    this.#toDestroy = toDestroy;
   }
 }
 

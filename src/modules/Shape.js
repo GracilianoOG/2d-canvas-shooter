@@ -9,28 +9,28 @@ class Shape {
     this.#color = color;
   }
 
-  set x(x) {
-    this.#x = x;
-  }
-
-  set y(y) {
-    this.#y = y;
-  }
-
-  set color(color) {
-    this.#color = color;
-  }
-
   get x() {
     return this.#x;
+  }
+
+  set x(x) {
+    this.#x = x;
   }
 
   get y() {
     return this.#y;
   }
 
+  set y(y) {
+    this.#y = y;
+  }
+
   get color() {
     return this.#color;
+  }
+
+  set color(color) {
+    this.#color = color;
   }
 }
 

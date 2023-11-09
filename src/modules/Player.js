@@ -9,20 +9,20 @@ class Player extends Circle {
     this.#speed = speed;
   }
 
-  set speed(speed) {
-    this.#speed = speed;
-  }
-
   get speed() {
     return this.#speed;
   }
 
-  set isDead(isDead) {
-    this.#isDead = isDead;
+  set speed(speed) {
+    this.#speed = speed;
   }
 
   get isDead() {
     return this.#isDead;
+  }
+
+  set isDead(isDead) {
+    this.#isDead = isDead;
   }
 
   update(ctx) {

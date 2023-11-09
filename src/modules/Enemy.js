@@ -18,22 +18,12 @@ class Enemy extends Projectile {
     return this.#baseColor;
   }
 
-  set health(health) {
-    this.#health = health;
-  }
-
   get health() {
     return this.#health;
   }
 
-  takeDamage(damage) {
-    this.health -= damage;
-    if(this.health <= 0) {
-      this.toDestroy = true;
-    }
-    this.speed = -1;
-    this.radius = this.radius * .9;
-    this.color = "#fff";
+  set health(health) {
+    this.#health = health;
   }
 
   #followPlayer() {
@@ -65,6 +55,16 @@ class Enemy extends Projectile {
     this.#followPlayer();
     this.#increaseSpeed();
     this.#returnOriginalColor();
+  }
+
+  takeDamage(damage) {
+    this.health -= damage;
+    if(this.health <= 0) {
+      this.toDestroy = true;
+    }
+    this.speed = -1;
+    this.radius = this.radius * .9;
+    this.color = "#fff";
   }
 
   update(ctx) {

@@ -9,16 +9,20 @@ class Circle extends Shape {
     this.#radius = radius;
   }
 
-  set radius(radius) {
-    this.#radius = radius;
-  }
-
   get radius() {
     return this.#radius;
   }
 
+  set radius(radius) {
+    this.#radius = radius;
+  }
+
   get PI() {
     return this.#PI;
+  }
+
+  collidedWith(object) {
+    return Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius;
   }
 
   draw(ctx) {
@@ -26,10 +30,6 @@ class Circle extends Shape {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, this.#PI * 2);
     ctx.fill();
-  }
-
-  collidedWith(object) {
-    return Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius;
   }
 }
 

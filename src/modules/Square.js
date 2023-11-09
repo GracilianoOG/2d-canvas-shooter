@@ -10,20 +10,20 @@ class Square extends Shape {
     this.#height = height;
   }
 
-  set width(width) {
-    this.#width = width;
-  }
-
-  set height(height) {
-    this.#height = height;
-  }
-
   get width() {
     return this.#width;
   }
 
+  set width(width) {
+    this.#width = width;
+  }
+
   get height() {
     return this.#height;
+  }
+
+  set height(height) {
+    this.#height = height;
   }
 
   get center() {
