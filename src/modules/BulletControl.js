@@ -4,11 +4,9 @@ class BulletControl {
   #bullets;
   #enemies;
   #particles;
-  #canvas;
   #ctx;
 
-  constructor({ canvas, context, bullets, enemies, particles }) {
-    this.#canvas = canvas;
+  constructor({ context, bullets, enemies, particles }) {
     this.#ctx = context;
     this.#bullets = bullets;
     this.#enemies = enemies;
