@@ -52,9 +52,9 @@ const updateObjects = () => {
 }
 
 const cleanUpObjects = () => {
-  gameState.destroyObjects(gameState.objects.bullets);
-  gameState.destroyObjects(gameState.objects.enemies);
-  gameState.destroyObjects(gameState.objects.particles);
+  GameState.destroyObjects(gameState.objects.bullets);
+  GameState.destroyObjects(gameState.objects.enemies);
+  GameState.destroyObjects(gameState.objects.particles);
 }
 
 const init = () => {
