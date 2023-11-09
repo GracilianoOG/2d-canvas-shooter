@@ -1,10 +1,7 @@
 import { PlayerControl } from "./src/modules/PlayerControl.js";
 import { Player } from "./src/modules/Player.js";
-import { BulletControl } from "./src/modules/BulletControl.js";
-import { EnemyControl } from "./src/modules/EnemyControl.js";
 import { Canvas } from "./src/modules/Canvas.js";
 import { GameState } from "./src/modules/GameState.js";
-import { ParticleControl } from "./src/modules/ParticleControl.js";
 import { EnemyCreator } from "./src/modules/EnemyCreator.js";
 import { GameControl } from "./src/modules/GameControl.js";
 
@@ -28,10 +25,7 @@ const player = new Player(
 const gameState = new GameState(canvas, player);
 
 // Controllers
-const bulletControl = new BulletControl(gameState.objects);
 const playerControl = new PlayerControl(gameState.objects);
-const enemyControl = new EnemyControl(gameState.objects);
-const particleControl = new ParticleControl(gameState.objects);
 const enemyCreator = new EnemyCreator(gameState.objects);
 const gameControl = new GameControl(gameState.objects);
 
@@ -50,9 +44,9 @@ const updateCanvas = () => {
 
 const updateObjects = () => {
   playerControl.update();
-  bulletControl.update();
-  enemyControl.update();
-  particleControl.update();
+  gameState.updateObjects(gameState.objects.bullets);
+  gameState.updateObjects(gameState.objects.enemies);
+  gameState.updateObjects(gameState.objects.particles);
   gameControl.update();
 }
 
