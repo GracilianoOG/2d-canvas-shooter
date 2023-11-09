@@ -6,6 +6,7 @@ import { Canvas } from "./src/modules/Canvas.js";
 import { GameState } from "./src/modules/GameState.js";
 import { ParticleControl } from "./src/modules/ParticleControl.js";
 import { EnemyCreator } from "./src/modules/EnemyCreator.js";
+import { GameControl } from "./src/modules/GameControl.js";
 
 // Canvas
 const canvasObj = new Canvas(
@@ -32,6 +33,7 @@ const playerControl = new PlayerControl(gameState.objects);
 const enemyControl = new EnemyControl(gameState.objects);
 const particleControl = new ParticleControl(gameState.objects);
 const enemyCreator = new EnemyCreator(gameState.objects);
+const gameControl = new GameControl(gameState.objects);
 
 // Animation
 const animate = () => {
@@ -51,6 +53,7 @@ const updateObjects = () => {
   bulletControl.update();
   enemyControl.update();
   particleControl.update();
+  gameControl.update();
 }
 
 const cleanUpObjects = () => {
