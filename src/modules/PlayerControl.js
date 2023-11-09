@@ -57,7 +57,7 @@ class PlayerControl {
     }
   }
 
-  #move() {
+  #waitForPlayerMovement() {
     if(this.#keys["KeyA"]) {
       this.#moveLeft();
     }
@@ -91,7 +91,7 @@ class PlayerControl {
     if(this.#isPlayerDead()) {
       return;
     }
-    this.#move();
+    this.#waitForPlayerMovement();
     this.#player.update(this.#ctx);
   }
 }
