@@ -4,11 +4,13 @@ class GameControl {
   #bullets;
   #enemies;
   #particles;
+  #player;
 
-  constructor({ bullets, enemies, particles }) {
+  constructor({ bullets, enemies, particles, player }) {
     this.#bullets = bullets;
     this.#enemies = enemies;
     this.#particles = particles;
+    this.#player = player;
   }
 
   #damageEnemy(enemy) {
@@ -44,8 +46,21 @@ class GameControl {
     }
   }
 
+  #killPlayer() {
+    for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
+      if(this.#player.collidedWith(this.#enemies[i])) {
+        const { x, y, color } = this.#player;
+        this.#player.isDead = true;
+        this.#particles.push(
+          ...Particle.createParticles(x, y, 8, 6, color, 20)
+        );
+      }
+    }
+  }
+
   update() {
     this.#destroyBullet();
+    this.#killPlayer();
   }
 }
 

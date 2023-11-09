@@ -1,5 +1,4 @@
 import { Bullet } from "./Bullet.js";
-import { Particle } from "./Particle.js";
 
 class PlayerControl {
   #player;
@@ -7,16 +6,12 @@ class PlayerControl {
   #ctx;
   #keys = {};
   #bullets;
-  #enemies;
-  #particles;
 
-  constructor({ player, canvas, context, bullets, enemies, particles }) {
+  constructor({ player, canvas, context, bullets }) {
     this.#player = player;
     this.#canvas = canvas;
     this.#ctx = context;
     this.#bullets = bullets;
-    this.#enemies = enemies;
-    this.#particles = particles;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -84,16 +79,12 @@ class PlayerControl {
     return this.#player.isDead;
   }
 
-  #killPlayer() {
-    for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
-      if(this.#player.collidedWith(this.#enemies[i])) {
-        const { x, y, color } = this.#player;
-        this.#player.isDead = true;
-        this.#particles.push(
-          ...Particle.createParticles(x, y, 8, 6, color, 20)
-        );
-      }
-    }
+  #shoot({ clientX, clientY }) {
+    const { x: playerCenterX, y: playerCenterY } = this.#player;
+    const dirX = clientX - playerCenterX;
+    const dirY = clientY - playerCenterY;
+    const angle = Math.atan2(dirY, dirX);
+    this.#bullets.push(new Bullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color));
   }
 
   update() {
@@ -102,15 +93,6 @@ class PlayerControl {
     }
     this.#move();
     this.#player.update(this.#ctx);
-    this.#killPlayer();
-  }
-
-  #shoot({ clientX, clientY }) {
-    const { x: playerCenterX, y: playerCenterY } = this.#player;
-    const dirX = clientX - playerCenterX;
-    const dirY = clientY - playerCenterY;
-    const angle = Math.atan2(dirY, dirX);
-    this.#bullets.push(new Bullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color));
   }
 }
 
