@@ -16,7 +16,7 @@ class Bullet extends Projectile {
     return this.#angle;
   }
 
-  isOutOfCanvas(canvas) {
+  #isOutOfCanvas(canvas) {
     const { x: bx, y: by, radius: br } = this;
     const { width: cw, height: ch } = canvas;
     return bx < -br || bx > cw + br || by < -br || by > ch + br;
@@ -30,6 +30,9 @@ class Bullet extends Projectile {
   update(ctx) {
     this.draw(ctx);
     this.#move();
+    if(!this.toDestroy && this.#isOutOfCanvas(ctx.canvas)) {
+      this.toDestroy = true;
+    }
   }
 }
 

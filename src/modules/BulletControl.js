@@ -43,10 +43,7 @@ class BulletControl {
     for(let i = 0; i < bulletsLength; i++) {
       const bullet = this.#bullets[i];
       bullet.update(this.#ctx);
-      if(
-        this.#hasEnemyCollided(bullet) ||
-        bullet.isOutOfCanvas(this.#canvas)
-      ) {
+      if(this.#hasEnemyCollided(bullet)) {
         bullet.toDestroy = true;
       }
     }
