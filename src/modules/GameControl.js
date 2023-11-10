@@ -5,12 +5,14 @@ class GameControl {
   #enemies;
   #particles;
   #player;
+  #gameAudio;
 
-  constructor({ bullets, enemies, particles, player }) {
+  constructor({ bullets, enemies, particles, player, gameAudio }) {
     this.#bullets = bullets;
     this.#enemies = enemies;
     this.#particles = particles;
     this.#player = player;
+    this.#gameAudio = gameAudio;
   }
 
   #damageEnemy(enemy) {
@@ -19,6 +21,11 @@ class GameControl {
     this.#particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
     );
+    if(enemy.health > 0) {
+      this.#gameAudio.playSound("hit");
+    } else {
+      this.#gameAudio.playSound("explosion");
+    }
   }
 
   #hasBulletHitEnemy(bullet) {
@@ -54,6 +61,7 @@ class GameControl {
         this.#particles.push(
           ...Particle.createParticles(x, y, 8, 6, color, 20)
         );
+        this.#gameAudio.playSound("explosion");
       }
     }
   }

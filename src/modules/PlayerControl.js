@@ -6,12 +6,14 @@ class PlayerControl {
   #ctx;
   #keys = {};
   #bullets;
+  #gameAudio;
 
-  constructor({ player, canvas, context, bullets }) {
+  constructor({ player, canvas, context, bullets, gameAudio }) {
     this.#player = player;
     this.#canvas = canvas;
     this.#ctx = context;
     this.#bullets = bullets;
+    this.#gameAudio = gameAudio;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -85,6 +87,7 @@ class PlayerControl {
     const dirY = clientY - playerCenterY;
     const angle = Math.atan2(dirY, dirX);
     this.#bullets.push(new Bullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color));
+    this.#gameAudio.playSound("shot");
   }
 
   update() {
