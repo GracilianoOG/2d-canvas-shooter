@@ -4,6 +4,8 @@ import { Canvas } from "./src/modules/Canvas.js";
 import { GameState } from "./src/modules/GameState.js";
 import { EnemyCreator } from "./src/modules/EnemyCreator.js";
 import { GameControl } from "./src/modules/GameControl.js";
+import { GameAudio } from "./src/modules/GameAudio.js";
+import audios from "./src/modules/audios.js";
 
 // Canvas
 const canvasObj = new Canvas(
@@ -22,11 +24,12 @@ const player = new Player(
 );
 
 // GameState
-const gameState = new GameState(canvas, player);
+const gameAudio = new GameAudio(audios);
+const gameState = new GameState(canvas, player, gameAudio);
 
 // Controllers
-const playerControl = new PlayerControl(gameState.objects);
 const enemyCreator = new EnemyCreator(gameState.objects);
+const playerControl = new PlayerControl(gameState.objects);
 const gameControl = new GameControl(gameState.objects);
 
 // Animation
