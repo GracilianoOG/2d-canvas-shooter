@@ -11,7 +11,7 @@ class GameAudio {
   }
 
   playMusic(musicName) {
-    this.#audios.sounds[musicName].play();
+    this.#audios.music[musicName].play();
   }
 }
 
