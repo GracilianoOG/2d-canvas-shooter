@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.core.min.js" integrity="sha512-d00Brs/+XQUUaO0Y9Uo8Vw63o7kS6ZcLM2P++17kALrI8oihAfL4pl1jQObeRBgv06j7xG0GHOhudAW0BdrycA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Document</title>
   <style>
@@ -19,6 +22,19 @@
     #game-container {
       background-color: #000;
       display: inline-block;
+    }
+
+    .scoreboard {
+      color: #fff;
+      font-family: 'Press Start 2P', sans-serif;
+      font-size: 1.5rem;
+      line-height: 1;
+      position: absolute;
+      text-align: center;
+      top: 5px;
+      user-select: none;
+      width: 100%;
+      z-index: 1;
     }
   </style>
 </head>
