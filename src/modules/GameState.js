@@ -11,11 +11,12 @@ class GameState {
     }
   }
 
-  constructor(canvas, player, gameAudio) {
+  constructor(canvas, player, gameAudio, scoreboard) {
     this.#objects.canvas = canvas;
     this.#objects.context = canvas.getContext("2d");
     this.#objects.player = player;
     this.#objects.gameAudio = gameAudio;
+    this.#objects.scoreboard = scoreboard;
   }
 
   get objects() {
