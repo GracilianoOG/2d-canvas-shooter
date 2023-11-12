@@ -16,7 +16,7 @@ class Scoreboard {
   }
 
   set score(score) {
-    this.score = score;
+    this.#score = score;
     this.#showScore(score);
   }
 
