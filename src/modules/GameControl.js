@@ -6,13 +6,15 @@ class GameControl {
   #particles;
   #player;
   #gameAudio;
+  #scoreboard;
 
-  constructor({ bullets, enemies, particles, player, gameAudio }) {
+  constructor({ bullets, enemies, particles, player, gameAudio, scoreboard }) {
     this.#bullets = bullets;
     this.#enemies = enemies;
     this.#particles = particles;
     this.#player = player;
     this.#gameAudio = gameAudio;
+    this.#scoreboard = scoreboard;
   }
 
   #damageEnemy(enemy) {
@@ -23,8 +25,10 @@ class GameControl {
     );
     if(enemy.health > 0) {
       this.#gameAudio.playSound("hit");
+      this.#scoreboard.score += 50;
     } else {
       this.#gameAudio.playSound("explosion");
+      this.#scoreboard.score += 200;
     }
   }
 
