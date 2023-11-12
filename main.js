@@ -6,6 +6,7 @@ import { EnemyCreator } from "./src/modules/EnemyCreator.js";
 import { GameControl } from "./src/modules/GameControl.js";
 import { GameAudio } from "./src/modules/GameAudio.js";
 import audios from "./src/modules/audios.js";
+import { Scoreboard } from "./src/modules/Scoreboard.js";
 
 // Canvas
 const canvasObj = new Canvas(
@@ -23,9 +24,12 @@ const player = new Player(
   playerRadius, 6, "#fff"
 );
 
+// Scoreboard
+const scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
+
 // GameState
 const gameAudio = new GameAudio(audios);
-const gameState = new GameState(canvas, player, gameAudio);
+const gameState = new GameState(canvas, player, gameAudio, scoreboard);
 
 // Controllers
 const enemyCreator = new EnemyCreator(gameState.objects);
