@@ -17,12 +17,7 @@ const canvasObj = new Canvas(
 const { canvas, context: ctx } = canvasObj;
 
 // Player
-const playerRadius = 15;
-const player = new Player(
-  canvas.width/2 - playerRadius, 
-  canvas.height/2 - playerRadius, 
-  playerRadius, 6, "#fff"
-);
+const player = new Player(canvas.width/2, canvas.height/2, 15, 6, "#fff");
 
 // Scoreboard
 const scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
