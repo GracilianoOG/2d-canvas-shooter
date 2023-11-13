@@ -1,9 +1,5 @@
 class GameState {
-  #objects = {
-    bullets: [],
-    enemies: [],
-    particles: []
-  };
+  #objects;
 
   static destroyObjects(array) {
     for(let i = array.length - 1; i >= 0; i--) {
@@ -11,12 +7,14 @@ class GameState {
     }
   }
 
-  constructor(canvas, player, gameAudio, scoreboard) {
-    this.#objects.canvas = canvas;
-    this.#objects.context = canvas.getContext("2d");
-    this.#objects.player = player;
-    this.#objects.gameAudio = gameAudio;
-    this.#objects.scoreboard = scoreboard;
+  constructor(objects) {
+    this.#objects = {
+      ...objects,
+      bullets: [],
+      enemies: [],
+      particles: []
+    };
+    this.#objects.context = this.#objects.canvas.getContext("2d");
   }
 
   get objects() {
