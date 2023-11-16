@@ -36,7 +36,6 @@ const animate = () => {
   requestAnimationFrame(animate);
   updateCanvas();
   updateObjects();
-  cleanUpObjects();
 }
 
 const updateCanvas = () => {
@@ -50,12 +49,6 @@ const updateObjects = () => {
   gameState.updateObjects(gameState.objects.enemies);
   gameState.updateObjects(gameState.objects.particles);
   gameControl.update();
-}
-
-const cleanUpObjects = () => {
-  GameState.destroyObjects(gameState.objects.bullets);
-  GameState.destroyObjects(gameState.objects.enemies);
-  GameState.destroyObjects(gameState.objects.particles);
 }
 
 const init = () => {
