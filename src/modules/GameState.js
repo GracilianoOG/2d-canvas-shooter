@@ -8,7 +8,6 @@ class GameState {
       enemies: [],
       particles: []
     };
-    this.#objects.context = this.#objects.canvas.getContext("2d");
   }
 
   get objects() {
@@ -18,7 +17,7 @@ class GameState {
   updateObjects(array) {
     for(let i = array.length - 1; i >= 0; i--) {
       const elem = array[i];
-      elem.update(this.#objects.context);
+      elem.update(this.#objects.mainCanvas.context);
       elem.toDestroy && array.splice(i, 1);
     }
   }

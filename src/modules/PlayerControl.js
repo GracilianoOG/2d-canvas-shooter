@@ -8,10 +8,10 @@ class PlayerControl {
   #bullets;
   #gameAudio;
 
-  constructor({ player, canvas, context, bullets, gameAudio }) {
+  constructor({ player, mainCanvas, bullets, gameAudio }) {
     this.#player = player;
-    this.#canvas = canvas;
-    this.#ctx = context;
+    this.#canvas = mainCanvas.canvas;
+    this.#ctx = mainCanvas.context;
     this.#bullets = bullets;
     this.#gameAudio = gameAudio;
 

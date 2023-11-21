@@ -24,7 +24,7 @@ const scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
 
 // GameState
 const gameAudio = new GameAudio(audios);
-const gameState = new GameState({ canvas, player, gameAudio, scoreboard });
+const gameState = new GameState({ mainCanvas, player, gameAudio, scoreboard });
 
 // Controllers
 const enemyCreator = new EnemyCreator(gameState.objects);

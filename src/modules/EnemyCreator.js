@@ -6,9 +6,9 @@ class EnemyCreator {
   #enemies;
   #intervalId;
 
-  constructor({ player, canvas, enemies }) {
+  constructor({ player, mainCanvas, enemies }) {
     this.#target = player;
-    this.#canvas = canvas;
+    this.#canvas = mainCanvas.canvas;
     this.#enemies = enemies;
   }
 
