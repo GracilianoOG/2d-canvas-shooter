@@ -14,10 +14,11 @@ const mainCanvas = new Canvas(
   window.innerHeight, 
   document.querySelector("#game-container")
 );
-const { canvas, context: ctx } = mainCanvas;
+const { width: CANVAS_WIDTH, height: CANVAS_HEIGHT } = mainCanvas.canvas;
+const ctx = mainCanvas.context;
 
 // Player
-const player = new Player(canvas.width/2, canvas.height/2, 15, 6, "#fff");
+const player = new Player(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 15, 6, "#fff");
 
 // Scoreboard
 const scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
@@ -40,7 +41,7 @@ const animate = () => {
 
 const updateCanvas = () => {
   ctx.fillStyle = "rgba(0, 0, 0, .4)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 
 const updateObjects = () => {
