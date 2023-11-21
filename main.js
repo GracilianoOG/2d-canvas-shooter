@@ -9,12 +9,12 @@ import audios from "./src/modules/audios.js";
 import { Scoreboard } from "./src/modules/Scoreboard.js";
 
 // Canvas
-const canvasObj = new Canvas(
+const mainCanvas = new Canvas(
   window.innerWidth, 
   window.innerHeight, 
   document.querySelector("#game-container")
 );
-const { canvas, context: ctx } = canvasObj;
+const { canvas, context: ctx } = mainCanvas;
 
 // Player
 const player = new Player(canvas.width/2, canvas.height/2, 15, 6, "#fff");
