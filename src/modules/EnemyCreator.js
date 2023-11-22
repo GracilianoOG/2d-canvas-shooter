@@ -27,7 +27,7 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const randomSeed = Math.floor(Math.random() * 3);
+    const randomSeed = Math.floor(Math.random() * 6);
     let randomEnemy;
 
     switch(randomSeed) {
@@ -39,6 +39,15 @@ class EnemyCreator {
         break;
       case 2:
         randomEnemy = { hp: 30, radius: 25, speed: 3, color: "#10b2f2" };
+        break;
+      case 3:
+        randomEnemy = { hp: 30, radius: 20, speed: 4, color: "#021ffc" };
+        break;
+      case 4:
+        randomEnemy = { hp: 50, radius: 30, speed: 2, color: "#1ff40c" };
+        break;
+      case 5:
+        randomEnemy = { hp: 10, radius: 10, speed: 6, color: "#fc4d02" };
         break;
       default:
         throw `There isn't an enemy with the seed: ${randomSeed}`;
