@@ -32,10 +32,10 @@ class EnemyCreator {
 
     switch(randomSeed) {
       case 0:
-        randomEnemy = { hp: 10, radius: 14, speed: 5, color: "#f210c8" };
+        randomEnemy = { hp: 20, radius: 18, speed: 4, color: "#ff0000" };
         break;
       case 1:
-        randomEnemy = { hp: 20, radius: 18, speed: 4, color: "#ff0000" };
+        randomEnemy = { hp: 10, radius: 14, speed: 5, color: "#f210c8" };
         break;
       case 2:
         randomEnemy = { hp: 30, radius: 25, speed: 3, color: "#10b2f2" };
