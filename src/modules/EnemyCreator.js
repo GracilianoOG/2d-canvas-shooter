@@ -59,7 +59,12 @@ class EnemyCreator {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
     }
-    this.#intervalId = setInterval(() => this.#createEnemy(), secondsToSpawn * 1000);
+    this.#intervalId = setInterval(() => {
+      if(this.#target.isDead) {
+        this.stopEnemySpawn();
+      }
+      this.#createEnemy();
+    }, secondsToSpawn * 1000);
   }
 
   stopEnemySpawn() {
