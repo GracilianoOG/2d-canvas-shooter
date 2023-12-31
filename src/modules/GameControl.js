@@ -18,21 +18,22 @@ class GameControl {
   }
 
   #damageEnemy(enemy) {
-    const { x, y, baseColor, health } = enemy;
     enemy.takeDamage(10);
+    const { x, y, baseColor, health } = enemy;
+    const isEnemyAlive = health > 0;
     this.#particles.push(
-      ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
+      ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
-    this.#countScore(enemy);
-    this.#playStatusSound(enemy);
+    this.#countScore(isEnemyAlive);
+    this.#playStatusSound(isEnemyAlive);
   }
 
-  #countScore({ health }) {
-    this.#scoreboard.score += health > 0 ? 50 : 200;
+  #countScore(isEnemyAlive) {
+    this.#scoreboard.score += isEnemyAlive ? 50 : 200;
   }
 
-  #playStatusSound({ health }) {
-    this.#gameAudio.playSound(health > 0 ? "hit" : "explosion");
+  #playStatusSound(isEnemyAlive) {
+    this.#gameAudio.playSound(isEnemyAlive ? "hit" : "explosion");
   }
 
   #hasBulletHitEnemy(bullet) {
