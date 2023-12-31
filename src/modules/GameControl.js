@@ -26,14 +26,13 @@ class GameControl {
     this.#countScore(enemy);
   }
 
-  #countScore(enemy) {
-    if(enemy.health > 0) {
-      this.#gameAudio.playSound("hit");
-      this.#scoreboard.score += 50;
-    } else {
-      this.#gameAudio.playSound("explosion");
-      this.#scoreboard.score += 200;
-    }
+  #countScore({ health }) {
+    const isEnemyAlive = health > 0;
+    const earnedScore = isEnemyAlive ? 50 : 200;
+    const statusSound = isEnemyAlive ? "hit" : "explosion";
+
+    this.#gameAudio.playSound(statusSound);
+    this.#scoreboard.score += earnedScore;
   }
 
   #hasBulletHitEnemy(bullet) {
