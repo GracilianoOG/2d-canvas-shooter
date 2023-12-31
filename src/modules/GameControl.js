@@ -24,15 +24,15 @@ class GameControl {
       ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
     );
     this.#countScore(enemy);
+    this.#playStatusSound(enemy);
   }
 
   #countScore({ health }) {
-    const isEnemyAlive = health > 0;
-    const earnedScore = isEnemyAlive ? 50 : 200;
-    const statusSound = isEnemyAlive ? "hit" : "explosion";
+    this.#scoreboard.score += health > 0 ? 50 : 200;
+  }
 
-    this.#gameAudio.playSound(statusSound);
-    this.#scoreboard.score += earnedScore;
+  #playStatusSound({ health }) {
+    this.#gameAudio.playSound(health > 0 ? "hit" : "explosion");
   }
 
   #hasBulletHitEnemy(bullet) {
