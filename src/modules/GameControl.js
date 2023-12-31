@@ -23,6 +23,10 @@ class GameControl {
     this.#particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, health > 0 ? 8 : 16)
     );
+    this.#countScore(enemy);
+  }
+
+  #countScore(enemy) {
     if(enemy.health > 0) {
       this.#gameAudio.playSound("hit");
       this.#scoreboard.score += 50;
