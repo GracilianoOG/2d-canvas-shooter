@@ -3,7 +3,7 @@ class GameAudio {
 
   constructor(audios) {
     this.#audios = audios;
-    Howler.volume(.8);
+    Howler.volume(.4);
   }
 
   playSound(soundName) {
