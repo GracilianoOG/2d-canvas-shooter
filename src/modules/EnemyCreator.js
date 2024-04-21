@@ -5,18 +5,11 @@ class EnemyCreator {
   #target;
   #enemies;
   #intervalId;
-  #scoreboard;
-  #difficulty = {
-    level: 1,
-    maxLevel: 6,
-    toNextLevel: 2000
-  };
 
-  constructor({ player, mainCanvas, enemies, scoreboard }) {
+  constructor({ player, mainCanvas, enemies }) {
     this.#target = player;
     this.#canvas = mainCanvas.canvas;
     this.#enemies = enemies;
-    this.#scoreboard = scoreboard;
   }
 
   #createEnemyPosition(enemySize) {
@@ -34,7 +27,7 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const randomSeed = Math.floor(Math.random() * this.#difficulty.level);
+    const randomSeed = Math.floor(Math.random() * 6);
     let randomEnemy;
 
     switch(randomSeed) {
@@ -71,16 +64,6 @@ class EnemyCreator {
     );
   }
 
-  #increaseDifficulty() {
-    this.#difficulty.level++;
-    this.#difficulty.toNextLevel *= 2;
-  }
-
-  #shouldIncreaseDifficulty() {
-    return this.#difficulty.level < this.#difficulty.maxLevel && 
-    this.#scoreboard.score >= this.#difficulty.toNextLevel;
-  }
-
   startEnemySpawn(secondsToSpawn) {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
@@ -93,11 +76,6 @@ class EnemyCreator {
 
       // Create new enemy
       this.#createEnemy();
-
-      // Check if spawner should spawn stronger enemies
-      if(this.#shouldIncreaseDifficulty()) {
-        this.#increaseDifficulty();
-      }
     }, secondsToSpawn * 1000);
   }
 
