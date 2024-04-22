@@ -38,9 +38,26 @@
       width: 100%;
       z-index: 1;
     }
+
+    .game-start {
+      align-items: center;
+      background-color: #000;
+      color: #FFF;
+      display: flex;
+      font-family: 'Press Start 2P', sans-serif;
+      height: 100%;
+      justify-content: center;
+      position: absolute;
+      user-select: none;
+      width: 100%;
+      z-index: 5;
+    }
   </style>
 </head>
 <body>
+  <div class="game-start">
+    <h2>Click anywhere to begin</h2>
+  </div>
   <main id="game-container"></main>
   <script type="module" src="./main.js"></script>
 </body>
