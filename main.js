@@ -61,5 +61,11 @@
 
 import { Game } from "./src/modules/Game.js";
 
-const game = new Game();
-game.init();
+const startGame = document.querySelector(".game-start");
+let game;
+
+startGame.addEventListener("click", () => {
+  startGame.style.display = "none";
+  game = new Game();
+  game.init();
+}, { once: true });
