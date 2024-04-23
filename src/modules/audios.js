@@ -16,8 +16,7 @@ const audios = {
   music: {
     battle: new Howl({
       src: [`${musicPath}battle-loop.ogg`, `${musicPath}battle-loop.mp3`],
-      loop: true,
-      autoplay: true
+      loop: true
     })
   }
 };
