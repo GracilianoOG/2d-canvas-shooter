@@ -56,6 +56,7 @@ class Game {
 
   init = () => {
     this.enemyCreator.startEnemySpawn(.4);
+    this.gameAudio.playMusic("battle");
     this.animate();
   }
 }
