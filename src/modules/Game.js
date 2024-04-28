@@ -9,6 +9,10 @@ import audios from "./audios.js";
 import { Scoreboard } from "./Scoreboard.js";
 
 class Game {
+  screens = {
+    start: document.querySelector(".game-start")
+  };
+
   mainCanvas = new Canvas(
     window.innerWidth, 
     window.innerHeight, 
@@ -19,6 +23,13 @@ class Game {
   CANVAS_HEIGHT = this.mainCanvas.canvas.height;
 
   ctx = this.mainCanvas.context;
+
+  constructor() {
+    this.screens.start.addEventListener("click", () => {
+      this.screens.start.style.display = "none";
+      this.init();
+    }, { once: true });
+  }
 
   animate = () => {
     requestAnimationFrame(this.animate);
