@@ -57,3 +57,22 @@ canvas {
 .game-start h2 {
   animation: blink .9s steps(2, jump-none) infinite;
 }
+
+.game-restart {
+  align-items: center;
+  display: none;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+
+.game-restart button {
+  border: none;
+  /* border-radius: 1rem; */
+  cursor: pointer;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 2rem;
+  padding: 15px 20px;
+}
