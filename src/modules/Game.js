@@ -28,7 +28,12 @@ class Game {
   
   // GameState
   gameAudio = new GameAudio(audios);
-  gameState = new GameState({ mainCanvas: this.mainCanvas, player: this.player, gameAudio: this.gameAudio, scoreboard: this.scoreboard });
+  gameState = new GameState({ 
+    mainCanvas: this.mainCanvas, 
+    player: this.player, 
+    gameAudio: this.gameAudio, 
+    scoreboard: this.scoreboard 
+  });
   
   // Controllers
   enemyCreator = new EnemyCreator(this.gameState.objects);
