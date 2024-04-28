@@ -19,26 +19,6 @@ class Game {
   CANVAS_HEIGHT = this.mainCanvas.canvas.height;
 
   ctx = this.mainCanvas.context;
-  
-  // Player
-  player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, "#fff");
-  
-  // Scoreboard
-  scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
-  
-  // GameState
-  gameAudio = new GameAudio(audios);
-  gameState = new GameState({ 
-    mainCanvas: this.mainCanvas, 
-    player: this.player, 
-    gameAudio: this.gameAudio, 
-    scoreboard: this.scoreboard 
-  });
-  
-  // Controllers
-  enemyCreator = new EnemyCreator(this.gameState.objects);
-  playerControl = new PlayerControl(this.gameState.objects);
-  gameControl = new GameControl(this.gameState.objects);
 
   animate = () => {
     requestAnimationFrame(this.animate);
@@ -60,6 +40,27 @@ class Game {
   }
 
   init = () => {
+    // Player
+    this.player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, "#fff");
+
+    // Scoreboard
+    this.scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
+
+    // GameState
+    this.gameAudio = new GameAudio(audios);
+    this.gameState = new GameState({ 
+      mainCanvas: this.mainCanvas, 
+      player: this.player, 
+      gameAudio: this.gameAudio, 
+      scoreboard: this.scoreboard 
+    });
+
+    // Controllers
+    this.enemyCreator = new EnemyCreator(this.gameState.objects);
+    this.playerControl = new PlayerControl(this.gameState.objects);
+    this.gameControl = new GameControl(this.gameState.objects);
+
+    // General & Animation
     this.enemyCreator.startEnemySpawn(.4);
     this.gameAudio.playMusic("battle");
     this.animate();
