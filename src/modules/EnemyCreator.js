@@ -5,6 +5,7 @@ class EnemyCreator {
   #target;
   #enemies;
   #intervalId;
+  #currentSpawnRate;
 
   constructor({ player, mainCanvas, enemies }) {
     this.#target = player;
@@ -68,6 +69,7 @@ class EnemyCreator {
     if(this.#intervalId) {
       throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
     }
+    this.#currentSpawnRate = secondsToSpawn;
     this.#intervalId = setInterval(() => {
       // Stop spawner if player is dead
       if(this.#target.isDead) {
@@ -82,6 +84,11 @@ class EnemyCreator {
   stopEnemySpawn() {
     clearInterval(this.#intervalId);
     this.#intervalId = null;
+  }
+
+  restartEnemySpawn() {
+    this.stopEnemySpawn();
+    this.startEnemySpawn(this.#currentSpawnRate);
   }
 }
 
