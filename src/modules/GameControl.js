@@ -8,13 +8,14 @@ class GameControl {
   #gameAudio;
   #scoreboard;
 
-  constructor({ bullets, enemies, particles, player, gameAudio, scoreboard }) {
+  constructor({ bullets, enemies, particles, player, gameAudio, scoreboard, screens }) {
     this.#bullets = bullets;
     this.#enemies = enemies;
     this.#particles = particles;
     this.#player = player;
     this.#gameAudio = gameAudio;
     this.#scoreboard = scoreboard;
+    this.screens = screens;
   }
 
   #damageEnemy(enemy) {
