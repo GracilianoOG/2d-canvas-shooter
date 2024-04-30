@@ -10,7 +10,8 @@ import { Scoreboard } from "./Scoreboard.js";
 
 class Game {
   screens = {
-    start: document.querySelector(".game-start")
+    start: document.querySelector(".game-start"),
+    restart: document.querySelector(".game-restart")
   };
 
   mainCanvas = new Canvas(
