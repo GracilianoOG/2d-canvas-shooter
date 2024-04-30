@@ -59,6 +59,7 @@ canvas {
 }
 
 .game-restart {
+  animation: blink .08s;
   align-items: center;
   background-color: #FFF;
   display: none;
