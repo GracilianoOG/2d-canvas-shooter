@@ -71,6 +71,7 @@ class GameControl {
           ...Particle.createParticles(x, y, 8, 6, color, 20)
         );
         this.#gameAudio.playSound("explosion");
+        this.screens.restart.style.display = "flex";
       }
     }
   }
