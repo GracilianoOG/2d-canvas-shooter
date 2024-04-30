@@ -64,7 +64,8 @@ class Game {
       mainCanvas: this.mainCanvas, 
       player: this.player, 
       gameAudio: this.gameAudio, 
-      scoreboard: this.scoreboard 
+      scoreboard: this.scoreboard,
+      screens: this.screens
     });
 
     // Controllers
