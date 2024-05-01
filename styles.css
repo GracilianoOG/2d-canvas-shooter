@@ -74,7 +74,7 @@ canvas {
 .game-restart {
   animation: blink .08s;
   align-items: center;
-  background-color: #FFF;
+  background-color: var(--color-restart-screen-bg);
   display: none;
   flex-direction: column;
   height: 100%;
