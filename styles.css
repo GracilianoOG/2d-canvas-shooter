@@ -85,3 +85,8 @@ canvas {
   font-size: 2rem;
   padding: 15px 20px;
 }
+
+.game-restart .button:hover {
+  background-color: #000;
+  color: #FFF;
+}
