@@ -85,7 +85,7 @@ canvas {
 }
 
 .game-restart .title {
-  color: #000;
+  color: var(--color-restart-title-text);
   font-size: 3rem;
   margin-bottom: 5rem;
 }
