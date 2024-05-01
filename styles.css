@@ -101,6 +101,6 @@ canvas {
 }
 
 .game-restart .button:hover {
-  background-color: #000;
-  color: #FFF;
+  background-color: var(--color-restart-btn-border);
+  color: var(--color-restart-btn-bg);
 }
