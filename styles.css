@@ -84,6 +84,7 @@ canvas {
   font-family: 'Press Start 2P', sans-serif;
   font-size: 2rem;
   padding: 15px 20px;
+  transition: all .2s;
 }
 
 .game-restart .button:hover {
