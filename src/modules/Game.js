@@ -31,7 +31,7 @@ class Game {
       this.init();
     }, { once: true });
 
-    this.screens.restart.children[0].addEventListener("click", () => {
+    this.screens.restart.lastElementChild.addEventListener("click", () => {
       this.screens.restart.style.display = "none";
       this.restart();
     });
