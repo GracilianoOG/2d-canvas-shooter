@@ -18,8 +18,8 @@
 }
 
 body {
-  background-color: #000;
-  color: #FFF;
+  background-color: var(--color-body-bg);
+  color: var(--color-body-text);
   font-family: 'Press Start 2P', sans-serif;
 }
 
