@@ -91,8 +91,8 @@ canvas {
 }
 
 .game-restart .button {
-  border: 3px solid #000;
-  background-color: #FFF;
+  border: 3px solid var(--color-restart-btn-border);
+  background-color: var(--color-restart-btn-bg);
   cursor: pointer;
   font-family: 'Press Start 2P', sans-serif;
   font-size: 2rem;
