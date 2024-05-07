@@ -88,6 +88,7 @@ canvas {
   color: var(--color-restart-title-text);
   font-size: 3rem;
   margin-bottom: 5rem;
+  user-select: none;
 }
 
 .game-restart .button {
