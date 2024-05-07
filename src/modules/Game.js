@@ -85,6 +85,7 @@ class Game {
   }
 
   restart = () => {
+    this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
     this.scoreboard.score = 0;
     this.gameState.objects.enemies.length = 0;
     this.gameState.objects.particles.length = 0;
