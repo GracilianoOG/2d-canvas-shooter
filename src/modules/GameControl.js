@@ -7,6 +7,8 @@ class GameControl {
   #player;
   #gameAudio;
   #scoreboard;
+  #screens;
+  #animation;
 
   constructor({ bullets, enemies, particles, player, gameAudio, scoreboard, screens, animation }) {
     this.#bullets = bullets;
@@ -15,8 +17,8 @@ class GameControl {
     this.#player = player;
     this.#gameAudio = gameAudio;
     this.#scoreboard = scoreboard;
-    this.screens = screens;
-    this.animation = animation;
+    this.#screens = screens;
+    this.#animation = animation;
   }
 
   #damageEnemy(enemy) {
@@ -68,8 +70,8 @@ class GameControl {
       if(this.#player.collidedWith(this.#enemies[i])) {
         this.#player.isDead = true;
         this.#gameAudio.playSound("explosion");
-        this.screens.restart.style.display = "flex";
-        cancelAnimationFrame(this.animation.id);
+        this.#screens.restart.style.display = "flex";
+        cancelAnimationFrame(this.#animation.id);
       }
     }
   }
