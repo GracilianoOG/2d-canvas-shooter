@@ -72,8 +72,15 @@ class GameControl {
         this.#gameAudio.playSound("explosion");
         this.#screens.restart.style.display = "flex";
         cancelAnimationFrame(this.#animation.id);
+        this.#cleanUp();
       }
     }
+  }
+
+  #cleanUp() {
+    this.#enemies.length = 0;
+    this.#particles.length = 0;
+    this.#bullets.length = 0;
   }
 
   update() {
