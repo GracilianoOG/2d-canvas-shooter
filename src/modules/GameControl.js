@@ -73,6 +73,7 @@ class GameControl {
         // );
         this.#gameAudio.playSound("explosion");
         this.screens.restart.style.display = "flex";
+        cancelAnimationFrame(this.animation.id);
       }
     }
   }
