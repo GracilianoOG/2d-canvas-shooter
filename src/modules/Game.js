@@ -72,7 +72,8 @@ class Game {
       player: this.player, 
       gameAudio: this.gameAudio, 
       scoreboard: this.scoreboard,
-      screens: this.screens
+      screens: this.screens,
+      animation: this.animation
     });
 
     // Controllers
