@@ -97,6 +97,7 @@ class Game {
     this.player.y = this.CANVAS_HEIGHT/2;
     this.player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
+    this.animate();
   }
 }
 
