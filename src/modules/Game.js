@@ -45,12 +45,12 @@ class Game {
     this.updateObjects();
   }
 
-  updateCanvas = () => {
+  updateCanvas() {
     this.ctx.fillStyle = "rgba(0, 0, 0, .4)";
     this.ctx.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
   }
 
-  updateObjects = () => {
+  updateObjects() {
     this.playerControl.update();
     this.gameState.updateObjects(this.gameState.objects.enemies);
     this.gameState.updateObjects(this.gameState.objects.particles);
@@ -58,7 +58,7 @@ class Game {
     this.gameControl.update();
   }
 
-  init = () => {
+  init() {
     // Player
     this.player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, "#fff");
 
@@ -87,7 +87,7 @@ class Game {
     this.animate();
   }
 
-  restart = () => {
+  restart() {
     this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
     this.scoreboard.score = 0;
     this.gameState.objects.enemies.length = 0;
