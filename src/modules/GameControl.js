@@ -66,11 +66,7 @@ class GameControl {
   #killPlayer() {
     for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
-        const { x, y, color } = this.#player;
         this.#player.isDead = true;
-        // this.#particles.push(
-        //   ...Particle.createParticles(x, y, 8, 6, color, 20)
-        // );
         this.#gameAudio.playSound("explosion");
         this.screens.restart.style.display = "flex";
         cancelAnimationFrame(this.animation.id);
