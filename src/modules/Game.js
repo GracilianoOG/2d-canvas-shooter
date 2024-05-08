@@ -9,6 +9,8 @@ import audios from "./audios.js";
 import { Scoreboard } from "./Scoreboard.js";
 
 class Game {
+  animation = {};
+
   screens = {
     start: document.querySelector(".game-start"),
     restart: document.querySelector(".game-restart")
@@ -38,7 +40,7 @@ class Game {
   }
 
   animate = () => {
-    requestAnimationFrame(this.animate);
+    this.animation.id = requestAnimationFrame(this.animate);
     this.updateCanvas();
     this.updateObjects();
   }
