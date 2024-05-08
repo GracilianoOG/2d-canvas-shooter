@@ -90,9 +90,6 @@ class Game {
   restart() {
     this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
     this.scoreboard.score = 0;
-    this.gameState.objects.enemies.length = 0;
-    this.gameState.objects.particles.length = 0;
-    this.gameState.objects.bullets.length = 0;
     this.player.x = this.CANVAS_WIDTH/2;
     this.player.y = this.CANVAS_HEIGHT/2;
     this.player.isDead = false;
