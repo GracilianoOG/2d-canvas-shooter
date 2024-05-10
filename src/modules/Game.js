@@ -34,7 +34,8 @@ class Game {
       this.init();
     }, { once: true });
 
-    this.screens.restart.lastElementChild.addEventListener("click", () => {
+    this.screens.restart.lastElementChild.addEventListener("click", (e) => {
+      e.stopPropagation();
       this.screens.restart.style.display = "none";
       this.restart();
     });
