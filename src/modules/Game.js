@@ -28,7 +28,8 @@ class Game {
   ctx = this.mainCanvas.context;
 
   constructor() {
-    this.screens.start.addEventListener("click", () => {
+    this.screens.start.addEventListener("click", (e) => {
+      e.stopPropagation();
       this.screens.start.style.display = "none";
       this.init();
     }, { once: true });
