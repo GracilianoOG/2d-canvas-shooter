@@ -11,6 +11,20 @@ class EnemyCreator {
     this.#target = player;
     this.#canvas = mainCanvas.canvas;
     this.#enemies = enemies;
+
+    document.addEventListener("visibilitychange", () => {
+      if(this.#target.isDead) {
+        return;
+      }
+
+      if(document.hidden) {
+        console.log("Stop spawner");
+        this.stopEnemySpawn();
+      } else {
+        console.log("Resume spawning");
+        this.restartEnemySpawn();
+      }
+    });
   }
 
   #createEnemyPosition(enemySize) {
@@ -78,6 +92,7 @@ class EnemyCreator {
 
       // Create new enemy
       this.#createEnemy();
+      console.log("running");
     }, secondsToSpawn * 1000);
   }
 
