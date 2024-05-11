@@ -18,10 +18,8 @@ class EnemyCreator {
       }
 
       if(document.hidden) {
-        console.log("Stop spawner");
         this.stopEnemySpawn();
       } else {
-        console.log("Resume spawning");
         this.restartEnemySpawn();
       }
     });
@@ -85,14 +83,11 @@ class EnemyCreator {
     }
     this.#currentSpawnRate = secondsToSpawn;
     this.#intervalId = setInterval(() => {
-      // Stop spawner if player is dead
       if(this.#target.isDead) {
         this.stopEnemySpawn();
       }
 
-      // Create new enemy
       this.#createEnemy();
-      console.log("running");
     }, secondsToSpawn * 1000);
   }
 
