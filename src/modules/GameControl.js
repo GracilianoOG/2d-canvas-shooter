@@ -65,7 +65,7 @@ class GameControl {
     }
   }
 
-  #killPlayer() {
+  #endGame() {
     for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
         this.#player.isDead = true;
@@ -95,7 +95,7 @@ class GameControl {
 
   update() {
     this.#destroyBullet();
-    this.#killPlayer();
+    this.#endGame();
   }
 }
 
