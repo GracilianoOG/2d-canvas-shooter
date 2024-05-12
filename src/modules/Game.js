@@ -28,6 +28,9 @@ class Game {
   ctx = this.mainCanvas.context;
 
   constructor() {
+    const hs = document.querySelector(".highscore-points");
+    hs.textContent = (localStorage.getItem("js-shooter-highscore") || "").padStart(8, "0");
+
     this.screens.start.addEventListener("click", (e) => {
       e.stopPropagation();
       this.screens.start.style.display = "none";
