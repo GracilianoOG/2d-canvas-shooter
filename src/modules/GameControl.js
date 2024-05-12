@@ -80,8 +80,9 @@ class GameControl {
 
   #storeHighscore() {
     const KEY = "js-shooter-highscore";
-    if(this.#scoreboard.score > parseInt(localStorage.getItem(KEY) || 0)) {
-      localStorage.setItem(KEY, this.#scoreboard.score);
+    const currentScore = this.#scoreboard.score;
+    if(currentScore > parseInt(localStorage.getItem(KEY) || 0)) {
+      localStorage.setItem(KEY, currentScore);
     }
   }
 
