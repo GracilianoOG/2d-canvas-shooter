@@ -72,8 +72,16 @@ class GameControl {
         this.#gameAudio.playSound("explosion");
         this.#screens.restart.style.display = "flex";
         cancelAnimationFrame(this.#animation.id);
+        this.#storeHighscore();
         this.#cleanUp();
       }
+    }
+  }
+
+  #storeHighscore() {
+    const KEY = "js-shooter-highscore";
+    if(this.#scoreboard.score > parseInt(localStorage.getItem(KEY) || 0)) {
+      localStorage.setItem(KEY, this.#scoreboard.score);
     }
   }
 
