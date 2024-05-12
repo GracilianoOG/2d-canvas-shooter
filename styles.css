@@ -105,3 +105,16 @@ canvas {
   background-color: var(--color-restart-btn-border);
   color: var(--color-restart-btn-bg);
 }
+
+.highscore-container {
+  bottom: 60px;
+  position: absolute;
+}
+
+.highscore-title {
+  margin-bottom: 10px;
+}
+
+.highscore-points {
+  text-align: center;
+}
