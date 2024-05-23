@@ -25,15 +25,16 @@ class GameControl {
     enemy.takeDamage(10);
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
+    const scoreGiven = isEnemyAlive ? 50 : 200;
     this.#particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
-    this.#countScore(isEnemyAlive);
+    this.#countScore(scoreGiven);
     this.#playStatusSound(isEnemyAlive);
   }
 
-  #countScore(isEnemyAlive) {
-    this.#scoreboard.score += isEnemyAlive ? 50 : 200;
+  #countScore(scoreAmount) {
+    this.#scoreboard.score += scoreAmount;
   }
 
   #playStatusSound(isEnemyAlive) {
