@@ -30,6 +30,7 @@ class GameControl {
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
     this.#countScore(scoreGiven);
+    this.#notifyScoreEarned(x, y, scoreGiven);
     this.#playStatusSound(isEnemyAlive);
   }
 
