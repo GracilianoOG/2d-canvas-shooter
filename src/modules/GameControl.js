@@ -94,6 +94,17 @@ class GameControl {
     this.#bullets.length = 0;
   }
 
+  #notifyScoreEarned(x, y, scoreAmount) {
+    const score = document.createElement("div");
+    score.setAttribute("class", "score");
+    score.textContent = scoreAmount;
+    score.style.left = x + "px";
+    score.style.top = y + "px";
+
+    score.addEventListener("animationend", () => document.body.removeChild(score));
+    document.body.appendChild(score);
+  }
+
   update() {
     this.#destroyBullet();
     this.#endGame();
