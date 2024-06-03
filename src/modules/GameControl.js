@@ -72,10 +72,12 @@ class GameControl {
       if(this.#player.collidedWith(this.#enemies[i])) {
         this.#player.isDead = true;
         this.#gameAudio.playSound("explosion");
-        this.#screens.restart.style.display = "flex";
-        cancelAnimationFrame(this.#animation.id);
-        this.#storeHighscore();
-        this.#cleanUp();
+        setTimeout(() => {
+          cancelAnimationFrame(this.#animation.id);
+          this.#screens.restart.style.display = "flex";
+          this.#storeHighscore();
+          this.#cleanUp();
+        }, 3000);
       }
     }
   }
