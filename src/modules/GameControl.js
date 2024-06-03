@@ -70,10 +70,11 @@ class GameControl {
   #endGame() {
     for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
+        const { x: playerX, y: playerY, color: playerColor } = this.#player;
         this.#player.isDead = true;
         this.#gameAudio.playSound("explosion");
         this.#particles.push(
-          ...Particle.createParticles(this.#player.x, this.#player.y, 8, 5, this.#player.color, 16)
+          ...Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16)
         );
         setTimeout(() => {
           cancelAnimationFrame(this.#animation.id);
