@@ -4,7 +4,7 @@
 
 _Survive and destroy as many circles as you can! The more you play, the harder it gets! Do you have the "balls" to do it?_
 
-After learning so much HTML, CSS and JavaScript, the idea to create a little game came into mind. I grew up playing flash games, especially top down shooters, like SAS: Zombie Assault and Decision. My idea was to create something simple but from scratch to practice what I've learned so far. I took some ideas from one of the Chris Course's videos because I enjoyed his project a lot (and learned so much from it). I would like to move to a proper game engine or framework like Godot or Phaser.
+After learning so much HTML, CSS and JavaScript, the idea to create a little game came into mind. I grew up playing flash games, especially top down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple but from scratch to practice what I've learned so far. I took some ideas from one of the Chris Course's videos because I enjoyed his project a lot (and learned so much from it). I would like to move to a proper game engine or framework like Godot or Phaser in the near future.
 
 ## 🎯 Objectives with its Development
 
