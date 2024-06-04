@@ -81,7 +81,7 @@ class GameControl {
           this.#screens.restart.style.display = "flex";
           this.#storeHighscore();
           this.#cleanUp();
-        }, 3000);
+        }, 2400);
       }
     }
   }
