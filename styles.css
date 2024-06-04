@@ -21,6 +21,7 @@ body {
   background-color: var(--color-body-bg);
   color: var(--color-body-text);
   font-family: 'Press Start 2P', sans-serif;
+  overflow: hidden;
 }
 
 @keyframes blink {
