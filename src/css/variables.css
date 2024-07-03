@@ -1,0 +1,12 @@
+:root {
+  --color-white: #FFF;
+  --color-black: #000;
+
+  --color-body-bg: var(--color-black);
+  --color-body-text: var(--color-white);
+  
+  --color-restart-screen-bg: var(--color-white);
+  --color-restart-title-text: var(--color-black);
+  --color-restart-btn-bg: var(--color-white);
+  --color-restart-btn-border: var(--color-black);
+}
