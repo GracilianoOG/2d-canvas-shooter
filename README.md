@@ -6,6 +6,11 @@ _Survive and destroy as many circles as you can! The more you play, the harder i
 
 After learning so much HTML, CSS and JavaScript, the idea to create a little game came into mind. I grew up playing flash games, especially top down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple but from scratch to practice what I've learned so far. I took some ideas from one of the Chris Course's videos because I enjoyed his project a lot (and learned so much from it). I would like to move to a proper game engine or framework like Godot or Phaser in the near future.
 
+## 🕹️ Controls
+
+- `WASD` - Move character (white ball)
+- `Left mouse` - Shoot projectiles
+
 ## 🎯 Objectives with its Development
 
 - Create a game with pure JavaScript using **Canvas API**;
@@ -17,6 +22,7 @@ After learning so much HTML, CSS and JavaScript, the idea to create a little gam
 - [howler.js](https://howlerjs.com/) - Audio library for JavaScript
 - [8bitRPG Battle](https://soundcloud.com/sei_peridot/8bitrpg-battle) - Background music
 - [Online 8bit sound maker](https://sfxr.me/) - Program used to generate gameplay sounds
+- [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P?query=CodeMan38) - Custom font
 
 ## 📎 Learning Resources
 
