@@ -24,15 +24,6 @@ body {
   overflow: hidden;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 #game-container {
   position: relative;
 }
@@ -128,20 +119,4 @@ canvas {
   font-size: 1rem;
   position: absolute;
   user-select: none;
-}
-
-@keyframes scoring {
-  0% {
-    transform: translate(-50%, -100%);
-    opacity: 1;
-  }
-
-  70% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(-50%, -260%);
-    opacity: 0;
-  }
 }
