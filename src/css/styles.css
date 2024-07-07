@@ -97,7 +97,7 @@ canvas {
 
 .score {
   animation: scoring 0.8s 1 ease forwards;
-  text-shadow: 2px 2px var(--color-black);
+  text-shadow: 0 0 3px var(--color-white), 2px 2px var(--color-black);
   font-weight: 600;
   font-size: 1rem;
   position: absolute;
