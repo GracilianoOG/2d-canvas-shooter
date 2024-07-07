@@ -1,7 +1,9 @@
 :root {
+  /* Base colors */
   --color-white: #FFF;
   --color-black: #000;
 
+  /* Element colors */
   --color-body-bg: var(--color-black);
   --color-body-text: var(--color-white);
   
