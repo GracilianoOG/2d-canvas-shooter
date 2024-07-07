@@ -11,4 +11,7 @@
   --color-restart-title-text: var(--color-black);
   --color-restart-btn-bg: var(--color-white);
   --color-restart-btn-border: var(--color-black);
+
+  /* Fonts */
+  --font-primary: "Press Start 2P", sans-serif;
 }
