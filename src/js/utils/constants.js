@@ -1,7 +1,7 @@
 const CSS_CLASSES = {
-  GAME_START: ".game-start",
-  GAME_OVER: ".game-restart",
-  HIGHSCORE_POINTS: ".highscore-points",
+  GAME_START: ".start-screen",
+  GAME_OVER: ".gameover-screen",
+  HIGHSCORE_POINTS: ".highscore__points",
   SCORE: "score",
   SCOREBOARD: "scoreboard"
 };

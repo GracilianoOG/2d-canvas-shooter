@@ -32,7 +32,7 @@ canvas {
   z-index: 1;
 }
 
-.game-start {
+.start-screen {
   align-items: center;
   display: flex;
   height: 100%;
@@ -45,11 +45,11 @@ canvas {
   z-index: 5;
 }
 
-.game-start h2 {
+.start-screen__title {
   animation: blink .9s steps(2, jump-none) infinite;
 }
 
-.game-restart {
+.gameover-screen {
   animation: blink .08s;
   align-items: center;
   background-color: var(--color-restart-screen-bg);
@@ -62,14 +62,14 @@ canvas {
   z-index: 5;
 }
 
-.game-restart .title {
+.gameover-screen__title {
   color: var(--color-restart-title-text);
   font-size: 3rem;
   margin-bottom: 5rem;
   user-select: none;
 }
 
-.game-restart .button {
+.gameover-screen__btn {
   border: 3px solid var(--color-restart-btn-border);
   background-color: var(--color-restart-btn-bg);
   font-family: 'Press Start 2P', sans-serif;
@@ -78,21 +78,21 @@ canvas {
   transition: all .2s;
 }
 
-.game-restart .button:hover {
+.gameover-screen__btn:hover {
   background-color: var(--color-restart-btn-border);
   color: var(--color-restart-btn-bg);
 }
 
-.highscore-container {
+.highscore {
   bottom: 60px;
   position: absolute;
 }
 
-.highscore-title {
+.highscore__title {
   margin-bottom: 10px;
 }
 
-.highscore-points {
+.highscore__points {
   text-align: center;
 }
 

@@ -12,16 +12,16 @@
   <title>Circle Chaos</title>
 </head>
 <body>
-  <div class="game-start">
-    <h2>Click anywhere to begin</h2>
-    <div class="highscore-container">
-      <div class="highscore-title">Highscore</div>
-      <div class="highscore-points">00000000</div>
+  <div class="start-screen">
+    <h2 class="start-screen__title">Click anywhere to begin</h2>
+    <div class="highscore">
+      <div class="highscore__title">Highscore</div>
+      <div class="highscore__points">00000000</div>
     </div>
   </div>
-  <div class="game-restart">
-    <h2 class="title">You are dead!</h2>
-    <button class="button">Restart</button>
+  <div class="gameover-screen">
+    <h2 class="gameover-screen__title">You are dead!</h2>
+    <button class="gameover-screen__btn">Restart</button>
   </div>
   <main id="game-container"></main>
   <script type="module" src="./src/js/main.js"></script>
