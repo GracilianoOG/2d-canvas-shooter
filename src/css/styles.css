@@ -5,6 +5,11 @@ body {
   overflow: hidden;
 }
 
+body,
+button {
+  cursor: url("../assets/images/crosshair.png") 16 16, auto;
+}
+
 #game-container {
   position: relative;
 }
@@ -67,7 +72,6 @@ canvas {
 .game-restart .button {
   border: 3px solid var(--color-restart-btn-border);
   background-color: var(--color-restart-btn-bg);
-  cursor: pointer;
   font-family: 'Press Start 2P', sans-serif;
   font-size: 2rem;
   padding: 15px 20px;
