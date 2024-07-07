@@ -1,3 +1,4 @@
+import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
 import { Particle } from "./Particle.js";
 
 class GameControl {
@@ -87,7 +88,7 @@ class GameControl {
   }
 
   #storeHighscore() {
-    const KEY = "js-shooter-highscore";
+    const KEY = STORAGE.KEY_POINTS;
     const currentScore = this.#scoreboard.score;
     const highscore = parseInt(localStorage.getItem(KEY) || 0);
     if(currentScore > highscore) {
@@ -103,7 +104,7 @@ class GameControl {
 
   #notifyScoreEarned(x, y, scoreAmount) {
     const score = document.createElement("div");
-    score.setAttribute("class", "score");
+    score.setAttribute("class", CSS_CLASSES.SCORE);
     score.textContent = scoreAmount;
     score.style.left = x + "px";
     score.style.top = y + "px";
