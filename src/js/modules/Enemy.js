@@ -1,3 +1,4 @@
+import { COLORS } from "../utils/constants.js";
 import { Projectile } from "./Projectile.js";
 
 class Enemy extends Projectile {
@@ -64,7 +65,7 @@ class Enemy extends Projectile {
     }
     this.speed = -1;
     this.radius = this.radius * .9;
-    this.color = "#fff";
+    this.color = COLORS.WHITE;
   }
 
   update(ctx) {
