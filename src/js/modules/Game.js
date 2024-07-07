@@ -7,19 +7,20 @@ import { GameControl } from "./GameControl.js";
 import { GameAudio } from "./GameAudio.js";
 import audios from "./audios.js";
 import { Scoreboard } from "./Scoreboard.js";
+import { CSS_CLASSES, CSS_IDS, STORAGE, COLORS } from "../utils/constants.js";
 
 class Game {
   animation = {};
 
   screens = {
-    start: document.querySelector(".game-start"),
-    restart: document.querySelector(".game-restart")
+    start: document.querySelector(CSS_CLASSES.GAME_START),
+    restart: document.querySelector(CSS_CLASSES.GAME_OVER)
   };
 
   mainCanvas = new Canvas(
     window.innerWidth, 
     window.innerHeight, 
-    document.querySelector("#game-container")
+    document.querySelector(CSS_IDS.CONTAINER)
   );
   
   CANVAS_WIDTH = this.mainCanvas.canvas.width;
@@ -28,8 +29,8 @@ class Game {
   ctx = this.mainCanvas.context;
 
   constructor() {
-    const hs = document.querySelector(".highscore-points");
-    hs.textContent = (localStorage.getItem("js-shooter-highscore") || "").padStart(8, "0");
+    const hs = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+    hs.textContent = (localStorage.getItem(STORAGE.KEY_POINTS) || "").padStart(8, "0");
 
     this.screens.start.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -51,7 +52,7 @@ class Game {
   }
 
   updateCanvas() {
-    this.ctx.fillStyle = "rgba(0, 0, 0, .4)";
+    this.ctx.fillStyle = COLORS.TRANSPARENT_BLACK;
     this.ctx.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
   }
 
@@ -65,10 +66,10 @@ class Game {
 
   init() {
     // Player
-    this.player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, "#fff");
+    this.player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, COLORS.WHITE);
 
     // Scoreboard
-    this.scoreboard = new Scoreboard(8, document.querySelector("#game-container"));
+    this.scoreboard = new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER));
 
     // GameState
     this.gameAudio = new GameAudio(audios);
