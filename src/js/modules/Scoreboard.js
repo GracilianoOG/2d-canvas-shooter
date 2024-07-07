@@ -1,4 +1,4 @@
-import { CSS_CLASSES } from "../utils/constants";
+import { CSS_CLASSES } from "../utils/constants.js";
 
 class Scoreboard {
   #score = 0;
