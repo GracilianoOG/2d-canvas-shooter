@@ -1,3 +1,5 @@
+import { CSS_CLASSES } from "../utils/constants";
+
 class Scoreboard {
   #score = 0;
   #length;
@@ -6,7 +8,7 @@ class Scoreboard {
   constructor(length, parent) {
     this.#length = length;
     this.#scoreboard = document.createElement("h2");
-    this.#scoreboard.classList.add("scoreboard");
+    this.#scoreboard.classList.add(CSS_CLASSES.SCOREBOARD);
     this.#showScore(this.#score.toString());
     parent.prepend(this.#scoreboard);
   }
