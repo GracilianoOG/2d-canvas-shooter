@@ -43,6 +43,14 @@ class Game {
       this.screens.restart.style.display = "none";
       this.restart();
     });
+
+    window.addEventListener("resize", () => {
+      this.mainCanvas.canvas.width = window.innerWidth;
+      this.mainCanvas.canvas.height = window.innerHeight;
+
+      this.CANVAS_WIDTH = this.mainCanvas.canvas.width;
+      this.CANVAS_HEIGHT = this.mainCanvas.canvas.height;
+    });
   }
 
   animate = () => {
