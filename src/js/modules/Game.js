@@ -23,8 +23,8 @@ class Game {
     document.querySelector(CSS_IDS.CONTAINER)
   );
   
-  CANVAS_WIDTH = this.mainCanvas.canvas.width;
-  CANVAS_HEIGHT = this.mainCanvas.canvas.height;
+  canvasWidth = this.mainCanvas.canvas.width;
+  canvasHeight = this.mainCanvas.canvas.height;
 
   ctx = this.mainCanvas.context;
 
@@ -48,8 +48,8 @@ class Game {
       this.mainCanvas.canvas.width = window.innerWidth;
       this.mainCanvas.canvas.height = window.innerHeight;
 
-      this.CANVAS_WIDTH = this.mainCanvas.canvas.width;
-      this.CANVAS_HEIGHT = this.mainCanvas.canvas.height;
+      this.canvasWidth = this.mainCanvas.canvas.width;
+      this.canvasHeight = this.mainCanvas.canvas.height;
     });
   }
 
@@ -61,7 +61,7 @@ class Game {
 
   updateCanvas() {
     this.ctx.fillStyle = COLORS.TRANSPARENT_BLACK;
-    this.ctx.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+    this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
   }
 
   updateObjects() {
@@ -74,7 +74,7 @@ class Game {
 
   init() {
     // Player
-    this.player = new Player(this.CANVAS_WIDTH/2, this.CANVAS_HEIGHT/2, 15, 6, COLORS.WHITE);
+    this.player = new Player(this.canvasWidth/2, this.canvasHeight/2, 15, 6, COLORS.WHITE);
 
     // Scoreboard
     this.scoreboard = new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER));
@@ -96,16 +96,16 @@ class Game {
     this.gameControl = new GameControl(this.gameState.objects);
 
     // General & Animation
-    this.enemyCreator.startEnemySpawn(.4);
+    this.enemyCreator.startEnemySpawn(5.4);
     this.gameAudio.playMusic("battle");
     this.animate();
   }
 
   restart() {
-    this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.scoreboard.score = 0;
-    this.player.x = this.CANVAS_WIDTH/2;
-    this.player.y = this.CANVAS_HEIGHT/2;
+    this.player.x = this.canvasWidth/2;
+    this.player.y = this.canvasHeight/2;
     this.player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.animate();
