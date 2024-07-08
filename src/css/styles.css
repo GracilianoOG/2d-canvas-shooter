@@ -39,6 +39,7 @@ canvas {
   justify-content: center;
   letter-spacing: 2px;
   position: absolute;
+  text-align: center;
   text-transform: uppercase;
   user-select: none;
   width: 100%;
