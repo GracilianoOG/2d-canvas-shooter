@@ -81,12 +81,19 @@ class PlayerControl {
     return this.#player.isDead;
   }
 
-  #shoot({ clientX, clientY }) {
-    const { x: playerCenterX, y: playerCenterY } = this.#player;
-    const dirX = clientX - playerCenterX;
-    const dirY = clientY - playerCenterY;
+  #calcBulletPath({ clientX, clientY }) {
+    const { x, y } = this.#player;
+    const dirX = clientX - x;
+    const dirY = clientY - y;
     const angle = Math.atan2(dirY, dirX);
-    this.#bullets.push(new Bullet(playerCenterX, playerCenterY, 5, 20, angle, this.#player.color));
+
+    return { x, y, angle };
+  }
+
+  #shoot(e) {
+    const { x, y, angle } = this.#calcBulletPath(e);
+    const bullet = new Bullet(x, y, 5, 20, angle, this.#player.color);
+    this.#bullets.push(bullet);
     this.#gameAudio.playSound("shot");
   }
 
