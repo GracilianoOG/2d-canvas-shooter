@@ -7,7 +7,8 @@ import { GameControl } from "./GameControl.js";
 import { GameAudio } from "./GameAudio.js";
 import audios from "./audios.js";
 import { Scoreboard } from "./Scoreboard.js";
-import { CSS_CLASSES, CSS_IDS, STORAGE, COLORS } from "../utils/constants.js";
+import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
+import { getHighscore } from "../utils/helpers.js";
 
 class Game {
   animation = {};
@@ -30,7 +31,7 @@ class Game {
 
   constructor() {
     const hs = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-    hs.textContent = (localStorage.getItem(STORAGE.KEY_POINTS) || "").padStart(8, "0");
+    hs.textContent = getHighscore();
 
     this.screens.start.addEventListener("click", (e) => {
       e.stopPropagation();
