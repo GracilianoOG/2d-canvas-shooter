@@ -1,4 +1,5 @@
 import { CSS_CLASSES } from "../utils/constants.js";
+import { formatScore } from "../utils/helpers.js";
 
 class Scoreboard {
   #score = 0;
@@ -22,12 +23,8 @@ class Scoreboard {
     this.#showScore(score);
   }
 
-  #formatScore(string) {
-    return string.padStart(this.#length, "0");
-  }
-
   #showScore(score) {
-    this.#scoreboard.textContent = this.#formatScore(score.toString());
+    this.#scoreboard.textContent = formatScore(score.toString(), this.#length);
   }
 }
 
