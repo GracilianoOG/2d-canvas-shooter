@@ -96,7 +96,7 @@ class Game {
     this.gameControl = new GameControl(this.gameState.objects);
 
     // General & Animation
-    this.enemyCreator.startEnemySpawn(5.4);
+    this.enemyCreator.startEnemySpawn(0.4);
     this.gameAudio.playMusic("battle");
     this.animate();
   }
