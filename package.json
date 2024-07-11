@@ -1,0 +1,12 @@
+{
+  "name": "2d-canvas-shooter",
+  "version": "1.0.0",
+  "description": "Top down shooter made with Canvas API.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel",
+  "license": "UNLICENSED"
+}
