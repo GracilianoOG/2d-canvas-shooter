@@ -1,3 +1,5 @@
+import { Howl } from "howler";
+
 const soundPath = "./src/assets/audios/sounds/";
 const musicPath = "./src/assets/audios/music/";
 
