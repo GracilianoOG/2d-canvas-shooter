@@ -12,9 +12,6 @@ import laserMp3 from "../../assets/audios/sounds/laserShoot.mp3";
 import battleOgg from "../../assets/audios/music/battle-loop.ogg";
 import battleMp3 from "../../assets/audios/music/battle-loop.mp3";
 
-const soundPath = "./src/assets/audios/sounds/";
-const musicPath = "./src/assets/audios/music/";
-
 const audios = {
   sounds: {
     hit: new Howl({
