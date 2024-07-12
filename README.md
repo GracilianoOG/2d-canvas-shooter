@@ -2,18 +2,22 @@
 
 ## 📖 Description
 
-After learning HTML, CSS and JavaScript, the idea to create a little game came into mind. I grew up playing flash games, especially top down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple but from scratch to practice what I've learned so far. I took some ideas from one of the Chris Course's videos because I enjoyed his project a lot (and learned so much from it). I would like to move to a proper game engine or framework like Godot or Phaser in the near future.
+*The player takes control of a little white ball that must survive against the infinite waves of colorful circles of many different colors and sizes.*
+
+After learning enough about web development, the idea to create a little game came to mind. I grew up playing flash games, especially top-down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple, but from scratch, to practice what I've learned so far. Some ideas were taken from one of Chris Course's videos because they were so creative!
+
+I learned a lot of JavaScript, Canvas API and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS, just for fun.
 
 ## 🕹️ Controls
 
-- `WASD` - Move character (white ball)
-- `Left mouse` - Shoot projectiles
+- `WASD keys` - Move character (white ball)
+- `Left mouse button` - Shoot projectiles
 
-## 🎯 Objectives with its Development
+## 🧱 Built with
 
-- Create a game with pure JavaScript using **Canvas API**;
-- Practice with ES6 **classes** and **modules**;
-- Learn some **game design** concepts.
+- HTML, CSS, and JavaScript
+- Canvas API
+- [Howler JS](https://howlerjs.com/) - Audio library
 
 ## 🎬 Credits
 
@@ -39,7 +43,7 @@ License: Creative Commons CC0
 
 ## 📎 Learning Resources
 
-These resources helped me understand many things regarding game development in JavaScript and the Mathematical logic. Not everything was applied in the project, but they are still great study material to me. Feel free to look around.
+These resources helped me to understand many things regarding game development in JavaScript and the mathematical logic behind it. Not everything was applied to the project, but they are still great study material for me.
 
 - Animation
   - [Animating with requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
