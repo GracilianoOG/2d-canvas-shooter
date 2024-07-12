@@ -78,14 +78,18 @@ class GameControl {
         this.#particles.push(
           ...Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16)
         );
-        setTimeout(() => {
-          cancelAnimationFrame(this.#animation.id);
-          storeHighscore(this.#scoreboard.score);
-          this.#screens.restart.style.display = "flex";
-          this.#cleanUp();
-        }, 2400);
+        this.#endRound(2.4);
       }
     }
+  }
+
+  #endRound(seconds) {
+    setTimeout(() => {
+      cancelAnimationFrame(this.#animation.id);
+      storeHighscore(this.#scoreboard.score);
+      this.#screens.restart.style.display = "flex";
+      this.#cleanUp();
+    }, seconds * 1000);
   }
 
   #cleanUp() {
