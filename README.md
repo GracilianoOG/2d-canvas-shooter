@@ -41,19 +41,26 @@ License: Creative Commons CC0
 
 These resources helped me understand many things regarding game development in JavaScript and the Mathematical logic. Not everything was applied in the project, but they are still great study material to me. Feel free to look around.
 
-- [2D Vectors in JavaScript](https://www.youtube.com/watch?v=nzyOCd9FcCA)
-- [Animating with requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
-- [Canvas and JS Game](https://www.youtube.com/watch?v=eI9idPTT0c4)
-- [Diagonal movement](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
-- [Empty an array in JavaScript](https://stackoverflow.com/a/1232046)
-- [HOWLER.JS Docs - GitHub](https://github.com/goldfire/howler.js)
-- [How to clear a JS array](https://www.freecodecamp.org/news/how-to-clear-a-javascript-array-js-empty-array/)
-- [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-- [Math.hypot - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot)
-- [Optimizing Canvas #1](https://nicolahibbert.com/optimising-html5-canvas-games/)
-- [Optimizing Canvas #2](https://stackoverflow.com/questions/8205828/html5-canvas-performance-and-optimization-tips-tricks-and-coding-best-practices)
-- [Pythagorean Theorem with JS](https://www.youtube.com/watch?v=iqSlzYXdFzw)
-- [Sound and Music in JS Games](https://www.youtube.com/watch?v=hn7MhPt24L4)
-- [String padStart - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
-- [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
-- [Vector Normalize](https://www.youtube.com/watch?v=ttz05d8DSOs)
+- Animation
+  - [Animating with requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+- Math
+  - [Math.hypot - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot)
+  - [Pythagorean Theorem with JS](https://www.youtube.com/watch?v=iqSlzYXdFzw)
+- Vector
+  - [2D Vectors in JavaScript](https://www.youtube.com/watch?v=nzyOCd9FcCA)
+  - [Vector Normalize](https://www.youtube.com/watch?v=ttz05d8DSOs)
+- Sound
+  - [GitHub - howler.js Docs](https://github.com/goldfire/howler.js)
+  - [Sound and Music in JS Games](https://www.youtube.com/watch?v=hn7MhPt24L4)
+- Optimization
+  - [Optimizing Canvas #1](https://nicolahibbert.com/optimising-html5-canvas-games/)
+  - [Optimizing Canvas #2](https://stackoverflow.com/questions/8205828/html5-canvas-performance-and-optimization-tips-tricks-and-coding-best-practices)
+- JavaScript
+  - [Canvas and JS Game](https://www.youtube.com/watch?v=eI9idPTT0c4)
+  - [Empty an array in JavaScript](https://stackoverflow.com/a/1232046)
+  - [How to clear a JS array](https://www.freecodecamp.org/news/how-to-clear-a-javascript-array-js-empty-array/)
+  - [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+  - [String padStart - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+  - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+- Other
+  - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
