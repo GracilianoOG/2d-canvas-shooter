@@ -17,11 +17,25 @@ After learning HTML, CSS and JavaScript, the idea to create a little game came i
 
 ## 🎬 Credits
 
-- [howler.js](https://howlerjs.com/) - Audio library for JavaScript
-- [8bitRPG Battle](https://soundcloud.com/sei_peridot/8bitrpg-battle) - Background music
-- [Online 8bit sound maker](https://sfxr.me/) - Program used to generate gameplay sounds
-- [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P?query=CodeMan38) - Custom font
-- [Kenney](https://www.kenney.nl/) - Custom cursor
+Source: [howler.js](https://howlerjs.com/)\
+Description: Audio library for JavaScript.\
+License: MIT
+
+Source: [8bitRPG Battle](https://soundcloud.com/sei_peridot/8bitrpg-battle)\
+Description: Background, battle music.\
+License: CC BY 3.0
+
+Source: [Online 8bit sound maker](https://sfxr.me/)\
+Description: Program used to generate gameplay sounds.\
+License: Unlicense
+
+Source: [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P?query=CodeMan38)\
+Description: Custom font.\
+License: Open Font
+
+Source: [Kenney](https://www.kenney.nl/)\
+Description: Custom cursor.\
+License: Creative Commons CC0
 
 ## 📎 Learning Resources
 
