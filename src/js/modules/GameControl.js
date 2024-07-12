@@ -1,4 +1,4 @@
-import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
+import { CSS_CLASSES } from "../utils/constants.js";
 import { storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
