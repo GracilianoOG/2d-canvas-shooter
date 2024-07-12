@@ -1,4 +1,5 @@
 import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
+import { storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameControl {
@@ -79,20 +80,11 @@ class GameControl {
         );
         setTimeout(() => {
           cancelAnimationFrame(this.#animation.id);
+          storeHighscore(this.#scoreboard.score);
           this.#screens.restart.style.display = "flex";
-          this.#storeHighscore();
           this.#cleanUp();
         }, 2400);
       }
-    }
-  }
-
-  #storeHighscore() {
-    const KEY = STORAGE.KEY_POINTS;
-    const currentScore = this.#scoreboard.score;
-    const highscore = parseInt(localStorage.getItem(KEY) || 0);
-    if(currentScore > highscore) {
-      localStorage.setItem(KEY, currentScore);
     }
   }
 
