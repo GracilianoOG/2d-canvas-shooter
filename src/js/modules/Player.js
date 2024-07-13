@@ -10,12 +10,6 @@ class Player extends Entity {
     this.#speed = speed;
   }
 
-  // MESS
-  collidedWith(object) {
-    return this.shape.collidedWith(object);
-  }
-  // MESS
-
   get speed() {
     return this.#speed;
   }
