@@ -12,10 +12,6 @@ class Circle extends Shape {
     return this.#radius;
   }
 
-  set radius(radius) {
-    this.#radius = radius;
-  }
-
   get dimensions() {
     return { radius: this.#radius };
   }
