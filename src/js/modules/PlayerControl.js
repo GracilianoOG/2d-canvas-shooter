@@ -33,29 +33,29 @@ class PlayerControl {
 
   #moveLeft() {
     this.#player.x -= this.#player.speed;
-    if(this.#player.x < this.#player.radius) {
-      this.#player.x = this.#player.radius;
+    if(this.#player.x < this.#player.dimensions.radius) {
+      this.#player.x = this.#player.dimensions.radius;
     }
   }
 
   #moveRight(canvasWidth) {
     this.#player.x += this.#player.speed;
-    if(this.#player.x + this.#player.radius > canvasWidth) {
-      this.#player.x = canvasWidth - this.#player.radius;
+    if(this.#player.x + this.#player.dimensions.radius > canvasWidth) {
+      this.#player.x = canvasWidth - this.#player.dimensions.radius;
     }
   }
 
   #moveUp() {
     this.#player.y -= this.#player.speed;
-    if(this.#player.y < this.#player.radius) {
-      this.#player.y = this.#player.radius;
+    if(this.#player.y < this.#player.dimensions.radius) {
+      this.#player.y = this.#player.dimensions.radius;
     }
   }
 
   #moveDown(canvasHeight) {
     this.#player.y += this.#player.speed;
-    if(this.#player.y + this.#player.radius > canvasHeight) {
-      this.#player.y = canvasHeight - this.#player.radius;
+    if(this.#player.y + this.#player.dimensions.radius > canvasHeight) {
+      this.#player.y = canvasHeight - this.#player.dimensions.radius;
     }
   }
 
