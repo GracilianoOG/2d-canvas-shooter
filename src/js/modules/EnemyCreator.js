@@ -40,33 +40,18 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const randomSeed = Math.floor(Math.random() * 6);
-    let randomEnemy;
+    const enemyTypes = [
+      { hp: 20, radius: 18, speed: 4, color: "#ff0000" },
+      { hp: 10, radius: 14, speed: 5, color: "#f210c8" },
+      { hp: 30, radius: 25, speed: 3, color: "#10b2f2" },
+      { hp: 30, radius: 20, speed: 4, color: "#021ffc" },
+      { hp: 50, radius: 30, speed: 2, color: "#1ff40c" },
+      { hp: 10, radius: 10, speed: 6, color: "#fc4d02" }
+    ];
+    const randomSeed = Math.floor(Math.random() * enemyTypes.length);
+    console.log(randomSeed)
 
-    switch(randomSeed) {
-      case 0:
-        randomEnemy = { hp: 20, radius: 18, speed: 4, color: "#ff0000" };
-        break;
-      case 1:
-        randomEnemy = { hp: 10, radius: 14, speed: 5, color: "#f210c8" };
-        break;
-      case 2:
-        randomEnemy = { hp: 30, radius: 25, speed: 3, color: "#10b2f2" };
-        break;
-      case 3:
-        randomEnemy = { hp: 30, radius: 20, speed: 4, color: "#021ffc" };
-        break;
-      case 4:
-        randomEnemy = { hp: 50, radius: 30, speed: 2, color: "#1ff40c" };
-        break;
-      case 5:
-        randomEnemy = { hp: 10, radius: 10, speed: 6, color: "#fc4d02" };
-        break;
-      default:
-        throw `There isn't an enemy with the seed: ${randomSeed}`;
-    }
-
-    return randomEnemy;
+    return enemyTypes[randomSeed];
   }
 
   #createEnemy() {
