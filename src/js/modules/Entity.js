@@ -40,6 +40,10 @@ class Entity {
   set dimensions(dimensions) {
     this.#shape.dimensions = dimensions;
   }
+
+  collidedWith(object) {
+    return this.shape.collidedWith(object);
+  }
 }
 
 export { Entity }
