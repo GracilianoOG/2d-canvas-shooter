@@ -14,14 +14,6 @@ class Player extends Entity {
   collidedWith(object) {
     return this.shape.collidedWith(object);
   }
-
-  get radius() {
-    return this.shape.dimensions.radius;
-  }
-
-  set radius(radius) {
-    this.shape.dimensions = { radius };
-  }
   // MESS
 
   get speed() {
