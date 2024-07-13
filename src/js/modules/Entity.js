@@ -42,7 +42,7 @@ class Entity {
   }
 
   collidedWith(object) {
-    return this.shape.collidedWith(object);
+    return this.shape.collidedWith(object.shape);
   }
 }
 
