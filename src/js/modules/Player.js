@@ -16,10 +16,6 @@ class Player extends Entity {
   set isDead(isDead) {
     this.#isDead = isDead;
   }
-
-  update(ctx) {
-    this.draw(ctx);
-  }
 }
 
 export { Player };

@@ -102,7 +102,7 @@ class PlayerControl {
       return;
     }
     this.#waitForPlayerMovement();
-    this.#player.update(this.#ctx);
+    this.#player.draw(this.#ctx);
   }
 }
 
