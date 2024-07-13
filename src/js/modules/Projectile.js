@@ -1,11 +1,12 @@
 import { Circle } from "./Circle.js";
+import { Entity } from "./Entity.js";
 
-class Projectile extends Circle {
+class Projectile extends Entity {
   #speed;
   #toDestroy = false;
 
   constructor(x, y, radius, speed, color) {
-    super(x, y, radius, color);
+    super(new Circle(x, y, radius, color));
     this.#speed = speed;
   }
 
