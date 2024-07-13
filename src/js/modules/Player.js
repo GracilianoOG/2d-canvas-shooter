@@ -1,50 +1,26 @@
 import { Circle } from "./Circle.js";
+import { Entity } from "./Entity.js";
 
-class Player {
+class Player extends Entity {
   #speed;
   #isDead = false;
-  #shape;
 
   constructor(x, y, radius, speed, color) {
-    this.#shape = new Circle(x, y, radius, color);
+    super(new Circle(x, y, radius, color));
     this.#speed = speed;
   }
 
   // MESS
-  get x() {
-    return this.#shape.x;
-  }
-
-  set x(x) {
-    this.#shape.x = x;
-  }
-
-  get y() {
-    return this.#shape.y;
-  }
-
-  set y(y) {
-    this.#shape.y = y;
-  }
-
-  get color() {
-    return this.#shape.color;
-  }
-
-  set color(color) {
-    this.#shape.color = color;
-  }
-
   collidedWith(object) {
-    return this.#shape.collidedWith(object);
+    return this.shape.collidedWith(object);
   }
 
   get radius() {
-    return this.#shape.dimensions.radius;
+    return this.shape.dimensions.radius;
   }
 
   set radius(radius) {
-    this.#shape.dimensions = { radius };
+    this.shape.dimensions = { radius };
   }
   // MESS
 
@@ -65,7 +41,7 @@ class Player {
   }
 
   update(ctx) {
-    this.#shape.draw(ctx);
+    this.shape.draw(ctx);
   }
 }
 
