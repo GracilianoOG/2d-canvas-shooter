@@ -44,6 +44,10 @@ class Entity {
   collidedWith(object) {
     return this.shape.collidedWith(object.shape);
   }
+
+  draw(ctx) {
+    this.shape.draw(ctx);
+  }
 }
 
 export { Entity }
