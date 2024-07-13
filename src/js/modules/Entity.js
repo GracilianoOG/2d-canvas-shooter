@@ -1,6 +1,10 @@
 class Entity {
   #shape;
 
+  constructor(shape) {
+    this.#shape = shape;
+  }
+
   get x() {
     return this.#shape.x;
   }
