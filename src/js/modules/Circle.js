@@ -8,10 +8,6 @@ class Circle extends Shape {
     this.#radius = radius;
   }
 
-  get radius() {
-    return this.#radius;
-  }
-
   get dimensions() {
     return { radius: this.#radius };
   }
@@ -21,13 +17,13 @@ class Circle extends Shape {
   }
 
   collidedWith(object) {
-    return Math.hypot(this.x - object.x, this.y - object.y) < this.radius + object.radius;
+    return Math.hypot(this.x - object.x, this.y - object.y) < this.#radius + object.dimensions.radius;
   }
 
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.#radius, 0, Math.PI * 2);
     // ctx.save();
     // ctx.shadowColor = this.color;
     // ctx.shadowBlur = 8;
