@@ -1,7 +1,7 @@
 import { Projectile } from "./Projectile.js";
 
 class Particle extends Projectile {
-  #angle = Math.random() * 2 * this.PI;
+  #angle = Math.random() * 2 * Math.PI;
   #randomizer = Math.random();
 
   static createParticles(x, y, size, speed, color, amount) {
@@ -20,13 +20,13 @@ class Particle extends Projectile {
 
   #shrink() {
     if(!this.toDestroy) {
-      const shrunkRadius = this.radius - .2;
+      const shrunkRadius = this.dimensions.radius - .2;
       if(shrunkRadius > 0) {
-        this.radius = shrunkRadius;
+        this.dimensions = { radius: shrunkRadius };
         return;
       }
       this.toDestroy = true;
-      this.radius = 0;
+      this.dimensions = { radius: 0 };
     }
   }
 
