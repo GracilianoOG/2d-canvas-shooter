@@ -5,6 +5,10 @@ class Entity {
     this.#shape = shape;
   }
 
+  get shape() {
+    return this.#shape;
+  }
+
   get x() {
     return this.#shape.x;
   }
