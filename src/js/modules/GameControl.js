@@ -88,11 +88,11 @@ class GameControl {
       cancelAnimationFrame(this.#animation.id);
       storeHighscore(this.#scoreboard.score);
       this.#screens.restart.style.display = "flex";
-      this.#cleanUp();
+      this.#cleanUpEntities();
     }, delayInSeconds * 1000);
   }
 
-  #cleanUp() {
+  #cleanUpEntities() {
     this.#enemies.length = 0;
     this.#particles.length = 0;
     this.#bullets.length = 0;
