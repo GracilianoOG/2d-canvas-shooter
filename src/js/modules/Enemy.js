@@ -64,7 +64,7 @@ class Enemy extends Projectile {
       this.toDestroy = true;
     }
     this.speed = -1;
-    this.radius = this.radius * .9;
+    this.dimensions = { radius: this.dimensions.radius * .9 };
     this.color = COLORS.WHITE;
   }
 
