@@ -63,6 +63,7 @@ class Enemy extends Projectile {
       this.toDestroy = true;
     }
     this.speed = -1;
+    this.#maxSpeed *= 1.25;
     this.dimensions = { radius: this.dimensions.radius * .9 };
     this.color = COLORS.WHITE;
   }
