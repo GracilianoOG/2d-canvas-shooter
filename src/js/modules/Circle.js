@@ -29,15 +29,15 @@ class Circle extends Shape {
   }
 
   draw(ctx) {
-    ctx.save();
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    // ctx.save();
     // ctx.shadowColor = this.color;
     // ctx.shadowBlur = 8;
     // ctx.globalCompositeOperation = "lighten";
+    // ctx.restore();
     ctx.fill();
-    ctx.restore();
   }
 }
 
