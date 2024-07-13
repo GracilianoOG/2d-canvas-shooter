@@ -27,7 +27,7 @@ class Player extends Entity {
   }
 
   update(ctx) {
-    this.shape.draw(ctx);
+    this.draw(ctx);
   }
 }
 
