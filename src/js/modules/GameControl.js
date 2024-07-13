@@ -84,7 +84,8 @@ class GameControl {
   }
 
   #isGameOver() {
-    for(let i = 0; !this.#player.isDead && i < this.#enemies.length; i++) {
+    const enemiesLength = this.#enemies.length;
+    for(let i = 0; !this.#player.isDead && i < enemiesLength; i++) {
       if(this.#player.collidedWith(this.#enemies[i])) {
         return true;
       }
