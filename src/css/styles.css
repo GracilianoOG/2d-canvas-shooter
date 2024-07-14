@@ -40,6 +40,7 @@ canvas {
 .start-screen {
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100%;
   justify-content: center;
   letter-spacing: 2px;
@@ -48,6 +49,11 @@ canvas {
   user-select: none;
   width: 100%;
   z-index: 5;
+}
+
+.start-screen__main-title {
+  font-size: 3rem;
+  margin-bottom: 5rem;
 }
 
 .start-screen__title {
