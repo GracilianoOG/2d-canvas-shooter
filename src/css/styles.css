@@ -58,6 +58,7 @@ canvas {
 
 .start-screen__title {
   animation: blink .9s steps(2, jump-none) infinite;
+  font-size: 1.25rem;
 }
 
 .gameover-screen {
