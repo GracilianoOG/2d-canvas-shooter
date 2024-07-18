@@ -1,11 +1,38 @@
-import { Shape } from "./Shape.js";
-
-class Circle extends Shape {
+class Circle {
+  #x;
+  #y;
+  #color;
   #radius;
 
   constructor(x, y, radius, color) {
-    super(x, y, color);
+    this.#x = x;
+    this.#y = y;
+    this.#color = color;
     this.#radius = radius;
+  }
+
+  get x() {
+    return this.#x;
+  }
+
+  set x(x) {
+    this.#x = x;
+  }
+
+  get y() {
+    return this.#y;
+  }
+
+  set y(y) {
+    this.#y = y;
+  }
+
+  get color() {
+    return this.#color;
+  }
+
+  set color(color) {
+    this.#color = color;
   }
 
   get dimensions() {
