@@ -1,19 +1,13 @@
 import { Bullet } from "./Bullet.js";
 
 class PlayerControl {
-  #player;
-  #canvas;
-  #ctx;
   #keys = {};
-  #bullets;
-  #gameAudio;
+  #entities;
+  #player;
 
-  constructor({ player, mainCanvas, bullets, gameAudio }) {
-    this.#player = player;
-    this.#canvas = mainCanvas.canvas;
-    this.#ctx = mainCanvas.context;
-    this.#bullets = bullets;
-    this.#gameAudio = gameAudio;
+  constructor(entities) {
+    this.#entities = entities;
+    this.#player = entities.player;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -65,7 +59,7 @@ class PlayerControl {
     }
 
     if(this.#keys["KeyD"]) {
-      this.#moveRight(this.#canvas.width);
+      this.#moveRight(this.#entities.mainCanvas.width);
     }
 
     if(this.#keys["KeyW"]) {
@@ -73,7 +67,7 @@ class PlayerControl {
     }
 
     if(this.#keys["KeyS"]) {
-      this.#moveDown(this.#canvas.height);
+      this.#moveDown(this.#entities.mainCanvas.height);
     }
   }
 
@@ -93,8 +87,8 @@ class PlayerControl {
   #shoot(e) {
     const { x, y, angle } = this.#calcBulletPath(e);
     const bullet = new Bullet(x, y, 5, 20, angle, this.#player.color);
-    this.#bullets.push(bullet);
-    this.#gameAudio.playSound("shot");
+    this.#entities.bullets.push(bullet);
+    this.#entities.gameAudio.playSound("shot");
   }
 
   update() {
@@ -102,7 +96,7 @@ class PlayerControl {
       return;
     }
     this.#waitForPlayerMovement();
-    this.#player.draw(this.#ctx);
+    this.#player.draw(this.#entities.mainCanvas.context);
   }
 }
 
