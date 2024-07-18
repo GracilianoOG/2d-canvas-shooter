@@ -1,17 +1,13 @@
 import { Enemy } from "./Enemy.js";
 
 class EnemyCreator {
-  #canvas;
-  #target;
-  #enemies;
+  #entities;
   #intervalId;
   #currentSpawnRate;
   #enemyTypes;
 
-  constructor({ player, mainCanvas, enemies }) {
-    this.#target = player;
-    this.#canvas = mainCanvas.canvas;
-    this.#enemies = enemies;
+  constructor(entities) {
+    this.#entities = entities;
     this.#enemyTypes = [
       { hp: 20, radius: 18, speed: 4, color: "#ff0000" },
       { hp: 10, radius: 14, speed: 5, color: "#f210c8" },
@@ -22,7 +18,7 @@ class EnemyCreator {
     ];
 
     document.addEventListener("visibilitychange", () => {
-      if(this.#target.isDead) {
+      if(this.#entities.target.isDead) {
         return;
       }
 
@@ -38,13 +34,13 @@ class EnemyCreator {
     let xPos, yPos;
 
     if(Math.random() > .5) {
-      xPos = Math.random() > .5 ? -enemySize : this.#canvas.width + enemySize;
-      yPos = Math.floor(Math.random() * this.#canvas.height);
+      xPos = Math.random() > .5 ? -enemySize : this.#entities.mainCanvas.width + enemySize;
+      yPos = Math.floor(Math.random() * this.#entities.mainCanvas.height);
       return [xPos, yPos];
     }
 
-    xPos = Math.floor(Math.random() * this.#canvas.width);
-    yPos = Math.random() > .5 ? -enemySize : this.#canvas.height + enemySize;
+    xPos = Math.floor(Math.random() * this.#entities.mainCanvas.width);
+    yPos = Math.random() > .5 ? -enemySize : this.#entities.mainCanvas.height + enemySize;
     return [xPos, yPos];
   }
 
@@ -56,8 +52,8 @@ class EnemyCreator {
   #createEnemy() {
     const { hp, radius, speed, color } = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(radius);
-    this.#enemies.push(
-      new Enemy(coords[0], coords[1], radius, speed, color, hp, this.#target)
+    this.#entities.enemies.push(
+      new Enemy(coords[0], coords[1], radius, speed, color, hp, this.#entities.player)
     );
   }
 
@@ -67,7 +63,7 @@ class EnemyCreator {
     }
     this.#currentSpawnRate = secondsToSpawn;
     this.#intervalId = setInterval(() => {
-      if(this.#target.isDead) {
+      if(this.#entities.player.isDead) {
         this.stopEnemySpawn();
       }
 
