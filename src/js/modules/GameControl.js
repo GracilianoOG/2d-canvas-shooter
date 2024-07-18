@@ -3,24 +3,10 @@ import { storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameControl {
-  #bullets;
-  #enemies;
-  #particles;
-  #player;
-  #gameAudio;
-  #scoreboard;
-  #screens;
-  #animation;
+  #entities;
 
-  constructor({ bullets, enemies, particles, player, gameAudio, scoreboard, screens, animation }) {
-    this.#bullets = bullets;
-    this.#enemies = enemies;
-    this.#particles = particles;
-    this.#player = player;
-    this.#gameAudio = gameAudio;
-    this.#scoreboard = scoreboard;
-    this.#screens = screens;
-    this.#animation = animation;
+  constructor(entities) {
+    this.#entities = entities;
   }
 
   #damageEnemy(enemy) {
@@ -28,7 +14,7 @@ class GameControl {
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
     const scoreGiven = isEnemyAlive ? 50 : 200;
-    this.#particles.push(
+    this.#entities.particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
     this.#countScore(scoreGiven);
@@ -37,18 +23,18 @@ class GameControl {
   }
 
   #countScore(scoreAmount) {
-    this.#scoreboard.score += scoreAmount;
+    this.#entities.scoreboard.score += scoreAmount;
   }
 
   #playStatusSound(isEnemyAlive) {
-    this.#gameAudio.playSound(isEnemyAlive ? "hit" : "explosion");
+    this.#entities.gameAudio.playSound(isEnemyAlive ? "hit" : "explosion");
   }
 
   #hasBulletHitEnemy(bullet) {
-    const enemiesLength = this.#enemies.length;
+    const enemiesLength = this.#entities.enemies.length;
 
     for(let i = 0; i < enemiesLength; i++) {
-      const enemy = this.#enemies[i];
+      const enemy = this.#entities.enemies[i];
       
       if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
         this.#damageEnemy(enemy);
@@ -59,10 +45,10 @@ class GameControl {
   }
 
   #destroyBullet() {
-    const bulletsLength = this.#bullets.length;
+    const bulletsLength = this.#entities.bullets.length;
     
     for(let i = 0; i < bulletsLength; i++) {
-      const bullet = this.#bullets[i];
+      const bullet = this.#entities.bullets[i];
       if(this.#hasBulletHitEnemy(bullet)) {
         bullet.toDestroy = true;
       }
@@ -74,19 +60,19 @@ class GameControl {
       return;
     }
 
-    const { x: playerX, y: playerY, color: playerColor } = this.#player;
-    this.#player.isDead = true;
-    this.#gameAudio.playSound("explosion");
-    this.#particles.push(
+    const { x: playerX, y: playerY, color: playerColor } = this.#entities.player;
+    this.#entities.player.isDead = true;
+    this.#entities.gameAudio.playSound("explosion");
+    this.#entities.particles.push(
       ...Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16)
     );
     this.#prepareRestart(2.4);
   }
 
   #isGameOver() {
-    const enemiesLength = this.#enemies.length;
-    for(let i = 0; !this.#player.isDead && i < enemiesLength; i++) {
-      if(this.#player.collidedWith(this.#enemies[i])) {
+    const enemiesLength = this.#entities.enemies.length;
+    for(let i = 0; !this.#entities.player.isDead && i < enemiesLength; i++) {
+      if(this.#entities.player.collidedWith(this.#entities.enemies[i])) {
         return true;
       }
     }
@@ -95,17 +81,17 @@ class GameControl {
 
   #prepareRestart(delayInSeconds) {
     setTimeout(() => {
-      cancelAnimationFrame(this.#animation.id);
-      storeHighscore(this.#scoreboard.score);
-      this.#screens.restart.style.display = "flex";
+      cancelAnimationFrame(this.#entities.animation.id);
+      storeHighscore(this.#entities.scoreboard.score);
+      this.#entities.screens.restart.style.display = "flex";
       this.#cleanUpEntities();
     }, delayInSeconds * 1000);
   }
 
   #cleanUpEntities() {
-    this.#enemies.length = 0;
-    this.#particles.length = 0;
-    this.#bullets.length = 0;
+    this.#entities.enemies.length = 0;
+    this.#entities.particles.length = 0;
+    this.#entities.bullets.length = 0;
   }
 
   #notifyScoreEarned(x, y, scoreAmount) {
