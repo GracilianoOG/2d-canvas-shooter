@@ -61,9 +61,9 @@ class Game {
 
   updateObjects() {
     this.playerControl.update();
-    this.gameState.updateObjects(this.gameState.objects.enemies);
-    this.gameState.updateObjects(this.gameState.objects.particles);
-    this.gameState.updateObjects(this.gameState.objects.bullets);
+    this.gameState.updateObjects(this.gameState.entities.enemies);
+    this.gameState.updateObjects(this.gameState.entities.particles);
+    this.gameState.updateObjects(this.gameState.entities.bullets);
     this.gameControl.update();
   }
 
@@ -86,9 +86,9 @@ class Game {
     });
 
     // Controllers
-    this.enemyCreator = new EnemyCreator(this.gameState.objects);
-    this.playerControl = new PlayerControl(this.gameState.objects);
-    this.gameControl = new GameControl(this.gameState.objects);
+    this.enemyCreator = new EnemyCreator(this.gameState.entities);
+    this.playerControl = new PlayerControl(this.gameState.entities);
+    this.gameControl = new GameControl(this.gameState.entities);
 
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);

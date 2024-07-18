@@ -1,23 +1,23 @@
 class GameState {
-  #objects;
+  #entities;
 
-  constructor(objects) {
-    this.#objects = {
-      ...objects,
+  constructor(entities) {
+    this.#entities = {
+      ...entities,
       bullets: [],
       enemies: [],
       particles: []
     };
   }
 
-  get objects() {
-    return this.#objects;
+  get entities() {
+    return this.#entities;
   }
 
   updateObjects(array) {
     for(let i = array.length - 1; i >= 0; i--) {
       const elem = array[i];
-      elem.update(this.#objects.mainCanvas.context);
+      elem.update(this.#entities.mainCanvas.context);
       elem.toDestroy && array.splice(i, 1);
     }
   }
