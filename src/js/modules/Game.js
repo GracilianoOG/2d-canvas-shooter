@@ -76,19 +76,12 @@ class Game {
   }
 
   init() {
-    // Player
-    this.player = new Player(this.mainCanvas.width/2, this.mainCanvas.height/2, 15, 6, COLORS.WHITE);
-
-    // Scoreboard
-    this.scoreboard = new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER));
-
     // GameState
-    this.gameAudio = new GameAudio(audios);
     this.gameState = new GameState({ 
       mainCanvas: this.mainCanvas, 
-      player: this.player, 
-      gameAudio: this.gameAudio, 
-      scoreboard: this.scoreboard,
+      player: new Player(this.mainCanvas.width/2, this.mainCanvas.height/2, 15, 6, COLORS.WHITE), 
+      gameAudio: new GameAudio(audios), 
+      scoreboard: new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER)),
       screens: this.screens,
       animation: this.animation
     });
@@ -100,17 +93,17 @@ class Game {
 
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);
-    this.gameAudio.playMusic("battle");
+    this.gameState.entities.gameAudio.playMusic("battle");
     this.animate();
   }
 
   restart() {
     this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
-    this.scoreboard.score = 0;
-    this.player.x = this.mainCanvas.width/2;
-    this.player.y = this.mainCanvas.height/2;
-    this.player.isDead = false;
-    this.enemyCreator.restartEnemySpawn();
+    this.gameState.entities.scoreboard.score = 0;
+    this.gameState.entities.player.x = this.mainCanvas.width/2;
+    this.gameState.entities.player.y = this.mainCanvas.height/2;
+    this.gameState.entities.player.isDead = false;
+    this.gameState.entities.enemyCreator.restartEnemySpawn();
     this.animate();
   }
 }
