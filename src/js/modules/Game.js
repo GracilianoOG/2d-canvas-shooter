@@ -81,7 +81,7 @@ class Game {
       mainCanvas: this.mainCanvas, 
       player: new Player(this.mainCanvas.width/2, this.mainCanvas.height/2, 15, 6, COLORS.WHITE), 
       gameAudio: new GameAudio(audios), 
-      scoreboard: new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER)),
+      scoreboard: new Scoreboard(document.querySelector(CSS_IDS.CONTAINER)),
       screens: this.screens,
       animation: this.animation
     });

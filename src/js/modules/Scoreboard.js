@@ -3,11 +3,10 @@ import { formatScore } from "../utils/helpers.js";
 
 class Scoreboard {
   #score = 0;
-  #length;
+  #length = 8;
   #scoreboard;
 
-  constructor(length, parent) {
-    this.#length = length;
+  constructor(parent) {
     this.#scoreboard = document.createElement("h2");
     this.#scoreboard.classList.add(CSS_CLASSES.SCOREBOARD);
     this.#showScore(this.#score.toString());
