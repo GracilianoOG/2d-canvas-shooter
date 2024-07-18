@@ -23,9 +23,6 @@ class Game {
     window.innerHeight, 
     document.querySelector(CSS_IDS.CONTAINER)
   );
-  
-  canvasWidth = this.mainCanvas.canvas.width;
-  canvasHeight = this.mainCanvas.canvas.height;
 
   ctx = this.mainCanvas.context;
 
@@ -48,9 +45,6 @@ class Game {
     window.addEventListener("resize", () => {
       this.mainCanvas.canvas.width = window.innerWidth;
       this.mainCanvas.canvas.height = window.innerHeight;
-
-      this.canvasWidth = this.mainCanvas.canvas.width;
-      this.canvasHeight = this.mainCanvas.canvas.height;
     });
   }
 
@@ -62,7 +56,7 @@ class Game {
 
   updateCanvas() {
     this.ctx.fillStyle = COLORS.TRANSPARENT_BLACK;
-    this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.ctx.fillRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
   }
 
   updateObjects() {
@@ -75,7 +69,7 @@ class Game {
 
   init() {
     // Player
-    this.player = new Player(this.canvasWidth/2, this.canvasHeight/2, 15, 6, COLORS.WHITE);
+    this.player = new Player(this.mainCanvas.width/2, this.mainCanvas.height/2, 15, 6, COLORS.WHITE);
 
     // Scoreboard
     this.scoreboard = new Scoreboard(8, document.querySelector(CSS_IDS.CONTAINER));
@@ -103,10 +97,10 @@ class Game {
   }
 
   restart() {
-    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
     this.scoreboard.score = 0;
-    this.player.x = this.canvasWidth/2;
-    this.player.y = this.canvasHeight/2;
+    this.player.x = this.mainCanvas.width/2;
+    this.player.y = this.mainCanvas.height/2;
     this.player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.animate();
