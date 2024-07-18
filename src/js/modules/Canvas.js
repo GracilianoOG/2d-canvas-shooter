@@ -10,6 +10,14 @@ class Canvas {
     parent.appendChild(this.#canvas);
   }
 
+  get width() {
+    return this.#canvas.width;
+  }
+
+  get height() {
+    return this.#canvas.height;
+  }
+
   get canvas() {
     return this.#canvas;
   }
