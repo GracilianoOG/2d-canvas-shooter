@@ -61,10 +61,18 @@ class Game {
 
   updateObjects() {
     this.playerControl.update();
-    this.gameState.updateObjects(this.gameState.entities.enemies);
-    this.gameState.updateObjects(this.gameState.entities.particles);
-    this.gameState.updateObjects(this.gameState.entities.bullets);
+    this.updateEntities(this.gameState.entities.enemies);
+    this.updateEntities(this.gameState.entities.particles);
+    this.updateEntities(this.gameState.entities.bullets);
     this.gameControl.update();
+  }
+
+  updateEntities(entities) {
+    for(let i = entities.length - 1; i >= 0; i--) {
+      const elem = entities[i];
+      elem.update(this.ctx);
+      elem.toDestroy && entities.splice(i, 1);
+    }
   }
 
   init() {
