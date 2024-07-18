@@ -5,7 +5,6 @@ import { GameState } from "./GameState.js";
 import { EnemyCreator } from "./EnemyCreator.js";
 import { GameControl } from "./GameControl.js";
 import { GameAudio } from "./GameAudio.js";
-import audios from "./audios.js";
 import { Scoreboard } from "./Scoreboard.js";
 import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
 import { getHighscore } from "../utils/helpers.js";
@@ -80,7 +79,7 @@ class Game {
     this.gameState = new GameState({ 
       mainCanvas: this.mainCanvas, 
       player: new Player(this.mainCanvas.width/2, this.mainCanvas.height/2, 15, 6, COLORS.WHITE), 
-      gameAudio: new GameAudio(audios), 
+      gameAudio: new GameAudio(), 
       scoreboard: new Scoreboard(document.querySelector(CSS_IDS.CONTAINER)),
       screens: this.screens,
       animation: this.animation

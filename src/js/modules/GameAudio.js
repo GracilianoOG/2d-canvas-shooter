@@ -1,7 +1,9 @@
+import audios from "./audios.js";
+
 class GameAudio {  
   #audios;
 
-  constructor(audios) {
+  constructor() {
     this.#audios = audios;
     Howler.volume(.4);
   }
