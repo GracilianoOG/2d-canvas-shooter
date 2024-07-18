@@ -102,7 +102,7 @@ class Game {
     this.gameState.entities.player.x = this.mainCanvas.width/2;
     this.gameState.entities.player.y = this.mainCanvas.height/2;
     this.gameState.entities.player.isDead = false;
-    this.gameState.entities.enemyCreator.restartEnemySpawn();
+    this.enemyCreator.restartEnemySpawn();
     this.animate();
   }
 }
