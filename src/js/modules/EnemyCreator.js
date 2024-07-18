@@ -18,7 +18,7 @@ class EnemyCreator {
     ];
 
     document.addEventListener("visibilitychange", () => {
-      if(this.#entities.target.isDead) {
+      if(this.#entities.player.isDead) {
         return;
       }
 
