@@ -1,7 +1,7 @@
 import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
-class GameControl {
+class GameManager {
   #entities;
 
   constructor(entities) {
@@ -99,4 +99,4 @@ class GameControl {
   }
 }
 
-export { GameControl };
+export { GameManager };

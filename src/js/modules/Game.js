@@ -3,7 +3,7 @@ import { Player } from "./Player.js";
 import { Canvas } from "./Canvas.js";
 import { GameState } from "./GameState.js";
 import { EnemyCreator } from "./EnemyCreator.js";
-import { GameControl } from "./GameControl.js";
+import { GameManager } from "./GameManager.js";
 import { GameAudio } from "./GameAudio.js";
 import { Scoreboard } from "./Scoreboard.js";
 import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
@@ -63,7 +63,7 @@ class Game {
     this.updateEntities(this.gameState.entities.enemies);
     this.updateEntities(this.gameState.entities.particles);
     this.updateEntities(this.gameState.entities.bullets);
-    this.gameControl.update();
+    this.gameManager.update();
   }
 
   updateEntities(entities) {
@@ -88,7 +88,7 @@ class Game {
     // Controllers
     this.enemyCreator = new EnemyCreator(this.gameState.entities);
     this.playerControl = new PlayerControl(this.gameState.entities);
-    this.gameControl = new GameControl(this.gameState.entities);
+    this.gameManager = new GameManager(this.gameState.entities);
 
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);
