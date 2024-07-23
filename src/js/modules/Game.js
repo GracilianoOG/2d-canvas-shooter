@@ -51,6 +51,8 @@ class Game {
     this.animation.id = requestAnimationFrame(this.animate);
     this.updateCanvas();
     this.updateObjects();
+    this.playerControl.update();
+    this.gameManager.update();
   }
 
   updateCanvas() {
@@ -59,11 +61,9 @@ class Game {
   }
 
   updateObjects() {
-    this.playerControl.update();
     this.updateEntities(this.gameState.entities.enemies);
     this.updateEntities(this.gameState.entities.particles);
     this.updateEntities(this.gameState.entities.bullets);
-    this.gameManager.update();
   }
 
   updateEntities(entities) {
