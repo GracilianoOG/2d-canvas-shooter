@@ -1,5 +1,4 @@
-import { CSS_CLASSES } from "../utils/constants.js";
-import { storeHighscore } from "../utils/helpers.js";
+import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameControl {
@@ -18,7 +17,7 @@ class GameControl {
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
     this.#countScore(scoreGiven);
-    this.#notifyScoreEarned(x, y, scoreGiven);
+    notifyScoreEarned(x, y, scoreGiven);
     this.#playStatusSound(isEnemyAlive);
   }
 
@@ -92,17 +91,6 @@ class GameControl {
     this.#entities.enemies.length = 0;
     this.#entities.particles.length = 0;
     this.#entities.bullets.length = 0;
-  }
-
-  #notifyScoreEarned(x, y, scoreAmount) {
-    const score = document.createElement("div");
-    score.setAttribute("class", CSS_CLASSES.SCORE);
-    score.textContent = scoreAmount;
-    score.style.left = x + "px";
-    score.style.top = y + "px";
-
-    score.addEventListener("animationend", () => document.body.removeChild(score));
-    document.body.appendChild(score);
   }
 
   update() {
