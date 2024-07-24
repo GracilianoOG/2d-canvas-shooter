@@ -93,7 +93,22 @@ class GameManager {
     this.#entities.bullets.length = 0;
   }
 
+  #updateEntityLists() {
+    this.#updateEntities(this.#entities.enemies);
+    this.#updateEntities(this.#entities.particles);
+    this.#updateEntities(this.#entities.bullets);
+  }
+
+  #updateEntities(entities) {
+    for(let i = entities.length - 1; i >= 0; i--) {
+      const elem = entities[i];
+      elem.update(this.#entities.mainCanvas.context);
+      elem.toDestroy && entities.splice(i, 1);
+    }
+  }
+
   update() {
+    this.#updateEntityLists();
     this.#destroyBullet();
     this.#endGame();
   }

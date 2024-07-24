@@ -50,7 +50,6 @@ class Game {
   animate = () => {
     this.animation.id = requestAnimationFrame(this.animate);
     this.updateCanvas();
-    this.updateObjects();
     this.playerControl.update();
     this.gameManager.update();
   }
@@ -58,20 +57,6 @@ class Game {
   updateCanvas() {
     this.ctx.fillStyle = COLORS.TRANSPARENT_BLACK;
     this.ctx.fillRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
-  }
-
-  updateObjects() {
-    this.updateEntities(this.gameState.entities.enemies);
-    this.updateEntities(this.gameState.entities.particles);
-    this.updateEntities(this.gameState.entities.bullets);
-  }
-
-  updateEntities(entities) {
-    for(let i = entities.length - 1; i >= 0; i--) {
-      const elem = entities[i];
-      elem.update(this.ctx);
-      elem.toDestroy && entities.splice(i, 1);
-    }
   }
 
   init() {
