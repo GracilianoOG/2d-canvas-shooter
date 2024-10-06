@@ -18,6 +18,21 @@ I learned a lot of JavaScript, Canvas API and Game Design concepts while develop
 - HTML, CSS, and JavaScript
 - Canvas API
 - [Howler JS](https://howlerjs.com/) - Audio library
+- [ViteJS](https://vite.dev/) - Build tool
+
+## 🎯 Run locally
+
+Install dependencies
+
+```
+npm install
+```
+
+Run project
+
+```
+npm run dev
+```
 
 ## 🎬 Credits
 
