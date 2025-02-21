@@ -16,10 +16,8 @@ class PlayerController {
     });
 
     document.addEventListener("click", e => {
-      if (this.#isPlayerDead()) {
-        return;
-      }
-      this.#shoot(e);
+      if (this.#isPlayerDead()) return;
+      this.#player.weapon.shoot(e);
     });
   }
 
@@ -71,22 +69,6 @@ class PlayerController {
 
   #isPlayerDead() {
     return this.#player.isDead;
-  }
-
-  #calcBulletPath({ clientX, clientY }) {
-    const { x, y } = this.#player;
-    const dirX = clientX - x;
-    const dirY = clientY - y;
-    const angle = Math.atan2(dirY, dirX);
-
-    return { x, y, angle };
-  }
-
-  #shoot(e) {
-    const { x, y, angle } = this.#calcBulletPath(e);
-    const bullet = new Bullet(x, y, 5, 20, angle, this.#player.color);
-    window.gameState["entities"].bullets.push(bullet);
-    window.gameState["entities"].gameAudio.playSound("shot");
   }
 
   update() {
