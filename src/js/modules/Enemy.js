@@ -8,7 +8,7 @@ class Enemy extends Projectile {
   #baseColor;
   #score;
 
-  constructor(x, y, radius, speed, color, health, target, score) {
+  constructor(x, y, radius, speed, color, health, score, target) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
