@@ -49,7 +49,7 @@ class EnemyCreator {
   }
 
   #createEnemy() {
-    const { hp, radius, speed, color } = this.#randomizeEnemy();
+    const { hp, radius, speed, color, score } = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(radius);
     window.gameState["entities"].enemies.push(
       new Enemy(
@@ -59,7 +59,8 @@ class EnemyCreator {
         speed,
         color,
         hp,
-        window.gameState["entities"].player
+        window.gameState["entities"].player,
+        score
       )
     );
   }
