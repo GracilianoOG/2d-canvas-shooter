@@ -6,17 +6,23 @@ class Enemy extends Projectile {
   #maxSpeed;
   #health;
   #baseColor;
+  #score;
 
-  constructor(x, y, radius, speed, color, health, target) {
+  constructor(x, y, radius, speed, color, health, target, score) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
     this.#baseColor = color;
+    this.#score = score;
   }
 
   get baseColor() {
     return this.#baseColor;
+  }
+
+  get score() {
+    return this.#score;
   }
 
   get health() {
@@ -31,23 +37,23 @@ class Enemy extends Projectile {
     const dirX = this.#target.x - this.x;
     const dirY = this.#target.y - this.y;
     const angle = Math.atan2(dirY, dirX);
-    if(Math.hypot(dirX, dirY) > this.speed) {
+    if (Math.hypot(dirX, dirY) > this.speed) {
       this.x += Math.cos(angle) * this.speed;
       this.y += Math.sin(angle) * this.speed;
     }
   }
 
   #increaseSpeed() {
-    if(this.speed < this.#maxSpeed) {
-      this.speed += .1;
-      if(this.speed > this.#maxSpeed) {
+    if (this.speed < this.#maxSpeed) {
+      this.speed += 0.1;
+      if (this.speed > this.#maxSpeed) {
         this.speed = this.#maxSpeed;
       }
     }
   }
 
   #returnOriginalColor() {
-    if(this.color != this.#baseColor && this.speed > 0) {
+    if (this.color != this.#baseColor && this.speed > 0) {
       this.color = this.#baseColor;
     }
   }
@@ -59,12 +65,12 @@ class Enemy extends Projectile {
 
   takeDamage(damage) {
     this.health -= damage;
-    if(this.health <= 0) {
+    if (this.health <= 0) {
       this.toDestroy = true;
     }
     this.speed = -1;
     this.#maxSpeed *= 1.25;
-    this.dimensions = { radius: this.dimensions.radius * .9 };
+    this.dimensions = { radius: this.dimensions.radius * 0.9 };
     this.color = COLORS.WHITE;
   }
 
