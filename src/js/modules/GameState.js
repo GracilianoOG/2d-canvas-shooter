@@ -1,13 +1,23 @@
 class GameState {
   #entities;
+  static instance;
 
-  constructor(entities) {
+  constructor(entities = {}) {
+    if (GameState.instance) {
+      return GameState.instance;
+    }
+    GameState.instance = this;
+
     this.#entities = {
       ...entities,
       bullets: [],
       enemies: [],
-      particles: []
+      particles: [],
     };
+  }
+
+  addEntities(newEntities) {
+    this.#entities = { ...this.#entities, ...newEntities };
   }
 
   get entities() {
