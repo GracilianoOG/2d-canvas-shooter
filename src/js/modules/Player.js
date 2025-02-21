@@ -20,6 +20,11 @@ class Player extends Entity {
   set isDead(isDead) {
     this.#isDead = isDead;
   }
+
+  update() {
+    if (this.isDead) return;
+    this.controller.update();
+  }
 }
 
 export { Player };
