@@ -7,7 +7,7 @@ class GameManager {
   #damageEnemy(enemy) {
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
-    const scoreGiven = isEnemyAlive ? 50 : 200;
+    const scoreGiven = isEnemyAlive ? enemy.score.hit : enemy.score.death;
     window.gameState["entities"].particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
