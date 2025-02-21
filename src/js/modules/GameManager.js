@@ -5,7 +5,6 @@ class GameManager {
   constructor() {}
 
   #damageEnemy(enemy) {
-    enemy.takeDamage(10);
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
     const scoreGiven = isEnemyAlive ? 50 : 200;
@@ -34,6 +33,7 @@ class GameManager {
       const enemy = window.gameState["entities"].enemies[i];
 
       if (!bullet.toDestroy && bullet.collidedWith(enemy)) {
+        enemy.takeDamage(bullet.damage);
         this.#damageEnemy(enemy);
         return true;
       }
