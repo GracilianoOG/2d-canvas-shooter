@@ -81,8 +81,8 @@ class Game {
     });
 
     // Controllers
-    this.enemyCreator = new EnemyCreator(this.gameState.entities);
-    this.gameManager = new GameManager(this.gameState.entities);
+    this.enemyCreator = new EnemyCreator();
+    this.gameManager = new GameManager();
 
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);
