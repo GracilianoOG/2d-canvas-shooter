@@ -1,24 +1,22 @@
 import { Bullet } from "./Bullet.js";
 
-class PlayerControl {
+class PlayerController {
   #keys = {};
-  #entities;
   #player;
 
-  constructor(entities) {
-    this.#entities = entities;
-    this.#player = entities.player;
+  constructor(player) {
+    this.#player = player;
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
     });
-    
+
     document.addEventListener("keyup", ({ code }) => {
       this.#keys[code] = false;
     });
-    
-    document.addEventListener("click", (e) => {
-      if(this.#isPlayerDead()) {
+
+    document.addEventListener("click", e => {
+      if (this.#isPlayerDead()) {
         return;
       }
       this.#shoot(e);
@@ -27,47 +25,47 @@ class PlayerControl {
 
   #moveLeft() {
     this.#player.x -= this.#player.speed;
-    if(this.#player.x < this.#player.dimensions.radius) {
+    if (this.#player.x < this.#player.dimensions.radius) {
       this.#player.x = this.#player.dimensions.radius;
     }
   }
 
   #moveRight(canvasWidth) {
     this.#player.x += this.#player.speed;
-    if(this.#player.x + this.#player.dimensions.radius > canvasWidth) {
+    if (this.#player.x + this.#player.dimensions.radius > canvasWidth) {
       this.#player.x = canvasWidth - this.#player.dimensions.radius;
     }
   }
 
   #moveUp() {
     this.#player.y -= this.#player.speed;
-    if(this.#player.y < this.#player.dimensions.radius) {
+    if (this.#player.y < this.#player.dimensions.radius) {
       this.#player.y = this.#player.dimensions.radius;
     }
   }
 
   #moveDown(canvasHeight) {
     this.#player.y += this.#player.speed;
-    if(this.#player.y + this.#player.dimensions.radius > canvasHeight) {
+    if (this.#player.y + this.#player.dimensions.radius > canvasHeight) {
       this.#player.y = canvasHeight - this.#player.dimensions.radius;
     }
   }
 
   #waitForPlayerMovement() {
-    if(this.#keys["KeyA"]) {
+    if (this.#keys["KeyA"]) {
       this.#moveLeft();
     }
 
-    if(this.#keys["KeyD"]) {
-      this.#moveRight(this.#entities.mainCanvas.width);
+    if (this.#keys["KeyD"]) {
+      this.#moveRight(window.gameState["entities"].mainCanvas.width);
     }
 
-    if(this.#keys["KeyW"]) {
+    if (this.#keys["KeyW"]) {
       this.#moveUp();
     }
 
-    if(this.#keys["KeyS"]) {
-      this.#moveDown(this.#entities.mainCanvas.height);
+    if (this.#keys["KeyS"]) {
+      this.#moveDown(window.gameState["entities"].mainCanvas.height);
     }
   }
 
@@ -87,17 +85,17 @@ class PlayerControl {
   #shoot(e) {
     const { x, y, angle } = this.#calcBulletPath(e);
     const bullet = new Bullet(x, y, 5, 20, angle, this.#player.color);
-    this.#entities.bullets.push(bullet);
-    this.#entities.gameAudio.playSound("shot");
+    window.gameState["entities"].bullets.push(bullet);
+    window.gameState["entities"].gameAudio.playSound("shot");
   }
 
   update() {
-    if(this.#isPlayerDead()) {
+    if (this.#isPlayerDead()) {
       return;
     }
     this.#waitForPlayerMovement();
-    this.#player.draw(this.#entities.mainCanvas.context);
+    this.#player.draw(window.gameState["entities"].mainCanvas.context);
   }
 }
 
-export { PlayerControl };
+export { PlayerController };
