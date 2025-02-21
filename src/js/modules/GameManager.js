@@ -2,18 +2,14 @@ import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameManager {
-  #entities;
-
-  constructor(entities) {
-    this.#entities = entities;
-  }
+  constructor() {}
 
   #damageEnemy(enemy) {
     enemy.takeDamage(10);
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
     const scoreGiven = isEnemyAlive ? 50 : 200;
-    this.#entities.particles.push(
+    window.gameState["entities"].particles.push(
       ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
     );
     this.#countScore(scoreGiven);
@@ -22,20 +18,22 @@ class GameManager {
   }
 
   #countScore(scoreAmount) {
-    this.#entities.scoreboard.score += scoreAmount;
+    window.gameState["entities"].scoreboard.score += scoreAmount;
   }
 
   #playStatusSound(isEnemyAlive) {
-    this.#entities.gameAudio.playSound(isEnemyAlive ? "hit" : "explosion");
+    window.gameState["entities"].gameAudio.playSound(
+      isEnemyAlive ? "hit" : "explosion"
+    );
   }
 
   #hasBulletHitEnemy(bullet) {
-    const enemiesLength = this.#entities.enemies.length;
+    const enemiesLength = window.gameState["entities"].enemies.length;
 
-    for(let i = 0; i < enemiesLength; i++) {
-      const enemy = this.#entities.enemies[i];
-      
-      if(!bullet.toDestroy && bullet.collidedWith(enemy)) {
+    for (let i = 0; i < enemiesLength; i++) {
+      const enemy = window.gameState["entities"].enemies[i];
+
+      if (!bullet.toDestroy && bullet.collidedWith(enemy)) {
         this.#damageEnemy(enemy);
         return true;
       }
@@ -44,34 +42,46 @@ class GameManager {
   }
 
   #destroyBullet() {
-    const bulletsLength = this.#entities.bullets.length;
-    
-    for(let i = 0; i < bulletsLength; i++) {
-      const bullet = this.#entities.bullets[i];
-      if(this.#hasBulletHitEnemy(bullet)) {
+    const bulletsLength = window.gameState["entities"].bullets.length;
+
+    for (let i = 0; i < bulletsLength; i++) {
+      const bullet = window.gameState["entities"].bullets[i];
+      if (this.#hasBulletHitEnemy(bullet)) {
         bullet.toDestroy = true;
       }
     }
   }
 
   #endGame() {
-    if(!this.#isGameOver()) {
+    if (!this.#isGameOver()) {
       return;
     }
 
-    const { x: playerX, y: playerY, color: playerColor } = this.#entities.player;
-    this.#entities.player.isDead = true;
-    this.#entities.gameAudio.playSound("explosion");
-    this.#entities.particles.push(
+    const {
+      x: playerX,
+      y: playerY,
+      color: playerColor,
+    } = window.gameState["entities"].player;
+    window.gameState["entities"].player.isDead = true;
+    window.gameState["entities"].gameAudio.playSound("explosion");
+    window.gameState["entities"].particles.push(
       ...Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16)
     );
     this.#prepareRestart(2.4);
   }
 
   #isGameOver() {
-    const enemiesLength = this.#entities.enemies.length;
-    for(let i = 0; !this.#entities.player.isDead && i < enemiesLength; i++) {
-      if(this.#entities.player.collidedWith(this.#entities.enemies[i])) {
+    const enemiesLength = window.gameState["entities"].enemies.length;
+    for (
+      let i = 0;
+      !window.gameState["entities"].player.isDead && i < enemiesLength;
+      i++
+    ) {
+      if (
+        window.gameState["entities"].player.collidedWith(
+          window.gameState["entities"].enemies[i]
+        )
+      ) {
         return true;
       }
     }
@@ -80,29 +90,29 @@ class GameManager {
 
   #prepareRestart(delayInSeconds) {
     setTimeout(() => {
-      cancelAnimationFrame(this.#entities.animation.id);
-      storeHighscore(this.#entities.scoreboard.score);
-      this.#entities.screens.restart.style.display = "flex";
+      cancelAnimationFrame(window.gameState["entities"].animation.id);
+      storeHighscore(window.gameState["entities"].scoreboard.score);
+      window.gameState["entities"].screens.restart.style.display = "flex";
       this.#cleanUpEntities();
     }, delayInSeconds * 1000);
   }
 
   #cleanUpEntities() {
-    this.#entities.enemies.length = 0;
-    this.#entities.particles.length = 0;
-    this.#entities.bullets.length = 0;
+    window.gameState["entities"].enemies.length = 0;
+    window.gameState["entities"].particles.length = 0;
+    window.gameState["entities"].bullets.length = 0;
   }
 
   #updateEntityLists() {
-    this.#updateEntities(this.#entities.enemies);
-    this.#updateEntities(this.#entities.particles);
-    this.#updateEntities(this.#entities.bullets);
+    this.#updateEntities(window.gameState["entities"].enemies);
+    this.#updateEntities(window.gameState["entities"].particles);
+    this.#updateEntities(window.gameState["entities"].bullets);
   }
 
   #updateEntities(entities) {
-    for(let i = entities.length - 1; i >= 0; i--) {
+    for (let i = entities.length - 1; i >= 0; i--) {
       const elem = entities[i];
-      elem.update(this.#entities.mainCanvas.context);
+      elem.update(window.gameState["entities"].mainCanvas.context);
       elem.toDestroy && entities.splice(i, 1);
     }
   }
