@@ -13,9 +13,9 @@ class PlayerController {
       this.#keys[code] = false;
     });
 
-    document.addEventListener("click", e => {
-      if (this.#isPlayerDead()) return;
-      this.#player.weapon.shoot(e);
+    document.addEventListener("click", event => {
+      if (this.#player.isDead) return;
+      this.#player.weapon.shoot(event);
     });
   }
 
@@ -47,7 +47,7 @@ class PlayerController {
     }
   }
 
-  #waitForPlayerMovement() {
+  #movePlayer() {
     if (this.#keys["KeyA"]) {
       this.#moveLeft();
     }
@@ -65,15 +65,8 @@ class PlayerController {
     }
   }
 
-  #isPlayerDead() {
-    return this.#player.isDead;
-  }
-
   update() {
-    if (this.#isPlayerDead()) {
-      return;
-    }
-    this.#waitForPlayerMovement();
+    this.#movePlayer();
     this.#player.draw(window.gameState["entities"].mainCanvas.context);
   }
 }
