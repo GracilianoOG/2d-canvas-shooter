@@ -66,12 +66,17 @@ class Enemy extends Projectile {
   takeDamage(damage) {
     this.health -= damage;
     if (this.health <= 0) {
-      this.toDestroy = true;
+      this.die();
+      return;
     }
     this.speed = -1;
     this.#maxSpeed *= 1.25;
     this.dimensions = { radius: this.dimensions.radius * 0.9 };
     this.color = COLORS.WHITE;
+  }
+
+  die() {
+    this.toDestroy = true;
   }
 
   update(ctx) {
