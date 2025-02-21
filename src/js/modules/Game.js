@@ -65,7 +65,6 @@ class Game {
   init() {
     // GameState
     window.gameState = new GameState({ mainCanvas: this.mainCanvas });
-    this.gameState = window.gameState;
     window.gameState.addEntities({
       player: new Player(
         this.mainCanvas.width / 2,
@@ -86,16 +85,16 @@ class Game {
 
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);
-    this.gameState.entities.gameAudio.playMusic("battle");
+    window.gameState["entities"].gameAudio.playMusic("battle");
     this.animate();
   }
 
   restart() {
     this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
-    this.gameState.entities.scoreboard.score = 0;
-    this.gameState.entities.player.x = this.mainCanvas.width / 2;
-    this.gameState.entities.player.y = this.mainCanvas.height / 2;
-    this.gameState.entities.player.isDead = false;
+    window.gameState["entities"].scoreboard.score = 0;
+    window.gameState["entities"].player.x = this.mainCanvas.width / 2;
+    window.gameState["entities"].player.y = this.mainCanvas.height / 2;
+    window.gameState["entities"].player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.animate();
   }
