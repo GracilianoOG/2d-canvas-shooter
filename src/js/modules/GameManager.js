@@ -1,4 +1,5 @@
-import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
+import { notifyScoreEarned } from "../utils/helpers.js";
+import { Scoreboard } from "./Scoreboard.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
@@ -53,7 +54,7 @@ class GameManager {
   #prepareRestart(delayInSeconds) {
     setTimeout(() => {
       cancelAnimationFrame(window.gameState["entities"].animation.id);
-      storeHighscore(window.gameState["entities"].scoreboard.score);
+      Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
       window.gameState["entities"].screens.restart.style.display = "flex";
       this.#cleanUpEntities();
     }, delayInSeconds * 1000);
