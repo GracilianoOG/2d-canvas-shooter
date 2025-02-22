@@ -71,11 +71,15 @@ class Enemy extends Projectile {
       return this.#score.death;
     }
     this.bleed(8);
+    this.createDamageEffect();
+    return this.#score.hit;
+  }
+
+  createDamageEffect() {
     this.speed = -1;
     this.#maxSpeed *= 1.25;
     this.dimensions = { radius: this.dimensions.radius * 0.9 };
     this.color = COLORS.WHITE;
-    return this.#score.hit;
   }
 
   bleed(amount) {
