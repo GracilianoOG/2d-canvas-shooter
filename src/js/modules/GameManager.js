@@ -2,17 +2,10 @@ import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameManager {
-  #damageEnemy(enemy) {
-    const { x, y, health } = enemy;
-    const isEnemyAlive = health > 0;
-    const scoreGiven = isEnemyAlive ? enemy.score.hit : enemy.score.death;
-    this.#countScore(scoreGiven);
-    notifyScoreEarned(x, y, scoreGiven);
-    this.#playStatusSound(isEnemyAlive);
-  }
-
-  #countScore(scoreAmount) {
+  #countScore(enemy, scoreAmount) {
+    this.#playStatusSound(enemy.health > 0);
     window.gameState["entities"].scoreboard.score += scoreAmount;
+    notifyScoreEarned(enemy.x, enemy.y, scoreAmount);
   }
 
   #playStatusSound(isEnemyAlive) {
@@ -28,8 +21,7 @@ class GameManager {
       const enemy = window.gameState["entities"].enemies[i];
 
       if (!bullet.toDestroy && bullet.collidedWith(enemy)) {
-        enemy.takeDamage(bullet.damage);
-        this.#damageEnemy(enemy);
+        this.#countScore(enemy, enemy.takeDamage(bullet.damage));
         return true;
       }
     }
