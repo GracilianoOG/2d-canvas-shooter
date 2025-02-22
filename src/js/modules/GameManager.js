@@ -84,6 +84,7 @@ class GameManager {
     this.#updateEntityLists();
     this.#destroyBullet();
     this.#isGameOver();
+    window.gameState.entities.player.update();
   }
 }
 

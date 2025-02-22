@@ -36,7 +36,6 @@ class Game {
   animate = () => {
     this.animation.id = requestAnimationFrame(this.animate);
     this.updateCanvas();
-    window.gameState.entities.player.update();
     this.gameManager.update();
   };
 
