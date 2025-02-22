@@ -22,6 +22,8 @@ class EnemyCreator {
   #createEnemyPosition(enemySize) {
     let xPos, yPos;
 
+    // xPos -> spawn enemy either at the left or right
+    // yPos -> spawn enemy with random Y position
     if (Math.random() > 0.5) {
       xPos =
         Math.random() > 0.5
@@ -33,6 +35,8 @@ class EnemyCreator {
       return [xPos, yPos];
     }
 
+    // xPos -> spawn enemy with random X position
+    // yPos -> spawn enemy either at the top or bottom
     xPos = Math.floor(
       Math.random() * window.gameState["entities"].mainCanvas.width
     );
