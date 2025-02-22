@@ -6,7 +6,6 @@ import { GameManager } from "./GameManager.js";
 import { GameAudio } from "./GameAudio.js";
 import { Scoreboard } from "./Scoreboard.js";
 import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
-import { getHighscore } from "../utils/helpers.js";
 
 class Game {
   animation = {};
@@ -26,7 +25,7 @@ class Game {
 
   constructor() {
     const hs = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-    hs.textContent = getHighscore();
+    hs.textContent = Scoreboard.retrieveHighscore();
 
     this.screens.start.addEventListener(
       "click",
