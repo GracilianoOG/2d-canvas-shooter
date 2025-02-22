@@ -39,16 +39,6 @@ class GameManager {
     }
   }
 
-  #endGame() {
-    if (!this.#isGameOver()) {
-      return;
-    }
-
-    window.gameState["entities"].gameAudio.playSound("explosion");
-    window.gameState["entities"].player.kill();
-    this.#prepareRestart(2.4);
-  }
-
   #isGameOver() {
     const enemiesLength = window.gameState["entities"].enemies.length;
     for (
@@ -61,10 +51,12 @@ class GameManager {
           window.gameState["entities"].enemies[i]
         )
       ) {
-        return true;
+        window.gameState["entities"].gameAudio.playSound("explosion");
+        window.gameState["entities"].player.kill();
+        this.#prepareRestart(2.4);
+        return;
       }
     }
-    return false;
   }
 
   #prepareRestart(delayInSeconds) {
@@ -99,7 +91,7 @@ class GameManager {
   update() {
     this.#updateEntityLists();
     this.#destroyBullet();
-    this.#endGame();
+    this.#isGameOver();
   }
 }
 
