@@ -1,4 +1,5 @@
 import { COLORS } from "../utils/constants.js";
+import { Particle } from "./Particle.js";
 import { Projectile } from "./Projectile.js";
 
 class Enemy extends Projectile {
@@ -69,13 +70,19 @@ class Enemy extends Projectile {
       this.die();
       return;
     }
+    this.bleed(8);
     this.speed = -1;
     this.#maxSpeed *= 1.25;
     this.dimensions = { radius: this.dimensions.radius * 0.9 };
     this.color = COLORS.WHITE;
   }
 
+  bleed(amount) {
+    Particle.createParticles(this.x, this.y, 8, 5, this.baseColor, amount);
+  }
+
   die() {
+    this.bleed(16);
     this.toDestroy = true;
   }
 
