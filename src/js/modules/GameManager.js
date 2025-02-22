@@ -43,7 +43,6 @@ class GameManager {
           window.gameState["entities"].enemies[i]
         )
       ) {
-        window.gameState["entities"].gameAudio.playSound("explosion");
         window.gameState["entities"].player.kill();
         this.#prepareRestart(2.4);
         return;
