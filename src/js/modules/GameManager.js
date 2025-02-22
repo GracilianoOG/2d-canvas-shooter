@@ -55,7 +55,7 @@ class GameManager {
     setTimeout(() => {
       cancelAnimationFrame(window.gameState["entities"].animation.id);
       Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
-      window.gameState["entities"].screens.restart.style.display = "flex";
+      window.gameState["entities"].screens.restart.classList.remove("hide");
       this.#cleanUpEntities();
     }, delayInSeconds * 1000);
   }
