@@ -8,38 +8,22 @@ import { Scoreboard } from "./Scoreboard.js";
 import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
 
 class Game {
-  animation = {};
-
-  screens = {
-    start: document.querySelector(CSS_CLASSES.GAME_START),
-    restart: document.querySelector(CSS_CLASSES.GAME_OVER),
-  };
-
-  mainCanvas = new Canvas(
-    window.innerWidth,
-    window.innerHeight,
-    document.querySelector(CSS_IDS.CONTAINER)
-  );
-
-  ctx = this.mainCanvas.context;
-
   constructor() {
-    const hs = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-    hs.textContent = Scoreboard.retrieveHighscore();
+    this.animation = {};
 
-    this.screens.start.addEventListener(
-      "click",
-      e => {
-        e.stopPropagation();
-        this.screens.start.style.display = "none";
-        this.init();
-      },
-      { once: true }
+    this.screens = {
+      restart: document.querySelector(CSS_CLASSES.GAME_OVER),
+    };
+
+    this.mainCanvas = new Canvas(
+      window.innerWidth,
+      window.innerHeight,
+      document.querySelector(CSS_IDS.CONTAINER)
     );
 
     this.screens.restart.lastElementChild.addEventListener("click", e => {
       e.stopPropagation();
-      this.screens.restart.style.display = "none";
+      this.screens.restart.classList.add("hide");
       this.restart();
     });
 
@@ -57,14 +41,19 @@ class Game {
   };
 
   updateCanvas() {
-    this.ctx.fillStyle = COLORS.TRANSPARENT_BLACK;
-    this.ctx.fillRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
+    this.mainCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
+    this.mainCanvas.context.fillRect(
+      0,
+      0,
+      this.mainCanvas.width,
+      this.mainCanvas.height
+    );
   }
 
   init() {
     // GameState
-    window.gameState = new GameState({ mainCanvas: this.mainCanvas });
-    window.gameState.addEntities({
+    window.gameState = new GameState({
+      mainCanvas: this.mainCanvas,
       player: new Player(
         this.mainCanvas.width / 2,
         this.mainCanvas.height / 2,
@@ -89,7 +78,12 @@ class Game {
   }
 
   restart() {
-    this.ctx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
+    this.mainCanvas.context.clearRect(
+      0,
+      0,
+      this.mainCanvas.width,
+      this.mainCanvas.height
+    );
     window.gameState["entities"].scoreboard.score = 0;
     window.gameState["entities"].player.x = this.mainCanvas.width / 2;
     window.gameState["entities"].player.y = this.mainCanvas.height / 2;
