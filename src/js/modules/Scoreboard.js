@@ -1,10 +1,26 @@
-import { CSS_CLASSES } from "../utils/constants.js";
-import { formatScore } from "../utils/helpers.js";
+import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
 
 class Scoreboard {
   #score = 0;
   #length = 8;
   #scoreboard;
+
+  static retrieveHighscore(isFormatted = true) {
+    const highscore = localStorage.getItem(STORAGE.KEY_POINTS) || "";
+    return isFormatted ? Scoreboard.formatScore(highscore) : highscore;
+  }
+
+  static storeHighscore(score) {
+    const KEY = STORAGE.KEY_POINTS;
+    const highscore = parseInt(localStorage.getItem(KEY) || 0);
+    if (score > highscore) {
+      localStorage.setItem(KEY, score);
+    }
+  }
+
+  static formatScore(string, length = 8) {
+    return string.padStart(length, "0");
+  }
 
   constructor(parent) {
     this.#scoreboard = document.createElement("h2");
@@ -23,7 +39,10 @@ class Scoreboard {
   }
 
   #showScore(score) {
-    this.#scoreboard.textContent = formatScore(score.toString(), this.#length);
+    this.#scoreboard.textContent = Scoreboard.formatScore(
+      score.toString(),
+      this.#length
+    );
   }
 }
 
