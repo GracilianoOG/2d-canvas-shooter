@@ -24,6 +24,7 @@ class Player extends Entity {
 
   kill() {
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
+    window.gameState["entities"].gameAudio.playSound("explosion");
     this.isDead = true;
   }
 
