@@ -1,5 +1,6 @@
 import { Circle } from "./Circle.js";
 import { Entity } from "./Entity.js";
+import { Particle } from "./Particle.js";
 import { PlayerController } from "./PlayerController.js";
 import { Weapon } from "./Weapon.js";
 
@@ -19,6 +20,11 @@ class Player extends Entity {
 
   set isDead(isDead) {
     this.#isDead = isDead;
+  }
+
+  kill() {
+    Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
+    this.isDead = true;
   }
 
   update() {
