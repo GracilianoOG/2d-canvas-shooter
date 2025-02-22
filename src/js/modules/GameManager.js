@@ -1,10 +1,10 @@
-import { notifyScoreEarned } from "../utils/helpers.js";
 import { Scoreboard } from "./Scoreboard.js";
+import { StatusIndicator } from "./StatusIndicator.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
     window.gameState["entities"].scoreboard.score += scoreAmount;
-    notifyScoreEarned(enemy.x, enemy.y, scoreAmount);
+    StatusIndicator.create(enemy.x, enemy.y, scoreAmount, document.body);
   }
 
   #hasBulletHitEnemy(bullet) {
