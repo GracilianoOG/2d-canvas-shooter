@@ -5,13 +5,11 @@ class Particle extends Projectile {
   #randomizer = Math.random();
 
   static createParticles(x, y, size, speed, color, amount) {
-    const particles = [];
-
-    for(let i = 0; i < amount; i++) {
-      particles.push(new Particle(x, y, size, speed, color));
+    for (let i = 0; i < amount; i++) {
+      window.gameState["entities"].particles.push(
+        new Particle(x, y, size, speed, color)
+      );
     }
-
-    return particles;
   }
 
   constructor(x, y, radius, speed, color) {
@@ -19,9 +17,9 @@ class Particle extends Projectile {
   }
 
   #shrink() {
-    if(!this.toDestroy) {
-      const shrunkRadius = this.dimensions.radius - .2;
-      if(shrunkRadius > 0) {
+    if (!this.toDestroy) {
+      const shrunkRadius = this.dimensions.radius - 0.2;
+      if (shrunkRadius > 0) {
         this.dimensions = { radius: shrunkRadius };
         return;
       }
