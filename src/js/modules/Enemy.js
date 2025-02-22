@@ -72,6 +72,7 @@ class Enemy extends Projectile {
     }
     this.bleed(8);
     this.createDamageEffect();
+    window.gameState["entities"].gameAudio.playSound("hit");
     return this.#score.hit;
   }
 
@@ -88,6 +89,7 @@ class Enemy extends Projectile {
 
   die() {
     this.bleed(16);
+    window.gameState["entities"].gameAudio.playSound("explosion");
     this.toDestroy = true;
   }
 
