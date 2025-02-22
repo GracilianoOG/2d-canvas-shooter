@@ -2,15 +2,11 @@ import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
 import { Particle } from "./Particle.js";
 
 class GameManager {
-  constructor() {}
-
   #damageEnemy(enemy) {
     const { x, y, baseColor, health } = enemy;
     const isEnemyAlive = health > 0;
     const scoreGiven = isEnemyAlive ? enemy.score.hit : enemy.score.death;
-    window.gameState["entities"].particles.push(
-      ...Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16)
-    );
+    Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16);
     this.#countScore(scoreGiven);
     notifyScoreEarned(x, y, scoreGiven);
     this.#playStatusSound(isEnemyAlive);
@@ -64,9 +60,7 @@ class GameManager {
     } = window.gameState["entities"].player;
     window.gameState["entities"].player.isDead = true;
     window.gameState["entities"].gameAudio.playSound("explosion");
-    window.gameState["entities"].particles.push(
-      ...Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16)
-    );
+    Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16);
     this.#prepareRestart(2.4);
   }
 
