@@ -1,17 +1,9 @@
 import { notifyScoreEarned, storeHighscore } from "../utils/helpers.js";
-import { Particle } from "./Particle.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
-    this.#playStatusSound(enemy.health > 0);
     window.gameState["entities"].scoreboard.score += scoreAmount;
     notifyScoreEarned(enemy.x, enemy.y, scoreAmount);
-  }
-
-  #playStatusSound(isEnemyAlive) {
-    window.gameState["entities"].gameAudio.playSound(
-      isEnemyAlive ? "hit" : "explosion"
-    );
   }
 
   #hasBulletHitEnemy(bullet) {
