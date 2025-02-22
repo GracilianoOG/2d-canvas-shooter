@@ -44,14 +44,8 @@ class GameManager {
       return;
     }
 
-    const {
-      x: playerX,
-      y: playerY,
-      color: playerColor,
-    } = window.gameState["entities"].player;
-    window.gameState["entities"].player.isDead = true;
     window.gameState["entities"].gameAudio.playSound("explosion");
-    Particle.createParticles(playerX, playerY, 8, 5, playerColor, 16);
+    window.gameState["entities"].player.kill();
     this.#prepareRestart(2.4);
   }
 
