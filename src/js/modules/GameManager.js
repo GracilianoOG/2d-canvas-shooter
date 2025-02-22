@@ -3,10 +3,9 @@ import { Particle } from "./Particle.js";
 
 class GameManager {
   #damageEnemy(enemy) {
-    const { x, y, baseColor, health } = enemy;
+    const { x, y, health } = enemy;
     const isEnemyAlive = health > 0;
     const scoreGiven = isEnemyAlive ? enemy.score.hit : enemy.score.death;
-    Particle.createParticles(x, y, 8, 5, baseColor, isEnemyAlive ? 8 : 16);
     this.#countScore(scoreGiven);
     notifyScoreEarned(x, y, scoreGiven);
     this.#playStatusSound(isEnemyAlive);
