@@ -17,13 +17,13 @@ class Game {
 
     this.mainCanvas = new Canvas(800, 600);
     this.trailsCanvas = new Canvas(
-      this.mainCanvas.canvas.width,
-      this.mainCanvas.canvas.height
+      this.mainCanvas.width,
+      this.mainCanvas.height
     );
 
     this.realCanvas = new Canvas(
-      this.mainCanvas.canvas.width,
-      this.mainCanvas.canvas.height,
+      this.mainCanvas.width,
+      this.mainCanvas.height,
       document.querySelector(CSS_IDS.CONTAINER)
     );
 
@@ -39,15 +39,14 @@ class Game {
   #resizeCanvas() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const canvasRatio =
-      this.mainCanvas.canvas.height / this.mainCanvas.canvas.width;
+    const canvasRatio = this.mainCanvas.height / this.mainCanvas.width;
 
     if (screenHeight / screenWidth > canvasRatio) {
-      this.realCanvas.canvas.width = screenWidth;
-      this.realCanvas.canvas.height = screenWidth * canvasRatio;
+      this.realCanvas.width = screenWidth;
+      this.realCanvas.height = screenWidth * canvasRatio;
     } else {
-      this.realCanvas.canvas.height = screenHeight;
-      this.realCanvas.canvas.width = screenHeight / canvasRatio;
+      this.realCanvas.height = screenHeight;
+      this.realCanvas.width = screenHeight / canvasRatio;
     }
   }
 
@@ -76,8 +75,8 @@ class Game {
     this.realCanvas.context.clearRect(
       0,
       0,
-      this.realCanvas.canvas.width,
-      this.realCanvas.canvas.height
+      this.realCanvas.width,
+      this.realCanvas.height
     );
 
     // Draw buffer canvas on real canvas (all game objects)
@@ -85,16 +84,16 @@ class Game {
       this.mainCanvas.canvas,
       0,
       0,
-      this.realCanvas.canvas.width,
-      this.realCanvas.canvas.height
+      this.realCanvas.width,
+      this.realCanvas.height
     );
 
     // Clear buffer canvas so it won't draw a messed up image next frame
     this.mainCanvas.context.clearRect(
       0,
       0,
-      this.mainCanvas.canvas.width,
-      this.mainCanvas.canvas.height
+      this.mainCanvas.width,
+      this.mainCanvas.height
     );
   }
 
