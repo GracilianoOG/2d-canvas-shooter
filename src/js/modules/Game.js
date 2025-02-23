@@ -34,9 +34,9 @@ class Game {
   }
 
   animate = () => {
-    this.animation.id = requestAnimationFrame(this.animate);
     this.updateCanvas();
     this.gameManager.update();
+    this.animation.id = requestAnimationFrame(this.animate);
   };
 
   updateCanvas() {
@@ -73,7 +73,7 @@ class Game {
     // General & Animation
     this.enemyCreator.startEnemySpawn(0.4);
     window.gameState["entities"].gameAudio.playMusic("battle");
-    this.animate();
+    this.animation.id = requestAnimationFrame(this.animate);
   }
 
   restart() {
@@ -88,7 +88,7 @@ class Game {
     window.gameState["entities"].player.y = this.mainCanvas.height / 2;
     window.gameState["entities"].player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
-    this.animate();
+    this.animation.id = requestAnimationFrame(this.animate);
   }
 }
 
