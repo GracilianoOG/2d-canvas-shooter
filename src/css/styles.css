@@ -1,5 +1,6 @@
 body {
-  background-color: var(--color-body-bg);
+  /* background-color: var(--color-body-bg); */
+  background-color: rgb(32, 32, 32);
   color: var(--color-body-text);
   overflow: hidden;
 }
@@ -10,14 +11,11 @@ button {
   font-family: var(--font-primary);
 }
 
-#game-container {
-  position: relative;
-}
-
 canvas {
-  left: 0;
+  left: 50%;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .screen {
