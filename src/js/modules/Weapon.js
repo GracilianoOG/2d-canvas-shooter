@@ -9,8 +9,14 @@ class Weapon {
 
   #calcBulletPath({ clientX, clientY }) {
     const { x, y } = this.#player;
-    const dirX = clientX - x;
-    const dirY = clientY - y;
+    const scaleXFactor =
+      window.gameState["entities"].realCanvas.canvas.width /
+      window.gameState["entities"].mainCanvas.canvas.width;
+    const scaleYFactor =
+      window.gameState["entities"].realCanvas.canvas.height /
+      window.gameState["entities"].mainCanvas.canvas.height;
+    const dirX = clientX / scaleXFactor - x;
+    const dirY = clientY / scaleYFactor - y;
     const angle = Math.atan2(dirY, dirX);
 
     return { x, y, angle };
