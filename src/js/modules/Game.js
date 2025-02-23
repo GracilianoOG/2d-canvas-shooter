@@ -15,7 +15,10 @@ class Game {
       restart: document.querySelector(CSS_CLASSES.GAME_OVER),
     };
 
-    this.mainCanvas = new Canvas(
+    this.mainCanvas = new Canvas(window.innerWidth, window.innerHeight);
+    this.trailsCanvas = new Canvas(window.innerWidth, window.innerHeight);
+
+    this.realCanvas = new Canvas(
       window.innerWidth,
       window.innerHeight,
       document.querySelector(CSS_IDS.CONTAINER)
@@ -28,24 +31,55 @@ class Game {
     });
 
     window.addEventListener("resize", () => {
-      this.mainCanvas.canvas.width = window.innerWidth;
-      this.mainCanvas.canvas.height = window.innerHeight;
+      this.realCanvas.canvas.width = window.innerWidth;
+      this.realCanvas.canvas.height = window.innerHeight;
     });
   }
 
   animate = () => {
     this.updateCanvas();
+    // Draw background
+    this.mainCanvas.context.drawImage(this.trailsCanvas.canvas, 0, 0);
+
+    // Draw objects
     this.gameManager.update();
     this.animation.id = requestAnimationFrame(this.animate);
   };
 
   updateCanvas() {
-    this.mainCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
-    this.mainCanvas.context.fillRect(
+    // Create trail effect
+    this.trailsCanvas.context.drawImage(this.mainCanvas.canvas, 0, 0);
+    this.trailsCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
+    this.trailsCanvas.context.fillRect(
       0,
       0,
-      this.mainCanvas.width,
-      this.mainCanvas.height
+      this.trailsCanvas.width,
+      this.trailsCanvas.height
+    );
+
+    // Clear real canvas
+    this.realCanvas.context.clearRect(
+      0,
+      0,
+      this.realCanvas.canvas.width,
+      this.realCanvas.canvas.height
+    );
+
+    // Draw buffer canvas on real canvas (all game objects)
+    this.realCanvas.context.drawImage(
+      this.mainCanvas.canvas,
+      0,
+      0,
+      this.realCanvas.canvas.width,
+      this.realCanvas.canvas.height
+    );
+
+    // Clear buffer canvas so it won't draw a messed up image next frame
+    this.mainCanvas.context.clearRect(
+      0,
+      0,
+      this.mainCanvas.canvas.width,
+      this.mainCanvas.canvas.height
     );
   }
 
@@ -53,6 +87,7 @@ class Game {
     // GameState
     window.gameState = new GameState({
       mainCanvas: this.mainCanvas,
+      realCanvas: this.realCanvas,
       player: new Player(
         this.mainCanvas.width / 2,
         this.mainCanvas.height / 2,
@@ -71,7 +106,7 @@ class Game {
     this.gameManager = new GameManager();
 
     // General & Animation
-    this.enemyCreator.startEnemySpawn(0.4);
+    this.enemyCreator.startEnemySpawn(1000.4);
     window.gameState["entities"].gameAudio.playMusic("battle");
     this.animation.id = requestAnimationFrame(this.animate);
   }
