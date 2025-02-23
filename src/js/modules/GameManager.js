@@ -1,14 +1,11 @@
 import { Scoreboard } from "./Scoreboard.js";
-import { StatusIndicator } from "./StatusIndicator.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
-    const randomInt = (min, max) =>
-      Math.floor(Math.random() * (max - min) + min);
-    const w = window.innerWidth / 2 + randomInt(-50, 50);
-    const h = 60 + randomInt(1, 10);
-    window.gameState["entities"].scoreboard.score += scoreAmount;
-    StatusIndicator.create(w, h, scoreAmount, document.body, enemy.baseColor);
+    window.gameState["entities"].scoreboard.createIndicator(
+      scoreAmount,
+      enemy.baseColor
+    );
   }
 
   #hasBulletHitEnemy(bullet) {
