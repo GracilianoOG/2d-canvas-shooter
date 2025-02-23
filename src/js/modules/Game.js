@@ -119,7 +119,7 @@ class Game {
     this.gameManager = new GameManager();
 
     // General & Animation
-    this.enemyCreator.startEnemySpawn(2.4);
+    this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
     this.animation.id = requestAnimationFrame(this.animate);
   }
