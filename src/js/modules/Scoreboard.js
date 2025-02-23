@@ -1,9 +1,10 @@
 import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
+import { StatusIndicator } from "./StatusIndicator.js";
 
 class Scoreboard {
   #score = 0;
   #length = 8;
-  #scoreboard;
+  #scoreboardEl;
 
   static retrieveHighscore(isFormatted = true) {
     const highscore = localStorage.getItem(STORAGE.KEY_POINTS) || "";
@@ -23,10 +24,10 @@ class Scoreboard {
   }
 
   constructor(parent) {
-    this.#scoreboard = document.createElement("h2");
-    this.#scoreboard.classList.add(CSS_CLASSES.SCOREBOARD);
+    this.#scoreboardEl = document.createElement("h2");
+    this.#scoreboardEl.classList.add(CSS_CLASSES.SCOREBOARD);
     this.#showScore(this.#score.toString());
-    parent.prepend(this.#scoreboard);
+    parent.prepend(this.#scoreboardEl);
   }
 
   get score() {
@@ -38,8 +39,18 @@ class Scoreboard {
     this.#showScore(score);
   }
 
+  createIndicator(score, color) {
+    const { width, height } = this.#scoreboardEl.getBoundingClientRect();
+    const randomInt = (min, max) =>
+      Math.floor(Math.random() * (max - min) + min);
+    const xPos = width / 2 + randomInt(-50, 50);
+    const yPos = height * 3 + randomInt(1, 10);
+    this.score += score;
+    StatusIndicator.create(xPos, yPos, score, document.body, color);
+  }
+
   #showScore(score) {
-    this.#scoreboard.textContent = Scoreboard.formatScore(
+    this.#scoreboardEl.textContent = Scoreboard.formatScore(
       score.toString(),
       this.#length
     );
