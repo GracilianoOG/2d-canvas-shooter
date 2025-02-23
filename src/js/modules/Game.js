@@ -15,12 +15,15 @@ class Game {
       restart: document.querySelector(CSS_CLASSES.GAME_OVER),
     };
 
-    this.mainCanvas = new Canvas(window.innerWidth, window.innerHeight);
-    this.trailsCanvas = new Canvas(window.innerWidth, window.innerHeight);
+    this.mainCanvas = new Canvas(800, 600);
+    this.trailsCanvas = new Canvas(
+      this.mainCanvas.canvas.width,
+      this.mainCanvas.canvas.height
+    );
 
     this.realCanvas = new Canvas(
-      window.innerWidth,
-      window.innerHeight,
+      this.mainCanvas.canvas.width,
+      this.mainCanvas.canvas.height,
       document.querySelector(CSS_IDS.CONTAINER)
     );
 
@@ -31,8 +34,18 @@ class Game {
     });
 
     window.addEventListener("resize", () => {
-      this.realCanvas.canvas.width = window.innerWidth;
-      this.realCanvas.canvas.height = window.innerHeight;
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const canvasRatio =
+        this.mainCanvas.canvas.height / this.mainCanvas.canvas.width;
+
+      if (screenHeight / screenWidth > canvasRatio) {
+        this.realCanvas.canvas.width = screenWidth;
+        this.realCanvas.canvas.height = screenWidth * canvasRatio;
+      } else {
+        this.realCanvas.canvas.height = screenHeight;
+        this.realCanvas.canvas.width = screenHeight / canvasRatio;
+      }
     });
   }
 
@@ -106,7 +119,7 @@ class Game {
     this.gameManager = new GameManager();
 
     // General & Animation
-    this.enemyCreator.startEnemySpawn(1000.4);
+    this.enemyCreator.startEnemySpawn(2.4);
     window.gameState["entities"].gameAudio.playMusic("battle");
     this.animation.id = requestAnimationFrame(this.animate);
   }
