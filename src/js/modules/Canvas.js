@@ -1,13 +1,13 @@
 class Canvas {
   #canvas;
   #context;
-  
-  constructor(width, height, parent) {
+
+  constructor(width, height, parent = null) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
     this.#context = this.#canvas.getContext("2d");
-    parent.appendChild(this.#canvas);
+    if (parent) parent.appendChild(this.#canvas);
   }
 
   get width() {
