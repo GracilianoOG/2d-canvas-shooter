@@ -1,5 +1,5 @@
-import { Entity } from "./Entity.js";
-import { Scoreboard } from "./Scoreboard.js";
+import { Entity } from "../Entity.js";
+import { Scoreboard } from "../score/Scoreboard.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {

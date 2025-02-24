@@ -1,11 +1,11 @@
-import { Player } from "./Player.js";
-import { Canvas } from "./Canvas.js";
-import { GameState } from "./GameState.js";
-import { EnemyCreator } from "./EnemyCreator.js";
+import { Player } from "../player/Player.js";
+import { Canvas } from "../Canvas.js";
+import { GameState } from "../singletons/GameState.js";
+import { EnemyCreator } from "../enemy/EnemyCreator.js";
 import { GameManager } from "./GameManager.js";
-import { GameAudio } from "./GameAudio.js";
-import { Scoreboard } from "./Scoreboard.js";
-import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
+import { GameAudio } from "../audio/GameAudio.js";
+import { Scoreboard } from "../score/Scoreboard.js";
+import { CSS_CLASSES, CSS_IDS, COLORS } from "../../utils/constants.js";
 
 class Game {
   constructor() {

@@ -1,8 +1,8 @@
-import { Circle } from "./Circle.js";
-import { Entity } from "./Entity.js";
-import { Particle } from "./Particle.js";
+import { Circle } from "../Circle.js";
+import { Entity } from "../Entity.js";
+import { Particle } from "../Particle.js";
 import { PlayerController } from "./PlayerController.js";
-import { Weapon } from "./Weapon.js";
+import { Weapon } from "../arsenal/Weapon.js";
 
 class Player extends Entity {
   #isDead = false;

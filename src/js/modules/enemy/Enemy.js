@@ -1,6 +1,6 @@
-import { COLORS } from "../utils/constants.js";
-import { Particle } from "./Particle.js";
-import { Projectile } from "./Projectile.js";
+import { COLORS } from "../../utils/constants.js";
+import { Particle } from "../Particle.js";
+import { Projectile } from "../Projectile.js";
 
 class Enemy extends Projectile {
   #target;

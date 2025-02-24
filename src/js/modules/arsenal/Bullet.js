@@ -1,4 +1,4 @@
-import { Projectile } from "./Projectile.js";
+import { Projectile } from "../Projectile.js";
 
 class Bullet extends Projectile {
   #angle;
