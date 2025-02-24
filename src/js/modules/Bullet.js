@@ -40,9 +40,7 @@ class Bullet extends Projectile {
   update(ctx) {
     this.draw(ctx);
     this.#move();
-    if (!this.toDestroy && this.#isOutOfCanvas(ctx.canvas)) {
-      this.toDestroy = true;
-    }
+    if (this.#isOutOfCanvas(ctx.canvas)) this.destroy();
   }
 }
 
