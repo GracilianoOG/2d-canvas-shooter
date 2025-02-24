@@ -99,16 +99,17 @@ class Game {
 
   init() {
     // GameState
+    const player = new Player(
+      this.mainCanvas.width / 2,
+      this.mainCanvas.height / 2,
+      15,
+      6,
+      COLORS.WHITE
+    );
     window.gameState = new GameState({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
-      player: new Player(
-        this.mainCanvas.width / 2,
-        this.mainCanvas.height / 2,
-        15,
-        6,
-        COLORS.WHITE
-      ),
+      player: player,
       gameAudio: new GameAudio(),
       scoreboard: new Scoreboard(document.querySelector(CSS_IDS.CONTAINER)),
       screens: this.screens,
