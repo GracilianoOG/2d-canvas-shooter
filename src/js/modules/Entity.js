@@ -1,12 +1,17 @@
 class Entity {
   #shape;
   #speed;
+  #type;
   static instances = [];
 
   constructor(shape) {
     this.#shape = shape;
-    this.type = "Entity";
+    this.#type = this.constructor.name;
     Entity.instances.push(this);
+  }
+
+  get type() {
+    return this.#type;
   }
 
   get shape() {
