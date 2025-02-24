@@ -1,5 +1,5 @@
-import { Game } from "./modules/game/Game.js";
-import { Scoreboard } from "./modules/score/Scoreboard.js";
+import { Game } from "./game/Game.js";
+import { Scoreboard } from "./score/Scoreboard.js";
 import { CSS_CLASSES } from "./utils/constants.js";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);

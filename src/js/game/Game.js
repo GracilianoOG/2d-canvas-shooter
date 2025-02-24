@@ -5,7 +5,7 @@ import { EnemyCreator } from "../enemy/EnemyCreator.js";
 import { GameManager } from "./GameManager.js";
 import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
-import { CSS_CLASSES, CSS_IDS, COLORS } from "../../utils/constants.js";
+import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
 
 class Game {
   constructor() {

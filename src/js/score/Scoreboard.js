@@ -1,4 +1,4 @@
-import { CSS_CLASSES, STORAGE } from "../../utils/constants.js";
+import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
 import { StatusIndicator } from "../StatusIndicator.js";
 
 class Scoreboard {
