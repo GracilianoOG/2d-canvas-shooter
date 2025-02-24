@@ -6,9 +6,7 @@ class Particle extends Projectile {
 
   static createParticles(x, y, size, speed, color, amount) {
     for (let i = 0; i < amount; i++) {
-      window.gameState["entities"].particles.push(
-        new Particle(x, y, size, speed, color)
-      );
+      new Particle(x, y, size, speed, color);
     }
   }
 
@@ -17,15 +15,13 @@ class Particle extends Projectile {
   }
 
   #shrink() {
-    if (!this.toDestroy) {
-      const shrunkRadius = this.dimensions.radius - 0.2;
-      if (shrunkRadius > 0) {
-        this.dimensions = { radius: shrunkRadius };
-        return;
-      }
-      this.toDestroy = true;
-      this.dimensions = { radius: 0 };
+    const shrunkRadius = this.dimensions.radius - 0.2;
+    if (shrunkRadius > 0) {
+      this.dimensions = { radius: shrunkRadius };
+      return;
     }
+    this.dimensions = { radius: 0 };
+    this.destroy();
   }
 
   #move() {
