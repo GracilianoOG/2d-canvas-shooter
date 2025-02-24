@@ -1,3 +1,4 @@
+import { Entity } from "./Entity.js";
 import { Scoreboard } from "./Scoreboard.js";
 
 class GameManager {
@@ -9,12 +10,14 @@ class GameManager {
   }
 
   #hasBulletHitEnemy(bullet) {
-    const enemiesLength = window.gameState["entities"].enemies.length;
+    const enemiesLength = Entity.instances.length;
 
     for (let i = 0; i < enemiesLength; i++) {
-      const enemy = window.gameState["entities"].enemies[i];
+      const enemy = Entity.instances[i];
 
-      if (!bullet.toDestroy && bullet.collidedWith(enemy)) {
+      if (enemy.type !== "Enemy") continue;
+
+      if (bullet.collidedWith(enemy)) {
         this.#countScore(enemy, enemy.takeDamage(bullet.damage));
         return true;
       }
@@ -23,28 +26,26 @@ class GameManager {
   }
 
   #destroyBullet() {
-    const bulletsLength = window.gameState["entities"].bullets.length;
+    const bulletsLength = Entity.instances.length;
 
     for (let i = 0; i < bulletsLength; i++) {
-      const bullet = window.gameState["entities"].bullets[i];
+      const bullet = Entity.instances[i];
+      if (bullet.type !== "Bullet") continue;
       if (this.#hasBulletHitEnemy(bullet)) {
-        bullet.toDestroy = true;
+        bullet.destroy();
       }
     }
   }
 
   #isGameOver() {
-    const enemiesLength = window.gameState["entities"].enemies.length;
-    for (
-      let i = 0;
-      !window.gameState["entities"].player.isDead && i < enemiesLength;
-      i++
-    ) {
-      if (
-        window.gameState["entities"].player.collidedWith(
-          window.gameState["entities"].enemies[i]
-        )
-      ) {
+    const enemiesLength = Entity.instances.length;
+    const isPlayer = window.gameState["entities"].player.isDead;
+    for (let i = 0; !isPlayer && i < enemiesLength; i++) {
+      const enemy = Entity.instances[i];
+
+      if (enemy.type !== "Enemy") continue;
+
+      if (window.gameState["entities"].player.collidedWith(enemy)) {
         window.gameState["entities"].player.kill();
         this.#prepareRestart(2.4);
         return;
@@ -57,35 +58,21 @@ class GameManager {
       cancelAnimationFrame(window.gameState["entities"].animation.id);
       Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
       window.gameState["entities"].screens.restart.classList.remove("hide");
-      this.#cleanUpEntities();
+      Entity.instances = [window.gameState["entities"].player];
     }, delayInSeconds * 1000);
-  }
-
-  #cleanUpEntities() {
-    window.gameState["entities"].enemies.length = 0;
-    window.gameState["entities"].particles.length = 0;
-    window.gameState["entities"].bullets.length = 0;
-  }
-
-  #updateEntityLists() {
-    this.#updateEntities(window.gameState["entities"].enemies);
-    this.#updateEntities(window.gameState["entities"].particles);
-    this.#updateEntities(window.gameState["entities"].bullets);
   }
 
   #updateEntities(entities) {
     for (let i = entities.length - 1; i >= 0; i--) {
-      const elem = entities[i];
-      elem.update(window.gameState["entities"].mainCanvas.context);
-      elem.toDestroy && entities.splice(i, 1);
+      entities[i].update(window.gameState["entities"].mainCanvas.context);
     }
   }
 
   update() {
-    this.#updateEntityLists();
+    this.#updateEntities(Entity.instances);
     this.#destroyBullet();
     this.#isGameOver();
-    window.gameState.entities.player.update();
+    console.log(Entity.instances);
   }
 }
 
