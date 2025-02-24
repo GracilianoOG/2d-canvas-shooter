@@ -41,12 +41,10 @@ class EnemyCreator {
   #createEnemy() {
     const randomEnemy = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(randomEnemy.radius);
-    window.gameState["entities"].enemies.push(
-      new Enemy(
-        ...coords,
-        ...Object.values(randomEnemy),
-        window.gameState["entities"].player
-      )
+    new Enemy(
+      ...coords,
+      ...Object.values(randomEnemy),
+      window.gameState["entities"].player
     );
   }
 
