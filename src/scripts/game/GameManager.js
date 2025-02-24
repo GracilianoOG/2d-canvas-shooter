@@ -10,29 +10,35 @@ class GameManager {
   }
 
   #updateEntityInteractions() {
-    const length = Entity.instances.length;
     const isPlayerDead = window.gameState["entities"].player.isDead;
-
-    // If player is dead, abort
     if (isPlayerDead) return;
+    this.#updatePlayerInteraction();
+    this.#updateBulletInteraction();
+  }
 
-    for (let i = 0; i < length; i++) {
-      const instance = Entity.instances[i];
+  #updatePlayerInteraction() {
+    const enemies = Entity.instances.filter(
+      instance => instance.type === "Enemy"
+    );
+    const player = window.gameState["entities"].player;
 
-      // Check if enemy touched (killed) player
-      if (instance.type === "Enemy") {
-        if (window.gameState["entities"].player.collidedWith(instance)) {
-          window.gameState["entities"].player.kill();
-          this.#prepareRestart(2.4);
-          return;
-        }
+    for (const enemy of enemies) {
+      if (player.collidedWith(enemy)) {
+        player.kill();
+        this.#prepareRestart(2.4);
+        return;
       }
+    }
+  }
 
-      // Check if bullet touched enemy
-      if (instance.type === "Bullet") {
-        if (this.#hasBulletHitEnemy(instance)) {
-          instance.destroy();
-        }
+  #updateBulletInteraction() {
+    const bullets = Entity.instances.filter(
+      instance => instance.type === "Bullet"
+    );
+
+    for (const bullet of bullets) {
+      if (this.#hasBulletHitEnemy(bullet)) {
+        bullet.destroy();
       }
     }
   }
