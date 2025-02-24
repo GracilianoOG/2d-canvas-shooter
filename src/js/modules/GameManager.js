@@ -9,13 +9,42 @@ class GameManager {
     );
   }
 
+  #updateEntityInteractions() {
+    const length = Entity.instances.length;
+    const isPlayerDead = window.gameState["entities"].player.isDead;
+
+    // If player is dead, abort
+    if (isPlayerDead) return;
+
+    for (let i = 0; i < length; i++) {
+      const instance = Entity.instances[i];
+
+      // Check if enemy touched (killed) player
+      if (instance.type === "Enemy") {
+        if (window.gameState["entities"].player.collidedWith(instance)) {
+          window.gameState["entities"].player.kill();
+          this.#prepareRestart(2.4);
+          return;
+        }
+      }
+
+      // Check if bullet touched enemy
+      if (instance.type === "Bullet") {
+        if (this.#hasBulletHitEnemy(instance)) {
+          instance.destroy();
+        }
+      }
+    }
+  }
+
   #hasBulletHitEnemy(bullet) {
-    const enemiesLength = Entity.instances.length;
+    const enemies = Entity.instances.filter(
+      instance => instance.type === "Enemy"
+    );
+    const enemiesLength = enemies.length;
 
     for (let i = 0; i < enemiesLength; i++) {
-      const enemy = Entity.instances[i];
-
-      if (enemy.type !== "Enemy") continue;
+      const enemy = enemies[i];
 
       if (bullet.collidedWith(enemy)) {
         this.#countScore(enemy, enemy.takeDamage(bullet.damage));
@@ -23,34 +52,6 @@ class GameManager {
       }
     }
     return false;
-  }
-
-  #destroyBullet() {
-    const bulletsLength = Entity.instances.length;
-
-    for (let i = 0; i < bulletsLength; i++) {
-      const bullet = Entity.instances[i];
-      if (bullet.type !== "Bullet") continue;
-      if (this.#hasBulletHitEnemy(bullet)) {
-        bullet.destroy();
-      }
-    }
-  }
-
-  #isGameOver() {
-    const enemiesLength = Entity.instances.length;
-    const isPlayer = window.gameState["entities"].player.isDead;
-    for (let i = 0; !isPlayer && i < enemiesLength; i++) {
-      const enemy = Entity.instances[i];
-
-      if (enemy.type !== "Enemy") continue;
-
-      if (window.gameState["entities"].player.collidedWith(enemy)) {
-        window.gameState["entities"].player.kill();
-        this.#prepareRestart(2.4);
-        return;
-      }
-    }
   }
 
   #prepareRestart(delayInSeconds) {
@@ -70,8 +71,7 @@ class GameManager {
 
   update() {
     this.#updateEntities(Entity.instances);
-    this.#destroyBullet();
-    this.#isGameOver();
+    this.#updateEntityInteractions();
     console.log(Entity.instances);
   }
 }
