@@ -26,8 +26,7 @@ class Weapon {
 
   shoot(e) {
     const { x, y, angle } = this.#calcBulletPath(e);
-    const bullet = new Bullet(x, y, 5, 20, angle, this.#player.color);
-    window.gameState["entities"].bullets.push(bullet);
+    new Bullet(x, y, 5, 20, angle, this.#player.color);
     window.gameState["entities"].gameAudio.playSound("shot");
   }
 }
