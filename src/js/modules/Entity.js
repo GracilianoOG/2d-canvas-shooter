@@ -1,9 +1,12 @@
 class Entity {
   #shape;
   #speed;
+  static instances = [];
 
   constructor(shape) {
     this.#shape = shape;
+    this.type = "Entity";
+    Entity.instances.push(this);
   }
 
   get shape() {
@@ -50,6 +53,12 @@ class Entity {
     this.#speed = speed;
   }
 
+  destroy() {
+    Entity.instances = Entity.instances.filter(instance => {
+      return instance !== this;
+    });
+  }
+
   collidedWith(object) {
     return this.shape.collidedWith(object.shape);
   }
@@ -59,4 +68,4 @@ class Entity {
   }
 }
 
-export { Entity }
+export { Entity };
