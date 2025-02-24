@@ -10,9 +10,6 @@ class GameState {
 
     this.#entities = {
       ...entities,
-      bullets: [],
-      enemies: [],
-      particles: [],
     };
   }
 
