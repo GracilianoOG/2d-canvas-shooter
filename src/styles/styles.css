@@ -1,3 +1,67 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+:root {
+  /* Base colors */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Element colors */
+  --color-body-bg: var(--color-black);
+  --color-body-text: var(--color-white);
+
+  --color-restart-screen-bg: var(--color-white);
+  --color-restart-title-text: var(--color-black);
+  --color-restart-btn-bg: var(--color-white);
+  --color-restart-btn-border: var(--color-black);
+
+  /* Fonts */
+  --font-primary: "Press Start 2P", sans-serif;
+}
+
+/* Font Config */
+@font-face {
+  font-display: swap;
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+
+/* Animations */
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scoring {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -260%);
+    opacity: 0;
+  }
+}
+
+/* General Styles */
 body {
   background-color: rgb(25, 25, 25);
   color: var(--color-body-text);
