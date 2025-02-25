@@ -1,3 +1,5 @@
+import { InputHandler } from "../InputHandler";
+
 class PlayerController {
   #keys = {};
   #player;
@@ -5,15 +7,15 @@ class PlayerController {
   constructor(player) {
     this.#player = player;
 
-    document.addEventListener("keydown", ({ code }) => {
+    InputHandler.create("keydown", ({ code }) => {
       this.#keys[code] = true;
     });
 
-    document.addEventListener("keyup", ({ code }) => {
+    InputHandler.create("keyup", ({ code }) => {
       this.#keys[code] = false;
     });
 
-    document.addEventListener("click", event => {
+    InputHandler.create("click", event => {
       if (this.#player.isDead) return;
       this.#player.weapon.shoot(event);
     });
