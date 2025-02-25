@@ -4,8 +4,8 @@ class InputHandler {
   static create(
     type,
     action,
-    target = document,
     pausable = true,
+    target = document,
     group = "game"
   ) {
     const handler = pausable
