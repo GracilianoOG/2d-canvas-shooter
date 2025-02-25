@@ -35,8 +35,6 @@ class Game {
     });
 
     window.addEventListener("resize", () => this.#resizeCanvas());
-
-    document.addEventListener("keydown", e => e.key === "p" && this.pause());
   }
 
   pause() {
@@ -142,6 +140,7 @@ class Game {
     this.#resizeCanvas();
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
+    document.addEventListener("keydown", e => e.key === "p" && this.pause());
     this.animation.id = requestAnimationFrame(this.animate);
   }
 
