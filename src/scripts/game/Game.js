@@ -34,7 +34,9 @@ class Game {
       this.restart();
     });
 
-    window.addEventListener("resize", () => this.#resizeCanvas());
+    window.addEventListener("resize", () =>
+      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
+    );
   }
 
   pause() {
@@ -49,20 +51,6 @@ class Game {
     this.isRunning = !this.isRunning;
     window.gameState["entities"].isRunning = this.isRunning;
     document.querySelector(".pause-screen").classList.toggle("hide");
-  }
-
-  #resizeCanvas() {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    const canvasRatio = this.mainCanvas.height / this.mainCanvas.width;
-
-    if (screenHeight / screenWidth > canvasRatio) {
-      this.realCanvas.width = screenWidth;
-      this.realCanvas.height = screenWidth * canvasRatio;
-    } else {
-      this.realCanvas.height = screenHeight;
-      this.realCanvas.width = screenHeight / canvasRatio;
-    }
   }
 
   animate = () => {
@@ -137,7 +125,7 @@ class Game {
     this.gameManager = new GameManager();
 
     // General & Animation
-    this.#resizeCanvas();
+    Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
     document.addEventListener("keydown", e => e.key === "p" && this.pause());
