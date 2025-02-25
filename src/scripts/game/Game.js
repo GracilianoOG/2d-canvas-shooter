@@ -38,17 +38,17 @@ class Game {
   }
 
   pause() {
+    if (this.isRunning) {
+      cancelAnimationFrame(this.animation.id);
+      this.enemyCreator.stopEnemySpawn();
+    } else {
+      this.animation.id = requestAnimationFrame(this.animate);
+      this.enemyCreator.restartEnemySpawn();
+    }
+
     this.isRunning = !this.isRunning;
     window.gameState["entities"].isRunning = this.isRunning;
     document.querySelector(".pause-screen").classList.toggle("hide");
-
-    if (this.isRunning) {
-      this.animation.id = requestAnimationFrame(this.animate);
-      this.enemyCreator.restartEnemySpawn();
-    } else {
-      cancelAnimationFrame(this.animation.id);
-      this.enemyCreator.stopEnemySpawn();
-    }
   }
 
   #resizeCanvas() {
@@ -157,6 +157,9 @@ class Game {
     window.gameState["entities"].player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.animation.id = requestAnimationFrame(this.animate);
+    if (!this.isRunning) {
+      console.log("Not running");
+    }
   }
 }
 
