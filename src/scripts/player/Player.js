@@ -28,8 +28,9 @@ class Player extends Entity {
     this.isDead = true;
   }
 
-  update() {
+  update(ctx) {
     if (this.isDead) return;
+    this.draw(ctx);
     this.controller.update();
   }
 }
