@@ -69,7 +69,6 @@ class PlayerController {
 
   update() {
     this.#movePlayer();
-    this.#player.draw(window.gameState["entities"].mainCanvas.context);
   }
 }
 
