@@ -42,6 +42,7 @@ class Game {
   pause() {
     this.isRunning = !this.isRunning;
     window.gameState["entities"].isRunning = this.isRunning;
+    document.querySelector(".pause-screen").classList.toggle("hide");
 
     if (this.isRunning) {
       this.animation.id = requestAnimationFrame(this.animate);
