@@ -74,7 +74,7 @@ button {
   font-family: var(--font-primary);
 }
 
-canvas {
+#game-container {
   left: 50%;
   position: absolute;
   top: 50%;
