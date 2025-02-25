@@ -1,5 +1,6 @@
 import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
 import { StatusIndicator } from "../StatusIndicator.js";
+import { randomInt } from "../utils/utility.js";
 
 class Scoreboard {
   #score = 0;
@@ -41,13 +42,10 @@ class Scoreboard {
 
   createIndicator(score, color) {
     const { width, height, x, y } = this.#scoreboardEl.getBoundingClientRect();
-    const randomInt = (min, max) =>
-      Math.floor(Math.random() * (max - min) + min);
     const xPos = width / 2 + x + randomInt(-50, 50);
     const yPos = height * 3 + y + randomInt(1, 10);
     this.score += score;
     StatusIndicator.create(xPos, yPos, score, document.body, color);
-    console.log(this.#scoreboardEl.getBoundingClientRect());
   }
 
   #showScore(score) {
