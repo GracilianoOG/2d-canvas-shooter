@@ -40,13 +40,14 @@ class Scoreboard {
   }
 
   createIndicator(score, color) {
-    const { width, height } = this.#scoreboardEl.getBoundingClientRect();
+    const { width, height, x, y } = this.#scoreboardEl.getBoundingClientRect();
     const randomInt = (min, max) =>
       Math.floor(Math.random() * (max - min) + min);
-    const xPos = width / 2 + randomInt(-50, 50);
-    const yPos = height * 3 + randomInt(1, 10);
+    const xPos = width / 2 + x + randomInt(-50, 50);
+    const yPos = height * 3 + y + randomInt(1, 10);
     this.score += score;
     StatusIndicator.create(xPos, yPos, score, document.body, color);
+    console.log(this.#scoreboardEl.getBoundingClientRect());
   }
 
   #showScore(score) {
