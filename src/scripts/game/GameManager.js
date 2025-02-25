@@ -69,16 +69,10 @@ class GameManager {
     }, delayInSeconds * 1000);
   }
 
-  #updateEntities(entities) {
-    for (let i = entities.length - 1; i >= 0; i--) {
-      entities[i].update(window.gameState["entities"].mainCanvas.context);
-    }
-  }
-
   update() {
-    this.#updateEntities(Entity.instances);
+    Entity.updateAll(window.gameState["entities"].mainCanvas.context);
     this.#updateEntityInteractions();
-    console.log(Entity.instances);
+    // console.log(Entity.instances);
   }
 }
 
