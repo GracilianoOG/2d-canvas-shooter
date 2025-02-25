@@ -1,3 +1,4 @@
+import { minOrMaxPoint, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 
@@ -21,16 +22,12 @@ class EnemyCreator {
 
   #createEnemyPosition(enemySize) {
     const { width, height } = window.gameState["entities"].mainCanvas;
-
-    const getTopOrBottomPoint = dimension =>
-      Math.random() > 0.5 ? -enemySize : dimension + enemySize;
-
-    const getRandomLinePoint = dimension =>
-      Math.floor(Math.random() * dimension);
+    const maxWidthPoint = width + enemySize;
+    const maxHeightPoint = height + enemySize;
 
     return Math.random() > 0.5
-      ? [getTopOrBottomPoint(width), getRandomLinePoint(height)]
-      : [getRandomLinePoint(width), getTopOrBottomPoint(height)];
+      ? [minOrMaxPoint(-enemySize, maxWidthPoint), randomLinePoint(height)]
+      : [randomLinePoint(width), minOrMaxPoint(-enemySize, maxHeightPoint)];
   }
 
   #randomizeEnemy() {
