@@ -82,8 +82,16 @@ button {
 }
 
 .screen {
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
   padding: 0 32px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 5;
 }
 
 .scoreboard {
@@ -99,17 +107,9 @@ button {
 }
 
 .start-screen {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
   letter-spacing: 2px;
-  position: absolute;
   text-transform: uppercase;
   user-select: none;
-  width: 100%;
-  z-index: 5;
 }
 
 .start-screen__main-title {
@@ -124,15 +124,7 @@ button {
 
 .gameover-screen {
   animation: blink 0.08s;
-  align-items: center;
   background-color: var(--color-restart-screen-bg);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  z-index: 5;
 }
 
 .gameover-screen__title {
@@ -153,6 +145,15 @@ button {
 .gameover-screen__btn:hover {
   background-color: var(--color-restart-btn-border);
   color: var(--color-restart-btn-bg);
+}
+
+.pause-screen {
+  backdrop-filter: blur(3px);
+}
+
+.pause-screen h2 {
+  animation: blink 0.9s steps(2, jump-none) infinite;
+  text-shadow: 0 0 5px black;
 }
 
 .highscore {
