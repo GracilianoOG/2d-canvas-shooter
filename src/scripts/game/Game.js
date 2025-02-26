@@ -138,7 +138,11 @@ class Game {
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
-    document.addEventListener("keydown", e => e.key === "p" && this.pause());
+    document.addEventListener("keydown", e => {
+      if (e.code === "KeyP") {
+        this.pause();
+      }
+    });
     this.isRunning = true;
     window.gameState["entities"].isRunning = this.isRunning;
     this.animation.id = requestAnimationFrame(this.animate);
