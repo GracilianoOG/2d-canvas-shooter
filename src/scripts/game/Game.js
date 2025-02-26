@@ -37,16 +37,6 @@ class Game {
     window.addEventListener("resize", () =>
       Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
     );
-
-    document.addEventListener("visibilitychange", () => {
-      if (!this.isRunning || window.gameState["entities"].player.isDead) {
-        return;
-      }
-
-      if (document.hidden) {
-        this.pause();
-      }
-    });
   }
 
   startLoop() {
@@ -149,11 +139,21 @@ class Game {
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState.entities.gameAudio.playMusic("battle");
+
     document.addEventListener("keydown", e => {
       if (e.code === "KeyP" && !window.gameState.entities.player.isDead) {
         this.pause();
       }
     });
+
+    document.addEventListener("visibilitychange", () => {
+      const isPlayerAlive = !window.gameState.entities.player.isDead;
+
+      if (document.hidden && this.isRunning && isPlayerAlive) {
+        this.pause();
+      }
+    });
+
     this.startLoop();
   }
 
