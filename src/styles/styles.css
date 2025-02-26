@@ -161,7 +161,7 @@ button {
 }
 
 .pause-screen {
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px) brightness(0.8);
 }
 
 .pause-screen h2 {
