@@ -49,17 +49,27 @@ class Game {
     });
   }
 
+  startLoop() {
+    this.isRunning = true;
+    window.gameState["entities"].isRunning = this.isRunning;
+    this.animation.id = requestAnimationFrame(this.animate);
+  }
+
+  stopLoop() {
+    this.isRunning = false;
+    window.gameState["entities"].isRunning = this.isRunning;
+    cancelAnimationFrame(this.animation.id);
+  }
+
   pause() {
     if (this.isRunning) {
-      cancelAnimationFrame(this.animation.id);
+      this.stopLoop();
       this.enemyCreator.stopEnemySpawn();
     } else {
-      this.animation.id = requestAnimationFrame(this.animate);
+      this.startLoop();
       this.enemyCreator.restartEnemySpawn();
     }
 
-    this.isRunning = !this.isRunning;
-    window.gameState["entities"].isRunning = this.isRunning;
     document.querySelector(".pause-screen").classList.toggle("hide");
   }
 
@@ -70,7 +80,7 @@ class Game {
 
     // Draw objects
     this.gameManager.update();
-    this.animation.id = requestAnimationFrame(this.animate);
+    this.startLoop();
   };
 
   updateCanvas() {
@@ -143,9 +153,8 @@ class Game {
         this.pause();
       }
     });
-    this.isRunning = true;
-    window.gameState["entities"].isRunning = this.isRunning;
-    this.animation.id = requestAnimationFrame(this.animate);
+
+    this.startLoop();
   }
 
   restart() {
@@ -159,12 +168,12 @@ class Game {
     window.gameState["entities"].player.x = this.mainCanvas.width / 2;
     window.gameState["entities"].player.y = this.mainCanvas.height / 2;
     window.gameState["entities"].player.isDead = false;
-    this.enemyCreator.restartEnemySpawn();
     if (!this.isRunning) {
       this.pause();
       return;
     }
-    this.animation.id = requestAnimationFrame(this.animate);
+    this.enemyCreator.restartEnemySpawn();
+    this.startLoop();
   }
 }
 
