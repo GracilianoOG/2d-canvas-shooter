@@ -166,6 +166,7 @@ button {
 
 .pause-screen h2 {
   animation: blink 0.9s steps(2, jump-none) infinite;
+  letter-spacing: 5px;
   text-shadow: 0 0 5px black;
   text-transform: lowercase;
 }
