@@ -24,12 +24,12 @@ class Weapon {
     const dirY = (clientY - offsetY) / scaleYFactor - playerY;
     const angle = Math.atan2(dirY, dirX);
 
-    return { x, y, angle };
+    return { playerX, playerY, angle };
   }
 
   shoot(e) {
-    const { x, y, angle } = this.#calcBulletPath(e);
-    new Bullet(x, y, 5, 20, angle, this.#player.color);
+    const { playerX, playerY, angle } = this.#calcBulletPath(e);
+    new Bullet(playerX, playerY, 5, 20, angle, this.#player.color);
     window.gameState.entities.gameAudio.playSound("shot");
   }
 }
