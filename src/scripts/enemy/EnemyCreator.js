@@ -6,20 +6,6 @@ class EnemyCreator {
   #intervalId;
   #currentSpawnRate;
 
-  constructor() {
-    document.addEventListener("visibilitychange", () => {
-      if (window.gameState["entities"].player.isDead) {
-        return;
-      }
-
-      if (document.hidden) {
-        this.stopEnemySpawn();
-      } else {
-        this.restartEnemySpawn();
-      }
-    });
-  }
-
   #createEnemyPosition(enemySize) {
     const { width, height } = window.gameState["entities"].mainCanvas;
     const maxWidthPoint = width + enemySize;
