@@ -63,7 +63,9 @@
 
 /* General Styles */
 body {
-  background-color: rgb(25, 25, 25);
+  background-color: black;
+  background-image: radial-gradient(white 0.6px, transparent 0.6px);
+  background-size: 15px 15px;
   color: var(--color-body-text);
   overflow: hidden;
 }
