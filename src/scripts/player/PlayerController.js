@@ -11,9 +11,13 @@ class PlayerController {
       this.#keys[code] = true;
     });
 
-    InputHandler.create("keyup", ({ code }) => {
-      this.#keys[code] = false;
-    });
+    InputHandler.create(
+      "keyup",
+      ({ code }) => {
+        this.#keys[code] = false;
+      },
+      false
+    );
 
     InputHandler.create("click", event => {
       if (this.#player.isDead) return;
