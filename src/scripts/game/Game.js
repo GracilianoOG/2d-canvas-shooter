@@ -14,6 +14,7 @@ class Game {
 
     this.screens = {
       restart: document.querySelector(CSS_CLASSES.GAME_OVER),
+      pause: document.querySelector(".pause-screen"),
     };
 
     this.mainCanvas = new Canvas(800, 600);
@@ -60,7 +61,7 @@ class Game {
       this.enemyCreator.restartEnemySpawn();
     }
 
-    document.querySelector(".pause-screen").classList.toggle("hide");
+    this.screens.pause.classList.toggle("hide");
   }
 
   animate = () => {
