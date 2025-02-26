@@ -4,6 +4,7 @@ import { CSS_CLASSES } from "./utils/constants.js";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
 const startScreen = document.querySelector(CSS_CLASSES.GAME_START);
+const pauseScreen = document.querySelector(".pause-screen");
 highscoreBoard.textContent = Scoreboard.retrieveHighscore();
 
 const game = new Game();
@@ -17,3 +18,5 @@ startScreen.addEventListener(
   },
   { once: true }
 );
+
+pauseScreen.addEventListener("click", () => game.pause());
