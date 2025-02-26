@@ -90,6 +90,10 @@ button {
   transform: translate(-50%, -50%);
 }
 
+#game-container canvas {
+  filter: blur(1px) brightness(1.2);
+}
+
 .screen {
   align-items: center;
   display: flex;
