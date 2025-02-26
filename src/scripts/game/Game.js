@@ -10,7 +10,7 @@ import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
 class Game {
   constructor() {
     this.animation = {};
-    this.isRunning = true;
+    this.isRunning = false;
 
     this.screens = {
       restart: document.querySelector(CSS_CLASSES.GAME_OVER),
@@ -37,6 +37,16 @@ class Game {
     window.addEventListener("resize", () =>
       Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
     );
+
+    document.addEventListener("visibilitychange", () => {
+      if (!this.isRunning || window.gameState["entities"].player.isDead) {
+        return;
+      }
+
+      if (document.hidden) {
+        this.pause();
+      }
+    });
   }
 
   pause() {
@@ -129,6 +139,8 @@ class Game {
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
     document.addEventListener("keydown", e => e.key === "p" && this.pause());
+    this.isRunning = true;
+    window.gameState["entities"].isRunning = this.isRunning;
     this.animation.id = requestAnimationFrame(this.animate);
   }
 
