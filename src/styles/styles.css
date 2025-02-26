@@ -61,8 +61,15 @@
   }
 }
 
+@keyframes move-bg {
+  100% {
+    background-position: 15px 15px;
+  }
+}
+
 /* General Styles */
 body {
+  animation: move-bg 0.8s infinite linear;
   background-color: black;
   background-image: radial-gradient(white 0.6px, transparent 0.6px);
   background-size: 15px 15px;
