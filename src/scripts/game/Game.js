@@ -51,13 +51,13 @@ class Game {
 
   startLoop() {
     this.isRunning = true;
-    window.gameState["entities"].isRunning = this.isRunning;
+    window.gameState.entities.isRunning = this.isRunning;
     this.animation.id = requestAnimationFrame(this.animate);
   }
 
   stopLoop() {
     this.isRunning = false;
-    window.gameState["entities"].isRunning = this.isRunning;
+    window.gameState.entities.isRunning = this.isRunning;
     cancelAnimationFrame(this.animation.id);
   }
 
@@ -148,9 +148,9 @@ class Game {
     // General & Animation
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
     this.enemyCreator.startEnemySpawn(0.8);
-    window.gameState["entities"].gameAudio.playMusic("battle");
+    window.gameState.entities.gameAudio.playMusic("battle");
     document.addEventListener("keydown", e => {
-      if (e.code === "KeyP" && !window.gameState["entities"].player.isDead) {
+      if (e.code === "KeyP" && !window.gameState.entities.player.isDead) {
         this.pause();
       }
     });
@@ -164,10 +164,10 @@ class Game {
       this.mainCanvas.width,
       this.mainCanvas.height
     );
-    window.gameState["entities"].scoreboard.score = 0;
-    window.gameState["entities"].player.x = this.mainCanvas.width / 2;
-    window.gameState["entities"].player.y = this.mainCanvas.height / 2;
-    window.gameState["entities"].player.isDead = false;
+    window.gameState.entities.scoreboard.score = 0;
+    window.gameState.entities.player.x = this.mainCanvas.width / 2;
+    window.gameState.entities.player.y = this.mainCanvas.height / 2;
+    window.gameState.entities.player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.startLoop();
   }
