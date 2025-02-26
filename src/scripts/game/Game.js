@@ -144,10 +144,11 @@ class Game {
     window.gameState["entities"].player.y = this.mainCanvas.height / 2;
     window.gameState["entities"].player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
-    this.animation.id = requestAnimationFrame(this.animate);
     if (!this.isRunning) {
-      console.log("Not running");
+      this.pause();
+      return;
     }
+    this.animation.id = requestAnimationFrame(this.animate);
   }
 }
 
