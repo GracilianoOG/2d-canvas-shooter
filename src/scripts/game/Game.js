@@ -149,11 +149,10 @@ class Game {
     this.enemyCreator.startEnemySpawn(0.8);
     window.gameState["entities"].gameAudio.playMusic("battle");
     document.addEventListener("keydown", e => {
-      if (e.code === "KeyP") {
+      if (e.code === "KeyP" && !window.gameState["entities"].player.isDead) {
         this.pause();
       }
     });
-
     this.startLoop();
   }
 
@@ -168,10 +167,6 @@ class Game {
     window.gameState["entities"].player.x = this.mainCanvas.width / 2;
     window.gameState["entities"].player.y = this.mainCanvas.height / 2;
     window.gameState["entities"].player.isDead = false;
-    if (!this.isRunning) {
-      this.pause();
-      return;
-    }
     this.enemyCreator.restartEnemySpawn();
     this.startLoop();
   }
