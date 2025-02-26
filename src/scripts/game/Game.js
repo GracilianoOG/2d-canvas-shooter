@@ -138,6 +138,7 @@ class Game {
       screens: this.screens,
       animation: this.animation,
       isRunning: this.isRunning,
+      game: this,
     });
 
     // Controllers

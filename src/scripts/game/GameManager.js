@@ -62,7 +62,7 @@ class GameManager {
 
   #prepareRestart(delayInSeconds) {
     setTimeout(() => {
-      cancelAnimationFrame(window.gameState["entities"].animation.id);
+      window.gameState["entities"].game.stopLoop();
       Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
       window.gameState["entities"].screens.restart.classList.remove("hide");
       Entity.instances = [window.gameState["entities"].player];
