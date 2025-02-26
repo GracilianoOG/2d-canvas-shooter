@@ -8,17 +8,20 @@ class Weapon {
   }
 
   #calcBulletPath({ clientX, clientY }) {
-    const { x, y } = this.#player;
+    const { x: playerX, y: playerY } = this.#player;
+
+    const { width: rWidth, height: rHeight } =
+      window.gameState.entities.realCanvas;
+    const { width: mWidth, height: mHeight } =
+      window.gameState.entities.mainCanvas;
+
     const { left: offsetX, top: offsetY } =
-      window.gameState["entities"].realCanvas.canvas.getBoundingClientRect();
-    const scaleXFactor =
-      window.gameState["entities"].realCanvas.canvas.width /
-      window.gameState["entities"].mainCanvas.canvas.width;
-    const scaleYFactor =
-      window.gameState["entities"].realCanvas.canvas.height /
-      window.gameState["entities"].mainCanvas.canvas.height;
-    const dirX = (clientX - offsetX) / scaleXFactor - x;
-    const dirY = (clientY - offsetY) / scaleYFactor - y;
+      window.gameState.entities.realCanvas.canvas.getBoundingClientRect();
+
+    const scaleXFactor = rWidth / mWidth;
+    const scaleYFactor = rHeight / mHeight;
+    const dirX = (clientX - offsetX) / scaleXFactor - playerX;
+    const dirY = (clientY - offsetY) / scaleYFactor - playerY;
     const angle = Math.atan2(dirY, dirX);
 
     return { x, y, angle };
@@ -27,7 +30,7 @@ class Weapon {
   shoot(e) {
     const { x, y, angle } = this.#calcBulletPath(e);
     new Bullet(x, y, 5, 20, angle, this.#player.color);
-    window.gameState["entities"].gameAudio.playSound("shot");
+    window.gameState.entities.gameAudio.playSound("shot");
   }
 }
 
