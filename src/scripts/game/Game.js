@@ -5,17 +5,13 @@ import { EnemyCreator } from "../enemy/EnemyCreator.js";
 import { GameManager } from "./GameManager.js";
 import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
-import { CSS_CLASSES, CSS_IDS, COLORS } from "../utils/constants.js";
+import { COLORS } from "../utils/constants.js";
+import * as Screens from "../utils/screens.js";
 
 class Game {
   constructor() {
     this.animation = {};
     this.isRunning = false;
-
-    this.screens = {
-      restart: document.querySelector(CSS_CLASSES.GAME_OVER),
-      pause: document.querySelector(".pause-screen"),
-    };
 
     this.mainCanvas = new Canvas(800, 600);
     this.trailsCanvas = new Canvas(
@@ -26,12 +22,11 @@ class Game {
     this.realCanvas = new Canvas(
       this.mainCanvas.width,
       this.mainCanvas.height,
-      document.querySelector(CSS_IDS.CONTAINER)
+      Screens.game
     );
-
-    this.screens.restart.lastElementChild.addEventListener("click", e => {
+    Screens.restart.lastElementChild.addEventListener("click", e => {
       e.stopPropagation();
-      this.screens.restart.classList.add("hide");
+      Screens.restart.classList.add("hide");
       this.restart();
     });
 
@@ -64,7 +59,7 @@ class Game {
       this.enemyCreator.restartEnemySpawn();
     }
 
-    this.screens.pause.classList.toggle("hide");
+    Screens.pause.classList.toggle("hide");
   }
 
   animate = () => {
@@ -106,8 +101,7 @@ class Game {
       realCanvas: this.realCanvas,
       player: player,
       gameAudio: new GameAudio(),
-      scoreboard: new Scoreboard(document.querySelector(CSS_IDS.CONTAINER)),
-      screens: this.screens,
+      scoreboard: new Scoreboard(Screens.game),
       animation: this.animation,
       isRunning: this.isRunning,
       game: this,
