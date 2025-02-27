@@ -1,4 +1,4 @@
-import { CSS_CLASSES, STORAGE } from "../utils/constants.js";
+import { STORAGE } from "../utils/constants.js";
 import { StatusIndicator } from "../StatusIndicator.js";
 import { randomInt } from "../utils/utility.js";
 
@@ -26,7 +26,7 @@ class Scoreboard {
 
   constructor(parent) {
     this.#scoreboardEl = document.createElement("h2");
-    this.#scoreboardEl.classList.add(CSS_CLASSES.SCOREBOARD);
+    this.#scoreboardEl.classList.add("scoreboard");
     this.#showScore(this.#score.toString());
     parent.prepend(this.#scoreboardEl);
   }
