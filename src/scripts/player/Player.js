@@ -22,6 +22,15 @@ class Player extends Entity {
     this.#isDead = isDead;
   }
 
+  isTouchingBorders() {
+    const { width, height } = window.gameState.entities.mainCanvas.canvas;
+    const LEFT = this.x < this.dimensions.radius;
+    const RIGHT = this.x + this.dimensions.radius > width;
+    const UP = this.y < this.dimensions.radius;
+    const DOWN = this.y + this.dimensions.radius > height;
+    return LEFT || RIGHT || UP || DOWN;
+  }
+
   kill() {
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
     window.gameState["entities"].gameAudio.playSound("explosion");
