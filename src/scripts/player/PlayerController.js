@@ -27,32 +27,18 @@ class PlayerController {
 
   #moveLeft() {
     this.#player.x -= this.#player.speed;
-    if (this.#player.isTouchingBorders()) {
-      this.#player.x = this.#player.dimensions.radius;
-    }
   }
 
   #moveRight() {
-    const canvas = window.gameState.entities.mainCanvas.canvas;
     this.#player.x += this.#player.speed;
-    if (this.#player.isTouchingBorders()) {
-      this.#player.x = canvas.width - this.#player.dimensions.radius;
-    }
   }
 
   #moveUp() {
     this.#player.y -= this.#player.speed;
-    if (this.#player.isTouchingBorders()) {
-      this.#player.y = this.#player.dimensions.radius;
-    }
   }
 
   #moveDown() {
-    const canvas = window.gameState.entities.mainCanvas.canvas;
     this.#player.y += this.#player.speed;
-    if (this.#player.isTouchingBorders()) {
-      this.#player.y = canvas.height - this.#player.dimensions.radius;
-    }
   }
 
   #movePlayer() {
