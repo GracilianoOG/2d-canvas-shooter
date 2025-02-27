@@ -99,13 +99,8 @@ class Game {
 
   init() {
     // GameState
-    const player = new Player(
-      this.mainCanvas.width / 2,
-      this.mainCanvas.height / 2,
-      15,
-      6,
-      COLORS.WHITE
-    );
+    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
     window.gameState = new GameState({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
