@@ -14,16 +14,10 @@ class Game {
     this.isRunning = false;
 
     this.mainCanvas = new Canvas(800, 600);
-    this.trailsCanvas = new Canvas(
-      this.mainCanvas.width,
-      this.mainCanvas.height
-    );
+    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    this.trailsCanvas = new Canvas(mWidth, mHeight);
+    this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
 
-    this.realCanvas = new Canvas(
-      this.mainCanvas.width,
-      this.mainCanvas.height,
-      Screens.game
-    );
     Screens.restart.lastElementChild.addEventListener("click", e => {
       e.stopPropagation();
       Screens.restart.classList.add("hide");
