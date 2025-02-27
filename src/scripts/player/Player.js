@@ -22,13 +22,16 @@ class Player extends Entity {
     this.#isDead = isDead;
   }
 
-  isTouchingBorders() {
-    const { width, height } = window.gameState.entities.mainCanvas.canvas;
-    const LEFT = this.x < this.dimensions.radius;
-    const RIGHT = this.x + this.dimensions.radius > width;
-    const UP = this.y < this.dimensions.radius;
-    const DOWN = this.y + this.dimensions.radius > height;
-    return LEFT || RIGHT || UP || DOWN;
+  #getInCanvas() {
+    const { width: cWidth, height: cHeight } =
+      window.gameState.entities.mainCanvas;
+    const pRadius = this.dimensions.radius;
+
+    // LEFT, RIGHT, UP, DOWN
+    if (this.x < pRadius) this.x = pRadius;
+    if (this.x + pRadius > cWidth) this.x = cWidth - pRadius;
+    if (this.y < pRadius) this.y = pRadius;
+    if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
   }
 
   kill() {
@@ -45,8 +48,9 @@ class Player extends Entity {
 
   update(ctx) {
     if (this.isDead) return;
-    this.draw(ctx);
     this.controller.update();
+    this.#getInCanvas();
+    this.draw(ctx);
   }
 }
 
