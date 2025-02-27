@@ -112,7 +112,7 @@ button {
   line-height: 1;
   position: absolute;
   text-align: center;
-  text-shadow: 0 0 5px currentColor;
+  text-shadow: 0 0 0.3125em currentColor;
   top: 5px;
   user-select: none;
   width: 100%;
@@ -187,7 +187,7 @@ button {
 
 .score {
   animation: scoring 0.8s 1 ease forwards;
-  text-shadow: 0 0 5px currentColor, 2px 2px var(--color-black);
+  text-shadow: 0 0 0.3125em currentColor, 0.125em 0.125em var(--color-black);
   font-weight: 600;
   font-size: clamp(1rem, 1.6vw, 2rem);
   position: absolute;
