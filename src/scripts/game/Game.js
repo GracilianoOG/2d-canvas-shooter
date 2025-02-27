@@ -36,14 +36,10 @@ class Game {
     });
 
     window.addEventListener("resize", () => {
+      const { width: rWidth, height: rHeight } = this.realCanvas;
+      const mCanvas = this.mainCanvas.canvas;
       Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
-      this.realCanvas.context.drawImage(
-        this.mainCanvas.canvas,
-        0,
-        0,
-        this.realCanvas.width,
-        this.realCanvas.height
-      );
+      this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
     });
   }
 
@@ -83,39 +79,22 @@ class Game {
 
   updateCanvas() {
     // Create trail effect
-    this.trailsCanvas.context.drawImage(this.mainCanvas.canvas, 0, 0);
+    const { width: tWidth, height: tHeight } = this.trailsCanvas;
+    const mCanvas = this.mainCanvas.canvas;
+    this.trailsCanvas.context.drawImage(mCanvas, 0, 0);
     this.trailsCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
-    this.trailsCanvas.context.fillRect(
-      0,
-      0,
-      this.trailsCanvas.width,
-      this.trailsCanvas.height
-    );
+    this.trailsCanvas.context.fillRect(0, 0, tWidth, tHeight);
 
     // Clear real canvas
-    this.realCanvas.context.clearRect(
-      0,
-      0,
-      this.realCanvas.width,
-      this.realCanvas.height
-    );
+    const { width: rWidth, height: rHeight } = this.realCanvas;
+    this.realCanvas.context.clearRect(0, 0, rWidth, rHeight);
 
     // Draw buffer canvas on real canvas (all game objects)
-    this.realCanvas.context.drawImage(
-      this.mainCanvas.canvas,
-      0,
-      0,
-      this.realCanvas.width,
-      this.realCanvas.height
-    );
+    this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
 
     // Clear buffer canvas so it won't draw a messed up image next frame
-    this.mainCanvas.context.clearRect(
-      0,
-      0,
-      this.mainCanvas.width,
-      this.mainCanvas.height
-    );
+    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
   }
 
   init() {
@@ -166,15 +145,11 @@ class Game {
   }
 
   restart() {
-    this.mainCanvas.context.clearRect(
-      0,
-      0,
-      this.mainCanvas.width,
-      this.mainCanvas.height
-    );
+    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     window.gameState.entities.scoreboard.score = 0;
-    window.gameState.entities.player.x = this.mainCanvas.width / 2;
-    window.gameState.entities.player.y = this.mainCanvas.height / 2;
+    window.gameState.entities.player.x = mWidth / 2;
+    window.gameState.entities.player.y = mHeight / 2;
     window.gameState.entities.player.isDead = false;
     this.enemyCreator.restartEnemySpawn();
     this.startLoop();
