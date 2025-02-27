@@ -28,6 +28,12 @@ class Player extends Entity {
     this.isDead = true;
   }
 
+  revive(x = this.x, y = this.y) {
+    this.isDead = false;
+    this.x = x;
+    this.y = y;
+  }
+
   update(ctx) {
     if (this.isDead) return;
     this.draw(ctx);
