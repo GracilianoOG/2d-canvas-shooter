@@ -108,7 +108,7 @@ button {
 }
 
 .scoreboard {
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
   line-height: 1;
   position: absolute;
   text-align: center;
@@ -189,7 +189,7 @@ button {
   animation: scoring 0.8s 1 ease forwards;
   text-shadow: 0 0 5px currentColor, 2px 2px var(--color-black);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.6vw, 2rem);
   position: absolute;
   user-select: none;
   z-index: 1;
