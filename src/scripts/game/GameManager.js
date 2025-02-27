@@ -1,5 +1,6 @@
 import { Entity } from "../Entity.js";
 import { Scoreboard } from "../score/Scoreboard.js";
+import { restart } from "../utils/screens.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
@@ -64,7 +65,7 @@ class GameManager {
     setTimeout(() => {
       window.gameState["entities"].game.stopLoop();
       Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
-      window.gameState["entities"].screens.restart.classList.remove("hide");
+      restart.classList.remove("hide");
       Entity.instances = [window.gameState["entities"].player];
     }, delayInSeconds * 1000);
   }
