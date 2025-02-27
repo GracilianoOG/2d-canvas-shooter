@@ -148,9 +148,7 @@ class Game {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     window.gameState.entities.scoreboard.score = 0;
-    window.gameState.entities.player.x = mWidth / 2;
-    window.gameState.entities.player.y = mHeight / 2;
-    window.gameState.entities.player.isDead = false;
+    window.gameState.entities.player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.restartEnemySpawn();
     this.startLoop();
   }
