@@ -35,9 +35,16 @@ class Game {
       this.restart();
     });
 
-    window.addEventListener("resize", () =>
-      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
-    );
+    window.addEventListener("resize", () => {
+      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
+      this.realCanvas.context.drawImage(
+        this.mainCanvas.canvas,
+        0,
+        0,
+        this.realCanvas.width,
+        this.realCanvas.height
+      );
+    });
   }
 
   startLoop() {
