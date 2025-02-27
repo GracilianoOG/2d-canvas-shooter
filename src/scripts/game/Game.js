@@ -55,10 +55,6 @@ class Game {
 
   animate = () => {
     this.updateCanvas();
-    // Draw background
-    this.mainCanvas.context.drawImage(this.trailsCanvas.canvas, 0, 0);
-
-    // Draw objects
     this.gameManager.update();
     this.startLoop();
   };
@@ -81,6 +77,9 @@ class Game {
     // Clear buffer canvas so it won't draw a messed up image next frame
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
+
+    // Draw background
+    this.mainCanvas.context.drawImage(this.trailsCanvas.canvas, 0, 0);
   }
 
   init() {
