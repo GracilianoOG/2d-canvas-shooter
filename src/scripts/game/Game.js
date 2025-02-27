@@ -24,12 +24,9 @@ class Game {
       this.restart();
     });
 
-    window.addEventListener("resize", () => {
-      const { width: rWidth, height: rHeight } = this.realCanvas;
-      const mCanvas = this.mainCanvas.canvas;
-      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
-      this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
-    });
+    window.addEventListener("resize", () =>
+      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
+    );
   }
 
   startLoop() {

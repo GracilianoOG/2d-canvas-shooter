@@ -22,6 +22,9 @@ class Canvas {
       realCanvas.height = screenHeight;
       realCanvas.width = screenHeight / canvasRatio;
     }
+
+    const { width: rWidth, height: rHeight } = realCanvas;
+    realCanvas.context.drawImage(bufferCanvas.canvas, 0, 0, rWidth, rHeight);
   }
 
   get width() {
