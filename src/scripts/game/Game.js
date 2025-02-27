@@ -93,7 +93,6 @@ class Game {
       player: player,
       gameAudio: new GameAudio(),
       scoreboard: new Scoreboard(Screens.game),
-      animation: this.animation,
       isRunning: this.isRunning,
       game: this,
     });
