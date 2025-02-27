@@ -1,6 +1,5 @@
 export const CSS_CLASSES = {
   HIGHSCORE_POINTS: ".highscore__points",
-  SCORE: "score",
   SCOREBOARD: "scoreboard",
 };
 
