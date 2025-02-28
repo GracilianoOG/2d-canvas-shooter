@@ -55,6 +55,7 @@ class GameManager {
 
       if (bullet.collidedWith(enemy)) {
         this.#countScore(enemy, enemy.takeDamage(bullet.damage));
+        window.gameState["entities"].game.shakeScreen(6, 300);
         return true;
       }
     }
