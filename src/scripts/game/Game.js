@@ -12,6 +12,7 @@ class Game {
   constructor() {
     this.animation = {};
     this.isRunning = false;
+    this.shake = { isActive: false, strength: 0, duration: 0 };
 
     this.mainCanvas = new Canvas(800, 600);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -53,9 +54,23 @@ class Game {
     Screens.pause.classList.toggle("hide");
   }
 
+  shakeScreen(strength, duration) {
+    this.shake.isActive = true;
+    this.shake.strength = strength;
+    this.shake.duration = Date.now() + duration;
+  }
+
   animate = () => {
     this.updateCanvas();
+    if (this.shake.isActive && Date.now() < this.shake.duration) {
+      const xOffset = Math.random() * this.shake.strength;
+      const yOffset = Math.random() * this.shake.strength;
+      this.mainCanvas.context.translate(xOffset, yOffset);
+    } else {
+      this.shake.isActive = false;
+    }
     this.gameManager.update();
+    this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
     this.startLoop();
   };
 
