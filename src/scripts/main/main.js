@@ -18,4 +18,7 @@ start.addEventListener(
   { once: true }
 );
 
-pause.addEventListener("click", () => game.pause());
+pause.addEventListener("click", e => {
+  e.stopPropagation();
+  game.pause();
+});
