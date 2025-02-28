@@ -1,10 +1,16 @@
 class Entity {
-  #shape;
+  #x;
+  #y;
+  #color;
+  #radius;
   #type;
   static instances = [];
 
-  constructor(shape) {
-    this.#shape = shape;
+  constructor(x, y, radius, color) {
+    this.#x = x;
+    this.#y = y;
+    this.#color = color;
+    this.#radius = radius;
     this.#type = this.constructor.name;
     Entity.instances.push(this);
   }
@@ -19,40 +25,36 @@ class Entity {
     return this.#type;
   }
 
-  get shape() {
-    return this.#shape;
-  }
-
   get x() {
-    return this.#shape.x;
+    return this.#x;
   }
 
   set x(x) {
-    this.#shape.x = x;
+    this.#x = x;
   }
 
   get y() {
-    return this.#shape.y;
+    return this.#y;
   }
 
   set y(y) {
-    this.#shape.y = y;
+    this.#y = y;
   }
 
   get color() {
-    return this.#shape.color;
+    return this.#color;
   }
 
   set color(color) {
-    this.#shape.color = color;
+    this.#color = color;
   }
 
   get dimensions() {
-    return this.#shape.dimensions;
+    return { radius: this.#radius };
   }
 
-  set dimensions(dimensions) {
-    this.#shape.dimensions = dimensions;
+  set dimensions({ radius }) {
+    this.#radius = radius;
   }
 
   destroy() {
@@ -62,11 +64,17 @@ class Entity {
   }
 
   collidedWith(object) {
-    return this.shape.collidedWith(object.shape);
+    return (
+      Math.hypot(this.x - object.x, this.y - object.y) <
+      this.#radius + object.dimensions.radius
+    );
   }
 
   draw(ctx) {
-    this.shape.draw(ctx);
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.#radius, 0, Math.PI * 2);
+    ctx.fill();
   }
 }
 
