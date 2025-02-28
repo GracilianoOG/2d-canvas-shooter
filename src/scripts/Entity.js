@@ -1,6 +1,5 @@
 class Entity {
   #shape;
-  #speed;
   #type;
   static instances = [];
 
@@ -54,14 +53,6 @@ class Entity {
 
   set dimensions(dimensions) {
     this.#shape.dimensions = dimensions;
-  }
-
-  get speed() {
-    return this.#speed;
-  }
-
-  set speed(speed) {
-    this.#speed = speed;
   }
 
   destroy() {
