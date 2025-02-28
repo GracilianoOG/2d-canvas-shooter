@@ -1,17 +1,15 @@
-import { Circle } from "../Circle.js";
-import { Entity } from "../Entity.js";
 import { Particle } from "../Particle.js";
 import { PlayerController } from "./PlayerController.js";
 import { Weapon } from "../arsenal/Weapon.js";
+import { Projectile } from "../Projectile.js";
 
-class Player extends Entity {
+class Player extends Projectile {
   #isDead = false;
   controller = new PlayerController(this);
   weapon = new Weapon(this);
 
   constructor(x, y, radius, speed, color) {
-    super(new Circle(x, y, radius, color));
-    this.speed = speed;
+    super(x, y, radius, speed, color);
   }
 
   get isDead() {
