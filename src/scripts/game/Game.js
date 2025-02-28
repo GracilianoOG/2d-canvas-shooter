@@ -124,7 +124,9 @@ class Game {
 
   restart() {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
+    const { width: tWidth, height: tHeight } = this.trailsCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
+    this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
     window.gameState.entities.scoreboard.score = 0;
     window.gameState.entities.player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.restartEnemySpawn();
