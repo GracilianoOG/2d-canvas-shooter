@@ -66,7 +66,6 @@ class Game {
   }
 
   animate = () => {
-    this.updateCanvas();
     if (this.shake.isActive && Date.now() < this.shake.duration) {
       const xOffset = Math.random() * this.shake.strength;
       const yOffset = Math.random() * this.shake.strength;
@@ -76,6 +75,7 @@ class Game {
     }
     this.gameManager.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
+    this.updateCanvas();
     this.startLoop();
   };
 
