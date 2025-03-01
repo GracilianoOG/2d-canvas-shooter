@@ -41,9 +41,9 @@ class Scoreboard {
   }
 
   createIndicator(score, color) {
-    const { width, height, x, y } = this.#scoreboardEl.getBoundingClientRect();
-    const xPos = width / 2 + x + randomInt(-50, 50);
-    const yPos = height * 3 + y + randomInt(1, 10);
+    const { width, height } = this.#scoreboardEl.getBoundingClientRect();
+    const xPos = width / 2 + randomInt(-50, 50);
+    const yPos = height * 3 + randomInt(1, 5);
     this.score += score;
     StatusIndicator.create(xPos, yPos, score, color);
   }
