@@ -2,7 +2,7 @@
 
 ## 📖 Description
 
-*The player takes control of a little white ball that must survive against the infinite waves of colorful circles of many different colors and sizes.*
+_The player takes control of a little white ball that must survive against the infinite waves of colorful circles of many different colors and sizes._
 
 After learning enough about web development, the idea to create a little game came to mind. I grew up playing flash games, especially top-down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple, but from scratch, to practice what I've learned so far. Some ideas were taken from one of Chris Course's videos because they were so creative!
 
@@ -10,8 +10,9 @@ I learned a lot of JavaScript, Canvas API and Game Design concepts while develop
 
 ## 🕹️ Controls
 
-- `WASD keys` - Move character (white ball)
-- `Left mouse button` - Shoot projectiles
+- `<WASD>` - Move character
+- `<LMB>` - Shoot projectiles
+- `<P>` - Pause game
 
 ## 🧱 Built with
 
