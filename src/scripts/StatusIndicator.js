@@ -1,6 +1,7 @@
 class StatusIndicator {
-  static create(x, y, score, color = "#fff", container = document.body) {
+  static create(x, y, score, color = "#fff") {
     const scoreEl = document.createElement("div");
+    const container = document.querySelector("#status-container");
     scoreEl.setAttribute("class", "score");
     scoreEl.textContent = score;
     scoreEl.style.left = `${x}px`;
