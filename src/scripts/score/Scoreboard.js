@@ -45,7 +45,7 @@ class Scoreboard {
     const xPos = width / 2 + x + randomInt(-50, 50);
     const yPos = height * 3 + y + randomInt(1, 10);
     this.score += score;
-    StatusIndicator.create(xPos, yPos, score, document.body, color);
+    StatusIndicator.create(xPos, yPos, score, color);
   }
 
   #showScore(score) {
