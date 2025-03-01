@@ -1,5 +1,5 @@
 class StatusIndicator {
-  static create(x, y, score, container, color = "#fff") {
+  static create(x, y, score, color = "#fff", container = document.body) {
     const scoreEl = document.createElement("div");
     scoreEl.setAttribute("class", "score");
     scoreEl.textContent = score;
