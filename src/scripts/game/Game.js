@@ -51,6 +51,11 @@ class Game {
       this.enemyCreator.restartEnemySpawn();
     }
 
+    const indicators = document.querySelectorAll(".score");
+    indicators.forEach(
+      s => (s.style.animationPlayState = this.isRunning ? "running" : "paused")
+    );
+
     Screens.pause.classList.toggle("hide");
   }
 
