@@ -19,10 +19,12 @@ class PlayerController {
       false
     );
 
-    InputHandler.create("click", event => {
-      if (this.#player.isDead) return;
-      this.#player.weapon.shoot(event);
-    });
+    document
+      .querySelector("#game-container")
+      .addEventListener("click", event => {
+        if (this.#player.isDead) return;
+        this.#player.weapon.shoot(event);
+      });
   }
 
   #moveLeft() {
