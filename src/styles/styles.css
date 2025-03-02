@@ -95,6 +95,7 @@ button {
 }
 
 #game-container canvas {
+  display: block;
   filter: blur(1px) brightness(1.2);
 }
 
