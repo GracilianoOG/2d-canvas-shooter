@@ -1,5 +1,3 @@
-import { InputHandler } from "../InputHandler";
-
 class PlayerController {
   #keys = {};
   #player;
@@ -7,17 +5,13 @@ class PlayerController {
   constructor(player) {
     this.#player = player;
 
-    InputHandler.create("keydown", ({ code }) => {
+    document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
     });
 
-    InputHandler.create(
-      "keyup",
-      ({ code }) => {
-        this.#keys[code] = false;
-      },
-      false
-    );
+    document.addEventListener("keyup", ({ code }) => {
+      this.#keys[code] = false;
+    });
 
     document
       .querySelector("#game-container")
