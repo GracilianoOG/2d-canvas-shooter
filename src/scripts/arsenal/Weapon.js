@@ -7,7 +7,7 @@ class Weapon {
     this.#player = player;
   }
 
-  #calcBulletPath({ clientX, clientY }) {
+  #calcBulletPath({ clientX, clientY, currentTarget }) {
     const { x: playerX, y: playerY } = this.#player;
 
     const { width: rWidth, height: rHeight } =
@@ -16,7 +16,7 @@ class Weapon {
       window.gameState.entities.mainCanvas;
 
     const { left: offsetX, top: offsetY } =
-      window.gameState.entities.realCanvas.canvas.getBoundingClientRect();
+      currentTarget.getBoundingClientRect();
 
     const scaleXFactor = rWidth / mWidth;
     const scaleYFactor = rHeight / mHeight;
