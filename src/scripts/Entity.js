@@ -3,7 +3,6 @@ class Entity {
   #y;
   #color;
   #radius;
-  #type;
   static instances = [];
 
   constructor(x, y, radius, color) {
@@ -11,7 +10,6 @@ class Entity {
     this.#y = y;
     this.#color = color;
     this.#radius = radius;
-    this.#type = this.constructor.name;
     Entity.instances.push(this);
   }
 
@@ -22,7 +20,7 @@ class Entity {
   }
 
   get type() {
-    return this.#type;
+    return "Entity";
   }
 
   get x() {

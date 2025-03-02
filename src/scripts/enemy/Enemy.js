@@ -18,6 +18,10 @@ class Enemy extends Projectile {
     this.#score = score;
   }
 
+  get type() {
+    return "Enemy";
+  }
+
   get baseColor() {
     return this.#baseColor;
   }

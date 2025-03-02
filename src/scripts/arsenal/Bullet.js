@@ -10,6 +10,10 @@ class Bullet extends Projectile {
     this.#damage = damage;
   }
 
+  get type() {
+    return "Bullet";
+  }
+
   get angle() {
     return this.#angle;
   }
