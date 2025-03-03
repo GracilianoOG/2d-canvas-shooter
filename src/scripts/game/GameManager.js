@@ -23,7 +23,7 @@ class GameManager {
       for (const b of bullets) {
         if (b.collidedWith(e)) {
           this.#countScore(e, e.takeDamage(b.damage));
-          window.gameState["entities"].game.shakeScreen(6, 300);
+          window.gameState["entities"].game.shakeScreen(6, 0.3);
           b.destroy();
           return;
         }

@@ -64,7 +64,7 @@ class Game {
   shakeScreen(strength, duration) {
     this.shake.strength = strength;
     if (!this.shake.timer)
-      this.shake.timer = new Timer(duration / 1000, { loop: false });
+      this.shake.timer = new Timer(duration, { loop: false });
     this.shake.timer.reset();
   }
 
