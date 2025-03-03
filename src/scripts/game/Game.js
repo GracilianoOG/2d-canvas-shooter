@@ -7,6 +7,7 @@ import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
 import { COLORS } from "../utils/constants.js";
 import * as Screens from "../utils/screens.js";
+import { Timer } from "../Timer.js";
 
 class Game {
   constructor() {
@@ -83,6 +84,7 @@ class Game {
     }
     this.gameManager.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
+    Timer.updateAll(this.deltaTime);
     this.updateCanvas();
     this.startLoop();
   };
