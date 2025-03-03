@@ -49,10 +49,8 @@ class Game {
   pause() {
     if (this.isRunning) {
       this.stopLoop();
-      this.enemyCreator.stopEnemySpawn();
     } else {
       this.startLoop();
-      this.enemyCreator.restartEnemySpawn();
     }
 
     const indicators = document.querySelectorAll(".score");
@@ -132,7 +130,6 @@ class Game {
 
     // General & Animation
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
-    this.enemyCreator.startEnemySpawn(0.8);
     window.gameState.entities.gameAudio.playMusic("battle");
 
     document.addEventListener("keydown", e => {
@@ -159,7 +156,6 @@ class Game {
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
     window.gameState.entities.scoreboard.score = 0;
     window.gameState.entities.player.revive(mWidth / 2, mHeight / 2);
-    this.enemyCreator.restartEnemySpawn();
     this.startLoop();
   }
 }
