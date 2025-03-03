@@ -32,6 +32,7 @@ class Timer {
 
   reset() {
     this.elapsedTime = this.time;
+    this.start();
   }
 
   update(deltaTime) {
