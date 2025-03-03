@@ -164,7 +164,7 @@ button {
 }
 
 .gameover-screen__btn {
-  border: 3px solid var(--color-white);
+  border: none;
   background-color: transparent;
   color: var(--color-white);
   font-size: 2rem;
