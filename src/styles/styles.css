@@ -171,6 +171,7 @@ button {
   font-size: 2rem;
   padding: 15px 20px;
   transition: background-color 0.2s, color 0.2s;
+  text-shadow: 0 0 0.125rem currentColor;
 }
 
 .gameover-screen__btn:hover {
