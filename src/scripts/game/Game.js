@@ -13,6 +13,8 @@ class Game {
     this.animation = {};
     this.isRunning = false;
     this.shake = { isActive: false, strength: 0, duration: 0 };
+    this.lastTime = 0;
+    this.deltaTime = 0;
 
     this.mainCanvas = new Canvas(800, 600);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -40,6 +42,7 @@ class Game {
     this.isRunning = false;
     window.gameState.entities.isRunning = this.isRunning;
     cancelAnimationFrame(this.animation.id);
+    this.lastTime = 0;
   }
 
   pause() {
@@ -65,7 +68,12 @@ class Game {
     this.shake.duration = Date.now() + duration;
   }
 
-  animate = () => {
+  animate = timestamp => {
+    if (this.lastTime) {
+      this.deltaTime = timestamp - this.lastTime;
+    }
+    this.lastTime = timestamp;
+
     if (this.shake.isActive && Date.now() < this.shake.duration) {
       const xOffset = Math.random() * this.shake.strength;
       const yOffset = Math.random() * this.shake.strength;
