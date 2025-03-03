@@ -13,7 +13,7 @@ class Game {
   constructor() {
     this.animation = {};
     this.isRunning = false;
-    this.shake = { isActive: false, strength: 0, duration: 0 };
+    this.shake = { strength: 0, timer: null };
     this.lastTime = 0;
     this.deltaTime = 0;
 
@@ -62,9 +62,10 @@ class Game {
   }
 
   shakeScreen(strength, duration) {
-    this.shake.isActive = true;
     this.shake.strength = strength;
-    this.shake.duration = Date.now() + duration;
+    if (!this.shake.timer)
+      this.shake.timer = new Timer(duration / 1000, { loop: false });
+    this.shake.timer.reset();
   }
 
   animate = timestamp => {
@@ -73,12 +74,10 @@ class Game {
     }
     this.lastTime = timestamp;
 
-    if (this.shake.isActive && Date.now() < this.shake.duration) {
+    if (this.shake.timer?.active) {
       const xOffset = Math.random() * this.shake.strength;
       const yOffset = Math.random() * this.shake.strength;
       this.mainCanvas.context.translate(xOffset, yOffset);
-    } else {
-      this.shake.isActive = false;
     }
     this.gameManager.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
