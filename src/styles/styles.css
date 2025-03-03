@@ -203,6 +203,10 @@ button {
   margin-bottom: 10px;
 }
 
+.highscore__points {
+  color: #ffb300;
+}
+
 .highscore,
 .start-screen__title,
 .gameover-screen__btn {
@@ -213,10 +217,6 @@ button {
 .start-screen {
   letter-spacing: 2px;
   text-transform: uppercase;
-}
-
-.gameover-screen .highscore__points {
-  color: #ffb300;
 }
 
 .score {
