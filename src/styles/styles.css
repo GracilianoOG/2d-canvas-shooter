@@ -157,10 +157,11 @@ button {
 
 .gameover-screen__title {
   color: var(--color-white);
-  font-size: 3rem;
+  font-size: 4rem;
+  letter-spacing: 0.625rem;
   margin-bottom: 5rem;
   text-transform: uppercase;
-  text-shadow: 0 0 0.313rem currentColor;
+  text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 #f00;
 }
 
 .gameover-screen__btn {
