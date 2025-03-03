@@ -1,4 +1,3 @@
-import { STORAGE } from "../utils/constants.js";
 import { StatusIndicator } from "../StatusIndicator.js";
 import { randomInt } from "../utils/utility.js";
 
@@ -7,13 +6,15 @@ class Scoreboard {
   #length = 8;
   #scoreboardEl;
 
+  static KEY_POINTS = "js-shooter-highscore";
+
   static retrieveHighscore(isFormatted = true) {
-    const highscore = localStorage.getItem(STORAGE.KEY_POINTS) || "";
+    const highscore = localStorage.getItem(Scoreboard.KEY_POINTS) || "";
     return isFormatted ? Scoreboard.formatScore(highscore) : highscore;
   }
 
   static storeHighscore(score) {
-    const KEY = STORAGE.KEY_POINTS;
+    const KEY = Scoreboard.KEY_POINTS;
     const highscore = parseInt(localStorage.getItem(KEY) || 0);
     if (score > highscore) {
       localStorage.setItem(KEY, score);
