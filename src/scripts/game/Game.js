@@ -125,7 +125,7 @@ class Game {
     });
 
     // Controllers
-    this.enemyCreator = new EnemyCreator();
+    this.enemyCreator = new EnemyCreator(0.8);
     this.gameManager = new GameManager();
 
     // General & Animation
