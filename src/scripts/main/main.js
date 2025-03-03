@@ -1,10 +1,10 @@
 import { Game } from "../game/Game.js";
-import { Scoreboard } from "../score/Scoreboard.js";
+import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { pause, start } from "../utils/screens.js";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-highscoreBoard.textContent = Scoreboard.retrieveHighscore();
+highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 
 const game = new Game();
 
