@@ -6,21 +6,6 @@ class Scoreboard {
   #length = 8;
   #scoreboardEl;
 
-  static KEY_POINTS = "js-shooter-highscore";
-
-  static retrieveHighscore(isFormatted = true) {
-    const highscore = localStorage.getItem(Scoreboard.KEY_POINTS) || "";
-    return isFormatted ? Scoreboard.formatScore(highscore) : highscore;
-  }
-
-  static storeHighscore(score) {
-    const KEY = Scoreboard.KEY_POINTS;
-    const highscore = parseInt(localStorage.getItem(KEY) || 0);
-    if (score > highscore) {
-      localStorage.setItem(KEY, score);
-    }
-  }
-
   static formatScore(string, length = 8) {
     return string.padStart(length, "0");
   }
