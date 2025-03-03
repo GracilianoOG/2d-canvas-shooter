@@ -10,56 +10,24 @@ class GameManager {
     );
   }
 
-  #updateEntityInteractions() {
-    const isPlayerDead = window.gameState["entities"].player.isDead;
-    if (isPlayerDead) return;
-    this.#updatePlayerInteraction();
-    this.#updateBulletInteraction();
-  }
-
-  #updatePlayerInteraction() {
-    const enemies = Entity.instances.filter(
-      instance => instance.type === "Enemy"
-    );
+  #checkCollisions() {
+    const enemies = Entity.instances.filter(i => i.type === "Enemy");
+    const bullets = Entity.instances.filter(i => i.type === "Bullet");
     const player = window.gameState["entities"].player;
 
-    for (const enemy of enemies) {
-      if (player.collidedWith(enemy)) {
+    for (const e of enemies) {
+      if (!player.isDead && player.collidedWith(e)) {
         player.kill();
         this.#prepareRestart(2.4);
-        return;
+      }
+      for (const b of bullets) {
+        if (b.collidedWith(e)) {
+          this.#countScore(e, e.takeDamage(b.damage));
+          window.gameState["entities"].game.shakeScreen(6, 300);
+          b.destroy();
+        }
       }
     }
-  }
-
-  #updateBulletInteraction() {
-    const bullets = Entity.instances.filter(
-      instance => instance.type === "Bullet"
-    );
-
-    for (const bullet of bullets) {
-      if (this.#hasBulletHitEnemy(bullet)) {
-        bullet.destroy();
-      }
-    }
-  }
-
-  #hasBulletHitEnemy(bullet) {
-    const enemies = Entity.instances.filter(
-      instance => instance.type === "Enemy"
-    );
-    const enemiesLength = enemies.length;
-
-    for (let i = 0; i < enemiesLength; i++) {
-      const enemy = enemies[i];
-
-      if (bullet.collidedWith(enemy)) {
-        this.#countScore(enemy, enemy.takeDamage(bullet.damage));
-        window.gameState["entities"].game.shakeScreen(6, 300);
-        return true;
-      }
-    }
-    return false;
   }
 
   #prepareRestart(delayInSeconds) {
@@ -73,8 +41,7 @@ class GameManager {
 
   update() {
     Entity.updateAll(window.gameState["entities"].mainCanvas.context);
-    this.#updateEntityInteractions();
-    // console.log(Entity.instances);
+    this.#checkCollisions();
   }
 }
 
