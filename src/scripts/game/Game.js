@@ -47,17 +47,10 @@ class Game {
   }
 
   pause() {
-    if (this.isRunning) {
-      this.stopLoop();
-    } else {
-      this.startLoop();
-    }
-
+    this.isRunning ? this.stopLoop() : this.startLoop();
     const indicators = document.querySelectorAll(".score");
-    indicators.forEach(
-      s => (s.style.animationPlayState = this.isRunning ? "running" : "paused")
-    );
-
+    const state = this.isRunning ? "running" : "paused";
+    indicators.forEach(i => (i.style.animationPlayState = state));
     Screens.pause.classList.toggle("hide");
   }
 
