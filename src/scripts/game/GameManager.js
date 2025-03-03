@@ -25,6 +25,7 @@ class GameManager {
           this.#countScore(e, e.takeDamage(b.damage));
           window.gameState["entities"].game.shakeScreen(6, 300);
           b.destroy();
+          return;
         }
       }
     }
