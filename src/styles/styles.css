@@ -67,6 +67,16 @@
   }
 }
 
+@keyframes shadow-blink {
+  0% {
+    text-shadow: 0 0 0.313rem currentColor;
+  }
+
+  100% {
+    text-shadow: 0 0 0.75rem currentColor;
+  }
+}
+
 /* General Styles */
 body {
   animation: move-bg 0.8s infinite linear;
@@ -129,6 +139,7 @@ button {
 }
 
 .start-screen__main-title {
+  animation: shadow-blink 2s infinite alternate;
   font-size: 3.5rem;
   margin-bottom: 2rem;
 }
