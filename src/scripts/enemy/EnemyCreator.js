@@ -1,10 +1,12 @@
+import { Timer } from "../Timer.js";
 import { minOrMaxPoint, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 
 class EnemyCreator {
-  #intervalId;
-  #currentSpawnRate;
+  constructor(spawnTime) {
+    this.timer = new Timer(spawnTime, {}, this.#createEnemy.bind(this));
+  }
 
   #createEnemyPosition(enemySize) {
     const { width, height } = window.gameState["entities"].mainCanvas;
@@ -29,30 +31,6 @@ class EnemyCreator {
       ...Object.values(randomEnemy),
       window.gameState["entities"].player
     );
-  }
-
-  startEnemySpawn(secondsToSpawn) {
-    if (this.#intervalId) {
-      throw "Multiple intervals cannot be started. Clear the current interval before starting a new one.";
-    }
-    this.#currentSpawnRate = secondsToSpawn;
-    this.#intervalId = setInterval(() => {
-      if (window.gameState["entities"].player.isDead) {
-        this.stopEnemySpawn();
-      }
-
-      this.#createEnemy();
-    }, secondsToSpawn * 1000);
-  }
-
-  stopEnemySpawn() {
-    clearInterval(this.#intervalId);
-    this.#intervalId = null;
-  }
-
-  restartEnemySpawn() {
-    this.stopEnemySpawn();
-    this.startEnemySpawn(this.#currentSpawnRate);
   }
 }
 
