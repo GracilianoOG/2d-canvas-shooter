@@ -165,6 +165,7 @@ button {
 }
 
 .gameover-screen__btn {
+  animation: blink 1.2s steps(2, jump-none) infinite 0.6s;
   border: none;
   background-color: transparent;
   color: var(--color-white);
@@ -175,6 +176,7 @@ button {
 }
 
 .gameover-screen__btn:hover {
+  animation: none;
   background-color: var(--color-white);
   color: var(--color-black);
 }
