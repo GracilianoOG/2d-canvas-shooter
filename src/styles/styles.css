@@ -159,6 +159,8 @@ button {
   color: var(--color-white);
   font-size: 3rem;
   margin-bottom: 5rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 0.313rem currentColor;
 }
 
 .gameover-screen__btn {
