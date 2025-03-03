@@ -133,11 +133,6 @@ button {
   z-index: 1;
 }
 
-.start-screen {
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
 .start-screen__main-title {
   animation: shadow-blink 2s infinite alternate;
   font-size: 3.5rem;
@@ -172,7 +167,6 @@ button {
   font-size: 2rem;
   padding: 15px 20px;
   transition: background-color 0.2s, color 0.2s;
-  text-shadow: 0 0 0.125rem currentColor;
 }
 
 .gameover-screen__btn:hover {
@@ -206,6 +200,22 @@ button {
 .highscore__title {
   font-size: inherit;
   margin-bottom: 10px;
+}
+
+.highscore,
+.start-screen__title,
+.gameover-screen__btn {
+  text-shadow: 0 0 0.125rem currentColor;
+}
+
+.highscore,
+.start-screen {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gameover-screen .highscore__points {
+  color: #ffb300;
 }
 
 .score {
