@@ -1,5 +1,6 @@
 import { Entity } from "../Entity.js";
 import { Scoreboard } from "../score/Scoreboard.js";
+import { CSS_CLASSES } from "../utils/constants.js";
 import { restart } from "../utils/screens.js";
 
 class GameManager {
@@ -36,6 +37,10 @@ class GameManager {
       window.gameState["entities"].game.stopLoop();
       Scoreboard.storeHighscore(window.gameState["entities"].scoreboard.score);
       restart.classList.remove("hide");
+      const highscoreBoard = restart.querySelector(
+        CSS_CLASSES.HIGHSCORE_POINTS
+      );
+      highscoreBoard.textContent = Scoreboard.retrieveHighscore();
       Entity.instances = [window.gameState["entities"].player];
     }, delayInSeconds * 1000);
   }
