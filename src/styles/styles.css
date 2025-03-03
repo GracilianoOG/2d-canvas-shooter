@@ -140,26 +140,28 @@ button {
 
 .gameover-screen {
   animation: blink 0.08s;
-  background-color: var(--color-restart-screen-bg);
+  background-color: var(--color-black);
+  border: 8px double var(--color-white);
 }
 
 .gameover-screen__title {
-  color: var(--color-restart-title-text);
+  color: var(--color-white);
   font-size: 3rem;
   margin-bottom: 5rem;
 }
 
 .gameover-screen__btn {
-  border: 3px solid var(--color-restart-btn-border);
-  background-color: var(--color-restart-btn-bg);
+  border: 3px solid var(--color-white);
+  background-color: transparent;
+  color: var(--color-white);
   font-size: 2rem;
   padding: 15px 20px;
-  transition: all 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .gameover-screen__btn:hover {
-  background-color: var(--color-restart-btn-border);
-  color: var(--color-restart-btn-bg);
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
 .pause-screen {
