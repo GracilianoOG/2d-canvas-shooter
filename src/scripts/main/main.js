@@ -26,4 +26,7 @@ pause.addEventListener("click", e => {
   game.pause();
 });
 
-pauseBtn.addEventListener("click", () => game.pause());
+pauseBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  game.pause();
+});
