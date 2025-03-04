@@ -4,6 +4,7 @@ import { CSS_CLASSES } from "../utils/constants.js";
 import { pause, start } from "../utils/screens.js";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+const hud = document.querySelector("#hud");
 const pauseBtn = document.querySelector(".pause-btn");
 highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 
@@ -14,6 +15,7 @@ start.addEventListener(
   e => {
     e.stopPropagation();
     start.classList.add("hide");
+    hud.classList.remove("hide");
     game.init();
   },
   { once: true }
