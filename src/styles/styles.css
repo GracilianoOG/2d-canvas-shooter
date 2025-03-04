@@ -178,13 +178,13 @@ button {
 
 .pause-screen {
   backdrop-filter: blur(3px) brightness(0.8);
+  text-shadow: 0 0 0.188rem currentColor;
 }
 
 .pause-screen__title {
-  font-size: 2rem;
-  letter-spacing: 5px;
-  margin-bottom: 8px;
-  text-shadow: 0 0 5px black;
+  font-size: 3rem;
+  letter-spacing: 0.313rem;
+  margin-bottom: 1rem;
   text-transform: capitalize;
 }
 
