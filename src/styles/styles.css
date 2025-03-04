@@ -203,6 +203,7 @@ button {
   margin-bottom: 10px;
 }
 
+.key,
 .highscore__points {
   color: #ffb300;
 }
