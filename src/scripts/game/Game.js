@@ -47,6 +47,7 @@ class Game {
   }
 
   pause() {
+    if (window.gameState.entities.player.isDead) return;
     this.isRunning ? this.stopLoop() : this.startLoop();
     const indicators = document.querySelectorAll(".score");
     const state = this.isRunning ? "running" : "paused";
@@ -125,17 +126,11 @@ class Game {
     window.gameState.entities.gameAudio.playMusic("battle");
 
     document.addEventListener("keydown", e => {
-      if (e.code === "KeyP" && !window.gameState.entities.player.isDead) {
-        this.pause();
-      }
+      if (e.code === "KeyP") this.pause();
     });
 
     document.addEventListener("visibilitychange", () => {
-      const isPlayerAlive = !window.gameState.entities.player.isDead;
-
-      if (document.hidden && this.isRunning && isPlayerAlive) {
-        this.pause();
-      }
+      if (document.hidden && this.isRunning) this.pause();
     });
 
     this.startLoop();
