@@ -9,20 +9,10 @@
 
 /* Variables */
 :root {
-  /* Base colors */
   --color-white: #fff;
   --color-black: #000;
-
-  /* Element colors */
-  --color-body-bg: var(--color-black);
-  --color-body-text: var(--color-white);
-
-  --color-restart-screen-bg: var(--color-white);
-  --color-restart-title-text: var(--color-black);
-  --color-restart-btn-bg: var(--color-white);
-  --color-restart-btn-border: var(--color-black);
-
-  /* Fonts */
+  --color-red: #f00;
+  --color-gold: #ffb300;
   --font-primary: "Press Start 2P", sans-serif;
 }
 
@@ -79,11 +69,15 @@
 
 /* General Styles */
 body {
+  --dot-size: 0.6px;
   animation: move-bg 0.8s infinite linear;
-  background-color: black;
-  background-image: radial-gradient(white 0.6px, transparent 0.6px);
+  background-color: var(--color-black);
+  background-image: radial-gradient(
+    var(--color-white) var(--dot-size),
+    transparent var(--dot-size)
+  );
   background-size: 15px 15px;
-  color: var(--color-body-text);
+  color: var(--color-white);
   overflow: hidden;
 }
 
@@ -156,7 +150,7 @@ button {
   letter-spacing: 0.625rem;
   margin-bottom: 5rem;
   text-transform: uppercase;
-  text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 #f00;
+  text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 var(--color-red);
 }
 
 .gameover-screen__btn {
@@ -205,7 +199,7 @@ button {
 
 .key,
 .highscore__points {
-  color: #ffb300;
+  color: var(--color-gold);
 }
 
 .highscore,
@@ -216,7 +210,7 @@ button {
 
 .highscore,
 .start-screen {
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
 }
 
