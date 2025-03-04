@@ -111,7 +111,7 @@ class Game {
       realCanvas: this.realCanvas,
       player: player,
       gameAudio: new GameAudio(),
-      scoreboard: new Scoreboard(Screens.game),
+      scoreboard: new Scoreboard(document.querySelector("#hud")),
       isRunning: this.isRunning,
       game: this,
     });
