@@ -133,6 +133,7 @@ class Game {
       if (document.hidden && this.isRunning) this.pause();
     });
 
+    this.enemyCreator.start();
     this.startLoop();
   }
 
@@ -143,6 +144,7 @@ class Game {
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
     window.gameState.entities.scoreboard.score = 0;
     window.gameState.entities.player.revive(mWidth / 2, mHeight / 2);
+    this.enemyCreator.reset();
     this.startLoop();
   }
 }
