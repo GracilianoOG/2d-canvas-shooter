@@ -54,11 +54,15 @@ class Game {
     this.shake.timer.reset();
   }
 
-  animate = timestamp => {
+  calcDeltaTime(timestamp) {
     if (this.lastTime) {
       this.deltaTime = timestamp - this.lastTime;
     }
     this.lastTime = timestamp;
+  }
+
+  animate = timestamp => {
+    this.calcDeltaTime(timestamp);
 
     if (this.shake.timer?.active) {
       const strength = this.shake.strength;
