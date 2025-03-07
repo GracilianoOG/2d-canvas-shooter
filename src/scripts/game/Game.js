@@ -2,7 +2,6 @@ import { Player } from "../player/Player.js";
 import { Canvas } from "../Canvas.js";
 import { gameState } from "../singletons/GameState.js";
 import { EnemyCreator } from "../enemy/EnemyCreator.js";
-import { GameManager } from "./GameManager.js";
 import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
 import { COLORS } from "../utils/constants.js";
@@ -18,7 +17,6 @@ class Game {
     this.lastTime = 0;
     this.deltaTime = 0;
     this.enemyCreator = new EnemyCreator(800);
-    this.gameManager = new GameManager();
     this.audioManager = new GameAudio();
 
     this.mainCanvas = new Canvas(800, 600);
@@ -70,7 +68,7 @@ class Game {
       const yOffset = randomInt(-strength, strength);
       this.mainCanvas.context.translate(xOffset, yOffset);
     }
-    this.gameManager.update();
+    gameState.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
     Timer.updateAll(this.deltaTime);
     this.updateCanvas();
