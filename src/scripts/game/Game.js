@@ -24,16 +24,6 @@ class Game {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.trailsCanvas = new Canvas(mWidth, mHeight);
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
-
-    Screens.restart.children[1].addEventListener("click", e => {
-      e.stopPropagation();
-      Screens.restart.classList.add("hide");
-      this.restart();
-    });
-
-    window.addEventListener("resize", () =>
-      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
-    );
   }
 
   startLoop() {
