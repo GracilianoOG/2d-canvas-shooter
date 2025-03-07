@@ -83,22 +83,23 @@ class Game {
   };
 
   updateCanvas() {
-    // Create trail effect
     const { width: tWidth, height: tHeight } = this.trailsCanvas;
+    const { width: rWidth, height: rHeight } = this.realCanvas;
+    const { width: mWidth, height: mHeight } = this.mainCanvas;
     const mCanvas = this.mainCanvas.canvas;
+
+    // Create trail effect
     this.trailsCanvas.context.drawImage(mCanvas, 0, 0);
     this.trailsCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
     this.trailsCanvas.context.fillRect(0, 0, tWidth, tHeight);
 
     // Clear real canvas
-    const { width: rWidth, height: rHeight } = this.realCanvas;
     this.realCanvas.context.clearRect(0, 0, rWidth, rHeight);
 
     // Draw buffer canvas on real canvas (all game objects)
     this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
 
     // Clear buffer canvas so it won't draw a messed up image next frame
-    const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
 
     // Draw background
