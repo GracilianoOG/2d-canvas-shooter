@@ -94,7 +94,7 @@ class Enemy extends Projectile {
   die() {
     this.bleed(16);
     window.gameState["entities"].gameAudio.playSound("explosion");
-    window.gameState["entities"].game.shakeScreen(8, 0.3);
+    window.gameState["entities"].game.shakeScreen(8, 300);
     this.destroy();
   }
 
