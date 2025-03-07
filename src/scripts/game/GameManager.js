@@ -34,6 +34,7 @@ class GameManager {
   }
 
   #prepareRestart(delayInSeconds) {
+    gameState.getEntity("game").enemyCreator.stop();
     setTimeout(() => {
       gameState.getEntity("game").stopLoop();
       StorageHandler.storeHighscore(gameState.getEntity("scoreboard").score);
