@@ -8,6 +8,7 @@ import { Scoreboard } from "../score/Scoreboard.js";
 import { COLORS } from "../utils/constants.js";
 import * as Screens from "../utils/screens.js";
 import { Timer } from "../Timer.js";
+import { randomInt } from "../utils/utility.js";
 
 class Game {
   constructor() {
@@ -60,8 +61,9 @@ class Game {
     this.lastTime = timestamp;
 
     if (this.shake.timer?.active) {
-      const xOffset = Math.random() * this.shake.strength;
-      const yOffset = Math.random() * this.shake.strength;
+      const strength = this.shake.strength;
+      const xOffset = randomInt(-strength, strength);
+      const yOffset = randomInt(-strength, strength);
       this.mainCanvas.context.translate(xOffset, yOffset);
     }
     this.gameManager.update();
