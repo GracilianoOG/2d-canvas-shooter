@@ -109,12 +109,13 @@ class Game {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
+    const scoreboard = new Scoreboard(document.querySelector("#hud"));
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
-      player: player,
+      player,
       gameAudio: this.audioManager,
-      scoreboard: new Scoreboard(document.querySelector("#hud")),
+      scoreboard,
       game: this,
     });
 
