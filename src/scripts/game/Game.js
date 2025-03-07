@@ -38,15 +38,13 @@ class Game {
 
   startLoop() {
     this.isRunning = true;
-    window.gameState.entities.isRunning = this.isRunning;
     this.animation.id = requestAnimationFrame(this.animate);
   }
 
   stopLoop() {
     this.isRunning = false;
-    window.gameState.entities.isRunning = this.isRunning;
-    cancelAnimationFrame(this.animation.id);
     this.lastTime = 0;
+    cancelAnimationFrame(this.animation.id);
   }
 
   pause() {
@@ -117,7 +115,6 @@ class Game {
       player: player,
       gameAudio: this.audioManager,
       scoreboard: new Scoreboard(document.querySelector("#hud")),
-      isRunning: this.isRunning,
       game: this,
     });
 
