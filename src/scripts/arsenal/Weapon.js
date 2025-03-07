@@ -1,3 +1,4 @@
+import { gameState } from "../singletons/GameState";
 import { Bullet } from "./Bullet";
 
 class Weapon {
@@ -11,9 +12,9 @@ class Weapon {
     const { x: playerX, y: playerY } = this.#player;
 
     const { width: rWidth, height: rHeight } =
-      window.gameState.entities.realCanvas;
+      gameState.getEntity("realCanvas");
     const { width: mWidth, height: mHeight } =
-      window.gameState.entities.mainCanvas;
+      gameState.getEntity("mainCanvas");
 
     const { left: offsetX, top: offsetY } =
       currentTarget.getBoundingClientRect();
@@ -30,7 +31,7 @@ class Weapon {
   shoot(e) {
     const { playerX, playerY, angle } = this.#calcBulletPath(e);
     new Bullet(playerX, playerY, 5, 20, angle, this.#player.color);
-    window.gameState.entities.gameAudio.playSound("shot");
+    gameState.getEntity("gameAudio").playSound("shot");
   }
 }
 

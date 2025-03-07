@@ -1,22 +1,22 @@
 import { Bullet } from "../arsenal/Bullet.js";
 import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
+import { gameState } from "../singletons/GameState.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { restart } from "../utils/screens.js";
 
 class GameManager {
   #countScore(enemy, scoreAmount) {
-    window.gameState["entities"].scoreboard.createIndicator(
-      scoreAmount,
-      enemy.baseColor
-    );
+    gameState
+      .getEntity("scoreboard")
+      .createIndicator(scoreAmount, enemy.baseColor);
   }
 
   #checkCollisions() {
     const enemies = Entity.instances.filter(i => i instanceof Enemy);
     const bullets = Entity.instances.filter(i => i instanceof Bullet);
-    const player = window.gameState["entities"].player;
+    const player = gameState.getEntity("player");
 
     for (const e of enemies) {
       if (!player.isDead && player.collidedWith(e)) {
@@ -35,21 +35,19 @@ class GameManager {
 
   #prepareRestart(delayInSeconds) {
     setTimeout(() => {
-      window.gameState["entities"].game.stopLoop();
-      StorageHandler.storeHighscore(
-        window.gameState["entities"].scoreboard.score
-      );
+      gameState.getEntity("game").stopLoop();
+      StorageHandler.storeHighscore(gameState.getEntity("scoreboard").score);
       restart.classList.remove("hide");
       const highscoreBoard = restart.querySelector(
         CSS_CLASSES.HIGHSCORE_POINTS
       );
       highscoreBoard.textContent = StorageHandler.retrieveHighscore();
-      Entity.instances = [window.gameState["entities"].player];
+      Entity.instances = [gameState.getEntity("player")];
     }, delayInSeconds * 1000);
   }
 
   update() {
-    Entity.updateAll(window.gameState["entities"].mainCanvas.context);
+    Entity.updateAll(gameState.getEntity("mainCanvas").context);
     this.#checkCollisions();
   }
 }

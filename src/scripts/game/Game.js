@@ -1,6 +1,6 @@
 import { Player } from "../player/Player.js";
 import { Canvas } from "../Canvas.js";
-import { GameState } from "../singletons/GameState.js";
+import { gameState } from "../singletons/GameState.js";
 import { EnemyCreator } from "../enemy/EnemyCreator.js";
 import { GameManager } from "./GameManager.js";
 import { GameAudio } from "../audio/GameAudio.js";
@@ -48,7 +48,7 @@ class Game {
   }
 
   pause() {
-    if (window.gameState.entities.player.isDead) return;
+    if (gameState.getEntity("player").isDead) return;
     this.isRunning ? this.stopLoop() : this.startLoop();
     const indicators = document.querySelectorAll(".score");
     const state = this.isRunning ? "running" : "paused";
@@ -109,7 +109,7 @@ class Game {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
-    window.gameState = new GameState({
+    gameState.addEntities({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
       player: player,
@@ -139,8 +139,8 @@ class Game {
     const { width: tWidth, height: tHeight } = this.trailsCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
-    window.gameState.entities.scoreboard.score = 0;
-    window.gameState.entities.player.revive(mWidth / 2, mHeight / 2);
+    gameState.getEntity("scoreboard").score = 0;
+    gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
     this.startLoop();
   }

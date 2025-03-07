@@ -1,3 +1,4 @@
+import { gameState } from "../singletons/GameState.js";
 import { Timer } from "../Timer.js";
 import { minOrMaxPoint, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
@@ -13,7 +14,7 @@ class EnemyCreator {
   }
 
   #createEnemyPosition(enemySize) {
-    const { width, height } = window.gameState["entities"].mainCanvas;
+    const { width, height } = gameState.getEntity("mainCanvas");
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
 
@@ -33,7 +34,7 @@ class EnemyCreator {
     new Enemy(
       ...coords,
       ...Object.values(randomEnemy),
-      window.gameState["entities"].player
+      gameState.getEntity("player")
     );
   }
 

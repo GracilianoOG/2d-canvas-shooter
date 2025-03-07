@@ -1,6 +1,7 @@
 import { COLORS } from "../utils/constants.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
+import { gameState } from "../singletons/GameState.js";
 
 class Enemy extends Projectile {
   #target;
@@ -76,7 +77,7 @@ class Enemy extends Projectile {
     }
     this.bleed(8);
     this.createDamageEffect();
-    window.gameState["entities"].gameAudio.playSound("hit");
+    gameState.getEntity("gameAudio").playSound("hit");
     return this.#score.hit;
   }
 
@@ -93,8 +94,8 @@ class Enemy extends Projectile {
 
   die() {
     this.bleed(16);
-    window.gameState["entities"].gameAudio.playSound("explosion");
-    window.gameState["entities"].game.shakeScreen(8, 300);
+    gameState.getEntity("gameAudio").playSound("explosion");
+    gameState.getEntity("game").shakeScreen(8, 300);
     this.destroy();
   }
 

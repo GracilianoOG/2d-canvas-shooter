@@ -2,6 +2,7 @@ import { Particle } from "../Particle.js";
 import { PlayerController } from "./PlayerController.js";
 import { Weapon } from "../arsenal/Weapon.js";
 import { Projectile } from "../Projectile.js";
+import { gameState } from "../singletons/GameState.js";
 
 class Player extends Projectile {
   #isDead = false;
@@ -26,7 +27,7 @@ class Player extends Projectile {
 
   #getInCanvas() {
     const { width: cWidth, height: cHeight } =
-      window.gameState.entities.mainCanvas;
+      gameState.getEntity("mainCanvas");
     const pRadius = this.dimensions.radius;
 
     // LEFT, RIGHT, UP, DOWN
@@ -38,7 +39,7 @@ class Player extends Projectile {
 
   kill() {
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
-    window.gameState["entities"].gameAudio.playSound("explosion");
+    gameState.getEntity("gameAudio").playSound("explosion");
     this.isDead = true;
   }
 
