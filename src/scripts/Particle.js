@@ -14,10 +14,6 @@ class Particle extends Projectile {
     super(x, y, radius, speed, color);
   }
 
-  get type() {
-    return "Particle";
-  }
-
   #shrink() {
     const shrunkRadius = this.dimensions.radius - 0.2;
     if (shrunkRadius > 0) {

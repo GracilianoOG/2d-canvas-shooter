@@ -21,10 +21,6 @@ class Player extends Projectile {
     this.#isDead = isDead;
   }
 
-  get type() {
-    return "Player";
-  }
-
   #getInCanvas() {
     const { width: cWidth, height: cHeight } =
       gameState.getEntity("mainCanvas");

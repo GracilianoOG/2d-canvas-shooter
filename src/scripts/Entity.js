@@ -19,10 +19,6 @@ class Entity {
     }
   }
 
-  get type() {
-    return "Entity";
-  }
-
   get x() {
     return this.#x;
   }
