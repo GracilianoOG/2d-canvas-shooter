@@ -16,6 +16,8 @@ class Game {
     this.shake = { strength: 0, timer: null };
     this.lastTime = 0;
     this.deltaTime = 0;
+    this.enemyCreator = new EnemyCreator(800);
+    this.gameManager = new GameManager();
 
     this.mainCanvas = new Canvas(800, 600);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -116,10 +118,6 @@ class Game {
       isRunning: this.isRunning,
       game: this,
     });
-
-    // Controllers
-    this.enemyCreator = new EnemyCreator(800);
-    this.gameManager = new GameManager();
 
     // General & Animation
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
