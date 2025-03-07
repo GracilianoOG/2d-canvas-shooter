@@ -38,10 +38,10 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (this.#keys["KeyA"]) this.#moveLeft();
-    if (this.#keys["KeyD"]) this.#moveRight();
-    if (this.#keys["KeyW"]) this.#moveUp();
-    if (this.#keys["KeyS"]) this.#moveDown();
+    if (this.#keys["KeyA"] || this.#keys["ArrowLeft"]) this.#moveLeft();
+    if (this.#keys["KeyD"] || this.#keys["ArrowRight"]) this.#moveRight();
+    if (this.#keys["KeyW"] || this.#keys["ArrowUp"]) this.#moveUp();
+    if (this.#keys["KeyS"] || this.#keys["ArrowDown"]) this.#moveDown();
   }
 
   update() {
