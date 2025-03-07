@@ -5,7 +5,11 @@ import { enemyTypes } from "./enemyTypes.js";
 
 class EnemyCreator {
   constructor(spawnTime) {
-    this.timer = new Timer(spawnTime, {}, this.#createEnemy.bind(this));
+    this.timer = new Timer(
+      spawnTime,
+      { autostart: false },
+      this.#createEnemy.bind(this)
+    );
   }
 
   #createEnemyPosition(enemySize) {
@@ -31,6 +35,18 @@ class EnemyCreator {
       ...Object.values(randomEnemy),
       window.gameState["entities"].player
     );
+  }
+
+  start() {
+    this.timer.start();
+  }
+
+  stop() {
+    this.timer.stop();
+  }
+
+  reset() {
+    this.timer.reset();
   }
 }
 
