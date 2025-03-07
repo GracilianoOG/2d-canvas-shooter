@@ -1,3 +1,5 @@
+import { Bullet } from "../arsenal/Bullet.js";
+import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
@@ -12,8 +14,8 @@ class GameManager {
   }
 
   #checkCollisions() {
-    const enemies = Entity.instances.filter(i => i.type === "Enemy");
-    const bullets = Entity.instances.filter(i => i.type === "Bullet");
+    const enemies = Entity.instances.filter(i => i instanceof Enemy);
+    const bullets = Entity.instances.filter(i => i instanceof Bullet);
     const player = window.gameState["entities"].player;
 
     for (const e of enemies) {
