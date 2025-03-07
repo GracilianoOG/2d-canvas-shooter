@@ -18,6 +18,7 @@ class Game {
     this.deltaTime = 0;
     this.enemyCreator = new EnemyCreator(800);
     this.gameManager = new GameManager();
+    this.audioManager = new GameAudio();
 
     this.mainCanvas = new Canvas(800, 600);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -114,7 +115,7 @@ class Game {
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
       player: player,
-      gameAudio: new GameAudio(),
+      gameAudio: this.audioManager,
       scoreboard: new Scoreboard(document.querySelector("#hud")),
       isRunning: this.isRunning,
       game: this,
@@ -122,7 +123,7 @@ class Game {
 
     // General & Animation
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
-    window.gameState.entities.gameAudio.playMusic("battle");
+    this.audioManager.playMusic("battle");
 
     document.addEventListener("keydown", e => {
       if (e.code === "KeyP") this.pause();
