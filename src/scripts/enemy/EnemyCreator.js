@@ -8,6 +8,8 @@ class EnemyCreator {
   constructor(spawnTime) {
     const noStart = { autostart: false };
     this.timer = new Timer(spawnTime, noStart, this.#createEnemy.bind(this));
+    this.spawnLevel = 1;
+    this.milestones = [10000, 20000, 30000, 40000, 60000];
   }
 
   #createEnemyPosition(enemySize) {
@@ -21,7 +23,7 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const rndSeed = Math.floor(Math.random() * enemyTypes.length);
+    const rndSeed = randomInt(0, this.spawnLevel);
     const rndEnemy = { ...enemyTypes[rndSeed] };
     if (randomInt(0, 100) < 10) this.#modifyEnemy(rndEnemy);
     return rndEnemy;
@@ -51,7 +53,17 @@ class EnemyCreator {
     enemy.score.death *= 2;
   }
 
+  #checkMilestone() {
+    const score = gameState.getEntity("scoreboard").score;
+    const index = this.spawnLevel - 1;
+    const length = this.milestones.length;
+    if (index < length && score > this.milestones[index]) {
+      this.spawnLevel++;
+    }
+  }
+
   #createEnemy() {
+    this.#checkMilestone();
     const randomEnemy = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(randomEnemy.radius);
     new Enemy(
@@ -71,6 +83,7 @@ class EnemyCreator {
 
   reset() {
     this.timer.reset();
+    this.spawnLevel = 1;
   }
 }
 
