@@ -9,6 +9,7 @@ class EnemyCreator {
     const noStart = { autostart: false };
     this.timer = new Timer(spawnTime, noStart, this.#createEnemy.bind(this));
     this.spawnLevel = 1;
+    this.modRate = 10;
     this.milestones = [10000, 20000, 30000, 40000, 60000];
   }
 
@@ -25,7 +26,7 @@ class EnemyCreator {
   #randomizeEnemy() {
     const rndSeed = randomInt(0, this.spawnLevel);
     const rndEnemy = { ...enemyTypes[rndSeed] };
-    if (randomInt(0, 100) < 10) this.#modifyEnemy(rndEnemy);
+    if (randomInt(0, 100) < this.modRate) this.#modifyEnemy(rndEnemy);
     return rndEnemy;
   }
 
