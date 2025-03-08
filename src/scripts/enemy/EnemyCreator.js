@@ -48,7 +48,7 @@ class EnemyCreator {
     }
     enemy.score = { ...enemy.score };
     enemy.score.hit *= 2;
-    enemy.score.death *= enemy.hp / 10;
+    enemy.score.death *= 2;
   }
 
   #createEnemy() {
