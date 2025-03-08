@@ -8,6 +8,7 @@ class EnemyCreator {
   constructor(spawnTime) {
     const noStart = { autostart: false };
     this.timer = new Timer(spawnTime, noStart, this.#createEnemy.bind(this));
+    this.spawnTime = spawnTime;
     this.spawnLevel = 1;
     this.modRate = 10;
     this.milestones = [10000, 20000, 30000, 40000, 60000];
@@ -72,6 +73,7 @@ class EnemyCreator {
       ...Object.values(randomEnemy),
       gameState.getEntity("player")
     );
+    this.timer.waitTime -= 2;
   }
 
   start() {
@@ -83,6 +85,7 @@ class EnemyCreator {
   }
 
   reset() {
+    this.timer.waitTime = this.spawnTime;
     this.timer.reset();
     this.spawnLevel = 1;
   }
