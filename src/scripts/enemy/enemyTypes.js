@@ -2,37 +2,37 @@ const enemyTypes = [
   {
     radius: 18,
     speed: 4,
-    color: "#ff0000",
+    color: "#ff2d2d",
     hp: 20,
   },
   {
     radius: 14,
     speed: 5,
-    color: "#f210c8",
+    color: "#f547d7",
     hp: 10,
   },
   {
     radius: 25,
     speed: 3,
-    color: "#10b2f2",
+    color: "#60cdf7",
     hp: 30,
   },
   {
     radius: 20,
     speed: 4,
-    color: "#021ffc",
+    color: "#8191fe",
     hp: 30,
   },
   {
     radius: 30,
     speed: 2,
-    color: "#1ff40c",
+    color: "#42fd9b",
     hp: 50,
   },
   {
     radius: 10,
     speed: 6,
-    color: "#fc4d02",
+    color: "#fd7840",
     hp: 10,
   },
 ];
