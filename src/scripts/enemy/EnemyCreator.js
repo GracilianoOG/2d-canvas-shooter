@@ -11,7 +11,7 @@ class EnemyCreator {
     this.spawnTime = spawnTime;
     this.spawnLevel = 1;
     this.modRate = 10;
-    this.milestones = [10000, 20000, 30000, 40000, 60000];
+    this.milestones = [15000, 40000, 60000, 80000, 100000];
   }
 
   #createEnemyPosition(enemySize) {
