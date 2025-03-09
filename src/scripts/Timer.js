@@ -30,8 +30,8 @@ class Timer {
     this.active = false;
   }
 
-  reset() {
-    this.elapsedTime = this.waitTime;
+  reset(waitTime = this.waitTime) {
+    this.elapsedTime = waitTime;
     this.start();
   }
 
