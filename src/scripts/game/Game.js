@@ -49,7 +49,7 @@ class Game {
     this.shake.strength = strength;
     if (!this.shake.timer)
       this.shake.timer = new Timer(duration, { loop: false });
-    this.shake.timer.reset();
+    this.shake.timer.reset(duration);
   }
 
   calcDeltaTime(timestamp) {
