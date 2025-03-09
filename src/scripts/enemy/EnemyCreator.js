@@ -66,13 +66,10 @@ class EnemyCreator {
 
   #createEnemy() {
     this.#checkMilestone();
-    const randomEnemy = this.#randomizeEnemy();
-    const coords = this.#createEnemyPosition(randomEnemy.radius);
-    new Enemy(
-      ...coords,
-      ...Object.values(randomEnemy),
-      gameState.getEntity("player")
-    );
+    const rndEnemy = this.#randomizeEnemy();
+    const coords = this.#createEnemyPosition(rndEnemy.radius);
+    const player = gameState.getEntity("player");
+    new Enemy(...coords, ...Object.values(rndEnemy), player);
     this.timer.waitTime -= 2;
   }
 
