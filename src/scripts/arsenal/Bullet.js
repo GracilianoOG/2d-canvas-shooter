@@ -40,8 +40,7 @@ class Bullet extends Projectile {
 
   update() {
     this.#move();
-    if (this.#isOutOfCanvas(gameState.getEntity("mainCanvas").context))
-      this.destroy();
+    if (this.#isOutOfCanvas(gameState.getEntity("mainCanvas"))) this.destroy();
   }
 }
 
