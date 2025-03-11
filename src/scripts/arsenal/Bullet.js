@@ -1,4 +1,5 @@
 import { Projectile } from "../Projectile.js";
+import { gameState } from "../singletons/GameState.js";
 
 class Bullet extends Projectile {
   #angle;
@@ -37,10 +38,10 @@ class Bullet extends Projectile {
     this.y += Math.sin(this.angle) * this.speed;
   }
 
-  update(ctx) {
-    this.draw(ctx);
+  update() {
     this.#move();
-    if (this.#isOutOfCanvas(ctx.canvas)) this.destroy();
+    if (this.#isOutOfCanvas(gameState.getEntity("mainCanvas").context))
+      this.destroy();
   }
 }
 
