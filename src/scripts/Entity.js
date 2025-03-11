@@ -15,7 +15,8 @@ class Entity {
 
   static updateAll(ctx) {
     for (let i = Entity.instances.length - 1; i >= 0; i--) {
-      Entity.instances[i].update(ctx);
+      Entity.instances[i].draw(ctx);
+      Entity.instances[i].update();
     }
   }
 
