@@ -95,8 +95,7 @@ class Enemy extends Projectile {
     this.destroy();
   }
 
-  update(ctx) {
-    this.draw(ctx);
+  update() {
     this.#move();
     this.#returnOriginalColor();
   }
