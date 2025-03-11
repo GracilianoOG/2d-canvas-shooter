@@ -30,8 +30,7 @@ class Particle extends Projectile {
     this.#shrink();
   }
 
-  update(ctx) {
-    this.draw(ctx);
+  update() {
     this.#move();
   }
 }
