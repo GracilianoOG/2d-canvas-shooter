@@ -33,13 +33,9 @@ class Bullet extends Projectile {
     return bx < -br || bx > cw + br || by < -br || by > ch + br;
   }
 
-  #move() {
+  update() {
     this.x += Math.cos(this.angle) * this.speed;
     this.y += Math.sin(this.angle) * this.speed;
-  }
-
-  update() {
-    this.#move();
     if (this.#isOutOfCanvas(gameState.getEntity("mainCanvas"))) this.destroy();
   }
 }
