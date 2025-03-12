@@ -10,10 +10,6 @@ class Particle extends Projectile {
     }
   }
 
-  constructor(x, y, radius, speed, color) {
-    super(x, y, radius, speed, color);
-  }
-
   #shrink() {
     const shrunkRadius = Math.max(this.dimensions.radius - 0.2, 0);
     this.dimensions = { radius: shrunkRadius };
