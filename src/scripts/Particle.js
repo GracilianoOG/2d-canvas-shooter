@@ -24,14 +24,10 @@ class Particle extends Projectile {
     this.destroy();
   }
 
-  #move() {
+  update() {
     this.x += Math.cos(this.#angle) * this.speed + this.#randomizer;
     this.y += Math.sin(this.#angle) * this.speed + this.#randomizer;
     this.#shrink();
-  }
-
-  update() {
-    this.#move();
   }
 }
 
