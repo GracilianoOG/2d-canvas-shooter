@@ -76,7 +76,7 @@ class Enemy extends Projectile {
 
   createDamageEffect() {
     this.speed = -1;
-    this.#maxSpeed *= 1.25;
+    this.#maxSpeed += 1;
     this.dimensions = { radius: this.dimensions.radius * 0.9 };
     this.color = COLORS.WHITE;
   }
