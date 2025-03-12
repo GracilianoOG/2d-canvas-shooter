@@ -57,11 +57,6 @@ class Enemy extends Projectile {
     }
   }
 
-  #move() {
-    this.#followPlayer();
-    this.#increaseSpeed();
-  }
-
   takeDamage(damage) {
     this.health -= damage;
     if (this.health <= 0) {
@@ -93,7 +88,8 @@ class Enemy extends Projectile {
   }
 
   update() {
-    this.#move();
+    this.#followPlayer();
+    this.#increaseSpeed();
     this.#returnOriginalColor();
   }
 }
