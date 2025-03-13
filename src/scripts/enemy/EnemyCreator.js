@@ -10,7 +10,7 @@ class EnemyCreator {
     this.timer = new Timer(spawnTime, noStart, this.#createEnemy.bind(this));
     this.spawnTime = spawnTime;
     this.spawnLevel = 1;
-    this.modRate = 10;
+    this.modRate = 5;
     this.milestones = [15000, 40000, 60000, 80000, 100000];
   }
 
