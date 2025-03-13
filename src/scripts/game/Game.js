@@ -11,7 +11,7 @@ import { randomInt } from "../utils/utility.js";
 
 class Game {
   constructor() {
-    this.animation = {};
+    this.rafId = null;
     this.isRunning = false;
     this.shake = { strength: 0, timer: null };
     this.lastTime = 0;
@@ -27,13 +27,13 @@ class Game {
 
   startLoop() {
     this.isRunning = true;
-    this.animation.id = requestAnimationFrame(this.animate);
+    this.rafId = requestAnimationFrame(this.animate);
   }
 
   stopLoop() {
     this.isRunning = false;
     this.lastTime = 0;
-    cancelAnimationFrame(this.animation.id);
+    cancelAnimationFrame(this.rafId);
   }
 
   pause() {
