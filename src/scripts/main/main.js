@@ -9,7 +9,7 @@ const hud = document.querySelector("#hud");
 const pauseBtn = document.querySelector(".pause-btn");
 highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 
-const game = new Game();
+const game = new Game({ width: 800, height: 600 });
 
 start.addEventListener(
   "click",

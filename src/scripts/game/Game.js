@@ -10,7 +10,7 @@ import { Timer } from "../Timer.js";
 import { randomInt } from "../utils/utility.js";
 
 class Game {
-  constructor() {
+  constructor(configs) {
     this.rafId = null;
     this.lastTime = null;
     this.deltaTime = null;
@@ -19,7 +19,7 @@ class Game {
     this.enemyCreator = new EnemyCreator(800);
     this.audioManager = new GameAudio();
 
-    this.mainCanvas = new Canvas(800, 600);
+    this.mainCanvas = new Canvas(configs.width, configs.height);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.trailsCanvas = new Canvas(mWidth, mHeight);
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
