@@ -12,10 +12,10 @@ import { randomInt } from "../utils/utility.js";
 class Game {
   constructor() {
     this.rafId = null;
+    this.lastTime = null;
+    this.deltaTime = null;
     this.isRunning = false;
     this.shake = { strength: 0, timer: null };
-    this.lastTime = 0;
-    this.deltaTime = 0;
     this.enemyCreator = new EnemyCreator(800);
     this.audioManager = new GameAudio();
 
@@ -52,15 +52,9 @@ class Game {
     this.shake.timer.reset(duration);
   }
 
-  calcDeltaTime(timestamp) {
-    if (this.lastTime) {
-      this.deltaTime = timestamp - this.lastTime;
-    }
-    this.lastTime = timestamp;
-  }
-
   animate = timestamp => {
-    this.calcDeltaTime(timestamp);
+    this.deltaTime = timestamp - (this.lastTime ?? timestamp);
+    this.lastTime = timestamp;
 
     if (this.shake.timer?.active) {
       const strength = this.shake.strength;
