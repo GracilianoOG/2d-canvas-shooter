@@ -25,7 +25,7 @@ class Game {
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
   }
 
-  startLoop() {
+  loop() {
     this.isRunning = true;
     this.rafId = requestAnimationFrame(this.animate);
   }
@@ -38,7 +38,7 @@ class Game {
 
   pause() {
     if (gameState.getEntity("player").isDead) return;
-    this.isRunning ? this.stopLoop() : this.startLoop();
+    this.isRunning ? this.stopLoop() : this.loop();
     const indicators = document.querySelectorAll(".score");
     const state = this.isRunning ? "running" : "paused";
     indicators.forEach(i => (i.style.animationPlayState = state));
@@ -66,7 +66,7 @@ class Game {
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
     Timer.updateAll(this.deltaTime);
     this.updateCanvas();
-    this.startLoop();
+    this.loop();
   };
 
   updateCanvas() {
@@ -120,7 +120,7 @@ class Game {
     });
 
     this.enemyCreator.start();
-    this.startLoop();
+    this.loop();
   }
 
   restart() {
@@ -131,7 +131,7 @@ class Game {
     gameState.getEntity("scoreboard").score = 0;
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
-    this.startLoop();
+    this.loop();
   }
 }
 
