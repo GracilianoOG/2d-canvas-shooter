@@ -65,11 +65,11 @@ class Game {
     gameState.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
     Timer.updateAll(this.deltaTime);
-    this.updateCanvas();
+    this.render();
     this.loop();
   };
 
-  updateCanvas() {
+  render() {
     const { width: tWidth, height: tHeight } = this.trailsCanvas;
     const { width: rWidth, height: rHeight } = this.realCanvas;
     const { width: mWidth, height: mHeight } = this.mainCanvas;
