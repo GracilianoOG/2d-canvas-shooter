@@ -8,6 +8,7 @@ import { COLORS } from "../utils/constants.js";
 import * as Screens from "../utils/screens.js";
 import { Timer } from "../Timer.js";
 import { randomInt } from "../utils/utility.js";
+import { Entity } from "../Entity.js";
 
 class Game {
   constructor(configs) {
@@ -62,12 +63,17 @@ class Game {
       const yOffset = randomInt(-strength, strength);
       this.mainCanvas.context.translate(xOffset, yOffset);
     }
-    gameState.update();
+    this.update();
     this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
-    Timer.updateAll(this.deltaTime);
     this.render();
     this.loop();
   };
+
+  update() {
+    Entity.updateAll(this.mainCanvas.context);
+    Timer.updateAll(this.deltaTime);
+    gameState.checkCollisions();
+  }
 
   render() {
     const { width: tWidth, height: tHeight } = this.trailsCanvas;

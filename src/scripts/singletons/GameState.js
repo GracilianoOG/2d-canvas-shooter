@@ -28,7 +28,7 @@ class GameState {
     this.getEntity("scoreboard").createIndicator(score, color);
   }
 
-  #checkCollisions() {
+  checkCollisions() {
     const enemies = Entity.instances.filter(i => i instanceof Enemy);
     const bullets = Entity.instances.filter(i => i instanceof Bullet);
     const player = this.getEntity("player");
@@ -60,11 +60,6 @@ class GameState {
       highscoreBoard.textContent = StorageHandler.retrieveHighscore();
       Entity.instances = [this.getEntity("player")];
     }, delayInSeconds * 1000);
-  }
-
-  update() {
-    Entity.updateAll(this.getEntity("mainCanvas").context);
-    this.#checkCollisions();
   }
 }
 
