@@ -48,16 +48,23 @@ class GameState {
     }
   }
 
+  #calcHighscore() {
+    const score = this.getEntity("scoreboard").score;
+    const highscore = parseInt(StorageHandler.retrieveHighscore(false));
+    const highscoreEl = restart.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+    if (score > highscore) {
+      StorageHandler.storeHighscore(score);
+    }
+    highscoreEl.textContent = StorageHandler.retrieveHighscore();
+  }
+
   #prepareRestart(delayInSeconds) {
     this.getEntity("game").enemyCreator.stop();
+    this.#calcHighscore();
+
     setTimeout(() => {
       this.getEntity("game").stopLoop();
-      StorageHandler.storeHighscore(this.getEntity("scoreboard").score);
       restart.classList.remove("hide");
-      const highscoreBoard = restart.querySelector(
-        CSS_CLASSES.HIGHSCORE_POINTS
-      );
-      highscoreBoard.textContent = StorageHandler.retrieveHighscore();
       Entity.instances = [this.getEntity("player")];
     }, delayInSeconds * 1000);
   }
