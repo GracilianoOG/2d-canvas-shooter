@@ -50,7 +50,7 @@ class GameState {
 
   #calcHighscore() {
     const score = this.getEntity("scoreboard").score;
-    const highscore = parseInt(StorageHandler.retrieveHighscore(false));
+    const highscore = parseInt(StorageHandler.retrieveHighscore(false) || 0);
     const highscoreEl = restart.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
     if (score > highscore) {
       StorageHandler.storeHighscore(score);
