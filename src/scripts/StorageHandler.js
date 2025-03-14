@@ -1,7 +1,7 @@
 import { Scoreboard } from "./score/Scoreboard";
 
 class StorageHandler {
-  static KEY_POINTS = "js-shooter-highscore";
+  static KEY_POINTS = "circle-chaos:highscore";
 
   static retrieveHighscore(isFormatted = true) {
     const highscore = localStorage.getItem(StorageHandler.KEY_POINTS) || "";
