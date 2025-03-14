@@ -1,4 +1,4 @@
-# 🔴 2D Canvas Shooter
+# 🔴 Circle Chaos
 
 ## 📖 Description
 
@@ -6,30 +6,30 @@ _The player takes control of a little white ball that must survive against the i
 
 After learning enough about web development, the idea to create a little game came to mind. I grew up playing flash games, especially top-down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple, but from scratch, to practice what I've learned so far. Some ideas were taken from one of Chris Course's videos because they were so creative!
 
-I learned a lot of JavaScript, Canvas API and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS, just for fun.
+I learned a lot of JavaScript, Canvas API, and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS, just for fun.
 
 ## 🕹️ Controls
 
-- `<WASD>` - Move character
-- `<LMB>` - Shoot projectiles
-- `<P>` - Pause game
+- `<WASD> or <ARROWS>` - Move character
+- `<LMB>` - Shoot
+- `<P>` - Pause
 
 ## 🧱 Built with
 
-- HTML, CSS, and JavaScript
-- Canvas API
-- [Howler JS](https://howlerjs.com/) - Audio library
-- [ViteJS](https://vite.dev/) - Build tool
+- HTML and CSS for the UI, menus, and canvas;
+- Canvas API and JavaScript for game logic and input handling;
+- [Howler.js](https://howlerjs.com/) for audio management (SFX and music);
+- [Vite.js](https://vite.dev/) as the build tool.
 
 ## 🎯 Run locally
 
-Install dependencies
+Install dependencies:
 
 ```
 npm install
 ```
 
-Run project
+Run project locally:
 
 ```
 npm run dev
@@ -83,4 +83,5 @@ These resources helped me to understand many things regarding game development i
   - [String padStart - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
   - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 - Other
+
   - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
