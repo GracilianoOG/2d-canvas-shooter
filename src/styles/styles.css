@@ -214,6 +214,12 @@ button {
   text-transform: uppercase;
 }
 
+.highscore__new {
+  color: var(--color-red);
+  text-shadow: 0 0 0.3125rem currentColor;
+  margin-top: 1rem;
+}
+
 .score {
   animation: scoring 0.8s 1 ease forwards;
   text-shadow: 0 0 0.3125em currentColor, 0.125em 0.125em var(--color-black);
