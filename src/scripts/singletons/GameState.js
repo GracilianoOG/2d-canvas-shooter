@@ -36,7 +36,7 @@ class GameState {
     for (const e of enemies) {
       if (!player.isDead && player.collidedWith(e)) {
         player.kill();
-        this.#prepareRestart(2.4);
+        this.#prepareRestart(2400);
       }
       for (const b of bullets) {
         if (b.collidedWith(e)) {
@@ -62,7 +62,7 @@ class GameState {
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
   }
 
-  #prepareRestart(delayInSeconds) {
+  #prepareRestart(milliseconds) {
     this.getEntity("game").enemyCreator.stop();
     this.#calcHighscore();
 
@@ -70,7 +70,7 @@ class GameState {
       this.getEntity("game").stopLoop();
       restart.classList.remove("hide");
       Entity.instances = [this.getEntity("player")];
-    }, delayInSeconds * 1000);
+    }, milliseconds);
   }
 }
 
