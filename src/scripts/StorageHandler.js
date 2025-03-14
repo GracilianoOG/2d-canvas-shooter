@@ -9,11 +9,7 @@ class StorageHandler {
   }
 
   static storeHighscore(score) {
-    const KEY = StorageHandler.KEY_POINTS;
-    const highscore = parseInt(localStorage.getItem(KEY) || 0);
-    if (score > highscore) {
-      localStorage.setItem(KEY, score);
-    }
+    localStorage.setItem(StorageHandler.KEY_POINTS, score);
   }
 }
 
