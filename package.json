@@ -7,11 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Gabriel",
   "license": "UNLICENSED",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^5.3.3"
   },
   "dependencies": {
