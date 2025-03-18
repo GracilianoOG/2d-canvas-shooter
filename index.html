@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Circle Chaos is a game made in JavaScript where you control an angry circle that must destroy all circles that come in its way."
+    />
+    <title>Circle Chaos</title>
+    <script type="module" crossorigin src="/2d-canvas-shooter/assets/index-DatMT7Jt.js"></script>
+    <link rel="stylesheet" crossorigin href="/2d-canvas-shooter/assets/index-VIG82wVn.css">
+  </head>
+  <body>
+    <main>
+      <!-- OUTER SCREENS -->
+      <div class="screen start-screen">
+        <h1 class="start-screen__main-title">Circle Chaos</h1>
+        <p class="start-screen__title">Click anywhere to begin</p>
+        <div class="highscore">
+          <h2 class="highscore__title">Highscore</h2>
+          <p class="highscore__points">Loading...</p>
+        </div>
+      </div>
+      <div class="screen gameover-screen hide">
+        <h2 class="gameover-screen__title">Game over!</h2>
+        <button class="gameover-screen__btn">Continue?</button>
+        <div class="highscore">
+          <h2 class="highscore__title">Highscore</h2>
+          <p class="highscore__points"></p>
+          <p class="highscore__new hide">New highscore!</p>
+        </div>
+      </div>
+
+      <!-- GAME -->
+      <div id="game-container" class="hide">
+        <div id="hud">
+          <button class="pause-btn"></button>
+        </div>
+        <div id="status-container"></div>
+        <div class="screen pause-screen hide">
+          <h2 class="pause-screen__title">Game paused</h2>
+          <p class="pause-screen__text">
+            Click or press <span class="key">&lt;P&gt;</span> to resume
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
