@@ -1,12 +1,14 @@
 class Canvas {
   #canvas;
   #context;
+  #rect;
 
   constructor(width, height, parent = null) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
     this.#context = this.#canvas.getContext("2d");
+    this.#rect = this.#canvas.getBoundingClientRect();
     if (parent) parent.appendChild(this.#canvas);
   }
 
@@ -25,6 +27,7 @@ class Canvas {
 
     const { width: rWidth, height: rHeight } = realCanvas;
     realCanvas.context.drawImage(bufferCanvas.canvas, 0, 0, rWidth, rHeight);
+    realCanvas.rect = realCanvas.canvas.getBoundingClientRect();
   }
 
   get width() {
@@ -49,6 +52,14 @@ class Canvas {
 
   get context() {
     return this.#context;
+  }
+
+  get rect() {
+    return this.#rect;
+  }
+
+  set rect(rect) {
+    this.#rect = rect;
   }
 }
 
