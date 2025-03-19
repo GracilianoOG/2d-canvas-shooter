@@ -8,9 +8,9 @@ class Weapon {
     this.#player = player;
   }
 
-  #getMousePosition({ clientX, clientY, currentTarget }) {
+  #getMousePosition({ clientX, clientY }) {
     const { left: offsetX, top: offsetY } =
-      currentTarget.getBoundingClientRect();
+      gameState.getEntity("realCanvas").rect;
 
     return {
       x: clientX - offsetX,
