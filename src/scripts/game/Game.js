@@ -33,7 +33,7 @@ class Game {
 
   stopLoop() {
     this.isRunning = false;
-    this.lastTime = 0;
+    this.lastTime = null;
     cancelAnimationFrame(this.rafId);
   }
 
@@ -70,7 +70,7 @@ class Game {
   };
 
   update() {
-    Entity.updateAll(this.mainCanvas.context);
+    Entity.updateAll(this.mainCanvas.context, this.deltaTime / 16);
     Timer.updateAll(this.deltaTime);
     gameState.checkCollisions();
   }
