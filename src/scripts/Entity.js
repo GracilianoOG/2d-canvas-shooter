@@ -13,10 +13,10 @@ class Entity {
     Entity.instances.push(this);
   }
 
-  static updateAll(ctx) {
+  static updateAll(ctx, delta) {
     for (let i = Entity.instances.length - 1; i >= 0; i--) {
       Entity.instances[i].draw(ctx);
-      Entity.instances[i].update();
+      Entity.instances[i].update(delta);
     }
   }
 
