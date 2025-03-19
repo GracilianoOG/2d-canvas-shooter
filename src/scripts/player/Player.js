@@ -51,9 +51,9 @@ class Player extends Projectile {
     super.draw(ctx);
   }
 
-  update() {
+  update(delta) {
     if (this.isDead) return;
-    this.controller.update();
+    this.controller.update(delta);
     this.#getInCanvas();
   }
 }
