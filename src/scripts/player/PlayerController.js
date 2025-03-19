@@ -1,6 +1,7 @@
 class PlayerController {
   #keys = {};
   #player;
+  #delta;
 
   constructor(player) {
     this.#player = player;
@@ -22,19 +23,19 @@ class PlayerController {
   }
 
   #moveLeft() {
-    this.#player.x -= this.#player.speed;
+    this.#player.x -= this.#player.speed * this.#delta;
   }
 
   #moveRight() {
-    this.#player.x += this.#player.speed;
+    this.#player.x += this.#player.speed * this.#delta;
   }
 
   #moveUp() {
-    this.#player.y -= this.#player.speed;
+    this.#player.y -= this.#player.speed * this.#delta;
   }
 
   #moveDown() {
-    this.#player.y += this.#player.speed;
+    this.#player.y += this.#player.speed * this.#delta;
   }
 
   #movePlayer() {
@@ -44,7 +45,8 @@ class PlayerController {
     if (this.#keys["KeyS"] || this.#keys["ArrowDown"]) this.#moveDown();
   }
 
-  update() {
+  update(delta) {
+    this.#delta = delta;
     this.#movePlayer();
   }
 }
