@@ -9,6 +9,7 @@ class Enemy extends Projectile {
   #health;
   #baseColor;
   #score;
+  #delta;
 
   constructor(x, y, radius, speed, color, health, score, target) {
     super(x, y, radius, speed, color);
@@ -40,8 +41,8 @@ class Enemy extends Projectile {
     const dirY = this.#target.y - this.y;
     const angle = Math.atan2(dirY, dirX);
     if (Math.hypot(dirX, dirY) > this.speed) {
-      this.x += Math.cos(angle) * this.speed;
-      this.y += Math.sin(angle) * this.speed;
+      this.x += Math.cos(angle) * this.speed * this.#delta;
+      this.y += Math.sin(angle) * this.speed * this.#delta;
     }
   }
 
@@ -87,7 +88,8 @@ class Enemy extends Projectile {
     this.destroy();
   }
 
-  update() {
+  update(delta) {
+    this.#delta = delta;
     this.#followPlayer();
     this.#increaseSpeed();
     this.#returnOriginalColor();
