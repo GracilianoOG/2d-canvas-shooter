@@ -19,6 +19,12 @@ class PlayerController {
       this.#keys.click = { ...this.#keys.click, event };
     });
 
+    container.addEventListener(
+      "mouseenter",
+      event => (this.#keys.click = { event }),
+      { once: true }
+    );
+
     container.addEventListener("mousedown", () => {
       this.#keys.click = { ...this.#keys.click, canShoot: true };
     });
