@@ -64,9 +64,9 @@ class GameState {
 
   #prepareRestart(milliseconds) {
     this.getEntity("game").enemyCreator.stop();
-    this.#calcHighscore();
 
     setTimeout(() => {
+      this.#calcHighscore();
       this.getEntity("game").stopLoop();
       restart.classList.remove("hide");
       Entity.instances = [this.getEntity("player")];
