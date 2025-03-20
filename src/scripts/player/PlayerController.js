@@ -5,6 +5,7 @@ class PlayerController {
 
   constructor(player) {
     this.#player = player;
+    const container = document.querySelector("#game-container");
 
     document.addEventListener("keydown", ({ code }) => {
       this.#keys[code] = true;
@@ -14,12 +15,22 @@ class PlayerController {
       this.#keys[code] = false;
     });
 
-    document
-      .querySelector("#game-container")
-      .addEventListener("click", event => {
-        if (this.#player.isDead) return;
-        this.#player.weapon.shoot(event);
-      });
+    container.addEventListener("mousemove", event => {
+      this.#keys.click = { ...this.#keys.click, event };
+    });
+
+    container.addEventListener("mousedown", () => {
+      this.#keys.click = { ...this.#keys.click, canShoot: true };
+    });
+
+    container.addEventListener("mouseup", () => {
+      this.#keys.click = { ...this.#keys.click, canShoot: false };
+    });
+  }
+
+  #detectShooting() {
+    if (this.#player.isDead || !this.#keys.click?.canShoot) return;
+    this.#player.weapon.shoot(this.#keys.click.event);
   }
 
   #moveLeft() {
@@ -48,6 +59,7 @@ class PlayerController {
   update(delta) {
     this.#delta = delta;
     this.#movePlayer();
+    this.#detectShooting();
   }
 }
 
