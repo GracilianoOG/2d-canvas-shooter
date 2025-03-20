@@ -1,8 +1,10 @@
 import { gameState } from "../singletons/GameState";
+import { Timer } from "../Timer";
 import { Bullet } from "./Bullet";
 
 class Weapon {
   #player;
+  #shootCooldown = new Timer(150, { loop: false });
 
   constructor(player) {
     this.#player = player;
@@ -37,6 +39,8 @@ class Weapon {
   }
 
   shoot(event) {
+    if (this.#shootCooldown.active) return;
+    this.#shootCooldown.reset();
     const { playerX, playerY, bulletAngle } = this.#calcBulletPath(event);
     new Bullet(playerX, playerY, 5, 20, bulletAngle, this.#player.color);
     gameState.getEntity("gameAudio").playSound("shot");
