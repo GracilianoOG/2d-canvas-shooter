@@ -32,6 +32,10 @@ class PlayerController {
     container.addEventListener("mouseup", () => {
       this.#keys.click = { ...this.#keys.click, canShoot: false };
     });
+
+    container.addEventListener("mouseleave", () => {
+      this.#keys.click.canShoot = false;
+    });
   }
 
   #detectShooting() {
