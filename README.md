@@ -10,9 +10,9 @@ I learned a lot of JavaScript, Canvas API, and Game Design concepts while develo
 
 ## 🕹️ Controls
 
-- `<WASD> or <ARROWS>` - Move character
-- `<LMB>` - Shoot
-- `<P>` - Pause
+- Move character with `<WASD>` or `<ARROWS>`
+- Hold `<LMB>` to shoot
+- Press `<P>` to pause
 
 ## 🧱 Built with
 
