@@ -1,0 +1,17 @@
+.pause-btn {
+  --width: 20px;
+  --height: calc(var(--width) + 2px);
+  background: transparent;
+  border: double var(--color-white);
+  border-width: 0 0 0 var(--width);
+  height: var(--height);
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 0;
+  z-index: 1;
+
+  &:hover {
+    border-color: var(--color-gold);
+  }
+}
