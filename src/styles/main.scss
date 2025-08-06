@@ -9,20 +9,10 @@
 @use "./components/pause-btn";
 @use "./components/scoreboard";
 @use "./components/highscore";
+@use "./components/start-screen";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
-
-.start-screen__main-title {
-  animation: shadow-blink 2s infinite alternate;
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
-}
-
-.start-screen__title {
-  animation: blink 0.9s steps(2, jump-none) infinite;
-  font-size: 1.25rem;
-}
 
 .pause-screen {
   backdrop-filter: blur(3px) brightness(0.8);
