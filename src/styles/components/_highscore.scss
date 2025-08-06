@@ -7,4 +7,10 @@
     font-size: inherit;
     margin-bottom: 10px;
   }
+
+  &__new {
+    color: var(--color-red);
+    text-shadow: 0 0 0.3125rem currentColor;
+    margin-top: 1rem;
+  }
 }
