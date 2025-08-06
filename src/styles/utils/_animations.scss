@@ -1,0 +1,40 @@
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scoring {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -260%);
+    opacity: 0;
+  }
+}
+
+@keyframes move-bg {
+  100% {
+    background-position: 15px 15px;
+  }
+}
+
+@keyframes shadow-blink {
+  0% {
+    text-shadow: 0 0 0.313rem currentColor;
+  }
+
+  100% {
+    text-shadow: 0 0 0.75rem currentColor;
+  }
+}
