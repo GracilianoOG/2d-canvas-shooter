@@ -17,19 +17,6 @@
 @use "./utils/accessibility";
 @use "./utils/utility";
 
-.key,
-.highscore__points {
+.key {
   color: var(--color-gold);
-}
-
-.highscore,
-.start-screen__title,
-.gameover-screen__btn {
-  text-shadow: 0 0 0.125rem currentColor;
-}
-
-.highscore,
-.start-screen {
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
 }
