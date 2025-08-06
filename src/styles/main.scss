@@ -12,11 +12,8 @@
 @use "./components/start-screen";
 @use "./components/pause-screen";
 @use "./components/score";
+@use "./components/key";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
 @use "./utils/utility";
-
-.key {
-  color: var(--color-gold);
-}
