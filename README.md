@@ -2,38 +2,83 @@
 
 ## 📖 Description
 
-_The player takes control of a little white ball that must survive against the infinite waves of colorful circles of many different colors and sizes._
+_The player takes control of a little white ball that must survive against the infinite waves of circles of many different colors and sizes. Each enemy will provide a different challenge as they vary in health and speed._
 
 After learning enough about web development, the idea to create a little game came to mind. I grew up playing flash games, especially top-down shooters like SAS: Zombie Assault and Decision. My idea was to create something simple, but from scratch, to practice what I've learned so far. Some ideas were taken from one of Chris Course's videos because they were so creative!
 
-I learned a lot of JavaScript, Canvas API, and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS, just for fun.
+I learned a lot of JavaScript, Canvas API, and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS (or TypeScript), just for fun.
 
 ## 🕹️ Controls
 
-- Move character with `<WASD>` or `<ARROWS>`
-- Hold `<LMB>` to shoot
-- Press `<P>` to pause
+- Use the mouse to aim.
+- Move the character with `<WASD>` or `<ARROWS>`.
+- Hold `<LMB>` to shoot.
+- Press `<P>` or _click on the pause icon_ (top right of the screen) to pause.
 
-## 🧱 Built with
+## 📦 Install and usage
 
-- HTML and CSS for the UI, menus, and canvas;
-- Canvas API and JavaScript for game logic and input handling;
-- [Howler.js](https://howlerjs.com/) for audio management (SFX and music);
-- [Vite.js](https://vite.dev/) as the build tool.
+1. Clone this repo:
 
-## 🎯 Run locally
-
-Install dependencies:
-
+```bash
+git clone https://github.com/GracilianoOG/2d-canvas-shooter.git
 ```
+
+2. Enter the directory:
+
+```bash
+cd 2d-canvas-shooter/
+```
+
+3. Init Visual Studio Code (or any other IDE):
+
+```bash
+code .
+```
+
+1. Install the dependencies:
+
+```bash
 npm install
 ```
 
-Run project locally:
+5. Run the project:
+
+```bash
+npm run start
+```
+
+## 📜 Available scripts
+
+| Script      | Command                      | Description                             |
+| ----------- | ---------------------------- | --------------------------------------- |
+| `dev`       | `vite`                       | Start in development mode               |
+| `build`     | `vite build`                 | Build project to _dist_ folder          |
+| `preview`   | `vite preview`               | Preview production build locally        |
+| `deploy`    | `gh-pages -d dist`           | Deploy to GitHub Pages                  |
+
+## 🗂️ Project structure
 
 ```
-npm run dev
+📁 public/ -> public assets.
+📁 src/ -> source code.
+  📁 assets/ -> local assets to be optimized.
+  📁 scripts/ -> game logic, objects, etc.
+  📁 styles/ -> styles for the game in ".scss" format.
+  📄 index.html -> entry point.
+📄 .gitignore -> files and folders to be ignored.
+📄 jsconfig.json -> JavaScript configuration.
+📄 vite.config.js -> Vite configuration.
 ```
+
+## 🛠️ Developed with
+
+[![Tool icons from skillicons](https://skillicons.dev/icons?i=js,sass,vite,nodejs,npm,vscode)](https://skillicons.dev)
+
+- HTML and CSS for the UI, menus, and canvas.
+- Canvas API and JavaScript for game logic and input handling.
+- [Howler.js](https://howlerjs.com/) for audio management (SFX and music).
+- [Vite.js](https://vite.dev/) as the build tool.
+- [Sass](https://sass-lang.com/) for styles.
 
 ## 🎬 Credits
 
@@ -57,7 +102,7 @@ Source: [Kenney](https://www.kenney.nl/)\
 Description: Custom cursor.\
 License: Creative Commons CC0
 
-## 📎 Learning Resources
+## 🔗 Links
 
 These resources helped me to understand many things regarding game development in JavaScript and the mathematical logic behind it. Not everything was applied to the project, but they are still great study material for me.
 
@@ -83,6 +128,12 @@ These resources helped me to understand many things regarding game development i
   - [String padStart - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
   - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 - Sass
-  - [https://sass-lang.com/documentation/style-rules/placeholder-selectors/](Placeholder Selectors)
+  - [Placeholder Selectors](https://sass-lang.com/documentation/style-rules/placeholder-selectors/)
 - Other
   - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
+
+## 🧑🏻‍💻 Author
+
+| [<img src="https://avatars.githubusercontent.com/u/72778164?s=96&v=4"><br><sub>GracilianoOG</sub>](https://github.com/GracilianoOG) |
+| :---------------------------------------------------------------------------------------------------------------------------------: |
+|                                       [Linkedin](https://www.linkedin.com/in/gabrielgmbarros)                                       |
