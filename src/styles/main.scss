@@ -10,6 +10,7 @@
 @use "./components/scoreboard";
 @use "./components/highscore";
 @use "./components/start-screen";
+@use "./components/score";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
@@ -51,15 +52,6 @@
   color: var(--color-red);
   text-shadow: 0 0 0.3125rem currentColor;
   margin-top: 1rem;
-}
-
-.score {
-  animation: scoring 0.8s 1 ease forwards;
-  text-shadow: 0 0 0.3125em currentColor, 0.125em 0.125em var(--color-black);
-  font-weight: 600;
-  font-size: clamp(1rem, 1.6vw, 2rem);
-  position: absolute;
-  z-index: 1;
 }
 
 .hide {
