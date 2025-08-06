@@ -3,6 +3,7 @@ import { Game } from "../game/Game.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { pause, start, restart } from "../utils/screens.js";
+import "../../styles/main.scss";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
 const container = document.querySelector("#game-container");
