@@ -10,27 +10,12 @@
 @use "./components/scoreboard";
 @use "./components/highscore";
 @use "./components/start-screen";
+@use "./components/pause-screen";
 @use "./components/score";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
 @use "./utils/utility";
-
-.pause-screen {
-  backdrop-filter: blur(3px) brightness(0.8);
-  text-shadow: 0 0 0.188rem currentColor;
-}
-
-.pause-screen__title {
-  font-size: 3rem;
-  letter-spacing: 0.313rem;
-  margin-bottom: 1rem;
-  text-transform: capitalize;
-}
-
-.pause-screen__text {
-  animation: blink 1.2s steps(2, jump-none) infinite;
-}
 
 .key,
 .highscore__points {
