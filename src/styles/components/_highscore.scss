@@ -1,0 +1,10 @@
+.highscore {
+  bottom: 60px;
+  font-size: 1rem;
+  position: absolute;
+
+  &__title {
+    font-size: inherit;
+    margin-bottom: 10px;
+  }
+}

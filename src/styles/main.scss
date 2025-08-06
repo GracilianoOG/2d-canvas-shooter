@@ -8,6 +8,7 @@
 @use "./components/game-over";
 @use "./components/pause-btn";
 @use "./components/scoreboard";
+@use "./components/highscore";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
@@ -37,17 +38,6 @@
 
 .pause-screen__text {
   animation: blink 1.2s steps(2, jump-none) infinite;
-}
-
-.highscore {
-  bottom: 60px;
-  font-size: 1rem;
-  position: absolute;
-}
-
-.highscore__title {
-  font-size: inherit;
-  margin-bottom: 10px;
 }
 
 .key,
