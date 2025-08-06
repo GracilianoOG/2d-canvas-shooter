@@ -1,0 +1,22 @@
+body {
+  --dot-size: 0.6px;
+  animation: move-bg 0.8s infinite linear;
+  background-color: var(--color-black);
+  background-image: radial-gradient(
+    var(--color-white) var(--dot-size),
+    transparent var(--dot-size)
+  );
+  background-size: 15px 15px;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+main {
+  user-select: none;
+}
+
+body,
+button {
+  cursor: url("../assets/images/crosshair.png") 16 16, auto;
+  font-family: var(--font-primary);
+}
