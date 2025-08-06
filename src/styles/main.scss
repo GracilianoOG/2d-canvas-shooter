@@ -3,24 +3,12 @@
 @use "./base/fonts";
 @use "./base/base";
 
+@use "./components/game-container";
 @use "./components/game-over";
 @use "./components/pause-btn";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
-
-#game-container {
-  background-color: var(--color-black);
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#game-container canvas {
-  display: block;
-  filter: blur(1px) brightness(1.2);
-}
 
 .screen {
   align-items: center;
