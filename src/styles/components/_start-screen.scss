@@ -1,4 +1,8 @@
+@use "../utils/shared";
+
 .start-screen {
+  @extend %spaced-text;
+
   &__main-title {
     animation: shadow-blink 2s infinite alternate;
     font-size: 3.5rem;
@@ -6,6 +10,7 @@
   }
 
   &__title {
+    @extend %text-shadow;
     animation: blink 0.9s steps(2, jump-none) infinite;
     font-size: 1.25rem;
   }

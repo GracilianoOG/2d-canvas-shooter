@@ -1,3 +1,5 @@
+@use "../utils/shared";
+
 .gameover-screen {
   animation: blink 0.08s;
   background-color: var(--color-black);
@@ -14,6 +16,7 @@
 }
 
 .gameover-screen__btn {
+  @extend %text-shadow;
   animation: blink 1.2s steps(2, jump-none) infinite 0.6s;
   border: none;
   background-color: transparent;
