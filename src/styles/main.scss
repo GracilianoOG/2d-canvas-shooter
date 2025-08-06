@@ -7,20 +7,10 @@
 @use "./components/screen";
 @use "./components/game-over";
 @use "./components/pause-btn";
+@use "./components/scoreboard";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
-
-.scoreboard {
-  font-size: clamp(1.5rem, 2.5vw, 3rem);
-  line-height: 1;
-  position: absolute;
-  text-align: center;
-  text-shadow: 0 0 0.3125em currentColor;
-  top: 10px;
-  width: 100%;
-  z-index: 1;
-}
 
 .start-screen__main-title {
   animation: shadow-blink 2s infinite alternate;
