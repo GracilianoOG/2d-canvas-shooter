@@ -1,3 +1,5 @@
+@use "./base/variables";
+
 /* Reset */
 *,
 *::before,
@@ -5,15 +7,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* Variables */
-:root {
-  --color-white: #fff;
-  --color-black: #000;
-  --color-red: #f00;
-  --color-gold: #ffb300;
-  --font-primary: "Press Start 2P", sans-serif;
 }
 
 /* Font Config */
