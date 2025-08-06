@@ -1,0 +1,12 @@
+%golden-text {
+  color: var(--color-gold);
+}
+
+%text-shadow {
+  text-shadow: 0 0 0.125rem currentColor;
+}
+
+%spaced-text {
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+}
