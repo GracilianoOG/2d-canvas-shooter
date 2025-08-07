@@ -26,6 +26,10 @@ class Scoreboard {
     this.#showScore(score);
   }
 
+  reset() {
+    this.#score = 0;
+  }
+
   createIndicator(score, color) {
     const { width, height } = this.#scoreboardEl.getBoundingClientRect();
     const xPos = width / 2 + randomInt(-50, 50);
