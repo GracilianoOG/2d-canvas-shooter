@@ -44,7 +44,7 @@ npm install
 5. Run the project:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 ## 📜 Available scripts
