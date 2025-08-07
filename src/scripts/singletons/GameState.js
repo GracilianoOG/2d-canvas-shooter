@@ -29,8 +29,19 @@ class GameState {
   }
 
   checkCollisions() {
-    const enemies = Entity.instances.filter(i => i instanceof Enemy);
-    const bullets = Entity.instances.filter(i => i instanceof Bullet);
+    const [enemies, bullets] = Entity.instances.reduce(
+      (acc, instance) => {
+        if (instance instanceof Enemy) {
+          acc[0].push(instance);
+        } else if (instance instanceof Bullet) {
+          acc[1].push(instance);
+        }
+
+        return acc;
+      },
+      [[], []]
+    );
+
     const player = this.getEntity("player");
 
     for (const e of enemies) {
