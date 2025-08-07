@@ -28,6 +28,7 @@ class Scoreboard {
 
   reset() {
     this.#score = 0;
+    this.#showScore(0);
   }
 
   createIndicator(score, color) {
