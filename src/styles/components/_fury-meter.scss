@@ -1,8 +1,8 @@
 .fury-meter {
-  border: 1px solid white;
-  box-shadow: 0 0 4px white;
+  border: 1px solid var(--color-white);
+  box-shadow: 0 0 4px var(--color-white);
   bottom: 16px;
-  color: black;
+  color: var(--color-black);
   height: 20px;
   left: 50%;
   position: absolute;
@@ -13,17 +13,17 @@
   z-index: 1;
 
   &--full {
-    border-color: gold;
-    box-shadow: 0 0 8px gold;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 8px var(--color-gold);
   }
 
   &__fill {
-    background-color: white;
+    background-color: var(--color-white);
     height: 100%;
     width: 0%;
 
     &--full {
-      background-color: gold;
+      background-color: var(--color-gold);
     }
   }
 
