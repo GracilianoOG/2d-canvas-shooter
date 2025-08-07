@@ -1,7 +1,8 @@
 import { Timer } from "../Timer.js";
 
 const upgrades = {
-  speed: 5,
+  playerSpeed: 2,
+  weaponCooldown: 50,
 };
 
 class Fury {
@@ -38,11 +39,17 @@ class Fury {
   }
 
   #applyUpgrades() {
-    this.#player.speed += upgrades.speed;
+    const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
+    this.#player.speed += upgrades.playerSpeed;
+    this.#player.weapon.shootCooldown.waitTime =
+      cooldownTime - upgrades.weaponCooldown;
   }
 
   #removeUpgrades() {
-    this.#player.speed -= upgrades.speed;
+    const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
+    this.#player.speed -= upgrades.playerSpeed;
+    this.#player.weapon.shootCooldown.waitTime =
+      cooldownTime + upgrades.weaponCooldown;
   }
 }
 
