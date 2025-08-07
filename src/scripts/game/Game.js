@@ -137,7 +137,7 @@ class Game {
     const { width: tWidth, height: tHeight } = this.trailsCanvas;
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
-    gameState.getEntity("scoreboard").score = 0;
+    gameState.getEntity("scoreboard").reset();
     gameState.getEntity("furyMeter").empty();
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
