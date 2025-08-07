@@ -28,8 +28,8 @@ class GameState {
     this.getEntity("scoreboard").createIndicator(score, color);
   }
 
-  checkCollisions() {
-    const [enemies, bullets] = Entity.instances.reduce(
+  #filterInstances() {
+    return Entity.instances.reduce(
       (acc, instance) => {
         if (instance instanceof Enemy) {
           acc[0].push(instance);
@@ -41,7 +41,10 @@ class GameState {
       },
       [[], []]
     );
+  }
 
+  checkCollisions() {
+    const [enemies, bullets] = this.#filterInstances();
     const player = this.getEntity("player");
 
     for (const enemy of enemies) {
