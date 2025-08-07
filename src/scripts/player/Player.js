@@ -3,11 +3,13 @@ import { PlayerController } from "./PlayerController.js";
 import { Weapon } from "../arsenal/Weapon.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
+import { Fury } from "../arsenal/Fury.js";
 
 class Player extends Projectile {
   #isDead = false;
   controller = new PlayerController(this);
   weapon = new Weapon(this);
+  fury = new Fury(this);
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
