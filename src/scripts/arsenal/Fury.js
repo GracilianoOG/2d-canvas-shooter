@@ -20,9 +20,7 @@ class Fury {
   }
 
   activate() {
-    if (this.#status) {
-      return;
-    }
+    if (this.isActive()) return;
     this.#timer.reset();
     this.#status = true;
     this.#applyUpgrades();
