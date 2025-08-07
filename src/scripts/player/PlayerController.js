@@ -1,3 +1,5 @@
+import { gameState } from "../singletons/GameState";
+
 class PlayerController {
   #keys = {};
   #player;
@@ -66,10 +68,18 @@ class PlayerController {
     if (this.#keys["KeyS"] || this.#keys["ArrowDown"]) this.#moveDown();
   }
 
+  #detectFury() {
+    if (this.#keys["Space"] && gameState.getEntity("furyMeter").isFull()) {
+      gameState.getEntity("furyMeter").empty();
+      this.#player.fury.activate();
+    }
+  }
+
   update(delta) {
     this.#delta = delta;
     this.#movePlayer();
     this.#detectShooting();
+    this.#detectFury();
   }
 }
 
