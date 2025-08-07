@@ -10,11 +10,11 @@ class Scoreboard {
     return string.padStart(length, "0");
   }
 
-  constructor() {
+  constructor(containerEl) {
     this.#scoreboardEl = document.createElement("h2");
     this.#scoreboardEl.classList.add("scoreboard");
     this.#showScore(this.#score.toString());
-    document.querySelector("#hud").prepend(this.#scoreboardEl);
+    containerEl.prepend(this.#scoreboardEl);
   }
 
   get score() {
