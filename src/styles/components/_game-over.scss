@@ -4,31 +4,31 @@
   animation: blink 0.08s;
   background-color: var(--color-black);
   border: 8px double var(--color-white);
-}
 
-.gameover-screen__title {
-  color: var(--color-white);
-  font-size: 4rem;
-  letter-spacing: 0.625rem;
-  margin-bottom: 5rem;
-  text-transform: uppercase;
-  text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 var(--color-red);
-}
+  &__title {
+    color: var(--color-white);
+    font-size: 4rem;
+    letter-spacing: 0.625rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 var(--color-red);
+  }
 
-.gameover-screen__btn {
-  @extend %text-shadow;
-  animation: blink 1.2s steps(2, jump-none) infinite 0.6s;
-  border: none;
-  background-color: transparent;
-  color: var(--color-white);
-  font-size: 2rem;
-  padding: 15px 20px;
-  transition: background-color 0.2s, color 0.2s;
-}
+  &__btn {
+    @extend %text-shadow;
+    animation: blink 1.2s steps(2, jump-none) infinite 0.6s;
+    border: none;
+    background-color: transparent;
+    color: var(--color-white);
+    font-size: 2rem;
+    padding: 15px 20px;
+    transition: background-color 0.2s, color 0.2s;
 
-.gameover-screen__btn:focus,
-.gameover-screen__btn:hover {
-  animation: none;
-  background-color: var(--color-white);
-  color: var(--color-black);
+    &:focus,
+    &:hover {
+      animation: none;
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+  }
 }
