@@ -40,16 +40,16 @@ class Fury {
 
   #applyUpgrades() {
     const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
-    this.#player.speed += upgrades.playerSpeed;
-    this.#player.weapon.shootCooldown.waitTime =
-      cooldownTime - upgrades.weaponCooldown;
+    const { playerSpeed, weaponCooldown } = upgrades;
+    this.#player.speed += playerSpeed;
+    this.#player.weapon.shootCooldown.waitTime = cooldownTime - weaponCooldown;
   }
 
   #removeUpgrades() {
     const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
-    this.#player.speed -= upgrades.playerSpeed;
-    this.#player.weapon.shootCooldown.waitTime =
-      cooldownTime + upgrades.weaponCooldown;
+    const { playerSpeed, weaponCooldown } = upgrades;
+    this.#player.speed -= playerSpeed;
+    this.#player.weapon.shootCooldown.waitTime = cooldownTime + weaponCooldown;
   }
 }
 
