@@ -9,6 +9,7 @@ import * as Screens from "../utils/screens.js";
 import { Timer } from "../Timer.js";
 import { randomInt } from "../utils/utility.js";
 import { Entity } from "../Entity.js";
+import { FuryMeter } from "../FuryMeter.js";
 
 class Game {
   constructor(configs) {
@@ -104,12 +105,14 @@ class Game {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
     const scoreboard = new Scoreboard();
+    const furyMeter = new FuryMeter();
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
       player,
       gameAudio: this.audioManager,
       scoreboard,
+      furyMeter,
       game: this,
     });
 
@@ -135,6 +138,7 @@ class Game {
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
     gameState.getEntity("scoreboard").score = 0;
+    gameState.getEntity("furyMeter").empty();
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
     this.loop();
