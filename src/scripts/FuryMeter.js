@@ -37,14 +37,12 @@ class FuryMeter {
   #updateFuryMeter() {
     this.#furyMeterFillEl.style.width = `${this.#fury}%`;
 
-    if (this.#fury === FuryMeterState.FULL) {
-      this.#furyMeterEl.style.borderColor = "gold";
-      this.#furyMeterEl.style.boxShadow = "0 0 8px gold";
-      this.#furyMeterFillEl.style.backgroundColor = "gold";
+    if (this.#fury !== FuryMeterState.FULL) {
+      this.#furyMeterEl.classList.remove("fury-meter--full");
+      this.#furyMeterFillEl.classList.remove("fury-meter__fill--full");
     } else {
-      this.#furyMeterEl.style.borderColor = "";
-      this.#furyMeterEl.style.boxShadow = "";
-      this.#furyMeterFillEl.style.backgroundColor = "";
+      this.#furyMeterEl.classList.add("fury-meter--full");
+      this.#furyMeterFillEl.classList.add("fury-meter__fill--full");
     }
   }
 
