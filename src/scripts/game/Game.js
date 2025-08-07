@@ -104,8 +104,10 @@ class Game {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
-    const scoreboard = new Scoreboard();
-    const furyMeter = new FuryMeter();
+    const hud = document.querySelector("#hud");
+    const scoreboard = new Scoreboard(hud);
+    const furyMeter = new FuryMeter(hud);
+
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
       realCanvas: this.realCanvas,
