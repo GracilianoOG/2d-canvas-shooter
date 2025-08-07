@@ -6,6 +6,7 @@ const FuryMeterState = Object.freeze({
 class FuryMeter {
   #furyMeterEl;
   #furyMeterFillEl;
+  #furyText;
   #fury = FuryMeterState.EMPTY;
 
   constructor(containerEl) {
@@ -15,7 +16,12 @@ class FuryMeter {
     this.#furyMeterFillEl = document.createElement("div");
     this.#furyMeterFillEl.classList.add("fury-meter__fill");
 
+    this.#furyText = document.createElement("span");
+    this.#furyText.textContent = "fury";
+    this.#furyText.classList.add("fury-meter__text");
+
     this.#furyMeterEl.append(this.#furyMeterFillEl);
+    this.#furyMeterEl.append(this.#furyText);
 
     containerEl.append(this.#furyMeterEl);
   }
