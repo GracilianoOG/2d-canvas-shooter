@@ -11,10 +11,19 @@
   width: 200px;
   z-index: 1;
 
+  &--full {
+    border-color: gold;
+    box-shadow: 0 0 8px gold;
+  }
+
   &__fill {
     background-color: white;
     height: 100%;
     width: 0%;
+
+    &--full {
+      background-color: gold;
+    }
   }
 
   &__text {
