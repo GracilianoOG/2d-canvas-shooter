@@ -23,12 +23,13 @@ class Fury {
     if (this.#status) {
       return;
     }
-    this.#timer.start();
+    this.#timer.reset();
     this.#status = true;
     this.#player.speed += upgrades.speed;
   }
 
   deactivate() {
+    this.#timer.stop();
     this.#status = false;
     this.#player.speed -= upgrades.speed;
   }
