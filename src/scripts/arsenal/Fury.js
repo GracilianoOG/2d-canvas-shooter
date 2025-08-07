@@ -29,6 +29,7 @@ class Fury {
   }
 
   deactivate() {
+    if (!this.isActive()) return;
     this.#timer.stop();
     this.#status = false;
     this.#removeUpgrades();
