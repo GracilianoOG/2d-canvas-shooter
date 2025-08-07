@@ -8,7 +8,7 @@ class FuryMeter {
   #furyMeterFillEl;
   #fury = FuryMeterState.EMPTY;
 
-  constructor() {
+  constructor(containerEl) {
     this.#furyMeterEl = document.createElement("div");
     this.#furyMeterEl.classList.add("fury-meter");
 
@@ -17,7 +17,7 @@ class FuryMeter {
 
     this.#furyMeterEl.append(this.#furyMeterFillEl);
 
-    document.querySelector("#hud").append(this.#furyMeterEl);
+    containerEl.append(this.#furyMeterEl);
   }
 
   #validateFury() {
