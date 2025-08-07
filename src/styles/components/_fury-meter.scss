@@ -5,6 +5,7 @@
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
+  transition: box-shadow 0.2s ease-out;
   width: 200px;
   z-index: 1;
 
