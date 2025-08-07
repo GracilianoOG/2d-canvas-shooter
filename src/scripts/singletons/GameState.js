@@ -44,15 +44,15 @@ class GameState {
 
     const player = this.getEntity("player");
 
-    for (const e of enemies) {
-      if (!player.isDead && player.collidedWith(e)) {
+    for (const enemy of enemies) {
+      if (!player.isDead && player.collidedWith(enemy)) {
         player.kill();
         this.#prepareRestart(2400);
       }
-      for (const b of bullets) {
-        if (b.collidedWith(e)) {
-          this.#countScore(e.takeDamage(b.damage), e.baseColor);
-          b.destroy();
+      for (const bullet of bullets) {
+        if (bullet.collidedWith(enemy)) {
+          this.#countScore(enemy.takeDamage(bullet.damage), enemy.baseColor);
+          bullet.destroy();
           return;
         }
       }
