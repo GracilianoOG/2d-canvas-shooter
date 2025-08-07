@@ -10,6 +10,10 @@ class Weapon {
     this.#player = player;
   }
 
+  get shootCooldown() {
+    return this.#shootCooldown;
+  }
+
   #getMousePosition({ clientX, clientY }) {
     const { left: offsetX, top: offsetY } =
       gameState.getEntity("realCanvas").rect;
