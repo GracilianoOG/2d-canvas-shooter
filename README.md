@@ -80,6 +80,13 @@ npm run start
 - [Vite.js](https://vite.dev/) as the build tool.
 - [Sass](https://sass-lang.com/) for styles.
 
+## ✨ Features
+
+- Move the character around the screen and shoot enemies with projectiles.
+- Screen shake effect when the player or enemies die.
+- Infinite wave of different types of enemies.
+- Neat retro music and sound effects.
+
 ## 🎬 Credits
 
 Source: [howler.js](https://howlerjs.com/)\
