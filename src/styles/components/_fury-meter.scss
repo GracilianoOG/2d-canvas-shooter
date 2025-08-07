@@ -1,11 +1,13 @@
 .fury-meter {
   border: 1px solid white;
   bottom: 16px;
+  color: black;
   height: 20px;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
   transition: box-shadow 0.2s ease-out;
+  text-align: center;
   width: 200px;
   z-index: 1;
 
@@ -13,5 +15,14 @@
     background-color: white;
     height: 100%;
     width: 0%;
+  }
+
+  &__text {
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    top: 0;
   }
 }
