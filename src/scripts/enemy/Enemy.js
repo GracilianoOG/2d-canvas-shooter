@@ -85,6 +85,11 @@ class Enemy extends Projectile {
     this.bleed(16);
     gameState.getEntity("gameAudio").playSound("explosion");
     gameState.getEntity("game").shakeScreen(5, 300);
+
+    if (!gameState.getEntity("player").fury.isActive()) {
+      gameState.getEntity("furyMeter").fill(5);
+    }
+
     this.destroy();
   }
 
