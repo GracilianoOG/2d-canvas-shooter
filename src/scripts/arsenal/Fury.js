@@ -25,17 +25,25 @@ class Fury {
     }
     this.#timer.reset();
     this.#status = true;
-    this.#player.speed += upgrades.speed;
+    this.#applyUpgrades();
   }
 
   deactivate() {
     this.#timer.stop();
     this.#status = false;
-    this.#player.speed -= upgrades.speed;
+    this.#removeUpgrades();
   }
 
   isActive() {
     return this.#status;
+  }
+
+  #applyUpgrades() {
+    this.#player.speed += upgrades.speed;
+  }
+
+  #removeUpgrades() {
+    this.#player.speed -= upgrades.speed;
   }
 }
 
