@@ -11,7 +11,7 @@ import {
 import * as Colors from "../utils/constants/colors.js";
 
 class EnemyCreator {
-  constructor(spawnTime, difficultyTime = 5000) {
+  constructor(spawnTime = 800, difficultyTime = 5000) {
     const timerConfig = { autostart: false };
     this.spawnTimer = new Timer(
       spawnTime,
