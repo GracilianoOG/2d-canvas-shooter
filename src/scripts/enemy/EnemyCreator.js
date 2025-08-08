@@ -7,7 +7,7 @@ import {
   MOD_CHANCE,
   NEW_ENEMY,
   SPAWN_TIME,
-} from "../constants/modifierTypes.js";
+} from "../utils/constants/modifierTypes.js";
 
 const INITIAL_MILESTONE = 15_000;
 
