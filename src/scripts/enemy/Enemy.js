@@ -61,28 +61,28 @@ class Enemy extends Projectile {
   takeDamage(damage) {
     this.health -= damage;
     if (this.health <= 0) {
-      this.die();
+      this.#die();
       return this.#score.death;
     }
-    this.bleed(8);
-    this.createDamageEffect();
+    this.#bleed(8);
+    this.#createDamageEffect();
     gameState.getEntity("gameAudio").playSound("hit");
     return this.#score.hit;
   }
 
-  createDamageEffect() {
+  #createDamageEffect() {
     this.speed = -1;
     this.#maxSpeed += 1;
     this.dimensions = { radius: Math.round(this.dimensions.radius * 0.9) };
     this.color = COLORS.WHITE;
   }
 
-  bleed(amount) {
+  #bleed(amount) {
     Particle.createParticles(this.x, this.y, 8, 5, this.baseColor, amount);
   }
 
-  die() {
-    this.bleed(16);
+  #die() {
+    this.#bleed(16);
     gameState.getEntity("gameAudio").playSound("explosion");
     gameState.getEntity("game").shakeScreen(5, 300);
 
