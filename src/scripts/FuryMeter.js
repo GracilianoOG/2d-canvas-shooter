@@ -28,12 +28,14 @@ class FuryMeter {
     containerEl.append(this.#furyMeterEl);
 
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
-    eventManager.subscribe("FuryActivation", () => {
-      if (this.isFull()) {
-        eventManager.emit("activateFury");
-        this.empty();
-      }
-    });
+    eventManager.subscribe("FuryActivation", this.#onFuryActivation.bind(this));
+  }
+
+  #onFuryActivation() {
+    if (this.isFull()) {
+      eventManager.emit("activateFury");
+      this.empty();
+    }
   }
 
   #validateFury() {
