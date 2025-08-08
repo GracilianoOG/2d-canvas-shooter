@@ -1,4 +1,5 @@
 import { gameState } from "../singletons/GameState";
+import { inputManager } from "../singletons/InputManager";
 import { Timer } from "../Timer";
 import { Bullet } from "./Bullet";
 
@@ -14,19 +15,9 @@ class Weapon {
     return this.#shootCooldown;
   }
 
-  #getMousePosition({ clientX, clientY }) {
-    const { left: offsetX, top: offsetY } =
-      gameState.getEntity("realCanvas").rect;
-
-    return {
-      x: clientX - offsetX,
-      y: clientY - offsetY,
-    };
-  }
-
-  #calcBulletPath(event) {
+  #calcBulletPath() {
     const { x: playerX, y: playerY } = this.#player;
-    const { x: mouseX, y: mouseY } = this.#getMousePosition(event);
+    const { x: mouseX, y: mouseY } = inputManager.mousePosition;
 
     const { width: rWidth, height: rHeight } =
       gameState.getEntity("realCanvas");
@@ -42,10 +33,10 @@ class Weapon {
     return { playerX, playerY, bulletAngle };
   }
 
-  shoot(event) {
+  shoot() {
     if (this.#shootCooldown.active) return;
     this.#shootCooldown.reset();
-    const { playerX, playerY, bulletAngle } = this.#calcBulletPath(event);
+    const { playerX, playerY, bulletAngle } = this.#calcBulletPath();
     new Bullet(playerX, playerY, 5, 20, bulletAngle, this.#player.color);
     gameState.getEntity("gameAudio").playSound("shot");
   }
