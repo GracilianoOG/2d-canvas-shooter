@@ -25,6 +25,8 @@ class Game {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.trailsCanvas = new Canvas(mWidth, mHeight);
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
+
+    this.#listenToWindowChange();
   }
 
   loop() {
@@ -126,10 +128,6 @@ class Game {
       if (e.code === "KeyP") this.pause();
     });
 
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden && this.isRunning) this.pause();
-    });
-
     this.enemyCreator.start();
     this.loop();
   }
@@ -144,6 +142,12 @@ class Game {
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
     this.loop();
+  }
+
+  #listenToWindowChange() {
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && this.isRunning) this.pause();
+    });
   }
 }
 
