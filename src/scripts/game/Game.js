@@ -10,13 +10,14 @@ import { randomInt } from "../utils/utility.js";
 import { Entity } from "../Entity.js";
 import { FuryMeter } from "../FuryMeter.js";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
+import * as States from "../utils/constants/gameStates.js";
 
 class Game {
   constructor(configs) {
     this.rafId = null;
     this.lastTime = null;
     this.deltaTime = null;
-    this.isRunning = false;
+    this.state = States.NOT_RUNNING;
     this.shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
@@ -30,22 +31,30 @@ class Game {
   }
 
   loop() {
-    this.isRunning = true;
+    this.state = States.RUNNING;
     this.rafId = requestAnimationFrame(this.animate);
   }
 
-  stopLoop() {
-    this.isRunning = false;
+  stopLoop(state) {
+    this.state = state;
     this.lastTime = null;
     cancelAnimationFrame(this.rafId);
   }
 
   pause() {
-    if (gameState.getEntity("player").isDead) return;
-    this.isRunning ? this.stopLoop() : this.loop();
+    if (this.state === States.GAMEOVER) return;
+
+    if (this.state === States.RUNNING) {
+      this.stopLoop(States.PAUSED);
+    } else {
+      this.loop();
+    }
+
     const indicators = document.querySelectorAll(".score");
-    const state = this.isRunning ? "running" : "paused";
-    indicators.forEach(i => (i.style.animationPlayState = state));
+    indicators.forEach(
+      i => (i.style.animationPlayState = this.state.toLowerCase())
+    );
+
     Screens.pause.classList.toggle("hide");
   }
 
@@ -146,7 +155,7 @@ class Game {
 
   #listenToWindowChange() {
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden && this.isRunning) this.pause();
+      if (document.hidden && this.state === States.RUNNING) this.pause();
     });
   }
 }
