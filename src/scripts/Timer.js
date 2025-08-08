@@ -1,6 +1,6 @@
 class Timer {
   #waitTime;
-  elapsedTime;
+  #elapsedTime;
   active;
   loop;
   callback;
@@ -9,7 +9,7 @@ class Timer {
 
   constructor(waitTime, options, callback = null) {
     this.#waitTime = waitTime;
-    this.elapsedTime = this.#waitTime;
+    this.#elapsedTime = this.waitTime;
     this.active = options?.autostart ?? true;
     this.loop = options?.loop ?? true;
     this.callback = callback;
@@ -39,28 +39,28 @@ class Timer {
   }
 
   reset(waitTime = this.#waitTime) {
-    this.elapsedTime = waitTime;
+    this.#elapsedTime = waitTime;
     this.start();
   }
 
   update(deltaTime) {
     if (!this.active) return;
 
-    this.elapsedTime -= deltaTime;
+    this.#elapsedTime -= deltaTime;
 
-    if (this.elapsedTime <= 0) {
-      this.elapsedTime = this.#waitTime;
+    if (this.#elapsedTime <= 0) {
+      this.#elapsedTime = this.#waitTime;
       if (!this.loop) this.stop();
       if (this.callback) this.callback();
     }
   }
 
   showInSeconds() {
-    return Math.ceil(this.elapsedTime / 1000);
+    return Math.ceil(this.#elapsedTime / 1000);
   }
 
   showInMilliseconds() {
-    return Math.ceil(this.elapsedTime);
+    return Math.ceil(this.#elapsedTime);
   }
 }
 
