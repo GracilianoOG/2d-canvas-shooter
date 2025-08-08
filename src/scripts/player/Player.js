@@ -43,8 +43,7 @@ class Player extends Projectile {
 
   kill() {
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
-    gameState.getEntity("gameAudio").playSound("explosion");
-    gameState.getEntity("game").shakeScreen(6, 500);
+    eventManager.emit("playerDeath");
     this.fury.deactivate();
     this.isDead = true;
   }
