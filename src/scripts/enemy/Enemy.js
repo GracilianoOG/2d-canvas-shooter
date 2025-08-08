@@ -8,6 +8,7 @@ const defaultOptions = {
   knockback: true,
   aggressive: true,
   shrinkable: true,
+  bloodAmount: 8,
 };
 
 class Enemy extends Projectile {
@@ -73,7 +74,7 @@ class Enemy extends Projectile {
       this.#die();
       return this.#score.death;
     }
-    this.#bleed(8);
+    this.#bleed(this.#options.bloodAmount);
     this.#createDamageEffect();
     gameState.getEntity("gameAudio").playSound("hit");
     return this.#score.hit;
@@ -97,7 +98,7 @@ class Enemy extends Projectile {
   }
 
   #die() {
-    this.#bleed(16);
+    this.#bleed(this.#options.bloodAmount * 2);
     eventManager.emit("enemyDeath");
     this.destroy();
   }
