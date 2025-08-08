@@ -6,8 +6,12 @@ import { enemyTypes } from "./enemyTypes.js";
 
 class EnemyCreator {
   constructor(spawnTime) {
-    const noStart = { autostart: false };
-    this.timer = new Timer(spawnTime, noStart, this.#createEnemy.bind(this));
+    const timerConfig = { autostart: false };
+    this.timer = new Timer(
+      spawnTime,
+      timerConfig,
+      this.#createEnemy.bind(this)
+    );
     this.spawnTime = spawnTime;
     this.spawnLevel = 1;
     this.enemyModChance = 5;
