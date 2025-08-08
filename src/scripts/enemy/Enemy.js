@@ -1,8 +1,8 @@
-import { COLORS } from "../utils/constants.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { eventManager } from "../singletons/EventManager.js";
+import { WHITE } from "../utils/constants/colors.js";
 
 const defaultOptions = {
   knockback: true,
@@ -90,7 +90,7 @@ class Enemy extends Projectile {
     if (this.#options.shrinkable) {
       this.dimensions = { radius: Math.round(this.dimensions.radius * 0.9) };
     }
-    this.color = COLORS.WHITE;
+    this.color = WHITE;
   }
 
   #bleed(amount) {
