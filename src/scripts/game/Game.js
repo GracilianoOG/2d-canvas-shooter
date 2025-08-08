@@ -4,12 +4,12 @@ import { gameState } from "../singletons/GameState.js";
 import { EnemyCreator } from "../enemy/EnemyCreator.js";
 import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
-import { COLORS } from "../utils/constants.js";
 import * as Screens from "../utils/screens.js";
 import { Timer } from "../Timer.js";
 import { randomInt } from "../utils/utility.js";
 import { Entity } from "../Entity.js";
 import { FuryMeter } from "../FuryMeter.js";
+import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
 
 class Game {
   constructor(configs) {
@@ -84,7 +84,7 @@ class Game {
 
     // Create trail effect
     this.trailsCanvas.context.drawImage(mCanvas, 0, 0);
-    this.trailsCanvas.context.fillStyle = COLORS.TRANSPARENT_BLACK;
+    this.trailsCanvas.context.fillStyle = TRANSPARENT_BLACK;
     this.trailsCanvas.context.fillRect(0, 0, tWidth, tHeight);
 
     // Clear real canvas
@@ -103,7 +103,7 @@ class Game {
   init() {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
-    const player = new Player(mWidth / 2, mHeight / 2, 15, 6, COLORS.WHITE);
+    const player = new Player(mWidth / 2, mHeight / 2, 15, 6, WHITE);
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
     const furyMeter = new FuryMeter(hud);
