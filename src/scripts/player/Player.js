@@ -14,11 +14,7 @@ class Player extends Projectile {
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
-    eventManager.subscribe("enemyDeath", () => {
-      if (!this.fury.isActive()) {
-        eventManager.emit("fillFuryMeter", { amount: 5 });
-      }
-    });
+    eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
   }
 
   get isDead() {
@@ -27,6 +23,12 @@ class Player extends Projectile {
 
   set isDead(isDead) {
     this.#isDead = isDead;
+  }
+
+  #onEnemyKilled() {
+    if (!this.fury.isActive()) {
+      eventManager.emit("fillFuryMeter", { amount: 5 });
+    }
   }
 
   #getInCanvas() {
