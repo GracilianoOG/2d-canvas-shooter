@@ -16,6 +16,7 @@ class GameState {
     }
     GameState.instance = this;
     eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
+    eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
   addEntities(newEntities) {
@@ -29,6 +30,11 @@ class GameState {
   #onEnemyDeath() {
     this.getEntity("gameAudio").playSound("explosion");
     this.getEntity("game").shakeScreen(5, 300);
+  }
+
+  #onPlayerDeath() {
+    this.getEntity("gameAudio").playSound("explosion");
+    this.getEntity("game").shakeScreen(6, 500);
   }
 
   #countScore(score, color) {
