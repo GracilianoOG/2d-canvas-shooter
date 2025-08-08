@@ -10,23 +10,22 @@ import {
 } from "../utils/constants/modifierTypes.js";
 import * as Colors from "../utils/constants/colors.js";
 
-const INITIAL_MILESTONE = 15_000;
-
 class EnemyCreator {
-  constructor(spawnTime) {
+  constructor(spawnTime, difficultyTime = 5000) {
     const timerConfig = { autostart: false };
     this.spawnTimer = new Timer(
       spawnTime,
       timerConfig,
       this.#createEnemy.bind(this)
     );
+    this.difficultyTimer = new Timer(
+      difficultyTime,
+      timerConfig,
+      this.#increaseDifficulty.bind(this)
+    );
     this.spawnTime = spawnTime;
     this.spawnLevel = 1;
     this.enemyModChance = 5;
-    this.milestone = {
-      base: INITIAL_MILESTONE,
-      current: INITIAL_MILESTONE,
-    };
     this.availableModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
   }
 
@@ -72,12 +71,6 @@ class EnemyCreator {
   }
 
   #increaseDifficulty() {
-    const currentScore = gameState.getEntity("scoreboard").score;
-
-    if (currentScore <= this.milestone.current) {
-      return;
-    }
-
     const length = this.availableModifiers.length;
 
     switch (this.availableModifiers[randomInt(0, length)]) {
@@ -106,12 +99,9 @@ class EnemyCreator {
         console.log(`Enemy level ${this.spawnLevel} unlocked!`);
         break;
     }
-
-    this.milestone.current += this.milestone.base;
   }
 
   #createEnemy() {
-    this.#increaseDifficulty();
     const rndEnemy = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(rndEnemy.radius);
     const player = gameState.getEntity("player");
@@ -120,17 +110,19 @@ class EnemyCreator {
 
   start() {
     this.spawnTimer.start();
+    this.difficultyTimer.start();
   }
 
   stop() {
     this.spawnTimer.stop();
+    this.difficultyTimer.stop();
   }
 
   reset() {
     this.spawnTimer.waitTime = this.spawnTime;
     this.spawnTimer.reset();
+    this.difficultyTimer.reset();
     this.spawnLevel = 1;
-    this.milestone.current = this.milestone.base;
     this.enemyModChance = 5;
   }
 }
