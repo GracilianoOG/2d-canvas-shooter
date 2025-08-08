@@ -9,3 +9,4 @@ export const GREEN = "#42fd9b";
 export const ORANGE = "#fd7840";
 export const WHITE = "#fff";
 export const TRANSPARENT_BLACK = "rgba(0, 0, 0, .4)";
+export const ALMOST_BLACK = "rgb(20, 20, 20)";
