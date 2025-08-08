@@ -2,6 +2,7 @@ import { COLORS } from "../utils/constants.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
+import { eventManager } from "../singletons/EventManager.js";
 
 class Enemy extends Projectile {
   #target;
@@ -85,11 +86,7 @@ class Enemy extends Projectile {
     this.#bleed(16);
     gameState.getEntity("gameAudio").playSound("explosion");
     gameState.getEntity("game").shakeScreen(5, 300);
-
-    if (!gameState.getEntity("player").fury.isActive()) {
-      gameState.getEntity("furyMeter").fill(5);
-    }
-
+    eventManager.emit("enemyDeath");
     this.destroy();
   }
 
