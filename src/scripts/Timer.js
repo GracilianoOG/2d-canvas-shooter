@@ -3,7 +3,7 @@ class Timer {
   #elapsedTime;
   active;
   loop;
-  callback;
+  #callback;
 
   static timers = [];
 
@@ -12,7 +12,7 @@ class Timer {
     this.#elapsedTime = this.waitTime;
     this.active = options?.autostart ?? true;
     this.loop = options?.loop ?? true;
-    this.callback = callback;
+    this.#callback = callback;
     Timer.timers.push(this);
   }
 
@@ -51,7 +51,7 @@ class Timer {
     if (this.#elapsedTime <= 0) {
       this.#elapsedTime = this.#waitTime;
       if (!this.loop) this.stop();
-      if (this.callback) this.callback();
+      if (this.#callback) this.#callback();
     }
   }
 
