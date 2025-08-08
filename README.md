@@ -136,6 +136,9 @@ These resources helped me to understand many things regarding game development i
   - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 - Sass
   - [Placeholder Selectors](https://sass-lang.com/documentation/style-rules/placeholder-selectors/)
+- Patterns
+  - [Observable Pattern](https://oieduardorabelo.medium.com/padr%C3%B5es-em-js-observer-pattern-bff0ecc55d01)
+  - [Observable in Game App](https://dev.to/walosha/observer-pattern-in-the-context-of-a-game-app-5gck)
 - Other
   - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
 
