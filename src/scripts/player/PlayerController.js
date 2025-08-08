@@ -33,28 +33,16 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (
-      inputManager.isKeyPressed("KeyA") ||
-      inputManager.isKeyPressed("ArrowLeft")
-    ) {
+    if (inputManager.isKeyPressed(["KeyA", "ArrowLeft"])) {
       this.#moveLeft();
     }
-    if (
-      inputManager.isKeyPressed("KeyD") ||
-      inputManager.isKeyPressed("ArrowRight")
-    ) {
+    if (inputManager.isKeyPressed(["KeyD", "ArrowRight"])) {
       this.#moveRight();
     }
-    if (
-      inputManager.isKeyPressed("KeyW") ||
-      inputManager.isKeyPressed("ArrowUp")
-    ) {
+    if (inputManager.isKeyPressed(["KeyW", "ArrowUp"])) {
       this.#moveUp();
     }
-    if (
-      inputManager.isKeyPressed("KeyS") ||
-      inputManager.isKeyPressed("ArrowDown")
-    ) {
+    if (inputManager.isKeyPressed(["KeyS", "ArrowDown"])) {
       this.#moveDown();
     }
   }
