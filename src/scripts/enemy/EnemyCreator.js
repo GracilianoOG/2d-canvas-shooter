@@ -77,13 +77,13 @@ class EnemyCreator {
       case 1:
         enemy.color = Colors.VERY_LIGHT_PINK;
         enemy.radius = Math.ceil(enemy.radius * 1.25);
-        enemy.hp = enemy.hp + 20;
+        enemy.hp += 20;
         break;
       case 2:
         enemy.color = Colors.GOLDEN;
         enemy.radius = Math.ceil(enemy.radius * 1.5);
         enemy.speed = Math.max(enemy.speed - 1, 1);
-        enemy.hp = enemy.hp + 40;
+        enemy.hp += 40;
         break;
     }
     enemy.score = { ...enemy.score };
