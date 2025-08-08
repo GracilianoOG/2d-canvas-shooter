@@ -4,6 +4,8 @@ import { minOrMaxPoint, randomInt, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 
+const INITIAL_MILESTONE = 15_000;
+
 class EnemyCreator {
   constructor(spawnTime) {
     const timerConfig = { autostart: false };
@@ -15,7 +17,11 @@ class EnemyCreator {
     this.spawnTime = spawnTime;
     this.spawnLevel = 1;
     this.enemyModChance = 5;
-    this.milestones = [15000, 40000, 60000, 80000, 100000];
+    this.milestone = {
+      base: INITIAL_MILESTONE,
+      current: INITIAL_MILESTONE,
+    };
+    this.availableModifiers = ["SPAWN_TIME", "NEW_ENEMY", "MOD_CHANCE"];
   }
 
   #createEnemyPosition(enemySize) {
@@ -59,17 +65,47 @@ class EnemyCreator {
     enemy.score.death *= 2;
   }
 
-  #checkMilestone() {
-    const score = gameState.getEntity("scoreboard").score;
-    const index = this.spawnLevel - 1;
-    const length = this.milestones.length;
-    if (index < length && score > this.milestones[index]) {
-      this.spawnLevel++;
+  #increaseDifficulty() {
+    const currentScore = gameState.getEntity("scoreboard").score;
+
+    if (currentScore <= this.milestone.current) {
+      return;
     }
+
+    const length = this.availableModifiers.length;
+
+    switch (this.availableModifiers[randomInt(0, length)]) {
+      case "SPAWN_TIME":
+        this.timer.waitTime -= 5;
+        console.log(`Spawn time reduced to ${this.timer.waitTime}`);
+        break;
+      case "MOD_CHANCE":
+        this.enemyModChance += 0.5;
+        if (this.enemyModChance === 50) {
+          const index = this.availableModifiers.indexOf("MOD_CHANCE");
+          this.availableModifiers.splice(index, 1);
+          console.log("Deleted MOD_CHANCE");
+        }
+        console.log(
+          `Modified enemy chance increased to ${this.enemyModChance}%`
+        );
+        break;
+      case "NEW_ENEMY":
+        this.spawnLevel++;
+        if (enemyTypes.length === this.spawnLevel) {
+          const index = this.availableModifiers.indexOf("NEW_ENEMY");
+          this.availableModifiers.splice(index, 1);
+          console.log("Deleted NEW_ENEMY");
+        }
+        console.log(`Enemy level ${this.spawnLevel} unlocked!`);
+        break;
+    }
+
+    this.milestone.current += this.milestone.base;
   }
 
   #createEnemy() {
-    this.#checkMilestone();
+    this.#increaseDifficulty();
     const rndEnemy = this.#randomizeEnemy();
     const coords = this.#createEnemyPosition(rndEnemy.radius);
     const player = gameState.getEntity("player");
@@ -88,6 +124,8 @@ class EnemyCreator {
     this.timer.waitTime = this.spawnTime;
     this.timer.reset();
     this.spawnLevel = 1;
+    this.milestone.current = this.milestone.base;
+    this.enemyModChance = 5;
   }
 }
 
