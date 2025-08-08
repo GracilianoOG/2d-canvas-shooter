@@ -3,7 +3,11 @@ import { Timer } from "../Timer.js";
 import { minOrMaxPoint, randomInt, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
-import { MOD_CHANCE, NEW_ENEMY, SPAWN_TIME } from "../constants/modifiers.js";
+import {
+  MOD_CHANCE,
+  NEW_ENEMY,
+  SPAWN_TIME,
+} from "../constants/modifierTypes.js";
 
 const INITIAL_MILESTONE = 15_000;
 
