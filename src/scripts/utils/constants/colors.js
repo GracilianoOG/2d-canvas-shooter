@@ -2,6 +2,7 @@ export const VERY_LIGHT_PINK = "hsl(280, 50%, 80%)";
 export const VERY_LIGHT_BLUE = "hsl(180, 50%, 80%)";
 export const GOLDEN = "hsl(40, 80%, 50%)";
 export const RED = "#ff2d2d";
+export const LIGHT_RED = "rgb(229, 52, 79)";
 export const PINK = "#f547d7";
 export const LIGHT_BLUE = "#60cdf7";
 export const LIGHT_PURPLE = "#8191fe";
