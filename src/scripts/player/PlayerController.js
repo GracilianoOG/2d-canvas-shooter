@@ -1,5 +1,6 @@
 import { eventManager } from "../singletons/EventManager";
 import { inputManager } from "../singletons/InputManager";
+import * as Keys from "../utils/constants/keys";
 
 class PlayerController {
   #player;
@@ -33,22 +34,22 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (inputManager.isKeyPressed(["KeyA", "ArrowLeft"])) {
+    if (inputManager.isKeyPressed([Keys.A, Keys.LEFT])) {
       this.#moveLeft();
     }
-    if (inputManager.isKeyPressed(["KeyD", "ArrowRight"])) {
+    if (inputManager.isKeyPressed([Keys.D, Keys.RIGHT])) {
       this.#moveRight();
     }
-    if (inputManager.isKeyPressed(["KeyW", "ArrowUp"])) {
+    if (inputManager.isKeyPressed([Keys.W, Keys.UP])) {
       this.#moveUp();
     }
-    if (inputManager.isKeyPressed(["KeyS", "ArrowDown"])) {
+    if (inputManager.isKeyPressed([Keys.S, Keys.DOWN])) {
       this.#moveDown();
     }
   }
 
   #detectFury() {
-    if (inputManager.isKeyPressed("Space")) {
+    if (inputManager.isKeyPressed(Keys.SPACE)) {
       eventManager.emit("FuryActivation");
     }
   }
