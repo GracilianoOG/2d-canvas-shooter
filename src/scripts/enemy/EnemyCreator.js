@@ -10,22 +10,35 @@ import {
 } from "../utils/constants/modifierTypes.js";
 import * as Colors from "../utils/constants/colors.js";
 
+const defaultConfig = Object.freeze({
+  spawnTime: 800,
+  difficultyTime: 5000,
+  enemyModChance: 5,
+  enemyModChanceIncrement: 0.5,
+  enemyModChanceLimit: 50,
+  initialSpawnLevel: 1,
+  spawnDecrementMs: 5,
+});
+
 class EnemyCreator {
-  constructor(spawnTime = 800, difficultyTime = 5000) {
+  #config;
+
+  constructor(config = {}) {
     const timerConfig = { autostart: false };
+    this.#config = { ...defaultConfig, ...config };
     this.spawnTimer = new Timer(
-      spawnTime,
+      this.#config.spawnTime,
       timerConfig,
       this.#createEnemy.bind(this)
     );
     this.difficultyTimer = new Timer(
-      difficultyTime,
+      this.#config.difficultyTime,
       timerConfig,
       this.#increaseDifficulty.bind(this)
     );
-    this.spawnTime = spawnTime;
-    this.spawnLevel = 1;
-    this.enemyModChance = 5;
+    this.spawnTime = this.#config.spawnTime;
+    this.spawnLevel = this.#config.initialSpawnLevel;
+    this.enemyModChance = this.#config.enemyModChance;
     this.availableModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
   }
 
@@ -75,12 +88,12 @@ class EnemyCreator {
 
     switch (this.availableModifiers[randomInt(0, length)]) {
       case SPAWN_TIME:
-        this.spawnTimer.waitTime -= 5;
+        this.spawnTimer.waitTime -= this.#config.spawnDecrementMs;
         console.log(`Spawn time reduced to ${this.spawnTimer.waitTime}`);
         break;
       case MOD_CHANCE:
-        this.enemyModChance += 0.5;
-        if (this.enemyModChance === 50) {
+        this.enemyModChance += this.#config.enemyModChanceIncrement;
+        if (this.enemyModChance === this.#config.enemyModChanceLimit) {
           const index = this.availableModifiers.indexOf(MOD_CHANCE);
           this.availableModifiers.splice(index, 1);
           console.log("Deleted MOD_CHANCE");
@@ -124,8 +137,8 @@ class EnemyCreator {
     this.spawnTimer.waitTime = this.spawnTime;
     this.spawnTimer.reset();
     this.difficultyTimer.reset();
-    this.spawnLevel = 1;
-    this.enemyModChance = 5;
+    this.spawnLevel = this.#config.initialSpawnLevel;
+    this.enemyModChance = this.#config.enemyModChance;
   }
 }
 
