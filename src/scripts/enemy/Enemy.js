@@ -4,12 +4,12 @@ import { gameState } from "../singletons/GameState.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { WHITE } from "../utils/constants/colors.js";
 
-const defaultOptions = {
+const defaultOptions = Object.freeze({
   knockback: true,
   aggressive: true,
   shrinkable: true,
   bloodAmount: 8,
-};
+});
 
 class Enemy extends Projectile {
   #target;
