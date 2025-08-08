@@ -36,6 +36,7 @@ const enemyTypes = [
     options: {
       shrinkable: false,
       aggressive: false,
+      bloodAmount: 12,
     },
   },
   {
