@@ -134,6 +134,7 @@ These resources helped me to understand many things regarding game development i
   - [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
   - [String padStart - Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
   - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+  - [Object freeze() - FCC](https://www.freecodecamp.org/news/javascript-immutability-frozen-objects-with-examples/)
 - Sass
   - [Placeholder Selectors](https://sass-lang.com/documentation/style-rules/placeholder-selectors/)
 - Patterns
