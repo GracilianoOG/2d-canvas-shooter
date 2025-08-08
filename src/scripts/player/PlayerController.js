@@ -1,4 +1,4 @@
-import { gameState } from "../singletons/GameState";
+import { eventManager } from "../singletons/EventManager";
 
 class PlayerController {
   #keys = {};
@@ -69,10 +69,7 @@ class PlayerController {
   }
 
   #detectFury() {
-    if (this.#keys["Space"] && gameState.getEntity("furyMeter").isFull()) {
-      gameState.getEntity("furyMeter").empty();
-      this.#player.fury.activate();
-    }
+    if (this.#keys["Space"]) eventManager.emit("FuryActivation");
   }
 
   update(delta) {
