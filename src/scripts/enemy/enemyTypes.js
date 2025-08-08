@@ -32,6 +32,12 @@ const enemyTypes = [
     hp: 50,
   },
   {
+    radius: 20,
+    speed: 4,
+    color: Colors.ALMOST_BLACK,
+    hp: 20,
+  },
+  {
     radius: 10,
     speed: 6,
     color: Colors.ORANGE,
