@@ -8,13 +8,25 @@ import { eventManager } from "../singletons/EventManager.js";
 
 class Player extends Projectile {
   #isDead = false;
-  controller = new PlayerController(this);
-  weapon = new Weapon(this);
-  fury = new Fury(this);
+  #controller = new PlayerController(this);
+  #weapon = new Weapon(this);
+  #fury = new Fury(this);
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
+  }
+
+  get controller() {
+    return this.#controller;
+  }
+
+  get weapon() {
+    return this.#weapon;
+  }
+
+  get fury() {
+    return this.#fury;
   }
 
   get isDead() {
