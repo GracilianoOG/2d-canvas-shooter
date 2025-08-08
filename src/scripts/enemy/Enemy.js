@@ -4,6 +4,12 @@ import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { eventManager } from "../singletons/EventManager.js";
 
+const defaultOptions = {
+  knockback: true,
+  aggressive: true,
+  shrinkable: true,
+};
+
 class Enemy extends Projectile {
   #target;
   #maxSpeed;
@@ -11,14 +17,16 @@ class Enemy extends Projectile {
   #baseColor;
   #score;
   #delta;
+  #options;
 
-  constructor(x, y, radius, speed, color, health, score, target) {
+  constructor(x, y, radius, speed, color, health, score, target, options = {}) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
     this.#baseColor = color;
     this.#score = score;
+    this.#options = { ...defaultOptions, ...options };
   }
 
   get baseColor() {
@@ -72,9 +80,15 @@ class Enemy extends Projectile {
   }
 
   #createDamageEffect() {
-    this.speed = -1;
-    this.#maxSpeed += 1;
-    this.dimensions = { radius: Math.round(this.dimensions.radius * 0.9) };
+    if (this.#options.knockback) {
+      this.speed = -1;
+    }
+    if (this.#options.aggressive) {
+      this.#maxSpeed += 1;
+    }
+    if (this.#options.shrinkable) {
+      this.dimensions = { radius: Math.round(this.dimensions.radius * 0.9) };
+    }
     this.color = COLORS.WHITE;
   }
 
