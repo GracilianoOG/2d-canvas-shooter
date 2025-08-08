@@ -1,38 +1,40 @@
+import * as Colors from "../utils/constants/colors.js";
+
 const enemyTypes = [
   {
     radius: 18,
     speed: 4,
-    color: "#ff2d2d",
+    color: Colors.RED,
     hp: 20,
   },
   {
     radius: 14,
     speed: 5,
-    color: "#f547d7",
+    color: Colors.PINK,
     hp: 10,
   },
   {
     radius: 25,
     speed: 3,
-    color: "#60cdf7",
+    color: Colors.LIGHT_BLUE,
     hp: 30,
   },
   {
     radius: 20,
     speed: 4,
-    color: "#8191fe",
+    color: Colors.LIGHT_PURPLE,
     hp: 30,
   },
   {
     radius: 30,
     speed: 2,
-    color: "#42fd9b",
+    color: Colors.GREEN,
     hp: 50,
   },
   {
     radius: 10,
     speed: 6,
-    color: "#fd7840",
+    color: Colors.ORANGE,
     hp: 10,
   },
 ];

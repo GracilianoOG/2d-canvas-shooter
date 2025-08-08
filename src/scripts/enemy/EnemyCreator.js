@@ -8,6 +8,7 @@ import {
   NEW_ENEMY,
   SPAWN_TIME,
 } from "../utils/constants/modifierTypes.js";
+import * as Colors from "../utils/constants/colors.js";
 
 const INITIAL_MILESTONE = 15_000;
 
@@ -49,17 +50,17 @@ class EnemyCreator {
   #modifyEnemy(enemy) {
     switch (randomInt(0, 3)) {
       case 0:
-        enemy.color = "hsl(180, 50%, 80%)";
+        enemy.color = Colors.VERY_LIGHT_BLUE;
         enemy.radius = Math.max(Math.ceil(enemy.radius * 0.8), 10);
         enemy.speed += 1;
         break;
       case 1:
-        enemy.color = "hsl(280, 50%, 80%)";
+        enemy.color = Colors.VERY_LIGHT_PINK;
         enemy.radius = Math.ceil(enemy.radius * 1.25);
         enemy.hp = enemy.hp + 20;
         break;
       case 2:
-        enemy.color = "hsl(40, 80%, 50%)";
+        enemy.color = Colors.GOLDEN;
         enemy.radius = Math.ceil(enemy.radius * 1.5);
         enemy.speed = Math.max(enemy.speed - 1, 1);
         enemy.hp = enemy.hp + 40;
