@@ -25,7 +25,7 @@ const defaultConfig = Object.freeze({
   spawnDecrementMs: 5,
 });
 
-const defaultModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
+const defaultModifiers = Object.freeze([SPAWN_TIME, NEW_ENEMY, MOD_CHANCE]);
 const enemyModifiers = Object.freeze([FAST, STRONG, SLOW_STRONGER]);
 
 class EnemyCreator {
