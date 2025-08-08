@@ -3,6 +3,7 @@ import { Timer } from "../Timer.js";
 import { minOrMaxPoint, randomInt, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
+import { MOD_CHANCE, NEW_ENEMY, SPAWN_TIME } from "../constants/modifiers.js";
 
 const INITIAL_MILESTONE = 15_000;
 
@@ -21,7 +22,7 @@ class EnemyCreator {
       base: INITIAL_MILESTONE,
       current: INITIAL_MILESTONE,
     };
-    this.availableModifiers = ["SPAWN_TIME", "NEW_ENEMY", "MOD_CHANCE"];
+    this.availableModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
   }
 
   #createEnemyPosition(enemySize) {
@@ -75,14 +76,14 @@ class EnemyCreator {
     const length = this.availableModifiers.length;
 
     switch (this.availableModifiers[randomInt(0, length)]) {
-      case "SPAWN_TIME":
+      case SPAWN_TIME:
         this.timer.waitTime -= 5;
         console.log(`Spawn time reduced to ${this.timer.waitTime}`);
         break;
-      case "MOD_CHANCE":
+      case MOD_CHANCE:
         this.enemyModChance += 0.5;
         if (this.enemyModChance === 50) {
-          const index = this.availableModifiers.indexOf("MOD_CHANCE");
+          const index = this.availableModifiers.indexOf(MOD_CHANCE);
           this.availableModifiers.splice(index, 1);
           console.log("Deleted MOD_CHANCE");
         }
@@ -90,10 +91,10 @@ class EnemyCreator {
           `Modified enemy chance increased to ${this.enemyModChance}%`
         );
         break;
-      case "NEW_ENEMY":
+      case NEW_ENEMY:
         this.spawnLevel++;
         if (enemyTypes.length === this.spawnLevel) {
-          const index = this.availableModifiers.indexOf("NEW_ENEMY");
+          const index = this.availableModifiers.indexOf(NEW_ENEMY);
           this.availableModifiers.splice(index, 1);
           console.log("Deleted NEW_ENEMY");
         }
