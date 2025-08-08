@@ -20,7 +20,8 @@ class EventManager {
     if (!this.#events[event]) {
       this.#events[event] = [];
     }
-    this.#events[event].filter(cb => cb !== callback);
+    const filteredCallbacks = this.#events[event].filter(cb => cb !== callback);
+    this.#events[event] = filteredCallbacks;
   }
 
   emit(event, data = null) {
