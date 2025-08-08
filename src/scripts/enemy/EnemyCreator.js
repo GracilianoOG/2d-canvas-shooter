@@ -15,7 +15,7 @@ const INITIAL_MILESTONE = 15_000;
 class EnemyCreator {
   constructor(spawnTime) {
     const timerConfig = { autostart: false };
-    this.timer = new Timer(
+    this.spawnTimer = new Timer(
       spawnTime,
       timerConfig,
       this.#createEnemy.bind(this)
@@ -82,8 +82,8 @@ class EnemyCreator {
 
     switch (this.availableModifiers[randomInt(0, length)]) {
       case SPAWN_TIME:
-        this.timer.waitTime -= 5;
-        console.log(`Spawn time reduced to ${this.timer.waitTime}`);
+        this.spawnTimer.waitTime -= 5;
+        console.log(`Spawn time reduced to ${this.spawnTimer.waitTime}`);
         break;
       case MOD_CHANCE:
         this.enemyModChance += 0.5;
@@ -119,16 +119,16 @@ class EnemyCreator {
   }
 
   start() {
-    this.timer.start();
+    this.spawnTimer.start();
   }
 
   stop() {
-    this.timer.stop();
+    this.spawnTimer.stop();
   }
 
   reset() {
-    this.timer.waitTime = this.spawnTime;
-    this.timer.reset();
+    this.spawnTimer.waitTime = this.spawnTime;
+    this.spawnTimer.reset();
     this.spawnLevel = 1;
     this.milestone.current = this.milestone.base;
     this.enemyModChance = 5;
