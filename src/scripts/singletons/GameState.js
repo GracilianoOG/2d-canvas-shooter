@@ -3,6 +3,7 @@ import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
+import { GAMEOVER } from "../utils/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
 import { eventManager } from "./EventManager.js";
 
@@ -94,7 +95,7 @@ class GameState {
 
     setTimeout(() => {
       this.#calcHighscore();
-      this.getEntity("game").stopLoop();
+      this.getEntity("game").stopLoop(GAMEOVER);
       restart.classList.remove("hide");
       Entity.instances = [this.getEntity("player")];
     }, milliseconds);
