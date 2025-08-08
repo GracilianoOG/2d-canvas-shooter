@@ -1,3 +1,5 @@
+import { eventManager } from "./singletons/EventManager";
+
 const FuryMeterState = Object.freeze({
   EMPTY: 0,
   FULL: 100,
@@ -24,6 +26,8 @@ class FuryMeter {
     this.#furyMeterEl.append(this.#furyText);
 
     containerEl.append(this.#furyMeterEl);
+
+    eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
   }
 
   #validateFury() {
