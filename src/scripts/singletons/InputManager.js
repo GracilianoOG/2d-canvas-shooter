@@ -76,6 +76,9 @@ class InputManager {
   }
 
   isKeyPressed(key) {
+    if (key instanceof Array) {
+      return key.some(k => this.#keys[k]);
+    }
     return this.#keys[key];
   }
 
