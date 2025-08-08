@@ -13,12 +13,18 @@ import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
 import * as States from "../utils/constants/gameStates.js";
 
 class Game {
+  #rafId;
+  #lastTime;
+  #deltaTime;
+  #state;
+  #shake;
+
   constructor(configs) {
-    this.rafId = null;
-    this.lastTime = null;
-    this.deltaTime = null;
-    this.state = States.NOT_RUNNING;
-    this.shake = { strength: 0, timer: null };
+    this.#rafId = null;
+    this.#lastTime = null;
+    this.#deltaTime = null;
+    this.#state = States.NOT_RUNNING;
+    this.#shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
 
@@ -31,20 +37,20 @@ class Game {
   }
 
   loop() {
-    this.state = States.RUNNING;
-    this.rafId = requestAnimationFrame(this.animate);
+    this.#state = States.RUNNING;
+    this.#rafId = requestAnimationFrame(this.animate);
   }
 
   stopLoop(state) {
-    this.state = state;
-    this.lastTime = null;
-    cancelAnimationFrame(this.rafId);
+    this.#state = state;
+    this.#lastTime = null;
+    cancelAnimationFrame(this.#rafId);
   }
 
   pause() {
-    if (this.state === States.GAMEOVER) return;
+    if (this.#state === States.GAMEOVER) return;
 
-    if (this.state === States.RUNNING) {
+    if (this.#state === States.RUNNING) {
       this.stopLoop(States.PAUSED);
     } else {
       this.loop();
@@ -52,25 +58,25 @@ class Game {
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
-      i => (i.style.animationPlayState = this.state.toLowerCase())
+      i => (i.style.animationPlayState = this.#state.toLowerCase())
     );
 
     Screens.pause.classList.toggle("hide");
   }
 
   shakeScreen(strength, duration) {
-    this.shake.strength = strength;
-    if (!this.shake.timer)
-      this.shake.timer = new Timer(duration, { loop: false });
-    this.shake.timer.reset(duration);
+    this.#shake.strength = strength;
+    if (!this.#shake.timer)
+      this.#shake.timer = new Timer(duration, { loop: false });
+    this.#shake.timer.reset(duration);
   }
 
   animate = timestamp => {
-    this.deltaTime = timestamp - (this.lastTime ?? timestamp);
-    this.lastTime = timestamp;
+    this.#deltaTime = timestamp - (this.#lastTime ?? timestamp);
+    this.#lastTime = timestamp;
 
-    if (this.shake.timer?.active) {
-      const strength = this.shake.strength;
+    if (this.#shake.timer?.active) {
+      const strength = this.#shake.strength;
       const xOffset = randomInt(-strength, strength);
       const yOffset = randomInt(-strength, strength);
       this.mainCanvas.context.translate(xOffset, yOffset);
@@ -82,8 +88,8 @@ class Game {
   };
 
   update() {
-    Entity.updateAll(this.mainCanvas.context, this.deltaTime / 16);
-    Timer.updateAll(this.deltaTime);
+    Entity.updateAll(this.mainCanvas.context, this.#deltaTime / 16);
+    Timer.updateAll(this.#deltaTime);
     gameState.checkCollisions();
   }
 
@@ -155,7 +161,7 @@ class Game {
 
   #listenToWindowChange() {
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden && this.state === States.RUNNING) this.pause();
+      if (document.hidden && this.#state === States.RUNNING) this.pause();
     });
   }
 }
