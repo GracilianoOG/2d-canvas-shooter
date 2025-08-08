@@ -1,3 +1,4 @@
+import { LMB } from "../utils/constants/keys.js";
 import { gameState } from "./GameState.js";
 
 class InputManager {
@@ -87,7 +88,7 @@ class InputManager {
   }
 
   isLeftMousePressed() {
-    return this.isMousePressed("0");
+    return this.isMousePressed(LMB);
   }
 }
 
