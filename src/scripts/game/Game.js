@@ -18,7 +18,7 @@ class Game {
     this.deltaTime = null;
     this.isRunning = false;
     this.shake = { strength: 0, timer: null };
-    this.enemyCreator = new EnemyCreator(800);
+    this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
 
     this.mainCanvas = new Canvas(configs.width, configs.height);
