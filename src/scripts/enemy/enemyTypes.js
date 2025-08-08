@@ -54,6 +54,18 @@ const enemyTypes = [
     color: Colors.ORANGE,
     hp: 10,
   },
+  {
+    radius: 40,
+    speed: 1,
+    color: Colors.LIGHT_RED,
+    hp: 80,
+    options: {
+      knockback: false,
+      aggressive: false,
+      shrinkable: false,
+      bloodAmount: 16,
+    },
+  },
 ];
 
 enemyTypes.forEach(t => {
