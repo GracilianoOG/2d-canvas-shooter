@@ -9,6 +9,11 @@ import {
   SPAWN_TIME,
 } from "../utils/constants/modifierTypes.js";
 import * as Colors from "../utils/constants/colors.js";
+import {
+  FAST,
+  SLOW_STRONGER,
+  STRONG,
+} from "../utils/constants/enemyModTypes.js";
 
 const defaultConfig = Object.freeze({
   spawnTime: 800,
@@ -21,6 +26,7 @@ const defaultConfig = Object.freeze({
 });
 
 const defaultModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
+const enemyModifiers = Object.freeze([FAST, STRONG, SLOW_STRONGER]);
 
 class EnemyCreator {
   #config;
@@ -68,18 +74,20 @@ class EnemyCreator {
   }
 
   #modifyEnemy(enemy) {
-    switch (randomInt(0, 3)) {
-      case 0:
+    const length = enemyModifiers.length;
+
+    switch (enemyModifiers[randomInt(0, length)]) {
+      case FAST:
         enemy.color = Colors.VERY_LIGHT_BLUE;
         enemy.radius = Math.max(Math.ceil(enemy.radius * 0.8), 10);
         enemy.speed += 1;
         break;
-      case 1:
+      case STRONG:
         enemy.color = Colors.VERY_LIGHT_PINK;
         enemy.radius = Math.ceil(enemy.radius * 1.25);
         enemy.hp += 20;
         break;
-      case 2:
+      case SLOW_STRONGER:
         enemy.color = Colors.GOLDEN;
         enemy.radius = Math.ceil(enemy.radius * 1.5);
         enemy.speed = Math.max(enemy.speed - 1, 1);
