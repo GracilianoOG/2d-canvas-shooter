@@ -68,7 +68,11 @@ class InputManager {
   }
 
   #onMouseLeave() {
-    this.#mouse.buttons["0"] = false;
+    const mouseKeys = Object.keys(this.#mouse.buttons);
+
+    mouseKeys.forEach(key => {
+      this.#mouse.buttons[key] = false;
+    });
   }
 
   isKeyPressed(key) {
