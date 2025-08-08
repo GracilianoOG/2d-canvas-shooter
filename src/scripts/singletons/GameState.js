@@ -4,6 +4,7 @@ import { Entity } from "../Entity.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { restart } from "../utils/screens.js";
+import { eventManager } from "./EventManager.js";
 
 class GameState {
   #entities;
@@ -14,6 +15,7 @@ class GameState {
       return GameState.instance;
     }
     GameState.instance = this;
+    eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
   }
 
   addEntities(newEntities) {
@@ -22,6 +24,11 @@ class GameState {
 
   getEntity(name) {
     return this.#entities[name];
+  }
+
+  #onEnemyDeath() {
+    this.getEntity("gameAudio").playSound("explosion");
+    this.getEntity("game").shakeScreen(5, 300);
   }
 
   #countScore(score, color) {
