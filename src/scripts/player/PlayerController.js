@@ -1,48 +1,19 @@
 import { eventManager } from "../singletons/EventManager";
+import { inputManager } from "../singletons/InputManager";
 
 class PlayerController {
-  #keys = {};
   #player;
   #delta;
 
   constructor(player) {
     this.#player = player;
-    const container = document.querySelector("#game-container");
-
-    document.addEventListener("keydown", ({ code }) => {
-      this.#keys[code] = true;
-    });
-
-    document.addEventListener("keyup", ({ code }) => {
-      this.#keys[code] = false;
-    });
-
-    container.addEventListener("mousemove", event => {
-      this.#keys.click = { ...this.#keys.click, event };
-    });
-
-    container.addEventListener(
-      "mouseenter",
-      event => (this.#keys.click = { event }),
-      { once: true }
-    );
-
-    container.addEventListener("mousedown", () => {
-      this.#keys.click = { ...this.#keys.click, canShoot: true };
-    });
-
-    container.addEventListener("mouseup", () => {
-      this.#keys.click = { ...this.#keys.click, canShoot: false };
-    });
-
-    container.addEventListener("mouseleave", () => {
-      this.#keys.click.canShoot = false;
-    });
   }
 
   #detectShooting() {
-    if (this.#player.isDead || !this.#keys.click?.canShoot) return;
-    this.#player.weapon.shoot(this.#keys.click.event);
+    if (this.#player.isDead || !inputManager.isLeftMousePressed()) {
+      return;
+    }
+    this.#player.weapon.shoot();
   }
 
   #moveLeft() {
@@ -62,14 +33,36 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (this.#keys["KeyA"] || this.#keys["ArrowLeft"]) this.#moveLeft();
-    if (this.#keys["KeyD"] || this.#keys["ArrowRight"]) this.#moveRight();
-    if (this.#keys["KeyW"] || this.#keys["ArrowUp"]) this.#moveUp();
-    if (this.#keys["KeyS"] || this.#keys["ArrowDown"]) this.#moveDown();
+    if (
+      inputManager.isKeyPressed("KeyA") ||
+      inputManager.isKeyPressed("ArrowLeft")
+    ) {
+      this.#moveLeft();
+    }
+    if (
+      inputManager.isKeyPressed("KeyD") ||
+      inputManager.isKeyPressed("ArrowRight")
+    ) {
+      this.#moveRight();
+    }
+    if (
+      inputManager.isKeyPressed("KeyW") ||
+      inputManager.isKeyPressed("ArrowUp")
+    ) {
+      this.#moveUp();
+    }
+    if (
+      inputManager.isKeyPressed("KeyS") ||
+      inputManager.isKeyPressed("ArrowDown")
+    ) {
+      this.#moveDown();
+    }
   }
 
   #detectFury() {
-    if (this.#keys["Space"]) eventManager.emit("FuryActivation");
+    if (inputManager.isKeyPressed("Space")) {
+      eventManager.emit("FuryActivation");
+    }
   }
 
   update(delta) {
