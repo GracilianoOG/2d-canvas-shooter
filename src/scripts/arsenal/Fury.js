@@ -1,3 +1,4 @@
+import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
 
 const upgrades = {
@@ -18,6 +19,7 @@ class Fury {
     );
     this.#status = false;
     this.#player = player;
+    eventManager.subscribe("activateFury", () => this.activate());
   }
 
   activate() {
