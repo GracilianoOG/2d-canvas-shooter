@@ -18,6 +18,9 @@ const enemyTypes = [
     speed: 3,
     color: Colors.LIGHT_BLUE,
     hp: 30,
+    options: {
+      aggressive: false,
+    },
   },
   {
     radius: 20,
@@ -30,12 +33,19 @@ const enemyTypes = [
     speed: 2,
     color: Colors.GREEN,
     hp: 50,
+    options: {
+      shrinkable: false,
+      aggressive: false,
+    },
   },
   {
     radius: 20,
     speed: 4,
     color: Colors.ALMOST_BLACK,
     hp: 20,
+    options: {
+      aggressive: false,
+    },
   },
   {
     radius: 10,
