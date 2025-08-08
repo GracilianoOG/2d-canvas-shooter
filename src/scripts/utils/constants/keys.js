@@ -1,0 +1,11 @@
+export const UP = "ArrowUp";
+export const RIGHT = "ArrowRight";
+export const DOWN = "ArrowDown";
+export const LEFT = "ArrowLeft";
+export const W = "KeyW";
+export const D = "KeyD";
+export const S = "KeyS";
+export const A = "KeyA";
+export const P = "KeyP";
+export const SPACE = "Space";
+export const LMB = "0";
