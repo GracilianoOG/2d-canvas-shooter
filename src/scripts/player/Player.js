@@ -4,6 +4,7 @@ import { Weapon } from "../arsenal/Weapon.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
+import { eventManager } from "../singletons/EventManager.js";
 
 class Player extends Projectile {
   #isDead = false;
@@ -13,6 +14,11 @@ class Player extends Projectile {
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
+    eventManager.subscribe("enemyDeath", () => {
+      if (!this.fury.isActive()) {
+        eventManager.emit("fillFuryMeter", { amount: 5 });
+      }
+    });
   }
 
   get isDead() {
