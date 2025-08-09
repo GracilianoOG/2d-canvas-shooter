@@ -49,7 +49,7 @@ class PlayerController {
   }
 
   #detectFury() {
-    if (inputManager.isKeyPressed(Keys.SPACE)) {
+    if (inputManager.isKeyPressed([Keys.SPACE, Keys.CTRL_RIGHT])) {
       eventManager.emit("FuryActivation");
     }
   }
