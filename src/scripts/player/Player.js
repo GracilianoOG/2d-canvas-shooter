@@ -99,7 +99,7 @@ class Player extends Projectile {
     if (this.#godMode) return;
 
     this.#lives--;
-    eventManager.emit("playerHit");
+    eventManager.emit("playerHit", { lives: this.#lives });
 
     if (this.#lives <= 0) {
       this.kill();
