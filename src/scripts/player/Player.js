@@ -11,6 +11,7 @@ const defaultValues = Object.freeze({
   lives: 3,
   godMode: false,
   isDead: false,
+  shieldDelay: 3000,
 });
 
 class Player extends Projectile {
@@ -32,7 +33,7 @@ class Player extends Projectile {
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
     this.#damageTimer = new Timer(
-      3000,
+      defaultValues.shieldDelay,
       { autostart: false, loop: false },
       () => {
         this.#godMode = false;
