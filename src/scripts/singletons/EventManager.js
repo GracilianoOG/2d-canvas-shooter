@@ -28,7 +28,9 @@ class EventManager {
     if (!this.#events[event]) {
       return;
     }
-    this.#events[event].forEach(cb => cb(data));
+    for (const callback of this.#events[event]) {
+      callback(data);
+    }
   }
 }
 
