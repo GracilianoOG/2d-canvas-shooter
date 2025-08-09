@@ -11,6 +11,7 @@ import { Entity } from "../Entity.js";
 import { FuryMeter } from "../FuryMeter.js";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
 import * as States from "../utils/constants/gameStates.js";
+import { eventManager } from "../singletons/EventManager.js";
 
 class Game {
   #rafId;
@@ -35,6 +36,8 @@ class Game {
 
     this.#listenToWindowChange();
     this.#listenToResize();
+
+    eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
   loop() {
@@ -158,6 +161,11 @@ class Game {
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
     this.loop();
+  }
+
+  #onPlayerDeath() {
+    this.#state = States.GAMEOVER;
+    this.enemyCreator.stop();
   }
 
   #listenToWindowChange() {
