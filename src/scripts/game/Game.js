@@ -134,6 +134,7 @@ class Game {
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
     const furyMeter = new FuryMeter(hud);
+    gameState.showCurrentLives(player.lives);
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
@@ -160,11 +161,13 @@ class Game {
   restart() {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const { width: tWidth, height: tHeight } = this.trailsCanvas;
+    const player = gameState.getEntity("player");
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     this.trailsCanvas.context.clearRect(0, 0, tWidth, tHeight);
     gameState.getEntity("scoreboard").reset();
     gameState.getEntity("furyMeter").empty();
-    gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
+    player.revive(mWidth / 2, mHeight / 2);
+    gameState.showCurrentLives(player.lives);
     this.enemyCreator.reset();
     this.startLoop();
   }
