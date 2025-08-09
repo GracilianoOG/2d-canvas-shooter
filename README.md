@@ -127,6 +127,9 @@ These resources helped me to understand many things regarding game development i
 - Optimization
   - [Optimizing Canvas #1](https://nicolahibbert.com/optimising-html5-canvas-games/)
   - [Optimizing Canvas #2](https://stackoverflow.com/questions/8205828/html5-canvas-performance-and-optimization-tips-tricks-and-coding-best-practices)
+  - [Performance of JavaScript .forEach, .map and .reduce vs for and for..of](https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/)
+  - [How to optimize your JavaScript apps using Loops](https://www.freecodecamp.org/news/how-to-optimize-your-javascript-apps-using-loops-d5eade9ba89f/)
+  - [What is the Fastest Loop Type in JavaScript?](https://blog.bitsrc.io/finding-the-fastest-loop-type-in-javascript-38af16fe7b4f)
 - JavaScript
   - [Canvas and JS Game](https://www.youtube.com/watch?v=eI9idPTT0c4)
   - [Empty an array in JavaScript](https://stackoverflow.com/a/1232046)
