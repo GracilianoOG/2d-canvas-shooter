@@ -3,7 +3,7 @@ import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
-import { GAMEOVER, NOT_RUNNING } from "../utils/constants/gameStates.js";
+import { NOT_RUNNING } from "../utils/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
 import { eventManager } from "./EventManager.js";
 
