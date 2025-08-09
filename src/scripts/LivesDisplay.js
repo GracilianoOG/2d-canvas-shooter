@@ -1,3 +1,5 @@
+import { eventManager } from "./singletons/EventManager";
+
 class LivesDisplay {
   #lifeDisplayEl;
 
@@ -7,6 +9,8 @@ class LivesDisplay {
     container.append(lifeDisplay);
 
     this.#lifeDisplayEl = lifeDisplay;
+
+    eventManager.subscribe("playerRevival", this.#onPlayerRevival.bind(this));
   }
 
   showCurrentLives(lives) {
@@ -23,6 +27,10 @@ class LivesDisplay {
     const lifeIcon = document.createElement("div");
     lifeIcon.classList.add("live-icon");
     this.#lifeDisplayEl.append(lifeIcon);
+  }
+
+  #onPlayerRevival({ lives }) {
+    this.showCurrentLives(lives);
   }
 }
 
