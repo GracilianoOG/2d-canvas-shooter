@@ -170,7 +170,6 @@ class Game {
     gameState.getEntity("scoreboard").reset();
     gameState.getEntity("furyMeter").empty();
     player.revive(mWidth / 2, mHeight / 2);
-    gameState.getEntity("livesDisplay").showCurrentLives(player.lives);
     this.enemyCreator.reset();
     this.startLoop();
   }
