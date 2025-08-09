@@ -17,6 +17,7 @@ class GameState {
     }
     GameState.instance = this;
     eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
+    eventManager.subscribe("enemyHit", this.#onEnemyHit.bind(this));
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
     eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
   }
@@ -38,6 +39,10 @@ class GameState {
   #onEnemyDeath() {
     this.getEntity("gameAudio").playSound("explosion");
     this.getEntity("game").shakeScreen(5, 300);
+  }
+
+  #onEnemyHit() {
+    this.getEntity("gameAudio").playSound("hit");
   }
 
   #onPlayerDeath() {
