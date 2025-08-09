@@ -12,6 +12,7 @@ import { FuryMeter } from "../FuryMeter.js";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
 import * as States from "../utils/constants/gameStates.js";
 import { eventManager } from "../singletons/EventManager.js";
+import { LivesDisplay } from "../LivesDisplay.js";
 
 class Game {
   #rafId;
@@ -134,7 +135,8 @@ class Game {
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
     const furyMeter = new FuryMeter(hud);
-    gameState.showCurrentLives(player.lives);
+    const livesDisplay = new LivesDisplay(hud);
+    livesDisplay.showCurrentLives(player.lives);
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
@@ -143,6 +145,7 @@ class Game {
       gameAudio: this.audioManager,
       scoreboard,
       furyMeter,
+      livesDisplay,
       game: this,
     });
 
@@ -167,7 +170,7 @@ class Game {
     gameState.getEntity("scoreboard").reset();
     gameState.getEntity("furyMeter").empty();
     player.revive(mWidth / 2, mHeight / 2);
-    gameState.showCurrentLives(player.lives);
+    gameState.getEntity("livesDisplay").showCurrentLives(player.lives);
     this.enemyCreator.reset();
     this.startLoop();
   }
