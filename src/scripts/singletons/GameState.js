@@ -30,9 +30,24 @@ class GameState {
     return this.#entities[name];
   }
 
-  #onPlayerHit({ lives }) {
+  showCurrentLives(lives) {
+    const lifeDisplay = document.querySelector(".lives-display");
+
+    for (let i = 0; i < lives; i++) {
+      const liveIcon = document.createElement("div");
+      liveIcon.classList.add("live-icon");
+      lifeDisplay.append(liveIcon);
+    }
+  }
+
+  #refreshLifeDisplay() {
     const livesDisplay = document.querySelector(".lives-display");
     livesDisplay.lastChild.remove();
+  }
+
+  #onPlayerHit({ lives }) {
+    this.#refreshLifeDisplay();
+
     if (lives) {
       this.getEntity("gameAudio").playSound("hit");
       this.getEntity("game").shakeScreen(3.5, 300);
