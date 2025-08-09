@@ -52,6 +52,8 @@ class FuryMeter {
   }
 
   #updateFuryMeter() {
+    this.#validateFury();
+
     this.#furyMeterFillEl.style.width = `${this.#fury}%`;
 
     if (this.#fury !== FuryMeterState.FULL) {
@@ -65,13 +67,11 @@ class FuryMeter {
 
   fill(furyPercentage) {
     this.#fury += furyPercentage;
-    this.#validateFury();
     this.#updateFuryMeter();
   }
 
   unfill(furyPercentage) {
     this.#fury -= furyPercentage;
-    this.#validateFury();
     this.#updateFuryMeter();
   }
 
