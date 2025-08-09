@@ -35,9 +35,7 @@ class Player extends Projectile {
     this.#damageTimer = new Timer(
       defaultValues.shieldDelay,
       { autostart: false, loop: false },
-      () => {
-        this.#godMode = false;
-      }
+      this.#onShieldDepletion.bind(this)
     );
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
@@ -61,6 +59,10 @@ class Player extends Projectile {
 
   set isDead(isDead) {
     this.#isDead = isDead;
+  }
+
+  #onShieldDepletion() {
+    this.#godMode = false;
   }
 
   #onEnemyKilled() {
