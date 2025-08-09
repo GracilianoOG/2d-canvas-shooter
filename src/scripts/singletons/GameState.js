@@ -64,7 +64,7 @@ class GameState {
 
     for (const enemy of enemies) {
       if (!player.isDead && player.collidedWith(enemy)) {
-        player.kill();
+        player.takeHit();
       }
       for (const bullet of bullets) {
         if (bullet.collidedWith(enemy)) {
