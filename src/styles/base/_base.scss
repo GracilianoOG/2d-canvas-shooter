@@ -20,3 +20,10 @@ button {
   cursor: url("../assets/images/crosshair.png") 16 16, auto;
   font-family: var(--font-primary);
 }
+
+#hud {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: var(--hud-index);
+}
