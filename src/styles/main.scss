@@ -14,6 +14,8 @@
 @use "./components/score";
 @use "./components/key";
 @use "./components/fury-meter";
+@use "./components/lives-display";
+@use "./components/live-icon";
 
 @use "./utils/animations";
 @use "./utils/accessibility";
