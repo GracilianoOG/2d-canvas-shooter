@@ -108,7 +108,6 @@ class Player extends Projectile {
 
     this.#godMode = true;
     this.#damageTimer.start();
-    gameState.getEntity("game").shakeScreen(3.5, 300);
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 8);
   }
 
