@@ -8,5 +8,5 @@
   position: absolute;
   text-align: center;
   width: 100%;
-  z-index: 5;
+  z-index: var(--screen-index);
 }
