@@ -39,6 +39,8 @@ class Player extends Projectile {
     );
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
+
+    this.showLives();
   }
 
   get controller() {
@@ -59,6 +61,16 @@ class Player extends Projectile {
 
   set isDead(isDead) {
     this.#isDead = isDead;
+  }
+
+  showLives() {
+    const lives = document.querySelector(".lives-display");
+
+    for (let i = 0; i < this.#lives; i++) {
+      const liveIcon = document.createElement("div");
+      liveIcon.classList.add("live-icon");
+      lives.append(liveIcon);
+    }
   }
 
   #onShieldDepletion() {
@@ -87,6 +99,7 @@ class Player extends Projectile {
     if (this.#godMode) return;
 
     this.#lives--;
+    eventManager.emit("playerHit");
 
     if (this.#lives <= 0) {
       this.kill();
@@ -112,6 +125,7 @@ class Player extends Projectile {
     this.#lives = defaultValues.lives;
     this.x = x;
     this.y = y;
+    this.showLives();
   }
 
   draw(ctx) {
