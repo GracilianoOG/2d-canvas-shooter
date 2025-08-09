@@ -18,6 +18,7 @@ class GameState {
     GameState.instance = this;
     eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
+    eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
   }
 
   addEntities(newEntities) {
@@ -26,6 +27,11 @@ class GameState {
 
   getEntity(name) {
     return this.#entities[name];
+  }
+
+  #onPlayerHit() {
+    const lives = document.querySelector(".lives-display");
+    lives.lastChild.remove();
   }
 
   #onEnemyDeath() {
