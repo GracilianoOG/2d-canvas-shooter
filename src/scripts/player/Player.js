@@ -122,12 +122,30 @@ class Player extends Projectile {
   draw(ctx) {
     if (this.isDead) return;
     super.draw(ctx);
+    this.#drawShieldDelay(ctx);
   }
 
   update(delta) {
     if (this.isDead) return;
     this.controller.update(delta);
     this.#getInCanvas();
+  }
+
+  #drawShieldDelay(ctx) {
+    if (this.#damageTimer.active) {
+      const { shieldDelay } = defaultValues;
+      const { elapsedTime } = this.#damageTimer;
+      const padding = 10;
+
+      const timePerc = elapsedTime / shieldDelay;
+      const circleSize = Math.PI * 2 * timePerc;
+
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, circleSize);
+      ctx.stroke();
+    }
   }
 }
 
