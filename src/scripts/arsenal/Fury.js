@@ -10,6 +10,7 @@ class Fury {
   #timer;
   #status;
   #player;
+  #duration;
 
   constructor(player, duration = 5000) {
     this.#timer = new Timer(
@@ -19,7 +20,16 @@ class Fury {
     );
     this.#status = false;
     this.#player = player;
+    this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
+  }
+
+  get timer() {
+    return this.#timer;
+  }
+
+  get duration() {
+    return this.#duration;
   }
 
   activate() {
