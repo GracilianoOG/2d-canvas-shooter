@@ -8,4 +8,5 @@ export const S = "KeyS";
 export const A = "KeyA";
 export const P = "KeyP";
 export const SPACE = "Space";
+export const CTRL_RIGHT = "ControlRight";
 export const LMB = "0";
