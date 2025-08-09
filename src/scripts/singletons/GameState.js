@@ -36,6 +36,7 @@ class GameState {
   #onPlayerDeath() {
     this.getEntity("gameAudio").playSound("explosion");
     this.getEntity("game").shakeScreen(6, 500);
+    this.#prepareRestart(2400);
   }
 
   #countScore(score, color) {
@@ -64,7 +65,6 @@ class GameState {
     for (const enemy of enemies) {
       if (!player.isDead && player.collidedWith(enemy)) {
         player.kill();
-        this.#prepareRestart(2400);
       }
       for (const bullet of bullets) {
         if (bullet.collidedWith(enemy)) {
