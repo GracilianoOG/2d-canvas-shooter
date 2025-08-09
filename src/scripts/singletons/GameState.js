@@ -30,19 +30,8 @@ class GameState {
     return this.#entities[name];
   }
 
-  showCurrentLives(lives) {
-    const lifeDisplay = document.querySelector(".lives-display");
-
-    for (let i = 0; i < lives; i++) {
-      const liveIcon = document.createElement("div");
-      liveIcon.classList.add("live-icon");
-      lifeDisplay.append(liveIcon);
-    }
-  }
-
   #refreshLifeDisplay() {
-    const livesDisplay = document.querySelector(".lives-display");
-    livesDisplay.lastChild.remove();
+    gameState.getEntity("livesDisplay").removeLife();
   }
 
   #onPlayerHit({ lives }) {
