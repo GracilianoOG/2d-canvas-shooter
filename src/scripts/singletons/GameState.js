@@ -35,6 +35,7 @@ class GameState {
     livesDisplay.lastChild.remove();
     if (lives) {
       gameState.getEntity("gameAudio").playSound("hit");
+      gameState.getEntity("game").shakeScreen(3.5, 300);
     }
   }
 
