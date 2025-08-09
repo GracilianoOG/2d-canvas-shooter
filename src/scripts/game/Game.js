@@ -152,7 +152,7 @@ class Game {
     });
 
     this.enemyCreator.start();
-    this.loop();
+    this.startLoop();
   }
 
   restart() {
@@ -164,7 +164,7 @@ class Game {
     gameState.getEntity("furyMeter").empty();
     gameState.getEntity("player").revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
-    this.loop();
+    this.startLoop();
   }
 
   #onPlayerDeath() {
