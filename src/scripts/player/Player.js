@@ -11,7 +11,7 @@ const defaultValues = Object.freeze({
   lives: 3,
   godMode: false,
   isDead: false,
-  shieldDelay: 3000,
+  shieldDelay: 1500,
 });
 
 class Player extends Projectile {
