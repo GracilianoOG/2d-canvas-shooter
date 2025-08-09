@@ -59,18 +59,19 @@ class GameState {
   }
 
   #filterInstances() {
-    return Entity.instances.reduce(
-      (acc, instance) => {
-        if (instance instanceof Enemy) {
-          acc[0].push(instance);
-        } else if (instance instanceof Bullet) {
-          acc[1].push(instance);
-        }
+    const instances = [[], []];
 
-        return acc;
-      },
-      [[], []]
-    );
+    for (let i = 0, len = Entity.instances.length; i < len; i++) {
+      const instance = Entity.instances[i];
+
+      if (instance instanceof Enemy) {
+        instances[0].push(instance);
+      } else if (instance instanceof Bullet) {
+        instances[1].push(instance);
+      }
+    }
+
+    return instances;
   }
 
   checkCollisions() {
