@@ -1,6 +1,5 @@
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
-import { gameState } from "../singletons/GameState.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { WHITE } from "../utils/constants/colors.js";
 
@@ -76,7 +75,7 @@ class Enemy extends Projectile {
     }
     this.#bleed(this.#options.bloodAmount);
     this.#createDamageEffect();
-    gameState.getEntity("gameAudio").playSound("hit");
+    eventManager.emit("enemyHit");
     return this.#score.hit;
   }
 
