@@ -104,7 +104,9 @@ class Player extends Projectile {
   }
 
   revive(x = this.x, y = this.y) {
-    this.isDead = false;
+    this.isDead = defaultValues.isDead;
+    this.#godMode = defaultValues.godMode;
+    this.#lives = defaultValues.lives;
     this.x = x;
     this.y = y;
   }
