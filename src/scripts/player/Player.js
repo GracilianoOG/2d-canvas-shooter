@@ -7,19 +7,38 @@ import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
 
+const defaultValues = Object.freeze({
+  lives: 3,
+  godMode: false,
+  isDead: false,
+});
+
 class Player extends Projectile {
-  #isDead = false;
-  #controller = new PlayerController(this);
-  #weapon = new Weapon(this);
-  #fury = new Fury(this);
-  #lives = 3;
-  #godMode = false;
-  #damageTimer = new Timer(3000, { autostart: false, loop: false }, () => {
-    this.#godMode = false;
-  });
+  #isDead;
+  #controller;
+  #weapon;
+  #fury;
+  #lives;
+  #godMode;
+  #damageTimer;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
+
+    this.#controller = new PlayerController(this);
+    this.#isDead = defaultValues.isDead;
+    this.#weapon = new Weapon(this);
+    this.#fury = new Fury(this);
+    this.#lives = defaultValues.lives;
+    this.#godMode = defaultValues.godMode;
+    this.#damageTimer = new Timer(
+      3000,
+      { autostart: false, loop: false },
+      () => {
+        this.#godMode = false;
+      }
+    );
+
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
   }
 
