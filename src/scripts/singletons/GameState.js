@@ -34,8 +34,8 @@ class GameState {
     const livesDisplay = document.querySelector(".lives-display");
     livesDisplay.lastChild.remove();
     if (lives) {
-      gameState.getEntity("gameAudio").playSound("hit");
-      gameState.getEntity("game").shakeScreen(3.5, 300);
+      this.getEntity("gameAudio").playSound("hit");
+      this.getEntity("game").shakeScreen(3.5, 300);
     }
   }
 
