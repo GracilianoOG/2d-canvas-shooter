@@ -5,12 +5,18 @@ import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
+import { Timer } from "../Timer.js";
 
 class Player extends Projectile {
   #isDead = false;
   #controller = new PlayerController(this);
   #weapon = new Weapon(this);
   #fury = new Fury(this);
+  #lives = 3;
+  #godMode = false;
+  #damageTimer = new Timer(3000, { autostart: false, loop: false }, () => {
+    this.#godMode = false;
+  });
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
@@ -53,6 +59,22 @@ class Player extends Projectile {
     if (this.x + pRadius > cWidth) this.x = cWidth - pRadius;
     if (this.y < pRadius) this.y = pRadius;
     if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
+  }
+
+  takeHit() {
+    if (this.#godMode) return;
+
+    this.#lives--;
+
+    if (this.#lives <= 0) {
+      this.kill();
+      return;
+    }
+
+    this.#godMode = true;
+    this.#damageTimer.start();
+    gameState.getEntity("game").shakeScreen(3.5, 300);
+    Particle.createParticles(this.x, this.y, 8, 5, this.color, 8);
   }
 
   kill() {
