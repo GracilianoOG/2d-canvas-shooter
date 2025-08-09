@@ -29,12 +29,17 @@ class FuryMeter {
 
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
     eventManager.subscribe("FuryActivation", this.#onFuryActivation.bind(this));
+    eventManager.subscribe("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
+  }
+
+  #onEmptyFuryMeter({ timePerc }) {
+    this.#fury = timePerc * FuryMeterState.FULL;
+    this.#updateFuryMeter();
   }
 
   #onFuryActivation() {
     if (this.isFull()) {
       eventManager.emit("activateFury");
-      this.empty();
     }
   }
 
