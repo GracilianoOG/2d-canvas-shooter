@@ -1,4 +1,3 @@
-import { Canvas } from "../Canvas.js";
 import { Game } from "../game/Game.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
@@ -38,7 +37,3 @@ pauseBtn.addEventListener("click", e => {
   e.stopPropagation();
   game.pause();
 });
-
-window.addEventListener("resize", () =>
-  Canvas.resizeCanvas(game.realCanvas, game.mainCanvas)
-);

@@ -34,6 +34,7 @@ class Game {
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
 
     this.#listenToWindowChange();
+    this.#listenToResize();
   }
 
   loop() {
@@ -163,6 +164,12 @@ class Game {
     document.addEventListener("visibilitychange", () => {
       if (document.hidden && this.#state === States.RUNNING) this.pause();
     });
+  }
+
+  #listenToResize() {
+    window.addEventListener("resize", () =>
+      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
+    );
   }
 }
 
