@@ -116,6 +116,7 @@ class Player extends Projectile {
     this.#lives = defaultValues.lives;
     this.x = x;
     this.y = y;
+    eventManager.emit("playerRevival", { lives: this.#lives });
   }
 
   draw(ctx) {
