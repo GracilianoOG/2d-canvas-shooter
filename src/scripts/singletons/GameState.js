@@ -39,13 +39,15 @@ class GameState {
     }
   }
 
-  #onEnemyDeath() {
+  #onEnemyDeath({ score, color }) {
     this.getEntity("gameAudio").playSound("explosion");
     this.getEntity("game").shakeScreen(5, 300);
+    this.#countScore(score, color);
   }
 
-  #onEnemyHit() {
+  #onEnemyHit({ score, color }) {
     this.getEntity("gameAudio").playSound("hit");
+    this.#countScore(score, color);
   }
 
   #onPlayerDeath() {
@@ -83,7 +85,7 @@ class GameState {
       }
       for (const bullet of bullets) {
         if (bullet.collidedWith(enemy)) {
-          this.#countScore(enemy.takeDamage(bullet.damage), enemy.baseColor);
+          enemy.takeDamage(bullet.damage);
           bullet.destroy();
           return;
         }
