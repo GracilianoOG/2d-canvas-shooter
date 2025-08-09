@@ -22,6 +22,10 @@ class Timer {
     }
   }
 
+  get elapsedTime() {
+    return this.#elapsedTime;
+  }
+
   get waitTime() {
     return this.#waitTime;
   }
