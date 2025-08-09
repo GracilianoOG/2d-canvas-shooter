@@ -129,6 +129,16 @@ class Player extends Projectile {
     if (this.isDead) return;
     this.controller.update(delta);
     this.#getInCanvas();
+    this.#emptyFuryMeter();
+  }
+
+  #emptyFuryMeter() {
+    if (this.fury.isActive()) {
+      const elapsedTime = this.fury.timer.elapsedTime;
+      const furyDelay = this.fury.duration;
+      const timePerc = elapsedTime / furyDelay;
+      eventManager.emit("emptyFuryMeter", { timePerc });
+    }
   }
 
   #drawShieldDelay(ctx) {
