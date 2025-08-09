@@ -30,13 +30,7 @@ class GameState {
     return this.#entities[name];
   }
 
-  #refreshLifeDisplay() {
-    gameState.getEntity("livesDisplay").removeLife();
-  }
-
   #onPlayerHit({ lives }) {
-    this.#refreshLifeDisplay();
-
     if (lives) {
       this.getEntity("gameAudio").playSound("hit");
       this.getEntity("game").shakeScreen(3.5, 300);
