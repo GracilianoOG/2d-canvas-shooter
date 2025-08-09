@@ -41,8 +41,12 @@ class Game {
   }
 
   loop() {
-    this.#state = States.RUNNING;
     this.#rafId = requestAnimationFrame(this.animate);
+  }
+
+  startLoop() {
+    this.#state = States.RUNNING;
+    this.loop();
   }
 
   stopLoop(state) {
@@ -57,7 +61,7 @@ class Game {
     if (this.#state === States.RUNNING) {
       this.stopLoop(States.PAUSED);
     } else {
-      this.loop();
+      this.startLoop();
     }
 
     const indicators = document.querySelectorAll(".score");
