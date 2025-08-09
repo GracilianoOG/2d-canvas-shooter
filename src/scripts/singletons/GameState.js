@@ -31,9 +31,9 @@ class GameState {
   }
 
   #onPlayerHit() {
-    const lives = document.querySelector(".lives-display");
+    const livesDisplay = document.querySelector(".lives-display");
     gameState.getEntity("gameAudio").playSound("hit");
-    lives.lastChild.remove();
+    livesDisplay.lastChild.remove();
   }
 
   #onEnemyDeath() {
