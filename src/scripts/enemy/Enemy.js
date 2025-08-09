@@ -75,8 +75,10 @@ class Enemy extends Projectile {
     }
     this.#bleed(this.#options.bloodAmount);
     this.#createDamageEffect();
-    eventManager.emit("enemyHit");
-    return this.#score.hit;
+    eventManager.emit("enemyHit", {
+      score: this.score.hit,
+      color: this.baseColor,
+    });
   }
 
   #createDamageEffect() {
@@ -98,7 +100,10 @@ class Enemy extends Projectile {
 
   #die() {
     this.#bleed(this.#options.bloodAmount * 2);
-    eventManager.emit("enemyDeath");
+    eventManager.emit("enemyDeath", {
+      score: this.score.death,
+      color: this.baseColor,
+    });
     this.destroy();
   }
 
