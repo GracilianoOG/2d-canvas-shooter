@@ -10,7 +10,7 @@ class Cannon extends Weapon {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
     const color = this.owner.color;
 
-    new Bullet(playerX, playerY, 20, 5, bulletAngle, color, 30);
+    new Bullet(playerX, playerY, 20, 5, bulletAngle, color, 40);
   }
 }
 
