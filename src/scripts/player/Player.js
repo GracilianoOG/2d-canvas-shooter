@@ -147,7 +147,7 @@ class Player extends Projectile {
     if (this.#damageTimer.active) {
       const { shieldDelay } = defaultValues;
       const { elapsedTime } = this.#damageTimer;
-      const padding = 10;
+      const padding = 15;
 
       const timePerc = elapsedTime / shieldDelay;
       const circleSize = Math.PI * 2 * timePerc;
@@ -164,7 +164,7 @@ class Player extends Projectile {
     if (this.#weapon.shootCooldown.active) {
       const gunDelay = this.#weapon.shootCooldown.waitTime;
       const { elapsedTime } = this.#weapon.shootCooldown;
-      const padding = 15;
+      const padding = 10;
 
       const timePerc = elapsedTime / gunDelay;
       const circleSize = Math.PI * 2 * timePerc;
