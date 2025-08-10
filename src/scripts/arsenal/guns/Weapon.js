@@ -31,11 +31,20 @@ class Weapon {
 
     const scaleXFactor = rWidth / mWidth;
     const scaleYFactor = rHeight / mHeight;
-    const dirX = mouseX / scaleXFactor - playerX;
-    const dirY = mouseY / scaleYFactor - playerY;
+
+    const scaledMouseX = mouseX / scaleXFactor;
+    const scaledMouseY = mouseY / scaleYFactor;
+
+    const dirX = scaledMouseX - playerX;
+    const dirY = scaledMouseY - playerY;
+
     const bulletAngle = Math.atan2(dirY, dirX);
 
-    return { playerX, playerY, bulletAngle };
+    return {
+      playerX,
+      playerY,
+      bulletAngle,
+    };
   }
 
   shoot() {
