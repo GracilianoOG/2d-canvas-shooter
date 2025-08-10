@@ -1,11 +1,11 @@
 import { Particle } from "../Particle.js";
 import { PlayerController } from "./PlayerController.js";
-import { Weapon } from "../arsenal/guns/Weapon.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
+import { SubmachineGun } from "../arsenal/guns/SubmachineGun.js";
 
 const defaultValues = Object.freeze({
   lives: 3,
@@ -28,7 +28,7 @@ class Player extends Projectile {
 
     this.#controller = new PlayerController(this);
     this.#isDead = defaultValues.isDead;
-    this.#weapon = new Weapon(this);
+    this.#weapon = new SubmachineGun(this);
     this.#fury = new Fury(this);
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
