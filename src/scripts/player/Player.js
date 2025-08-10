@@ -9,6 +9,7 @@ import { SubmachineGun } from "../arsenal/guns/SubmachineGun.js";
 import {
   BLOODY_RED,
   ENERGETIC_BLUE,
+  GRAY,
   LIGHT_YELLOW,
 } from "../utils/constants/colors.js";
 
@@ -148,19 +149,29 @@ class Player extends Projectile {
     }
   }
 
-  #drawRing(ctx, color, padding, percent) {
+  #drawRing(ctx, color, padding, percent, drawEmpty = false) {
     const TAU = Math.PI * 2;
+    const size = this.dimensions.radius + padding;
+
+    if (drawEmpty) {
+      ctx.strokeStyle = GRAY;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, size, TAU * percent, 0);
+      ctx.stroke();
+    }
+
     ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, TAU * percent);
+    ctx.arc(this.x, this.y, size, 0, TAU * percent);
     ctx.stroke();
   }
 
   #drawHealth(ctx) {
     const padding = 5;
     const health = this.#lives / defaultValues.lives;
-    this.#drawRing(ctx, BLOODY_RED, padding, health);
+    this.#drawRing(ctx, BLOODY_RED, padding, health, true);
   }
 
   #drawShieldDelay(ctx) {
