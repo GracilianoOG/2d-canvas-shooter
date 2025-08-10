@@ -23,7 +23,7 @@ class Bullet extends Projectile {
     return this.#damage;
   }
 
-  #isOutOfCanvas(canvas) {
+  isOutOfCanvas(canvas = gameState.getEntity("mainCanvas")) {
     const {
       x: bx,
       y: by,
@@ -36,7 +36,9 @@ class Bullet extends Projectile {
   update(delta) {
     this.x += Math.cos(this.angle) * this.speed * delta;
     this.y += Math.sin(this.angle) * this.speed * delta;
-    if (this.#isOutOfCanvas(gameState.getEntity("mainCanvas"))) this.destroy();
+    if (this.isOutOfCanvas()) {
+      this.destroy();
+    }
   }
 }
 
