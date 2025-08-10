@@ -158,7 +158,7 @@ class Player extends Projectile {
   }
 
   #drawHealth(ctx) {
-    const padding = 20;
+    const padding = 5;
     const health = this.#lives / defaultValues.lives;
     this.#drawRing(ctx, BLOODY_RED, padding, health);
   }
