@@ -4,10 +4,12 @@ class Timer {
   #active;
   #loop;
   #callback;
+  #options;
 
   static timers = [];
 
   constructor(waitTime, options, callback = null) {
+    this.#options = { ...options };
     this.#waitTime = waitTime;
     this.#elapsedTime = this.waitTime;
     this.#active = options?.autostart ?? true;
@@ -70,6 +72,7 @@ class Timer {
       this.#elapsedTime = this.#waitTime;
       if (!this.#loop) this.stop();
       if (this.#callback) this.#callback();
+      if (this.#options.autodestruct) this.remove();
     }
   }
 
