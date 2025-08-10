@@ -6,6 +6,7 @@ import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
 import { SubmachineGun } from "../arsenal/guns/SubmachineGun.js";
+import { LIGHT_YELLOW } from "../utils/constants/colors.js";
 
 const defaultValues = Object.freeze({
   lives: 3,
@@ -123,6 +124,7 @@ class Player extends Projectile {
     if (this.isDead) return;
     super.draw(ctx);
     this.#drawShieldDelay(ctx);
+    this.#drawWeaponDuration(ctx);
   }
 
   update(delta) {
@@ -151,6 +153,23 @@ class Player extends Projectile {
       const circleSize = Math.PI * 2 * timePerc;
 
       ctx.strokeStyle = this.color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, circleSize);
+      ctx.stroke();
+    }
+  }
+
+  #drawWeaponDuration(ctx) {
+    if (this.#weapon.shootCooldown.active) {
+      const gunDelay = this.#weapon.shootCooldown.waitTime;
+      const { elapsedTime } = this.#weapon.shootCooldown;
+      const padding = 15;
+
+      const timePerc = elapsedTime / gunDelay;
+      const circleSize = Math.PI * 2 * timePerc;
+
+      ctx.strokeStyle = LIGHT_YELLOW;
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, circleSize);
