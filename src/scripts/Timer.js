@@ -55,6 +55,12 @@ class Timer {
     this.start();
   }
 
+  remove() {
+    Timer.timers = Timer.timers.filter(timer => {
+      return timer !== this;
+    });
+  }
+
   update(deltaTime) {
     if (!this.#active) return;
 
