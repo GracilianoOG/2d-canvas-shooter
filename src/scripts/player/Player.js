@@ -144,10 +144,11 @@ class Player extends Projectile {
   }
 
   #drawRing(ctx, color, padding, percent) {
+    const TAU = Math.PI * 2;
     ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, percent);
+    ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, TAU * percent);
     ctx.stroke();
   }
 
@@ -155,12 +156,10 @@ class Player extends Projectile {
     if (this.#damageTimer.active) {
       const { shieldDelay } = defaultValues;
       const { elapsedTime } = this.#damageTimer;
-
       const timePerc = elapsedTime / shieldDelay;
-      const circleSize = Math.PI * 2 * timePerc;
-
       const padding = 15;
-      this.#drawRing(ctx, ENERGETIC_BLUE, padding, circleSize);
+
+      this.#drawRing(ctx, ENERGETIC_BLUE, padding, timePerc);
     }
   }
 
@@ -168,12 +167,10 @@ class Player extends Projectile {
     if (this.#weapon.shootCooldown.active) {
       const gunDelay = this.#weapon.shootCooldown.waitTime;
       const { elapsedTime } = this.#weapon.shootCooldown;
-
       const timePerc = elapsedTime / gunDelay;
-      const circleSize = Math.PI * 2 * timePerc;
-
       const padding = 10;
-      this.#drawRing(ctx, LIGHT_YELLOW, padding, circleSize);
+
+      this.#drawRing(ctx, LIGHT_YELLOW, padding, timePerc);
     }
   }
 }
