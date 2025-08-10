@@ -5,10 +5,11 @@ import { Bullet } from "./Bullet";
 
 class Weapon {
   #player;
-  #shootCooldown = new Timer(150, { loop: false });
+  #shootCooldown;
 
   constructor(player) {
     this.#player = player;
+    this.#shootCooldown = new Timer(150, { loop: false });
   }
 
   get shootCooldown() {
