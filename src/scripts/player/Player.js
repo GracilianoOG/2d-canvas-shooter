@@ -6,7 +6,11 @@ import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
 import { SubmachineGun } from "../arsenal/guns/SubmachineGun.js";
-import { ENERGETIC_BLUE, LIGHT_YELLOW } from "../utils/constants/colors.js";
+import {
+  BLOODY_RED,
+  ENERGETIC_BLUE,
+  LIGHT_YELLOW,
+} from "../utils/constants/colors.js";
 
 const defaultValues = Object.freeze({
   lives: 3,
@@ -125,6 +129,7 @@ class Player extends Projectile {
     super.draw(ctx);
     this.#drawShieldDelay(ctx);
     this.#drawWeaponDuration(ctx);
+    this.#drawHealth(ctx);
   }
 
   update(delta) {
@@ -150,6 +155,12 @@ class Player extends Projectile {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, TAU * percent);
     ctx.stroke();
+  }
+
+  #drawHealth(ctx) {
+    const padding = 20;
+    const health = this.#lives / defaultValues.lives;
+    this.#drawRing(ctx, BLOODY_RED, padding, health);
   }
 
   #drawShieldDelay(ctx) {
