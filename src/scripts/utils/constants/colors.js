@@ -16,3 +16,4 @@ export const GRAY = "#2c2c2c";
 export const LIGHT_YELLOW = "rgb(255, 235, 59)";
 export const ENERGETIC_BLUE = "rgb(33, 150, 243)";
 export const BLOODY_RED = "rgb(244, 67, 54)";
+export const VERY_LIGHT_YELLOW = "rgb(252, 242, 153)";
