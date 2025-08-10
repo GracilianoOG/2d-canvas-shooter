@@ -1,3 +1,4 @@
+import { randomNumber } from "../utils/utility";
 import { Bullet } from "./Bullet";
 import { Weapon } from "./Weapon";
 
@@ -10,7 +11,7 @@ class Minigun extends Weapon {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
     const max = 0.1;
     const min = -max;
-    const accuracy = Math.random() * (max - min) + min;
+    const accuracy = randomNumber(min, max);
     const color = this.owner.color;
     new Bullet(playerX, playerY, 5, 20, bulletAngle - accuracy, color);
   }
