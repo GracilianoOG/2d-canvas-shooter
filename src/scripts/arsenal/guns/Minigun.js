@@ -13,7 +13,7 @@ class Minigun extends Weapon {
     const min = -max;
     const accuracy = randomNumber(min, max);
     const color = this.owner.color;
-    new Bullet(playerX, playerY, 5, 20, bulletAngle - accuracy, color);
+    new Bullet(playerX, playerY, 5, 20, bulletAngle - accuracy, color, 20);
   }
 }
 
