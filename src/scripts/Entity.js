@@ -52,7 +52,10 @@ class Entity {
     this.#radius = radius;
   }
 
+  onDestroy() {}
+
   destroy() {
+    this.onDestroy();
     Entity.instances = Entity.instances.filter(instance => {
       return instance !== this;
     });
