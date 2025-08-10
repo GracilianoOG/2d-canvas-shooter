@@ -11,3 +11,4 @@ export const ORANGE = "#fd7840";
 export const WHITE = "#fff";
 export const TRANSPARENT_BLACK = "rgba(0, 0, 0, .4)";
 export const ALMOST_BLACK = "rgb(20, 20, 20)";
+export const ARMY_GREEN = "#4B5320";
