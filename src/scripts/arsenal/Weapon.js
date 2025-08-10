@@ -7,9 +7,9 @@ class Weapon {
   #player;
   #shootCooldown;
 
-  constructor(player) {
+  constructor(player, cooldown = 150) {
     this.#player = player;
-    this.#shootCooldown = new Timer(150, { loop: false });
+    this.#shootCooldown = new Timer(cooldown, { loop: false });
   }
 
   get shootCooldown() {
