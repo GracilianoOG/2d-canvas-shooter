@@ -1,22 +1,16 @@
-import { Bullet } from "../Bullet";
+import { Explosive } from "./Explosive";
 
-class Grenade extends Bullet {
-  constructor(x, y, radius, speed, angle, color, damage = 20) {
-    super(x, y, radius, speed, angle, color, damage);
-  }
+const defaultOptions = {
+  fragments: 10,
+  size: 4,
+  speed: 10,
+  damage: 10,
+};
 
-  onDestroy() {
-    if (this.isOutOfCanvas()) return;
-
-    let rotation = 0;
-    const TOTAL_BULLETS = 10;
-    const TAU = Math.PI * 2;
-    const angle = TAU / TOTAL_BULLETS;
-
-    while (rotation <= TAU) {
-      new Bullet(this.x, this.y, 4, 10, rotation, this.color, 10);
-      rotation += angle;
-    }
+class Grenade extends Explosive {
+  constructor(x, y, radius, speed, angle, color, damage = 20, options = {}) {
+    const config = { ...defaultOptions, ...options };
+    super(x, y, radius, speed, angle, color, damage, config);
   }
 }
 

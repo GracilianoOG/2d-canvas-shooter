@@ -1,23 +1,18 @@
 import { WHITE } from "../../utils/constants/colors";
-import { Bullet } from "../Bullet";
+import { Explosive } from "./Explosive";
 
-class Mine extends Bullet {
-  constructor(x, y, radius, speed, angle, color, damage = 20) {
-    super(x, y, radius, speed, angle, color, damage);
-  }
+const defaultOptions = {
+  fragments: 20,
+  size: 6,
+  speed: 8,
+  damage: 10,
+  color: WHITE,
+};
 
-  onDestroy() {
-    if (this.isOutOfCanvas()) return;
-
-    let rotation = 0;
-    const TOTAL_BULLETS = 20;
-    const TAU = Math.PI * 2;
-    const angle = TAU / TOTAL_BULLETS;
-
-    while (rotation <= TAU) {
-      new Bullet(this.x, this.y, 6, 8, rotation, WHITE, 10);
-      rotation += angle;
-    }
+class Mine extends Explosive {
+  constructor(x, y, radius, speed, angle, color, damage = 30, options = {}) {
+    const config = { ...defaultOptions, ...options };
+    super(x, y, radius, speed, angle, color, damage, config);
   }
 }
 
