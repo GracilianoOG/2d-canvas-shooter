@@ -1,4 +1,4 @@
-import { Missile } from "./ammo/Missile";
+import { Missile } from "../ammo/Missile";
 import { Weapon } from "./Weapon";
 
 class Launcher extends Weapon {

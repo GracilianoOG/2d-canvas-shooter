@@ -1,7 +1,7 @@
-import { gameState } from "../singletons/GameState";
-import { inputManager } from "../singletons/InputManager";
-import { Timer } from "../Timer";
-import { Bullet } from "./Bullet";
+import { gameState } from "../../singletons/GameState";
+import { inputManager } from "../../singletons/InputManager";
+import { Timer } from "../../Timer";
+import { Bullet } from "../Bullet";
 
 class Weapon {
   #player;

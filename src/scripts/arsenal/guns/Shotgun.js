@@ -1,5 +1,5 @@
-import { randomNumber } from "../utils/utility";
-import { Bullet } from "./Bullet";
+import { randomNumber } from "../../utils/utility";
+import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class Shotgun extends Weapon {
