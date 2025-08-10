@@ -15,6 +15,10 @@ class Weapon {
     return this.#shootCooldown;
   }
 
+  get owner() {
+    return this.#player;
+  }
+
   _calcBulletPath() {
     const { x: playerX, y: playerY } = this.#player;
     const { x: mouseX, y: mouseY } = inputManager.mousePosition;
