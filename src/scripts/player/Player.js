@@ -143,14 +143,11 @@ class Player extends Projectile {
     }
   }
 
-  #drawRing(ctx, color, padding, delay, elapsedTime) {
-    const timePerc = elapsedTime / delay;
-    const circleSize = Math.PI * 2 * timePerc;
-
+  #drawRing(ctx, color, padding, percent) {
     ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, circleSize);
+    ctx.arc(this.x, this.y, this.dimensions.radius + padding, 0, percent);
     ctx.stroke();
   }
 
@@ -158,8 +155,12 @@ class Player extends Projectile {
     if (this.#damageTimer.active) {
       const { shieldDelay } = defaultValues;
       const { elapsedTime } = this.#damageTimer;
+
+      const timePerc = elapsedTime / shieldDelay;
+      const circleSize = Math.PI * 2 * timePerc;
+
       const padding = 15;
-      this.#drawRing(ctx, ENERGETIC_BLUE, padding, shieldDelay, elapsedTime);
+      this.#drawRing(ctx, ENERGETIC_BLUE, padding, circleSize);
     }
   }
 
@@ -167,8 +168,12 @@ class Player extends Projectile {
     if (this.#weapon.shootCooldown.active) {
       const gunDelay = this.#weapon.shootCooldown.waitTime;
       const { elapsedTime } = this.#weapon.shootCooldown;
+
+      const timePerc = elapsedTime / gunDelay;
+      const circleSize = Math.PI * 2 * timePerc;
+
       const padding = 10;
-      this.#drawRing(ctx, LIGHT_YELLOW, padding, gunDelay, elapsedTime);
+      this.#drawRing(ctx, LIGHT_YELLOW, padding, circleSize);
     }
   }
 }
