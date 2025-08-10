@@ -1,3 +1,4 @@
+import { VERY_LIGHT_YELLOW } from "../../utils/constants/colors";
 import { Nuke } from "../ammo/Nuke";
 import { Weapon } from "./Weapon";
 
@@ -8,7 +9,7 @@ class NukeLauncher extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Nuke(playerX, playerY, 20, 5, bulletAngle, this.owner.color, 60);
+    new Nuke(playerX, playerY, 20, 5, bulletAngle, VERY_LIGHT_YELLOW, 60);
   }
 }
 
