@@ -15,7 +15,7 @@ class Weapon {
     return this.#shootCooldown;
   }
 
-  #calcBulletPath() {
+  _calcBulletPath() {
     const { x: playerX, y: playerY } = this.#player;
     const { x: mouseX, y: mouseY } = inputManager.mousePosition;
 
@@ -41,7 +41,7 @@ class Weapon {
   }
 
   createProjectile() {
-    const { playerX, playerY, bulletAngle } = this.#calcBulletPath();
+    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
     new Bullet(playerX, playerY, 5, 20, bulletAngle, this.#player.color);
   }
 }
