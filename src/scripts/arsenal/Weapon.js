@@ -36,9 +36,13 @@ class Weapon {
   shoot() {
     if (this.#shootCooldown.active) return;
     this.#shootCooldown.reset();
+    this.createProjectile();
+    gameState.getEntity("gameAudio").playSound("shot");
+  }
+
+  createProjectile() {
     const { playerX, playerY, bulletAngle } = this.#calcBulletPath();
     new Bullet(playerX, playerY, 5, 20, bulletAngle, this.#player.color);
-    gameState.getEntity("gameAudio").playSound("shot");
   }
 }
 
