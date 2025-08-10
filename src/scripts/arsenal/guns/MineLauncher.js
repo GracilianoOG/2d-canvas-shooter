@@ -1,3 +1,4 @@
+import { ARMY_GREEN } from "../../utils/constants/colors";
 import { Mine } from "../ammo/Mine";
 import { Weapon } from "./Weapon";
 
@@ -8,7 +9,7 @@ class MineLauncher extends Weapon {
 
   createProjectile() {
     const { playerX, playerY } = this._calcBulletPath();
-    new Mine(playerX, playerY, 8, 0, 0, "#4B5320", 30);
+    new Mine(playerX, playerY, 8, 0, 0, ARMY_GREEN, 30);
   }
 }
 
