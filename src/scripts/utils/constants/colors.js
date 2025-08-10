@@ -15,3 +15,4 @@ export const ARMY_GREEN = "#4B5320";
 export const GRAY = "#2c2c2c";
 export const LIGHT_YELLOW = "rgb(255, 235, 59)";
 export const ENERGETIC_BLUE = "rgb(33, 150, 243)";
+export const BLOODY_RED = "rgb(244, 67, 54)";
