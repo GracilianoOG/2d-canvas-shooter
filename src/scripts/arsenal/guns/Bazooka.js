@@ -1,7 +1,7 @@
 import { Missile } from "../ammo/Missile";
 import { Weapon } from "./Weapon";
 
-class Launcher extends Weapon {
+class Bazooka extends Weapon {
   constructor(player, cooldown = 300) {
     super(player, cooldown);
   }
@@ -12,4 +12,4 @@ class Launcher extends Weapon {
   }
 }
 
-export { Launcher };
+export { Bazooka };
