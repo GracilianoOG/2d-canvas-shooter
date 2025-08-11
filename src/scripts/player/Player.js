@@ -14,7 +14,7 @@ import {
 import { Arsenal } from "../arsenal/Arsenal.js";
 
 const defaultValues = Object.freeze({
-  lives: 3,
+  lives: 8,
   godMode: false,
   isDead: false,
   shieldDelay: 1500,
@@ -107,9 +107,10 @@ class Player extends Projectile {
     if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
   }
 
-  #activateShield() {
+  #activateShield(time) {
     this.#godMode = true;
-    this.#shieldTimer.start();
+    this.#shieldTimer.waitTime = time ?? defaultValues.shieldDelay;
+    this.#shieldTimer.reset();
   }
 
   #resetShield() {
