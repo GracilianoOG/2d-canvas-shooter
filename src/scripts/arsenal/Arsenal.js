@@ -64,6 +64,8 @@ class Arsenal {
         eventManager.emit("afterWeaponChange");
       }
     );
+
+    eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
   get durationTimer() {
@@ -139,6 +141,11 @@ class Arsenal {
 
   defaultGun() {
     this.#player.weapon = this.#guns[GunTypes.PISTOL];
+  }
+
+  #onPlayerDeath() {
+    this.#durationTimer.stop();
+    this.defaultGun();
   }
 }
 
