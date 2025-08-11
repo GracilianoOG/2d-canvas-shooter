@@ -47,6 +47,10 @@ class Player extends Projectile {
     );
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
+    eventManager.subscribe(
+      "weaponBoxCollected",
+      () => (this.#weapon = this.#arsenal.randomizeGun())
+    );
   }
 
   get lives() {
