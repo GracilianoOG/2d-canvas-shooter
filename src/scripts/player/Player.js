@@ -14,7 +14,7 @@ import {
 import { Arsenal } from "../arsenal/Arsenal.js";
 
 const defaultValues = Object.freeze({
-  lives: 8,
+  lives: 3,
   godMode: false,
   isDead: false,
   shieldDelay: 1500,
