@@ -1,3 +1,4 @@
+import { Shield } from "../items/Shield.js";
 import { WeaponBox } from "../items/WeaponBox.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
@@ -70,7 +71,11 @@ class Enemy extends Projectile {
 
   onDestroy() {
     if (Math.random() <= 0.1) {
-      new WeaponBox(this.x, this.y, 10, "yellow");
+      if (Math.random() <= 0.5) {
+        new WeaponBox(this.x, this.y);
+      } else {
+        new Shield(this.x, this.y);
+      }
     }
   }
 
