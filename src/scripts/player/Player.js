@@ -200,7 +200,7 @@ class Player extends Projectile {
 
   #drawShieldDelay(ctx) {
     if (this.#shieldTimer.active) {
-      const { shieldDelay } = defaultValues;
+      const { waitTime: shieldDelay } = this.#shieldTimer;
       const { elapsedTime } = this.#shieldTimer;
       const timePerc = elapsedTime / shieldDelay;
       const padding = 15;
