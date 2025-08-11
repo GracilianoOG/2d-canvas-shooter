@@ -3,7 +3,7 @@ import { Flechette } from "../ammo/Flechette";
 import { Weapon } from "./Weapon";
 
 class Ricochet extends Weapon {
-  constructor(player, cooldown = 180) {
+  constructor(player, cooldown = 150) {
     super(player, cooldown);
   }
 
