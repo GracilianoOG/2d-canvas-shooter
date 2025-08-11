@@ -174,29 +174,10 @@ class Player extends Projectile {
     }
   }
 
-  #drawRing(ctx, color, padding, percent, drawEmpty = false) {
-    const TAU = Math.PI * 2;
-    const size = this.dimensions.radius + padding;
-
-    if (drawEmpty) {
-      ctx.strokeStyle = GRAY;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, size, TAU * percent, 0);
-      ctx.stroke();
-    }
-
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, size, 0, TAU * percent);
-    ctx.stroke();
-  }
-
   #drawHealth(ctx) {
     const padding = 5;
     const health = this.#lives / defaultValues.lives;
-    this.#drawRing(ctx, BLOODY_RED, padding, health, true);
+    this.drawArc(ctx, BLOODY_RED, padding, health, true);
   }
 
   #drawShieldDelay(ctx) {
@@ -206,7 +187,7 @@ class Player extends Projectile {
       const timePerc = elapsedTime / shieldDelay;
       const padding = 15;
 
-      this.#drawRing(ctx, ENERGETIC_BLUE, padding, timePerc);
+      this.drawArc(ctx, ENERGETIC_BLUE, padding, timePerc);
     }
   }
 
@@ -217,7 +198,7 @@ class Player extends Projectile {
       const timePerc = elapsedTime / gunDelay;
       const padding = 10;
 
-      this.#drawRing(ctx, LIGHT_YELLOW, padding, timePerc);
+      this.drawArc(ctx, LIGHT_YELLOW, padding, timePerc);
     }
   }
 }
