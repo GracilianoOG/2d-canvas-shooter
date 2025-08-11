@@ -8,6 +8,7 @@ class Shield extends Item {
   }
 
   collect() {
+    super.collect();
     eventManager.emit("shieldCollected");
   }
 }

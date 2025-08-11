@@ -8,6 +8,7 @@ class WeaponBox extends Item {
   }
 
   collect() {
+    super.collect();
     eventManager.emit("weaponBoxCollected");
   }
 }
