@@ -111,6 +111,12 @@ class Player extends Projectile {
     this.#shieldTimer.start();
   }
 
+  #resetShield() {
+    this.#godMode = defaultValues.godMode;
+    this.#shieldTimer.stop();
+    this.#shieldTimer.waitTime = defaultValues.shieldDelay;
+  }
+
   takeHit() {
     if (this.#godMode) return;
 
@@ -135,10 +141,10 @@ class Player extends Projectile {
 
   revive(x = this.x, y = this.y) {
     this.isDead = defaultValues.isDead;
-    this.#godMode = defaultValues.godMode;
     this.#lives = defaultValues.lives;
     this.x = x;
     this.y = y;
+    this.#resetShield();
     eventManager.emit("playerRevival", { lives: this.#lives });
   }
 
