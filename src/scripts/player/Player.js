@@ -50,7 +50,7 @@ class Player extends Projectile {
     eventManager.subscribe("weaponBoxCollected", () =>
       this.#arsenal.randomizeGun()
     );
-    eventManager.subscribe("shieldCollected", () => this.#activateShield());
+    eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
   }
 
   get lives() {
