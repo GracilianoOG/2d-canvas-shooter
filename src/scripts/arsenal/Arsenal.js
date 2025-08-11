@@ -1,3 +1,4 @@
+import { Timer } from "../Timer";
 import { randomInt } from "../utils/utility";
 import { AcidShotgun } from "./guns/AcidShotgun";
 import { Bazooka } from "./guns/Bazooka";
@@ -31,6 +32,8 @@ const GunTypes = Object.freeze({
 
 class Arsenal {
   #guns;
+  #durationTimer;
+  #player;
 
   constructor(player) {
     this.#guns = {
@@ -48,6 +51,16 @@ class Arsenal {
       [GunTypes.SHOTGUN]: new Shotgun(player),
       [GunTypes.SMG]: new SubmachineGun(player),
     };
+
+    this.#player = player;
+
+    this.#durationTimer = new Timer(
+      10_000,
+      { loop: false, autostart: false },
+      () => {
+        this.#player.weapon = this.defaultGun();
+      }
+    );
   }
 
   randomizeGun() {
@@ -96,6 +109,8 @@ class Arsenal {
       default:
         throw new Error("Invalid gun!");
     }
+
+    this.#durationTimer.reset();
 
     return gun;
   }
