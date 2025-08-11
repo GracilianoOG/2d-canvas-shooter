@@ -7,7 +7,7 @@ class WeaponBox extends Item {
     super(x, y, radius, color);
   }
 
-  onDestroy() {
+  collect() {
     eventManager.emit("weaponBoxCollected");
   }
 }
