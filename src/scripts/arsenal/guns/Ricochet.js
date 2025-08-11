@@ -1,3 +1,4 @@
+import { VIOLET } from "../../utils/constants/colors";
 import { Flechette } from "../ammo/Flechette";
 import { Weapon } from "./Weapon";
 
@@ -8,7 +9,7 @@ class Ricochet extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Flechette(playerX, playerY, 8, 12, bulletAngle, this.owner.color);
+    new Flechette(playerX, playerY, 8, 12, bulletAngle, VIOLET);
   }
 }
 
