@@ -27,7 +27,7 @@ class Player extends Projectile {
   #fury;
   #lives;
   #godMode;
-  #damageTimer;
+  #shieldTimer;
   #arsenal;
 
   constructor(x, y, radius, speed, color) {
@@ -40,7 +40,7 @@ class Player extends Projectile {
     this.#fury = new Fury(this);
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
-    this.#damageTimer = new Timer(
+    this.#shieldTimer = new Timer(
       defaultValues.shieldDelay,
       { autostart: false, loop: false },
       this.#onShieldDepletion.bind(this)
@@ -108,7 +108,7 @@ class Player extends Projectile {
 
   #activateShield() {
     this.#godMode = true;
-    this.#damageTimer.start();
+    this.#shieldTimer.start();
   }
 
   takeHit() {
@@ -192,9 +192,9 @@ class Player extends Projectile {
   }
 
   #drawShieldDelay(ctx) {
-    if (this.#damageTimer.active) {
+    if (this.#shieldTimer.active) {
       const { shieldDelay } = defaultValues;
-      const { elapsedTime } = this.#damageTimer;
+      const { elapsedTime } = this.#shieldTimer;
       const timePerc = elapsedTime / shieldDelay;
       const padding = 15;
 
