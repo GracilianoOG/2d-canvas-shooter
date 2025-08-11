@@ -2,7 +2,7 @@ import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class SubmachineGun extends Weapon {
-  constructor(owner, cooldown = 100) {
+  constructor(owner, cooldown = 120) {
     super(owner, cooldown);
   }
 
