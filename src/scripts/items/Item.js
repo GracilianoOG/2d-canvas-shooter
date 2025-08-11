@@ -16,6 +16,20 @@ class Item extends Entity {
   collect() {
     this.#despawnTimer.remove();
   }
+
+  draw(ctx) {
+    super.draw(ctx);
+    this.#drawDespawnDelay(ctx);
+  }
+
+  #drawDespawnDelay(ctx) {
+    const { waitTime: despawnDelay } = this.#despawnTimer;
+    const { elapsedTime } = this.#despawnTimer;
+    const timePerc = elapsedTime / despawnDelay;
+    const padding = 5;
+
+    this.drawArc(ctx, this.color, padding, timePerc);
+  }
 }
 
 export { Item };
