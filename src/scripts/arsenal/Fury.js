@@ -22,6 +22,16 @@ class Fury {
     this.#player = player;
     this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
+    eventManager.subscribe("beforeWeaponChange", () => {
+      if (this.isActive()) {
+        this.#restoreFireRate();
+      }
+    });
+    eventManager.subscribe("afterWeaponChange", () => {
+      if (this.isActive()) {
+        this.#increaseFireRate();
+      }
+    });
   }
 
   get timer() {
@@ -50,18 +60,28 @@ class Fury {
     return this.#status;
   }
 
-  #applyUpgrades() {
+  #increaseFireRate() {
     const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
-    const { playerSpeed, weaponCooldown } = upgrades;
-    this.#player.speed += playerSpeed;
+    const { weaponCooldown } = upgrades;
     this.#player.weapon.shootCooldown.waitTime = cooldownTime - weaponCooldown;
   }
 
-  #removeUpgrades() {
+  #restoreFireRate() {
     const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
-    const { playerSpeed, weaponCooldown } = upgrades;
-    this.#player.speed -= playerSpeed;
+    const { weaponCooldown } = upgrades;
     this.#player.weapon.shootCooldown.waitTime = cooldownTime + weaponCooldown;
+  }
+
+  #applyUpgrades() {
+    this.#increaseFireRate();
+    const { playerSpeed } = upgrades;
+    this.#player.speed += playerSpeed;
+  }
+
+  #removeUpgrades() {
+    this.#restoreFireRate();
+    const { playerSpeed } = upgrades;
+    this.#player.speed -= playerSpeed;
   }
 }
 
