@@ -5,13 +5,13 @@ import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
-import { SubmachineGun } from "../arsenal/guns/SubmachineGun.js";
 import {
   BLOODY_RED,
   ENERGETIC_BLUE,
   GRAY,
   LIGHT_YELLOW,
 } from "../utils/constants/colors.js";
+import { Arsenal } from "../arsenal/Arsenal.js";
 
 const defaultValues = Object.freeze({
   lives: 3,
@@ -28,13 +28,15 @@ class Player extends Projectile {
   #lives;
   #godMode;
   #damageTimer;
+  #arsenal;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
 
     this.#controller = new PlayerController(this);
     this.#isDead = defaultValues.isDead;
-    this.#weapon = new SubmachineGun(this);
+    this.#arsenal = new Arsenal(this);
+    this.#weapon = this.#arsenal.defaultGun();
     this.#fury = new Fury(this);
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
@@ -55,8 +57,16 @@ class Player extends Projectile {
     return this.#controller;
   }
 
+  get arsenal() {
+    return this.#arsenal;
+  }
+
   get weapon() {
     return this.#weapon;
+  }
+
+  set weapon(weapon) {
+    this.#weapon = weapon;
   }
 
   get fury() {
