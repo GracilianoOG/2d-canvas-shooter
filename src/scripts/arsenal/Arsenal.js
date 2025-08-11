@@ -54,12 +54,8 @@ class Arsenal {
 
     this.#player = player;
 
-    this.#durationTimer = new Timer(
-      0,
-      { loop: false, autostart: false },
-      () => {
-        this.#player.weapon = this.defaultGun();
-      }
+    this.#durationTimer = new Timer(0, { loop: false, autostart: false }, () =>
+      this.defaultGun()
     );
   }
 
@@ -127,12 +123,11 @@ class Arsenal {
     }
 
     this.#durationTimer.reset();
-
-    return gun;
+    this.#player.weapon = gun;
   }
 
   defaultGun() {
-    return this.#guns[GunTypes.PISTOL];
+    this.#player.weapon = this.#guns[GunTypes.PISTOL];
   }
 }
 
