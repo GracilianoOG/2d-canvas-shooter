@@ -8,7 +8,6 @@ import { Timer } from "../Timer.js";
 import {
   BLOODY_RED,
   ENERGETIC_BLUE,
-  GRAY,
   LIGHT_YELLOW,
 } from "../utils/constants/colors.js";
 import { Arsenal } from "../arsenal/Arsenal.js";
