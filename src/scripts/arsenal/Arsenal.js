@@ -63,6 +63,10 @@ class Arsenal {
     );
   }
 
+  get durationTimer() {
+    return this.#durationTimer;
+  }
+
   randomizeGun() {
     const availableGuns = Object.values(GunTypes);
     const length = availableGuns.length - 1;
