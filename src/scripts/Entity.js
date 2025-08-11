@@ -1,3 +1,5 @@
+import { GRAY } from "./utils/constants/colors";
+
 class Entity {
   #x;
   #y;
@@ -89,6 +91,25 @@ class Entity {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.#radius, 0, Math.PI * 2);
     ctx.fill();
+  }
+
+  drawArc(ctx, color, padding, percent, drawEmpty = false) {
+    const TAU = Math.PI * 2;
+    const size = this.dimensions.radius + padding;
+
+    if (drawEmpty) {
+      ctx.strokeStyle = GRAY;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, size, TAU * percent, 0);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, size, 0, TAU * percent);
+    ctx.stroke();
   }
 
   update() {}
