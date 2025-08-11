@@ -55,7 +55,7 @@ class Arsenal {
     this.#player = player;
 
     this.#durationTimer = new Timer(
-      10_000,
+      0,
       { loop: false, autostart: false },
       () => {
         this.#player.weapon = this.defaultGun();
@@ -76,39 +76,51 @@ class Arsenal {
     switch (randomGun) {
       case GunTypes.ACID_SHOTGUN:
         gun = this.#guns[GunTypes.ACID_SHOTGUN];
+        this.#durationTimer.waitTime = 12_000;
         break;
       case GunTypes.BAZOOKA:
         gun = this.#guns[GunTypes.BAZOOKA];
+        this.#durationTimer.waitTime = 10_000;
         break;
       case GunTypes.BULLET_HELL:
         gun = this.#guns[GunTypes.BULLET_HELL];
+        this.#durationTimer.waitTime = 8_000;
         break;
       case GunTypes.CANNON:
         gun = this.#guns[GunTypes.CANNON];
+        this.#durationTimer.waitTime = 10_000;
         break;
       case GunTypes.CROSSBOW:
         gun = this.#guns[GunTypes.CROSSBOW];
+        this.#durationTimer.waitTime = 12_000;
         break;
       case GunTypes.GRENADE_LAUNCHER:
         gun = this.#guns[GunTypes.GRENADE_LAUNCHER];
+        this.#durationTimer.waitTime = 15_000;
         break;
       case GunTypes.MINE_LAUNCHER:
         gun = this.#guns[GunTypes.MINE_LAUNCHER];
+        this.#durationTimer.waitTime = 15_000;
         break;
       case GunTypes.MINIGUN:
         gun = this.#guns[GunTypes.MINIGUN];
+        this.#durationTimer.waitTime = 12_000;
         break;
       case GunTypes.NUKE_LAUNCHER:
         gun = this.#guns[GunTypes.NUKE_LAUNCHER];
+        this.#durationTimer.waitTime = 10_000;
         break;
       case GunTypes.RICOCHET:
         gun = this.#guns[GunTypes.RICOCHET];
+        this.#durationTimer.waitTime = 15_000;
         break;
       case GunTypes.SHOTGUN:
         gun = this.#guns[GunTypes.SHOTGUN];
+        this.#durationTimer.waitTime = 15_000;
         break;
       case GunTypes.SMG:
         gun = this.#guns[GunTypes.SMG];
+        this.#durationTimer.waitTime = 20_000;
         break;
       default:
         throw new Error("Invalid gun!");
