@@ -200,9 +200,9 @@ class Player extends Projectile {
   }
 
   #drawWeaponDuration(ctx) {
-    if (this.#weapon.shootCooldown.active) {
-      const gunDelay = this.#weapon.shootCooldown.waitTime;
-      const { elapsedTime } = this.#weapon.shootCooldown;
+    if (this.#arsenal.durationTimer.active) {
+      const gunDelay = this.#arsenal.durationTimer.waitTime;
+      const { elapsedTime } = this.#arsenal.durationTimer;
       const timePerc = elapsedTime / gunDelay;
       const padding = 10;
 
