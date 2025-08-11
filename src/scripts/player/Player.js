@@ -36,7 +36,7 @@ class Player extends Projectile {
     this.#controller = new PlayerController(this);
     this.#isDead = defaultValues.isDead;
     this.#arsenal = new Arsenal(this);
-    this.#weapon = this.#arsenal.defaultGun();
+    this.#arsenal.defaultGun();
     this.#fury = new Fury(this);
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
@@ -47,9 +47,8 @@ class Player extends Projectile {
     );
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
-    eventManager.subscribe(
-      "weaponBoxCollected",
-      () => (this.#weapon = this.#arsenal.randomizeGun())
+    eventManager.subscribe("weaponBoxCollected", () =>
+      this.#arsenal.randomizeGun()
     );
   }
 
