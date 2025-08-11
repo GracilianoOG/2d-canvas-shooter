@@ -1,3 +1,4 @@
+import { WeaponBox } from "../items/WeaponBox.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
 import { eventManager } from "../singletons/EventManager.js";
@@ -64,6 +65,12 @@ class Enemy extends Projectile {
   #returnOriginalColor() {
     if (this.color != this.#baseColor && this.speed > 0) {
       this.color = this.#baseColor;
+    }
+  }
+
+  onDestroy() {
+    if (Math.random() <= 0.1) {
+      new WeaponBox(this.x, this.y, 10, "yellow");
     }
   }
 
