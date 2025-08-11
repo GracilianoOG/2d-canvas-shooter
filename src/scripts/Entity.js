@@ -13,6 +13,20 @@ class Entity {
     Entity.instances.push(this);
   }
 
+  /**
+   * The update loop goes from end to beginning because if an instance is destroyed, the position stays the same.
+   *
+   * This avoids the access of a nonexistent instance in the instances array and avoids creating a new clone of the array.
+   *
+   * The following example showcases a working loop that creates a copy of the instances array and then loops over the copy:
+   *
+   * @example
+   * const currInstances = [...Entity.instances];
+   * for (let i = 0, len = Entity.instances.length; i < len; i++) {
+   *  currInstances[i].draw(ctx);
+   *  currInstances[i].update(delta);
+   *}
+   */
   static updateAll(ctx, delta) {
     for (let i = Entity.instances.length - 1; i >= 0; i--) {
       Entity.instances[i].draw(ctx);
