@@ -107,6 +107,11 @@ class Player extends Projectile {
     if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
   }
 
+  #activateShield() {
+    this.#godMode = true;
+    this.#damageTimer.start();
+  }
+
   takeHit() {
     if (this.#godMode) return;
 
@@ -118,8 +123,7 @@ class Player extends Projectile {
       return;
     }
 
-    this.#godMode = true;
-    this.#damageTimer.start();
+    this.#activateShield();
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 8);
   }
 
