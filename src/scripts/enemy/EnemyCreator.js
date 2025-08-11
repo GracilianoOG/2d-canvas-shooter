@@ -105,27 +105,20 @@ class EnemyCreator {
     switch (this.#availableModifiers[randomInt(0, length)]) {
       case SPAWN_TIME:
         this.#spawnTimer.waitTime -= this.#config.spawnDecrementMs;
-        console.log(`Spawn time reduced to ${this.#spawnTimer.waitTime}`);
         break;
       case MOD_CHANCE:
         this.#enemyModChance += this.#config.enemyModChanceIncrement;
         if (this.#enemyModChance === this.#config.enemyModChanceLimit) {
           const index = this.#availableModifiers.indexOf(MOD_CHANCE);
           this.#availableModifiers.splice(index, 1);
-          console.log("Deleted MOD_CHANCE");
         }
-        console.log(
-          `Modified enemy chance increased to ${this.#enemyModChance}%`
-        );
         break;
       case NEW_ENEMY:
         this.#spawnLevel++;
         if (enemyTypes.length === this.#spawnLevel) {
           const index = this.#availableModifiers.indexOf(NEW_ENEMY);
           this.#availableModifiers.splice(index, 1);
-          console.log("Deleted NEW_ENEMY");
         }
-        console.log(`Enemy level ${this.#spawnLevel} unlocked!`);
         break;
     }
   }
