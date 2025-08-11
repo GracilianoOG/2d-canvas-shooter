@@ -1,6 +1,7 @@
 import { Bullet } from "../arsenal/Bullet.js";
 import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
+import { Item } from "../items/Item.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { NOT_RUNNING } from "../utils/constants/gameStates.js";
@@ -59,7 +60,7 @@ class GameState {
   }
 
   #filterInstances() {
-    const instances = [[], []];
+    const instances = [[], [], []];
 
     for (let i = 0, len = Entity.instances.length; i < len; i++) {
       const instance = Entity.instances[i];
@@ -68,6 +69,8 @@ class GameState {
         instances[0].push(instance);
       } else if (instance instanceof Bullet) {
         instances[1].push(instance);
+      } else if (instance instanceof Item) {
+        instances[2].push(instance);
       }
     }
 
@@ -75,8 +78,14 @@ class GameState {
   }
 
   checkCollisions() {
-    const [enemies, bullets] = this.#filterInstances();
+    const [enemies, bullets, items] = this.#filterInstances();
     const player = this.getEntity("player");
+
+    for (const item of items) {
+      if (!player.isDead && player.collidedWith(item)) {
+        item.destroy();
+      }
+    }
 
     for (const enemy of enemies) {
       if (!player.isDead && player.collidedWith(enemy)) {
