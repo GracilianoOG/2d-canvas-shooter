@@ -1,3 +1,4 @@
+import { eventManager } from "../singletons/EventManager";
 import { Timer } from "../Timer";
 import { randomInt } from "../utils/utility";
 import { AcidShotgun } from "./guns/AcidShotgun";
@@ -54,8 +55,14 @@ class Arsenal {
 
     this.#player = player;
 
-    this.#durationTimer = new Timer(0, { loop: false, autostart: false }, () =>
-      this.defaultGun()
+    this.#durationTimer = new Timer(
+      0,
+      { loop: false, autostart: false },
+      () => {
+        eventManager.emit("beforeWeaponChange");
+        this.defaultGun();
+        eventManager.emit("afterWeaponChange");
+      }
     );
   }
 
@@ -122,8 +129,12 @@ class Arsenal {
         throw new Error("Invalid gun!");
     }
 
+    eventManager.emit("beforeWeaponChange");
+
     this.#durationTimer.reset();
     this.#player.weapon = gun;
+
+    eventManager.emit("afterWeaponChange");
   }
 
   defaultGun() {
