@@ -88,7 +88,7 @@ class Enemy extends Projectile {
     const totalChance = chances.reduce((sum, acc) => sum + acc, 0);
     const randChance = Math.floor(totalChance * Math.random());
 
-    for (let i = 0, currChance = 0; i < chances.length; i++) {
+    for (let i = 0, currChance = 0, len = chances.length; i < len; i++) {
       currChance += chances[i];
 
       if (currChance >= randChance) {
