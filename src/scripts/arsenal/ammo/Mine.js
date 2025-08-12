@@ -14,6 +14,12 @@ class Mine extends Explosive {
     const config = { ...defaultOptions, ...options };
     super(x, y, radius, speed, angle, color, damage, config);
   }
+
+  update(delta) {
+    const DEACCELERATION = 0.1;
+    super.update(delta);
+    this.speed = Math.max(this.speed - delta * DEACCELERATION, 0);
+  }
 }
 
 export { Mine };
