@@ -1,3 +1,5 @@
+import { Adrenaline } from "../items/Adrenaline.js";
+import { Life } from "../items/Life.js";
 import { Shield } from "../items/Shield.js";
 import { WeaponBox } from "../items/WeaponBox.js";
 import { Particle } from "../Particle.js";
@@ -70,11 +72,28 @@ class Enemy extends Projectile {
   }
 
   onDestroy() {
-    if (Math.random() <= 0.1) {
-      if (Math.random() <= 0.5) {
-        new WeaponBox(this.x, this.y);
-      } else {
-        new Shield(this.x, this.y);
+    const dropChance = 0.05;
+
+    if (Math.random() >= dropChance) {
+      return;
+    }
+
+    const chances = [10, 30, 60, 100];
+    const items = [
+      () => new Life(this.x, this.y),
+      () => new Shield(this.x, this.y),
+      () => new Adrenaline(this.x, this.y),
+      () => new WeaponBox(this.x, this.y),
+    ];
+    const totalChance = chances.reduce((sum, acc) => sum + acc, 0);
+    const randChance = Math.floor(totalChance * Math.random());
+
+    for (let i = 0, currChance = 0; i < chances.length; i++) {
+      currChance += chances[i];
+
+      if (currChance >= randChance) {
+        items[i]();
+        return;
       }
     }
   }
