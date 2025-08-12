@@ -16,13 +16,24 @@ class LivesDisplay {
   }
 
   showCurrentLives(lives) {
+    this.#lifeDisplayEl.innerHTML = null;
     for (let i = 0; i < lives; i++) {
       this.#createLifeIcon();
     }
   }
 
   removeLife() {
-    this.#lifeDisplayEl.lastChild.remove();
+    const elements = Array.from(
+      this.#lifeDisplayEl.querySelectorAll(".life-icon")
+    ).reverse();
+
+    for (const el of elements) {
+      const foundEl = !el.classList.contains("life-icon--empty");
+      if (foundEl) {
+        el.classList.add("life-icon--empty");
+        return;
+      }
+    }
   }
 
   #createLifeIcon() {
@@ -40,7 +51,9 @@ class LivesDisplay {
   }
 
   #onPlayerHeal() {
-    this.#createLifeIcon();
+    this.#lifeDisplayEl
+      .querySelector(".life-icon--empty")
+      .classList.remove("life-icon--empty");
   }
 }
 
