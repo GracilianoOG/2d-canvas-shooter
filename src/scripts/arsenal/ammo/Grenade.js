@@ -1,3 +1,4 @@
+import { WHITE } from "../../utils/constants/colors";
 import { Explosive } from "./Explosive";
 
 const defaultOptions = {
@@ -5,6 +6,7 @@ const defaultOptions = {
   size: 4,
   speed: 10,
   damage: 10,
+  color: WHITE,
 };
 
 class Grenade extends Explosive {
