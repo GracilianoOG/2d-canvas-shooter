@@ -61,8 +61,7 @@ class Player extends Projectile {
       if (this.fury.isActive()) {
         return;
       }
-      item.collect();
-      eventManager.emit("fillFuryMeter", { amount: 20 });
+      eventManager.emit("checkFuryMeterToFill", { item, amount: 20 });
     });
   }
 
