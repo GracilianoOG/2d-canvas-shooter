@@ -15,8 +15,11 @@ class Item extends Entity {
     );
   }
 
+  check() {}
+
   collect() {
     this.#despawnTimer.remove();
+    this.destroy();
   }
 
   draw(ctx) {
