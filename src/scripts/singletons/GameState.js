@@ -83,8 +83,7 @@ class GameState {
 
     for (const item of items) {
       if (!player.isDead && player.collidedWith(item)) {
-        item.collect();
-        item.destroy();
+        item.check();
       }
     }
 
