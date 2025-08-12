@@ -7,9 +7,8 @@ class Life extends Item {
     super(x, y, radius, color, label);
   }
 
-  collect() {
-    super.collect();
-    eventManager.emit("lifeCollected");
+  check() {
+    eventManager.emit("lifeCollected", { item: this });
   }
 }
 
