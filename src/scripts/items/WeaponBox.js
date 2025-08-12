@@ -7,9 +7,9 @@ class WeaponBox extends Item {
     super(x, y, radius, color, label);
   }
 
-  collect() {
-    super.collect();
+  check() {
     eventManager.emit("weaponBoxCollected");
+    super.collect();
   }
 }
 

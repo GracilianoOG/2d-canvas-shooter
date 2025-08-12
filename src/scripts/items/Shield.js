@@ -7,9 +7,9 @@ class Shield extends Item {
     super(x, y, radius, color, label);
   }
 
-  collect() {
-    super.collect();
+  check() {
     eventManager.emit("shieldCollected");
+    super.collect();
   }
 }
 
