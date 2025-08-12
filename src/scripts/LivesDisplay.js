@@ -12,6 +12,7 @@ class LivesDisplay {
 
     eventManager.subscribe("playerRevival", this.#onPlayerRevival.bind(this));
     eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
+    eventManager.subscribe("playerHealed", this.#onPlayerHeal.bind(this));
   }
 
   showCurrentLives(lives) {
@@ -36,6 +37,10 @@ class LivesDisplay {
 
   #onPlayerHit() {
     this.removeLife();
+  }
+
+  #onPlayerHeal() {
+    this.#createLifeIcon();
   }
 }
 
