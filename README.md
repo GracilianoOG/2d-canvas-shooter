@@ -87,6 +87,37 @@ npm run dev
 - Infinite wave of different types of enemies.
 - Neat retro music and sound effects.
 
+### ⚔️ Weapons
+
+| Name             | Description                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Acid Shotgun     | The same as the normal shotgun, but deals extra damage.                             |
+| Bazooka          | Shoots a missile that, in contact with an enemy, generates big explosion fragments. |
+| Bullet Hell      | Shoots bullets very fast in a 360° direction.                                       |
+| Cannon           | Releases big powerful balls that deal great damage.                                 |
+| Crossbow         | Fast projectiles that with a great damage                                           |
+| Grenade Launcher | Weaker version of the Bazooka.                                                      |
+| Mine Launcher    | Releases mines around the map that explode on enemy contact.                        |
+| Minigun          | Very fast gun that deals double the damage.                                         |
+| Nuke Launcher    | Explosion hell.                                                                     |
+| Pistol           | Default weapon, slow but does the job.                                              |
+| Ricochet         | Bullets ricochet around the map.                                                    |
+| Shotgun          | Good old friend, shoots multiple projectiles at once.                               |
+| SMG              | Faster pistol, that's it.                                                           |
+
+### 🎁 Items
+
+| Name              | Description                                  |
+| ----------------- | -------------------------------------------- |
+| Adrenaline (fury) | Increases the fury meter.                    |
+| Life              | Heals player if injured.                     |
+| Shield            | Gives invulnerability for a few seconds.     |
+| Weapon Box        | Randomize player's weapon for a few seconds. |
+
+### 🔥 Fury
+
+Kill enough enemies or collect dropped adrenaline (fury) to fill up the fury meter. Activate it to make the character move and shoot faster.
+
 ## 🎬 Credits
 
 Source: [howler.js](https://howlerjs.com/)\
