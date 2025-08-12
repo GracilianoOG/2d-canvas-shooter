@@ -57,6 +57,13 @@ class Player extends Projectile {
         eventManager.emit("playerHealed");
       }
     });
+    eventManager.subscribe("furyCollected", ({ item }) => {
+      if (this.fury.isActive()) {
+        return;
+      }
+      item.collect();
+      eventManager.emit("fillFuryMeter", { amount: 20 });
+    });
   }
 
   get lives() {
