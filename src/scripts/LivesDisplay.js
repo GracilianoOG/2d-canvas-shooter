@@ -27,7 +27,7 @@ class LivesDisplay {
 
   #createLifeIcon() {
     const lifeIcon = document.createElement("div");
-    lifeIcon.classList.add("live-icon");
+    lifeIcon.classList.add("life-icon");
     this.#lifeDisplayEl.append(lifeIcon);
   }
 
