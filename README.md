@@ -8,6 +8,8 @@ After learning enough about web development, the idea to create a little game ca
 
 I learned a lot of JavaScript, Canvas API, and Game Design concepts while developing this little game. I also committed many mistakes that taught me what not to do in future projects. I would like to move to a proper game engine or framework like Godot or Phaser in the near future, but I'd still create more games in vanilla JS (or TypeScript), just for fun.
 
+> ⚠️ This project is my Canvas API playground. The game not having any sprites is a intentional design choice. Everything, aside from the menus and some UI, is drawn in real time on the canvas.
+
 ## 🕹️ Controls
 
 - Use the mouse to aim.
