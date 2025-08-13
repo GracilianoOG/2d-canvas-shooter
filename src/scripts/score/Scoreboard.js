@@ -3,10 +3,10 @@ import { randomInt } from "../utils/utility.js";
 
 class Scoreboard {
   #score = 0;
-  #length = 8;
+  #length = 7;
   #scoreboardEl;
 
-  static formatScore(string, length = 8) {
+  static formatScore(string, length = 7) {
     return string.padStart(length, "0");
   }
 
