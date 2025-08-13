@@ -71,7 +71,7 @@ class Enemy extends Projectile {
     }
   }
 
-  onDestroy() {
+  #dropItem() {
     const dropChance = 0.08;
 
     if (Math.random() >= dropChance) {
@@ -135,6 +135,7 @@ class Enemy extends Projectile {
       score: this.score.death,
       color: this.baseColor,
     });
+    this.#dropItem();
     this.destroy();
   }
 
