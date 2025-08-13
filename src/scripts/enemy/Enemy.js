@@ -72,7 +72,7 @@ class Enemy extends Projectile {
   }
 
   onDestroy() {
-    const dropChance = 0.05;
+    const dropChance = 0.08;
 
     if (Math.random() >= dropChance) {
       return;
