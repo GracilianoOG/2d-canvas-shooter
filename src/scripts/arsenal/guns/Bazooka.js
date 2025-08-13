@@ -1,3 +1,4 @@
+import { VERY_LIGHT_YELLOW } from "../../utils/constants/colors";
 import { Missile } from "../ammo/Missile";
 import { Weapon } from "./Weapon";
 
@@ -8,7 +9,7 @@ class Bazooka extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Missile(playerX, playerY, 8, 10, bulletAngle, this.owner.color, 20);
+    new Missile(playerX, playerY, 8, 10, bulletAngle, VERY_LIGHT_YELLOW, 20);
   }
 }
 
