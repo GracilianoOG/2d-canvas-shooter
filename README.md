@@ -15,6 +15,7 @@ I learned a lot of JavaScript, Canvas API, and Game Design concepts while develo
 - Use the mouse to aim.
 - Move the character with `<WASD>` or `<ARROWS>`.
 - Hold `<LMB>` to shoot.
+- Press `<SPACE>` or `<RIGHT CTRL>` to activate fury mode.
 - Press `<P>` or _click on the pause icon_ (top right of the screen) to pause.
 
 ## 📦 Install and usage
