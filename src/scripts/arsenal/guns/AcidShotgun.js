@@ -4,8 +4,8 @@ import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class AcidShotgun extends Weapon {
-  constructor(owner, cooldown = 200) {
-    super(owner, cooldown);
+  constructor(player, cooldown = 200) {
+    super(player, cooldown);
   }
 
   createProjectile() {

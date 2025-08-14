@@ -3,8 +3,8 @@ import { Grenade } from "../ammo/Grenade";
 import { Weapon } from "./Weapon";
 
 class GrenadeLauncher extends Weapon {
-  constructor(owner, cooldown = 220) {
-    super(owner, cooldown);
+  constructor(player, cooldown = 220) {
+    super(player, cooldown);
   }
 
   createProjectile() {

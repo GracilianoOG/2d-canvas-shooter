@@ -16,7 +16,7 @@ class Weapon {
     return this.#shootCooldown;
   }
 
-  get owner() {
+  get player() {
     return this.#player;
   }
 

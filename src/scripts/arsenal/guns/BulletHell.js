@@ -2,13 +2,13 @@ import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class BulletHell extends Weapon {
-  constructor(owner, cooldown = 120) {
-    super(owner, cooldown);
+  constructor(player, cooldown = 120) {
+    super(player, cooldown);
   }
 
   createProjectile() {
     const { playerX, playerY } = this._calcBulletPath();
-    const color = this.owner.color;
+    const color = this.player.color;
 
     let rotation = 0;
     const MAX_BULLETS = 20;

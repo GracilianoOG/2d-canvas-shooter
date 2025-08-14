@@ -2,13 +2,13 @@ import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class Cannon extends Weapon {
-  constructor(owner, cooldown = 250) {
-    super(owner, cooldown);
+  constructor(player, cooldown = 250) {
+    super(player, cooldown);
   }
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    const color = this.owner.color;
+    const color = this.player.color;
 
     new Bullet(playerX, playerY, 20, 5, bulletAngle, color, 40);
   }

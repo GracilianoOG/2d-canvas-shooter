@@ -4,8 +4,8 @@ import { Bullet } from "../Bullet";
 import { Weapon } from "./Weapon";
 
 class Minigun extends Weapon {
-  constructor(owner, cooldown = 90) {
-    super(owner, cooldown);
+  constructor(player, cooldown = 90) {
+    super(player, cooldown);
   }
 
   createProjectile() {
