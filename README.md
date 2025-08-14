@@ -92,21 +92,22 @@ npm run dev
 
 ### ⚔️ Weapons
 
-| Name             | Description                                                                         |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| Acid Shotgun     | The same as the normal shotgun, but deals extra damage.                             |
-| Bazooka          | Shoots a missile that, in contact with an enemy, generates big explosion fragments. |
-| Bullet Hell      | Shoots bullets very fast in a 360° direction.                                       |
-| Cannon           | Releases big powerful projectiles that deal great damage.                           |
-| Crossbow         | Fast projectiles that deal great damage.                                            |
-| Grenade Launcher | Weaker version of the Bazooka. Releases fragment grenades.                          |
-| Mine Launcher    | Releases mines around the map that explode on enemy contact.                        |
-| Minigun          | Very fast gun that deals extra damage.                                              |
-| Nuke Launcher    | Explosion hell.                                                                     |
-| Pistol           | Default weapon, slow but does the job.                                              |
-| Ricochet         | Bullets ricochet around the map.                                                    |
-| Shotgun          | Good old friend, shoots multiple projectiles at once.                               |
-| SMG              | Faster pistol, that's it.                                                           |
+| Name              | Description                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| Acid Shotgun      | The same as the normal shotgun, but deals extra damage.                             |
+| Bazooka           | Shoots a missile that, in contact with an enemy, generates big explosion fragments. |
+| Bullet Hell       | Shoots bullets very fast in a 360° direction.                                       |
+| Cannon            | Releases big powerful projectiles that deal great damage.                           |
+| Crossbow          | Fast projectiles that deal great damage.                                            |
+| Flechette Shotgun | Shoots multiple projectiles that ricochet.                                          |
+| Grenade Launcher  | Weaker version of the Bazooka. Releases fragment grenades.                          |
+| Mine Launcher     | Releases mines around the map that explode on enemy contact.                        |
+| Minigun           | Very fast gun that deals extra damage.                                              |
+| Nuke Launcher     | Explosion hell.                                                                     |
+| Pistol            | Default weapon, slow but does the job.                                              |
+| Ricochet          | Bullets ricochet around the map.                                                    |
+| Shotgun           | Good old friend, shoots multiple projectiles at once.                               |
+| SMG               | Faster pistol, that's it.                                                           |
 
 ### 🎁 Items
 
