@@ -6,6 +6,7 @@ import { Bazooka } from "./guns/Bazooka";
 import { BulletHell } from "./guns/BulletHell";
 import { Cannon } from "./guns/Cannon";
 import { Crossbow } from "./guns/Crossbow";
+import { FlechetteShotgun } from "./guns/FlechetteShotgun";
 import { GrenadeLauncher } from "./guns/GrenadeLauncher";
 import { MineLauncher } from "./guns/MineLauncher";
 import { Minigun } from "./guns/Minigun";
@@ -21,6 +22,7 @@ const GunTypes = Object.freeze({
   BULLET_HELL: "BULLET_HELL",
   CANNON: "CANNON",
   CROSSBOW: "CROSSBOW",
+  FLECHETTE_SHOTGUN: "FLECHETTE_SHOTGUN",
   GRENADE_LAUNCHER: "GRENADE_LAUNCHER",
   MINE_LAUNCHER: "MINE_LAUNCHER",
   MINIGUN: "MINIGUN",
@@ -43,6 +45,7 @@ class Arsenal {
       [GunTypes.BULLET_HELL]: new BulletHell(player),
       [GunTypes.CANNON]: new Cannon(player),
       [GunTypes.CROSSBOW]: new Crossbow(player),
+      [GunTypes.FLECHETTE_SHOTGUN]: new FlechetteShotgun(player),
       [GunTypes.GRENADE_LAUNCHER]: new GrenadeLauncher(player),
       [GunTypes.MINE_LAUNCHER]: new MineLauncher(player),
       [GunTypes.MINIGUN]: new Minigun(player),
@@ -94,6 +97,10 @@ class Arsenal {
       case GunTypes.CANNON:
         gun = this.#guns[GunTypes.CANNON];
         this.#durationTimer.waitTime = 10_000;
+        break;
+      case GunTypes.FLECHETTE_SHOTGUN:
+        gun = this.#guns[GunTypes.FLECHETTE_SHOTGUN];
+        this.#durationTimer.waitTime = 12_000;
         break;
       case GunTypes.CROSSBOW:
         gun = this.#guns[GunTypes.CROSSBOW];
