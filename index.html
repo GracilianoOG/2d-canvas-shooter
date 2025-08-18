@@ -6,14 +6,14 @@
     <meta
       name="description"
       content="Circle Chaos is a game made in JavaScript where you control an angry circle that must destroy all circles that come in its way."
-    />
+    />
     <title>Circle Chaos</title>
-    <script type="module" crossorigin src="/2d-canvas-shooter/assets/index-DjWGIhQk.js"></script>
-    <link rel="stylesheet" crossorigin href="/2d-canvas-shooter/assets/index-Dq35vvDP.css">
+    <script type="module" crossorigin src="/2d-canvas-shooter/assets/index-DHoADIHR.js"></script>
+    <link rel="stylesheet" crossorigin href="/2d-canvas-shooter/assets/index-Bd_SDY-H.css">
   </head>
   <body>
     <main>
-      <!-- OUTER SCREENS -->
+      <!-- Start Screen -->
       <div class="screen start-screen">
         <h1 class="start-screen__main-title">Circle Chaos</h1>
         <p class="start-screen__title">Click anywhere to begin</p>
@@ -22,27 +22,33 @@
           <p class="highscore__points">Loading...</p>
         </div>
       </div>
-      <div class="screen gameover-screen hide">
-        <h2 class="gameover-screen__title">Game over!</h2>
-        <button class="gameover-screen__btn">Continue?</button>
-        <div class="highscore">
-          <h2 class="highscore__title">Highscore</h2>
-          <p class="highscore__points"></p>
-          <p class="highscore__new hide">New highscore!</p>
-        </div>
-      </div>
 
-      <!-- GAME -->
+      <!-- Game Container -->
       <div id="game-container" class="hide">
         <div id="hud">
           <button class="pause-btn"></button>
         </div>
+
+        <!-- Score status -->
         <div id="status-container"></div>
+
+        <!-- Pause Screen -->
         <div class="screen pause-screen hide">
           <h2 class="pause-screen__title">Game paused</h2>
           <p class="pause-screen__text">
             Click or press <span class="key">&lt;P&gt;</span> to resume
           </p>
+        </div>
+
+        <!-- Gameover Screen -->
+        <div class="screen gameover-screen hide">
+          <h2 class="gameover-screen__title">Game over!</h2>
+          <button class="gameover-screen__btn">Continue?</button>
+          <div class="highscore">
+            <h2 class="highscore__title">Highscore</h2>
+            <p class="highscore__points"></p>
+            <p class="highscore__new hide">New highscore!</p>
+          </div>
         </div>
       </div>
     </main>
