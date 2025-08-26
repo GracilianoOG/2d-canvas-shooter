@@ -84,10 +84,10 @@ class Game {
     this.#shake.timer.reset(duration);
   }
 
-  animate = timestamp => {
-    if (!this.#lastTime === null) this.#lastTime = timestamp;
+  animate = currentTime => {
+    if (!this.#lastTime === null) this.#lastTime = currentTime;
 
-    this.#deltaTime = timestamp - this.#lastTime;
+    this.#deltaTime = currentTime - this.#lastTime;
 
     if (this.#deltaTime >= this.#TARGET_FPS) {
       const maxDelta = Math.min(currentTime - this.#lastTime, this.#TARGET_FPS);
