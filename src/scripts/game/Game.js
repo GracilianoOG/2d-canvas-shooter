@@ -20,6 +20,8 @@ class Game {
   #deltaTime;
   #state;
   #shake;
+  #MAX_FPS = 60;
+  #TARGET_FPS = 1000 / this.#MAX_FPS;
 
   constructor(configs) {
     this.#rafId = null;
