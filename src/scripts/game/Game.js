@@ -108,7 +108,7 @@ class Game {
   };
 
   update(delta) {
-    Entity.updateAll(this.mainCanvas.context, delta / 16);
+    Entity.updateAll(this.mainCanvas.context, delta * 0.001);
     Timer.updateAll(delta);
     gameState.checkCollisions();
   }
