@@ -165,6 +165,12 @@ These resources helped me to understand many things regarding game development i
   - [Performance of JavaScript .forEach, .map and .reduce vs for and for..of](https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/)
   - [How to optimize your JavaScript apps using Loops](https://www.freecodecamp.org/news/how-to-optimize-your-javascript-apps-using-loops-d5eade9ba89f/)
   - [What is the Fastest Loop Type in JavaScript?](https://blog.bitsrc.io/finding-the-fastest-loop-type-in-javascript-38af16fe7b4f)
+- Game Loop
+  - [Standardize your JavaScript games' framerate for different monitors](https://chriscourses.com/blog/standardize-your-javascript-games-framerate-for-different-monitors)
+  - [Controlling the Frame Rate with requestAnimationFrame](https://codetheory.in/controlling-the-frame-rate-with-requestanimationframe/)
+  - [Supercharge Your Web Animations: Optimize requestAnimationFrame Like a Pro](https://dev.to/josephciullo/supercharge-your-web-animations-optimize-requestanimationframe-like-a-pro-22i5)
+  - [Why cap game loop delta-time?](https://gamedev.stackexchange.com/questions/83786/why-cap-game-loop-delta-time)
+  - [Performant Game Loops in JavaScript](https://www.aleksandrhovhannisyan.com/blog/javascript-game-loop/)
 - JavaScript
   - [Canvas and JS Game](https://www.youtube.com/watch?v=eI9idPTT0c4)
   - [Empty an array in JavaScript](https://stackoverflow.com/a/1232046)
