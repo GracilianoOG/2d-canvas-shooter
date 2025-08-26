@@ -20,8 +20,8 @@ class Game {
   #deltaTime;
   #state;
   #shake;
-  #MAX_FPS = 60;
-  #TARGET_FPS = 1000 / this.#MAX_FPS;
+  #MAX_FPS;
+  #TARGET_FPS;
 
   constructor(configs) {
     this.#rafId = null;
@@ -31,6 +31,8 @@ class Game {
     this.#shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
+    this.#MAX_FPS = configs.fps ?? 60;
+    this.#TARGET_FPS = 1000 / this.#MAX_FPS;
 
     this.mainCanvas = new Canvas(configs.width, configs.height);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
