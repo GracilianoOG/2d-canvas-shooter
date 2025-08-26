@@ -53,7 +53,7 @@ class Enemy extends Projectile {
     const dirX = this.#target.x - this.x;
     const dirY = this.#target.y - this.y;
     const angle = Math.atan2(dirY, dirX);
-    if (Math.hypot(dirX, dirY) > this.speed) {
+    if (Math.hypot(dirX, dirY) > this.dimensions.radius) {
       this.x += Math.cos(angle) * this.speed * this.#delta;
       this.y += Math.sin(angle) * this.speed * this.#delta;
     }
