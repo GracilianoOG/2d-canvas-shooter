@@ -4,7 +4,7 @@ import { Explosive } from "./Explosive";
 const defaultOptions = {
   fragments: 10,
   size: 4,
-  speed: 10,
+  speed: 625,
   damage: 10,
   color: WHITE,
 };

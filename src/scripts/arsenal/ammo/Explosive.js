@@ -7,7 +7,7 @@ class Explosive extends Bullet {
     const defaultOptions = {
       fragments: 20,
       size: 10,
-      speed: 8,
+      speed: 500,
       damage: 10,
       color,
     };

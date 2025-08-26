@@ -8,7 +8,7 @@ class Nuke extends Bullet {
     const defaultOptions = {
       fragments: 10,
       size: 10,
-      speed: 8,
+      speed: 500,
       damage: 10,
       color,
     };
