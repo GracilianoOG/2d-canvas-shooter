@@ -88,17 +88,22 @@ class Game {
     if (!this.#lastTime === null) this.#lastTime = timestamp;
 
     this.#deltaTime = timestamp - this.#lastTime;
-    this.#lastTime = timestamp;
 
-    if (this.#shake.timer?.active) {
-      const strength = this.#shake.strength;
-      const xOffset = randomInt(-strength, strength);
-      const yOffset = randomInt(-strength, strength);
-      this.mainCanvas.context.translate(xOffset, yOffset);
+    if (this.#deltaTime >= this.#TARGET_FPS) {
+      const maxDelta = Math.min(currentTime - this.#lastTime, this.#TARGET_FPS);
+      const excessTime = this.#deltaTime % this.#TARGET_FPS;
+      this.#lastTime = currentTime - excessTime;
+
+      if (this.#shake.timer?.active) {
+        const strength = this.#shake.strength;
+        const xOffset = randomInt(-strength, strength);
+        const yOffset = randomInt(-strength, strength);
+        this.mainCanvas.context.translate(xOffset, yOffset);
+      }
+      this.update(maxDelta);
+      this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
+      this.render();
     }
-    this.update();
-    this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
-    this.render();
     this.loop();
   };
 
