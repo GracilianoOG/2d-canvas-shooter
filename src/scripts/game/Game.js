@@ -107,9 +107,9 @@ class Game {
     this.loop();
   };
 
-  update() {
-    Entity.updateAll(this.mainCanvas.context, this.#deltaTime / 16);
-    Timer.updateAll(this.#deltaTime);
+  update(delta) {
+    Entity.updateAll(this.mainCanvas.context, delta / 16);
+    Timer.updateAll(delta);
     gameState.checkCollisions();
   }
 
