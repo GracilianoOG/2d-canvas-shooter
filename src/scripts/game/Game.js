@@ -85,7 +85,9 @@ class Game {
   }
 
   animate = timestamp => {
-    this.#deltaTime = timestamp - (this.#lastTime ?? timestamp);
+    if (!this.#lastTime === null) this.#lastTime = timestamp;
+
+    this.#deltaTime = timestamp - this.#lastTime;
     this.#lastTime = timestamp;
 
     if (this.#shake.timer?.active) {
