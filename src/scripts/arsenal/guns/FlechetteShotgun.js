@@ -16,7 +16,7 @@ class FlechetteShotgun extends Weapon {
 
     for (let i = 0; i < MAX_BULLETS; i++) {
       const accuracy = randomNumber(min, max);
-      new Flechette(playerX, playerY, 8, 12, bulletAngle + accuracy, VIOLET);
+      new Flechette(playerX, playerY, 8, 750, bulletAngle + accuracy, VIOLET);
     }
   }
 }

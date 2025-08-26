@@ -9,7 +9,7 @@ class Bazooka extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Missile(playerX, playerY, 8, 10, bulletAngle, VERY_LIGHT_YELLOW, 20);
+    new Missile(playerX, playerY, 8, 625, bulletAngle, VERY_LIGHT_YELLOW, 20);
   }
 }
 

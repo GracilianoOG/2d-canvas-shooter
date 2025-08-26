@@ -9,7 +9,7 @@ class GrenadeLauncher extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Grenade(playerX, playerY, 6, 15, bulletAngle, ARMY_GREEN, 20);
+    new Grenade(playerX, playerY, 6, 938, bulletAngle, ARMY_GREEN, 20);
   }
 }
 

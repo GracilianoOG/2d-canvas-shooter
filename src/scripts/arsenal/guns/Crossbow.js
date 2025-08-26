@@ -8,7 +8,7 @@ class Crossbow extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Bullet(playerX, playerY, 8, 25, bulletAngle, this.player.color, 30);
+    new Bullet(playerX, playerY, 8, 1562, bulletAngle, this.player.color, 30);
   }
 }
 

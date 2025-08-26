@@ -16,7 +16,7 @@ class Shotgun extends Weapon {
 
     for (let i = 0; i < MAX_BULLETS; i++) {
       const accuracy = randomNumber(min, max);
-      new Bullet(playerX, playerY, 5, 20, bulletAngle + accuracy, color);
+      new Bullet(playerX, playerY, 5, 1250, bulletAngle + accuracy, color);
     }
   }
 }

@@ -9,7 +9,7 @@ class MineLauncher extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Mine(playerX, playerY, 8, 3, bulletAngle, ARMY_GREEN, 30);
+    new Mine(playerX, playerY, 8, 188, bulletAngle, ARMY_GREEN, 30);
   }
 }
 

@@ -9,7 +9,7 @@ class Ricochet extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Flechette(playerX, playerY, 8, 12, bulletAngle, VIOLET);
+    new Flechette(playerX, playerY, 8, 750, bulletAngle, VIOLET);
   }
 }
 

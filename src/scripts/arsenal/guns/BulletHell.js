@@ -16,7 +16,7 @@ class BulletHell extends Weapon {
     const angle = TAU / MAX_BULLETS;
 
     while (rotation <= TAU) {
-      new Bullet(playerX, playerY, 5, 20, rotation, color);
+      new Bullet(playerX, playerY, 5, 1250, rotation, color);
       rotation += angle;
     }
   }

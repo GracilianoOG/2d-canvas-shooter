@@ -56,7 +56,7 @@ class Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Bullet(playerX, playerY, 5, 20, bulletAngle, this.#player.color);
+    new Bullet(playerX, playerY, 5, 1250, bulletAngle, this.#player.color);
   }
 }
 

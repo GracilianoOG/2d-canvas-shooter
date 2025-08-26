@@ -9,7 +9,7 @@ class SubmachineGun extends Weapon {
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
     const color = this.player.color;
-    new Bullet(playerX, playerY, 5, 20, bulletAngle, color);
+    new Bullet(playerX, playerY, 5, 1250, bulletAngle, color);
   }
 }
 

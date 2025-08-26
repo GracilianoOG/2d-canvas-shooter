@@ -9,7 +9,7 @@ class NukeLauncher extends Weapon {
 
   createProjectile() {
     const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Nuke(playerX, playerY, 20, 5, bulletAngle, VERY_LIGHT_YELLOW, 60);
+    new Nuke(playerX, playerY, 20, 312, bulletAngle, VERY_LIGHT_YELLOW, 60);
   }
 }
 

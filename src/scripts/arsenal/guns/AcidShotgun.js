@@ -17,7 +17,7 @@ class AcidShotgun extends Weapon {
     for (let i = 0; i < MAX_BULLETS; i++) {
       const accuracy = randomNumber(min, max);
       const angle = bulletAngle + accuracy;
-      new Bullet(playerX, playerY, 5, 20, angle, ACID_GREEN, 20);
+      new Bullet(playerX, playerY, 5, 1250, angle, ACID_GREEN, 20);
     }
   }
 }
