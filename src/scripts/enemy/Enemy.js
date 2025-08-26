@@ -114,10 +114,10 @@ class Enemy extends Projectile {
 
   #createDamageEffect() {
     if (this.#options.knockback) {
-      this.speed = -1;
+      this.speed = -62;
     }
     if (this.#options.aggressive) {
-      this.#maxSpeed += 1;
+      this.#maxSpeed += 62;
     }
     if (this.#options.shrinkable) {
       this.dimensions = { radius: Math.round(this.dimensions.radius * 0.9) };
