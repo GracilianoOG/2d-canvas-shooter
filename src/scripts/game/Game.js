@@ -31,7 +31,7 @@ class Game {
     this.#shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
-    this.#MAX_FPS = configs.fps ?? 60;
+    this.#MAX_FPS = configs.FPS ?? 60;
     this.#TARGET_FPS = 1000 / this.#MAX_FPS;
 
     this.mainCanvas = new Canvas(configs.width, configs.height);
