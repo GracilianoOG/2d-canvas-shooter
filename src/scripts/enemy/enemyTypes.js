@@ -3,19 +3,19 @@ import * as Colors from "../utils/constants/colors.js";
 const enemyTypes = [
   {
     radius: 18,
-    speed: 4,
+    speed: 250,
     color: Colors.RED,
     hp: 20,
   },
   {
     radius: 14,
-    speed: 5,
+    speed: 312,
     color: Colors.PINK,
     hp: 10,
   },
   {
     radius: 25,
-    speed: 3,
+    speed: 187,
     color: Colors.LIGHT_BLUE,
     hp: 30,
     options: {
@@ -24,13 +24,13 @@ const enemyTypes = [
   },
   {
     radius: 20,
-    speed: 4,
+    speed: 250,
     color: Colors.LIGHT_PURPLE,
     hp: 30,
   },
   {
     radius: 30,
-    speed: 2,
+    speed: 125,
     color: Colors.GREEN,
     hp: 50,
     options: {
@@ -41,7 +41,7 @@ const enemyTypes = [
   },
   {
     radius: 20,
-    speed: 4,
+    speed: 250,
     color: Colors.ALMOST_BLACK,
     hp: 20,
     options: {
@@ -50,13 +50,13 @@ const enemyTypes = [
   },
   {
     radius: 10,
-    speed: 6,
+    speed: 375,
     color: Colors.ORANGE,
     hp: 10,
   },
   {
     radius: 40,
-    speed: 1,
+    speed: 62,
     color: Colors.LIGHT_RED,
     hp: 80,
     options: {
