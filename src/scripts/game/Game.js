@@ -25,8 +25,8 @@ class Game {
 
   constructor(configs) {
     this.#rafId = null;
-    this.#lastTime = null;
     this.#deltaTime = null;
+    this.#lastTime = 0;
     this.#state = States.NOT_RUNNING;
     this.#shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
@@ -56,7 +56,7 @@ class Game {
 
   stopLoop(state) {
     this.#state = state;
-    this.#lastTime = null;
+    this.#lastTime = 0;
     cancelAnimationFrame(this.#rafId);
   }
 
@@ -87,8 +87,6 @@ class Game {
   }
 
   animate = currentTime => {
-    if (this.#lastTime === null) this.#lastTime = currentTime;
-
     this.#deltaTime = currentTime - this.#lastTime;
 
     if (this.#deltaTime >= this.#TARGET_FPS) {
