@@ -87,7 +87,7 @@ class Game {
   }
 
   animate = currentTime => {
-    if (!this.#lastTime === null) this.#lastTime = currentTime;
+    if (this.#lastTime === null) this.#lastTime = currentTime;
 
     this.#deltaTime = currentTime - this.#lastTime;
 
