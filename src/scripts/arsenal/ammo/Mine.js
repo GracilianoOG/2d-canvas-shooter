@@ -16,9 +16,9 @@ class Mine extends Explosive {
   }
 
   update(delta) {
-    const DEACCELERATION = 500;
+    const DEACCELERATION = 10;
     super.update(delta);
-    this.speed = Math.max(this.speed - DEACCELERATION * delta, 0);
+    this.speed = Math.max(this.speed - DEACCELERATION, 0);
   }
 }
 
