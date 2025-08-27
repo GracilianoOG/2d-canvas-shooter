@@ -70,8 +70,8 @@ const enemyTypes = [
 
 enemyTypes.forEach(t => {
   t.score = {};
-  t.score.hit = t.hp * t.speed;
-  t.score.death = t.hp * t.speed * 10;
+  t.score.hit = t.hp * 10;
+  t.score.death = t.hp * 3 * 10;
 });
 
 export { enemyTypes };
