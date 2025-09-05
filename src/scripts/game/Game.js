@@ -6,33 +6,22 @@ import { GameAudio } from "../audio/GameAudio.js";
 import { Scoreboard } from "../score/Scoreboard.js";
 import * as Screens from "../utils/screens.js";
 import { Timer } from "../Timer.js";
-import { randomInt } from "../utils/utility.js";
 import { Entity } from "../Entity.js";
 import { FuryMeter } from "../FuryMeter.js";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
 import * as States from "../utils/constants/gameStates.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { LivesDisplay } from "../LivesDisplay.js";
+import { GameLoop } from "./GameLoop.js";
 
 class Game {
-  #rafId;
-  #lastTime;
-  #deltaTime;
-  #state;
-  #shake;
-  #MAX_FPS;
-  #TARGET_FPS;
-
   constructor(configs) {
-    this.#rafId = null;
-    this.#deltaTime = null;
-    this.#lastTime = 0;
-    this.#state = States.NOT_RUNNING;
-    this.#shake = { strength: 0, timer: null };
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
-    this.#MAX_FPS = configs.FPS ?? 60;
-    this.#TARGET_FPS = 1000 / this.#MAX_FPS;
+    this.gameLoop = new GameLoop(
+      this.update.bind(this),
+      this.render.bind(this)
+    );
 
     this.mainCanvas = new Canvas(configs.width, configs.height);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -45,27 +34,32 @@ class Game {
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
-  loop() {
-    this.#rafId = requestAnimationFrame(this.animate);
+  get shake() {
+    return this.gameLoop.shake;
+  }
+
+  get state() {
+    return this.gameLoop.state;
+  }
+
+  set state(state) {
+    this.gameLoop.state = state;
   }
 
   startLoop() {
-    this.#state = States.RUNNING;
-    this.loop();
+    this.gameLoop.start();
   }
 
   stopLoop(state) {
-    this.#state = state;
-    this.#lastTime = 0;
-    cancelAnimationFrame(this.#rafId);
+    this.gameLoop.stop(state);
   }
 
   pause() {
-    if (this.#state === States.GAMEOVER || this.#state === States.NOT_RUNNING) {
+    if (this.state === States.GAMEOVER || this.state === States.NOT_RUNNING) {
       return;
     }
 
-    if (this.#state === States.RUNNING) {
+    if (this.state === States.RUNNING) {
       this.stopLoop(States.PAUSED);
     } else {
       this.startLoop();
@@ -73,39 +67,18 @@ class Game {
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
-      i => (i.style.animationPlayState = this.#state.toLowerCase())
+      i => (i.style.animationPlayState = this.state.toLowerCase())
     );
 
     Screens.pause.classList.toggle("hide");
   }
 
   shakeScreen(strength, duration) {
-    this.#shake.strength = strength;
-    if (!this.#shake.timer)
-      this.#shake.timer = new Timer(duration, { loop: false });
-    this.#shake.timer.reset(duration);
+    this.shake.strength = strength;
+    if (!this.shake.timer)
+      this.shake.timer = new Timer(duration, { loop: false });
+    this.shake.timer.reset(duration);
   }
-
-  animate = currentTime => {
-    this.#deltaTime = currentTime - this.#lastTime;
-
-    if (this.#deltaTime >= this.#TARGET_FPS) {
-      const maxDelta = Math.min(currentTime - this.#lastTime, this.#TARGET_FPS);
-      const excessTime = this.#deltaTime % this.#TARGET_FPS;
-      this.#lastTime = currentTime - excessTime;
-
-      if (this.#shake.timer?.active) {
-        const strength = this.#shake.strength;
-        const xOffset = randomInt(-strength, strength);
-        const yOffset = randomInt(-strength, strength);
-        this.mainCanvas.context.translate(xOffset, yOffset);
-      }
-      this.update(maxDelta);
-      this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
-      this.render();
-    }
-    this.loop();
-  };
 
   update(delta) {
     Entity.updateAll(this.mainCanvas.context, delta * 0.001);
@@ -184,13 +157,13 @@ class Game {
   }
 
   #onPlayerDeath() {
-    this.#state = States.GAMEOVER;
+    this.state = States.GAMEOVER;
     this.enemyCreator.stop();
   }
 
   #listenToWindowChange() {
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden && this.#state === States.RUNNING) this.pause();
+      if (document.hidden && this.state === States.RUNNING) this.pause();
     });
   }
 
