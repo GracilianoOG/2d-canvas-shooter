@@ -18,12 +18,14 @@ class Game {
   constructor(configs) {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
+    this.mainCanvas = new Canvas(configs.width, configs.height);
+
     this.gameLoop = new GameLoop(
       this.update.bind(this),
-      this.render.bind(this)
+      this.render.bind(this),
+      { FPS: configs.FPS ?? 60, ctx: this.mainCanvas.context }
     );
 
-    this.mainCanvas = new Canvas(configs.width, configs.height);
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.trailsCanvas = new Canvas(mWidth, mHeight);
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
@@ -34,8 +36,8 @@ class Game {
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
-  get shake() {
-    return this.gameLoop.shake;
+  get shaker() {
+    return this.gameLoop.shaker;
   }
 
   get state() {
@@ -74,10 +76,7 @@ class Game {
   }
 
   shakeScreen(strength, duration) {
-    this.shake.strength = strength;
-    if (!this.shake.timer)
-      this.shake.timer = new Timer(duration, { loop: false });
-    this.shake.timer.reset(duration);
+    this.shaker.start(strength, duration);
   }
 
   update(delta) {
