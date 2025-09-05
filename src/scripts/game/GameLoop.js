@@ -1,27 +1,27 @@
+import { Shaker } from "../Shaker";
 import * as States from "../utils/constants/gameStates";
-import { randomInt } from "../utils/utility";
 
 class GameLoop {
   #rafId;
   #lastTime;
   #state;
-  #shake;
+  #shaker;
   #TARGET_FPS;
 
-  constructor(update, render, FPS = 60) {
+  constructor(update, render, configs) {
     this.update = update;
     this.render = render;
 
     this.#rafId = null;
     this.#lastTime = 0;
     this.#state = States.NOT_RUNNING;
-    this.#shake = { strength: 0, timer: null };
+    this.#shaker = new Shaker(configs.ctx);
 
-    this.#TARGET_FPS = 1000 / FPS;
+    this.#TARGET_FPS = 1000 / configs.FPS;
   }
 
-  get shake() {
-    return this.#shake;
+  get shaker() {
+    return this.#shaker;
   }
 
   get state() {
@@ -40,14 +40,9 @@ class GameLoop {
       const excessTime = deltaTime % this.#TARGET_FPS;
       this.#lastTime = currentTime - excessTime;
 
-      if (this.#shake.timer?.active) {
-        const strength = this.#shake.strength;
-        const xOffset = randomInt(-strength, strength);
-        const yOffset = randomInt(-strength, strength);
-        // this.mainCanvas.context.translate(xOffset, yOffset);
-      }
+      this.#shaker.shake();
       this.update(maxDelta);
-      // this.mainCanvas.context.setTransform(1, 0, 0, 1, 0, 0);
+      this.#shaker.restore();
       this.render();
     }
     this.tick();
