@@ -1,11 +1,11 @@
-import audios from "./audios.js";
+import audios from "@/data/audios";
 
-class GameAudio {  
+class GameAudio {
   #audios;
 
   constructor() {
     this.#audios = audios;
-    Howler.volume(.4);
+    Howler.volume(0.4);
   }
 
   playSound(soundName) {
