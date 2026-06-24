@@ -40,6 +40,7 @@ class Arsenal {
     ];
 
     this.#player = player;
+    this.defaultGun();
 
     this.#durationTimer = new Timer(
       0,
