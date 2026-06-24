@@ -1,8 +1,8 @@
-import { Game } from "../game/Game.js";
-import { StorageHandler } from "../StorageHandler.js";
-import { CSS_CLASSES } from "../utils/constants.js";
-import * as Screens from "../utils/screens.js";
-import "../../styles/main.scss";
+import { Game } from "@/scripts/game/Game";
+import { StorageHandler } from "@/scripts/StorageHandler";
+import { CSS_CLASSES } from "@/scripts/utils/constants";
+import * as Screens from "@/scripts/utils/screens";
+import "@/styles/main.scss";
 
 const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
 const pauseBtn = document.querySelector(".pause-btn");
@@ -13,28 +13,28 @@ const game = new Game({ width: 800, height: 600 });
 
 Screens.start.addEventListener(
   "click",
-  e => {
+  (e) => {
     e.stopPropagation();
     // Screens.start.classList.add("hide");
     Screens.start.remove();
     Screens.game.classList.remove("hide");
     game.init();
   },
-  { once: true }
+  { once: true },
 );
 
-Screens.pause.addEventListener("click", e => {
+Screens.pause.addEventListener("click", (e) => {
   e.stopPropagation();
   game.pause();
 });
 
-restartBtn.addEventListener("click", e => {
+restartBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   Screens.restart.classList.add("hide");
   game.restart();
 });
 
-pauseBtn.addEventListener("click", e => {
+pauseBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   game.pause();
 });
