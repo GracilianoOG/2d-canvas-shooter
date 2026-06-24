@@ -1,22 +1,22 @@
 import { eventManager } from "../singletons/EventManager";
 import { Timer } from "../Timer";
 import { randomInt } from "../utils/utility";
-import { AcidShotgun } from "./guns/AcidShotgun";
-import { Bazooka } from "./guns/Bazooka";
-import { BulletHell } from "./guns/BulletHell";
-import { Cannon } from "./guns/Cannon";
-import { Crossbow } from "./guns/Crossbow";
-import { FlechetteShotgun } from "./guns/FlechetteShotgun";
-import { GrenadeLauncher } from "./guns/GrenadeLauncher";
-import { MineLauncher } from "./guns/MineLauncher";
-import { Minigun } from "./guns/Minigun";
-import { NukeLauncher } from "./guns/NukeLauncher";
-import { Pistol } from "./guns/Pistol";
-import { Ricochet } from "./guns/Ricochet";
-import { Shotgun } from "./guns/Shotgun";
-import { SubmachineGun } from "./guns/SubmachineGun";
+import { AcidShotgun } from "@/scripts/arsenal/guns/AcidShotgun";
+import { Bazooka } from "@/scripts/arsenal/guns/Bazooka";
+import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
+import { Cannon } from "@/scripts/arsenal/guns/Cannon";
+import { Crossbow } from "@/scripts/arsenal/guns/Crossbow";
+import { FlechetteShotgun } from "@/scripts/arsenal/guns/FlechetteShotgun";
+import { GrenadeLauncher } from "@/scripts/arsenal/guns/GrenadeLauncher";
+import { MineLauncher } from "@/scripts/arsenal/guns/MineLauncher";
+import { Minigun } from "@/scripts/arsenal/guns/Minigun";
+import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
+import { Pistol } from "@/scripts/arsenal/guns/Pistol";
+import { Ricochet } from "@/scripts/arsenal/guns/Ricochet";
+import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
+import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
 
-class Arsenal {
+class PlayerArsenal {
   #guns;
   #durationTimer;
   #player;
@@ -81,4 +81,4 @@ class Arsenal {
   }
 }
 
-export { Arsenal };
+export { PlayerArsenal };

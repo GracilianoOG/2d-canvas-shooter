@@ -10,7 +10,7 @@ import {
   ENERGETIC_BLUE,
   LIGHT_YELLOW,
 } from "../utils/constants/colors.js";
-import { Arsenal } from "../arsenal/Arsenal.js";
+import { PlayerArsenal } from "./PlayerArsenal";
 
 const defaultValues = Object.freeze({
   lives: 3,
@@ -34,7 +34,7 @@ class Player extends Projectile {
 
     this.#controller = new PlayerController(this);
     this.#isDead = defaultValues.isDead;
-    this.#arsenal = new Arsenal(this);
+    this.#arsenal = new PlayerArsenal(this);
     this.#fury = new Fury(this);
     this.#lives = defaultValues.lives;
     this.#godMode = defaultValues.godMode;
