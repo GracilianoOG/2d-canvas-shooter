@@ -76,7 +76,7 @@ class FuryMeter {
   }
 
   empty() {
-    this.#furyValue = FuryMeterState.EMPTY;
+    this.#furyValue = 0;
     this.#updateFuryMeter();
   }
 
