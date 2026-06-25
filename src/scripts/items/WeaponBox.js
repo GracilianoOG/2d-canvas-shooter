@@ -1,3 +1,4 @@
+import { getRandomWeapon } from "@/data/weapons";
 import { eventManager } from "../singletons/EventManager";
 import { YELLOW } from "../utils/constants/colors";
 import { Item } from "./Item";
@@ -8,7 +9,9 @@ class WeaponBox extends Item {
   }
 
   check() {
-    eventManager.emit("weaponBoxCollected");
+    eventManager.emit("weaponBoxCollected", {
+      weapon: getRandomWeapon(),
+    });
     super.collect();
   }
 }
