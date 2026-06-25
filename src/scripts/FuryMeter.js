@@ -10,7 +10,7 @@ class FuryMeter {
   #furyMeterBar;
   #furyMeterFill;
   #furyLabel;
-  #furyValue = FuryMeterState.EMPTY;
+  #furyValue;
 
   constructor(containerEl) {
     this.#furyMeterBar = document.createElement("div");
@@ -27,6 +27,8 @@ class FuryMeter {
     this.#furyMeterBar.append(this.#furyLabel);
 
     containerEl.append(this.#furyMeterBar);
+
+    this.#furyValue = 0;
 
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
     eventManager.subscribe("checkFuryMeterToFill", ({ item, amount }) => {
