@@ -1,4 +1,5 @@
 import { eventManager } from "./singletons/EventManager";
+import { clamp } from "./utils/math";
 
 const FuryMeterState = Object.freeze({
   EMPTY: 0,
@@ -52,17 +53,7 @@ class FuryMeter {
     }
   }
 
-  #validateFury() {
-    if (this.#furyValue > FuryMeterState.FULL) {
-      this.#furyValue = FuryMeterState.FULL;
-    } else if (this.#furyValue < FuryMeterState.EMPTY) {
-      this.#furyValue = FuryMeterState.EMPTY;
-    }
-  }
-
   #updateFuryMeter() {
-    this.#validateFury();
-
     this.#furyMeterFill.style.width = `${this.#furyValue}%`;
 
     this.#furyMeterBar.classList.toggle("fury-meter--full", this.isFull());
@@ -73,12 +64,12 @@ class FuryMeter {
   }
 
   fill(furyPercentage) {
-    this.#furyValue += furyPercentage;
+    this.#furyValue = clamp(0, this.#furyValue + furyPercentage, 100);
     this.#updateFuryMeter();
   }
 
   unfill(furyPercentage) {
-    this.#furyValue -= furyPercentage;
+    this.#furyValue = clamp(0, this.#furyValue - furyPercentage, 100);
     this.#updateFuryMeter();
   }
 
