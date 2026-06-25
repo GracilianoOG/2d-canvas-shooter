@@ -1,10 +1,7 @@
 import { eventManager } from "./singletons/EventManager";
 import { clamp } from "./utils/math";
 
-const FuryMeterState = Object.freeze({
-  EMPTY: 0,
-  FULL: 100,
-});
+const MAX_FURY_VALUE = 100;
 
 class FuryMeter {
   #furyMeterBar;
@@ -45,7 +42,7 @@ class FuryMeter {
   }
 
   #onEmptyFuryMeter({ timePerc }) {
-    this.#furyValue = timePerc * FuryMeterState.FULL;
+    this.#furyValue = timePerc * MAX_FURY_VALUE;
     this.#updateFuryMeter();
   }
 
@@ -81,7 +78,7 @@ class FuryMeter {
   }
 
   isFull() {
-    return this.#furyValue === FuryMeterState.FULL;
+    return this.#furyValue === MAX_FURY_VALUE;
   }
 }
 
