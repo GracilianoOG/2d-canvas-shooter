@@ -65,13 +65,11 @@ class FuryMeter {
 
     this.#furyMeterFill.style.width = `${this.#furyValue}%`;
 
-    if (this.#furyValue !== FuryMeterState.FULL) {
-      this.#furyMeterBar.classList.remove("fury-meter--full");
-      this.#furyMeterFill.classList.remove("fury-meter__fill--full");
-    } else {
-      this.#furyMeterBar.classList.add("fury-meter--full");
-      this.#furyMeterFill.classList.add("fury-meter__fill--full");
-    }
+    this.#furyMeterBar.classList.toggle("fury-meter--full", this.isFull());
+    this.#furyMeterFill.classList.toggle(
+      "fury-meter__fill--full",
+      this.isFull(),
+    );
   }
 
   fill(furyPercentage) {
