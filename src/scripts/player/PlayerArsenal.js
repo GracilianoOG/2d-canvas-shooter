@@ -1,20 +1,7 @@
+import { Pistol } from "../arsenal/guns/Pistol";
 import { eventManager } from "../singletons/EventManager";
 import { Timer } from "../Timer";
 import { randomInt } from "../utils/utility";
-import { AcidShotgun } from "@/scripts/arsenal/guns/AcidShotgun";
-import { Bazooka } from "@/scripts/arsenal/guns/Bazooka";
-import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
-import { Cannon } from "@/scripts/arsenal/guns/Cannon";
-import { Crossbow } from "@/scripts/arsenal/guns/Crossbow";
-import { FlechetteShotgun } from "@/scripts/arsenal/guns/FlechetteShotgun";
-import { GrenadeLauncher } from "@/scripts/arsenal/guns/GrenadeLauncher";
-import { MineLauncher } from "@/scripts/arsenal/guns/MineLauncher";
-import { Minigun } from "@/scripts/arsenal/guns/Minigun";
-import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
-import { Pistol } from "@/scripts/arsenal/guns/Pistol";
-import { Ricochet } from "@/scripts/arsenal/guns/Ricochet";
-import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
-import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
 
 class PlayerArsenal {
   #guns;
@@ -22,22 +9,7 @@ class PlayerArsenal {
   #player;
 
   constructor(player) {
-    this.#guns = [
-      new AcidShotgun(player),
-      new Bazooka(player),
-      new BulletHell(player),
-      new Cannon(player),
-      new Crossbow(player),
-      new FlechetteShotgun(player),
-      new GrenadeLauncher(player),
-      new MineLauncher(player),
-      new Minigun(player),
-      new NukeLauncher(player),
-      new Pistol(player),
-      new Ricochet(player),
-      new Shotgun(player),
-      new SubmachineGun(player),
-    ];
+    this.#guns = { pistol: new Pistol(player) };
 
     this.#player = player;
     this.#equipDefaultGun();
@@ -59,20 +31,17 @@ class PlayerArsenal {
     return this.#durationTimer;
   }
 
-  randomizeGun() {
-    const randomGun = this.#guns[randomInt(0, this.#guns.length)];
+  switchWeapon(weapon) {
+    const [weaponId, Weapon] = weapon;
     this.#durationTimer.waitTime = 10_000;
-
     eventManager.emit("beforeWeaponChange");
-
     this.#durationTimer.reset();
-    this.#player.weapon = randomGun;
-
+    this.#player.weapon = new Weapon(this.#player);
     eventManager.emit("afterWeaponChange");
   }
 
   #equipDefaultGun() {
-    this.#player.weapon = this.#guns[10];
+    this.#player.weapon = this.#guns["pistol"];
   }
 
   #onPlayerDeath() {
