@@ -62,13 +62,13 @@ class FuryMeter {
     );
   }
 
-  fill(furyPercentage) {
-    this.#furyValue = clamp(0, this.#furyValue + furyPercentage, 100);
+  fill(value) {
+    this.#furyValue = clamp(0, this.#furyValue + value, 100);
     this.#updateFuryMeter();
   }
 
-  unfill(furyPercentage) {
-    this.#furyValue = clamp(0, this.#furyValue - furyPercentage, 100);
+  unfill(value) {
+    this.#furyValue = clamp(0, this.#furyValue - value, 100);
     this.#updateFuryMeter();
   }
 
