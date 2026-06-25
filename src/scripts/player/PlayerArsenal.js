@@ -25,6 +25,9 @@ class PlayerArsenal {
     );
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
+    eventManager.subscribe("weaponBoxCollected", ({ weapon }) =>
+      this.switchWeapon(weapon),
+    );
   }
 
   get durationTimer() {
