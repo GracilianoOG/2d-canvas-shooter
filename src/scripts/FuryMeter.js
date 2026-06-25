@@ -34,7 +34,10 @@ class FuryMeter {
         item.collect();
       }
     });
-    eventManager.subscribe("FuryActivation", this.#onFuryActivation.bind(this));
+    eventManager.subscribe(
+      "shouldActivateFury",
+      this.#onFuryActivation.bind(this),
+    );
     eventManager.subscribe("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
   }
 
