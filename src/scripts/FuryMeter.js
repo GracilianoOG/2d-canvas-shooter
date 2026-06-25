@@ -6,26 +6,26 @@ const FuryMeterState = Object.freeze({
 });
 
 class FuryMeter {
-  #furyMeterEl;
-  #furyMeterFillEl;
-  #furyText;
-  #fury = FuryMeterState.EMPTY;
+  #furyMeterBar;
+  #furyMeterFill;
+  #furyLabel;
+  #furyValue = FuryMeterState.EMPTY;
 
   constructor(containerEl) {
-    this.#furyMeterEl = document.createElement("div");
-    this.#furyMeterEl.classList.add("fury-meter");
+    this.#furyMeterBar = document.createElement("div");
+    this.#furyMeterBar.classList.add("fury-meter");
 
-    this.#furyMeterFillEl = document.createElement("div");
-    this.#furyMeterFillEl.classList.add("fury-meter__fill");
+    this.#furyMeterFill = document.createElement("div");
+    this.#furyMeterFill.classList.add("fury-meter__fill");
 
-    this.#furyText = document.createElement("span");
-    this.#furyText.textContent = "fury";
-    this.#furyText.classList.add("fury-meter__text");
+    this.#furyLabel = document.createElement("span");
+    this.#furyLabel.textContent = "fury";
+    this.#furyLabel.classList.add("fury-meter__text");
 
-    this.#furyMeterEl.append(this.#furyMeterFillEl);
-    this.#furyMeterEl.append(this.#furyText);
+    this.#furyMeterBar.append(this.#furyMeterFill);
+    this.#furyMeterBar.append(this.#furyLabel);
 
-    containerEl.append(this.#furyMeterEl);
+    containerEl.append(this.#furyMeterBar);
 
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
     eventManager.subscribe("checkFuryMeterToFill", ({ item, amount }) => {
@@ -42,7 +42,7 @@ class FuryMeter {
   }
 
   #onEmptyFuryMeter({ timePerc }) {
-    this.#fury = timePerc * FuryMeterState.FULL;
+    this.#furyValue = timePerc * FuryMeterState.FULL;
     this.#updateFuryMeter();
   }
 
@@ -53,44 +53,44 @@ class FuryMeter {
   }
 
   #validateFury() {
-    if (this.#fury > FuryMeterState.FULL) {
-      this.#fury = FuryMeterState.FULL;
-    } else if (this.#fury < FuryMeterState.EMPTY) {
-      this.#fury = FuryMeterState.EMPTY;
+    if (this.#furyValue > FuryMeterState.FULL) {
+      this.#furyValue = FuryMeterState.FULL;
+    } else if (this.#furyValue < FuryMeterState.EMPTY) {
+      this.#furyValue = FuryMeterState.EMPTY;
     }
   }
 
   #updateFuryMeter() {
     this.#validateFury();
 
-    this.#furyMeterFillEl.style.width = `${this.#fury}%`;
+    this.#furyMeterFill.style.width = `${this.#furyValue}%`;
 
-    if (this.#fury !== FuryMeterState.FULL) {
-      this.#furyMeterEl.classList.remove("fury-meter--full");
-      this.#furyMeterFillEl.classList.remove("fury-meter__fill--full");
+    if (this.#furyValue !== FuryMeterState.FULL) {
+      this.#furyMeterBar.classList.remove("fury-meter--full");
+      this.#furyMeterFill.classList.remove("fury-meter__fill--full");
     } else {
-      this.#furyMeterEl.classList.add("fury-meter--full");
-      this.#furyMeterFillEl.classList.add("fury-meter__fill--full");
+      this.#furyMeterBar.classList.add("fury-meter--full");
+      this.#furyMeterFill.classList.add("fury-meter__fill--full");
     }
   }
 
   fill(furyPercentage) {
-    this.#fury += furyPercentage;
+    this.#furyValue += furyPercentage;
     this.#updateFuryMeter();
   }
 
   unfill(furyPercentage) {
-    this.#fury -= furyPercentage;
+    this.#furyValue -= furyPercentage;
     this.#updateFuryMeter();
   }
 
   empty() {
-    this.#fury = FuryMeterState.EMPTY;
+    this.#furyValue = FuryMeterState.EMPTY;
     this.#updateFuryMeter();
   }
 
   isFull() {
-    return this.#fury === FuryMeterState.FULL;
+    return this.#furyValue === FuryMeterState.FULL;
   }
 }
 
