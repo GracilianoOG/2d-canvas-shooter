@@ -17,26 +17,22 @@ class PlayerController {
     this.#player.weapon.shoot();
   }
 
-  #moveX(direction) {
-    this.#player.x += this.#player.speed * this.#delta * direction;
-  }
-
-  #moveY(direction) {
-    this.#player.y += this.#player.speed * this.#delta * direction;
+  #move(direction, axis) {
+    this.#player[axis] += this.#player.speed * this.#delta * direction;
   }
 
   #movePlayer() {
     if (inputManager.isKeyPressed([Keys.A, Keys.LEFT])) {
-      this.#moveX(-1);
+      this.#move(-1, "x");
     }
     if (inputManager.isKeyPressed([Keys.D, Keys.RIGHT])) {
-      this.#moveX(1);
+      this.#move(1, "x");
     }
     if (inputManager.isKeyPressed([Keys.W, Keys.UP])) {
-      this.#moveY(-1);
+      this.#move(-1, "y");
     }
     if (inputManager.isKeyPressed([Keys.S, Keys.DOWN])) {
-      this.#moveY(1);
+      this.#move(1, "y");
     }
   }
 
