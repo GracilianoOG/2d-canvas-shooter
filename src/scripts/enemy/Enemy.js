@@ -6,6 +6,7 @@ import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { WHITE } from "../utils/constants/colors.js";
+import { EnemyAI } from "./EnemyAI";
 
 const defaultOptions = Object.freeze({
   knockback: true,
@@ -21,6 +22,7 @@ class Enemy extends Projectile {
   #baseColor;
   #score;
   #delta;
+  #ai;
   #options;
 
   constructor(x, y, radius, speed, color, health, score, target, options = {}) {
@@ -30,6 +32,7 @@ class Enemy extends Projectile {
     this.#maxSpeed = speed;
     this.#baseColor = color;
     this.#score = score;
+    this.#ai = new EnemyAI(this);
     this.#options = { ...defaultOptions, ...options };
   }
 
@@ -49,14 +52,8 @@ class Enemy extends Projectile {
     this.#health = health;
   }
 
-  #followPlayer() {
-    const dirX = this.#target.x - this.x;
-    const dirY = this.#target.y - this.y;
-    const angle = Math.atan2(dirY, dirX);
-    if (Math.hypot(dirX, dirY) > this.dimensions.radius) {
-      this.x += Math.cos(angle) * this.speed * this.#delta;
-      this.y += Math.sin(angle) * this.speed * this.#delta;
-    }
+  #move() {
+    this.#ai.followTarget(this.#target, this.#delta);
   }
 
   #increaseSpeed() {
@@ -141,7 +138,7 @@ class Enemy extends Projectile {
 
   update(delta) {
     this.#delta = delta;
-    this.#followPlayer();
+    this.#move();
     this.#increaseSpeed();
     this.#returnOriginalColor();
   }
