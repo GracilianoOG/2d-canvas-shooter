@@ -115,7 +115,7 @@ class Player extends Projectile {
     this.#lives--;
     eventManager.emit("playerHit", { lives: this.#lives });
 
-    if (this.isDead()) {
+    if (this.isDead) {
       this.kill();
       return;
     }
