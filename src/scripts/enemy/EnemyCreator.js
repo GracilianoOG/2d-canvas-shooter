@@ -14,19 +14,7 @@ import {
   SLOW_STRONGER,
   STRONG,
 } from "../utils/constants/enemyModTypes.js";
-
-const defaultConfig = Object.freeze({
-  spawnTime: 800,
-  difficultyTime: 5000,
-  enemyModChance: 5,
-  enemyModChanceIncrement: 0.5,
-  enemyModChanceLimit: 50,
-  initialSpawnLevel: 1,
-  spawnDecrementMs: 5,
-});
-
-const defaultModifiers = Object.freeze([SPAWN_TIME, NEW_ENEMY, MOD_CHANCE]);
-const enemyModifiers = Object.freeze([FAST, STRONG, SLOW_STRONGER]);
+import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 
 class EnemyCreator {
   #config;
@@ -43,12 +31,12 @@ class EnemyCreator {
     this.#spawnTimer = new Timer(
       this.#config.spawnTime,
       timerConfig,
-      this.#createEnemy.bind(this)
+      this.#createEnemy.bind(this),
     );
     this.#difficultyTimer = new Timer(
       this.#config.difficultyTime,
       timerConfig,
-      this.#increaseDifficulty.bind(this)
+      this.#increaseDifficulty.bind(this),
     );
     this.#spawnTime = this.#config.spawnTime;
     this.#spawnLevel = this.#config.initialSpawnLevel;
