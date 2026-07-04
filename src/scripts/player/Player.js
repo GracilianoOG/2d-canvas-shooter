@@ -15,7 +15,6 @@ import { defaultStats } from "./playerDefaultStats";
 import { PlayerShield } from "./PlayerShield";
 
 class Player extends Projectile {
-  #isDead;
   #controller;
   #weapon;
   #fury;
@@ -28,7 +27,6 @@ class Player extends Projectile {
     super(x, y, radius, speed, color);
 
     this.#controller = new PlayerController(this);
-    this.#isDead = defaultStats.isDead;
     this.#arsenal = new PlayerArsenal(this);
     this.#fury = new Fury(this);
     this.#lives = defaultStats.lives;
@@ -76,11 +74,7 @@ class Player extends Projectile {
   }
 
   get isDead() {
-    return this.#isDead;
-  }
-
-  set isDead(isDead) {
-    this.#isDead = isDead;
+    return this.#lives <= 0;
   }
 
   #onShieldDepletion() {
@@ -134,11 +128,9 @@ class Player extends Projectile {
     Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
     eventManager.emit("playerDeath");
     this.fury.deactivate();
-    this.isDead = true;
   }
 
   revive(x = this.x, y = this.y) {
-    this.isDead = defaultStats.isDead;
     this.#lives = defaultStats.lives;
     this.x = x;
     this.y = y;
