@@ -70,11 +70,9 @@ class Entity {
 
   onDestroy() {}
 
-  onUpdate() {}
-
   destroy() {
     this.onDestroy();
-    Entity.instances = Entity.instances.filter(instance => {
+    Entity.instances = Entity.instances.filter((instance) => {
       return instance !== this;
     });
   }
