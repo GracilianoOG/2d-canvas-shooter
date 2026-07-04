@@ -1,7 +1,6 @@
 import { Pistol } from "../arsenal/guns/Pistol";
 import { eventManager } from "../singletons/EventManager";
 import { Timer } from "../Timer";
-import { randomInt } from "../utils/utility";
 
 class PlayerArsenal {
   #inventory;
@@ -9,7 +8,7 @@ class PlayerArsenal {
   #player;
 
   constructor(player) {
-    this.#inventory = { pistol: new Pistol(player) };
+    this.#inventory = { pistol: new Pistol() };
 
     this.#player = player;
     this.#equipDefaultGun();
