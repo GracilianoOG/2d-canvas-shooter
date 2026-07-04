@@ -1,3 +1,6 @@
+import * as EnemyMods from "../utils/constants/enemyModTypes";
+import * as DiffMods from "../utils/constants/modifierTypes";
+
 export const defaultConfig = {
   spawnTime: 800,
   difficultyTime: 5000,
@@ -8,5 +11,13 @@ export const defaultConfig = {
   spawnDecrementMs: 5,
 };
 
-export const defaultModifiers = [SPAWN_TIME, NEW_ENEMY, MOD_CHANCE];
-export const enemyModifiers = [FAST, STRONG, SLOW_STRONGER];
+export const defaultModifiers = [
+  DiffMods.SPAWN_TIME,
+  DiffMods.NEW_ENEMY,
+  DiffMods.MOD_CHANCE,
+];
+export const enemyModifiers = [
+  EnemyMods.FAST,
+  EnemyMods.STRONG,
+  EnemyMods.SLOW_STRONGER,
+];
