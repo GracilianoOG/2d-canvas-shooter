@@ -4,13 +4,7 @@ import { Projectile } from "../Projectile.js";
 import { eventManager } from "../singletons/EventManager.js";
 import { WHITE } from "../utils/constants/colors.js";
 import { EnemyAI } from "./EnemyAI";
-
-const defaultOptions = Object.freeze({
-  knockback: true,
-  aggressive: true,
-  shrinkable: true,
-  bloodAmount: 8,
-});
+import { defaultStats } from "./enemyDefaultStats.js";
 
 class Enemy extends Projectile {
   #target;
@@ -29,7 +23,7 @@ class Enemy extends Projectile {
     this.#baseColor = color;
     this.#score = score;
     this.#ai = new EnemyAI(this);
-    this.#options = { ...defaultOptions, ...options };
+    this.#options = { ...defaultStats, ...options };
   }
 
   get baseColor() {
