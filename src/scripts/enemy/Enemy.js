@@ -1,7 +1,4 @@
-import { Adrenaline } from "../items/Adrenaline.js";
-import { Life } from "../items/Life.js";
-import { Shield } from "../items/Shield.js";
-import { WeaponBox } from "../items/WeaponBox.js";
+import { dropRandomItem } from "../items/itemDrop.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
 import { eventManager } from "../singletons/EventManager.js";
@@ -68,33 +65,6 @@ class Enemy extends Projectile {
     }
   }
 
-  #dropItem() {
-    const dropChance = 0.08;
-
-    if (Math.random() >= dropChance) {
-      return;
-    }
-
-    const chances = [10, 30, 60, 100];
-    const items = [
-      () => new Life(this.x, this.y),
-      () => new Shield(this.x, this.y),
-      () => new Adrenaline(this.x, this.y),
-      () => new WeaponBox(this.x, this.y),
-    ];
-    const totalChance = chances.reduce((sum, acc) => sum + acc, 0);
-    const randChance = Math.floor(totalChance * Math.random());
-
-    for (let i = 0, currChance = 0, len = chances.length; i < len; i++) {
-      currChance += chances[i];
-
-      if (currChance >= randChance) {
-        items[i]();
-        return;
-      }
-    }
-  }
-
   takeDamage(damage) {
     this.health -= damage;
     if (this.health <= 0) {
@@ -132,7 +102,7 @@ class Enemy extends Projectile {
       score: this.score.death,
       color: this.baseColor,
     });
-    this.#dropItem();
+    dropRandomItem(this.x, this.y);
     this.destroy();
   }
 
