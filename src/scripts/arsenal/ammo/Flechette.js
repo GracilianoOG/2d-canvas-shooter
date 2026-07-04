@@ -37,7 +37,9 @@ class Flechette extends Bullet {
     this.#bounces++;
   }
 
-  onUpdate() {
+  update(delta) {
+    super.update(delta);
+
     if (this.#bounces >= this.#maxBounces) {
       this.color = GRAY;
       return;
