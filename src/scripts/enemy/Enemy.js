@@ -21,7 +21,6 @@ class Enemy extends Projectile {
   #health;
   #baseColor;
   #score;
-  #delta;
   #ai;
   #options;
 
@@ -52,8 +51,8 @@ class Enemy extends Projectile {
     this.#health = health;
   }
 
-  #move() {
-    this.#ai.followTarget(this.#target, this.#delta);
+  #move(delta) {
+    this.#ai.followTarget(this.#target, delta);
   }
 
   #increaseSpeed() {
@@ -137,8 +136,7 @@ class Enemy extends Projectile {
   }
 
   update(delta) {
-    this.#delta = delta;
-    this.#move();
+    this.#move(delta);
     this.#increaseSpeed();
     this.#returnOriginalColor();
   }
