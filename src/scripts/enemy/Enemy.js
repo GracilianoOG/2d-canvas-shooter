@@ -56,8 +56,9 @@ class Enemy extends Projectile {
   }
 
   #increaseSpeed() {
+    const increase = 6.25;
     if (this.speed < this.#maxSpeed) {
-      this.speed = Math.min(this.speed + 6.25, this.#maxSpeed);
+      this.speed = Math.min(this.speed + increase, this.#maxSpeed);
     }
   }
 
