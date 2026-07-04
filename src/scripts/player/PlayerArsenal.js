@@ -4,12 +4,12 @@ import { Timer } from "../Timer";
 import { randomInt } from "../utils/utility";
 
 class PlayerArsenal {
-  #guns;
+  #inventory;
   #durationTimer;
   #player;
 
   constructor(player) {
-    this.#guns = { pistol: new Pistol(player) };
+    this.#inventory = { pistol: new Pistol(player) };
 
     this.#player = player;
     this.#equipDefaultGun();
@@ -39,15 +39,15 @@ class PlayerArsenal {
     this.#durationTimer.waitTime = 10_000;
     eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
-    if (!(weaponId in this.#guns)) {
-      this.#guns[weaponId] = new WeaponClass(this.#player);
+    if (!(weaponId in this.#inventory)) {
+      this.#inventory[weaponId] = new WeaponClass(this.#player);
     }
-    this.#player.weapon = this.#guns[weaponId];
+    this.#player.weapon = this.#inventory[weaponId];
     eventManager.emit("afterWeaponChange");
   }
 
   #equipDefaultGun() {
-    this.#player.weapon = this.#guns["pistol"];
+    this.#player.weapon = this.#inventory["pistol"];
   }
 
   #onPlayerDeath() {
