@@ -14,7 +14,7 @@ class PlayerController {
     if (this.#player.isDead || !inputManager.isLeftMousePressed()) {
       return;
     }
-    this.#player.weapon.shoot();
+    this.#player.weapon.shoot(this.#player.x, this.#player.y);
   }
 
   #move(direction, axis) {
