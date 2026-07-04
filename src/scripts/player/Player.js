@@ -12,6 +12,7 @@ import {
 } from "../utils/constants/colors.js";
 import { PlayerArsenal } from "./PlayerArsenal";
 import { defaultStats } from "./playerDefaultStats";
+import { PlayerShield } from "./PlayerShield";
 
 class Player extends Projectile {
   #isDead;
@@ -20,8 +21,8 @@ class Player extends Projectile {
   #fury;
   #lives;
   #godMode;
-  #shieldTimer;
   #arsenal;
+  #shield;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
@@ -32,11 +33,7 @@ class Player extends Projectile {
     this.#fury = new Fury(this);
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
-    this.#shieldTimer = new Timer(
-      defaultStats.shieldDelay,
-      { autostart: false, loop: false },
-      this.#onShieldDepletion.bind(this),
-    );
+    this.#shield = new PlayerShield(() => this.#onShieldDepletion());
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
@@ -108,16 +105,14 @@ class Player extends Projectile {
     if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
   }
 
-  #activateShield(time) {
+  #activateShield(delay) {
     this.#godMode = true;
-    this.#shieldTimer.waitTime = time ?? defaultStats.shieldDelay;
-    this.#shieldTimer.reset();
+    this.#shield.activate(delay);
   }
 
   #resetShield() {
-    this.#godMode = defaultStats.godMode;
-    this.#shieldTimer.stop();
-    this.#shieldTimer.waitTime = defaultStats.shieldDelay;
+    this.#godMode = false;
+    this.#shield.reset();
   }
 
   takeHit() {
@@ -182,14 +177,13 @@ class Player extends Projectile {
   }
 
   #drawShieldDelay(ctx) {
-    if (this.#shieldTimer.active) {
-      const { waitTime: shieldDelay } = this.#shieldTimer;
-      const { elapsedTime } = this.#shieldTimer;
-      const timePerc = elapsedTime / shieldDelay;
-      const padding = 15;
+    if (!this.#shield.isActive()) return;
 
-      this.drawArc(ctx, ENERGETIC_BLUE, padding, timePerc);
-    }
+    const { remainingTime, currentDelay } = this.#shield;
+    const delayProgress = remainingTime / currentDelay;
+    const padding = 15;
+
+    this.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
   }
 
   #drawWeaponDuration(ctx) {
