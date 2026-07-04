@@ -16,7 +16,7 @@ class Fury {
     this.#timer = new Timer(
       duration,
       { autostart: false, loop: false },
-      this.deactivate.bind(this)
+      this.deactivate.bind(this),
     );
     this.#status = false;
     this.#player = player;
@@ -61,15 +61,15 @@ class Fury {
   }
 
   #increaseFireRate() {
-    const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
+    const cooldownTime = this.#player.weapon.cooldown.waitTime;
     const { weaponCooldown } = upgrades;
-    this.#player.weapon.shootCooldown.waitTime = cooldownTime - weaponCooldown;
+    this.#player.weapon.cooldown.waitTime = cooldownTime - weaponCooldown;
   }
 
   #restoreFireRate() {
-    const cooldownTime = this.#player.weapon.shootCooldown.waitTime;
+    const cooldownTime = this.#player.weapon.cooldown.waitTime;
     const { weaponCooldown } = upgrades;
-    this.#player.weapon.shootCooldown.waitTime = cooldownTime + weaponCooldown;
+    this.#player.weapon.cooldown.waitTime = cooldownTime + weaponCooldown;
   }
 
   #applyUpgrades() {
