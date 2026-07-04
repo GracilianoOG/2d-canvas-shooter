@@ -25,12 +25,8 @@ class PlayerController {
     this.#player.x += this.#player.speed * this.#delta;
   }
 
-  #moveUp() {
-    this.#player.y -= this.#player.speed * this.#delta;
-  }
-
-  #moveDown() {
-    this.#player.y += this.#player.speed * this.#delta;
+  #moveY(direction) {
+    this.#player.y += this.#player.speed * this.#delta * direction;
   }
 
   #movePlayer() {
@@ -41,10 +37,10 @@ class PlayerController {
       this.#moveRight();
     }
     if (inputManager.isKeyPressed([Keys.W, Keys.UP])) {
-      this.#moveUp();
+      this.#moveY(-1);
     }
     if (inputManager.isKeyPressed([Keys.S, Keys.DOWN])) {
-      this.#moveDown();
+      this.#moveY(1);
     }
   }
 
