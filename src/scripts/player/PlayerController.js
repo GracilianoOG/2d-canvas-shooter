@@ -17,12 +17,8 @@ class PlayerController {
     this.#player.weapon.shoot();
   }
 
-  #moveLeft() {
-    this.#player.x -= this.#player.speed * this.#delta;
-  }
-
-  #moveRight() {
-    this.#player.x += this.#player.speed * this.#delta;
+  #moveX(direction) {
+    this.#player.x += this.#player.speed * this.#delta * direction;
   }
 
   #moveY(direction) {
@@ -31,10 +27,10 @@ class PlayerController {
 
   #movePlayer() {
     if (inputManager.isKeyPressed([Keys.A, Keys.LEFT])) {
-      this.#moveLeft();
+      this.#moveX(-1);
     }
     if (inputManager.isKeyPressed([Keys.D, Keys.RIGHT])) {
-      this.#moveRight();
+      this.#moveX(1);
     }
     if (inputManager.isKeyPressed([Keys.W, Keys.UP])) {
       this.#moveY(-1);
