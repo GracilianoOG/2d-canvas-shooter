@@ -11,13 +11,7 @@ import {
   LIGHT_YELLOW,
 } from "../utils/constants/colors.js";
 import { PlayerArsenal } from "./PlayerArsenal";
-
-const defaultValues = Object.freeze({
-  lives: 3,
-  godMode: false,
-  isDead: false,
-  shieldDelay: 1500,
-});
+import { defaultStats } from "./playerDefaultStats";
 
 class Player extends Projectile {
   #isDead;
@@ -33,13 +27,13 @@ class Player extends Projectile {
     super(x, y, radius, speed, color);
 
     this.#controller = new PlayerController(this);
-    this.#isDead = defaultValues.isDead;
+    this.#isDead = defaultStats.isDead;
     this.#arsenal = new PlayerArsenal(this);
     this.#fury = new Fury(this);
-    this.#lives = defaultValues.lives;
-    this.#godMode = defaultValues.godMode;
+    this.#lives = defaultStats.lives;
+    this.#godMode = defaultStats.godMode;
     this.#shieldTimer = new Timer(
-      defaultValues.shieldDelay,
+      defaultStats.shieldDelay,
       { autostart: false, loop: false },
       this.#onShieldDepletion.bind(this),
     );
@@ -47,7 +41,7 @@ class Player extends Projectile {
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
     eventManager.subscribe("lifeCollected", ({ item }) => {
-      if (this.lives < defaultValues.lives) {
+      if (this.lives < defaultStats.lives) {
         this.#lives++;
         item.collect();
         eventManager.emit("playerHealed");
@@ -116,14 +110,14 @@ class Player extends Projectile {
 
   #activateShield(time) {
     this.#godMode = true;
-    this.#shieldTimer.waitTime = time ?? defaultValues.shieldDelay;
+    this.#shieldTimer.waitTime = time ?? defaultStats.shieldDelay;
     this.#shieldTimer.reset();
   }
 
   #resetShield() {
-    this.#godMode = defaultValues.godMode;
+    this.#godMode = defaultStats.godMode;
     this.#shieldTimer.stop();
-    this.#shieldTimer.waitTime = defaultValues.shieldDelay;
+    this.#shieldTimer.waitTime = defaultStats.shieldDelay;
   }
 
   takeHit() {
@@ -149,8 +143,8 @@ class Player extends Projectile {
   }
 
   revive(x = this.x, y = this.y) {
-    this.isDead = defaultValues.isDead;
-    this.#lives = defaultValues.lives;
+    this.isDead = defaultStats.isDead;
+    this.#lives = defaultStats.lives;
     this.x = x;
     this.y = y;
     this.#resetShield();
@@ -183,7 +177,7 @@ class Player extends Projectile {
 
   #drawHealth(ctx) {
     const padding = 5;
-    const health = this.#lives / defaultValues.lives;
+    const health = this.#lives / defaultStats.lives;
     this.drawArc(ctx, BLOODY_RED, padding, health, true);
   }
 
