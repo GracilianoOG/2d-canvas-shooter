@@ -1,15 +1,9 @@
-import { Bullet } from "../Bullet";
-import { Weapon } from "./Weapon";
+import { PistolAmmo } from "../ammo/PistolAmmo";
+import { Gun } from "./Gun";
 
-class SubmachineGun extends Weapon {
-  constructor(player, cooldown = 100) {
-    super(player, cooldown);
-  }
-
-  createProjectile() {
-    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    const color = this.player.color;
-    new Bullet(playerX, playerY, 5, 1250, bulletAngle, color);
+class SubmachineGun extends Gun {
+  constructor(ammoType = new PistolAmmo(), cooldown = 100) {
+    super(ammoType, cooldown);
   }
 }
 
