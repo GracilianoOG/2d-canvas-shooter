@@ -114,6 +114,8 @@ class Player extends Projectile {
 
     this.#lives--;
     eventManager.emit("playerHit", { lives: this.#lives });
+    const particleAmount = !this.isDead ? 8 : 16;
+    Particle.createParticles(this.x, this.y, 8, 5, this.color, particleAmount);
 
     if (this.isDead) {
       this.kill();
@@ -121,11 +123,9 @@ class Player extends Projectile {
     }
 
     this.#activateShield();
-    Particle.createParticles(this.x, this.y, 8, 5, this.color, 8);
   }
 
   kill() {
-    Particle.createParticles(this.x, this.y, 8, 5, this.color, 16);
     eventManager.emit("playerDeath");
     this.fury.deactivate();
   }
