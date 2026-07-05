@@ -1,6 +1,7 @@
 import { gameState } from "@/scripts/singletons/GameState";
 import { inputManager } from "@/scripts/singletons/InputManager";
 import { Timer } from "@/scripts/Timer";
+import { randomNumber } from "@/scripts/utils/utility";
 
 class Gun {
   #cooldown;
@@ -56,9 +57,13 @@ class Gun {
     gameState.getEntity("gameAudio").playSound("shot");
   }
 
-  createProjectile(x, y) {
+  createProjectile(x, y, bullets = 1, spread = 0) {
     const { originX, originY, bulletAngle } = this.calcBulletPath(x, y);
-    this.ammoType.create(originX, originY, bulletAngle);
+
+    for (let i = 0; i < bullets; i++) {
+      const accuracy = randomNumber(spread, -spread);
+      this.ammoType.create(originX, originY, bulletAngle + accuracy);
+    }
   }
 }
 
