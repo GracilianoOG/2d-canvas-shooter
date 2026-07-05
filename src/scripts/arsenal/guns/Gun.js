@@ -6,9 +6,11 @@ import { randomNumber } from "@/scripts/utils/utility";
 class Gun {
   #cooldown;
   #ammoType;
+  #options;
 
-  constructor(ammoType, cooldown = 150) {
-    this.#cooldown = new Timer(cooldown, { loop: false });
+  constructor(ammoType, options) {
+    this.#options = options;
+    this.#cooldown = new Timer(options.cooldown, { loop: false });
     this.#ammoType = ammoType;
   }
 
@@ -57,8 +59,10 @@ class Gun {
     gameState.getEntity("gameAudio").playSound("shot");
   }
 
-  createProjectile(x, y, bullets = 1, spread = 0) {
+  createProjectile(x, y) {
     const { originX, originY, bulletAngle } = this.calcBulletPath(x, y);
+    const bullets = this.#options?.bullets ?? 1;
+    const spread = this.#options?.spread ?? 0;
 
     for (let i = 0; i < bullets; i++) {
       const accuracy = randomNumber(spread, -spread);
