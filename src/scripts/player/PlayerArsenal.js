@@ -42,12 +42,16 @@ class PlayerArsenal {
     if (!this.#inventory.has(weaponId)) {
       this.#inventory.set(weaponId, addWeapon());
     }
-    this.#player.weapon = this.#inventory.get(weaponId);
+    this.#equip(weaponId);
     eventManager.emit("afterWeaponChange");
   }
 
+  #equip(id) {
+    this.#player.weapon = this.#inventory.get(id);
+  }
+
   #equipDefaultGun() {
-    this.#player.weapon = this.#inventory.get("pistol");
+    this.#equip("pistol");
   }
 
   #onPlayerDeath() {
