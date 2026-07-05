@@ -39,11 +39,15 @@ class PlayerArsenal {
     this.#durationTimer.waitTime = 10_000;
     eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
-    if (!this.#inventory.has(weaponId)) {
-      this.#inventory.set(weaponId, addWeapon());
-    }
+    this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
     eventManager.emit("afterWeaponChange");
+  }
+
+  #add(id, weapon) {
+    if (!this.#inventory.has(id)) {
+      this.#inventory.set(id, weapon);
+    }
   }
 
   #equip(id) {
