@@ -4,7 +4,8 @@ import { Gun } from "./Gun";
 class SubmachineGun extends Gun {
   constructor(ammoType = new PistolAmmo(), options = {}) {
     super(ammoType, {
-      cooldown: 100,
+      cooldown: 120,
+      spread: 0.05,
       ...options,
     });
   }
