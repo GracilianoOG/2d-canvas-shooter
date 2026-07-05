@@ -34,12 +34,12 @@ class PlayerArsenal {
   }
 
   switchWeapon(weapon) {
-    const [weaponId, WeaponClass] = weapon;
+    const [weaponId, addWeapon] = weapon;
     this.#durationTimer.waitTime = 10_000;
     eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
     if (!(weaponId in this.#inventory)) {
-      this.#inventory[weaponId] = new WeaponClass();
+      this.#inventory[weaponId] = addWeapon();
     }
     this.#player.weapon = this.#inventory[weaponId];
     eventManager.emit("afterWeaponChange");
