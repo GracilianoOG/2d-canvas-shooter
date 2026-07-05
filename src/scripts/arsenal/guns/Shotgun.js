@@ -8,14 +8,7 @@ class Shotgun extends Gun {
   }
 
   createProjectile(x, y) {
-    const { originX, originY, bulletAngle } = this.calcBulletPath(x, y);
-    const spread = 0.2;
-    const bullets = 3;
-
-    for (let i = 0; i < bullets; i++) {
-      const accuracy = randomNumber(spread, -spread);
-      this.ammoType.create(originX, originY, bulletAngle + accuracy);
-    }
+    super.createProjectile(x, y, 3, 0.2);
   }
 }
 
