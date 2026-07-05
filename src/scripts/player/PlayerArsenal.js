@@ -39,7 +39,7 @@ class PlayerArsenal {
     eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
     if (!(weaponId in this.#inventory)) {
-      this.#inventory[weaponId] = new WeaponClass(this.#player);
+      this.#inventory[weaponId] = new WeaponClass();
     }
     this.#player.weapon = this.#inventory[weaponId];
     eventManager.emit("afterWeaponChange");
