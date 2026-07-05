@@ -8,7 +8,8 @@ class PlayerArsenal {
   #player;
 
   constructor(player) {
-    this.#inventory = { pistol: new Pistol() };
+    this.#inventory = new Map();
+    this.#inventory.set("pistol", new Pistol());
 
     this.#player = player;
     this.#equipDefaultGun();
@@ -38,15 +39,15 @@ class PlayerArsenal {
     this.#durationTimer.waitTime = 10_000;
     eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
-    if (!(weaponId in this.#inventory)) {
-      this.#inventory[weaponId] = addWeapon();
+    if (!this.#inventory.has(weaponId)) {
+      this.#inventory.set(weaponId, addWeapon());
     }
-    this.#player.weapon = this.#inventory[weaponId];
+    this.#player.weapon = this.#inventory.get(weaponId);
     eventManager.emit("afterWeaponChange");
   }
 
   #equipDefaultGun() {
-    this.#player.weapon = this.#inventory["pistol"];
+    this.#player.weapon = this.#inventory.get("pistol");
   }
 
   #onPlayerDeath() {
