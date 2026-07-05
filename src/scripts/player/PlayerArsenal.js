@@ -12,14 +12,14 @@ class PlayerArsenal {
     this.#inventory.set("pistol", new Pistol());
 
     this.#player = player;
-    this.#equipDefaultGun();
+    this.#equipDefault();
 
     this.#durationTimer = new Timer(
       0,
       { loop: false, autostart: false },
       () => {
         eventManager.emit("beforeWeaponChange");
-        this.#equipDefaultGun();
+        this.#equipDefault();
         eventManager.emit("afterWeaponChange");
       },
     );
@@ -50,13 +50,13 @@ class PlayerArsenal {
     this.#player.weapon = this.#inventory.get(id);
   }
 
-  #equipDefaultGun() {
+  #equipDefault() {
     this.#equip("pistol");
   }
 
   #onPlayerDeath() {
     this.#durationTimer.stop();
-    this.#equipDefaultGun();
+    this.#equipDefault();
   }
 }
 
