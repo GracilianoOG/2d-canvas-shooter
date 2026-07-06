@@ -4,15 +4,10 @@ import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../singletons/EventManager.js";
-import { Timer } from "../Timer.js";
-import {
-  BLOODY_RED,
-  ENERGETIC_BLUE,
-  LIGHT_YELLOW,
-} from "../utils/constants/colors.js";
 import { PlayerArsenal } from "./PlayerArsenal";
 import { defaultStats } from "./playerDefaultStats";
 import { PlayerShield } from "./PlayerShield";
+import { PlayerHUD } from "./PlayerHUD.js";
 
 class Player extends Projectile {
   #controller;
@@ -22,6 +17,7 @@ class Player extends Projectile {
   #godMode;
   #arsenal;
   #shield;
+  #hud;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
@@ -32,6 +28,7 @@ class Player extends Projectile {
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
     this.#shield = new PlayerShield(() => this.#onShieldDepletion());
+    this.#hud = new PlayerHUD(this);
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
@@ -51,6 +48,10 @@ class Player extends Projectile {
 
   get lives() {
     return this.#lives;
+  }
+
+  get shield() {
+    return this.#shield;
   }
 
   get controller() {
@@ -141,9 +142,7 @@ class Player extends Projectile {
   draw(ctx) {
     if (this.isDead) return;
     super.draw(ctx);
-    this.#drawShieldDelay(ctx);
-    this.#drawWeaponDuration(ctx);
-    this.#drawHealth(ctx);
+    this.#hud.drawHUD(ctx);
   }
 
   update(delta) {
@@ -159,33 +158,6 @@ class Player extends Projectile {
       const furyDelay = this.fury.duration;
       const timePerc = elapsedTime / furyDelay;
       eventManager.emit("emptyFuryMeter", { timePerc });
-    }
-  }
-
-  #drawHealth(ctx) {
-    const padding = 5;
-    const health = this.#lives / defaultStats.lives;
-    this.drawArc(ctx, BLOODY_RED, padding, health, true);
-  }
-
-  #drawShieldDelay(ctx) {
-    if (!this.#shield.isActive()) return;
-
-    const { remainingTime, currentDelay } = this.#shield;
-    const delayProgress = remainingTime / currentDelay;
-    const padding = 15;
-
-    this.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
-  }
-
-  #drawWeaponDuration(ctx) {
-    if (this.#arsenal.durationTimer.active) {
-      const gunDelay = this.#arsenal.durationTimer.waitTime;
-      const { elapsedTime } = this.#arsenal.durationTimer;
-      const timePerc = elapsedTime / gunDelay;
-      const padding = 10;
-
-      this.drawArc(ctx, LIGHT_YELLOW, padding, timePerc);
     }
   }
 }
