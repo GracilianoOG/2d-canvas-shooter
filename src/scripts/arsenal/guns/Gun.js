@@ -4,14 +4,20 @@ import { Timer } from "@/scripts/Timer";
 import { randomNumber } from "@/scripts/utils/utility";
 
 class Gun {
+  #name;
   #cooldown;
   #ammoType;
   #options;
 
-  constructor(ammoType, options) {
+  constructor(name, ammoType, options) {
+    this.#name = name;
     this.#options = options;
     this.#cooldown = new Timer(options.cooldown, { loop: false });
     this.#ammoType = ammoType;
+  }
+
+  get name() {
+    return this.#name;
   }
 
   get cooldown() {
