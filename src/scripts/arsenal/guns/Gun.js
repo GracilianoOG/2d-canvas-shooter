@@ -20,6 +20,10 @@ class Gun {
     return this.#name;
   }
 
+  get fullName() {
+    return `${this.#ammoType.name} ${this.#name}`;
+  }
+
   get cooldown() {
     return this.#cooldown;
   }
