@@ -2,8 +2,8 @@ import { PistolAmmo } from "../ammo/PistolAmmo";
 import { Gun } from "./Gun";
 
 class Pistol extends Gun {
-  constructor(ammoType = new PistolAmmo(), options = {}) {
-    super(ammoType, {
+  constructor(name = "Pistol", ammoType = new PistolAmmo(), options = {}) {
+    super(name, ammoType, {
       cooldown: 150,
       ...options,
     });
