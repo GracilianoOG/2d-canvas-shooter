@@ -5,7 +5,7 @@ class PistolAmmo {
   #name;
 
   constructor(name = "Common") {
-    this.name = name;
+    this.#name = name;
   }
 
   get name() {
