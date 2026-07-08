@@ -14,5 +14,5 @@ const weapons = {
 const weaponList = Object.entries(weapons);
 
 export const getRandomWeapon = () => {
-  return weaponList[randomInt(0, weaponList.length - 1)];
+  return weaponList[randomInt(0, weaponList.length)];
 };
