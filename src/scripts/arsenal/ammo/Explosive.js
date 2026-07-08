@@ -16,9 +16,7 @@ class Explosive extends Bullet {
     this.#options = { ...defaultOptions, ...options };
   }
 
-  onDestroy() {
-    if (this.isOutOfCanvas()) return;
-
+  #createFragments() {
     const { fragments, size, speed, damage, color } = this.#options;
 
     let rotation = 0;
@@ -29,6 +27,11 @@ class Explosive extends Bullet {
       new Bullet(this.x, this.y, size, speed, rotation, color, damage);
       rotation += angle;
     }
+  }
+
+  onDestroy() {
+    if (this.isOutOfCanvas()) return;
+    this.#createFragments();
   }
 }
 
