@@ -1,5 +1,6 @@
 import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
 import { Bullet } from "../Bullet";
+import { HEAVY_DMG } from "./damages";
 
 class HeavyAmmo {
   #name;
@@ -16,7 +17,7 @@ class HeavyAmmo {
     const radius = 5;
     const speed = 1250;
     const color = VERY_LIGHT_YELLOW;
-    const damage = 20;
+    const damage = HEAVY_DMG;
     new Bullet(x, y, radius, speed, angle, color, damage);
   }
 }
