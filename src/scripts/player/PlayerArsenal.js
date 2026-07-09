@@ -4,6 +4,7 @@ import { Timer } from "../Timer";
 
 class PlayerArsenal {
   #inventory;
+  #duration;
   #durationTimer;
   #player;
 
@@ -14,8 +15,11 @@ class PlayerArsenal {
     this.#player = player;
     this.#equipDefault();
 
-    this.#durationTimer = new Timer(0, { loop: false, autostart: false }, () =>
-      this.#equipDefault(),
+    this.#duration = 10000;
+    this.#durationTimer = new Timer(
+      this.#duration,
+      { loop: false, autostart: false },
+      () => this.#equipDefault(),
     );
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
@@ -30,7 +34,6 @@ class PlayerArsenal {
 
   switchWeapon(weapon) {
     const [weaponId, addWeapon] = weapon;
-    this.#durationTimer.waitTime = 10_000;
     this.#durationTimer.reset();
     this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
