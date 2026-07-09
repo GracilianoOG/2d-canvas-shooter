@@ -1,16 +1,11 @@
 import { WHITE } from "@/scripts/utils/constants/colors";
 import { Bullet } from "../Bullet";
 import { BASE_DMG } from "./damages";
+import { AmmoType } from "./AmmoType";
 
-class PistolAmmo {
-  #name;
-
+class PistolAmmo extends AmmoType {
   constructor(name = "Common") {
-    this.#name = name;
-  }
-
-  get name() {
-    return this.#name;
+    super(name);
   }
 
   create(x, y, angle) {

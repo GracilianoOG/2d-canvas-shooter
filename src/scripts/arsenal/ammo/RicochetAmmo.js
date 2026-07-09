@@ -1,16 +1,11 @@
 import { VIOLET } from "@/scripts/utils/constants/colors";
 import { Flechette } from "./Flechette";
 import { RICOCHET_DMG } from "./damages";
+import { AmmoType } from "./AmmoType";
 
-class RicochetAmmo {
-  #name;
-
+class RicochetAmmo extends AmmoType {
   constructor(name = "Ricochet") {
-    this.#name = name;
-  }
-
-  get name() {
-    return this.#name;
+    super(name);
   }
 
   create(x, y, angle) {

@@ -1,16 +1,11 @@
 import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
 import { Bullet } from "../Bullet";
 import { HEAVY_DMG } from "./damages";
+import { AmmoType } from "./AmmoType";
 
-class HeavyAmmo {
-  #name;
-
+class HeavyAmmo extends AmmoType {
   constructor(name = "Heavy") {
-    this.#name = name;
-  }
-
-  get name() {
-    return this.#name;
+    super(name);
   }
 
   create(x, y, angle) {
