@@ -1,22 +1,30 @@
-import { Bullet } from "../Bullet";
-import { Weapon } from "./Weapon";
+import { PistolAmmo } from "../ammo/PistolAmmo";
+import { Gun } from "./Gun";
 
-class BulletHell extends Weapon {
-  constructor(player, cooldown = 120) {
-    super(player, cooldown);
+class BulletHell extends Gun {
+  constructor({
+    name = "Bullet Hell",
+    ammoType = new PistolAmmo(),
+    options = {},
+  } = {}) {
+    super({
+      name,
+      ammoType,
+      options: {
+        cooldown: 120,
+        bullets: 20,
+        ...options,
+      },
+    });
   }
 
-  createProjectile() {
-    const { playerX, playerY } = this._calcBulletPath();
-    const color = this.player.color;
-
+  createProjectile(x, y) {
     let rotation = 0;
-    const MAX_BULLETS = 20;
     const TAU = Math.PI * 2;
-    const angle = TAU / MAX_BULLETS;
+    const angle = TAU / this.options.bullets;
 
     while (rotation <= TAU) {
-      new Bullet(playerX, playerY, 5, 1250, rotation, color);
+      this.ammoType.create(x, y, rotation);
       rotation += angle;
     }
   }
