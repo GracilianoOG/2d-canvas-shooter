@@ -59,11 +59,7 @@ class Gun {
 
     const bulletAngle = Math.atan2(dirY, dirX);
 
-    return {
-      originX,
-      originY,
-      bulletAngle,
-    };
+    return bulletAngle;
   }
 
   shoot(x, y) {
@@ -74,10 +70,10 @@ class Gun {
   }
 
   createProjectile(x, y) {
-    const { originX, originY, bulletAngle } = this.calcBulletPath(x, y);
+    const bulletAngle = this.calcBulletPath(x, y);
     const spread = this.#options?.spread ?? 0;
     const accuracy = randomNumber(spread, -spread);
-    this.ammoType.create(originX, originY, bulletAngle + accuracy);
+    this.ammoType.create(x, y, bulletAngle + accuracy);
   }
 }
 
