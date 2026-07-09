@@ -2,36 +2,27 @@ import { TAU } from "@/scripts/utils/math";
 import { Bullet } from "../Bullet";
 
 class Explosive extends Bullet {
-  #options;
+  #fragments;
 
-  constructor(x, y, radius, speed, angle, color, damage = 20, options = {}) {
-    const defaultOptions = {
-      fragments: 20,
-      size: 10,
-      speed: 500,
-      damage: 10,
-      color,
-    };
-
+  constructor(x, y, radius, speed, angle, color, damage = 20, fragments = {}) {
     super(x, y, radius, speed, angle, color, damage);
-    this.#options = { ...defaultOptions, ...options };
+    this.#fragments = { ...fragments };
   }
 
-  #createFragments() {
-    const { fragments, size, speed, damage, color } = this.#options;
-
+  #explode() {
+    const { amount, createFragments } = this.#fragments;
+    const angle = TAU / amount;
     let rotation = 0;
-    const angle = TAU / fragments;
 
     while (rotation <= TAU) {
-      new Bullet(this.x, this.y, size, speed, rotation, color, damage);
+      createFragments(this.x, this.y, rotation);
       rotation += angle;
     }
   }
 
   onDestroy() {
     if (this.isOutOfCanvas()) return;
-    this.#createFragments();
+    this.#explode();
   }
 }
 
