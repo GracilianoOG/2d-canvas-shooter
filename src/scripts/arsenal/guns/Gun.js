@@ -62,6 +62,11 @@ class Gun {
     return bulletAngle;
   }
 
+  rollAccuracy() {
+    const spread = this.#options?.spread ?? 0;
+    return randomNumber(spread, -spread);
+  }
+
   shoot(x, y) {
     if (this.#cooldown.active) return;
     this.#cooldown.reset();
@@ -71,9 +76,7 @@ class Gun {
 
   createProjectile(x, y) {
     const bulletAngle = this.calcBulletPath(x, y);
-    const spread = this.#options?.spread ?? 0;
-    const accuracy = randomNumber(spread, -spread);
-    this.ammoType.create(x, y, bulletAngle + accuracy);
+    this.ammoType.create(x, y, bulletAngle + this.rollAccuracy());
   }
 }
 
