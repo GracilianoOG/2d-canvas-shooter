@@ -1,15 +1,20 @@
-import { ARMY_GREEN } from "../../utils/constants/colors";
-import { Grenade } from "../ammo/Grenade";
-import { Weapon } from "./Weapon";
+import { GrenadeAmmo } from "../ammo/GrenadeAmmo";
+import { Gun } from "./Gun";
 
-class GrenadeLauncher extends Weapon {
-  constructor(player, cooldown = 220) {
-    super(player, cooldown);
-  }
-
-  createProjectile() {
-    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Grenade(playerX, playerY, 6, 938, bulletAngle, ARMY_GREEN, 20);
+class GrenadeLauncher extends Gun {
+  constructor({
+    name = "Launcher",
+    ammoType = new GrenadeAmmo(),
+    options = {},
+  } = {}) {
+    super({
+      name,
+      ammoType,
+      options: {
+        cooldown: 220,
+        ...options,
+      },
+    });
   }
 }
 
