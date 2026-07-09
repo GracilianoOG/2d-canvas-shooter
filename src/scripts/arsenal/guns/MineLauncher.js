@@ -1,15 +1,20 @@
-import { ARMY_GREEN } from "../../utils/constants/colors";
-import { Mine } from "../ammo/Mine";
-import { Weapon } from "./Weapon";
+import { MineAmmo } from "../ammo/MineAmmo";
+import { Gun } from "./Gun";
 
-class MineLauncher extends Weapon {
-  constructor(player, cooldown = 250) {
-    super(player, cooldown);
-  }
-
-  createProjectile() {
-    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Mine(playerX, playerY, 8, 188, bulletAngle, ARMY_GREEN, 30);
+class MineLauncher extends Gun {
+  constructor({
+    name = "Launcher",
+    ammoType = new MineAmmo(),
+    options = {},
+  } = {}) {
+    super({
+      name,
+      ammoType,
+      options: {
+        cooldown: 280,
+        ...options,
+      },
+    });
   }
 }
 
