@@ -1,3 +1,5 @@
+export const TAU = Math.PI * 2;
+
 export const clamp = (min, value, max) => {
   if (value > max) {
     return max;
