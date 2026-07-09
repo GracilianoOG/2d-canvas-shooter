@@ -23,6 +23,7 @@ const weapons = {
   nuke: () => new NukeLauncher(),
   launcher: () => new GrenadeLauncher(),
   bazooka: () => new RocketLauncher(),
+  mine: () => new RocketLauncher(),
 };
 
 const weaponList = Object.entries(weapons);
