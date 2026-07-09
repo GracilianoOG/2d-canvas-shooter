@@ -1,15 +1,16 @@
-import { VERY_LIGHT_YELLOW } from "../../utils/constants/colors";
-import { Nuke } from "../ammo/Nuke";
-import { Weapon } from "./Weapon";
+import { NukeAmmo } from "../ammo/NukeAmmo";
+import { Gun } from "./Gun";
 
-class NukeLauncher extends Weapon {
-  constructor(player, cooldown = 380) {
-    super(player, cooldown);
-  }
-
-  createProjectile() {
-    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    new Nuke(playerX, playerY, 20, 312, bulletAngle, VERY_LIGHT_YELLOW, 60);
+class NukeLauncher extends Gun {
+  constructor({ name = "BFG", ammoType = new NukeAmmo(), options = {} } = {}) {
+    super({
+      name,
+      ammoType,
+      options: {
+        cooldown: 380,
+        ...options,
+      },
+    });
   }
 }
 
