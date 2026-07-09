@@ -14,14 +14,8 @@ class PlayerArsenal {
     this.#player = player;
     this.#equipDefault();
 
-    this.#durationTimer = new Timer(
-      0,
-      { loop: false, autostart: false },
-      () => {
-        eventManager.emit("beforeWeaponChange");
-        this.#equipDefault();
-        eventManager.emit("afterWeaponChange");
-      },
+    this.#durationTimer = new Timer(0, { loop: false, autostart: false }, () =>
+      this.#equipDefault(),
     );
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
@@ -37,11 +31,9 @@ class PlayerArsenal {
   switchWeapon(weapon) {
     const [weaponId, addWeapon] = weapon;
     this.#durationTimer.waitTime = 10_000;
-    eventManager.emit("beforeWeaponChange");
     this.#durationTimer.reset();
     this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
-    eventManager.emit("afterWeaponChange");
   }
 
   #add(id, weapon) {
@@ -51,7 +43,9 @@ class PlayerArsenal {
   }
 
   #equip(id) {
+    eventManager.emit("beforeWeaponChange");
     this.#player.weapon = this.#inventory.get(id);
+    eventManager.emit("afterWeaponChange");
   }
 
   #equipDefault() {
