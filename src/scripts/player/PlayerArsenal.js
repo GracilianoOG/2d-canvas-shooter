@@ -5,7 +5,7 @@ import { Timer } from "../Timer";
 class PlayerArsenal {
   #inventory;
   #duration;
-  #durationTimer;
+  #timer;
   #player;
 
   constructor(player) {
@@ -16,7 +16,7 @@ class PlayerArsenal {
     this.#equipDefault();
 
     this.#duration = 10000;
-    this.#durationTimer = new Timer(
+    this.#timer = new Timer(
       this.#duration,
       { loop: false, autostart: false },
       () => this.#equipDefault(),
@@ -29,12 +29,12 @@ class PlayerArsenal {
   }
 
   get durationTimer() {
-    return this.#durationTimer;
+    return this.#timer;
   }
 
   switchWeapon(weapon) {
     const [weaponId, addWeapon] = weapon;
-    this.#durationTimer.reset();
+    this.#timer.reset();
     this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
   }
@@ -56,7 +56,7 @@ class PlayerArsenal {
   }
 
   #onPlayerDeath() {
-    this.#durationTimer.stop();
+    this.#timer.stop();
     this.#equipDefault();
   }
 }
