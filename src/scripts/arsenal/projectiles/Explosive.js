@@ -1,5 +1,5 @@
 import { TAU } from "@/scripts/utils/math";
-import { Bullet } from "../Bullet";
+import { Bullet } from "./Bullet";
 
 class Explosive extends Bullet {
   #fragments;

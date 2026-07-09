@@ -1,5 +1,5 @@
 import { VIOLET } from "@/scripts/utils/constants/colors";
-import { Flechette } from "./Flechette";
+import { Flechette } from "../projectiles/Flechette";
 import { RICOCHET_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 

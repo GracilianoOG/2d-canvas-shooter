@@ -1,6 +1,6 @@
 import { ARMY_GREEN } from "@/scripts/utils/constants/colors";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
-import { Explosive } from "./Explosive";
+import { Explosive } from "../projectiles/Explosive";
 import { MissileAmmo } from "./MissileAmmo";
 import { CANNON_DMG } from "./damages";
 

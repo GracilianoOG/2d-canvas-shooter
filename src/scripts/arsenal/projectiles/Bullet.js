@@ -1,5 +1,5 @@
-import { Projectile } from "../Projectile.js";
-import { gameState } from "../singletons/GameState.js";
+import { Projectile } from "@/scripts/Projectile";
+import { gameState } from "@/scripts/singletons/GameState";
 
 class Bullet extends Projectile {
   #angle;

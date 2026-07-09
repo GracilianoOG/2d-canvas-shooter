@@ -1,7 +1,7 @@
 import { WHITE } from "@/scripts/utils/constants/colors";
-import { Bullet } from "../Bullet";
 import { BASE_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
+import { Bullet } from "../projectiles/Bullet";
 
 class PistolAmmo extends AmmoType {
   constructor(name = "Common") {

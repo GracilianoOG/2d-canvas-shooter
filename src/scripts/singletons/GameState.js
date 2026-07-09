@@ -1,4 +1,4 @@
-import { Bullet } from "../arsenal/Bullet.js";
+import { Bullet } from "../arsenal/projectiles/Bullet.js";
 import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
 import { Item } from "../items/Item.js";

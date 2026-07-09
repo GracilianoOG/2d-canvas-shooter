@@ -1,6 +1,6 @@
 import { gameState } from "../../singletons/GameState";
 import { GRAY } from "../../utils/constants/colors";
-import { Bullet } from "../Bullet";
+import { Bullet } from "./Bullet";
 
 class Flechette extends Bullet {
   #bounces;
