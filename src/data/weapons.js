@@ -2,6 +2,7 @@ import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
 import { Cannon } from "@/scripts/arsenal/guns/Cannon";
 import { HeavyShotgun } from "@/scripts/arsenal/guns/HeavyShotgun";
 import { Minigun } from "@/scripts/arsenal/guns/Minigun";
+import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
 import { RicochetShotgun } from "@/scripts/arsenal/guns/RicochetShotgun";
 import { Rifle } from "@/scripts/arsenal/guns/Rifle";
 import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
@@ -17,6 +18,7 @@ const weapons = {
   rifle: () => new Rifle(),
   hell: () => new BulletHell(),
   cannon: () => new Cannon(),
+  nuke: () => new NukeLauncher(),
 };
 
 const weaponList = Object.entries(weapons);
