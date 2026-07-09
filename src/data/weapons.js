@@ -1,3 +1,4 @@
+import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
 import { HeavyShotgun } from "@/scripts/arsenal/guns/HeavyShotgun";
 import { Minigun } from "@/scripts/arsenal/guns/Minigun";
 import { RicochetShotgun } from "@/scripts/arsenal/guns/RicochetShotgun";
@@ -13,6 +14,7 @@ const weapons = {
   ricochetShotgun: () => new RicochetShotgun(),
   smg: () => new SubmachineGun(),
   rifle: () => new Rifle(),
+  hell: () => new BulletHell(),
 };
 
 const weaponList = Object.entries(weapons);
