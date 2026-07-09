@@ -2,6 +2,7 @@ import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
 import { Cannon } from "@/scripts/arsenal/guns/Cannon";
 import { GrenadeLauncher } from "@/scripts/arsenal/guns/GrenadeLauncher";
 import { HeavyShotgun } from "@/scripts/arsenal/guns/HeavyShotgun";
+import { MineLauncher } from "@/scripts/arsenal/guns/MineLauncher";
 import { Minigun } from "@/scripts/arsenal/guns/Minigun";
 import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
 import { RicochetShotgun } from "@/scripts/arsenal/guns/RicochetShotgun";
@@ -23,7 +24,7 @@ const weapons = {
   nuke: () => new NukeLauncher(),
   launcher: () => new GrenadeLauncher(),
   bazooka: () => new RocketLauncher(),
-  mine: () => new RocketLauncher(),
+  mine: () => new MineLauncher(),
 };
 
 const weaponList = Object.entries(weapons);
