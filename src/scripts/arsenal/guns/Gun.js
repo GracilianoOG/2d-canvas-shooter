@@ -75,13 +75,9 @@ class Gun {
 
   createProjectile(x, y) {
     const { originX, originY, bulletAngle } = this.calcBulletPath(x, y);
-    const bullets = this.#options?.bullets ?? 1;
     const spread = this.#options?.spread ?? 0;
-
-    for (let i = 0; i < bullets; i++) {
-      const accuracy = randomNumber(spread, -spread);
-      this.ammoType.create(originX, originY, bulletAngle + accuracy);
-    }
+    const accuracy = randomNumber(spread, -spread);
+    this.ammoType.create(originX, originY, bulletAngle + accuracy);
   }
 }
 
