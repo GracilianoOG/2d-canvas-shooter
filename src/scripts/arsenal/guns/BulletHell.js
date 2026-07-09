@@ -1,3 +1,4 @@
+import { TAU } from "@/scripts/utils/math";
 import { PistolAmmo } from "../ammo/PistolAmmo";
 import { Gun } from "./Gun";
 
@@ -20,7 +21,6 @@ class BulletHell extends Gun {
 
   #explode(pellets, createPellets) {
     let rotation = 0;
-    const TAU = Math.PI * 2;
     const angle = TAU / pellets;
 
     while (rotation <= TAU) {

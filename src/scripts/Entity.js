@@ -1,4 +1,5 @@
 import { GRAY } from "./utils/constants/colors";
+import { TAU } from "./utils/math";
 
 class Entity {
   #x;
@@ -92,7 +93,6 @@ class Entity {
   }
 
   drawArc(ctx, color, padding, percent, drawEmpty = false) {
-    const TAU = Math.PI * 2;
     const size = this.dimensions.radius + padding;
 
     if (drawEmpty) {

@@ -1,3 +1,4 @@
+import { TAU } from "@/scripts/utils/math";
 import { Bullet } from "../Bullet";
 import { Missile } from "./Missile";
 
@@ -23,7 +24,6 @@ class Nuke extends Bullet {
     const { fragments, size, speed, damage, color } = this.#options;
 
     let rotation = 0;
-    const TAU = Math.PI * 2;
     const angle = TAU / fragments;
 
     while (rotation <= TAU) {
