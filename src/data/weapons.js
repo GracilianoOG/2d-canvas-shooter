@@ -6,6 +6,7 @@ import { Minigun } from "@/scripts/arsenal/guns/Minigun";
 import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
 import { RicochetShotgun } from "@/scripts/arsenal/guns/RicochetShotgun";
 import { Rifle } from "@/scripts/arsenal/guns/Rifle";
+import { RocketLauncher } from "@/scripts/arsenal/guns/RocketLauncher";
 import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
 import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
 import { randomInt } from "@/scripts/utils/utility";
@@ -21,6 +22,7 @@ const weapons = {
   cannon: () => new Cannon(),
   nuke: () => new NukeLauncher(),
   launcher: () => new GrenadeLauncher(),
+  bazooka: () => new RocketLauncher(),
 };
 
 const weaponList = Object.entries(weapons);
