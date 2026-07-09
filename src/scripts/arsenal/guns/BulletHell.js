@@ -18,15 +18,20 @@ class BulletHell extends Gun {
     });
   }
 
-  createProjectile(x, y) {
+  #explode(pellets, createPellets) {
     let rotation = 0;
     const TAU = Math.PI * 2;
-    const angle = TAU / this.options.bullets;
+    const angle = TAU / pellets;
 
     while (rotation <= TAU) {
-      this.ammoType.create(x, y, rotation);
+      createPellets(rotation);
       rotation += angle;
     }
+  }
+
+  createProjectile(x, y) {
+    const pellets = this.options.bullets;
+    this.#explode(pellets, (rotation) => this.ammoType.create(x, y, rotation));
   }
 }
 
