@@ -18,6 +18,12 @@ class Shotgun extends Gun {
       },
     });
   }
+
+  createProjectile(x, y) {
+    for (let i = 0; i < this.options.bullets; i++) {
+      super.createProjectile(x, y);
+    }
+  }
 }
 
 export { Shotgun };
