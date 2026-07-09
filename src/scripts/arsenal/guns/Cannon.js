@@ -1,16 +1,20 @@
-import { Bullet } from "../Bullet";
-import { Weapon } from "./Weapon";
+import { CannonAmmo } from "../ammo/CannonAmmo";
+import { Gun } from "./Gun";
 
-class Cannon extends Weapon {
-  constructor(player, cooldown = 250) {
-    super(player, cooldown);
-  }
-
-  createProjectile() {
-    const { playerX, playerY, bulletAngle } = this._calcBulletPath();
-    const color = this.player.color;
-
-    new Bullet(playerX, playerY, 20, 312, bulletAngle, color, 40);
+class Cannon extends Gun {
+  constructor({
+    name = "Cannon",
+    ammoType = new CannonAmmo(),
+    options = {},
+  } = {}) {
+    super({
+      name,
+      ammoType,
+      options: {
+        cooldown: 250,
+        ...options,
+      },
+    });
   }
 }
 
