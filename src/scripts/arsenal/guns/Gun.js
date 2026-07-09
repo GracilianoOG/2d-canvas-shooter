@@ -36,6 +36,10 @@ class Gun {
     this.#ammoType = ammoType;
   }
 
+  get options() {
+    return this.#options;
+  }
+
   calcBulletPath(originX, originY) {
     const { x: mouseX, y: mouseY } = inputManager.mousePosition;
 
