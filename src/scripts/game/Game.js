@@ -1,18 +1,18 @@
-import { Player } from "../player/Player.js";
-import { Canvas } from "../Canvas.js";
-import { gameState } from "../singletons/GameState.js";
-import { EnemyCreator } from "../enemy/EnemyCreator.js";
-import { GameAudio } from "../audio/GameAudio.js";
-import { Scoreboard } from "../score/Scoreboard.js";
-import * as Screens from "../utils/screens.js";
-import { Timer } from "../Timer.js";
-import { Entity } from "../Entity.js";
-import { FuryMeter } from "../FuryMeter.js";
-import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors.js";
-import * as States from "../utils/constants/gameStates.js";
-import { eventManager } from "../singletons/EventManager.js";
-import { LivesDisplay } from "../LivesDisplay.js";
-import { GameLoop } from "./GameLoop.js";
+import { Player } from "../player/Player";
+import { Canvas } from "../Canvas";
+import { gameState } from "../singletons/GameState";
+import { EnemyCreator } from "../enemy/EnemyCreator";
+import { GameAudio } from "../audio/GameAudio";
+import { Scoreboard } from "../score/Scoreboard";
+import * as Screens from "../utils/screens";
+import { Timer } from "../Timer";
+import { Entity } from "../Entity";
+import { FuryMeter } from "../FuryMeter";
+import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
+import * as States from "../utils/constants/gameStates";
+import { eventManager } from "../singletons/EventManager";
+import { LivesDisplay } from "../LivesDisplay";
+import { GameLoop } from "./GameLoop";
 
 class Game {
   constructor(configs) {
