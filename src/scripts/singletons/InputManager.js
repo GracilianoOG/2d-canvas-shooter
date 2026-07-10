@@ -1,4 +1,3 @@
-import { LMB } from "../utils/constants/keys.js";
 import { gameState } from "./GameState.js";
 
 class InputManager {
@@ -24,6 +23,7 @@ class InputManager {
       moveUp: ["KeyW", "ArrowUp"],
       moveDown: ["KeyS", "ArrowDown"],
       fury: ["ControlRight", "Space"],
+      shoot: ["0"],
     };
     this.#initListeners();
   }
@@ -89,12 +89,9 @@ class InputManager {
     return keys.some((key) => this.#keys[key]);
   }
 
-  isMousePressed(button) {
-    return this.#mouse.buttons[button];
-  }
-
-  isLeftMousePressed() {
-    return this.isMousePressed(LMB);
+  isMousePressed(bind) {
+    const keys = this.#bindings[bind];
+    return keys.some((key) => this.#mouse.buttons[key]);
   }
 }
 
