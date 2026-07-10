@@ -32,8 +32,9 @@ class AudioSystem {
   }
 
   play(name) {
-    const audio = this.#audios.get(name);
-    audio.cloneNode().play();
+    const source = this.#context.createBufferSource();
+    const audioBuffer = this.#audios.get(name);
+    source.buffer = audioBuffer;
   }
 }
 
