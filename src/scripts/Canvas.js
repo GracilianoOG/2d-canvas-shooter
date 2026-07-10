@@ -12,7 +12,7 @@ class Canvas {
     if (parent) parent.appendChild(this.#canvas);
   }
 
-  static resizeCanvas(realCanvas, bufferCanvas) {
+  static resize(realCanvas, bufferCanvas) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     const canvasRatio = bufferCanvas.height / bufferCanvas.width;
