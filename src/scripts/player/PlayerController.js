@@ -8,6 +8,12 @@ class PlayerController {
 
   constructor(player) {
     this.#player = player;
+    inputManager.bind("moveLeft", ["KeyA", "ArrowLeft"]);
+    inputManager.bind("moveRight", ["KeyD", "ArrowRight"]);
+    inputManager.bind("moveUp", ["KeyW", "ArrowUp"]);
+    inputManager.bind("moveDown", ["KeyS", "ArrowDown"]);
+    inputManager.bind("fury", ["ControlRight", "Space"]);
+    inputManager.bind("shoot", ["Mouse0"]);
   }
 
   #detectShooting() {
