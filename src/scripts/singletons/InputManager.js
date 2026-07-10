@@ -19,7 +19,7 @@ class InputManager {
       moveUp: ["KeyW", "ArrowUp"],
       moveDown: ["KeyS", "ArrowDown"],
       fury: ["ControlRight", "Space"],
-      shoot: ["0"],
+      shoot: ["Mouse0"],
     };
     this.#initListeners();
   }
@@ -60,11 +60,11 @@ class InputManager {
   }
 
   #onMouseDown({ button }) {
-    this.#actions[button] = true;
+    this.#actions[`Mouse${button}`] = true;
   }
 
   #onMouseUp({ button }) {
-    this.#actions[button] = false;
+    this.#actions[`Mouse${button}`] = false;
   }
 
   #onMouseMove({ clientX, clientY }) {
