@@ -17,10 +17,10 @@ class AudioSystem {
   constructor() {
     this.#audios = new Map();
     this.#context = new AudioContext();
-    this.load("hit", new Audio(hitOgg));
-    this.load("explosion", new Audio(explosionOgg));
-    this.load("shot", new Audio(laserOgg));
-    this.load("battle", new Audio(battleOgg));
+    this.load("hit", hitOgg);
+    this.load("explosion", explosionOgg);
+    this.load("shot", laserOgg);
+    this.load("battle", battleOgg);
   }
 
   async load(name, audio) {
