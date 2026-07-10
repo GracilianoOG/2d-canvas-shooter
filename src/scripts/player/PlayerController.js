@@ -11,7 +11,7 @@ class PlayerController {
   }
 
   #detectShooting() {
-    if (this.#player.isDead || !inputManager.isMousePressed("shoot")) {
+    if (this.#player.isDead || !inputManager.isActionPressed("shoot")) {
       return;
     }
     this.#player.weapon.shoot(this.#player.x, this.#player.y);
@@ -22,22 +22,22 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (inputManager.isKeyPressed("moveLeft")) {
+    if (inputManager.isActionPressed("moveLeft")) {
       this.#move(-1, "x");
     }
-    if (inputManager.isKeyPressed("moveRight")) {
+    if (inputManager.isActionPressed("moveRight")) {
       this.#move(1, "x");
     }
-    if (inputManager.isKeyPressed("moveUp")) {
+    if (inputManager.isActionPressed("moveUp")) {
       this.#move(-1, "y");
     }
-    if (inputManager.isKeyPressed("moveDown")) {
+    if (inputManager.isActionPressed("moveDown")) {
       this.#move(1, "y");
     }
   }
 
   #detectFury() {
-    if (inputManager.isKeyPressed("fury")) {
+    if (inputManager.isActionPressed("fury")) {
       eventManager.emit("shouldActivateFury");
     }
   }
