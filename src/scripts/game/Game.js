@@ -121,7 +121,7 @@ class Game {
 
     // General & Animation
     this.#resizeCanvas();
-    this.audioManager.play("battle");
+    this.audioManager.playMusic("battle");
 
     document.addEventListener("keydown", (e) => {
       if (e.code === "KeyP") this.pause();
