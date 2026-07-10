@@ -2,6 +2,7 @@ import { gameState } from "./GameState.js";
 
 class InputManager {
   #keys;
+  #actions;
   #mouse;
   #bindings;
 
@@ -12,11 +13,8 @@ class InputManager {
     InputManager.instance = this;
 
     this.#keys = {};
-    this.#mouse = {
-      x: 0,
-      y: 0,
-      buttons: {},
-    };
+    this.#actions = {};
+    this.#mouse = { x: 0, y: 0 };
     this.#bindings = {
       moveLeft: ["KeyA", "ArrowLeft"],
       moveRight: ["KeyD", "ArrowRight"],
@@ -56,19 +54,19 @@ class InputManager {
   }
 
   #onKeyDown({ code }) {
-    this.#keys[code] = true;
+    this.#actions[code] = true;
   }
 
   #onKeyUp({ code }) {
-    this.#keys[code] = false;
+    this.#actions[code] = false;
   }
 
   #onMouseDown({ button }) {
-    this.#mouse.buttons[button] = true;
+    this.#actions[button] = true;
   }
 
   #onMouseUp({ button }) {
-    this.#mouse.buttons[button] = false;
+    this.#actions[button] = false;
   }
 
   #onMouseMove({ clientX, clientY }) {
@@ -77,11 +75,17 @@ class InputManager {
   }
 
   #onMouseLeave() {
-    const mouseKeys = Object.keys(this.#mouse.buttons);
+    // const mouseKeys = Object.keys(this.#mouse.buttons);
 
-    mouseKeys.forEach((key) => {
-      this.#mouse.buttons[key] = false;
-    });
+    // mouseKeys.forEach((key) => {
+    //   this.#mouse.buttons[key] = false;
+    // });
+    console.log("Leave");
+  }
+
+  isActionPressed(bind) {
+    const actions = this.#bindings[bind];
+    return actions.some((action) => this.#actions[action]);
   }
 
   isKeyPressed(bind) {
