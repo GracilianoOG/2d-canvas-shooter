@@ -12,9 +12,11 @@ import battleMp3 from "/assets/audios/music/battle-loop.mp3";
 
 class AudioSystem {
   #audios;
+  #context;
 
   constructor() {
     this.#audios = new Map();
+    this.#context = new AudioContext();
     this.load("hit", new Audio(hitOgg));
     this.load("explosion", new Audio(explosionOgg));
     this.load("shot", new Audio(laserOgg));
