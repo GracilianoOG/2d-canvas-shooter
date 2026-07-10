@@ -37,11 +37,13 @@ class InputManager {
   #initListeners() {
     const container = document.querySelector("#game-container");
 
-    document.addEventListener("keydown", this.#onKeyDown.bind(this));
-    document.addEventListener("keyup", this.#onKeyUp.bind(this));
+    document.addEventListener("keydown", (e) => this.#onKey(e.code));
+    document.addEventListener("keyup", (e) => this.#onKey(e.code, false));
 
-    container.addEventListener("mousedown", this.#onMouseDown.bind(this));
-    container.addEventListener("mouseup", this.#onMouseUp.bind(this));
+    container.addEventListener("mousedown", (e) => this.#onMouse(e.button));
+    container.addEventListener("mouseup", (e) =>
+      this.#onMouse(e.button, false),
+    );
 
     container.addEventListener("mouseenter", this.#onMouseMove.bind(this), {
       once: true,
@@ -51,20 +53,12 @@ class InputManager {
     container.addEventListener("mouseleave", this.#onMouseLeave.bind(this));
   }
 
-  #onKeyDown({ code }) {
-    this.#actions[code] = true;
+  #onKey(code, pressed = true) {
+    this.#actions[code] = pressed;
   }
 
-  #onKeyUp({ code }) {
-    this.#actions[code] = false;
-  }
-
-  #onMouseDown({ button }) {
-    this.#actions[`Mouse${button}`] = true;
-  }
-
-  #onMouseUp({ button }) {
-    this.#actions[`Mouse${button}`] = false;
+  #onMouse(button, pressed = true) {
+    this.#actions[`Mouse${button}`] = pressed;
   }
 
   #onMouseMove({ clientX, clientY }) {
