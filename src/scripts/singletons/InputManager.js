@@ -13,14 +13,7 @@ class InputManager {
 
     this.#actions = {};
     this.#mouse = { x: 0, y: 0 };
-    this.#bindings = {
-      moveLeft: ["KeyA", "ArrowLeft"],
-      moveRight: ["KeyD", "ArrowRight"],
-      moveUp: ["KeyW", "ArrowUp"],
-      moveDown: ["KeyS", "ArrowDown"],
-      fury: ["ControlRight", "Space"],
-      shoot: ["Mouse0"],
-    };
+    this.#bindings = {};
     this.#initListeners();
   }
 
