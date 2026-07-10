@@ -15,10 +15,10 @@ import { LivesDisplay } from "../LivesDisplay";
 import { GameLoop } from "./GameLoop";
 
 class Game {
-  constructor(configs) {
+  constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new GameAudio();
-    this.mainCanvas = new Canvas(configs.width, configs.height);
+    this.mainCanvas = new Canvas(width, height);
 
     this.gameLoop = new GameLoop(
       this.update.bind(this),
