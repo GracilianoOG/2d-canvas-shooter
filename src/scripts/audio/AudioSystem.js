@@ -15,10 +15,14 @@ class AudioSystem {
 
   constructor() {
     this.#audios = new Map();
-    this.#audios.set("hit", new Audio(hitOgg));
-    this.#audios.set("explosion", new Audio(explosionOgg));
-    this.#audios.set("shot", new Audio(laserOgg));
-    this.#audios.set("battle", new Audio(battleOgg));
+    this.load("hit", new Audio(hitOgg));
+    this.load("explosion", new Audio(explosionOgg));
+    this.load("shot", new Audio(laserOgg));
+    this.load("battle", new Audio(battleOgg));
+  }
+
+  load(name, audio) {
+    this.#audios.set(name, audio);
   }
 
   play(name) {
