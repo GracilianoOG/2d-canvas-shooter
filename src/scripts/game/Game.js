@@ -27,7 +27,6 @@ class Game {
     );
 
     const { width: mWidth, height: mHeight } = this.mainCanvas;
-    this.trailsCanvas = new Canvas(mWidth, mHeight);
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
 
     this.#listenToWindowChange();
@@ -84,15 +83,9 @@ class Game {
   }
 
   render() {
-    const { width: tWidth, height: tHeight } = this.trailsCanvas;
     const { width: rWidth, height: rHeight } = this.realCanvas;
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const mCanvas = this.mainCanvas.canvas;
-
-    // Create trail effect
-    this.trailsCanvas.context.drawImage(mCanvas, 0, 0);
-    this.trailsCanvas.context.fillStyle = TRANSPARENT_BLACK;
-    this.trailsCanvas.context.fillRect(0, 0, tWidth, tHeight);
 
     // Clear real canvas
     this.realCanvas.context.clearRect(0, 0, rWidth, rHeight);
@@ -100,11 +93,9 @@ class Game {
     // Draw buffer canvas on real canvas (all game objects)
     this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
 
-    // Clear buffer canvas so it won't draw a messed up image next frame
-    this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
-
-    // Draw background
-    this.mainCanvas.context.drawImage(this.trailsCanvas.canvas, 0, 0);
+    // Create trail effect
+    this.mainCanvas.context.fillStyle = TRANSPARENT_BLACK;
+    this.mainCanvas.context.fillRect(0, 0, mWidth, mHeight);
   }
 
   init() {
