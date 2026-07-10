@@ -23,8 +23,12 @@ class AudioSystem {
     this.load("battle", new Audio(battleOgg));
   }
 
-  load(name, audio) {
-    this.#audios.set(name, audio);
+  async load(name, audio) {
+    const response = await fetch(audio);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await this.#context.decodeAudioData(arrayBuffer);
+
+    this.#audios.set(name, audioBuffer);
   }
 
   play(name) {
