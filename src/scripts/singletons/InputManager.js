@@ -82,6 +82,10 @@ class InputManager {
       console.error(`${bind} is not a valid bind!`);
     }
   }
+
+  bind(action, keys) {
+    this.#bindings[action] = keys;
+  }
 }
 
 export const inputManager = new InputManager();
