@@ -4,6 +4,7 @@ import { gameState } from "./GameState.js";
 class InputManager {
   #keys;
   #mouse;
+  #bindings;
 
   constructor() {
     if (InputManager.instance) {
@@ -16,6 +17,13 @@ class InputManager {
       x: 0,
       y: 0,
       buttons: {},
+    };
+    this.#bindings = {
+      moveLeft: ["KeyA", "ArrowLeft"],
+      moveRight: ["KeyD", "ArrowRight"],
+      moveUp: ["KeyW", "ArrowUp"],
+      moveDown: ["KeyS", "ArrowDown"],
+      fury: ["ControlRight", "Space"],
     };
     this.#initListeners();
   }
@@ -71,16 +79,14 @@ class InputManager {
   #onMouseLeave() {
     const mouseKeys = Object.keys(this.#mouse.buttons);
 
-    mouseKeys.forEach(key => {
+    mouseKeys.forEach((key) => {
       this.#mouse.buttons[key] = false;
     });
   }
 
-  isKeyPressed(key) {
-    if (key instanceof Array) {
-      return key.some(k => this.#keys[k]);
-    }
-    return this.#keys[key];
+  isKeyPressed(bind) {
+    const keys = this.#bindings[bind];
+    return keys.some((key) => this.#keys[key]);
   }
 
   isMousePressed(button) {
