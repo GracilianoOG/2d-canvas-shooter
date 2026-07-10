@@ -47,11 +47,16 @@ class AudioSystem {
     this.#audios.set(name, audioBuffer);
   }
 
-  play(name) {
+  #prepareSourceBuffer(name, gain) {
     const source = this.#context.createBufferSource();
     const audioBuffer = this.#audios.get(name);
     source.buffer = audioBuffer;
-    source.connect(this.#sfx);
+    source.connect(gain);
+    return source;
+  }
+
+  play(name) {
+    const source = this.#prepareSourceBuffer(name, this.#sfx);
     source.start();
   }
 }
