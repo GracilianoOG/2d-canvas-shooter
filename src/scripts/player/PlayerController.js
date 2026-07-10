@@ -22,22 +22,22 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (inputManager.isKeyPressed([Keys.A, Keys.LEFT])) {
+    if (inputManager.isKeyPressed("moveLeft")) {
       this.#move(-1, "x");
     }
-    if (inputManager.isKeyPressed([Keys.D, Keys.RIGHT])) {
+    if (inputManager.isKeyPressed("moveRight")) {
       this.#move(1, "x");
     }
-    if (inputManager.isKeyPressed([Keys.W, Keys.UP])) {
+    if (inputManager.isKeyPressed("moveUp")) {
       this.#move(-1, "y");
     }
-    if (inputManager.isKeyPressed([Keys.S, Keys.DOWN])) {
+    if (inputManager.isKeyPressed("moveDown")) {
       this.#move(1, "y");
     }
   }
 
   #detectFury() {
-    if (inputManager.isKeyPressed([Keys.SPACE, Keys.CTRL_RIGHT])) {
+    if (inputManager.isKeyPressed("fury")) {
       eventManager.emit("shouldActivateFury");
     }
   }
