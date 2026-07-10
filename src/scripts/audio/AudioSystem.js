@@ -23,9 +23,7 @@ class AudioSystem {
 
   play(name) {
     const audio = this.#audios.get(name);
-
-    audio.currentTime = 0;
-    audio.play();
+    audio.cloneNode().play();
   }
 }
 
