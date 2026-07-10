@@ -1,7 +1,6 @@
 import { gameState } from "./GameState.js";
 
 class InputManager {
-  #keys;
   #actions;
   #mouse;
   #bindings;
@@ -12,7 +11,6 @@ class InputManager {
     }
     InputManager.instance = this;
 
-    this.#keys = {};
     this.#actions = {};
     this.#mouse = { x: 0, y: 0 };
     this.#bindings = {
@@ -86,16 +84,6 @@ class InputManager {
   isActionPressed(bind) {
     const actions = this.#bindings[bind];
     return actions.some((action) => this.#actions[action]);
-  }
-
-  isKeyPressed(bind) {
-    const keys = this.#bindings[bind];
-    return keys.some((key) => this.#keys[key]);
-  }
-
-  isMousePressed(bind) {
-    const keys = this.#bindings[bind];
-    return keys.some((key) => this.#mouse.buttons[key]);
   }
 }
 
