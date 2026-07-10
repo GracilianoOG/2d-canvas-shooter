@@ -23,7 +23,7 @@ class Game {
     this.gameLoop = new GameLoop(
       this.update.bind(this),
       this.render.bind(this),
-      { FPS: configs.FPS ?? 60, ctx: this.mainCanvas.context }
+      { ctx: this.mainCanvas.context },
     );
 
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -69,7 +69,7 @@ class Game {
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
-      i => (i.style.animationPlayState = this.state.toLowerCase())
+      (i) => (i.style.animationPlayState = this.state.toLowerCase()),
     );
 
     Screens.pause.classList.toggle("hide");
@@ -134,7 +134,7 @@ class Game {
     Canvas.resizeCanvas(this.realCanvas, this.mainCanvas);
     this.audioManager.playMusic("battle");
 
-    document.addEventListener("keydown", e => {
+    document.addEventListener("keydown", (e) => {
       if (e.code === "KeyP") this.pause();
     });
 
@@ -168,7 +168,7 @@ class Game {
 
   #listenToResize() {
     window.addEventListener("resize", () =>
-      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas)
+      Canvas.resizeCanvas(this.realCanvas, this.mainCanvas),
     );
   }
 }
