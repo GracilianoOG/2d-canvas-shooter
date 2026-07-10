@@ -75,8 +75,12 @@ class InputManager {
   }
 
   isActionPressed(bind) {
-    const actions = this.#bindings[bind];
-    return actions.some((action) => this.#actions[action]);
+    try {
+      const actions = this.#bindings[bind];
+      return actions.some((action) => this.#actions[action]);
+    } catch (error) {
+      console.error(`${bind} is not a valid bind!`);
+    }
   }
 }
 
