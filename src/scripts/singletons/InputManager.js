@@ -73,12 +73,10 @@ class InputManager {
   }
 
   #onMouseLeave() {
-    const mouseActions = Object.keys(this.#actions).filter((action) =>
-      action.includes("Mouse"),
-    );
-
-    mouseActions.forEach((action) => {
-      this.#actions[action] = false;
+    Object.keys(this.#actions).forEach((action) => {
+      if (action.includes("Mouse")) {
+        this.#actions[action] = false;
+      }
     });
   }
 
