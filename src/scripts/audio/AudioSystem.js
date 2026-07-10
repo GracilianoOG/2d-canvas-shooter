@@ -59,6 +59,12 @@ class AudioSystem {
     const source = this.#prepareSourceBuffer(name, this.#sfx);
     source.start();
   }
+
+  playMusic(name) {
+    const source = this.#prepareSourceBuffer(name, this.#music);
+    source.loop = true;
+    source.start();
+  }
 }
 
 export { AudioSystem };
