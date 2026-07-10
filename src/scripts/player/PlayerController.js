@@ -11,7 +11,7 @@ class PlayerController {
   }
 
   #detectShooting() {
-    if (this.#player.isDead || !inputManager.isLeftMousePressed()) {
+    if (this.#player.isDead || !inputManager.isMousePressed("shoot")) {
       return;
     }
     this.#player.weapon.shoot(this.#player.x, this.#player.y);
