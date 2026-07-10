@@ -36,6 +36,7 @@ class AudioSystem {
     const audioBuffer = this.#audios.get(name);
     source.buffer = audioBuffer;
     source.connect(this.#context.destination);
+    source.start();
   }
 }
 
