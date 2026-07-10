@@ -9,4 +9,4 @@ export const A = "KeyA";
 export const P = "KeyP";
 export const SPACE = "Space";
 export const CTRL_RIGHT = "ControlRight";
-export const LMB = "0";
+export const LMB = "Mouse0";
