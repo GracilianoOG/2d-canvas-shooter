@@ -71,7 +71,7 @@ class Gun {
     if (this.#cooldown.active) return;
     this.#cooldown.reset();
     this.createProjectile(x, y);
-    gameState.getEntity("gameAudio").playSound("shot");
+    gameState.getEntity("gameAudio").play("shot");
   }
 
   createProjectile(x, y) {

@@ -33,24 +33,24 @@ class GameState {
 
   #onPlayerHit({ lives }) {
     if (lives) {
-      this.getEntity("gameAudio").playSound("hit");
+      this.getEntity("gameAudio").play("hit");
       this.getEntity("game").shakeScreen(3.5, 300);
     }
   }
 
   #onEnemyDeath({ score, color }) {
-    this.getEntity("gameAudio").playSound("explosion");
+    this.getEntity("gameAudio").play("explosion");
     this.getEntity("game").shakeScreen(5, 300);
     this.#countScore(score, color);
   }
 
   #onEnemyHit({ score, color }) {
-    this.getEntity("gameAudio").playSound("hit");
+    this.getEntity("gameAudio").play("hit");
     this.#countScore(score, color);
   }
 
   #onPlayerDeath() {
-    this.getEntity("gameAudio").playSound("explosion");
+    this.getEntity("gameAudio").play("explosion");
     this.getEntity("game").shakeScreen(6, 500);
     this.#prepareRestart(2400);
   }
