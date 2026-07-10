@@ -59,9 +59,7 @@ class Game {
   pause() {
     if (this.state === States.GAMEOVER || this.state === States.NOT_RUNNING) {
       return;
-    }
-
-    if (this.state === States.RUNNING) {
+    } else if (this.state === States.RUNNING) {
       this.stopLoop(States.PAUSED);
     } else {
       this.startLoop();
