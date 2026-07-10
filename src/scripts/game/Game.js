@@ -131,7 +131,7 @@ class Game {
     });
 
     // General & Animation
-    Canvas.resize(this.realCanvas, this.mainCanvas);
+    this.#resizeCanvas();
     this.audioManager.playMusic("battle");
 
     document.addEventListener("keydown", (e) => {
@@ -167,9 +167,11 @@ class Game {
   }
 
   #listenToResize() {
-    window.addEventListener("resize", () =>
-      Canvas.resize(this.realCanvas, this.mainCanvas),
-    );
+    window.addEventListener("resize", this.#resizeCanvas.bind(this));
+  }
+
+  #resizeCanvas() {
+    Canvas.resize(this.realCanvas, this.mainCanvas);
   }
 }
 
