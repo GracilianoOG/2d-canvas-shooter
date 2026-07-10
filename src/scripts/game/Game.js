@@ -2,7 +2,6 @@ import { Player } from "../player/Player";
 import { Canvas } from "../Canvas";
 import { gameState } from "../singletons/GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
-import { GameAudio } from "../audio/GameAudio";
 import { Scoreboard } from "../score/Scoreboard";
 import * as Screens from "../utils/screens";
 import { Timer } from "../Timer";
@@ -13,11 +12,12 @@ import * as States from "../utils/constants/gameStates";
 import { eventManager } from "../singletons/EventManager";
 import { LivesDisplay } from "../LivesDisplay";
 import { GameLoop } from "./GameLoop";
+import { AudioSystem } from "../audio/AudioSystem";
 
 class Game {
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
-    this.audioManager = new GameAudio();
+    this.audioManager = new AudioSystem();
     this.mainCanvas = new Canvas(width, height);
 
     this.gameLoop = new GameLoop(
@@ -121,7 +121,7 @@ class Game {
 
     // General & Animation
     this.#resizeCanvas();
-    this.audioManager.playMusic("battle");
+    this.audioManager.play("battle");
 
     document.addEventListener("keydown", (e) => {
       if (e.code === "KeyP") this.pause();
