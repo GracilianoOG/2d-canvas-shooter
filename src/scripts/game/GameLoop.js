@@ -17,7 +17,7 @@ class GameLoop {
     this.#state = States.NOT_RUNNING;
     this.#shaker = new Shaker(configs.ctx);
 
-    this.#TARGET_FPS = 1000 / configs.FPS;
+    this.#TARGET_FPS = 1000 / (configs?.FPS ?? 60);
   }
 
   get shaker() {
@@ -32,7 +32,7 @@ class GameLoop {
     this.#state = state;
   }
 
-  animate = currentTime => {
+  animate = (currentTime) => {
     const deltaTime = currentTime - this.#lastTime;
 
     if (deltaTime >= this.#TARGET_FPS) {
