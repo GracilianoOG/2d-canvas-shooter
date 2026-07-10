@@ -73,12 +73,13 @@ class InputManager {
   }
 
   #onMouseLeave() {
-    // const mouseKeys = Object.keys(this.#mouse.buttons);
+    const mouseActions = Object.keys(this.#actions).filter((action) =>
+      action.includes("Mouse"),
+    );
 
-    // mouseKeys.forEach((key) => {
-    //   this.#mouse.buttons[key] = false;
-    // });
-    console.log("Leave");
+    mouseActions.forEach((action) => {
+      this.#actions[action] = false;
+    });
   }
 
   isActionPressed(bind) {
