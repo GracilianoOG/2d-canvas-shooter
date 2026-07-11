@@ -4,13 +4,23 @@ import { CSS_CLASSES } from "@/scripts/utils/constants";
 import * as Screens from "@/scripts/utils/screens";
 import "@/styles/main.scss";
 
-const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-const pauseBtn = document.querySelector(".pause-btn");
-const restartBtn = document.querySelector(".gameover-screen__btn");
-highscoreBoard.textContent = StorageHandler.retrieveHighscore();
-
 const game = new Game({ width: 800, height: 600 });
-await game.init();
+
+const main = async () => {
+  const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+  highscoreBoard.textContent = StorageHandler.retrieveHighscore();
+
+  const pauseBtn = document.querySelector(".pause-btn");
+  const restartBtn = document.querySelector(".gameover-screen__btn");
+
+  Screens.start.addEventListener("click", startGame, { once: true });
+  Screens.pause.addEventListener("click", pauseGame);
+
+  restartBtn.addEventListener("click", restartGame);
+  pauseBtn.addEventListener("click", pauseGame);
+
+  await game.init();
+};
 
 const startGame = (e) => {
   e.stopPropagation();
@@ -30,8 +40,4 @@ const restartGame = (e) => {
   game.restart();
 };
 
-Screens.start.addEventListener("click", startGame, { once: true });
-Screens.pause.addEventListener("click", pauseGame);
-
-restartBtn.addEventListener("click", restartGame);
-pauseBtn.addEventListener("click", pauseGame);
+main();
