@@ -11,7 +11,7 @@ class Item extends Entity {
     this.#despawnTimer = new Timer(
       despawnTime,
       { loop: false, autodestruct: true },
-      () => this.destroy()
+      () => this.destroy(),
     );
   }
 
@@ -30,8 +30,9 @@ class Item extends Entity {
 
   #drawLabel(ctx) {
     ctx.textAlign = "center";
-    ctx.font = "8px 'Press Start 2P'";
-    ctx.fillText(this.#label.toLowerCase(), this.x, this.y - 20);
+    ctx.font = "10px 'Press Start 2P'";
+    ctx.fillStyle = "#fff";
+    ctx.fillText(this.#label.toUpperCase(), this.x, this.y - 16);
   }
 
   #drawDespawnDelay(ctx) {
