@@ -4,7 +4,7 @@ import { YELLOW } from "../utils/constants/colors";
 import { Item } from "./Item";
 
 class WeaponBox extends Item {
-  constructor(x, y, radius = 10, color = YELLOW, label = "weapon") {
+  constructor(x, y, radius = 10, color = YELLOW, label = "gun") {
     super(x, y, radius, color, label);
   }
 
