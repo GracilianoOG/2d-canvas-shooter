@@ -4,12 +4,10 @@ import { Bullet } from "./Bullet";
 
 class Flechette extends Bullet {
   #bounces;
-  #maxBounces;
 
-  constructor(x, y, radius, speed, angle, color, damage = 10, maxBounces = 10) {
+  constructor(x, y, radius, speed, angle, color, damage = 10, bounces = 10) {
     super(x, y, radius, speed, angle, color, damage);
-    this.#maxBounces = maxBounces;
-    this.#bounces = 0;
+    this.#bounces = bounces;
   }
 
   hasTouchedBorder(canvas = gameState.getEntity("mainCanvas")) {
@@ -34,13 +32,13 @@ class Flechette extends Bullet {
       return;
     }
 
-    this.#bounces++;
+    this.#bounces--;
   }
 
   update(delta) {
     super.update(delta);
 
-    if (this.#bounces >= this.#maxBounces) {
+    if (!this.#bounces) {
       this.color = GRAY;
       return;
     }
