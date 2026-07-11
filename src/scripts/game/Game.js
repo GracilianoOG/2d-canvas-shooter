@@ -98,7 +98,7 @@ class Game {
     this.mainCanvas.context.fillRect(0, 0, mWidth, mHeight);
   }
 
-  init() {
+  async init() {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
@@ -107,6 +107,8 @@ class Game {
     const furyMeter = new FuryMeter(hud);
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
+
+    await this.audioManager.init();
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
