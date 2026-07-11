@@ -1,14 +1,4 @@
-import hitOgg from "/assets/audios/sounds/hitHurt.ogg";
-import hitMp3 from "/assets/audios/sounds/hitHurt.mp3";
-
-import explosionOgg from "/assets/audios/sounds/explosion.ogg";
-import explosionMp3 from "/assets/audios/sounds/explosion.mp3";
-
-import laserOgg from "/assets/audios/sounds/laserShoot.ogg";
-import laserMp3 from "/assets/audios/sounds/laserShoot.mp3";
-
-import battleOgg from "/assets/audios/music/battle-loop.ogg";
-import battleMp3 from "/assets/audios/music/battle-loop.mp3";
+import audios from "@/data/audios";
 
 class AudioSystem {
   #audios;
@@ -35,10 +25,10 @@ class AudioSystem {
   }
 
   async init() {
-    await this.load("hit", hitOgg);
-    await this.load("explosion", explosionOgg);
-    await this.load("shot", laserOgg);
-    await this.load("battle", battleOgg);
+    await this.load("hit", audios.hit[0]);
+    await this.load("explosion", audios.explosion[0]);
+    await this.load("shot", audios.shot[0]);
+    await this.load("battle", audios.battle[0]);
   }
 
   async load(name, audio) {
