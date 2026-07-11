@@ -5,7 +5,7 @@ class Item extends Entity {
   #despawnTimer;
   #label;
 
-  constructor(x, y, radius, color, label = "item", despawnTime = 10_000) {
+  constructor(x, y, radius, color, label, despawnTime = 10_000) {
     super(x, y, radius, color);
     this.#label = label;
     this.#despawnTimer = new Timer(
