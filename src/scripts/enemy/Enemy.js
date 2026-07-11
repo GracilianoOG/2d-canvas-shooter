@@ -101,7 +101,7 @@ class Enemy extends Projectile {
 
   update(delta) {
     this.#move(delta);
-    this.#increaseSpeed(6.25);
+    this.#increaseSpeed(delta * 390);
     this.#returnOriginalColor();
   }
 }
