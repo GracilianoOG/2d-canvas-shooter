@@ -11,7 +11,7 @@ class Minigun extends Gun {
       name,
       ammoType,
       options: {
-        cooldown: 90,
+        cooldown: 100,
         spread: 0.1,
         ...options,
       },
