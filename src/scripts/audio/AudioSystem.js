@@ -32,11 +32,13 @@ class AudioSystem {
     this.#master.gain.value = 1;
     this.#sfx.gain.value = 0.5;
     this.#music.gain.value = 0.8;
+  }
 
-    this.load("hit", hitOgg);
-    this.load("explosion", explosionOgg);
-    this.load("shot", laserOgg);
-    this.load("battle", battleOgg);
+  async init() {
+    await this.load("hit", hitOgg);
+    await this.load("explosion", explosionOgg);
+    await this.load("shot", laserOgg);
+    await this.load("battle", battleOgg);
   }
 
   async load(name, audio) {
