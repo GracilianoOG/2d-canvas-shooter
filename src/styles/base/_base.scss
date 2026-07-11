@@ -17,6 +17,8 @@ main {
 
 body,
 button {
-  cursor: url("../assets/images/crosshair.png") 16 16, auto;
+  cursor:
+    url("/assets/images/crosshair.png") 16 16,
+    auto;
   font-family: var(--font-primary);
 }
