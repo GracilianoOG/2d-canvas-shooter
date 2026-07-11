@@ -20,3 +20,6 @@ export const VERY_LIGHT_YELLOW = "rgb(252, 242, 153)";
 export const ACID_GREEN = "#90EE90";
 export const VIOLET = "rgb(138, 43, 226)";
 export const YELLOW = "#ffff00";
+export const CHARTREUSE = "#7FFF00";
+export const ORANGE_RED = "#FF4500";
+export const CRIMSON = "#DC143C";
