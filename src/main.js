@@ -12,16 +12,14 @@ highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 const game = new Game({ width: 800, height: 600 });
 await game.init();
 
-Screens.start.addEventListener(
-  "click",
-  (e) => {
-    e.stopPropagation();
-    Screens.start.remove();
-    Screens.game.classList.remove("hide");
-    game.start();
-  },
-  { once: true },
-);
+const startGame = (e) => {
+  e.stopPropagation();
+  Screens.start.remove();
+  Screens.game.classList.remove("hide");
+  game.start();
+};
+
+Screens.start.addEventListener("click", startGame, { once: true });
 
 Screens.pause.addEventListener("click", (e) => {
   e.stopPropagation();
