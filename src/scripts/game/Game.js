@@ -121,16 +121,19 @@ class Game {
       game: this,
     });
 
-    // General & Animation
+    Screens.loading.remove();
+    Screens.start.classList.remove("hide");
+  }
+
+  start() {
     this.#resizeCanvas();
     this.audioManager.playMusic("battle");
+    this.enemyCreator.start();
+    this.startLoop();
 
     document.addEventListener("keydown", (e) => {
       if (e.code === "KeyP") this.pause();
     });
-
-    this.enemyCreator.start();
-    this.startLoop();
   }
 
   restart() {
