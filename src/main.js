@@ -16,7 +16,6 @@ Screens.start.addEventListener(
   "click",
   (e) => {
     e.stopPropagation();
-    // Screens.start.classList.add("hide");
     Screens.start.remove();
     Screens.game.classList.remove("hide");
     game.start();
