@@ -19,6 +19,9 @@ class Game {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = new AudioSystem();
     this.mainCanvas = new Canvas(width, height);
+    this.settings = {
+      trails: true,
+    };
 
     this.gameLoop = new GameLoop(
       this.update.bind(this),
@@ -94,8 +97,12 @@ class Game {
     this.realCanvas.context.drawImage(mCanvas, 0, 0, rWidth, rHeight);
 
     // Create trail effect
-    this.mainCanvas.context.fillStyle = TRANSPARENT_BLACK;
-    this.mainCanvas.context.fillRect(0, 0, mWidth, mHeight);
+    if (this.settings.trails) {
+      this.mainCanvas.context.fillStyle = TRANSPARENT_BLACK;
+      this.mainCanvas.context.fillRect(0, 0, mWidth, mHeight);
+    } else {
+      this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
+    }
   }
 
   async init() {
