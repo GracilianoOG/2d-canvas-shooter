@@ -46,8 +46,7 @@ class Enemy extends Projectile {
     this.#ai.followTarget(this.#target, delta);
   }
 
-  #increaseSpeed() {
-    const increase = 6.25;
+  #increaseSpeed(increase) {
     if (this.speed < this.#maxSpeed) {
       this.speed = Math.min(this.speed + increase, this.#maxSpeed);
     }
@@ -102,7 +101,7 @@ class Enemy extends Projectile {
 
   update(delta) {
     this.#move(delta);
-    this.#increaseSpeed();
+    this.#increaseSpeed(6.25);
     this.#returnOriginalColor();
   }
 }
