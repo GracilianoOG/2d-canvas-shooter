@@ -10,6 +10,7 @@ const restartBtn = document.querySelector(".gameover-screen__btn");
 highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 
 const game = new Game({ width: 800, height: 600 });
+await game.init();
 
 Screens.start.addEventListener(
   "click",
@@ -18,7 +19,7 @@ Screens.start.addEventListener(
     // Screens.start.classList.add("hide");
     Screens.start.remove();
     Screens.game.classList.remove("hide");
-    game.init();
+    game.start();
   },
   { once: true },
 );
