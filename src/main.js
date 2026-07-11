@@ -31,9 +31,7 @@ const restartGame = (e) => {
 };
 
 Screens.start.addEventListener("click", startGame, { once: true });
-
 Screens.pause.addEventListener("click", pauseGame);
 
 restartBtn.addEventListener("click", restartGame);
-
 pauseBtn.addEventListener("click", pauseGame);
