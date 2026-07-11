@@ -38,7 +38,7 @@ class Item extends Entity {
     const { waitTime: despawnDelay } = this.#despawnTimer;
     const { elapsedTime } = this.#despawnTimer;
     const timePerc = elapsedTime / despawnDelay;
-    const padding = 5;
+    const padding = 3;
 
     this.drawArc(ctx, this.color, padding, timePerc);
   }
