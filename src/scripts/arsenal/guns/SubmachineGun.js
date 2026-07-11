@@ -11,7 +11,7 @@ class SubmachineGun extends Gun {
       name,
       ammoType,
       options: {
-        cooldown: 120,
+        cooldown: 110,
         spread: 0.05,
         ...options,
       },
