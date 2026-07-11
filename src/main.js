@@ -24,14 +24,16 @@ const pauseGame = (e) => {
   game.pause();
 };
 
+const restartGame = (e) => {
+  e.stopPropagation();
+  Screens.restart.classList.add("hide");
+  game.restart();
+};
+
 Screens.start.addEventListener("click", startGame, { once: true });
 
 Screens.pause.addEventListener("click", pauseGame);
 
-restartBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  Screens.restart.classList.add("hide");
-  game.restart();
-});
+restartBtn.addEventListener("click", restartGame);
 
 pauseBtn.addEventListener("click", pauseGame);
