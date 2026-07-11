@@ -19,12 +19,14 @@ const startGame = (e) => {
   game.start();
 };
 
+const pauseGame = (e) => {
+  e?.stopPropagation();
+  game.pause();
+};
+
 Screens.start.addEventListener("click", startGame, { once: true });
 
-Screens.pause.addEventListener("click", (e) => {
-  e.stopPropagation();
-  game.pause();
-});
+Screens.pause.addEventListener("click", pauseGame);
 
 restartBtn.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -32,7 +34,4 @@ restartBtn.addEventListener("click", (e) => {
   game.restart();
 });
 
-pauseBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  game.pause();
-});
+pauseBtn.addEventListener("click", pauseGame);
