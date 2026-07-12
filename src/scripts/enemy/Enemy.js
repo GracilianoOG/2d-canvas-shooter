@@ -72,6 +72,10 @@ class Enemy extends Projectile {
     });
   }
 
+  drop(chance) {
+    dropRandomItem(this.x, this.y, chance);
+  }
+
   #createDamageEffect() {
     if (this.#options.knockback) {
       this.speed = -62;
@@ -95,8 +99,11 @@ class Enemy extends Projectile {
       score: this.score.death,
       color: this.baseColor,
     });
-    dropRandomItem(this.x, this.y);
     this.destroy();
+  }
+
+  onDestroy() {
+    this.drop(0.1);
   }
 
   update(delta) {
