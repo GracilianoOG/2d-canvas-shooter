@@ -1,5 +1,8 @@
 import { eventManager } from "../singletons/EventManager";
 
+const ICON_CLASS = "life-icon";
+const EMPTY_CLASS = `${ICON_CLASS}--empty`;
+
 class LivesDisplay {
   #lifeDisplayEl;
 
@@ -24,14 +27,14 @@ class LivesDisplay {
 
   #removeLife(lives) {
     const icon = this.#lifeDisplayEl.querySelector(
-      `.life-icon:not(.life-icon--empty):nth-child(${lives + 1})`,
+      `.${ICON_CLASS}:not(.${EMPTY_CLASS}):nth-child(${lives + 1})`,
     );
-    icon.classList.add("life-icon--empty");
+    icon.classList.add(EMPTY_CLASS);
   }
 
   #createLifeIcon() {
     const lifeIcon = document.createElement("div");
-    lifeIcon.classList.add("life-icon");
+    lifeIcon.classList.add(ICON_CLASS);
     this.#lifeDisplayEl.append(lifeIcon);
   }
 
@@ -45,8 +48,8 @@ class LivesDisplay {
 
   #onPlayerHeal() {
     this.#lifeDisplayEl
-      .querySelector(".life-icon--empty")
-      .classList.remove("life-icon--empty");
+      .querySelector(`.${EMPTY_CLASS}`)
+      .classList.remove(EMPTY_CLASS);
   }
 }
 
