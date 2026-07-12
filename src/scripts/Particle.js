@@ -18,8 +18,8 @@ class Particle extends Projectile {
   }
 
   update(delta) {
-    this.x += Math.cos(this.#angle) * this.speed + this.#randomizer;
-    this.y += Math.sin(this.#angle) * this.speed + this.#randomizer;
+    this.x += Math.cos(this.#angle) * this.speed * delta + this.#randomizer;
+    this.y += Math.sin(this.#angle) * this.speed * delta + this.#randomizer;
     this.#shrink(delta * 12);
   }
 }
