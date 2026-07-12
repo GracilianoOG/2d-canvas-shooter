@@ -86,14 +86,20 @@ class Entity {
   }
 
   draw(ctx) {
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = this.#color;
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.#radius, 0, Math.PI * 2);
     ctx.fill();
+    ctx.shadowBlur = 0;
   }
 
   drawArc(ctx, color, padding, percent, drawEmpty = false) {
     const size = this.dimensions.radius + padding;
+
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = color;
 
     if (drawEmpty) {
       ctx.strokeStyle = GRAY;
@@ -108,6 +114,8 @@ class Entity {
     ctx.beginPath();
     ctx.arc(this.x, this.y, size, 0, TAU * percent);
     ctx.stroke();
+
+    ctx.shadowBlur = 0;
   }
 
   update() {}
