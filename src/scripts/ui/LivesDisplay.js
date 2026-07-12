@@ -1,4 +1,4 @@
-import { eventManager } from "./singletons/EventManager";
+import { eventManager } from "../singletons/EventManager";
 
 class LivesDisplay {
   #lifeDisplayEl;
@@ -24,7 +24,7 @@ class LivesDisplay {
 
   removeLife() {
     const elements = Array.from(
-      this.#lifeDisplayEl.querySelectorAll(".life-icon")
+      this.#lifeDisplayEl.querySelectorAll(".life-icon"),
     ).reverse();
 
     for (const el of elements) {
