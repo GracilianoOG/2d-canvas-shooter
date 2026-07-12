@@ -1,3 +1,12 @@
+@keyframes hit {
+  from {
+    transform: scale(1.4);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
 .life-icon {
   --icon-size: 30px;
   width: var(--icon-size);
@@ -7,6 +16,7 @@
   box-shadow: 0 0 5px var(--color-white);
 
   &--empty {
+    animation: hit 0.5s ease-out forwards;
     border: 1px solid var(--color-gray);
     box-shadow: 0 0 4px var(--color-gray);
     background-color: transparent;
