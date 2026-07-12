@@ -187,6 +187,7 @@ These resources helped me to understand many things regarding game development i
   - [Observable in Game App](https://dev.to/walosha/observer-pattern-in-the-context-of-a-game-app-5gck)
 - Other
   - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
+  - [Nice colors](https://www.w3schools.com/cssref/css_colors.php)
 
 ## 🧑🏻‍💻 Author
 
