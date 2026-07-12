@@ -22,18 +22,11 @@ class LivesDisplay {
     }
   }
 
-  removeLife() {
-    const elements = Array.from(
-      this.#lifeDisplayEl.querySelectorAll(".life-icon"),
-    ).reverse();
-
-    for (const el of elements) {
-      const foundEl = !el.classList.contains("life-icon--empty");
-      if (foundEl) {
-        el.classList.add("life-icon--empty");
-        return;
-      }
-    }
+  removeLife(lives) {
+    const icon = this.#lifeDisplayEl.querySelector(
+      `.life-icon:not(.life-icon--empty):nth-child(${lives + 1})`,
+    );
+    icon.classList.add("life-icon--empty");
   }
 
   #createLifeIcon() {
@@ -46,8 +39,8 @@ class LivesDisplay {
     this.showCurrentLives(lives);
   }
 
-  #onPlayerHit() {
-    this.removeLife();
+  #onPlayerHit({ lives }) {
+    this.removeLife(lives);
   }
 
   #onPlayerHeal() {
