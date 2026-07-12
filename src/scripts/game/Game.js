@@ -2,7 +2,7 @@ import { Player } from "../player/Player";
 import { Canvas } from "../Canvas";
 import { gameState } from "../singletons/GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
-import { Scoreboard } from "../score/Scoreboard";
+import { Scoreboard } from "../ui/Scoreboard";
 import * as Screens from "../utils/screens";
 import { Timer } from "../Timer";
 import { Entity } from "../Entity";
