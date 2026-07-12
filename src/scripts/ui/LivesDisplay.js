@@ -22,7 +22,7 @@ class LivesDisplay {
     }
   }
 
-  removeLife(lives) {
+  #removeLife(lives) {
     const icon = this.#lifeDisplayEl.querySelector(
       `.life-icon:not(.life-icon--empty):nth-child(${lives + 1})`,
     );
@@ -40,7 +40,7 @@ class LivesDisplay {
   }
 
   #onPlayerHit({ lives }) {
-    this.removeLife(lives);
+    this.#removeLife(lives);
   }
 
   #onPlayerHeal() {
