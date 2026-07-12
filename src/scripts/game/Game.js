@@ -6,7 +6,7 @@ import { Scoreboard } from "../score/Scoreboard";
 import * as Screens from "../utils/screens";
 import { Timer } from "../Timer";
 import { Entity } from "../Entity";
-import { FuryMeter } from "../FuryMeter";
+import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
 import * as States from "../utils/constants/gameStates";
 import { eventManager } from "../singletons/EventManager";

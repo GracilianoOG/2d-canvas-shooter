@@ -1,5 +1,5 @@
-import { eventManager } from "./singletons/EventManager";
-import { clamp } from "./utils/math";
+import { eventManager } from "../singletons/EventManager";
+import { clamp } from "../utils/math";
 
 const MAX_FURY_VALUE = 100;
 
