@@ -1,5 +1,6 @@
 import { Entity } from "../Entity";
 import { Timer } from "../Timer";
+import { WHITE } from "../utils/constants/colors";
 
 class Item extends Entity {
   #despawnTimer;
@@ -29,10 +30,13 @@ class Item extends Entity {
   }
 
   #drawLabel(ctx) {
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = WHITE;
     ctx.textAlign = "center";
     ctx.font = "10px 'Press Start 2P'";
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = WHITE;
     ctx.fillText(this.#label.toUpperCase(), this.x, this.y - 16);
+    ctx.shadowBlur = 0;
   }
 
   #drawDespawnDelay(ctx) {
