@@ -1,4 +1,4 @@
-import { StatusIndicator } from "../StatusIndicator.js";
+import { StatusIndicator } from "./StatusIndicator.js";
 import { randomInt } from "../utils/utility.js";
 
 class Scoreboard {
@@ -42,7 +42,7 @@ class Scoreboard {
   #showScore(score) {
     this.#scoreboardEl.textContent = Scoreboard.formatScore(
       score.toString(),
-      this.#length
+      this.#length,
     );
   }
 }
