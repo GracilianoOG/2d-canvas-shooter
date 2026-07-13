@@ -31,6 +31,7 @@ class Entity {
    *}
    */
   static updateAll(ctx, delta) {
+    Entity.instances.sort((a, b) => b.dimensions.radius - a.dimensions.radius);
     for (let i = Entity.instances.length - 1; i >= 0; i--) {
       Entity.instances[i].draw(ctx);
       Entity.instances[i].update(delta);
