@@ -1,6 +1,6 @@
 import { gameState } from "../singletons/GameState.js";
 import { Timer } from "../Timer.js";
-import { minOrMaxPoint, randomInt, randomLinePoint } from "../utils/utility.js";
+import { minOrMaxPoint, randomLinePoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 import {
@@ -15,6 +15,7 @@ import {
   STRONG,
 } from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
+import { randomInt } from "../utils/math.js";
 
 class EnemyCreator {
   #config;
@@ -62,9 +63,9 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const enemyLevel = randomInt(0, this.#spawnLevel);
+    const enemyLevel = randomInt(this.#spawnLevel);
     const enemyConfig = { ...enemyTypes[enemyLevel] };
-    const rndModChance = randomInt(0, 100);
+    const rndModChance = randomInt(100);
     if (this.#enemyModChance > rndModChance) {
       this.#modifyEnemy(enemyConfig);
     }
@@ -74,7 +75,7 @@ class EnemyCreator {
   #modifyEnemy(enemy) {
     const length = enemyModifiers.length;
 
-    switch (enemyModifiers[randomInt(0, length)]) {
+    switch (enemyModifiers[randomInt(length)]) {
       case FAST:
         enemy.color = Colors.VERY_LIGHT_BLUE;
         enemy.radius = Math.max(Math.ceil(enemy.radius * 0.8), 10);
@@ -100,7 +101,7 @@ class EnemyCreator {
   #increaseDifficulty() {
     const length = this.#availableModifiers.length;
 
-    switch (this.#availableModifiers[randomInt(0, length)]) {
+    switch (this.#availableModifiers[randomInt(length)]) {
       case SPAWN_TIME:
         this.#spawnTimer.waitTime -= this.#config.spawnDecrementMs;
         break;
