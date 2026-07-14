@@ -9,3 +9,7 @@ export const clamp = (min, value, max) => {
     return value;
   }
 };
+
+export const randomNumber = (max, min = 0) => Math.random() * (max - min) + min;
+
+export const randomInt = (max, min = 0) => Math.floor(randomNumber(max, min));
