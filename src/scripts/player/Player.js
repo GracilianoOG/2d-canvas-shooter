@@ -89,9 +89,8 @@ class Player extends Projectile {
     }
   }
 
-  #getInCanvas() {
-    const { width: cWidth, height: cHeight } =
-      gameState.getEntity("mainCanvas");
+  #getInCanvas(canvas) {
+    const { width: cWidth, height: cHeight } = canvas;
     const pRadius = this.dimensions.radius;
 
     this.x = clamp(pRadius, this.x, cWidth - pRadius);
@@ -146,7 +145,7 @@ class Player extends Projectile {
   update(delta) {
     if (this.isDead) return;
     this.controller.update(delta);
-    this.#getInCanvas();
+    this.#getInCanvas(gameState.getEntity("mainCanvas"));
     this.#emptyFuryMeter();
   }
 
