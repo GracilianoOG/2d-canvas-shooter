@@ -122,12 +122,12 @@ class EnemyCreator {
   }
 
   #createEnemy() {
-    const rndEnemy = this.#randomizeEnemy();
-    const { radius, speed, color, hp, score } = rndEnemy;
-    const coords = this.#createEnemyPosition(radius);
-    const options = rndEnemy?.options;
+    const enemyConfig = this.#randomizeEnemy();
+    const { radius, speed, color, hp, score } = enemyConfig;
+    const position = this.#createEnemyPosition(radius);
+    const options = enemyConfig?.options;
     const target = gameState.getEntity("player");
-    new Enemy(...coords, radius, speed, color, hp, score, target, options);
+    new Enemy(...position, radius, speed, color, hp, score, target, options);
   }
 
   start() {
