@@ -90,11 +90,11 @@ class Player extends Projectile {
   }
 
   #getInCanvas(canvas) {
-    const { width: cWidth, height: cHeight } = canvas;
-    const pRadius = this.dimensions.radius;
+    const { width, height } = canvas;
+    const size = this.dimensions.radius;
 
-    this.x = clamp(pRadius, this.x, cWidth - pRadius);
-    this.y = clamp(pRadius, this.y, cHeight - pRadius);
+    this.x = clamp(size, this.x, width - size);
+    this.y = clamp(size, this.y, height - size);
   }
 
   #activateShield(delay) {
