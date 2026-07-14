@@ -62,10 +62,13 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const rndSeed = randomInt(0, this.#spawnLevel);
-    const rndEnemy = { ...enemyTypes[rndSeed] };
-    if (randomInt(0, 100) < this.#enemyModChance) this.#modifyEnemy(rndEnemy);
-    return rndEnemy;
+    const enemyLevel = randomInt(0, this.#spawnLevel);
+    const enemyConfig = { ...enemyTypes[enemyLevel] };
+    const rndModChance = randomInt(0, 100);
+    if (this.#enemyModChance > rndModChance) {
+      this.#modifyEnemy(enemyConfig);
+    }
+    return enemyConfig;
   }
 
   #modifyEnemy(enemy) {
