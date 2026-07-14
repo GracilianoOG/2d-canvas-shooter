@@ -1,5 +1,5 @@
 import { Timer } from "./Timer";
-import { randomInt } from "./utils/utility";
+import { randomInt } from "./utils/math";
 
 class Shaker {
   #timer;
@@ -19,8 +19,8 @@ class Shaker {
   shake() {
     if (this.#timer.active) {
       const strength = this.#strength;
-      const xOffset = randomInt(-strength, strength);
-      const yOffset = randomInt(-strength, strength);
+      const xOffset = randomInt(strength, -strength);
+      const yOffset = randomInt(strength, -strength);
       this.#ctx.translate(xOffset, yOffset);
     }
   }
