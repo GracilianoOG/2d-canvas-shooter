@@ -1,7 +1,7 @@
 import { gameState } from "@/scripts/singletons/GameState";
 import { inputManager } from "@/scripts/singletons/InputManager";
 import { Timer } from "@/scripts/Timer";
-import { randomNumber } from "@/scripts/utils/utility";
+import { randomNumber } from "@/scripts/utils/math";
 
 class Gun {
   #name;
