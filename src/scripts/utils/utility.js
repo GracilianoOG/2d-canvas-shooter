@@ -1,9 +1,5 @@
-export const randomNumber = (min, max) => Math.random() * (max - min) + min;
-
-export const randomInt = (min, max) => Math.floor(randomNumber(min, max));
-
 export const minOrMaxPoint = (minPoint, maxPoint) =>
   Math.random() > 0.5 ? minPoint : maxPoint;
 
-export const randomLinePoint = lineWidth =>
+export const randomLinePoint = (lineWidth) =>
   Math.floor(Math.random() * lineWidth);
