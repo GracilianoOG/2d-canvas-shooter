@@ -1,14 +1,6 @@
 export const TAU = Math.PI * 2;
 
-export const clamp = (min, value, max) => {
-  if (value > max) {
-    return max;
-  } else if (value < min) {
-    return min;
-  } else {
-    return value;
-  }
-};
+export const clamp = (min, value, max) => Math.max(min, Math.min(value, max));
 
 export const randomNumber = (max, min = 0) => Math.random() * (max - min) + min;
 
