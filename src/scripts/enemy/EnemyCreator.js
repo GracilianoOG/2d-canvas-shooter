@@ -49,16 +49,12 @@ class EnemyCreator {
     const chance = Math.random() > 0.5;
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
-    const randomVerticalPosition = [
-      between(-enemySize, maxWidthPoint),
-      randomInt(height),
-    ];
-    const randomHorizontalPosition = [
-      randomInt(width),
-      between(-enemySize, maxHeightPoint),
+    const enemyPosition = [
+      chance ? between(-enemySize, maxWidthPoint) : randomInt(width),
+      chance ? randomInt(height) : between(-enemySize, maxHeightPoint),
     ];
 
-    return chance ? randomVerticalPosition : randomHorizontalPosition;
+    return enemyPosition;
   }
 
   #randomizeEnemy() {
