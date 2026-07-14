@@ -8,6 +8,7 @@ import { PlayerArsenal } from "./PlayerArsenal";
 import { defaultStats } from "./playerDefaultStats";
 import { PlayerShield } from "./PlayerShield";
 import { PlayerHUD } from "./PlayerHUD.js";
+import { clamp } from "../utils/math.js";
 
 class Player extends Projectile {
   #controller;
@@ -93,11 +94,8 @@ class Player extends Projectile {
       gameState.getEntity("mainCanvas");
     const pRadius = this.dimensions.radius;
 
-    // LEFT, RIGHT, UP, DOWN
-    if (this.x < pRadius) this.x = pRadius;
-    if (this.x + pRadius > cWidth) this.x = cWidth - pRadius;
-    if (this.y < pRadius) this.y = pRadius;
-    if (this.y + pRadius > cHeight) this.y = cHeight - pRadius;
+    this.x = clamp(pRadius, this.x, cWidth - pRadius);
+    this.y = clamp(pRadius, this.y, cHeight - pRadius);
   }
 
   #activateShield(delay) {
