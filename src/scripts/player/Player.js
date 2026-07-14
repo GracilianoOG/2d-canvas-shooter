@@ -84,7 +84,7 @@ class Player extends Projectile {
 
   #onEnemyKilled() {
     if (!this.fury.isActive()) {
-      eventManager.emit("fillFuryMeter", { amount: 5 });
+      eventManager.emit("fillFuryMeter", { amount: 2 });
     }
   }
 
