@@ -46,12 +46,19 @@ class EnemyCreator {
 
   #createEnemyPosition(enemySize) {
     const { width, height } = gameState.getEntity("mainCanvas");
+    const chance = Math.random() > 0.5;
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
+    const randomVerticalPosition = [
+      minOrMaxPoint(-enemySize, maxWidthPoint),
+      randomLinePoint(height),
+    ];
+    const randomHorizontalPosition = [
+      randomLinePoint(width),
+      minOrMaxPoint(-enemySize, maxHeightPoint),
+    ];
 
-    return Math.random() > 0.5
-      ? [minOrMaxPoint(-enemySize, maxWidthPoint), randomLinePoint(height)]
-      : [randomLinePoint(width), minOrMaxPoint(-enemySize, maxHeightPoint)];
+    return chance ? randomVerticalPosition : randomHorizontalPosition;
   }
 
   #randomizeEnemy() {
