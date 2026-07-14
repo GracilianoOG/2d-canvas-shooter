@@ -10,7 +10,7 @@ import { Rifle } from "@/scripts/arsenal/guns/Rifle";
 import { RocketLauncher } from "@/scripts/arsenal/guns/RocketLauncher";
 import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
 import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
-import { randomInt } from "@/scripts/utils/utility";
+import { randomInt } from "@/scripts/utils/math";
 
 const weapons = {
   minigun: () => new Minigun(),
@@ -30,5 +30,5 @@ const weapons = {
 const weaponList = Object.entries(weapons);
 
 export const getRandomWeapon = () => {
-  return weaponList[randomInt(0, weaponList.length)];
+  return weaponList[randomInt(weaponList.length)];
 };
