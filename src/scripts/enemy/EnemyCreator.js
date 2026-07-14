@@ -1,6 +1,5 @@
 import { gameState } from "../singletons/GameState.js";
 import { Timer } from "../Timer.js";
-import { minOrMaxPoint } from "../utils/utility.js";
 import { Enemy } from "./Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 import {
@@ -15,7 +14,7 @@ import {
   STRONG,
 } from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
-import { randomInt } from "../utils/math.js";
+import { between, randomInt } from "../utils/math.js";
 
 class EnemyCreator {
   #config;
@@ -51,12 +50,12 @@ class EnemyCreator {
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
     const randomVerticalPosition = [
-      minOrMaxPoint(-enemySize, maxWidthPoint),
+      between(-enemySize, maxWidthPoint),
       randomInt(height),
     ];
     const randomHorizontalPosition = [
       randomInt(width),
-      minOrMaxPoint(-enemySize, maxHeightPoint),
+      between(-enemySize, maxHeightPoint),
     ];
 
     return chance ? randomVerticalPosition : randomHorizontalPosition;
