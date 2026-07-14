@@ -2,15 +2,13 @@ import { GRAY } from "./utils/constants/colors";
 import { TAU } from "./utils/math";
 
 class Entity {
-  #x;
-  #y;
+  #position;
   #color;
   #radius;
   static instances = [];
 
   constructor(x, y, radius, color) {
-    this.#x = x;
-    this.#y = y;
+    this.#position = { x, y };
     this.#color = color;
     this.#radius = radius;
     Entity.instances.push(this);
@@ -25,19 +23,19 @@ class Entity {
   }
 
   get x() {
-    return this.#x;
+    return this.#position.x;
   }
 
   set x(x) {
-    this.#x = x;
+    this.#position.x = x;
   }
 
   get y() {
-    return this.#y;
+    return this.#position.y;
   }
 
   set y(y) {
-    this.#y = y;
+    this.#position.y = y;
   }
 
   get color() {
