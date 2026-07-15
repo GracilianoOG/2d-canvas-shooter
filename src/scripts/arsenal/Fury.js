@@ -2,7 +2,7 @@ import { eventManager } from "../singletons/EventManager.js";
 import { Timer } from "../Timer.js";
 
 const upgrades = {
-  playerSpeed: 2,
+  speedMultiplier: 1.25,
   weaponCooldown: 50,
 };
 
@@ -69,9 +69,12 @@ class Fury {
   }
 
   #changeUpgradeState(upgradeState) {
-    const { playerSpeed } = upgrades;
-    const modifier = upgradeState ? 1 : -1;
-    this.#player.speed += modifier * playerSpeed;
+    const { speedMultiplier } = upgrades;
+    const playerSpeed = this.#player.speed;
+    const modifiedSpeed = upgradeState
+      ? playerSpeed * speedMultiplier
+      : playerSpeed / speedMultiplier;
+    this.#player.speed = modifiedSpeed;
     this.#changeFireRateState(upgradeState);
   }
 }
