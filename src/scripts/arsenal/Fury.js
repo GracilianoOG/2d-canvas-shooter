@@ -46,14 +46,14 @@ class Fury {
     if (this.isActive()) return;
     this.#timer.reset();
     this.#status = true;
-    this.#applyUpgrades();
+    this.#changeUpgradeState(true);
   }
 
   deactivate() {
     if (!this.isActive()) return;
     this.#timer.stop();
     this.#status = false;
-    this.#removeUpgrades();
+    this.#changeUpgradeState(false);
   }
 
   isActive() {
@@ -68,16 +68,13 @@ class Fury {
       : cooldownTime + weaponCooldown;
   }
 
-  #applyUpgrades() {
-    this.#changeFireRateState(true);
+  #changeUpgradeState(upgradeState) {
     const { playerSpeed } = upgrades;
-    this.#player.speed += playerSpeed;
-  }
-
-  #removeUpgrades() {
-    this.#changeFireRateState(false);
-    const { playerSpeed } = upgrades;
-    this.#player.speed -= playerSpeed;
+    const currSpeed = this.#player.speed;
+    this.#player.speed = upgradeState
+      ? currSpeed + playerSpeed
+      : currSpeed - playerSpeed;
+    this.#changeFireRateState(upgradeState);
   }
 }
 
