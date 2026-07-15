@@ -22,16 +22,12 @@ class Fury {
     this.#player = player;
     this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
-    eventManager.subscribe("beforeWeaponChange", () => {
-      if (this.isActive()) {
-        this.#changeFireRateState(false);
-      }
-    });
-    eventManager.subscribe("afterWeaponChange", () => {
-      if (this.isActive()) {
-        this.#changeFireRateState(true);
-      }
-    });
+    eventManager.subscribe("beforeWeaponChange", () =>
+      this.#shouldChangeFireRate(false),
+    );
+    eventManager.subscribe("afterWeaponChange", () =>
+      this.#shouldChangeFireRate(true),
+    );
   }
 
   get timer() {
@@ -58,6 +54,12 @@ class Fury {
 
   isActive() {
     return this.#status;
+  }
+
+  #shouldChangeFireRate(upgradeState) {
+    if (this.isActive()) {
+      this.#changeFireRateState(upgradeState);
+    }
   }
 
   #changeFireRateState(upgradeState) {
