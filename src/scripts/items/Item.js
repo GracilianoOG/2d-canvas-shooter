@@ -1,4 +1,5 @@
 import { Entity } from "../Entity";
+import { gameState } from "../singletons/GameState";
 import { Timer } from "../Timer";
 import { WHITE } from "../utils/constants/colors";
 
@@ -14,6 +15,7 @@ class Item extends Entity {
       { loop: false, autodestruct: true },
       () => this.destroy(),
     );
+    this.getInCanvas(gameState.getEntity("mainCanvas"));
   }
 
   check() {}
