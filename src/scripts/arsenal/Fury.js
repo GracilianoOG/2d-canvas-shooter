@@ -3,7 +3,7 @@ import { Timer } from "../Timer.js";
 
 const upgrades = {
   speedMultiplier: 1.25,
-  weaponCooldown: 50,
+  weaponCooldown: 30,
 };
 
 class Fury {
