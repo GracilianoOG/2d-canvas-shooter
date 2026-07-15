@@ -61,11 +61,9 @@ class Fury {
   }
 
   #changeFireRateState(upgradeState) {
-    const cooldownTime = this.#player.weapon.cooldown.waitTime;
     const { weaponCooldown } = upgrades;
-    this.#player.weapon.cooldown.waitTime = upgradeState
-      ? cooldownTime - weaponCooldown
-      : cooldownTime + weaponCooldown;
+    const modifier = upgradeState ? -1 : 1;
+    this.#player.weapon.cooldown.waitTime += modifier * weaponCooldown;
   }
 
   #changeUpgradeState(upgradeState) {
