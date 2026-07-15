@@ -8,7 +8,6 @@ import { PlayerArsenal } from "./PlayerArsenal";
 import { defaultStats } from "./playerDefaultStats";
 import { PlayerShield } from "./PlayerShield";
 import { PlayerHUD } from "./PlayerHUD.js";
-import { clamp } from "../utils/math.js";
 
 class Player extends Projectile {
   #controller;
@@ -89,14 +88,6 @@ class Player extends Projectile {
     }
   }
 
-  #getInCanvas(canvas) {
-    const { width, height } = canvas;
-    const size = this.dimensions.radius;
-
-    this.x = clamp(size, this.x, width - size);
-    this.y = clamp(size, this.y, height - size);
-  }
-
   #activateShield(delay) {
     this.#godMode = true;
     this.#shield.activate(delay);
@@ -145,7 +136,7 @@ class Player extends Projectile {
   update(delta) {
     if (this.isDead) return;
     this.controller.update(delta);
-    this.#getInCanvas(gameState.getEntity("mainCanvas"));
+    this.getInCanvas(gameState.getEntity("mainCanvas"));
     this.#emptyFuryMeter();
   }
 

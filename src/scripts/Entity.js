@@ -1,5 +1,5 @@
 import { GRAY } from "./utils/constants/colors";
-import { TAU } from "./utils/math";
+import { clamp, TAU } from "./utils/math";
 
 class Entity {
   #position;
@@ -68,6 +68,14 @@ class Entity {
       Math.hypot(this.x - object.x, this.y - object.y) <
       this.#radius + object.dimensions.radius
     );
+  }
+
+  getInCanvas(canvas) {
+    const { width, height } = canvas;
+    const size = this.dimensions.radius;
+
+    this.x = clamp(size, this.x, width - size);
+    this.y = clamp(size, this.y, height - size);
   }
 
   draw(ctx) {
