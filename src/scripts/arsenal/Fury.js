@@ -70,10 +70,9 @@ class Fury {
 
   #changeUpgradeState(upgradeState) {
     const { playerSpeed } = upgrades;
+    const modifier = upgradeState ? 1 : -1;
     const currSpeed = this.#player.speed;
-    this.#player.speed = upgradeState
-      ? currSpeed + playerSpeed
-      : currSpeed - playerSpeed;
+    this.#player.speed = currSpeed + modifier * playerSpeed;
     this.#changeFireRateState(upgradeState);
   }
 }
