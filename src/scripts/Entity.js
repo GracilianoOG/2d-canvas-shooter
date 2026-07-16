@@ -15,7 +15,7 @@ class Entity {
   }
 
   static updateAll(ctx, delta) {
-    Entity.instances.sort((a, b) => b.dimensions.radius - a.dimensions.radius);
+    Entity.instances.sort((a, b) => b.radius - a.radius);
     for (let i = Entity.instances.length - 1; i >= 0; i--) {
       Entity.instances[i].draw(ctx);
       Entity.instances[i].update(delta);
@@ -74,13 +74,13 @@ class Entity {
   collidedWith(object) {
     return (
       Math.hypot(this.x - object.x, this.y - object.y) <
-      this.#radius + object.dimensions.radius
+      this.#radius + object.radius
     );
   }
 
   getInCanvas(canvas) {
     const { width, height } = canvas;
-    const size = this.dimensions.radius;
+    const size = this.radius;
 
     this.x = clamp(size, this.x, width - size);
     this.y = clamp(size, this.y, height - size);
@@ -97,7 +97,7 @@ class Entity {
   }
 
   drawArc(ctx, color, padding, percent, drawEmpty = false) {
-    const size = this.dimensions.radius + padding;
+    const size = this.radius + padding;
 
     ctx.shadowBlur = 10;
     ctx.shadowColor = color;
