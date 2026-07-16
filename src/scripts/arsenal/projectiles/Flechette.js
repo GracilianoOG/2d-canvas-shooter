@@ -11,12 +11,7 @@ class Flechette extends Bullet {
   }
 
   hasTouchedBorder(canvas = gameState.getEntity("mainCanvas")) {
-    const {
-      x: ballX,
-      y: ballY,
-      dimensions: { radius: radius },
-    } = this;
-
+    const { x: ballX, y: ballY, radius } = this;
     const { width: canvasW, height: canvasH } = canvas;
 
     const LEFT = ballX < radius;
