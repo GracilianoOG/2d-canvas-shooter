@@ -54,14 +54,6 @@ class Entity {
     this.#radius = radius;
   }
 
-  get dimensions() {
-    return { radius: this.#radius };
-  }
-
-  set dimensions({ radius }) {
-    this.#radius = radius;
-  }
-
   onDestroy() {}
 
   destroy() {
