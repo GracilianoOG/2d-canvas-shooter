@@ -47,7 +47,7 @@ class Entity {
   }
 
   get radius() {
-    return this.dimensions.radius;
+    return this.#radius;
   }
 
   set radius(radius) {
