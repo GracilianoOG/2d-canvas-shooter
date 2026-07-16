@@ -84,7 +84,7 @@ class Enemy extends Projectile {
       this.#maxSpeed += 62;
     }
     if (this.#options.shrinkable) {
-      this.radius = Math.round(this.radius * 0.9);
+      this.shrink(1);
     }
     this.color = WHITE;
   }
