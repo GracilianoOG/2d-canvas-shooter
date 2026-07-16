@@ -15,6 +15,12 @@ class Projectile extends Entity {
   set speed(speed) {
     this.#speed = speed;
   }
+
+  shrink(amount) {
+    const newRadius = Math.max(this.radius - amount, 0);
+    this.radius = newRadius;
+    if (!newRadius) this.destroy();
+  }
 }
 
 export { Projectile };
