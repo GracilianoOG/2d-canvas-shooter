@@ -46,6 +46,14 @@ class Entity {
     this.#color = color;
   }
 
+  get radius() {
+    return this.dimensions.radius;
+  }
+
+  set radius(radius) {
+    this.#radius = radius;
+  }
+
   get dimensions() {
     return { radius: this.#radius };
   }
