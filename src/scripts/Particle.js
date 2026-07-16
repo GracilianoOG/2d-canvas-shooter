@@ -10,17 +10,10 @@ class Particle extends Projectile {
     }
   }
 
-  #shrink(amount) {
-    const shrunkRadius = Math.max(this.radius - amount, 0);
-    this.radius = shrunkRadius;
-    if (shrunkRadius > 0) return;
-    this.destroy();
-  }
-
   update(delta) {
     this.x += Math.cos(this.#angle) * this.speed * delta + this.#randomizer;
     this.y += Math.sin(this.#angle) * this.speed * delta + this.#randomizer;
-    this.#shrink(delta * 12);
+    this.shrink(delta * 12);
   }
 }
 
