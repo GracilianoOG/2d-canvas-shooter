@@ -11,8 +11,8 @@ class Particle extends Projectile {
   }
 
   #shrink(amount) {
-    const shrunkRadius = Math.max(this.dimensions.radius - amount, 0);
-    this.dimensions = { radius: shrunkRadius };
+    const shrunkRadius = Math.max(this.radius - amount, 0);
+    this.radius = shrunkRadius;
     if (shrunkRadius > 0) return;
     this.destroy();
   }
