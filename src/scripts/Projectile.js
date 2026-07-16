@@ -21,6 +21,10 @@ class Projectile extends Entity {
     this.radius = newRadius;
     if (!newRadius) this.destroy();
   }
+
+  grow(amount) {
+    this.radius += amount;
+  }
 }
 
 export { Projectile };
