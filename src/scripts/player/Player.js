@@ -45,6 +45,7 @@ class Player extends Projectile {
         eventManager.emit("checkFuryMeterToFill", { item, amount: 10 });
       }
     });
+    eventManager.subscribe("deactivateFury", () => (this.color = Colors.WHITE));
   }
 
   get lives() {
@@ -138,9 +139,7 @@ class Player extends Projectile {
     this.controller.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas"));
     this.#emptyFuryMeter();
-    if (!this.fury.isActive()) {
-      this.color = Colors.WHITE;
-    } else {
+    if (this.fury.isActive()) {
       this.color = Colors.RED;
     }
   }

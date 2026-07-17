@@ -51,6 +51,7 @@ class Fury {
     this.#timer.stop();
     this.#status = false;
     this.#changeUpgradeState(false);
+    eventManager.emit("deactivateFury");
   }
 
   isActive() {
