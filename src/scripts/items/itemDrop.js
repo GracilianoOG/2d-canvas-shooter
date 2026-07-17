@@ -20,8 +20,7 @@ export const dropRandomItem = (x, y, chance = 0.1) => {
     currChance += chances[i];
 
     if (currChance >= randChance) {
-      items[i]();
-      return;
+      return items[i]();
     }
   }
 };
