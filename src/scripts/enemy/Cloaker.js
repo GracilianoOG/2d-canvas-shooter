@@ -21,7 +21,7 @@ class Cloaker extends Enemy {
   update(delta) {
     super.update(delta);
     if (this.#opacity > LIMIT) {
-      this.#opacity = Math.max(this.#opacity - 0.1, LIMIT);
+      this.#opacity = Math.max(this.#opacity - delta * 10, LIMIT);
     }
   }
 }
