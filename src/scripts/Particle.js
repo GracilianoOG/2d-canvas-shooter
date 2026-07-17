@@ -1,3 +1,4 @@
+import { entityManager } from "./game/EntityManager.js";
 import { Projectile } from "./Projectile.js";
 
 class Particle extends Projectile {
@@ -6,7 +7,8 @@ class Particle extends Projectile {
 
   static createParticles(x, y, size, speed, color, amount) {
     for (let i = 0; i < amount; i++) {
-      new Particle(x, y, size, speed, color);
+      const particle = new Particle(x, y, size, speed, color);
+      entityManager.add(particle);
     }
   }
 
