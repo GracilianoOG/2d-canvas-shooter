@@ -1,8 +1,14 @@
 class EntityManager {
   #entities;
+  #queue;
 
   constructor() {
     this.#entities = [];
+    this.#queue = [];
+  }
+
+  get entities() {
+    return this.#entities;
   }
 
   #renderEntities(ctx, delta) {
@@ -18,12 +24,14 @@ class EntityManager {
   }
 
   add(entity) {
-    this.#entities.push(entity);
+    this.#queue.push(entity);
   }
 
   renderAll(ctx, delta) {
     this.#renderEntities(ctx, delta);
     this.#removeDestroyed();
+    this.#entities.push(...this.#queue);
+    this.#queue = [];
   }
 
   clear(keep) {
