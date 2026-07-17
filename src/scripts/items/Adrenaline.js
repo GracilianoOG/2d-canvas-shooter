@@ -8,7 +8,10 @@ class Adrenaline extends Item {
   }
 
   check() {
-    eventManager.emit("furyCollected", { collect: this.collect.bind(this) });
+    eventManager.emit("furyCollected", {
+      amount: 10,
+      collect: this.collect.bind(this),
+    });
   }
 }
 

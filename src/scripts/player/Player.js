@@ -40,9 +40,9 @@ class Player extends Projectile {
         eventManager.emit("playerHealed");
       }
     });
-    eventManager.subscribe("furyCollected", ({ collect }) => {
+    eventManager.subscribe("furyCollected", ({ collect, amount }) => {
       if (!this.fury.isActive()) {
-        eventManager.emit("checkFuryMeterToFill", { collect, amount: 10 });
+        eventManager.emit("checkFuryMeterToFill", { collect, amount });
       }
     });
     eventManager.subscribe("activateFury", () => (this.color = Colors.RED));
