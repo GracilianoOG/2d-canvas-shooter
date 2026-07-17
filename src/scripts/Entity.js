@@ -5,21 +5,14 @@ class Entity {
   #position;
   #color;
   #radius;
+  #destroyed;
   static instances = [];
 
   constructor(x, y, radius, color) {
     this.#position = { x, y };
     this.#color = color;
     this.#radius = radius;
-    Entity.instances.push(this);
-  }
-
-  static updateAll(ctx, delta) {
-    Entity.instances.sort((a, b) => b.radius - a.radius);
-    for (let i = Entity.instances.length - 1; i >= 0; i--) {
-      Entity.instances[i].draw(ctx);
-      Entity.instances[i].update(delta);
-    }
+    this.#destroyed = false;
   }
 
   get x() {
@@ -54,13 +47,15 @@ class Entity {
     this.#radius = radius;
   }
 
+  get destroyed() {
+    return this.#destroyed;
+  }
+
   onDestroy() {}
 
   destroy() {
     this.onDestroy();
-    Entity.instances = Entity.instances.filter((instance) => {
-      return instance !== this;
-    });
+    this.#destroyed = true;
   }
 
   collidedWith(object) {
