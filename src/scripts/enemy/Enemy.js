@@ -1,3 +1,4 @@
+import { entityManager } from "../game/EntityManager.js";
 import { dropRandomItem } from "../items/itemDrop.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
@@ -73,7 +74,8 @@ class Enemy extends Projectile {
   }
 
   drop(chance) {
-    dropRandomItem(this.x, this.y, chance);
+    const item = dropRandomItem(this.x, this.y, chance);
+    entityManager.add(item);
   }
 
   #createDamageEffect() {
