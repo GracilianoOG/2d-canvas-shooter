@@ -1,6 +1,7 @@
 import { Bullet } from "../arsenal/projectiles/Bullet.js";
 import { Enemy } from "../enemy/Enemy.js";
 import { Entity } from "../Entity.js";
+import { entityManager } from "../game/EntityManager.js";
 import { Item } from "../items/Item.js";
 import { StorageHandler } from "../StorageHandler.js";
 import { CSS_CLASSES } from "../utils/constants.js";
@@ -62,8 +63,8 @@ class GameState {
   #filterInstances() {
     const instances = [[], [], []];
 
-    for (let i = 0, len = Entity.instances.length; i < len; i++) {
-      const instance = Entity.instances[i];
+    for (let i = 0, len = entityManager.entities.length; i < len; i++) {
+      const instance = entityManager.entities[i];
 
       if (instance instanceof Enemy) {
         instances[0].push(instance);
