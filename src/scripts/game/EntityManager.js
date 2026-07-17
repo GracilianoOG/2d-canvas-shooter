@@ -1,3 +1,5 @@
+import { Entity } from "../Entity";
+
 class EntityManager {
   #entities;
   #queue;
@@ -24,6 +26,9 @@ class EntityManager {
   }
 
   add(entity) {
+    if (!(entity instanceof Entity)) {
+      throw new Error("Invalid entity!");
+    }
     this.#queue.push(entity);
   }
 
