@@ -28,10 +28,10 @@ class FuryMeter {
     this.#furyValue = 0;
 
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
-    eventManager.subscribe("checkFuryMeterToFill", ({ item, amount }) => {
+    eventManager.subscribe("checkFuryMeterToFill", ({ collect, amount }) => {
       if (!this.isFull()) {
         this.fill(amount);
-        item.collect();
+        collect();
       }
     });
     eventManager.subscribe(
@@ -56,6 +56,10 @@ class FuryMeter {
     this.#furyMeterFill.style.width = `${this.#furyValue}%`;
 
     this.#furyMeterBar.classList.toggle("fury-meter--full", this.isFull());
+    this.#furyMeterBar.classList.toggle(
+      "fury-meter--filling",
+      this.isFilling(),
+    );
     this.#furyMeterFill.classList.toggle(
       "fury-meter__fill--full",
       this.isFull(),
@@ -75,6 +79,10 @@ class FuryMeter {
   empty() {
     this.#furyValue = 0;
     this.#updateFuryMeter();
+  }
+
+  isFilling() {
+    return this.#furyValue > 0 && this.#furyValue < this.isFull();
   }
 
   isFull() {
