@@ -114,6 +114,7 @@ class Game {
     const furyMeter = new FuryMeter(hud);
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
+    entityManager.add(player);
 
     await this.audioManager.init();
 
