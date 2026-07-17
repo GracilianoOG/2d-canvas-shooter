@@ -117,7 +117,6 @@ class Player extends Projectile {
 
   kill() {
     eventManager.emit("playerDeath");
-    this.fury.deactivate();
   }
 
   revive(x = this.x, y = this.y) {

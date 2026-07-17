@@ -28,6 +28,7 @@ class Fury {
     eventManager.subscribe("afterWeaponChange", () =>
       this.#shouldChangeFireRate(true),
     );
+    eventManager.subscribe("playerDeath", this.deactivate.bind(this));
   }
 
   get timer() {
