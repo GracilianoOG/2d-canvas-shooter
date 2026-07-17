@@ -6,6 +6,7 @@ class Boomer extends Enemy {
   #baseSpeed;
   #baseHp;
   #target;
+  #options;
 
   constructor(x, y, radius, speed, color, health, score, target, options = {}) {
     super(x, y, radius, speed, color, health, score, target, options);
@@ -13,10 +14,12 @@ class Boomer extends Enemy {
     this.#baseSize = radius;
     this.#baseSpeed = speed;
     this.#baseHp = health;
+    this.#options = { minions: { min: 2, max: 5 }, ...options };
   }
 
   onDestroy() {
-    const amount = randomInt(5, 2);
+    const { min, max } = this.#options.minions;
+    const amount = randomInt(max + 1, min);
     for (let i = 0; i < amount; i++) {
       new Enemy(
         this.x + randomInt(this.#baseSize, -this.#baseSize),
