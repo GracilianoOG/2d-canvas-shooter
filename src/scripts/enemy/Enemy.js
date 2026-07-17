@@ -75,6 +75,7 @@ class Enemy extends Projectile {
 
   drop(chance) {
     const item = dropRandomItem(this.x, this.y, chance);
+    if (!item) return;
     entityManager.add(item);
   }
 
