@@ -3,6 +3,7 @@ import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../projectiles/Explosive";
 import { MissileAmmo } from "./MissileAmmo";
 import { CANNON_DMG } from "./damages";
+import { entityManager } from "@/scripts/game/EntityManager";
 
 class NukeAmmo extends ExplosiveAmmo {
   constructor(name = "Nuke", fragmentType = new MissileAmmo()) {
@@ -19,7 +20,17 @@ class NukeAmmo extends ExplosiveAmmo {
       createFragments: (x, y, direction) =>
         this.fragmentType.create(x, y, direction),
     };
-    new Explosive(x, y, radius, speed, angle, color, damage, fragments);
+    const ammo = new Explosive(
+      x,
+      y,
+      radius,
+      speed,
+      angle,
+      color,
+      damage,
+      fragments,
+    );
+    entityManager.add(ammo);
   }
 }
 

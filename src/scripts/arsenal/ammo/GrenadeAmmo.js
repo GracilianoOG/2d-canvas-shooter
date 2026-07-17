@@ -3,6 +3,7 @@ import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../projectiles/Explosive";
 import { BASE_DMG } from "./damages";
+import { entityManager } from "@/scripts/game/EntityManager";
 
 class GrenadeAmmo extends ExplosiveAmmo {
   constructor(name = "Grenade", fragmentType = new PistolAmmo()) {
@@ -19,7 +20,17 @@ class GrenadeAmmo extends ExplosiveAmmo {
       createFragments: (x, y, direction) =>
         this.fragmentType.create(x, y, direction),
     };
-    new Explosive(x, y, radius, speed, angle, color, damage, fragments);
+    const ammo = new Explosive(
+      x,
+      y,
+      radius,
+      speed,
+      angle,
+      color,
+      damage,
+      fragments,
+    );
+    entityManager.add(ammo);
   }
 }
 

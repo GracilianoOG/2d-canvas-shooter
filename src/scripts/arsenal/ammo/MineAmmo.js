@@ -3,6 +3,7 @@ import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { HEAVY_DMG } from "./damages";
 import { Mine } from "../projectiles/Mine";
+import { entityManager } from "@/scripts/game/EntityManager";
 
 class MineAmmo extends ExplosiveAmmo {
   constructor(name = "Mine", fragmentType = new PistolAmmo()) {
@@ -19,7 +20,8 @@ class MineAmmo extends ExplosiveAmmo {
       createFragments: (x, y, direction) =>
         this.fragmentType.create(x, y, direction),
     };
-    new Mine(x, y, radius, speed, angle, color, damage, fragments);
+    const ammo = new Mine(x, y, radius, speed, angle, color, damage, fragments);
+    entityManager.add(ammo);
   }
 }
 

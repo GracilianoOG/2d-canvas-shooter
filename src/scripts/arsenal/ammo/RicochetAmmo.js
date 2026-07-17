@@ -2,6 +2,7 @@ import { VIOLET } from "@/scripts/utils/constants/colors";
 import { Flechette } from "../projectiles/Flechette";
 import { RICOCHET_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
+import { entityManager } from "@/scripts/game/EntityManager";
 
 class RicochetAmmo extends AmmoType {
   constructor(name = "Ricochet") {
@@ -13,7 +14,8 @@ class RicochetAmmo extends AmmoType {
     const speed = 750;
     const color = VIOLET;
     const damage = RICOCHET_DMG;
-    new Flechette(x, y, radius, speed, angle, color, damage);
+    const ammo = new Flechette(x, y, radius, speed, angle, color, damage);
+    entityManager.add(ammo);
   }
 }
 

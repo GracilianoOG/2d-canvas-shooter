@@ -2,6 +2,7 @@ import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
 import { CANNON_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 import { Bullet } from "../projectiles/Bullet";
+import { entityManager } from "@/scripts/game/EntityManager";
 
 class CannonAmmo extends AmmoType {
   constructor(name = "Cannon") {
@@ -13,7 +14,8 @@ class CannonAmmo extends AmmoType {
     const speed = 350;
     const color = VERY_LIGHT_YELLOW;
     const damage = CANNON_DMG;
-    new Bullet(x, y, radius, speed, angle, color, damage);
+    const ammo = new Bullet(x, y, radius, speed, angle, color, damage);
+    entityManager.add(ammo);
   }
 }
 
