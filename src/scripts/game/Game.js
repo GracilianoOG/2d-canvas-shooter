@@ -152,6 +152,7 @@ class Game {
     gameState.getEntity("furyMeter").empty();
     player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
+    entityManager.clear([player]);
     this.startLoop();
   }
 
