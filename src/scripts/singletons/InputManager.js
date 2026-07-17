@@ -6,11 +6,6 @@ class InputManager {
   #bindings;
 
   constructor() {
-    if (InputManager.instance) {
-      return InputManager.instance;
-    }
-    InputManager.instance = this;
-
     this.#actions = {};
     this.#mouse = { x: 0, y: 0 };
     this.#bindings = {};

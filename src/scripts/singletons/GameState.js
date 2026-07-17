@@ -11,13 +11,8 @@ import { eventManager } from "./EventManager.js";
 
 class GameState {
   #entities;
-  static instance;
 
   constructor() {
-    if (GameState.instance) {
-      return GameState.instance;
-    }
-    GameState.instance = this;
     eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
     eventManager.subscribe("enemyHit", this.#onEnemyHit.bind(this));
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));

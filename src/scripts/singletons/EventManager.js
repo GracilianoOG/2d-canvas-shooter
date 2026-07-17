@@ -2,10 +2,6 @@ class EventManager {
   #events;
 
   constructor() {
-    if (EventManager.instance) {
-      return EventManager.instance;
-    }
-    EventManager.instance = this;
     this.#events = {};
   }
 
@@ -20,7 +16,9 @@ class EventManager {
     if (!this.#events[event]) {
       this.#events[event] = [];
     }
-    const filteredCallbacks = this.#events[event].filter(cb => cb !== callback);
+    const filteredCallbacks = this.#events[event].filter(
+      (cb) => cb !== callback,
+    );
     this.#events[event] = filteredCallbacks;
   }
 
