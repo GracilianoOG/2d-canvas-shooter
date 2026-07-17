@@ -5,7 +5,6 @@ import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import * as Screens from "../utils/screens";
 import { Timer } from "../Timer";
-import { Entity } from "../Entity";
 import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
 import * as States from "../utils/constants/gameStates";
@@ -13,6 +12,7 @@ import { eventManager } from "../singletons/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { GameLoop } from "./GameLoop";
 import { AudioSystem } from "../audio/AudioSystem";
+import { entityManager } from "./EntityManager";
 
 class Game {
   constructor({ width, height }) {
@@ -80,7 +80,7 @@ class Game {
   }
 
   update(delta) {
-    Entity.updateAll(this.mainCanvas.context, delta * 0.001);
+    entityManager.renderAll(this.mainCanvas.context, delta * 0.001);
     Timer.updateAll(delta);
     gameState.checkCollisions();
   }
