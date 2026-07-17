@@ -25,6 +25,11 @@ class EntityManager {
     this.#entities = this.#entities.filter((e) => !e.destroyed);
   }
 
+  #addFromQueue() {
+    this.#entities.push(...this.#queue);
+    this.#queue = [];
+  }
+
   add(entity) {
     if (!(entity instanceof Entity)) {
       throw new Error("Invalid entity!");
@@ -35,8 +40,7 @@ class EntityManager {
   renderAll(ctx, delta) {
     this.#renderEntities(ctx, delta);
     this.#removeDestroyed();
-    this.#entities.push(...this.#queue);
-    this.#queue = [];
+    this.#addFromQueue();
   }
 
   clear(keep) {
