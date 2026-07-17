@@ -8,6 +8,7 @@ import { PlayerArsenal } from "./PlayerArsenal";
 import { defaultStats } from "./playerDefaultStats";
 import { PlayerShield } from "./PlayerShield";
 import { PlayerHUD } from "./PlayerHUD.js";
+import * as Colors from "../utils/constants/colors.js";
 
 class Player extends Projectile {
   #controller;
@@ -138,6 +139,11 @@ class Player extends Projectile {
     this.controller.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas"));
     this.#emptyFuryMeter();
+    if (!this.fury.isActive()) {
+      this.color = Colors.WHITE;
+    } else {
+      this.color = Colors.RED;
+    }
   }
 
   #emptyFuryMeter() {
