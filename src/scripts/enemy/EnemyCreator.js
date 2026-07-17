@@ -15,6 +15,7 @@ import {
 } from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../utils/math.js";
+import { entityManager } from "../game/EntityManager.js";
 
 class EnemyCreator {
   #config;
@@ -123,7 +124,17 @@ class EnemyCreator {
     const position = this.#createEnemyPosition(radius);
     const options = enemyConfig?.options;
     const target = gameState.getEntity("player");
-    new Enemy(...position, radius, speed, color, hp, score, target, options);
+    const enemy = new Enemy(
+      ...position,
+      radius,
+      speed,
+      color,
+      hp,
+      score,
+      target,
+      options,
+    );
+    entityManager.add(enemy);
   }
 
   start() {
