@@ -116,7 +116,6 @@ class GameState {
       this.#calcHighscore();
       this.getEntity("game").stopLoop(NOT_RUNNING);
       restart.classList.remove("hide");
-      Entity.instances = [this.getEntity("player")];
     }, milliseconds);
   }
 }
