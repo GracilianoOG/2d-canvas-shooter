@@ -8,7 +8,7 @@ class Life extends Item {
   }
 
   check() {
-    eventManager.emit("lifeCollected", { item: this });
+    eventManager.emit("lifeCollected", { collect: this.collect.bind(this) });
   }
 }
 

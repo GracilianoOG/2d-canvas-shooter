@@ -33,10 +33,10 @@ class Player extends Projectile {
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
-    eventManager.subscribe("lifeCollected", ({ item }) => {
+    eventManager.subscribe("lifeCollected", ({ collect }) => {
       if (this.lives < defaultStats.lives) {
         this.#lives++;
-        item.collect();
+        collect();
         eventManager.emit("playerHealed");
       }
     });
