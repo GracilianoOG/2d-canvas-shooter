@@ -6,7 +6,6 @@ class Entity {
   #color;
   #radius;
   #destroyed;
-  static instances = [];
 
   constructor(x, y, radius, color) {
     this.#position = { x, y };
