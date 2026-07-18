@@ -30,6 +30,10 @@ class EntityManager {
     this.#queue = [];
   }
 
+  #orderEntities() {
+    this.#entities.sort((a, b) => a.radius - b.radius);
+  }
+
   add(entity) {
     if (!(entity instanceof Entity)) {
       throw new Error("Invalid entity!");
@@ -41,6 +45,7 @@ class EntityManager {
     this.#renderEntities(ctx, delta);
     this.#removeDestroyed();
     this.#addFromQueue();
+    this.#orderEntities();
   }
 
   clear(keep) {
