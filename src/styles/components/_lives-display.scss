@@ -1,8 +1,7 @@
 .lives-display {
-  --display-position: 32px;
   display: flex;
   gap: 16px;
   position: absolute;
-  left: var(--display-position);
-  top: var(--display-position);
+  left: var(--padding);
+  top: var(--padding);
 }

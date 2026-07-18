@@ -6,8 +6,8 @@
   border-width: 0 0 0 var(--width);
   height: var(--height);
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: var(--padding);
+  top: var(--padding);
   width: 0;
 
   &:hover {
