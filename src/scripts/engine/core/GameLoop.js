@@ -1,5 +1,5 @@
-import { Shaker } from "./systems/Shaker";
-import * as States from "./constants/gameStates";
+import { Shaker } from "../systems/Shaker";
+import * as States from "../constants/gameStates";
 
 class GameLoop {
   #rafId;
