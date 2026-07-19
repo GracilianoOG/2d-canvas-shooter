@@ -84,7 +84,8 @@ class GameState {
     for (const enemy of enemies) {
       player.collidedWith(enemy);
       for (const bullet of bullets) {
-        bullet.collidedWith(enemy);
+        const collided = bullet.collidedWith(enemy);
+        if (collided) return;
       }
     }
   }
