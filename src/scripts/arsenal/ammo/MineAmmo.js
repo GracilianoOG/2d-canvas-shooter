@@ -2,7 +2,7 @@ import { ARMY_GREEN } from "@/scripts/utils/constants/colors";
 import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { HEAVY_DMG } from "./damages";
-import { Mine } from "../projectiles/Mine";
+import { Mine } from "../../entities/projectiles/Mine";
 import { entityManager } from "@/scripts/systems/EntityManager";
 
 class MineAmmo extends ExplosiveAmmo {

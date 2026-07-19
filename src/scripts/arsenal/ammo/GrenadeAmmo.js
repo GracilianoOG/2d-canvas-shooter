@@ -1,7 +1,7 @@
 import { ARMY_GREEN } from "@/scripts/utils/constants/colors";
 import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
-import { Explosive } from "../projectiles/Explosive";
+import { Explosive } from "../../entities/projectiles/Explosive";
 import { BASE_DMG } from "./damages";
 import { entityManager } from "@/scripts/systems/EntityManager";
 

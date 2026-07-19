@@ -1,5 +1,5 @@
 import { VIOLET } from "@/scripts/utils/constants/colors";
-import { Flechette } from "../projectiles/Flechette";
+import { Flechette } from "../../entities/projectiles/Flechette";
 import { RICOCHET_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 import { entityManager } from "@/scripts/systems/EntityManager";

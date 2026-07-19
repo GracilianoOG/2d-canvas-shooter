@@ -1,7 +1,7 @@
 import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
 import { CANNON_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
-import { Bullet } from "../projectiles/Bullet";
+import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/scripts/systems/EntityManager";
 
 class CannonAmmo extends AmmoType {

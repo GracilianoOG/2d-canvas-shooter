@@ -1,4 +1,4 @@
-import { Bullet } from "../arsenal/projectiles/Bullet";
+import { Bullet } from "../entities/projectiles/Bullet";
 import { Enemy } from "../enemy/Enemy";
 import { entityManager } from "./EntityManager";
 import { Item } from "../items/Item";
