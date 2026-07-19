@@ -55,8 +55,8 @@ class GameState {
   #calcHighscore() {
     const highscoreEl = restart.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
     const recordEl = restart.querySelector(".highscore__new");
-    scoreManager.save();
     recordEl.classList.toggle("hide", !scoreManager.isHighscore());
+    scoreManager.save();
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
   }
 
