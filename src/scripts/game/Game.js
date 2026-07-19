@@ -10,7 +10,7 @@ import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
 import * as States from "../engine/constants/gameStates";
 import { eventManager } from "../systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
-import { GameLoop } from "../engine/core/GameLoop";
+import { Engine } from "../engine/core/Engine";
 import { AudioSystem } from "../engine/systems/AudioSystem";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
@@ -26,11 +26,9 @@ class Game {
       trails: true,
     };
 
-    this.gameLoop = new GameLoop(
-      this.update.bind(this),
-      this.render.bind(this),
-      { ctx: this.mainCanvas.context },
-    );
+    this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this), {
+      ctx: this.mainCanvas.context,
+    });
 
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);

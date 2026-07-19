@@ -1,7 +1,7 @@
 import { Shaker } from "../systems/Shaker";
 import * as States from "../constants/gameStates";
 
-class GameLoop {
+export class Engine {
   #rafId;
   #lastTime;
   #state;
@@ -63,5 +63,3 @@ class GameLoop {
     cancelAnimationFrame(this.#rafId);
   }
 }
-
-export { GameLoop };
