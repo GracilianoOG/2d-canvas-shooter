@@ -1,4 +1,4 @@
-import { Entity } from "../Entity";
+import { Entity } from "../entities/Entity";
 import { gameState } from "../singletons/GameState";
 import { Timer } from "../Timer";
 import { WHITE } from "../utils/constants/colors";

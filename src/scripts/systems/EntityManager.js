@@ -1,4 +1,4 @@
-import { Entity } from "../Entity";
+import { Entity } from "../entities/Entity";
 
 class EntityManager {
   #entities;
