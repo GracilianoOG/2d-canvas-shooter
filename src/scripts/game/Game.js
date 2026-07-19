@@ -12,7 +12,7 @@ import { eventManager } from "../singletons/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { GameLoop } from "./GameLoop";
 import { AudioSystem } from "../audio/AudioSystem";
-import { entityManager } from "./EntityManager";
+import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
 

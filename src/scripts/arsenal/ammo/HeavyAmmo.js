@@ -2,7 +2,7 @@ import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
 import { HEAVY_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 import { Bullet } from "../projectiles/Bullet";
-import { entityManager } from "@/scripts/game/EntityManager";
+import { entityManager } from "@/scripts/systems/EntityManager";
 
 class HeavyAmmo extends AmmoType {
   constructor(name = "Heavy") {

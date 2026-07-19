@@ -1,4 +1,4 @@
-import { entityManager } from "../game/EntityManager.js";
+import { entityManager } from "../systems/EntityManager.js";
 import { dropRandomItem } from "../items/itemDrop.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";

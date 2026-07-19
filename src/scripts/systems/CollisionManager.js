@@ -1,6 +1,6 @@
 import { Bullet } from "../arsenal/projectiles/Bullet";
 import { Enemy } from "../enemy/Enemy";
-import { entityManager } from "../game/EntityManager";
+import { entityManager } from "./EntityManager";
 import { Item } from "../items/Item";
 import { gameState } from "../singletons/GameState";
 

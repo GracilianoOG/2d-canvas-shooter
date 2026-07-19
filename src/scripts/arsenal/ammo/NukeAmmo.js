@@ -3,7 +3,7 @@ import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../projectiles/Explosive";
 import { MissileAmmo } from "./MissileAmmo";
 import { CANNON_DMG } from "./damages";
-import { entityManager } from "@/scripts/game/EntityManager";
+import { entityManager } from "@/scripts/systems/EntityManager";
 
 class NukeAmmo extends ExplosiveAmmo {
   constructor(name = "Nuke", fragmentType = new MissileAmmo()) {

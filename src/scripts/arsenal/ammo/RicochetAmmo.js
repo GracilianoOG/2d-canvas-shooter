@@ -2,7 +2,7 @@ import { VIOLET } from "@/scripts/utils/constants/colors";
 import { Flechette } from "../projectiles/Flechette";
 import { RICOCHET_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
-import { entityManager } from "@/scripts/game/EntityManager";
+import { entityManager } from "@/scripts/systems/EntityManager";
 
 class RicochetAmmo extends AmmoType {
   constructor(name = "Ricochet") {

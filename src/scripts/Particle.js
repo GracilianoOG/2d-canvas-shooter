@@ -1,4 +1,4 @@
-import { entityManager } from "./game/EntityManager.js";
+import { entityManager } from "./systems/EntityManager.js";
 import { Projectile } from "./Projectile.js";
 
 class Particle extends Projectile {
