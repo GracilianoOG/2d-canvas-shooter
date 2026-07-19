@@ -15,7 +15,7 @@ class Scoreboard {
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
     this.reset();
-    eventManager.subscribe("addScore", ({ score }) => this.#showScore(score));
+    eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
   }
 
   reset() {

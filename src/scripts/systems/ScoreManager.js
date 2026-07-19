@@ -18,7 +18,7 @@ class ScoreManager {
 
   add(score) {
     this.#score += score;
-    eventManager.emit("addScore", { score: this.#score });
+    eventManager.emit("setScore", { score: this.#score });
   }
 
   isHighscore() {
