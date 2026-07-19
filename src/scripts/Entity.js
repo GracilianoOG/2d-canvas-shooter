@@ -57,11 +57,18 @@ class Entity {
     this.#destroyed = true;
   }
 
+  onCollision() {}
+
   collidedWith(object) {
-    return (
+    const hasCollided =
       Math.hypot(this.x - object.x, this.y - object.y) <
-      this.#radius + object.radius
-    );
+      this.#radius + object.radius;
+
+    if (hasCollided) {
+      this.onCollision(object);
+    }
+
+    return hasCollided;
   }
 
   getInCanvas(canvas) {
