@@ -13,6 +13,7 @@ import { LivesDisplay } from "../ui/LivesDisplay";
 import { GameLoop } from "./GameLoop";
 import { AudioSystem } from "../audio/AudioSystem";
 import { entityManager } from "./EntityManager";
+import { collisionManager } from "../systems/CollisionManager";
 
 class Game {
   constructor({ width, height }) {
@@ -81,8 +82,8 @@ class Game {
 
   update(delta) {
     entityManager.renderAll(this.mainCanvas.context, delta * 0.001);
+    collisionManager.checkCollisions();
     Timer.updateAll(delta);
-    gameState.checkCollisions();
   }
 
   render() {
