@@ -1,4 +1,4 @@
-import { randomInt } from "../utils/math";
+import { randomInt } from "@/scripts/utils/math";
 import { Enemy } from "./Enemy";
 
 class Boomer extends Enemy {

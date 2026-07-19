@@ -1,6 +1,6 @@
 import { gameState } from "../singletons/GameState.js";
 import { Timer } from "../Timer.js";
-import { Enemy } from "./Enemy.js";
+import { Enemy } from "../entities/enemies/Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
 import {
   MOD_CHANCE,
