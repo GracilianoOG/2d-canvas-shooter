@@ -1,5 +1,3 @@
-import audios from "@/data/audios";
-
 class AudioSystem {
   #audios;
   #context;
@@ -22,13 +20,6 @@ class AudioSystem {
     this.#master.gain.value = 1;
     this.#sfx.gain.value = 0.5;
     this.#music.gain.value = 0.8;
-  }
-
-  async init() {
-    await this.load("hit", audios.hit[0]);
-    await this.load("explosion", audios.explosion[0]);
-    await this.load("shot", audios.shot[0]);
-    await this.load("battle", audios.battle[0]);
   }
 
   async load(name, audio) {
