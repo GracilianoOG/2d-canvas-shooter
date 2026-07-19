@@ -14,7 +14,7 @@ import {
   STRONG,
 } from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
-import { between, randomInt } from "../utils/math.js";
+import { between, randomInt } from "../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
 
 class EnemyCreator {

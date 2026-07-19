@@ -1,5 +1,5 @@
 import { Timer } from "./Timer";
-import { randomInt } from "./utils/math";
+import { randomInt } from "./engine/utils/math";
 
 class Shaker {
   #timer;

@@ -1,5 +1,5 @@
 import { eventManager } from "../systems/EventManager";
-import { clamp } from "../utils/math";
+import { clamp } from "../engine/utils/math";
 
 const MAX_FURY_VALUE = 100;
 

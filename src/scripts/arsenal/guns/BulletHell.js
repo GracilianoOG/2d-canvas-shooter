@@ -1,4 +1,4 @@
-import { TAU } from "@/scripts/utils/math";
+import { TAU } from "@/scripts/engine/utils/math";
 import { PistolAmmo } from "../ammo/PistolAmmo";
 import { Gun } from "./Gun";
 

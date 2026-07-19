@@ -10,7 +10,7 @@ import { Rifle } from "@/scripts/arsenal/guns/Rifle";
 import { RocketLauncher } from "@/scripts/arsenal/guns/RocketLauncher";
 import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
 import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
-import { randomInt } from "@/scripts/utils/math";
+import { randomInt } from "@/scripts/engine/utils/math";
 
 const weapons = {
   minigun: () => new Minigun(),
