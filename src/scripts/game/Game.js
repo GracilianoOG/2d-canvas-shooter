@@ -14,6 +14,7 @@ import { GameLoop } from "./GameLoop";
 import { AudioSystem } from "../audio/AudioSystem";
 import { entityManager } from "./EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
+import { scoreManager } from "../systems/ScoreManager";
 
 class Game {
   constructor({ width, height }) {
@@ -149,11 +150,11 @@ class Game {
     const { width: mWidth, height: mHeight } = this.mainCanvas;
     const player = gameState.getEntity("player");
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
-    gameState.getEntity("scoreboard").reset();
     gameState.getEntity("furyMeter").empty();
     player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
     entityManager.clear([player]);
+    scoreManager.reset();
     this.startLoop();
   }
 
