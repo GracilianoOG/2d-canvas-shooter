@@ -1,13 +1,13 @@
 import { Particle } from "../Particle.js";
-import { PlayerController } from "./PlayerController.js";
+import { PlayerController } from "../player/PlayerController.js";
 import { Projectile } from "../Projectile.js";
 import { gameState } from "../singletons/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../systems/EventManager.js";
-import { PlayerArsenal } from "./PlayerArsenal";
-import { defaultStats } from "./playerDefaultStats";
-import { PlayerShield } from "./PlayerShield";
-import { PlayerHUD } from "./PlayerHUD.js";
+import { PlayerArsenal } from "../player/PlayerArsenal";
+import { defaultStats } from "../player/playerDefaultStats";
+import { PlayerShield } from "../player/PlayerShield";
+import { PlayerHUD } from "../player/PlayerHUD.js";
 import * as Colors from "../utils/constants/colors.js";
 
 class Player extends Projectile {

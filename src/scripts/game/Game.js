@@ -1,4 +1,4 @@
-import { Player } from "../player/Player";
+import { Player } from "../entities/Player";
 import { Canvas } from "../Canvas";
 import { gameState } from "../singletons/GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
