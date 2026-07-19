@@ -1,8 +1,8 @@
+import { eventManager } from "../singletons/EventManager.js";
 import { randomInt } from "../utils/math.js";
 import { StatusIndicator } from "./StatusIndicator.js";
 
 class Scoreboard {
-  #score = 0;
   #length = 7;
   #scoreboardEl;
 
@@ -13,21 +13,12 @@ class Scoreboard {
   constructor(containerEl) {
     this.#scoreboardEl = document.createElement("h2");
     this.#scoreboardEl.classList.add("scoreboard");
-    this.#showScore(this.#score.toString());
     containerEl.prepend(this.#scoreboardEl);
-  }
-
-  get score() {
-    return this.#score;
-  }
-
-  set score(score) {
-    this.#score = score;
-    this.#showScore(score);
+    this.#showScore(0);
+    eventManager.subscribe("addScore", ({ score }) => this.#showScore(score));
   }
 
   reset() {
-    this.#score = 0;
     this.#showScore(0);
   }
 
@@ -35,7 +26,6 @@ class Scoreboard {
     const { width, height } = this.#scoreboardEl.getBoundingClientRect();
     const xPos = width / 2 + randomInt(50, -50);
     const yPos = height * 3 + randomInt(5, 1);
-    this.score += score;
     StatusIndicator.create(xPos, yPos, score, color);
   }
 
