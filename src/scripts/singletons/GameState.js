@@ -1,7 +1,7 @@
 import { StorageHandler } from "../StorageHandler.js";
 import { scoreManager } from "../systems/ScoreManager.js";
 import { CSS_CLASSES } from "../utils/constants.js";
-import { NOT_RUNNING } from "../utils/constants/gameStates.js";
+import { NOT_RUNNING } from "../engine/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
 import { eventManager } from "../systems/EventManager.js";
 
