@@ -58,7 +58,7 @@ class Timer {
   }
 
   remove() {
-    Timer.timers = Timer.timers.filter(timer => {
+    Timer.timers = Timer.timers.filter((timer) => {
       return timer !== this;
     });
   }
@@ -66,13 +66,17 @@ class Timer {
   update(deltaTime) {
     if (!this.#active) return;
 
-    this.#elapsedTime -= deltaTime;
+    const time = Math.max(this.#elapsedTime - deltaTime, 0);
+    this.#elapsedTime = time;
 
     if (this.#elapsedTime <= 0) {
-      this.#elapsedTime = this.#waitTime;
       if (!this.#loop) this.stop();
       if (this.#callback) this.#callback();
-      if (this.#options.autodestruct) this.remove();
+      if (this.#options.autodestruct) {
+        this.remove();
+        return;
+      }
+      this.#elapsedTime = this.#waitTime;
     }
   }
 
