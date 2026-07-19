@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager.js";
+import { eventManager } from "../systems/EventManager.js";
 import { Timer } from "../Timer.js";
 
 const upgrades = {

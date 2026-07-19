@@ -1,5 +1,5 @@
 import { Pistol } from "../arsenal/guns/Pistol";
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 import { Timer } from "../Timer";
 
 class PlayerArsenal {

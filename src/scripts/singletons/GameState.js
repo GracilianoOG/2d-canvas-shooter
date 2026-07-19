@@ -3,7 +3,7 @@ import { scoreManager } from "../systems/ScoreManager.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { NOT_RUNNING } from "../utils/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
-import { eventManager } from "./EventManager.js";
+import { eventManager } from "../systems/EventManager.js";
 
 class GameState {
   #entities;

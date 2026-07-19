@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 
 const ICON_CLASS = "life-icon";
 const EMPTY_CLASS = `${ICON_CLASS}--empty`;

@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 import { clamp } from "../utils/math";
 
 const MAX_FURY_VALUE = 100;

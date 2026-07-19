@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager.js";
+import { eventManager } from "../systems/EventManager.js";
 import { randomInt } from "../utils/math.js";
 import { StatusIndicator } from "./StatusIndicator.js";
 

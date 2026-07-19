@@ -1,5 +1,5 @@
 import { getRandomWeapon } from "@/data/weapons";
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 import { CHARTREUSE } from "../utils/constants/colors";
 import { Item } from "./Item";
 

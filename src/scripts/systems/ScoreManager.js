@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "./EventManager";
 import { StorageHandler } from "../StorageHandler";
 
 class ScoreManager {

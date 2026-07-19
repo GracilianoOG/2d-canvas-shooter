@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 import { ENERGETIC_BLUE } from "../utils/constants/colors";
 import { Item } from "./Item";
 

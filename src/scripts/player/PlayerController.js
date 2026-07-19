@@ -1,4 +1,4 @@
-import { eventManager } from "../singletons/EventManager";
+import { eventManager } from "../systems/EventManager";
 import { inputManager } from "../singletons/InputManager";
 import * as Keys from "../utils/constants/keys";
 
