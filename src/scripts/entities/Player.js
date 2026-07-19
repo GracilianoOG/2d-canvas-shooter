@@ -1,4 +1,4 @@
-import { Particle } from "../Particle.js";
+import { Particle } from "./Particle.js";
 import { PlayerController } from "../player/PlayerController.js";
 import { Projectile } from "./Projectile.js";
 import { gameState } from "../singletons/GameState.js";

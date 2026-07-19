@@ -1,5 +1,5 @@
-import { entityManager } from "./systems/EntityManager.js";
-import { Projectile } from "./entities/Projectile.js";
+import { entityManager } from "../systems/EntityManager.js";
+import { Projectile } from "./Projectile.js";
 
 class Particle extends Projectile {
   #angle = Math.random() * 2 * Math.PI;
