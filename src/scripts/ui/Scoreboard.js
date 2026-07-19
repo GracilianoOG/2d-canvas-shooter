@@ -14,7 +14,7 @@ class Scoreboard {
     this.#scoreboardEl = document.createElement("h2");
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
-    this.#showScore(0);
+    this.reset();
     eventManager.subscribe("addScore", ({ score }) => this.#showScore(score));
   }
 
