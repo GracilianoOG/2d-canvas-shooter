@@ -78,21 +78,13 @@ class GameState {
     const player = this.getEntity("player");
 
     for (const item of items) {
-      if (!player.isDead && player.collidedWith(item)) {
-        item.check();
-      }
+      player.collidedWith(item);
     }
 
     for (const enemy of enemies) {
-      if (!player.isDead && player.collidedWith(enemy)) {
-        player.takeHit();
-      }
+      player.collidedWith(enemy);
       for (const bullet of bullets) {
-        if (bullet.collidedWith(enemy)) {
-          enemy.takeDamage(bullet.damage);
-          bullet.destroy();
-          return;
-        }
+        bullet.collidedWith(enemy);
       }
     }
   }
