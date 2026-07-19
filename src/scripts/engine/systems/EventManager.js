@@ -23,11 +23,14 @@ class EventManager {
   }
 
   emit(event, data = null) {
-    if (!this.#events[event]) {
+    const listeners = this.#events[event];
+
+    if (!listeners) {
       return;
     }
-    for (const callback of this.#events[event]) {
-      callback(data);
+
+    for (const listener of listeners) {
+      listener(data);
     }
   }
 }
