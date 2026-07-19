@@ -5,19 +5,19 @@ class EventManager {
     this.#listeners = {};
   }
 
-  subscribe(event, callback) {
+  subscribe(event, listener) {
     if (!this.#listeners[event]) {
       this.#listeners[event] = [];
     }
-    this.#listeners[event].push(callback);
+    this.#listeners[event].push(listener);
   }
 
-  unsubscribe(event, callback) {
+  unsubscribe(event, listener) {
     if (!this.#listeners[event]) {
       this.#listeners[event] = [];
     }
     const filteredCallbacks = this.#listeners[event].filter(
-      (cb) => cb !== callback,
+      (cb) => cb !== listener,
     );
     this.#listeners[event] = filteredCallbacks;
   }
