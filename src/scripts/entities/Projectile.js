@@ -1,4 +1,4 @@
-import { Entity } from "./entities/Entity.js";
+import { Entity } from "./Entity.js";
 
 class Projectile extends Entity {
   #speed;

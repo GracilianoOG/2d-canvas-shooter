@@ -1,4 +1,4 @@
-import { Projectile } from "@/scripts/Projectile";
+import { Projectile } from "@/scripts/entities/Projectile";
 import { gameState } from "@/scripts/singletons/GameState";
 
 class Bullet extends Projectile {
