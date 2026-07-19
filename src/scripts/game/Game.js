@@ -15,6 +15,7 @@ import { AudioSystem } from "../systems/audio/AudioSystem";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
+import audios from "@/data/audios";
 
 class Game {
   constructor({ width, height }) {
@@ -118,7 +119,10 @@ class Game {
     livesDisplay.showCurrentLives(player.lives);
     entityManager.add(player);
 
-    await this.audioManager.init();
+    await this.audioManager.load("hit", audios.hit[0]);
+    await this.audioManager.load("explosion", audios.explosion[0]);
+    await this.audioManager.load("shot", audios.shot[0]);
+    await this.audioManager.load("battle", audios.battle[0]);
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
