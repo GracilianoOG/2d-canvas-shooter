@@ -129,6 +129,16 @@ class Player extends Projectile {
     eventManager.emit("playerRevival", { lives: this.#lives });
   }
 
+  onCollision(object) {
+    if (this.isDead) {
+      return;
+    } else if (object?.check) {
+      object.check();
+    } else if (object?.drop) {
+      this.takeHit();
+    }
+  }
+
   draw(ctx) {
     if (this.isDead) return;
     super.draw(ctx);
