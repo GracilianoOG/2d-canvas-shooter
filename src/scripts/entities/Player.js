@@ -3,7 +3,7 @@ import { PlayerController } from "../player/PlayerController.js";
 import { Projectile } from "./Projectile.js";
 import { gameState } from "../game/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
-import { eventManager } from "../systems/EventManager.js";
+import { eventManager } from "../engine/systems/EventManager.js";
 import { PlayerArsenal } from "../player/PlayerArsenal";
 import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";

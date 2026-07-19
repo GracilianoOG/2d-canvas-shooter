@@ -2,7 +2,7 @@ import { entityManager } from "../../systems/EntityManager.js";
 import { dropRandomItem } from "../../items/itemDrop.js";
 import { Particle } from "../Particle.js";
 import { Projectile } from "../Projectile.js";
-import { eventManager } from "../../systems/EventManager.js";
+import { eventManager } from "../../engine/systems/EventManager.js";
 import { WHITE } from "../../utils/constants/colors.js";
 import { EnemyAI } from "../../enemy/EnemyAI.js";
 import { defaultStats } from "../../enemy/enemyDefaultStats.js";

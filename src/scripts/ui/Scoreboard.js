@@ -1,4 +1,4 @@
-import { eventManager } from "../systems/EventManager.js";
+import { eventManager } from "../engine/systems/EventManager.js";
 import { randomInt } from "../engine/utils/math.js";
 import { StatusIndicator } from "./StatusIndicator.js";
 

@@ -8,7 +8,7 @@ import { Timer } from "../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
 import * as States from "../engine/constants/gameStates";
-import { eventManager } from "../systems/EventManager";
+import { eventManager } from "../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../engine/core/Engine";
 import { AudioSystem } from "../engine/systems/AudioSystem";

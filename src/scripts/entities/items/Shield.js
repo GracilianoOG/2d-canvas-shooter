@@ -1,4 +1,4 @@
-import { eventManager } from "@/scripts/systems/EventManager";
+import { eventManager } from "@/scripts/engine/systems/EventManager";
 import { ENERGETIC_BLUE } from "@/scripts/utils/constants/colors";
 import { Item } from "./Item";
 
