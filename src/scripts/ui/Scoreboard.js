@@ -14,12 +14,8 @@ class Scoreboard {
     this.#scoreboardEl = document.createElement("h2");
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
-    this.reset();
-    eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
-  }
-
-  reset() {
     this.#showScore(0);
+    eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
   }
 
   createIndicator(score, color) {
