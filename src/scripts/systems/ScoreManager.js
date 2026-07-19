@@ -33,6 +33,7 @@ class ScoreManager {
 
   reset() {
     this.#score = 0;
+    eventManager.emit("setScore", { score: 0 });
   }
 }
 
