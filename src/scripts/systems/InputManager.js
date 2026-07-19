@@ -1,5 +1,3 @@
-import { gameState } from "../singletons/GameState";
-
 class InputManager {
   #actions;
   #mouse;
@@ -12,10 +10,7 @@ class InputManager {
     this.#initListeners();
   }
 
-  get mousePosition() {
-    const { left: offsetX, top: offsetY } =
-      gameState.getEntity("realCanvas").rect;
-
+  getMousePosition(offsetX, offsetY) {
     return {
       x: this.#mouse.x - offsetX,
       y: this.#mouse.y - offsetY,
