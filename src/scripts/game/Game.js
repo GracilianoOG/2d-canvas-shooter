@@ -106,6 +106,13 @@ class Game {
     }
   }
 
+  async loadAssets() {
+    await this.audioManager.load("hit", audios.hit[0]);
+    await this.audioManager.load("explosion", audios.explosion[0]);
+    await this.audioManager.load("shot", audios.shot[0]);
+    await this.audioManager.load("battle", audios.battle[0]);
+  }
+
   async init() {
     // GameState
     const { width: mWidth, height: mHeight } = this.mainCanvas;
@@ -117,10 +124,7 @@ class Game {
     livesDisplay.showCurrentLives(player.lives);
     entityManager.add(player);
 
-    await this.audioManager.load("hit", audios.hit[0]);
-    await this.audioManager.load("explosion", audios.explosion[0]);
-    await this.audioManager.load("shot", audios.shot[0]);
-    await this.audioManager.load("battle", audios.battle[0]);
+    await this.loadAssets();
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
