@@ -1,4 +1,5 @@
 import { StorageHandler } from "../StorageHandler.js";
+import { scoreManager } from "../systems/ScoreManager.js";
 import { CSS_CLASSES } from "../utils/constants.js";
 import { NOT_RUNNING } from "../utils/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
@@ -48,18 +49,14 @@ class GameState {
 
   #countScore(score, color) {
     this.getEntity("scoreboard").createIndicator(score, color);
+    scoreManager.add(score);
   }
 
   #calcHighscore() {
-    const score = this.getEntity("scoreboard").score;
-    const highscore = parseInt(StorageHandler.retrieveHighscore(false));
     const highscoreEl = restart.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
     const recordEl = restart.querySelector(".highscore__new");
-    const isHighscore = score > highscore;
-    if (isHighscore) {
-      StorageHandler.storeHighscore(score);
-    }
-    recordEl.classList.toggle("hide", !isHighscore);
+    scoreManager.save();
+    recordEl.classList.toggle("hide", !scoreManager.isHighscore());
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
   }
 
