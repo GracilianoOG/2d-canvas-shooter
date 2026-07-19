@@ -1,29 +1,29 @@
 class EventManager {
-  #events;
+  #listeners;
 
   constructor() {
-    this.#events = {};
+    this.#listeners = {};
   }
 
   subscribe(event, callback) {
-    if (!this.#events[event]) {
-      this.#events[event] = [];
+    if (!this.#listeners[event]) {
+      this.#listeners[event] = [];
     }
-    this.#events[event].push(callback);
+    this.#listeners[event].push(callback);
   }
 
   unsubscribe(event, callback) {
-    if (!this.#events[event]) {
-      this.#events[event] = [];
+    if (!this.#listeners[event]) {
+      this.#listeners[event] = [];
     }
-    const filteredCallbacks = this.#events[event].filter(
+    const filteredCallbacks = this.#listeners[event].filter(
       (cb) => cb !== callback,
     );
-    this.#events[event] = filteredCallbacks;
+    this.#listeners[event] = filteredCallbacks;
   }
 
   emit(event, data = null) {
-    const listeners = this.#events[event];
+    const listeners = this.#listeners[event];
 
     if (!listeners) {
       return;
