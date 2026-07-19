@@ -35,10 +35,14 @@ class EntityManager {
   }
 
   add(entity) {
-    if (!(entity instanceof Entity)) {
-      throw new Error("Invalid entity!");
+    try {
+      if (!(entity instanceof Entity)) {
+        throw new Error("Invalid entity!");
+      }
+      this.#queue.push(entity);
+    } catch (error) {
+      console.error(error);
     }
-    this.#queue.push(entity);
   }
 
   renderAll(ctx, delta) {
