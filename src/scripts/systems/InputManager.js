@@ -1,4 +1,4 @@
-import { gameState } from "./GameState.js";
+import { gameState } from "../singletons/GameState";
 
 class InputManager {
   #actions;

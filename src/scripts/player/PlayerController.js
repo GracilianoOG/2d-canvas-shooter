@@ -1,5 +1,5 @@
 import { eventManager } from "../systems/EventManager";
-import { inputManager } from "../singletons/InputManager";
+import { inputManager } from "../systems/InputManager";
 import * as Keys from "../utils/constants/keys";
 
 class PlayerController {
