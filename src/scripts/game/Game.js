@@ -11,7 +11,7 @@ import * as States from "../engine/constants/gameStates";
 import { eventManager } from "../systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { GameLoop } from "../engine/core/GameLoop";
-import { AudioSystem } from "../systems/audio/AudioSystem";
+import { AudioSystem } from "../engine/systems/AudioSystem";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
