@@ -55,12 +55,11 @@ class GameState {
     const highscore = parseInt(StorageHandler.retrieveHighscore(false));
     const highscoreEl = restart.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
     const recordEl = restart.querySelector(".highscore__new");
-    if (score > highscore) {
+    const isHighscore = score > highscore;
+    if (isHighscore) {
       StorageHandler.storeHighscore(score);
-      recordEl.classList.remove("hide");
-    } else {
-      recordEl.classList.add("hide");
     }
+    recordEl.classList.toggle("hide", !isHighscore);
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
   }
 
