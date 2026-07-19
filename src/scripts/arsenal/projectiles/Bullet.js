@@ -23,6 +23,13 @@ class Bullet extends Projectile {
     return this.#damage;
   }
 
+  onCollision(object) {
+    if (object?.takeDamage) {
+      object.takeDamage(this.damage);
+      this.destroy();
+    }
+  }
+
   isOutOfCanvas(canvas = gameState.getEntity("mainCanvas")) {
     const { x: bx, y: by, radius: br } = this;
     const { width: cw, height: ch } = canvas;
