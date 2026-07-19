@@ -1,7 +1,7 @@
-import { Entity } from "../entities/Entity";
-import { gameState } from "../singletons/GameState";
-import { Timer } from "../Timer";
-import { WHITE } from "../utils/constants/colors";
+import { Entity } from "../Entity";
+import { gameState } from "@/scripts/singletons/GameState";
+import { Timer } from "@/scripts/Timer";
+import { WHITE } from "@/scripts/utils/constants/colors";
 
 class Item extends Entity {
   #despawnTimer;

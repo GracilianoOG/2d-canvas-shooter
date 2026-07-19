@@ -1,7 +1,7 @@
-import { Adrenaline } from "./Adrenaline";
-import { Life } from "./Life";
-import { Shield } from "./Shield";
-import { WeaponBox } from "./WeaponBox";
+import { Adrenaline } from "../entities/items/Adrenaline";
+import { Life } from "../entities/items/Life";
+import { Shield } from "../entities/items/Shield";
+import { WeaponBox } from "../entities/items/WeaponBox";
 
 export const dropRandomItem = (x, y, chance = 0.1) => {
   if (Math.random() > chance) return;

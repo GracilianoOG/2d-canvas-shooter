@@ -1,7 +1,7 @@
 import { Bullet } from "../entities/projectiles/Bullet";
 import { Enemy } from "../enemy/Enemy";
 import { entityManager } from "./EntityManager";
-import { Item } from "../items/Item";
+import { Item } from "../entities/items/Item";
 import { gameState } from "../singletons/GameState";
 
 class CollisionManager {
