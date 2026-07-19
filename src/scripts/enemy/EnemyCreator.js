@@ -1,4 +1,4 @@
-import { gameState } from "../singletons/GameState.js";
+import { gameState } from "../game/GameState.js";
 import { Timer } from "../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";

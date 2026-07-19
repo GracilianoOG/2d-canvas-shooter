@@ -1,6 +1,6 @@
 import { Player } from "../entities/Player";
 import { Canvas } from "../engine/core/Canvas";
-import { gameState } from "../singletons/GameState";
+import { gameState } from "./GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import * as Screens from "../utils/screens";

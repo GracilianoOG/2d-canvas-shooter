@@ -1,5 +1,5 @@
 import { Entity } from "../Entity";
-import { gameState } from "@/scripts/singletons/GameState";
+import { gameState } from "@/scripts/game/GameState";
 import { Timer } from "@/scripts/engine/systems/Timer";
 import { WHITE } from "@/scripts/utils/constants/colors";
 

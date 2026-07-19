@@ -1,4 +1,4 @@
-import { gameState } from "../../singletons/GameState";
+import { gameState } from "../../game/GameState";
 import { GRAY } from "../../utils/constants/colors";
 import { Bullet } from "./Bullet";
 

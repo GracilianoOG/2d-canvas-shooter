@@ -1,5 +1,5 @@
 import { Projectile } from "@/scripts/entities/Projectile";
-import { gameState } from "@/scripts/singletons/GameState";
+import { gameState } from "@/scripts/game/GameState";
 
 class Bullet extends Projectile {
   #angle;
