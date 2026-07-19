@@ -1,4 +1,4 @@
-import { Timer } from "../../Timer";
+import { Timer } from "./Timer";
 import { randomInt } from "../utils/math";
 
 class Shaker {

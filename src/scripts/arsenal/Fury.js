@@ -1,5 +1,5 @@
 import { eventManager } from "../systems/EventManager.js";
-import { Timer } from "../Timer.js";
+import { Timer } from "../engine/systems/Timer.js";
 
 const upgrades = {
   speedMultiplier: 1.25,

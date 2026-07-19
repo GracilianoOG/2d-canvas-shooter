@@ -1,6 +1,6 @@
 import { Entity } from "../Entity";
 import { gameState } from "@/scripts/singletons/GameState";
-import { Timer } from "@/scripts/Timer";
+import { Timer } from "@/scripts/engine/systems/Timer";
 import { WHITE } from "@/scripts/utils/constants/colors";
 
 class Item extends Entity {

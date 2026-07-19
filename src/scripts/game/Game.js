@@ -4,7 +4,7 @@ import { gameState } from "../singletons/GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import * as Screens from "../utils/screens";
-import { Timer } from "../Timer";
+import { Timer } from "../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
 import * as States from "../utils/constants/gameStates";
