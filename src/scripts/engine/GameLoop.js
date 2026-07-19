@@ -1,4 +1,4 @@
-import { Shaker } from "../Shaker";
+import { Shaker } from "./systems/Shaker";
 import * as States from "../utils/constants/gameStates";
 
 class GameLoop {
