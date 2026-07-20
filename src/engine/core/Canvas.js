@@ -1,5 +1,6 @@
 class Canvas {
   #canvas;
+  #buffer;
   #context;
   #rect;
 
@@ -8,6 +9,11 @@ class Canvas {
     this.#canvas.width = width;
     this.#canvas.height = height;
     this.#context = this.#canvas.getContext("2d");
+
+    this.#buffer = document.createElement("canvas");
+    this.#buffer.width = width;
+    this.#buffer.height = height;
+
     this.#rect = this.#canvas.getBoundingClientRect();
     if (parent) parent.appendChild(this.#canvas);
   }
