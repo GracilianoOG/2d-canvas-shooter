@@ -43,6 +43,10 @@ export class GameCanvas {
     };
   }
 
+  get offset() {
+    return this.#rect;
+  }
+
   get width() {
     return this.#canvas.width;
   }
