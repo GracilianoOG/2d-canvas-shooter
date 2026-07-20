@@ -46,6 +46,13 @@ export class GameCanvas {
     };
   }
 
+  get factors() {
+    return {
+      x: this.width / this.#buffer.width,
+      y: this.height / this.#buffer.height,
+    };
+  }
+
   get offset() {
     return this.#rect;
   }
