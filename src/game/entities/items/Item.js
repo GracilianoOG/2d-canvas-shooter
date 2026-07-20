@@ -1,7 +1,7 @@
 import { Entity } from "../Entity";
-import { gameState } from "@/scripts/core/GameState";
+import { gameState } from "@/game/core/GameState";
 import { Timer } from "@/engine/systems/Timer";
-import { WHITE } from "@/scripts/utils/constants/colors";
+import { WHITE } from "@/game/utils/constants/colors";
 
 class Item extends Entity {
   #despawnTimer;

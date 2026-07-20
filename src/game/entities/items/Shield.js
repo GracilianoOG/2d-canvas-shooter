@@ -1,5 +1,5 @@
 import { eventManager } from "@/engine/systems/EventManager";
-import { ENERGETIC_BLUE } from "@/scripts/utils/constants/colors";
+import { ENERGETIC_BLUE } from "@/game/utils/constants/colors";
 import { Item } from "./Item";
 
 class Shield extends Item {

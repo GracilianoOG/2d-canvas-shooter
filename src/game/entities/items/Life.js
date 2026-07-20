@@ -1,5 +1,5 @@
 import { eventManager } from "@/engine/systems/EventManager";
-import { CRIMSON } from "@/scripts/utils/constants/colors";
+import { CRIMSON } from "@/game/utils/constants/colors";
 import { Item } from "./Item";
 
 class Life extends Item {

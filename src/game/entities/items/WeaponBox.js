@@ -1,6 +1,6 @@
 import { getRandomWeapon } from "@/data/weapons";
 import { eventManager } from "@/engine/systems/EventManager";
-import { CHARTREUSE } from "@/scripts/utils/constants/colors";
+import { CHARTREUSE } from "@/game/utils/constants/colors";
 import { Item } from "./Item";
 
 class WeaponBox extends Item {

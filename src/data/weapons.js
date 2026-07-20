@@ -1,15 +1,15 @@
-import { BulletHell } from "@/scripts/arsenal/guns/BulletHell";
-import { Cannon } from "@/scripts/arsenal/guns/Cannon";
-import { GrenadeLauncher } from "@/scripts/arsenal/guns/GrenadeLauncher";
-import { HeavyShotgun } from "@/scripts/arsenal/guns/HeavyShotgun";
-import { MineLauncher } from "@/scripts/arsenal/guns/MineLauncher";
-import { Minigun } from "@/scripts/arsenal/guns/Minigun";
-import { NukeLauncher } from "@/scripts/arsenal/guns/NukeLauncher";
-import { RicochetShotgun } from "@/scripts/arsenal/guns/RicochetShotgun";
-import { Rifle } from "@/scripts/arsenal/guns/Rifle";
-import { RocketLauncher } from "@/scripts/arsenal/guns/RocketLauncher";
-import { Shotgun } from "@/scripts/arsenal/guns/Shotgun";
-import { SubmachineGun } from "@/scripts/arsenal/guns/SubmachineGun";
+import { BulletHell } from "@/game/arsenal/guns/BulletHell";
+import { Cannon } from "@/game/arsenal/guns/Cannon";
+import { GrenadeLauncher } from "@/game/arsenal/guns/GrenadeLauncher";
+import { HeavyShotgun } from "@/game/arsenal/guns/HeavyShotgun";
+import { MineLauncher } from "@/game/arsenal/guns/MineLauncher";
+import { Minigun } from "@/game/arsenal/guns/Minigun";
+import { NukeLauncher } from "@/game/arsenal/guns/NukeLauncher";
+import { RicochetShotgun } from "@/game/arsenal/guns/RicochetShotgun";
+import { Rifle } from "@/game/arsenal/guns/Rifle";
+import { RocketLauncher } from "@/game/arsenal/guns/RocketLauncher";
+import { Shotgun } from "@/game/arsenal/guns/Shotgun";
+import { SubmachineGun } from "@/game/arsenal/guns/SubmachineGun";
 import { randomInt } from "@/engine/utils/math";
 
 const weapons = {

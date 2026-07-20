@@ -4,9 +4,9 @@ import { Projectile } from "./Projectile.js";
 import { gameState } from "../core/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../../engine/systems/EventManager.js";
-import { PlayerArsenal } from "../player/PlayerArsenal";
-import { defaultStats } from "../player/playerDefaultStats";
-import { PlayerShield } from "../player/PlayerShield";
+import { PlayerArsenal } from "../player/PlayerArsenal.js";
+import { defaultStats } from "../player/playerDefaultStats.js";
+import { PlayerShield } from "../player/PlayerShield.js";
 import { PlayerHUD } from "../player/PlayerHUD.js";
 import * as Colors from "../utils/constants/colors.js";
 

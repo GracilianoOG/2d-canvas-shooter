@@ -1,7 +1,7 @@
-import { Game } from "@/scripts/core/Game";
-import { StorageHandler } from "@/scripts/StorageHandler";
-import { CSS_CLASSES } from "@/scripts/utils/constants";
-import * as Screens from "@/scripts/utils/screens";
+import { Game } from "@/game/core/Game";
+import { StorageHandler } from "@/game/StorageHandler";
+import { CSS_CLASSES } from "@/game/utils/constants";
+import * as Screens from "@/game/utils/screens";
 import "@/styles/main.scss";
 
 const game = new Game({ width: 800, height: 600 });

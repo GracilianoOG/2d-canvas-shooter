@@ -1,9 +1,9 @@
-import { ARMY_GREEN } from "@/scripts/utils/constants/colors";
+import { ARMY_GREEN } from "@/game/utils/constants/colors";
 import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../../entities/projectiles/Explosive";
 import { HEAVY_DMG } from "./damages";
-import { entityManager } from "@/scripts/systems/EntityManager";
+import { entityManager } from "@/game/systems/EntityManager";
 
 class MissileAmmo extends ExplosiveAmmo {
   constructor(name = "Missile", fragmentType = new PistolAmmo()) {

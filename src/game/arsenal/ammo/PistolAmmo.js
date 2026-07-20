@@ -1,8 +1,8 @@
-import { WHITE } from "@/scripts/utils/constants/colors";
+import { WHITE } from "@/game/utils/constants/colors";
 import { BASE_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 import { Bullet } from "../../entities/projectiles/Bullet";
-import { entityManager } from "@/scripts/systems/EntityManager";
+import { entityManager } from "@/game/systems/EntityManager";
 
 class PistolAmmo extends AmmoType {
   constructor(name = "Common") {

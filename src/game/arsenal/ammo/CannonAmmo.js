@@ -1,8 +1,8 @@
-import { VERY_LIGHT_YELLOW } from "@/scripts/utils/constants/colors";
+import { VERY_LIGHT_YELLOW } from "@/game/utils/constants/colors";
 import { CANNON_DMG } from "./damages";
 import { AmmoType } from "./AmmoType";
 import { Bullet } from "../../entities/projectiles/Bullet";
-import { entityManager } from "@/scripts/systems/EntityManager";
+import { entityManager } from "@/game/systems/EntityManager";
 
 class CannonAmmo extends AmmoType {
   constructor(name = "Cannon") {

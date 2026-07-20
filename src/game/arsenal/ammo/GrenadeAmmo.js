@@ -1,20 +1,20 @@
-import { ARMY_GREEN } from "@/scripts/utils/constants/colors";
+import { ARMY_GREEN } from "@/game/utils/constants/colors";
+import { PistolAmmo } from "./PistolAmmo";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../../entities/projectiles/Explosive";
-import { MissileAmmo } from "./MissileAmmo";
-import { CANNON_DMG } from "./damages";
-import { entityManager } from "@/scripts/systems/EntityManager";
+import { BASE_DMG } from "./damages";
+import { entityManager } from "@/game/systems/EntityManager";
 
-class NukeAmmo extends ExplosiveAmmo {
-  constructor(name = "Nuke", fragmentType = new MissileAmmo()) {
+class GrenadeAmmo extends ExplosiveAmmo {
+  constructor(name = "Grenade", fragmentType = new PistolAmmo()) {
     super(name, fragmentType);
   }
 
   create(x, y, angle) {
-    const radius = 20;
-    const speed = 350;
+    const radius = 10;
+    const speed = 500;
     const color = ARMY_GREEN;
-    const damage = CANNON_DMG;
+    const damage = BASE_DMG;
     const fragments = {
       amount: 10,
       createFragments: (x, y, direction) =>
@@ -34,4 +34,4 @@ class NukeAmmo extends ExplosiveAmmo {
   }
 }
 
-export { NukeAmmo };
+export { GrenadeAmmo };
