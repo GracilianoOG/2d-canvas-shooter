@@ -11,7 +11,7 @@ import * as States from "../../engine/constants/gameStates";
 import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
-import { AudioSystem } from "../../engine/systems/AudioSystem";
+import { audioSystem } from "../../engine/systems/AudioSystem";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
@@ -21,7 +21,7 @@ import { inputManager } from "../../engine/systems/InputManager";
 class Game {
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
-    this.audioManager = new AudioSystem();
+    this.audioManager = audioSystem;
     this.mainCanvas = new Canvas(width, height);
     this.settings = {
       trails: true,
