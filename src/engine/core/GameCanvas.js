@@ -100,4 +100,9 @@ export class GameCanvas {
     this.#canvasCtx.drawImage(this.#buffer, 0, 0, width, height);
     this.#rect = this.#canvas.getBoundingClientRect();
   }
+
+  render() {
+    this.#canvasCtx.clearRect(0, 0, this.width, this.height);
+    this.#canvasCtx.drawImage(this.#buffer, 0, 0, this.width, this.height);
+  }
 }
