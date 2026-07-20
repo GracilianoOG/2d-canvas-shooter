@@ -1,4 +1,4 @@
-import { eventManager } from "../engine/systems/EventManager";
+import { eventManager } from "../../engine/systems/EventManager";
 import { StorageHandler } from "../StorageHandler";
 
 class ScoreManager {

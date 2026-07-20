@@ -1,4 +1,4 @@
-import { eventManager } from "../engine/systems/EventManager";
+import { eventManager } from "../../engine/systems/EventManager";
 import { inputManager } from "../systems/InputManager";
 import * as Keys from "../utils/constants/keys";
 

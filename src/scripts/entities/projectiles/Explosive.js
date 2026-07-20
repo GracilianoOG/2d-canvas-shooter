@@ -1,4 +1,4 @@
-import { TAU } from "@/scripts/engine/utils/math";
+import { TAU } from "@/engine/utils/math";
 import { Bullet } from "./Bullet";
 
 class Explosive extends Bullet {

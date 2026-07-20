@@ -1,5 +1,5 @@
 import { GRAY } from "../utils/constants/colors";
-import { clamp, TAU } from "../engine/utils/math";
+import { clamp, TAU } from "../../engine/utils/math";
 
 class Entity {
   #position;

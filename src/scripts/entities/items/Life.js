@@ -1,4 +1,4 @@
-import { eventManager } from "@/scripts/engine/systems/EventManager";
+import { eventManager } from "@/engine/systems/EventManager";
 import { CRIMSON } from "@/scripts/utils/constants/colors";
 import { Item } from "./Item";
 

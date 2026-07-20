@@ -1,4 +1,4 @@
-import { eventManager } from "../engine/systems/EventManager";
+import { eventManager } from "../../engine/systems/EventManager";
 
 const ICON_CLASS = "life-icon";
 const EMPTY_CLASS = `${ICON_CLASS}--empty`;

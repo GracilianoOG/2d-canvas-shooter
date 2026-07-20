@@ -1,6 +1,6 @@
 import { Pistol } from "../arsenal/guns/Pistol";
-import { eventManager } from "../engine/systems/EventManager";
-import { Timer } from "../engine/systems/Timer";
+import { eventManager } from "../../engine/systems/EventManager";
+import { Timer } from "../../engine/systems/Timer";
 
 class PlayerArsenal {
   #inventory;

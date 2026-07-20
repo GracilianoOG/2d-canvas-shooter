@@ -1,4 +1,4 @@
-import { Timer } from "../engine/systems/Timer";
+import { Timer } from "../../engine/systems/Timer";
 import { defaultStats } from "./playerDefaultStats";
 
 class PlayerShield {
