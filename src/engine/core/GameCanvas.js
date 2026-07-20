@@ -81,4 +81,23 @@ export class GameCanvas {
   set rect(rect) {
     this.#rect = rect;
   }
+
+  resize() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const canvasRatio = this.#buffer.height / this.#buffer.width;
+    const screenRatio = screenHeight / screenWidth;
+
+    if (screenRatio > canvasRatio) {
+      this.#canvas.width = screenWidth;
+      this.#canvas.height = screenWidth * canvasRatio;
+    } else {
+      this.#canvas.height = screenHeight;
+      this.#canvas.width = screenHeight / canvasRatio;
+    }
+
+    const { width, height } = this.#canvas;
+    this.#canvasCtx.drawImage(this.#buffer, 0, 0, width, height);
+    this.#rect = this.#canvas.getBoundingClientRect();
+  }
 }
