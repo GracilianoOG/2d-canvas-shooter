@@ -1,18 +1,21 @@
 export class GameCanvas {
   #canvas;
   #buffer;
-  #context;
+  #canvasCtx;
+  #bufferCtx;
   #rect;
 
   constructor(width, height, parent = null) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
-    this.#context = this.#canvas.getContext("2d");
 
     this.#buffer = document.createElement("canvas");
     this.#buffer.width = width;
     this.#buffer.height = height;
+
+    this.#canvasCtx = this.#canvas.getContext("2d");
+    this.#bufferCtx = this.#buffer.getContext("2d");
 
     this.#rect = this.#canvas.getBoundingClientRect();
     if (parent) parent.appendChild(this.#canvas);
@@ -68,7 +71,7 @@ export class GameCanvas {
   }
 
   get context() {
-    return this.#context;
+    return this.#bufferCtx;
   }
 
   get rect() {
