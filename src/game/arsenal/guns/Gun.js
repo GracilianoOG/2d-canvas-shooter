@@ -43,7 +43,7 @@ class Gun {
   calcBulletPath(originX, originY) {
     const { width: rWidth, height: rHeight } =
       gameState.getEntity("realCanvas");
-    const { left, top } = gameState.getEntity("realCanvas").rect;
+    const { left, top } = gameState.getEntity("realCanvas").offset;
     const { width: mWidth, height: mHeight } =
       gameState.getEntity("mainCanvas");
 
