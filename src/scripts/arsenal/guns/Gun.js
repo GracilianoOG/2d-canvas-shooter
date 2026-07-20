@@ -1,4 +1,4 @@
-import { gameState } from "@/scripts/game/GameState";
+import { gameState } from "@/scripts/core/GameState";
 import { inputManager } from "@/scripts/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";

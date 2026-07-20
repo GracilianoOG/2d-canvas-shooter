@@ -1,4 +1,4 @@
-import { Game } from "@/scripts/game/Game";
+import { Game } from "@/scripts/core/Game";
 import { StorageHandler } from "@/scripts/StorageHandler";
 import { CSS_CLASSES } from "@/scripts/utils/constants";
 import * as Screens from "@/scripts/utils/screens";

@@ -2,7 +2,7 @@ import { Bullet } from "../entities/projectiles/Bullet";
 import { Enemy } from "../entities/enemies/Enemy";
 import { entityManager } from "./EntityManager";
 import { Item } from "../entities/items/Item";
-import { gameState } from "../game/GameState";
+import { gameState } from "../core/GameState";
 
 class CollisionManager {
   #filterInstances() {

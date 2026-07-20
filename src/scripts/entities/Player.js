@@ -1,7 +1,7 @@
 import { Particle } from "./Particle.js";
 import { PlayerController } from "../player/PlayerController.js";
 import { Projectile } from "./Projectile.js";
-import { gameState } from "../game/GameState.js";
+import { gameState } from "../core/GameState.js";
 import { Fury } from "../arsenal/Fury.js";
 import { eventManager } from "../../engine/systems/EventManager.js";
 import { PlayerArsenal } from "../player/PlayerArsenal";
