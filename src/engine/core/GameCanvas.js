@@ -46,6 +46,13 @@ export class GameCanvas {
     };
   }
 
+  get bufferSize() {
+    return {
+      width: this.#buffer.width,
+      height: this.#buffer.height,
+    };
+  }
+
   get factors() {
     return {
       x: this.width / this.#buffer.width,
