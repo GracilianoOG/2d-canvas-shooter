@@ -4,6 +4,8 @@ export class GameCanvas {
   #canvasCtx;
   #bufferCtx;
   #rect;
+  #width;
+  #height;
 
   constructor(width, height, parent = null) {
     this.#canvas = document.createElement("canvas");
@@ -16,6 +18,9 @@ export class GameCanvas {
 
     this.#canvasCtx = this.#canvas.getContext("2d");
     this.#bufferCtx = this.#buffer.getContext("2d");
+
+    this.#width = width;
+    this.#height = height;
 
     this.#rect = this.#canvas.getBoundingClientRect();
     if (parent) parent.appendChild(this.#canvas);
@@ -30,15 +35,15 @@ export class GameCanvas {
 
   get bufferSize() {
     return {
-      width: this.#buffer.width,
-      height: this.#buffer.height,
+      width: this.#width,
+      height: this.#height,
     };
   }
 
   get factors() {
     return {
-      x: this.width / this.#buffer.width,
-      y: this.height / this.#buffer.height,
+      x: this.width / this.#width,
+      y: this.height / this.#height,
     };
   }
 
@@ -73,7 +78,7 @@ export class GameCanvas {
   resize() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const canvasRatio = this.#buffer.height / this.#buffer.width;
+    const canvasRatio = this.#height / this.#width;
     const screenRatio = screenHeight / screenWidth;
 
     if (screenRatio > canvasRatio) {
