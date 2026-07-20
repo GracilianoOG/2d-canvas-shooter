@@ -2,7 +2,7 @@ import { Bullet } from "../entities/projectiles/Bullet";
 import { Enemy } from "../entities/enemies/Enemy";
 import { entityManager } from "./EntityManager";
 import { Item } from "../entities/items/Item";
-import { gameState } from "../core/GameState";
+import { Player } from "../entities/Player";
 
 class CollisionManager {
   #filterInstances() {
@@ -25,7 +25,7 @@ class CollisionManager {
 
   checkCollisions() {
     const [enemies, bullets, items] = this.#filterInstances();
-    const player = gameState.getEntity("player");
+    const player = entityManager.entities.find((ent) => ent instanceof Player);
 
     for (const item of items) {
       player.collidedWith(item);
