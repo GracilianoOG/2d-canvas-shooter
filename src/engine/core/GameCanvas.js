@@ -1,4 +1,4 @@
-export class Canvas {
+export class GameCanvas {
   #canvas;
   #buffer;
   #context;

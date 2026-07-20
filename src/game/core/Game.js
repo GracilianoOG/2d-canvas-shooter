@@ -1,5 +1,5 @@
 import { Player } from "../entities/Player";
-import { Canvas } from "../../engine/core/Canvas";
+import { GameCanvas } from "../../engine/core/GameCanvas";
 import { gameState } from "./GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
@@ -22,8 +22,8 @@ class Game {
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = audioSystem;
-    this.mainCanvas = new Canvas(width, height);
-    this.realCanvas = new Canvas(width, height, Screens.game);
+    this.mainCanvas = new GameCanvas(width, height);
+    this.realCanvas = new GameCanvas(width, height, Screens.game);
     this.settings = {
       trails: true,
     };
@@ -183,7 +183,7 @@ class Game {
   }
 
   #resizeCanvas() {
-    Canvas.resize(this.realCanvas, this.mainCanvas);
+    GameCanvas.resize(this.realCanvas, this.mainCanvas);
   }
 }
 
