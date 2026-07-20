@@ -1,4 +1,4 @@
-class Canvas {
+export class Canvas {
   #canvas;
   #buffer;
   #context;
@@ -68,5 +68,3 @@ class Canvas {
     this.#rect = rect;
   }
 }
-
-export { Canvas };
