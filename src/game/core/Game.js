@@ -120,7 +120,11 @@ class Game {
     const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
-    const furyMeter = new FuryMeter(hud);
+    const furyMeter = new FuryMeter({
+      container: hud,
+      label: "fury",
+      value: 100,
+    });
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
     entityManager.add(player);
