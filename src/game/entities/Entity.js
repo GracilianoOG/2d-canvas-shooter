@@ -71,10 +71,8 @@ class Entity {
     return hasCollided;
   }
 
-  getInCanvas(canvas) {
-    const { width, height } = canvas;
+  getInCanvas({ width, height }) {
     const size = this.radius;
-
     this.x = clamp(size, this.x, width - size);
     this.y = clamp(size, this.y, height - size);
   }
