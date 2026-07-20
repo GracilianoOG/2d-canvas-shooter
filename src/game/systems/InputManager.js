@@ -7,7 +7,6 @@ class InputManager {
     this.#actions = {};
     this.#mouse = { x: 0, y: 0 };
     this.#bindings = {};
-    this.#initListeners();
   }
 
   getMousePosition(offsetX, offsetY) {
@@ -17,9 +16,7 @@ class InputManager {
     };
   }
 
-  #initListeners() {
-    const container = document.querySelector("#game-container");
-
+  init(container) {
     document.addEventListener("keydown", (e) => this.#onKey(e.code));
     document.addEventListener("keyup", (e) => this.#onKey(e.code, false));
 
