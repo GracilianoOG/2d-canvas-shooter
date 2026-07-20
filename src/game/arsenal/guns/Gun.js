@@ -41,19 +41,12 @@ class Gun {
   }
 
   calcBulletPath(originX, originY) {
-    const { width: rWidth, height: rHeight } =
-      gameState.getEntity("realCanvas");
     const { left, top } = gameState.getEntity("realCanvas").offset;
-    const { width: mWidth, height: mHeight } =
-      gameState.getEntity("mainCanvas");
-
+    const scaleFactors = gameState.getEntity("mainCanvas").factors;
     const { x: mouseX, y: mouseY } = inputManager.getMousePosition(left, top);
 
-    const scaleXFactor = rWidth / mWidth;
-    const scaleYFactor = rHeight / mHeight;
-
-    const scaledMouseX = mouseX / scaleXFactor;
-    const scaledMouseY = mouseY / scaleYFactor;
+    const scaledMouseX = mouseX / scaleFactors.x;
+    const scaledMouseY = mouseY / scaleFactors.y;
 
     const dirX = scaledMouseX - originX;
     const dirY = scaledMouseY - originY;
