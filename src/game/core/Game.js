@@ -23,7 +23,6 @@ class Game {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = audioSystem;
     this.mainCanvas = new GameCanvas(width, height, Screens.game);
-    this.realCanvas = new GameCanvas(width, height);
     this.settings = {
       trails: true,
     };
@@ -86,14 +85,14 @@ class Game {
   }
 
   render() {
-    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    const { width, height } = this.mainCanvas.bufferSize;
     this.mainCanvas.render();
 
     if (this.settings.trails) {
       this.mainCanvas.context.fillStyle = TRANSPARENT_BLACK;
-      this.mainCanvas.context.fillRect(0, 0, mWidth, mHeight);
+      this.mainCanvas.context.fillRect(0, 0, width, height);
     } else {
-      this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
+      this.mainCanvas.context.clearRect(0, 0, width, height);
     }
   }
 
