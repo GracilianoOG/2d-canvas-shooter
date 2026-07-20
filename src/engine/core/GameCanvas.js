@@ -88,14 +88,6 @@ export class GameCanvas {
     return this.#bufferCtx;
   }
 
-  get rect() {
-    return this.#rect;
-  }
-
-  set rect(rect) {
-    this.#rect = rect;
-  }
-
   resize() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
