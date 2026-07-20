@@ -21,24 +21,6 @@ export class GameCanvas {
     if (parent) parent.appendChild(this.#canvas);
   }
 
-  static resize(realCanvas, bufferCanvas) {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    const canvasRatio = bufferCanvas.height / bufferCanvas.width;
-
-    if (screenHeight / screenWidth > canvasRatio) {
-      realCanvas.width = screenWidth;
-      realCanvas.height = screenWidth * canvasRatio;
-    } else {
-      realCanvas.height = screenHeight;
-      realCanvas.width = screenHeight / canvasRatio;
-    }
-
-    const { width: rWidth, height: rHeight } = realCanvas;
-    realCanvas.context.drawImage(bufferCanvas.canvas, 0, 0, rWidth, rHeight);
-    realCanvas.rect = realCanvas.canvas.getBoundingClientRect();
-  }
-
   get size() {
     return {
       width: this.width,
