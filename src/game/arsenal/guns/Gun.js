@@ -1,5 +1,5 @@
 import { gameState } from "@/game/core/GameState";
-import { inputManager } from "@/game/systems/InputManager";
+import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
 

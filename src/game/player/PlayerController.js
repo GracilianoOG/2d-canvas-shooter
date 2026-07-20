@@ -1,5 +1,5 @@
 import { eventManager } from "../../engine/systems/EventManager";
-import { inputManager } from "../systems/InputManager";
+import { inputManager } from "../../engine/systems/InputManager";
 import * as Keys from "../utils/constants/keys";
 
 class PlayerController {
