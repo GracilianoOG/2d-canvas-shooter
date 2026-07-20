@@ -16,6 +16,7 @@ import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
+import { inputManager } from "../systems/InputManager";
 
 class Game {
   constructor({ width, height }) {
@@ -139,6 +140,7 @@ class Game {
 
     Screens.loading.remove();
     Screens.start.classList.remove("hide");
+    inputManager.init(Screens.game);
   }
 
   start() {
