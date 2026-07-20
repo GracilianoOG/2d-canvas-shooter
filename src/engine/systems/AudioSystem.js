@@ -50,4 +50,4 @@ class AudioSystem {
   }
 }
 
-export { AudioSystem };
+export const audioSystem = new AudioSystem();
