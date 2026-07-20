@@ -36,6 +36,13 @@ export class GameCanvas {
     realCanvas.rect = realCanvas.canvas.getBoundingClientRect();
   }
 
+  get size() {
+    return {
+      width: this.width,
+      height: this.height,
+    };
+  }
+
   get width() {
     return this.#canvas.width;
   }
