@@ -138,7 +138,6 @@ class Game {
       gameAudio: this.audioManager,
       scoreboard,
       furyMeter,
-      livesDisplay,
       game: this,
     });
 
