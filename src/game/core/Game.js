@@ -183,7 +183,7 @@ class Game {
   }
 
   #resizeCanvas() {
-    GameCanvas.resize(this.realCanvas, this.mainCanvas);
+    this.mainCanvas.resize();
   }
 }
 
