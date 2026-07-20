@@ -23,6 +23,7 @@ class Game {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = audioSystem;
     this.mainCanvas = new Canvas(width, height);
+    this.realCanvas = new Canvas(width, height, Screens.game);
     this.settings = {
       trails: true,
     };
@@ -30,9 +31,6 @@ class Game {
     this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this), {
       ctx: this.mainCanvas.context,
     });
-
-    const { width: mWidth, height: mHeight } = this.mainCanvas;
-    this.realCanvas = new Canvas(mWidth, mHeight, Screens.game);
 
     this.#listenToWindowChange();
     this.#listenToResize();
