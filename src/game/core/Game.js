@@ -105,7 +105,7 @@ class Game {
 
   async init() {
     // GameState
-    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    const { width: mWidth, height: mHeight } = this.mainCanvas.canvasSize;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
