@@ -7,9 +7,20 @@ class LivesDisplay {
   #display;
 
   constructor(container) {
+    const label = "Lives";
+    const labelEl = document.createElement("span");
+    labelEl.textContent = label;
+    labelEl.classList.add("display__label");
+
     const lifeDisplay = document.createElement("div");
     lifeDisplay.classList.add("lives-display");
-    container.append(lifeDisplay);
+
+    const livesDisplay = document.createElement("div");
+    livesDisplay.classList.add("display");
+    livesDisplay.append(labelEl);
+    livesDisplay.append(lifeDisplay);
+
+    container.append(livesDisplay);
 
     this.#display = lifeDisplay;
 
