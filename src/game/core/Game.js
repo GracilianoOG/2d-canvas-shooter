@@ -28,7 +28,7 @@ class Game {
     };
 
     this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this), {
-      ctx: this.mainCanvas.context,
+      ctx: this.mainCanvas.ctx,
     });
 
     this.#listenToWindowChange();
@@ -79,7 +79,7 @@ class Game {
   }
 
   update(delta) {
-    entityManager.renderAll(this.mainCanvas.context, delta * 0.001);
+    entityManager.renderAll(this.mainCanvas.ctx, delta * 0.001);
     collisionManager.checkCollisions();
     Timer.updateAll(delta);
   }
@@ -89,10 +89,10 @@ class Game {
     this.mainCanvas.render();
 
     if (this.settings.trails) {
-      this.mainCanvas.context.fillStyle = TRANSPARENT_BLACK;
-      this.mainCanvas.context.fillRect(0, 0, width, height);
+      this.mainCanvas.ctx.fillStyle = TRANSPARENT_BLACK;
+      this.mainCanvas.ctx.fillRect(0, 0, width, height);
     } else {
-      this.mainCanvas.context.clearRect(0, 0, width, height);
+      this.mainCanvas.ctx.clearRect(0, 0, width, height);
     }
   }
 
@@ -148,7 +148,7 @@ class Game {
   restart() {
     const { width: mWidth, height: mHeight } = this.mainCanvas.canvasSize;
     const player = gameState.getEntity("player");
-    this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
+    this.mainCanvas.ctx.clearRect(0, 0, mWidth, mHeight);
     gameState.getEntity("furyMeter").value = 0;
     player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
