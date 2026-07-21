@@ -10,7 +10,7 @@ class Flechette extends Bullet {
     this.#bounces = bounces;
   }
 
-  hasTouchedBorder(canvas = gameState.getEntity("mainCanvas")) {
+  hasTouchedBorder(canvas = gameState.getEntity("mainCanvas").canvasSize) {
     const { x: ballX, y: ballY, radius } = this;
     const { width: canvasW, height: canvasH } = canvas;
 
