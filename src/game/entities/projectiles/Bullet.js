@@ -30,7 +30,7 @@ class Bullet extends Projectile {
     }
   }
 
-  isOutOfCanvas(canvas = gameState.getEntity("mainCanvas")) {
+  isOutOfCanvas(canvas = gameState.getEntity("mainCanvas").canvasSize) {
     const { x: bx, y: by, radius: br } = this;
     const { width: cw, height: ch } = canvas;
 
