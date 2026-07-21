@@ -85,7 +85,7 @@ class Game {
   }
 
   render() {
-    const { width, height } = this.mainCanvas.bufferSize;
+    const { width, height } = this.mainCanvas.canvasSize;
     this.mainCanvas.render();
 
     if (this.settings.trails) {
@@ -147,7 +147,7 @@ class Game {
   }
 
   restart() {
-    const { width: mWidth, height: mHeight } = this.mainCanvas;
+    const { width: mWidth, height: mHeight } = this.mainCanvas.canvasSize;
     const player = gameState.getEntity("player");
     this.mainCanvas.context.clearRect(0, 0, mWidth, mHeight);
     gameState.getEntity("furyMeter").value = 0;
