@@ -7,7 +7,7 @@ export class GameCanvas {
   #width;
   #height;
 
-  constructor(width, height, parent) {
+  constructor(width, height, container) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
@@ -23,7 +23,7 @@ export class GameCanvas {
     this.#height = height;
 
     this.#rect = this.#canvas.getBoundingClientRect();
-    if (parent) parent.appendChild(this.#canvas);
+    if (container) container.appendChild(this.#canvas);
   }
 
   get canvasSize() {
