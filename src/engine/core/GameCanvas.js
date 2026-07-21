@@ -23,7 +23,12 @@ export class GameCanvas {
     this.#height = height;
 
     this.#rect = this.#canvas.getBoundingClientRect();
-    if (container) container.appendChild(this.#canvas);
+
+    if (!container) {
+      throw new Error("An HTML container must be provided to GameCanvas!");
+    }
+
+    container.appendChild(this.#canvas);
   }
 
   get canvasSize() {
