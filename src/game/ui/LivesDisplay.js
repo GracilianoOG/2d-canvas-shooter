@@ -4,7 +4,7 @@ const ICON_CLASS = "life-icon";
 const EMPTY_CLASS = `${ICON_CLASS}--empty`;
 
 class LivesDisplay {
-  #display;
+  #displayContent;
 
   constructor(container) {
     const label = "Lives";
@@ -12,17 +12,17 @@ class LivesDisplay {
     labelEl.textContent = label;
     labelEl.classList.add("display__label");
 
-    const lifeDisplay = document.createElement("div");
-    lifeDisplay.classList.add("display__content");
+    const displayContent = document.createElement("div");
+    displayContent.classList.add("display__content");
 
-    const livesDisplay = document.createElement("div");
-    livesDisplay.classList.add("display");
-    livesDisplay.append(labelEl);
-    livesDisplay.append(lifeDisplay);
+    const display = document.createElement("div");
+    display.classList.add("display");
+    display.append(labelEl);
+    display.append(displayContent);
 
-    container.append(livesDisplay);
+    container.append(display);
 
-    this.#display = lifeDisplay;
+    this.#displayContent = displayContent;
 
     eventManager.subscribe("playerRevival", this.#onPlayerRevival.bind(this));
     eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
@@ -30,14 +30,14 @@ class LivesDisplay {
   }
 
   showCurrentLives(lives) {
-    this.#display.innerHTML = null;
+    this.#displayContent.innerHTML = null;
     for (let i = 0; i < lives; i++) {
       this.#createLifeIcon();
     }
   }
 
   #removeLife(lives) {
-    const icon = this.#display.querySelector(
+    const icon = this.#displayContent.querySelector(
       `.${ICON_CLASS}:not(.${EMPTY_CLASS}):nth-child(${lives + 1})`,
     );
     icon.classList.add(EMPTY_CLASS);
@@ -46,7 +46,7 @@ class LivesDisplay {
   #createLifeIcon() {
     const lifeIcon = document.createElement("div");
     lifeIcon.classList.add(ICON_CLASS);
-    this.#display.append(lifeIcon);
+    this.#displayContent.append(lifeIcon);
   }
 
   #onPlayerRevival({ lives }) {
@@ -58,7 +58,7 @@ class LivesDisplay {
   }
 
   #onPlayerHeal() {
-    this.#display
+    this.#displayContent
       .querySelector(`.${EMPTY_CLASS}`)
       .classList.remove(EMPTY_CLASS);
   }
