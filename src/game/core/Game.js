@@ -122,7 +122,6 @@ class Game {
 
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
-      realCanvas: this.realCanvas,
       player,
       gameAudio: this.audioManager,
       scoreboard,
