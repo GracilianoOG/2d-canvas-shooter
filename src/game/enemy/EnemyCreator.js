@@ -46,7 +46,7 @@ class EnemyCreator {
   }
 
   #createEnemyPosition(enemySize) {
-    const { width, height } = gameState.getEntity("mainCanvas");
+    const { width, height } = gameState.getEntity("mainCanvas").canvasSize;
     const chance = Math.random() > 0.5;
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
