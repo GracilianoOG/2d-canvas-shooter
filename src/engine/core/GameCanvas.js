@@ -44,10 +44,6 @@ export class GameCanvas {
     return this.#rect;
   }
 
-  get canvas() {
-    return this.#canvas;
-  }
-
   get context() {
     return this.#bufferCtx;
   }
