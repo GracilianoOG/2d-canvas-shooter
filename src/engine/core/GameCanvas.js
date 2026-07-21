@@ -42,8 +42,8 @@ export class GameCanvas {
 
   get factors() {
     return {
-      x: this.width / this.#width,
-      y: this.height / this.#height,
+      x: this.#canvas.width / this.#width,
+      y: this.#canvas.height / this.#height,
     };
   }
 
