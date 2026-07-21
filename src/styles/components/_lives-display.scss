@@ -4,6 +4,7 @@
   top: var(--padding);
 
   &__label {
+    text-shadow: 0 0 0.3125em currentColor;
     display: block;
     padding-bottom: 16px;
   }
