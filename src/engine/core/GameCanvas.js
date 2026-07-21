@@ -51,22 +51,6 @@ export class GameCanvas {
     return this.#rect;
   }
 
-  get width() {
-    return this.#canvas.width;
-  }
-
-  set width(width) {
-    this.#canvas.width = width;
-  }
-
-  get height() {
-    return this.#canvas.height;
-  }
-
-  set height(height) {
-    this.#canvas.height = height;
-  }
-
   get canvas() {
     return this.#canvas;
   }
@@ -95,7 +79,13 @@ export class GameCanvas {
   }
 
   render() {
-    this.#canvasCtx.clearRect(0, 0, this.width, this.height);
-    this.#canvasCtx.drawImage(this.#buffer, 0, 0, this.width, this.height);
+    this.#canvasCtx.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+    this.#canvasCtx.drawImage(
+      this.#buffer,
+      0,
+      0,
+      this.#canvas.width,
+      this.#canvas.height,
+    );
   }
 }
