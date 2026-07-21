@@ -26,13 +26,6 @@ export class GameCanvas {
     if (parent) parent.appendChild(this.#canvas);
   }
 
-  get screenSize() {
-    return {
-      width: this.width,
-      height: this.height,
-    };
-  }
-
   get canvasSize() {
     return {
       width: this.#width,
