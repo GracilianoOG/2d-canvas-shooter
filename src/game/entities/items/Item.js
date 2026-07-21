@@ -15,7 +15,7 @@ class Item extends Entity {
       { loop: false, autodestruct: true },
       () => this.destroy(),
     );
-    this.getInCanvas(gameState.getEntity("mainCanvas").bufferSize);
+    this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
   }
 
   check() {}

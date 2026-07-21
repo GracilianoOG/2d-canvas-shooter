@@ -33,7 +33,7 @@ export class GameCanvas {
     };
   }
 
-  get bufferSize() {
+  get canvasSize() {
     return {
       width: this.#width,
       height: this.#height,

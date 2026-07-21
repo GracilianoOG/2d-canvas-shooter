@@ -148,7 +148,7 @@ class Player extends Projectile {
   update(delta) {
     if (this.isDead) return;
     this.controller.update(delta);
-    this.getInCanvas(gameState.getEntity("mainCanvas").bufferSize);
+    this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
     this.#emptyFuryMeter();
   }
 
