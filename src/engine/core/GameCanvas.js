@@ -22,7 +22,7 @@ export class GameCanvas {
     this.#width = width;
     this.#height = height;
 
-    this.#rect = this.#canvas.getBoundingClientRect();
+    this.#cacheRect();
 
     if (!container) {
       throw new Error("An HTML container must be provided to GameCanvas!");
@@ -53,6 +53,10 @@ export class GameCanvas {
     return this.#bufferCtx;
   }
 
+  #cacheRect() {
+    this.#rect = this.#canvas.getBoundingClientRect();
+  }
+
   resize() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
@@ -69,7 +73,7 @@ export class GameCanvas {
 
     const { width, height } = this.#canvas;
     this.#canvasCtx.drawImage(this.#buffer, 0, 0, width, height);
-    this.#rect = this.#canvas.getBoundingClientRect();
+    this.#cacheRect();
   }
 
   render() {
