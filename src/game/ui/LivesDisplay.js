@@ -13,7 +13,7 @@ class LivesDisplay {
     labelEl.classList.add("display__label");
 
     const lifeDisplay = document.createElement("div");
-    lifeDisplay.classList.add("lives-display");
+    lifeDisplay.classList.add("display__content");
 
     const livesDisplay = document.createElement("div");
     livesDisplay.classList.add("display");
