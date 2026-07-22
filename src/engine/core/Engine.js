@@ -4,6 +4,7 @@ export class Engine {
   #rafId;
   #lastTime;
   #state;
+  #isRunning;
 
   constructor(update, render) {
     this.update = update;
@@ -12,6 +13,15 @@ export class Engine {
     this.#rafId = null;
     this.#lastTime = 0;
     this.#state = States.NOT_RUNNING;
+    this.#isRunning = false;
+  }
+
+  get isRunning() {
+    return this.#isRunning;
+  }
+
+  set isRunning(isRunning) {
+    this.#isRunning = isRunning;
   }
 
   get state() {
@@ -31,8 +41,10 @@ export class Engine {
 
     this.#lastTime = currentTime;
 
-    this.update(deltaTime);
-    this.render();
+    if (this.#isRunning) {
+      this.update(deltaTime);
+      this.render();
+    }
 
     this.tick();
   };
