@@ -14,6 +14,8 @@ class WeaponBox extends Item {
     });
     super.collect();
   }
+
+  onCollect() {}
 }
 
 export { WeaponBox };
