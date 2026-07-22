@@ -1,5 +1,4 @@
 import { eventManager } from "../../engine/systems/EventManager.js";
-import { randomInt } from "../../engine/utils/math.js";
 import { StatusIndicator } from "./StatusIndicator.js";
 
 class Scoreboard {
@@ -18,11 +17,8 @@ class Scoreboard {
     eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
   }
 
-  createIndicator(score, color) {
-    const { width, height } = this.#scoreboardEl.getBoundingClientRect();
-    const xPos = width / 2 + randomInt(50, -50);
-    const yPos = height * 3 + randomInt(5, 1);
-    StatusIndicator.create(xPos, yPos, score, color);
+  createIndicator(position, score, color) {
+    StatusIndicator.create(position.x, position.y, score, color);
   }
 
   #showScore(score) {
