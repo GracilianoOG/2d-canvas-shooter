@@ -22,10 +22,11 @@ import { Shaker } from "@/engine/systems/Shaker";
 class Game {
   #state;
   #engine;
+  #audio;
 
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
-    this.audioManager = audioSystem;
+    this.#audio = audioSystem;
     this.mainCanvas = new GameCanvas(width, height, Screens.game);
     this.settings = {
       trails: true,
@@ -96,10 +97,10 @@ class Game {
   }
 
   async loadAssets() {
-    await this.audioManager.load("hit", audios.hit[0]);
-    await this.audioManager.load("explosion", audios.explosion[0]);
-    await this.audioManager.load("shot", audios.shot[0]);
-    await this.audioManager.load("battle", audios.battle[0]);
+    await this.#audio.load("hit", audios.hit[0]);
+    await this.#audio.load("explosion", audios.explosion[0]);
+    await this.#audio.load("shot", audios.shot[0]);
+    await this.#audio.load("battle", audios.battle[0]);
   }
 
   async init() {
@@ -122,7 +123,7 @@ class Game {
     gameState.addEntities({
       mainCanvas: this.mainCanvas,
       player,
-      gameAudio: this.audioManager,
+      gameAudio: this.#audio,
       scoreboard,
       furyMeter,
       game: this,
@@ -135,7 +136,7 @@ class Game {
 
   start() {
     this.#resizeCanvas();
-    this.audioManager.playMusic("battle");
+    this.#audio.playMusic("battle");
     this.enemyCreator.start();
     this.startLoop();
 
