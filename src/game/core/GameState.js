@@ -30,15 +30,15 @@ class GameState {
     }
   }
 
-  #onEnemyDeath({ score, color }) {
+  #onEnemyDeath({ position, score, color }) {
     this.getEntity("gameAudio").play("explosion");
     this.getEntity("game").shakeScreen(5, 300);
-    this.#countScore(score, color);
+    this.#countScore(position, score, color);
   }
 
-  #onEnemyHit({ score, color }) {
+  #onEnemyHit({ position, score, color }) {
     this.getEntity("gameAudio").play("hit");
-    this.#countScore(score, color);
+    this.#countScore(position, score, color);
   }
 
   #onPlayerDeath() {
@@ -47,8 +47,8 @@ class GameState {
     this.#prepareRestart(2400);
   }
 
-  #countScore(score, color) {
-    this.getEntity("scoreboard").createIndicator(score, color);
+  #countScore(position, score, color) {
+    this.getEntity("scoreboard").createIndicator(position, score, color);
     scoreManager.add(score);
   }
 
