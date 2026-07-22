@@ -1,5 +1,5 @@
 import { eventManager } from "../../engine/systems/EventManager.js";
-import { StatusIndicator } from "./StatusIndicator.js";
+import { Indicator } from "./Indicator.js";
 
 class Scoreboard {
   #length = 7;
@@ -18,7 +18,7 @@ class Scoreboard {
   }
 
   createIndicator(position, score, color) {
-    StatusIndicator.create(position.x, position.y, score, color);
+    Indicator.create(position.x, position.y, score, color);
   }
 
   #showScore(score) {

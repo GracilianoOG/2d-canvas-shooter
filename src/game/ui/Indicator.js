@@ -1,6 +1,6 @@
 import { gameState } from "../core/GameState";
 
-class StatusIndicator {
+export class Indicator {
   static create(x, y, text, color = "#fff") {
     const scoreEl = document.createElement("div");
     const container = document.querySelector("#status-container");
@@ -20,5 +20,3 @@ class StatusIndicator {
     container.appendChild(scoreEl);
   }
 }
-
-export { StatusIndicator };
