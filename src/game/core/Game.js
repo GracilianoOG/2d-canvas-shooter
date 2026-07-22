@@ -53,13 +53,7 @@ class Game {
   }
 
   pause() {
-    if (this.state === States.GAMEOVER || this.state === States.NOT_RUNNING) {
-      return;
-    } else if (this.state === States.RUNNING) {
-      this.stopLoop(States.PAUSED);
-    } else {
-      this.startLoop();
-    }
+    this.gameLoop.isRunning = !this.gameLoop.isRunning;
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
