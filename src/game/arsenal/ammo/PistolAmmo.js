@@ -5,10 +5,6 @@ import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";
 
 class PistolAmmo extends AmmoType {
-  constructor(name = "Common") {
-    super(name);
-  }
-
   create(x, y, angle) {
     const radius = 5;
     const speed = 1250;
