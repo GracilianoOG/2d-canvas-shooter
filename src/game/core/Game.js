@@ -60,6 +60,7 @@ class Game {
   }
 
   pause() {
+    if (this.#state !== States.RUNNING && this.#state !== States.PAUSED) return;
     this.#engine.isRunning = !this.#engine.isRunning;
     this.#state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
 
