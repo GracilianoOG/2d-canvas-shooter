@@ -29,6 +29,7 @@ class Game {
     };
     this.shaker = new Shaker(this.mainCanvas.ctx);
     this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this));
+    this.gameState = States.NOT_RUNNING;
 
     this.#listenToWindowChange();
     this.#listenToResize();
@@ -37,19 +38,21 @@ class Game {
   }
 
   get state() {
-    return this.gameLoop.state;
+    return this.gameState;
   }
 
   set state(state) {
-    this.gameLoop.state = state;
+    this.gameState = state;
   }
 
   startLoop() {
     this.gameLoop.start();
+    this.gameState = States.RUNNING;
   }
 
   stopLoop(state) {
-    this.gameLoop.stop(state);
+    this.gameLoop.stop();
+    this.gameState = state;
   }
 
   pause() {
