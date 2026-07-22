@@ -1,15 +1,15 @@
 import { gameState } from "../core/GameState";
 
 export class Indicator {
-  static create(x, y, text, color = "#fff") {
+  static create(position, text, color = "#fff") {
     const indicator = document.createElement("div");
     const container = document.querySelector("#status-container");
     const factors = gameState.getEntity("mainCanvas").factors;
 
     indicator.setAttribute("class", "score");
     indicator.textContent = text;
-    indicator.style.left = `${x * factors.x}px`;
-    indicator.style.top = `${y * factors.y}px`;
+    indicator.style.left = `${position.x * factors.x}px`;
+    indicator.style.top = `${position.y * factors.y}px`;
     indicator.style.color = color;
 
     indicator.addEventListener(
