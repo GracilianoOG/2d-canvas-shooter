@@ -8,7 +8,7 @@ export class Engine {
     this.render = render;
 
     this.#rafId = null;
-    this.#lastTime = 0;
+    this.#lastTime = null;
     this.#isRunning = false;
   }
 
@@ -51,7 +51,7 @@ export class Engine {
   }
 
   abort() {
-    this.#lastTime = 0;
+    this.#lastTime = null;
     cancelAnimationFrame(this.#rafId);
   }
 }
