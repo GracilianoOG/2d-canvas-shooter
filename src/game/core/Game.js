@@ -20,6 +20,8 @@ import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
 
 class Game {
+  #state;
+
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
     this.audioManager = audioSystem;
@@ -29,7 +31,7 @@ class Game {
     };
     this.shaker = new Shaker(this.mainCanvas.ctx);
     this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this));
-    this.gameState = States.NOT_RUNNING;
+    this.#state = States.NOT_RUNNING;
 
     this.#listenToWindowChange();
     this.#listenToResize();
@@ -38,26 +40,26 @@ class Game {
   }
 
   get state() {
-    return this.gameState;
+    return this.#state;
   }
 
   set state(state) {
-    this.gameState = state;
+    this.#state = state;
   }
 
   startLoop() {
     this.gameLoop.start();
-    this.gameState = States.RUNNING;
+    this.state = States.RUNNING;
   }
 
   stopLoop(state) {
     this.gameLoop.stop();
-    this.gameState = state;
+    this.state = state;
   }
 
   pause() {
     this.gameLoop.isRunning = !this.gameLoop.isRunning;
-    this.gameState = this.gameLoop.isRunning ? States.RUNNING : States.PAUSED;
+    this.state = this.gameLoop.isRunning ? States.RUNNING : States.PAUSED;
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
