@@ -17,10 +17,6 @@ class Scoreboard {
     eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
   }
 
-  createIndicator(position, score, color) {
-    Indicator.create(position.x, position.y, score, color);
-  }
-
   #showScore(score) {
     this.#scoreboardEl.textContent = Scoreboard.formatScore(
       score.toString(),
