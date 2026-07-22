@@ -58,7 +58,7 @@ export class Engine {
     this.tick();
   }
 
-  stop(state) {
+  abort(state) {
     this.#state = state;
     this.#lastTime = 0;
     cancelAnimationFrame(this.#rafId);
