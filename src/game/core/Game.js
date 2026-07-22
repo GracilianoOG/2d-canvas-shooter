@@ -21,6 +21,7 @@ import { Shaker } from "@/engine/systems/Shaker";
 
 class Game {
   #state;
+  #engine;
 
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
@@ -30,7 +31,7 @@ class Game {
       trails: true,
     };
     this.shaker = new Shaker(this.mainCanvas.ctx);
-    this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this));
+    this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
 
     this.#listenToWindowChange();
@@ -48,18 +49,18 @@ class Game {
   }
 
   startLoop() {
-    this.gameLoop.start();
+    this.#engine.start();
     this.state = States.RUNNING;
   }
 
   stopLoop(state) {
-    this.gameLoop.stop();
+    this.#engine.stop();
     this.state = state;
   }
 
   pause() {
-    this.gameLoop.isRunning = !this.gameLoop.isRunning;
-    this.state = this.gameLoop.isRunning ? States.RUNNING : States.PAUSED;
+    this.#engine.isRunning = !this.#engine.isRunning;
+    this.state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
