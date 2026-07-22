@@ -6,7 +6,7 @@ import { HEAVY_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";
 
 class MissileAmmo extends ExplosiveAmmo {
-  constructor(name = "Missile", fragmentType = new PistolAmmo()) {
+  constructor(name = "Rocket", fragmentType = new PistolAmmo()) {
     super(name, fragmentType);
   }
 
