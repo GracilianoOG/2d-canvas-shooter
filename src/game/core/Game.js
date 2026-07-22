@@ -49,23 +49,19 @@ class Game {
     return this.#state;
   }
 
-  set state(state) {
-    this.#state = state;
-  }
-
   startLoop() {
     this.#engine.start();
-    this.state = States.RUNNING;
+    this.#state = States.RUNNING;
   }
 
   stopLoop(state) {
     this.#engine.stop();
-    this.state = state;
+    this.#state = state;
   }
 
   pause() {
     this.#engine.isRunning = !this.#engine.isRunning;
-    this.state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
+    this.#state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
@@ -162,7 +158,7 @@ class Game {
   }
 
   #onPlayerDeath() {
-    this.state = States.GAMEOVER;
+    this.#state = States.GAMEOVER;
     this.#enemyCreator.stop();
   }
 
