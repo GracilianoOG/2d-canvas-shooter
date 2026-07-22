@@ -24,17 +24,20 @@ class Game {
   #engine;
   #audio;
   #canvas;
+  #shaker;
+  #enemyCreator;
+  #settings;
 
   constructor({ width, height }) {
-    this.enemyCreator = new EnemyCreator();
+    this.#enemyCreator = new EnemyCreator();
     this.#audio = audioSystem;
     this.#canvas = new GameCanvas(width, height, Screens.game);
-    this.settings = {
-      trails: true,
-    };
-    this.shaker = new Shaker(this.#canvas.ctx);
+    this.#shaker = new Shaker(this.#canvas.ctx);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
+    this.#settings = {
+      trails: true,
+    };
 
     this.#listenToWindowChange();
     this.#listenToResize();
@@ -73,13 +76,13 @@ class Game {
   }
 
   shakeScreen(strength, duration) {
-    this.shaker.start(strength, duration);
+    this.#shaker.start(strength, duration);
   }
 
   update(delta) {
-    this.shaker.shake();
+    this.#shaker.shake();
     entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
-    this.shaker.restore();
+    this.#shaker.restore();
 
     collisionManager.checkCollisions();
     Timer.updateAll(delta);
@@ -89,7 +92,7 @@ class Game {
     const { width, height } = this.#canvas.canvasSize;
     this.#canvas.render();
 
-    if (this.settings.trails) {
+    if (this.#settings.trails) {
       this.#canvas.ctx.fillStyle = TRANSPARENT_BLACK;
       this.#canvas.ctx.fillRect(0, 0, width, height);
     } else {
@@ -138,7 +141,7 @@ class Game {
   start() {
     this.#resizeCanvas();
     this.#audio.playMusic("battle");
-    this.enemyCreator.start();
+    this.#enemyCreator.start();
     this.startLoop();
 
     document.addEventListener("keydown", (e) => {
@@ -152,7 +155,7 @@ class Game {
     this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
     gameState.getEntity("furyMeter").value = 0;
     player.revive(mWidth / 2, mHeight / 2);
-    this.enemyCreator.reset();
+    this.#enemyCreator.reset();
     entityManager.clear([player]);
     scoreManager.reset();
     this.startLoop();
@@ -160,7 +163,7 @@ class Game {
 
   #onPlayerDeath() {
     this.state = States.GAMEOVER;
-    this.enemyCreator.stop();
+    this.#enemyCreator.stop();
   }
 
   #listenToWindowChange() {
