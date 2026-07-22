@@ -6,7 +6,7 @@ export class Indicator {
     const container = document.querySelector("#status-container");
     const factors = gameState.getEntity("mainCanvas").factors;
 
-    indicator.setAttribute("class", "score");
+    indicator.setAttribute("class", "indicator");
     indicator.textContent = text;
     indicator.style.left = `${position.x * factors.x}px`;
     indicator.style.top = `${position.y * factors.y}px`;
