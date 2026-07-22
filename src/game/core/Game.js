@@ -28,10 +28,7 @@ class Game {
       trails: true,
     };
     this.shaker = new Shaker(this.mainCanvas.ctx);
-
-    this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this), {
-      ctx: this.mainCanvas.ctx,
-    });
+    this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this));
 
     this.#listenToWindowChange();
     this.#listenToResize();
