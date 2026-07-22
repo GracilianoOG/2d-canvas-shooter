@@ -23,15 +23,16 @@ class Game {
   #state;
   #engine;
   #audio;
+  #canvas;
 
   constructor({ width, height }) {
     this.enemyCreator = new EnemyCreator();
     this.#audio = audioSystem;
-    this.mainCanvas = new GameCanvas(width, height, Screens.game);
+    this.#canvas = new GameCanvas(width, height, Screens.game);
     this.settings = {
       trails: true,
     };
-    this.shaker = new Shaker(this.mainCanvas.ctx);
+    this.shaker = new Shaker(this.#canvas.ctx);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
 
@@ -77,7 +78,7 @@ class Game {
 
   update(delta) {
     this.shaker.shake();
-    entityManager.renderAll(this.mainCanvas.ctx, delta * 0.001);
+    entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
     collisionManager.checkCollisions();
     this.shaker.restore();
 
@@ -85,14 +86,14 @@ class Game {
   }
 
   render() {
-    const { width, height } = this.mainCanvas.canvasSize;
-    this.mainCanvas.render();
+    const { width, height } = this.#canvas.canvasSize;
+    this.#canvas.render();
 
     if (this.settings.trails) {
-      this.mainCanvas.ctx.fillStyle = TRANSPARENT_BLACK;
-      this.mainCanvas.ctx.fillRect(0, 0, width, height);
+      this.#canvas.ctx.fillStyle = TRANSPARENT_BLACK;
+      this.#canvas.ctx.fillRect(0, 0, width, height);
     } else {
-      this.mainCanvas.ctx.clearRect(0, 0, width, height);
+      this.#canvas.ctx.clearRect(0, 0, width, height);
     }
   }
 
@@ -105,7 +106,7 @@ class Game {
 
   async init() {
     // GameState
-    const { width: mWidth, height: mHeight } = this.mainCanvas.canvasSize;
+    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
     const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
@@ -121,7 +122,7 @@ class Game {
     await this.loadAssets();
 
     gameState.addEntities({
-      mainCanvas: this.mainCanvas,
+      mainCanvas: this.#canvas,
       player,
       gameAudio: this.#audio,
       scoreboard,
@@ -146,9 +147,9 @@ class Game {
   }
 
   restart() {
-    const { width: mWidth, height: mHeight } = this.mainCanvas.canvasSize;
+    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
     const player = gameState.getEntity("player");
-    this.mainCanvas.ctx.clearRect(0, 0, mWidth, mHeight);
+    this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
     gameState.getEntity("furyMeter").value = 0;
     player.revive(mWidth / 2, mHeight / 2);
     this.enemyCreator.reset();
@@ -173,7 +174,7 @@ class Game {
   }
 
   #resizeCanvas() {
-    this.mainCanvas.resize();
+    this.#canvas.resize();
   }
 }
 
