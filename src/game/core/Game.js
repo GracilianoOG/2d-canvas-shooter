@@ -135,7 +135,6 @@ class Game {
   }
 
   start() {
-    this.#resizeCanvas();
     this.#audio.playMusic("battle");
     this.#enemyCreator.start();
     this.startLoop();
@@ -169,11 +168,7 @@ class Game {
   }
 
   #listenToResize() {
-    window.addEventListener("resize", this.#resizeCanvas.bind(this));
-  }
-
-  #resizeCanvas() {
-    this.#canvas.resize();
+    window.addEventListener("resize", () => this.#canvas.resize());
   }
 }
 
