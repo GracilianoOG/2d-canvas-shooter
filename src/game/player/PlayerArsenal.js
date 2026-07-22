@@ -1,6 +1,8 @@
 import { Pistol } from "../arsenal/guns/Pistol";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
+import { Indicator } from "../ui/Indicator";
+import { CHARTREUSE } from "../utils/constants/colors";
 
 class PlayerArsenal {
   #inventory;
@@ -37,6 +39,11 @@ class PlayerArsenal {
     this.#timer.reset();
     this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
+    Indicator.create(
+      { x: this.#player.x, y: this.#player.y },
+      this.#player.weapon.fullName.toUpperCase(),
+      CHARTREUSE,
+    );
   }
 
   #add(id, weapon) {
