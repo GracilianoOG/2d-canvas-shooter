@@ -2,21 +2,21 @@ import { gameState } from "../core/GameState";
 
 export class Indicator {
   static create(x, y, text, color = "#fff") {
-    const scoreEl = document.createElement("div");
+    const indicator = document.createElement("div");
     const container = document.querySelector("#status-container");
     const factors = gameState.getEntity("mainCanvas").factors;
 
-    scoreEl.setAttribute("class", "score");
-    scoreEl.textContent = text;
-    scoreEl.style.left = `${x * factors.x}px`;
-    scoreEl.style.top = `${y * factors.y}px`;
-    scoreEl.style.color = color;
+    indicator.setAttribute("class", "score");
+    indicator.textContent = text;
+    indicator.style.left = `${x * factors.x}px`;
+    indicator.style.top = `${y * factors.y}px`;
+    indicator.style.color = color;
 
-    scoreEl.addEventListener(
+    indicator.addEventListener(
       "animationend",
-      () => container.removeChild(scoreEl),
+      () => container.removeChild(indicator),
       { once: true },
     );
-    container.appendChild(scoreEl);
+    container.appendChild(indicator);
   }
 }
