@@ -58,6 +58,10 @@ export class Engine {
     this.tick();
   }
 
+  stop() {
+    this.isRunning = false;
+  }
+
   abort(state) {
     this.#state = state;
     this.#lastTime = 0;
