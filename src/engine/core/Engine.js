@@ -33,18 +33,19 @@ export class Engine {
   }
 
   animate = (currentTime) => {
+    if (!this.#lastTime) {
+      this.#lastTime = currentTime;
+    }
+
     const deltaTime = currentTime - this.#lastTime;
 
-    if (deltaTime >= this.#TARGET_FPS) {
-      const maxDelta = Math.min(currentTime - this.#lastTime, this.#TARGET_FPS);
-      const excessTime = deltaTime % this.#TARGET_FPS;
-      this.#lastTime = currentTime - excessTime;
+    this.#lastTime = currentTime;
 
-      this.#shaker.shake();
-      this.update(maxDelta);
-      this.#shaker.restore();
-      this.render();
-    }
+    this.#shaker.shake();
+    this.update(deltaTime);
+    this.#shaker.restore();
+    this.render();
+
     this.tick();
   };
 
