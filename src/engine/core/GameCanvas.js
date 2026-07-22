@@ -22,13 +22,12 @@ export class GameCanvas {
     this.#width = width;
     this.#height = height;
 
-    this.#cacheRect();
-
     if (!container) {
       throw new Error("An HTML container must be provided to GameCanvas!");
     }
 
     container.appendChild(this.#canvas);
+    this.resize();
   }
 
   get canvasSize() {
