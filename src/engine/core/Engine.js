@@ -54,7 +54,7 @@ export class Engine {
   }
 
   start() {
-    this.#state = States.RUNNING;
+    this.isRunning = true;
     this.tick();
   }
 
