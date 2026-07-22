@@ -57,6 +57,7 @@ class Game {
 
   pause() {
     this.gameLoop.isRunning = !this.gameLoop.isRunning;
+    this.gameState = this.gameLoop.isRunning ? States.RUNNING : States.PAUSED;
 
     const indicators = document.querySelectorAll(".score");
     indicators.forEach(
