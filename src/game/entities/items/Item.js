@@ -2,6 +2,7 @@ import { Entity } from "../Entity";
 import { gameState } from "@/game/core/GameState";
 import { Timer } from "@/engine/systems/Timer";
 import { WHITE } from "@/game/utils/constants/colors";
+import { Indicator } from "@/game/ui/Indicator";
 
 class Item extends Entity {
   #despawnTimer;
@@ -20,8 +21,17 @@ class Item extends Entity {
 
   check() {}
 
+  onCollect() {
+    Indicator.create(
+      { x: this.x, y: this.y },
+      this.#label.toUpperCase(),
+      this.color,
+    );
+  }
+
   collect() {
     this.#despawnTimer.remove();
+    this.onCollect();
     this.destroy();
   }
 
