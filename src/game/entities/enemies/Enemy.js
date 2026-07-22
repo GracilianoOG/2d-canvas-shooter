@@ -70,6 +70,7 @@ class Enemy extends Projectile {
     eventManager.emit("enemyHit", {
       score: this.score.hit,
       color: this.baseColor,
+      position: { x: this.x, y: this.y },
     });
   }
 
@@ -101,6 +102,7 @@ class Enemy extends Projectile {
     eventManager.emit("enemyDeath", {
       score: this.score.death,
       color: this.baseColor,
+      position: { x: this.x, y: this.y },
     });
     this.destroy();
   }
