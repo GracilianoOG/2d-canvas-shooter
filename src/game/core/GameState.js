@@ -4,6 +4,7 @@ import { CSS_CLASSES } from "../utils/constants.js";
 import { NOT_RUNNING } from "../../engine/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
 import { eventManager } from "../../engine/systems/EventManager.js";
+import { Indicator } from "../ui/Indicator.js";
 
 class GameState {
   #entities;
@@ -48,7 +49,7 @@ class GameState {
   }
 
   #countScore(position, score, color) {
-    this.getEntity("scoreboard").createIndicator(position, score, color);
+    Indicator.create(position, score, color);
     scoreManager.add(score);
   }
 
