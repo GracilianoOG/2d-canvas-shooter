@@ -9,6 +9,7 @@ import { defaultStats } from "../player/playerDefaultStats.js";
 import { PlayerShield } from "../player/PlayerShield.js";
 import { PlayerHUD } from "../player/PlayerHUD.js";
 import * as Colors from "../utils/constants/colors.js";
+import { Indicator } from "../ui/Indicator.js";
 
 class Player extends Projectile {
   #controller;
@@ -111,6 +112,7 @@ class Player extends Projectile {
 
     if (this.isDead) {
       this.kill();
+      Indicator.create({ x: this.x, y: this.y }, "DEATH!");
       return;
     }
 
