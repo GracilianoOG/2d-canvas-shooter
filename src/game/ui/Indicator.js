@@ -19,4 +19,13 @@ export class Indicator {
     );
     container.appendChild(indicator);
   }
+
+  static toggleIndicators(state) {
+    const indicators = document.querySelectorAll(".indicator");
+    const playState = state ? "running" : "paused";
+
+    for (const ind of indicators) {
+      ind.style.animationPlayState = playState;
+    }
+  }
 }

@@ -18,6 +18,7 @@ import { scoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
 import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
+import { Indicator } from "../ui/Indicator";
 
 class Game {
   #state;
@@ -64,10 +65,7 @@ class Game {
     this.#engine.isRunning = !this.#engine.isRunning;
     this.#state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
 
-    const indicators = document.querySelectorAll(".score");
-    indicators.forEach(
-      (i) => (i.style.animationPlayState = this.state.toLowerCase()),
-    );
+    Indicator.toggleIndicators(this.#engine.isRunning);
 
     Screens.pause.classList.toggle("hide");
   }
