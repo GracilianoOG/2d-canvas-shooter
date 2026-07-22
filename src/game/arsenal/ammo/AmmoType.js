@@ -1,7 +1,7 @@
 class AmmoType {
   #name;
 
-  constructor(name) {
+  constructor(name = "") {
     this.#name = name;
   }
 
