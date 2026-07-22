@@ -62,8 +62,7 @@ export class Engine {
     this.isRunning = false;
   }
 
-  abort(state) {
-    this.#state = state;
+  abort() {
     this.#lastTime = 0;
     cancelAnimationFrame(this.#rafId);
   }
