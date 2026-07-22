@@ -17,6 +17,7 @@ import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
 import { inputManager } from "../../engine/systems/InputManager";
+import { Shaker } from "@/engine/systems/Shaker";
 
 class Game {
   constructor({ width, height }) {
@@ -26,6 +27,7 @@ class Game {
     this.settings = {
       trails: true,
     };
+    this.shaker = new Shaker(this.mainCanvas.ctx);
 
     this.gameLoop = new Engine(this.update.bind(this), this.render.bind(this), {
       ctx: this.mainCanvas.ctx,
@@ -35,10 +37,6 @@ class Game {
     this.#listenToResize();
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
-  }
-
-  get shaker() {
-    return this.gameLoop.shaker;
   }
 
   get state() {
@@ -79,8 +77,11 @@ class Game {
   }
 
   update(delta) {
+    this.shaker.shake();
     entityManager.renderAll(this.mainCanvas.ctx, delta * 0.001);
     collisionManager.checkCollisions();
+    this.shaker.restore();
+
     Timer.updateAll(delta);
   }
 

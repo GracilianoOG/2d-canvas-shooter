@@ -1,24 +1,17 @@
-import { Shaker } from "../systems/Shaker";
 import * as States from "../constants/gameStates";
 
 export class Engine {
   #rafId;
   #lastTime;
   #state;
-  #shaker;
 
-  constructor(update, render, configs) {
+  constructor(update, render) {
     this.update = update;
     this.render = render;
 
     this.#rafId = null;
     this.#lastTime = 0;
     this.#state = States.NOT_RUNNING;
-    this.#shaker = new Shaker(configs.ctx);
-  }
-
-  get shaker() {
-    return this.#shaker;
   }
 
   get state() {
@@ -38,9 +31,7 @@ export class Engine {
 
     this.#lastTime = currentTime;
 
-    this.#shaker.shake();
     this.update(deltaTime);
-    this.#shaker.restore();
     this.render();
 
     this.tick();
