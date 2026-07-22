@@ -79,9 +79,9 @@ class Game {
   update(delta) {
     this.shaker.shake();
     entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
-    collisionManager.checkCollisions();
     this.shaker.restore();
 
+    collisionManager.checkCollisions();
     Timer.updateAll(delta);
   }
 
