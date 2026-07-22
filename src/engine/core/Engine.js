@@ -1,9 +1,6 @@
-import * as States from "../constants/gameStates";
-
 export class Engine {
   #rafId;
   #lastTime;
-  #state;
   #isRunning;
 
   constructor(update, render) {
@@ -12,7 +9,6 @@ export class Engine {
 
     this.#rafId = null;
     this.#lastTime = 0;
-    this.#state = States.NOT_RUNNING;
     this.#isRunning = false;
   }
 
@@ -22,14 +18,6 @@ export class Engine {
 
   set isRunning(isRunning) {
     this.#isRunning = isRunning;
-  }
-
-  get state() {
-    return this.#state;
-  }
-
-  set state(state) {
-    this.#state = state;
   }
 
   animate = (currentTime) => {
