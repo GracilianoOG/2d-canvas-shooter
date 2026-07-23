@@ -2,17 +2,9 @@ import { gameState } from "../core/GameState.js";
 import { Timer } from "../../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
-import {
-  MOD_CHANCE,
-  NEW_ENEMY,
-  SPAWN_TIME,
-} from "../utils/constants/modifierTypes.js";
+import * as DiffMods from "../utils/constants/modifierTypes.js";
 import * as Colors from "../utils/constants/colors.js";
-import {
-  FAST,
-  SLOW_STRONGER,
-  STRONG,
-} from "../utils/constants/enemyModTypes.js";
+import * as EnemyMods from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
@@ -72,17 +64,17 @@ class EnemyCreator {
     const length = enemyModifiers.length;
 
     switch (enemyModifiers[randomInt(length)]) {
-      case FAST:
+      case EnemyMods.FAST:
         enemy.color = Colors.VERY_LIGHT_BLUE;
         enemy.radius = Math.max(Math.ceil(enemy.radius * 0.8), 10);
         enemy.speed += 1;
         break;
-      case STRONG:
+      case EnemyMods.STRONG:
         enemy.color = Colors.VERY_LIGHT_PINK;
         enemy.radius = Math.ceil(enemy.radius * 1.25);
         enemy.hp += 20;
         break;
-      case SLOW_STRONGER:
+      case EnemyMods.SLOW_STRONGER:
         enemy.color = Colors.GOLDEN;
         enemy.radius = Math.ceil(enemy.radius * 1.5);
         enemy.speed = Math.max(enemy.speed - 1, 1);
@@ -98,20 +90,20 @@ class EnemyCreator {
     const length = this.#availableModifiers.length;
 
     switch (this.#availableModifiers[randomInt(length)]) {
-      case SPAWN_TIME:
+      case DiffMods.SPAWN_TIME:
         this.#spawnTimer.waitTime -= this.#config.spawnDecrementMs;
         break;
-      case MOD_CHANCE:
+      case DiffMods.MOD_CHANCE:
         this.#enemyModChance += this.#config.enemyModChanceIncrement;
         if (this.#enemyModChance === this.#config.enemyModChanceLimit) {
-          const index = this.#availableModifiers.indexOf(MOD_CHANCE);
+          const index = this.#availableModifiers.indexOf(DiffMods.MOD_CHANCE);
           this.#availableModifiers.splice(index, 1);
         }
         break;
-      case NEW_ENEMY:
+      case DiffMods.NEW_ENEMY:
         this.#spawnLevel++;
         if (enemyTypes.length === this.#spawnLevel) {
-          const index = this.#availableModifiers.indexOf(NEW_ENEMY);
+          const index = this.#availableModifiers.indexOf(DiffMods.NEW_ENEMY);
           this.#availableModifiers.splice(index, 1);
         }
         break;
