@@ -1,14 +1,9 @@
 import { VERY_LIGHT_YELLOW } from "@/game/utils/constants/colors";
 import { HEAVY_DMG } from "./damages";
-import { AmmoType } from "./AmmoType";
 import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";
 
-class HeavyAmmo extends AmmoType {
-  constructor(name = "Heavy") {
-    super(name);
-  }
-
+class HeavyAmmo {
   create(x, y, angle) {
     const radius = 5;
     const speed = 1250;

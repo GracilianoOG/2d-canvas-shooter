@@ -1,6 +1,4 @@
-import { AmmoType } from "./AmmoType";
-
-class ExplosiveAmmo extends AmmoType {
+class ExplosiveAmmo {
   #fragmentType;
 
   constructor(name, fragmentType) {

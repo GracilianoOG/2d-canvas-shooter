@@ -6,8 +6,8 @@ import { BASE_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";
 
 class GrenadeAmmo extends ExplosiveAmmo {
-  constructor(name = "Grenade", fragmentType = new PistolAmmo()) {
-    super(name, fragmentType);
+  constructor(fragmentType = new PistolAmmo()) {
+    super(fragmentType);
   }
 
   create(x, y, angle) {

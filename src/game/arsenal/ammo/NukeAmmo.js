@@ -6,8 +6,8 @@ import { CANNON_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";
 
 class NukeAmmo extends ExplosiveAmmo {
-  constructor(name, fragmentType = new MissileAmmo()) {
-    super(name, fragmentType);
+  constructor(fragmentType = new MissileAmmo()) {
+    super(fragmentType);
   }
 
   create(x, y, angle) {

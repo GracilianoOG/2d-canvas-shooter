@@ -1,10 +1,9 @@
 import { VERY_LIGHT_YELLOW } from "@/game/utils/constants/colors";
 import { CANNON_DMG } from "./damages";
-import { AmmoType } from "./AmmoType";
 import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";
 
-class CannonAmmo extends AmmoType {
+class CannonAmmo {
   create(x, y, angle) {
     const radius = 20;
     const speed = 350;

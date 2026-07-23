@@ -6,8 +6,8 @@ import { Mine } from "../../entities/projectiles/Mine";
 import { entityManager } from "@/game/systems/EntityManager";
 
 class MineAmmo extends ExplosiveAmmo {
-  constructor(name = "Mine", fragmentType = new PistolAmmo()) {
-    super(name, fragmentType);
+  constructor(fragmentType = new PistolAmmo()) {
+    super(fragmentType);
   }
 
   create(x, y, angle) {

@@ -1,10 +1,9 @@
 import { WHITE } from "@/game/utils/constants/colors";
 import { BASE_DMG } from "./damages";
-import { AmmoType } from "./AmmoType";
 import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";
 
-class PistolAmmo extends AmmoType {
+class PistolAmmo {
   create(x, y, angle) {
     const radius = 5;
     const speed = 1250;
