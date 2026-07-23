@@ -12,12 +12,14 @@ import { Shotgun } from "@/game/arsenal/guns/Shotgun";
 import { SubmachineGun } from "@/game/arsenal/guns/SubmachineGun";
 import { randomInt } from "@/engine/utils/math";
 import { Ricochet } from "@/game/arsenal/guns/Ricochet";
+import { ExplosiveShotgun } from "@/game/arsenal/guns/ExplosiveShotgun";
 
 const weapons = {
   minigun: () => new Minigun(),
   shotgun: () => new Shotgun(),
   heavyShotgun: () => new HeavyShotgun(),
   ricochetShotgun: () => new RicochetShotgun(),
+  explosiveShotgun: () => new ExplosiveShotgun(),
   smg: () => new SubmachineGun(),
   rifle: () => new Rifle(),
   hell: () => new BulletHell(),
