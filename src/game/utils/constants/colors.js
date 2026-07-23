@@ -23,3 +23,4 @@ export const YELLOW = "#ffff00";
 export const CHARTREUSE = "#7FFF00";
 export const ORANGE_RED = "#FF4500";
 export const CRIMSON = "#DC143C";
+export const POWDER_BLUE = "#B0E0E6";
