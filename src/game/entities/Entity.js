@@ -68,9 +68,7 @@ class Entity {
   onCollision() {}
 
   collidedWith(object) {
-    const hasCollided =
-      Math.hypot(this.x - object.x, this.y - object.y) <
-      this.#radius + object.radius;
+    const hasCollided = this.distanceTo(object) < this.#radius + object.radius;
 
     if (hasCollided) {
       this.onCollision(object);
