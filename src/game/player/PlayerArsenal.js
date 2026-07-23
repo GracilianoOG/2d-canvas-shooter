@@ -41,7 +41,7 @@ class PlayerArsenal {
     this.#equip(weaponId);
     Indicator.create(
       { x: this.#player.x, y: this.#player.y },
-      this.#player.weapon.fullName.toUpperCase(),
+      this.#player.weapon.name.toUpperCase(),
       CHARTREUSE,
     );
   }
