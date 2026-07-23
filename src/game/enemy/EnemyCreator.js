@@ -51,39 +51,46 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const enemyLevel = randomInt(this.#spawnLevel);
-    const enemyConfig = { ...enemyTypes[enemyLevel] };
-    const rndModChance = randomInt(100);
-    if (this.#enemyModChance > rndModChance) {
+    const randomLevel = randomInt(this.#spawnLevel);
+    const enemyConfig = [...enemyTypes[randomLevel]];
+    const target = gameState.getEntity("player");
+    enemyConfig.splice(enemyConfig.length - 1, 0, target);
+
+    if (this.#enemyModChance > randomInt(100)) {
       this.#hardenEnemy(enemyConfig);
     }
+
     return enemyConfig;
   }
 
-  #hardenEnemy(enemy) {
+  #hardenEnemy(enemyConfig) {
     const length = enemyModifiers.length;
+    const radius = enemyConfig[0];
+    const speed = enemyConfig[1];
 
     switch (enemyModifiers[randomInt(length)]) {
       case EnemyMods.FAST:
-        enemy.color = Colors.VERY_LIGHT_BLUE;
-        enemy.radius = Math.max(Math.ceil(enemy.radius * 0.8), 10);
-        enemy.speed += 1;
+        enemyConfig[0] = Math.max(Math.ceil(radius * 0.8), 10);
+        enemyConfig[1] += 1;
+        enemyConfig[2] = Colors.VERY_LIGHT_BLUE;
         break;
       case EnemyMods.STRONG:
-        enemy.color = Colors.VERY_LIGHT_PINK;
-        enemy.radius = Math.ceil(enemy.radius * 1.25);
-        enemy.hp += 20;
+        enemyConfig[0] = Math.ceil(radius * 1.25);
+        enemyConfig[2] = Colors.VERY_LIGHT_PINK;
+        enemyConfig[3] += 20;
         break;
       case EnemyMods.SLOW_STRONGER:
-        enemy.color = Colors.GOLDEN;
-        enemy.radius = Math.ceil(enemy.radius * 1.5);
-        enemy.speed = Math.max(enemy.speed - 1, 1);
-        enemy.hp += 40;
+        enemyConfig[0] = Math.ceil(radius * 1.5);
+        enemyConfig[1] = Math.max(speed - 1, 1);
+        enemyConfig[2] = Colors.GOLDEN;
+        enemyConfig[3] += 40;
         break;
     }
-    enemy.score = { ...enemy.score };
-    enemy.score.hit *= 2;
-    enemy.score.death *= 2;
+
+    const newScore = { ...enemyConfig[4] };
+    newScore.hit *= 2;
+    newScore.death *= 2;
+    enemyConfig[4] = newScore;
   }
 
   #increaseDifficulty() {
@@ -112,20 +119,9 @@ class EnemyCreator {
 
   #createEnemy() {
     const enemyConfig = this.#randomizeEnemy();
-    const { radius, speed, color, hp, score } = enemyConfig;
+    const radius = enemyConfig[0];
     const position = this.#randomizePosition(radius);
-    const options = enemyConfig?.options;
-    const target = gameState.getEntity("player");
-    const enemy = new Enemy(
-      ...position,
-      radius,
-      speed,
-      color,
-      hp,
-      score,
-      target,
-      options,
-    );
+    const enemy = new Enemy(...position, ...enemyConfig);
     entityManager.add(enemy);
   }
 

@@ -1,77 +1,43 @@
 import * as Colors from "../utils/constants/colors.js";
 
+// radius, speed, color, hp, score, options
 const enemyTypes = [
-  {
-    radius: 18,
-    speed: 250,
-    color: Colors.RED,
-    hp: 20,
-  },
-  {
-    radius: 14,
-    speed: 312,
-    color: Colors.PINK,
-    hp: 10,
-  },
-  {
-    radius: 25,
-    speed: 187,
-    color: Colors.LIGHT_BLUE,
-    hp: 30,
-    options: {
-      aggressive: false,
-    },
-  },
-  {
-    radius: 20,
-    speed: 250,
-    color: Colors.LIGHT_PURPLE,
-    hp: 30,
-  },
-  {
-    radius: 30,
-    speed: 125,
-    color: Colors.GREEN,
-    hp: 50,
-    options: {
+  [18, 250, Colors.RED, 20, null],
+  [14, 312, Colors.PINK, 10, null],
+  [25, 187, Colors.LIGHT_BLUE, 30, { aggressive: false }],
+  [20, 250, Colors.LIGHT_PURPLE, 30, null],
+  [
+    30,
+    125,
+    Colors.GREEN,
+    50,
+    {
       shrinkable: false,
       aggressive: false,
       bloodAmount: 12,
     },
-  },
-  {
-    radius: 20,
-    speed: 250,
-    color: Colors.ALMOST_BLACK,
-    hp: 20,
-    options: {
-      aggressive: false,
-    },
-  },
-  {
-    radius: 10,
-    speed: 375,
-    color: Colors.ORANGE,
-    hp: 10,
-  },
-  {
-    radius: 40,
-    speed: 62,
-    color: Colors.LIGHT_RED,
-    hp: 80,
-    options: {
+  ],
+  [20, 250, Colors.ALMOST_BLACK, 20, { aggressive: false }],
+  [10, 375, Colors.ORANGE, 10, null],
+  [
+    40,
+    62,
+    Colors.LIGHT_RED,
+    80,
+    {
       knockback: false,
       aggressive: false,
       shrinkable: false,
       bloodAmount: 16,
     },
-  },
+  ],
 ];
 
-enemyTypes.forEach(t => {
-  t.score = {};
-  t.score.hit = t.hp * 10;
-  t.score.death = t.hp * 3 * 10;
+enemyTypes.forEach((type) => {
+  const score = {};
+  score.hit = type[3] * 10;
+  score.death = score.hit * 3;
+  type.splice(type.length - 1, 0, score);
 });
 
 export { enemyTypes };
