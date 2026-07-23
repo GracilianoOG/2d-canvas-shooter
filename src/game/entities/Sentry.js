@@ -50,6 +50,11 @@ export class Sentry extends Entity {
     }
   }
 
+  #targetInRange() {
+    const { x, y, destroyed } = this.#target;
+    return !destroyed && this.distanceTo({ x, y }) <= this.#range;
+  }
+
   draw(ctx) {
     super.draw(ctx);
     this.#drawDespawnDelay(ctx);
@@ -57,12 +62,12 @@ export class Sentry extends Entity {
 
   update() {
     if (this.#target) {
-      const { x, y, destroyed } = this.#target;
       this.#shoot();
 
-      if (!destroyed && this.distanceTo({ x, y }) <= this.#range) {
+      if (this.#targetInRange()) {
         return;
       }
+
       this.#target = null;
     }
 
