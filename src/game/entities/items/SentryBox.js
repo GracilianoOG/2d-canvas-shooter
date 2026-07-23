@@ -1,10 +1,10 @@
-import { POWDER_BLUE } from "@/game/utils/constants/colors";
+import { POWDER_BLUE, ROYAL_BLUE } from "@/game/utils/constants/colors";
 import { Item } from "./Item";
 import { entityManager } from "@/game/systems/EntityManager";
 import { Sentry } from "../Sentry";
 
 export class SentryBox extends Item {
-  constructor(x, y, radius, color = POWDER_BLUE, label = "sentry") {
+  constructor(x, y, radius, color = ROYAL_BLUE, label = "sentry") {
     super(x, y, radius, color, label);
   }
 
