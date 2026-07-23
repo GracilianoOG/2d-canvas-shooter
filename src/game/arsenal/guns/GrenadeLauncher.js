@@ -3,7 +3,7 @@ import { Gun } from "./Gun";
 
 class GrenadeLauncher extends Gun {
   constructor({
-    name = "Launcher",
+    name = "Grenade Launcher",
     ammoType = new GrenadeAmmo(),
     options = {},
   } = {}) {

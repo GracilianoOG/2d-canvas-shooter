@@ -3,7 +3,7 @@ import { Gun } from "./Gun";
 
 class MineLauncher extends Gun {
   constructor({
-    name = "Launcher",
+    name = "Mine Launcher",
     ammoType = new MineAmmo(),
     options = {},
   } = {}) {
