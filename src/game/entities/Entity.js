@@ -50,7 +50,7 @@ class Entity {
     return this.#destroyed;
   }
 
-  distance(position) {
+  distanceTo(position) {
     return Math.hypot(position.x - this.x, position.y - this.y);
   }
 
