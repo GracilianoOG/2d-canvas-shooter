@@ -45,7 +45,7 @@ class EnemyCreator {
     this.#availableModifiers = [...defaultModifiers];
   }
 
-  #createEnemyPosition(enemySize) {
+  #randomizePosition(enemySize) {
     const { width, height } = gameState.getEntity("mainCanvas").canvasSize;
     const chance = Math.random() > 0.5;
     const maxWidthPoint = width + enemySize;
@@ -63,12 +63,12 @@ class EnemyCreator {
     const enemyConfig = { ...enemyTypes[enemyLevel] };
     const rndModChance = randomInt(100);
     if (this.#enemyModChance > rndModChance) {
-      this.#modifyEnemy(enemyConfig);
+      this.#hardenEnemy(enemyConfig);
     }
     return enemyConfig;
   }
 
-  #modifyEnemy(enemy) {
+  #hardenEnemy(enemy) {
     const length = enemyModifiers.length;
 
     switch (enemyModifiers[randomInt(length)]) {
@@ -121,7 +121,7 @@ class EnemyCreator {
   #createEnemy() {
     const enemyConfig = this.#randomizeEnemy();
     const { radius, speed, color, hp, score } = enemyConfig;
-    const position = this.#createEnemyPosition(radius);
+    const position = this.#randomizePosition(radius);
     const options = enemyConfig?.options;
     const target = gameState.getEntity("player");
     const enemy = new Enemy(
