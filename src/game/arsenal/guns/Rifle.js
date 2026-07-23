@@ -1,10 +1,10 @@
-import { HeavyAmmo } from "../ammo/HeavyAmmo";
+import { PiercingAmmo } from "../ammo/PiercingAmmo";
 import { Gun } from "./Gun";
 
 class Rifle extends Gun {
   constructor({
     name = "Rifle",
-    ammoType = new HeavyAmmo(),
+    ammoType = new PiercingAmmo(),
     options = {},
   } = {}) {
     super({
