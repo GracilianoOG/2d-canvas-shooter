@@ -11,6 +11,7 @@ import { RocketLauncher } from "@/game/arsenal/guns/RocketLauncher";
 import { Shotgun } from "@/game/arsenal/guns/Shotgun";
 import { SubmachineGun } from "@/game/arsenal/guns/SubmachineGun";
 import { randomInt } from "@/engine/utils/math";
+import { Ricochet } from "@/game/arsenal/guns/Ricochet";
 
 const weapons = {
   minigun: () => new Minigun(),
@@ -25,6 +26,7 @@ const weapons = {
   launcher: () => new GrenadeLauncher(),
   bazooka: () => new RocketLauncher(),
   mine: () => new MineLauncher(),
+  ricochet: () => new Ricochet(),
 };
 
 const weaponList = Object.entries(weapons);
