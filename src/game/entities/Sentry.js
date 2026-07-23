@@ -47,6 +47,17 @@ export class Sentry extends Entity {
     this.drawArc(ctx, this.color, padding, timePerc);
   }
 
+  #scanForTarget() {
+    const enemies = entityManager.entities.filter((ent) => ent?.drop);
+
+    for (const enemy of enemies) {
+      if (this.distance({ x: enemy.x, y: enemy.y }) <= this.#range) {
+        this.#target = enemy;
+        return;
+      }
+    }
+  }
+
   draw(ctx) {
     super.draw(ctx);
     this.#drawDespawnDelay(ctx);
@@ -63,13 +74,6 @@ export class Sentry extends Entity {
       this.#target = null;
     }
 
-    const enemies = entityManager.entities.filter((ent) => ent?.drop);
-
-    for (const enemy of enemies) {
-      if (this.distance({ x: enemy.x, y: enemy.y }) <= this.#range) {
-        this.#target = enemy;
-        return;
-      }
-    }
+    this.#scanForTarget();
   }
 }
