@@ -107,18 +107,21 @@ class EnemyCreator {
       case DiffMods.MOD_CHANCE:
         this.#modChance += this.#config.modChanceIncrement;
         if (this.#modChance === this.#config.maxModChance) {
-          const index = this.#spawnMods.indexOf(DiffMods.MOD_CHANCE);
-          this.#spawnMods.splice(index, 1);
+          this.#removeSpawnMod(DiffMods.MOD_CHANCE);
         }
         break;
       case DiffMods.NEW_ENEMY:
         this.#spawnLevel++;
         if (enemyTypes.length === this.#spawnLevel) {
-          const index = this.#spawnMods.indexOf(DiffMods.NEW_ENEMY);
-          this.#spawnMods.splice(index, 1);
+          this.#removeSpawnMod(DiffMods.NEW_ENEMY);
         }
         break;
     }
+  }
+
+  #removeSpawnMod(name) {
+    const index = this.#spawnMods.indexOf(name);
+    this.#spawnMods.splice(index, 1);
   }
 
   #create() {
