@@ -3,8 +3,9 @@ import { Shotgun } from "./Shotgun";
 
 class HeavyShotgun extends Shotgun {
   constructor({ name, ammoType = new HeavyAmmo(), options } = {}) {
+    const fullName = "Super " + name;
     super({
-      name,
+      fullName,
       ammoType,
       options: {
         cooldown: 240,

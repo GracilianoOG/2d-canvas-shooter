@@ -3,8 +3,9 @@ import { Shotgun } from "./Shotgun";
 
 class RicochetShotgun extends Shotgun {
   constructor({ name, ammoType = new RicochetAmmo(), options } = {}) {
+    const fullName = "Bouncy " + name;
     super({
-      name,
+      fullName,
       ammoType,
       options: {
         spread: 0.3,
