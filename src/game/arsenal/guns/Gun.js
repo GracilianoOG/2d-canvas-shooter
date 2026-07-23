@@ -12,7 +12,7 @@ class Gun {
   constructor({ name, ammoType, options }) {
     this.#name = name;
     this.#options = options;
-    this.#cooldown = new Timer(options.cooldown, { loop: false });
+    this.#cooldown = Timer.create(options.cooldown, { loop: false });
     this.#ammoType = ammoType;
   }
 

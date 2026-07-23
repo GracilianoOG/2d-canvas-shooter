@@ -11,7 +11,7 @@ class Item extends Entity {
   constructor(x, y, radius = 10, color, label, despawnTime = 10_000) {
     super(x, y, radius, color);
     this.#label = label;
-    this.#despawnTimer = new Timer(
+    this.#despawnTimer = Timer.create(
       despawnTime,
       { loop: false, autodestruct: true },
       () => this.destroy(),

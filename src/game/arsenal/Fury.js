@@ -13,7 +13,7 @@ class Fury {
   #duration;
 
   constructor(player, duration = 5000) {
-    this.#timer = new Timer(
+    this.#timer = Timer.create(
       duration,
       { autostart: false, loop: false },
       this.deactivate.bind(this),

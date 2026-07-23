@@ -5,7 +5,7 @@ class PlayerShield {
   #timer;
 
   constructor(onShieldDepletion) {
-    this.#timer = new Timer(
+    this.#timer = Timer.create(
       defaultStats.shieldDelay,
       { autostart: false, loop: false },
       () => onShieldDepletion(),

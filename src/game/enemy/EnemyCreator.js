@@ -21,12 +21,12 @@ class EnemyCreator {
   constructor(config = {}) {
     const timerConfig = { autostart: false };
     this.#config = { ...defaultConfig, ...config };
-    this.#spawnTimer = new Timer(
+    this.#spawnTimer = Timer.create(
       this.#config.spawnTime,
       timerConfig,
       this.#createEnemy.bind(this),
     );
-    this.#difficultyTimer = new Timer(
+    this.#difficultyTimer = Timer.create(
       this.#config.difficultyTime,
       timerConfig,
       this.#increaseDifficulty.bind(this),

@@ -15,13 +15,18 @@ class Timer {
     this.#active = options?.autostart ?? true;
     this.#loop = options?.loop ?? true;
     this.#callback = callback;
-    Timer.timers.push(this);
   }
 
   static updateAll(deltaTime) {
     for (const t of Timer.timers) {
       t.update(deltaTime);
     }
+  }
+
+  static create(waitTime, options, callback = null) {
+    const timer = new Timer(waitTime, options, callback);
+    Timer.timers.push(timer);
+    return timer;
   }
 
   get elapsedTime() {
