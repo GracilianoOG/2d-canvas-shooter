@@ -15,26 +15,30 @@ class EnemyCreator {
   #difficultyTimer;
   #spawnTime;
   #spawnLevel;
-  #enemyModChance;
-  #availableModifiers;
+  #modChance;
+  #spawnMods;
 
   constructor(config = {}) {
     const timerConfig = { autostart: false };
     this.#config = { ...defaultConfig, ...config };
+    const { spawnTime, difficultyTime, minSpawnLevel, modChance } =
+      this.#config;
+
     this.#spawnTimer = Timer.create(
-      this.#config.spawnTime,
+      spawnTime,
       timerConfig,
-      this.#createEnemy.bind(this),
+      this.#create.bind(this),
     );
     this.#difficultyTimer = Timer.create(
-      this.#config.difficultyTime,
+      difficultyTime,
       timerConfig,
-      this.#increaseDifficulty.bind(this),
+      this.#hardenSpawn.bind(this),
     );
-    this.#spawnTime = this.#config.spawnTime;
-    this.#spawnLevel = this.#config.initialSpawnLevel;
-    this.#enemyModChance = this.#config.enemyModChance;
-    this.#availableModifiers = [...defaultModifiers];
+
+    this.#spawnTime = spawnTime;
+    this.#spawnLevel = minSpawnLevel;
+    this.#modChance = modChance;
+    this.#spawnMods = [...defaultModifiers];
   }
 
   #randomizePosition(enemySize) {
@@ -56,7 +60,7 @@ class EnemyCreator {
     const target = gameState.getEntity("player");
     enemyConfig.splice(enemyConfig.length - 1, 0, target);
 
-    if (this.#enemyModChance > randomInt(100)) {
+    if (this.#modChance > randomInt(100)) {
       this.#hardenEnemy(enemyConfig);
     }
 
@@ -93,31 +97,31 @@ class EnemyCreator {
     enemyConfig[4] = newScore;
   }
 
-  #increaseDifficulty() {
-    const length = this.#availableModifiers.length;
+  #hardenSpawn() {
+    const length = this.#spawnMods.length;
 
-    switch (this.#availableModifiers[randomInt(length)]) {
+    switch (this.#spawnMods[randomInt(length)]) {
       case DiffMods.SPAWN_TIME:
         this.#spawnTimer.waitTime -= this.#config.spawnDecrementMs;
         break;
       case DiffMods.MOD_CHANCE:
-        this.#enemyModChance += this.#config.enemyModChanceIncrement;
-        if (this.#enemyModChance === this.#config.enemyModChanceLimit) {
-          const index = this.#availableModifiers.indexOf(DiffMods.MOD_CHANCE);
-          this.#availableModifiers.splice(index, 1);
+        this.#modChance += this.#config.modChanceIncrement;
+        if (this.#modChance === this.#config.maxModChance) {
+          const index = this.#spawnMods.indexOf(DiffMods.MOD_CHANCE);
+          this.#spawnMods.splice(index, 1);
         }
         break;
       case DiffMods.NEW_ENEMY:
         this.#spawnLevel++;
         if (enemyTypes.length === this.#spawnLevel) {
-          const index = this.#availableModifiers.indexOf(DiffMods.NEW_ENEMY);
-          this.#availableModifiers.splice(index, 1);
+          const index = this.#spawnMods.indexOf(DiffMods.NEW_ENEMY);
+          this.#spawnMods.splice(index, 1);
         }
         break;
     }
   }
 
-  #createEnemy() {
+  #create() {
     const enemyConfig = this.#randomizeEnemy();
     const radius = enemyConfig[0];
     const position = this.#randomizePosition(radius);
@@ -139,9 +143,9 @@ class EnemyCreator {
     this.#spawnTimer.waitTime = this.#spawnTime;
     this.#spawnTimer.reset();
     this.#difficultyTimer.reset();
-    this.#spawnLevel = this.#config.initialSpawnLevel;
-    this.#enemyModChance = this.#config.enemyModChance;
-    this.#availableModifiers = [...defaultModifiers];
+    this.#spawnLevel = this.#config.minSpawnLevel;
+    this.#modChance = this.#config.modChance;
+    this.#spawnMods = [...defaultModifiers];
   }
 }
 
