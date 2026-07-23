@@ -54,25 +54,19 @@ export class Sentry extends Entity {
 
   update() {
     if (this.#target) {
+      const { x, y, destroyed } = this.#target;
       this.#shoot();
 
-      const dirX = this.#target.x - this.x;
-      const dirY = this.#target.y - this.y;
-
-      if (this.#target.destroyed || Math.hypot(dirX, dirY) > this.#range) {
-        this.#target = null;
-      } else {
+      if (!destroyed && this.distance({ x, y }) <= this.#range) {
         return;
       }
+      this.#target = null;
     }
 
     const enemies = entityManager.entities.filter((ent) => ent?.drop);
 
     for (const enemy of enemies) {
-      const dirX = enemy.x - this.x;
-      const dirY = enemy.y - this.y;
-
-      if (Math.hypot(dirX, dirY) < this.#range) {
+      if (this.distance({ x: enemy.x, y: enemy.y }) <= this.#range) {
         this.#target = enemy;
         return;
       }
