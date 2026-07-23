@@ -1,14 +1,16 @@
 import { Adrenaline } from "../entities/items/Adrenaline";
 import { Life } from "../entities/items/Life";
+import { SentryBox } from "../entities/items/SentryBox";
 import { Shield } from "../entities/items/Shield";
 import { WeaponBox } from "../entities/items/WeaponBox";
 
 export const dropRandomItem = (x, y, chance = 0.1) => {
   if (Math.random() > chance) return;
 
-  const chances = [10, 30, 60, 100];
+  const chances = [10, 20, 30, 60, 100];
   const items = [
     () => new Life(x, y),
+    () => new SentryBox(x, y),
     () => new Shield(x, y),
     () => new Adrenaline(x, y),
     () => new WeaponBox(x, y),
