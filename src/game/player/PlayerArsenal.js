@@ -17,7 +17,7 @@ class PlayerArsenal {
     this.#player = player;
     this.#equipDefault();
 
-    this.#duration = 10000;
+    this.#duration = 15_000;
     this.#timer = Timer.create(
       this.#duration,
       { loop: false, autostart: false },
