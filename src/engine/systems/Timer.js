@@ -73,6 +73,7 @@ class Timer {
       if (!this.#loop) this.stop();
       if (this.#callback) this.#callback();
       if (this.#options.autodestruct) {
+        this.stop();
         this.remove();
         return;
       }
