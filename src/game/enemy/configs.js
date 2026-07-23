@@ -4,9 +4,9 @@ import * as DiffMods from "../utils/constants/modifierTypes";
 export const defaultConfig = {
   spawnTime: 800,
   difficultyTime: 5000,
-  modChance: 5,
-  modChanceIncrement: 0.5,
-  maxModChance: 50,
+  modChance: 0,
+  modChanceIncrement: 0.25,
+  maxModChance: 75,
   minSpawnLevel: 1,
   spawnDecrementMs: 5,
 };
