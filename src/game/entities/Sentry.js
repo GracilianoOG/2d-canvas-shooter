@@ -22,18 +22,10 @@ export class Sentry extends Entity {
     );
   }
 
-  #traceTarget() {
-    const dirX = this.#target.x - this.x;
-    const dirY = this.#target.y - this.y;
-    const bulletAngle = Math.atan2(dirY, dirX);
-
-    return bulletAngle;
-  }
-
   #shoot() {
     if (this.#cooldown.active) return;
     this.#cooldown.reset();
-    const direction = this.#traceTarget();
+    const direction = this.angleTo({ x: this.#target.x, y: this.#target.y });
     this.#ammoType.create(this.x, this.y, direction);
     gameState.getEntity("gameAudio").play("shot");
   }
