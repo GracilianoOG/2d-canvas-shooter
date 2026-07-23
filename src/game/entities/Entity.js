@@ -50,6 +50,10 @@ class Entity {
     return this.#destroyed;
   }
 
+  angleTo(position) {
+    return Math.atan2(position.y - this.y, position.x - this.x);
+  }
+
   distanceTo(position) {
     return Math.hypot(position.x - this.x, position.y - this.y);
   }
