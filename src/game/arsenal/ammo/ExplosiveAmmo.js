@@ -1,8 +1,7 @@
 class ExplosiveAmmo {
   #fragmentType;
 
-  constructor(name, fragmentType) {
-    super(name);
+  constructor(fragmentType) {
     this.#fragmentType = fragmentType;
   }
 
