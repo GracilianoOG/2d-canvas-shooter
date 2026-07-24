@@ -9,6 +9,7 @@ class PlayerArsenal {
   #duration;
   #timer;
   #player;
+  #equipped;
 
   constructor(player) {
     this.#inventory = new Map();
@@ -30,6 +31,10 @@ class PlayerArsenal {
     );
   }
 
+  get equipped() {
+    return this.#equipped;
+  }
+
   get durationTimer() {
     return this.#timer;
   }
@@ -41,7 +46,7 @@ class PlayerArsenal {
     this.#equip(weaponId);
     Indicator.create(
       { x: origin.x, y: origin.y },
-      this.#player.weapon.name.toUpperCase(),
+      this.#equipped.name.toUpperCase(),
       CHARTREUSE,
     );
   }
@@ -54,7 +59,7 @@ class PlayerArsenal {
 
   #equip(id) {
     eventManager.emit("beforeWeaponChange");
-    this.#player.weapon = this.#inventory.get(id);
+    this.#equipped = this.#inventory.get(id);
     eventManager.emit("afterWeaponChange");
   }
 
