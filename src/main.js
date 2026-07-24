@@ -9,32 +9,32 @@ const main = async () => {
   const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
   highscoreBoard.textContent = StorageHandler.retrieveHighscore();
 
-  const pauseBtn = document.querySelector(".pause-btn");
-  const restartBtn = document.querySelector(".gameover-screen__btn");
+  document.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-  Screens.start.addEventListener("click", startGame, { once: true });
-  Screens.pause.addEventListener("click", pauseGame);
-
-  restartBtn.addEventListener("click", restartGame);
-  pauseBtn.addEventListener("click", pauseGame);
+    if (e.target.matches(".pause-btn, .pause-screen")) {
+      pauseGame();
+    } else if (e.target.matches(".gameover-screen__btn")) {
+      restartGame();
+    } else if (e.target.matches(".start-screen")) {
+      startGame();
+    }
+  });
 
   await game.init();
 };
 
-const startGame = (e) => {
-  e.stopPropagation();
+const startGame = () => {
   Screens.start.remove();
   Screens.game.classList.remove("hide");
   game.start();
 };
 
-const pauseGame = (e) => {
-  e?.stopPropagation();
+const pauseGame = () => {
   game.pause();
 };
 
-const restartGame = (e) => {
-  e.stopPropagation();
+const restartGame = () => {
   Screens.restart.classList.add("hide");
   game.restart();
 };
