@@ -44,6 +44,7 @@ class Fury {
     this.#timer.reset();
     this.#status = true;
     this.#changeUpgradeState(true);
+    eventManager.emit("activatedFury");
   }
 
   deactivate() {
@@ -71,12 +72,6 @@ class Fury {
   }
 
   #changeUpgradeState(upgradeState) {
-    const { speedMultiplier } = upgrades;
-    const playerSpeed = this.#player.speed;
-    const modifiedSpeed = upgradeState
-      ? playerSpeed * speedMultiplier
-      : playerSpeed / speedMultiplier;
-    this.#player.speed = modifiedSpeed;
     this.#changeFireRateState(upgradeState);
   }
 }

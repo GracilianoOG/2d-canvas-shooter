@@ -46,8 +46,14 @@ class Player extends Projectile {
         eventManager.emit("checkFuryMeterToFill", { collect, amount });
       }
     });
-    eventManager.subscribe("activateFury", () => (this.color = Colors.RED));
-    eventManager.subscribe("deactivateFury", () => (this.color = Colors.WHITE));
+    eventManager.subscribe("activatedFury", () => {
+      this.color = Colors.RED;
+      this.speed *= 1.25;
+    });
+    eventManager.subscribe("deactivateFury", () => {
+      this.color = Colors.WHITE;
+      this.speed /= 1.25;
+    });
   }
 
   get lives() {
