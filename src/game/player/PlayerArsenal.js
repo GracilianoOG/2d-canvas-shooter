@@ -40,7 +40,9 @@ class PlayerArsenal {
   switchWeapon(origin, weapon) {
     const [weaponId, addWeapon] = weapon;
     this.#timer.reset();
-    this.#add(weaponId, addWeapon());
+    if (!this.#inventory.has(weaponId)) {
+      this.#add(weaponId, addWeapon());
+    }
     this.#equip(weaponId);
     Indicator.create(
       { x: origin.x, y: origin.y },
@@ -50,9 +52,7 @@ class PlayerArsenal {
   }
 
   #add(id, weapon) {
-    if (!this.#inventory.has(id)) {
-      this.#inventory.set(id, weapon);
-    }
+    this.#inventory.set(id, weapon);
   }
 
   #equip(id) {
