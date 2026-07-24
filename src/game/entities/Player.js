@@ -13,7 +13,6 @@ import { Indicator } from "../ui/Indicator.js";
 
 class Player extends Projectile {
   #controller;
-  #weapon;
   #fury;
   #lives;
   #godMode;
@@ -48,12 +47,12 @@ class Player extends Projectile {
     });
     eventManager.subscribe("activatedFury", () => {
       this.color = Colors.RED;
-      this.#weapon.cooldown.waitTime -= 30;
+      this.weapon.cooldown.waitTime -= 30;
       this.speed *= 1.25;
     });
     eventManager.subscribe("deactivateFury", () => {
       this.color = Colors.WHITE;
-      this.#weapon.cooldown.waitTime += 30;
+      this.weapon.cooldown.waitTime += 30;
       this.speed /= 1.25;
     });
   }
