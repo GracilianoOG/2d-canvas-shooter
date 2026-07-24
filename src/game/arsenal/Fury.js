@@ -8,7 +8,7 @@ const upgrades = {
 
 class Fury {
   #timer;
-  #status;
+  #isActive;
   #duration;
 
   constructor(duration = 5000) {
@@ -17,7 +17,7 @@ class Fury {
       { autostart: false, loop: false },
       this.deactivate.bind(this),
     );
-    this.#status = false;
+    this.#isActive = false;
     this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
     eventManager.subscribe("playerDeath", this.deactivate.bind(this));
@@ -34,19 +34,19 @@ class Fury {
   activate() {
     if (this.isActive()) return;
     this.#timer.reset();
-    this.#status = true;
+    this.#isActive = true;
     eventManager.emit("activatedFury");
   }
 
   deactivate() {
     if (!this.isActive()) return;
     this.#timer.stop();
-    this.#status = false;
+    this.#isActive = false;
     eventManager.emit("deactivateFury");
   }
 
   isActive() {
-    return this.#status;
+    return this.#isActive;
   }
 }
 
