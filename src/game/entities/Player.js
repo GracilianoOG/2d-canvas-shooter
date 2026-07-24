@@ -48,10 +48,12 @@ class Player extends Projectile {
     });
     eventManager.subscribe("activatedFury", () => {
       this.color = Colors.RED;
+      this.#weapon.cooldown.waitTime -= 30;
       this.speed *= 1.25;
     });
     eventManager.subscribe("deactivateFury", () => {
       this.color = Colors.WHITE;
+      this.#weapon.cooldown.waitTime += 30;
       this.speed /= 1.25;
     });
   }
