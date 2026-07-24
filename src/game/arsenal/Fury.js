@@ -9,17 +9,15 @@ const upgrades = {
 class Fury {
   #timer;
   #status;
-  #player;
   #duration;
 
-  constructor(player, duration = 5000) {
+  constructor(duration = 5000) {
     this.#timer = Timer.create(
       duration,
       { autostart: false, loop: false },
       this.deactivate.bind(this),
     );
     this.#status = false;
-    this.#player = player;
     this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
     eventManager.subscribe("playerDeath", this.deactivate.bind(this));
