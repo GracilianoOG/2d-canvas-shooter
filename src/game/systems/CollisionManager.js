@@ -5,35 +5,48 @@ import { Item } from "../entities/items/Item";
 import { Player } from "../entities/Player";
 
 class CollisionManager {
+  #enemies;
+  #bullets;
+  #items;
+  #player;
+
   #filterInstances() {
-    const instances = [[], [], []];
-
     for (let i = 0, len = entityManager.entities.length; i < len; i++) {
-      const instance = entityManager.entities[i];
+      const entity = entityManager.entities[i];
 
-      if (instance instanceof Enemy) {
-        instances[0].push(instance);
-      } else if (instance instanceof Bullet) {
-        instances[1].push(instance);
-      } else if (instance instanceof Item) {
-        instances[2].push(instance);
+      if (entity instanceof Enemy) {
+        this.#enemies.push(entity);
+      } else if (entity instanceof Bullet) {
+        this.#bullets.push(entity);
+      } else if (entity instanceof Item) {
+        this.#items.push(entity);
       }
     }
+  }
 
-    return instances;
+  #initCollisionBatches() {
+    this.#enemies = [];
+    this.#bullets = [];
+    this.#items = [];
   }
 
   checkCollisions() {
-    const [enemies, bullets, items] = this.#filterInstances();
-    const player = entityManager.entities.find((ent) => ent instanceof Player);
+    this.#initCollisionBatches();
+    this.#filterInstances();
 
-    for (const item of items) {
-      player.collidedWith(item);
+    if (!this.#player) {
+      this.#player = entityManager.entities.find(
+        (ent) => ent instanceof Player,
+      );
     }
 
-    for (const enemy of enemies) {
-      player.collidedWith(enemy);
-      for (const bullet of bullets) {
+    for (const item of this.#items) {
+      this.#player.collidedWith(item);
+    }
+
+    for (const enemy of this.#enemies) {
+      this.#player.collidedWith(enemy);
+      for (const bullet of this.#bullets) {
         const collided = bullet.collidedWith(enemy);
         if (collided) return;
       }
