@@ -8,14 +8,12 @@ class PlayerArsenal {
   #inventory;
   #duration;
   #timer;
-  #player;
   #equipped;
 
-  constructor(player) {
+  constructor() {
     this.#inventory = new Map();
     this.#inventory.set("pistol", new Pistol());
 
-    this.#player = player;
     this.#equipDefault();
 
     this.#duration = 12_000;

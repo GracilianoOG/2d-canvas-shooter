@@ -25,7 +25,7 @@ class Player extends Projectile {
     super(x, y, radius, speed, color);
 
     this.#controller = new PlayerController(this);
-    this.#arsenal = new PlayerArsenal(this);
+    this.#arsenal = new PlayerArsenal();
     this.#fury = new Fury(this);
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
