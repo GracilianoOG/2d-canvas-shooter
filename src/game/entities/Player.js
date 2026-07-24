@@ -78,10 +78,6 @@ class Player extends Projectile {
     return this.#arsenal.equipped;
   }
 
-  set weapon(weapon) {
-    this.#weapon = weapon;
-  }
-
   get fury() {
     return this.#fury;
   }
