@@ -25,8 +25,8 @@ class PlayerArsenal {
     );
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
-    eventManager.subscribe("weaponBoxCollected", ({ weapon }) =>
-      this.switchWeapon(weapon),
+    eventManager.subscribe("weaponBoxCollected", ({ origin, weapon }) =>
+      this.switchWeapon(origin, weapon),
     );
   }
 
@@ -34,13 +34,13 @@ class PlayerArsenal {
     return this.#timer;
   }
 
-  switchWeapon(weapon) {
+  switchWeapon(origin, weapon) {
     const [weaponId, addWeapon] = weapon;
     this.#timer.reset();
     this.#add(weaponId, addWeapon());
     this.#equip(weaponId);
     Indicator.create(
-      { x: this.#player.x, y: this.#player.y },
+      { x: origin.x, y: origin.y },
       this.#player.weapon.name.toUpperCase(),
       CHARTREUSE,
     );

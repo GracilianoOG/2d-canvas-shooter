@@ -10,6 +10,7 @@ class WeaponBox extends Item {
 
   check() {
     eventManager.emit("weaponBoxCollected", {
+      origin: { x: this.x, y: this.y },
       weapon: getRandomWeapon(),
     });
     super.collect();
