@@ -47,8 +47,7 @@ class CollisionManager {
     for (const enemy of this.#enemies) {
       this.#player.collidedWith(enemy);
       for (const bullet of this.#bullets) {
-        const collided = bullet.collidedWith(enemy);
-        if (collided) return;
+        if (bullet.collidedWith(enemy)) return;
       }
     }
   }
