@@ -1,22 +1,22 @@
-import { Particle } from "./Particle.js";
-import { PlayerController } from "../player/PlayerController.js";
-import { Projectile } from "./Projectile.js";
-import { gameState } from "../core/GameState.js";
-import { Fury } from "../arsenal/Fury.js";
-import { eventManager } from "../../engine/systems/EventManager.js";
-import { PlayerArsenal } from "../player/PlayerArsenal.js";
-import { defaultStats } from "../player/playerDefaultStats.js";
-import { PlayerShield } from "../player/PlayerShield.js";
-import { PlayerHUD } from "../player/PlayerHUD.js";
-import * as Colors from "../utils/constants/colors.js";
-import { Indicator } from "../ui/Indicator.js";
+import { Particle } from "./Particle";
+import { PlayerController } from "../player/PlayerController";
+import { Projectile } from "./Projectile";
+import { gameState } from "../core/GameState";
+import { Fury } from "../arsenal/Fury";
+import { eventManager } from "../../engine/systems/EventManager";
+import { PlayerArsenal } from "../player/PlayerArsenal";
+import { defaultStats } from "../player/playerDefaultStats";
+import { PlayerShield } from "../player/PlayerShield";
+import { PlayerHUD } from "../player/PlayerHUD";
+import * as Colors from "../utils/constants/colors";
+import { Indicator } from "../ui/Indicator";
 
 const upgrades = {
   speed: 1.25,
   cooldown: 30,
 };
 
-class Player extends Projectile {
+export class Player extends Projectile {
   #controller;
   #fury;
   #lives;
@@ -168,5 +168,3 @@ class Player extends Projectile {
     }
   }
 }
-
-export { Player };
