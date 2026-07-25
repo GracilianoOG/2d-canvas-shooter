@@ -65,6 +65,10 @@ class Entity {
     this.#destroyed = true;
   }
 
+  restore() {
+    this.#destroyed = false;
+  }
+
   onCollision() {}
 
   collidedWith(object) {
