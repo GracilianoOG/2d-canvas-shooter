@@ -11,6 +11,11 @@ import { PlayerHUD } from "../player/PlayerHUD.js";
 import * as Colors from "../utils/constants/colors.js";
 import { Indicator } from "../ui/Indicator.js";
 
+const upgrades = {
+  speed: 1.25,
+  cooldown: 30,
+};
+
 class Player extends Projectile {
   #controller;
   #fury;
@@ -47,18 +52,18 @@ class Player extends Projectile {
     });
     eventManager.subscribe("activatedFury", () => {
       this.color = Colors.RED;
-      this.weapon.cooldown.waitTime -= 30;
-      this.speed *= 1.25;
+      this.weapon.cooldown.waitTime -= upgrades.cooldown;
+      this.speed *= upgrades.speed;
     });
     eventManager.subscribe("deactivateFury", () => {
       this.color = Colors.WHITE;
-      this.weapon.cooldown.waitTime += 30;
-      this.speed /= 1.25;
+      this.weapon.cooldown.waitTime += upgrades.cooldown;
+      this.speed /= upgrades.speed;
     });
     eventManager.subscribe("gunChange", ({ prev }) => {
       if (!this.fury.isActive()) return;
-      prev.cooldown.waitTime += 30;
-      this.weapon.cooldown.waitTime -= 30;
+      prev.cooldown.waitTime += upgrades.cooldown;
+      this.weapon.cooldown.waitTime -= upgrades.cooldown;
     });
   }
 

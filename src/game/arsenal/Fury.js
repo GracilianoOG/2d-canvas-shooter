@@ -1,11 +1,6 @@
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 
-const upgrades = {
-  speedMultiplier: 1.25,
-  weaponCooldown: 30,
-};
-
 export class Fury {
   #timer;
   #isActive;
