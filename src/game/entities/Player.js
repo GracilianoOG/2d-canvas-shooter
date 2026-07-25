@@ -116,7 +116,7 @@ export class Player extends Projectile {
     Particle.createParticles(this.x, this.y, 8, 313, this.color, particles);
 
     if (this.isDead) {
-      this.kill();
+      this.die();
       Indicator.create({ x: this.x, y: this.y }, "DEATH!");
       return;
     }
@@ -124,7 +124,7 @@ export class Player extends Projectile {
     this.#activateShield();
   }
 
-  kill() {
+  die() {
     eventManager.emit("playerDeath");
   }
 
