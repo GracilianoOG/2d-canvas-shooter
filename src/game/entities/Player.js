@@ -75,10 +75,6 @@ class Player extends Projectile {
     return this.#shield;
   }
 
-  get controller() {
-    return this.#controller;
-  }
-
   get arsenal() {
     return this.#arsenal;
   }
@@ -162,7 +158,7 @@ class Player extends Projectile {
 
   update(delta) {
     if (this.isDead) return;
-    this.controller.update(delta);
+    this.#controller.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
     this.#emptyFuryMeter();
   }
