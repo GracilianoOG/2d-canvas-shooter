@@ -10,6 +10,9 @@ import { PlayerShield } from "../player/PlayerShield";
 import { PlayerHUD } from "../player/PlayerHUD";
 import * as Colors from "../utils/constants/colors";
 import { Indicator } from "../ui/Indicator";
+import { entityManager } from "../systems/EntityManager";
+import { Shard } from "./projectiles/Shard";
+import { TAU } from "@/engine/utils/math";
 
 const upgrades = {
   speed: 1.25,
@@ -23,10 +26,22 @@ export class Player extends Projectile {
   #godMode;
   #arsenal;
   #shield;
+  #shards;
   #hud;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
+
+    this.#shards = [];
+    const maxShards = 8;
+    const angle = (Math.PI * 2) / maxShards;
+    const padding = this.radius + 24;
+
+    for (let i = 0; i < maxShards; i++) {
+      const shard = new Shard(this, 5, 1, angle * i, "#fff", 10, padding);
+      this.#shards.push(shard);
+      entityManager.add(shard);
+    }
 
     this.#controller = new PlayerController(this);
     this.#arsenal = new PlayerArsenal();
@@ -64,6 +79,22 @@ export class Player extends Projectile {
       if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
       this.weapon.cooldown.waitTime -= upgrades.cooldown;
+    });
+    eventManager.subscribe("shardsCollected", () => {
+      const angle = TAU / this.#shards.length;
+      const index = this.#shards.findIndex((shard) => !shard.destroyed);
+      let prevAngle = index >= 0 ? this.#shards[index].angle : 0;
+
+      this.#shards.forEach((shard, i) => {
+        shard.x = this.x;
+        shard.y = this.y;
+        shard.angle = prevAngle + angle * i;
+
+        if (shard.destroyed) {
+          shard.restore();
+          entityManager.add(shard);
+        }
+      });
     });
   }
 
@@ -126,6 +157,7 @@ export class Player extends Projectile {
 
   die() {
     eventManager.emit("playerDeath");
+    this.#shards.forEach((shard) => shard.destroy());
   }
 
   revive(x = this.x, y = this.y) {
