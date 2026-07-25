@@ -43,7 +43,11 @@ class PlayerArsenal {
     if (!this.#has(weaponId)) {
       this.#add(weaponId, addWeapon());
     }
+    const prev = this.#equipped;
     this.#equip(weaponId);
+
+    eventManager.emit("gunChange", { prev });
+
     Indicator.create(
       { x: origin.x, y: origin.y },
       this.#equipped.name.toUpperCase(),
@@ -60,9 +64,7 @@ class PlayerArsenal {
   }
 
   #equip(id) {
-    eventManager.emit("beforeWeaponChange");
     this.#equipped = this.#inventory.get(id);
-    eventManager.emit("afterWeaponChange");
   }
 
   #equipDefault() {

@@ -55,6 +55,11 @@ class Player extends Projectile {
       this.weapon.cooldown.waitTime += 30;
       this.speed /= 1.25;
     });
+    eventManager.subscribe("gunChange", ({ prev }) => {
+      if (!this.fury.isActive()) return;
+      prev.cooldown.waitTime += 30;
+      this.weapon.cooldown.waitTime -= 30;
+    });
   }
 
   get lives() {
