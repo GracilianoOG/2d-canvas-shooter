@@ -46,7 +46,7 @@ class Player extends Projectile {
       }
     });
     eventManager.subscribe("furyCollected", ({ collect, amount }) => {
-      if (!this.fury.isActive()) {
+      if (!this.#fury.isActive()) {
         eventManager.emit("checkFuryMeterToFill", { collect, amount });
       }
     });
@@ -61,7 +61,7 @@ class Player extends Projectile {
       this.speed /= upgrades.speed;
     });
     eventManager.subscribe("gunChange", ({ prev }) => {
-      if (!this.fury.isActive()) return;
+      if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
       this.weapon.cooldown.waitTime -= upgrades.cooldown;
     });
@@ -83,10 +83,6 @@ class Player extends Projectile {
     return this.#arsenal.equipped;
   }
 
-  get fury() {
-    return this.#fury;
-  }
-
   get isDead() {
     return this.#lives <= 0;
   }
@@ -96,7 +92,7 @@ class Player extends Projectile {
   }
 
   #onEnemyKilled() {
-    if (!this.fury.isActive()) {
+    if (!this.#fury.isActive()) {
       eventManager.emit("fillFuryMeter", { amount: 4 });
     }
   }
@@ -164,9 +160,9 @@ class Player extends Projectile {
   }
 
   #emptyFuryMeter() {
-    if (this.fury.isActive()) {
-      const elapsedTime = this.fury.timer.elapsedTime;
-      const furyDelay = this.fury.duration;
+    if (this.#fury.isActive()) {
+      const elapsedTime = this.#fury.timer.elapsedTime;
+      const furyDelay = this.#fury.duration;
       const timePerc = elapsedTime / furyDelay;
       eventManager.emit("emptyFuryMeter", { timePerc });
     }
