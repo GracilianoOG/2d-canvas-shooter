@@ -1,12 +1,12 @@
-import { eventManager } from "../../engine/systems/EventManager.js";
-import { Timer } from "../../engine/systems/Timer.js";
+import { eventManager } from "../../engine/systems/EventManager";
+import { Timer } from "../../engine/systems/Timer";
 
 const upgrades = {
   speedMultiplier: 1.25,
   weaponCooldown: 30,
 };
 
-class Fury {
+export class Fury {
   #timer;
   #isActive;
   #duration;
@@ -49,5 +49,3 @@ class Fury {
     return this.#isActive;
   }
 }
-
-export { Fury };
