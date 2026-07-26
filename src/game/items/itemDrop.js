@@ -5,26 +5,26 @@ import { Shards } from "../entities/items/Shards";
 import { Shield } from "../entities/items/Shield";
 import { WeaponBox } from "../entities/items/WeaponBox";
 
+const dropTable = [
+  [(x, y) => new Life(x, y), 10],
+  [(x, y) => new Shards(x, y), 20],
+  [(x, y) => new SentryBox(x, y), 20],
+  [(x, y) => new Shield(x, y), 30],
+  [(x, y) => new Adrenaline(x, y), 60],
+  [(x, y) => new WeaponBox(x, y), 100],
+];
+
 export const dropRandomItem = (x, y, chance = 0.1) => {
   if (Math.random() > chance) return;
 
-  const chances = [10, 20, 20, 30, 60, 100];
-  const items = [
-    () => new Life(x, y),
-    () => new Shards(x, y),
-    () => new SentryBox(x, y),
-    () => new Shield(x, y),
-    () => new Adrenaline(x, y),
-    () => new WeaponBox(x, y),
-  ];
-  const totalChance = chances.reduce((sum, acc) => sum + acc, 0);
+  const totalChance = dropTable.reduce((sum, dropSet) => sum + dropSet[1], 0);
   const randChance = Math.floor(totalChance * Math.random());
 
-  for (let i = 0, currChance = 0; i < chances.length; i++) {
-    currChance += chances[i];
+  for (let i = 0, currChance = 0; i < dropTable.length; i++) {
+    currChance += dropTable[i][1];
 
     if (currChance >= randChance) {
-      return items[i]();
+      return dropTable[i][0](x, y);
     }
   }
 };
