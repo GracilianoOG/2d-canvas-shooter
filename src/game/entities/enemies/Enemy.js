@@ -1,13 +1,13 @@
-import { entityManager } from "../../systems/EntityManager.js";
-import { dropRandomItem } from "../../items/itemDrop.js";
-import { Particle } from "../Particle.js";
-import { Projectile } from "../Projectile.js";
-import { eventManager } from "../../../engine/systems/EventManager.js";
-import { WHITE } from "../../utils/constants/colors.js";
-import { EnemyAI } from "../../enemy/EnemyAI.js";
-import { defaultStats } from "../../enemy/enemyDefaultStats.js";
+import { entityManager } from "../../systems/EntityManager";
+import { dropRandomItem } from "../../items/itemDrop";
+import { Particle } from "../Particle";
+import { Projectile } from "../Projectile";
+import { eventManager } from "../../../engine/systems/EventManager";
+import { WHITE } from "../../utils/constants/colors";
+import { EnemyAI } from "../../enemy/EnemyAI";
+import { defaultStats } from "../../enemy/enemyDefaultStats";
 
-class Enemy extends Projectile {
+export class Enemy extends Projectile {
   #target;
   #maxSpeed;
   #health;
@@ -59,27 +59,6 @@ class Enemy extends Projectile {
     }
   }
 
-  takeDamage(damage) {
-    this.health -= damage;
-    if (this.health <= 0) {
-      this.#die();
-      return this.#score.death;
-    }
-    this.#bleed(this.#options.bloodAmount);
-    this.#createDamageEffect();
-    eventManager.emit("enemyHit", {
-      score: this.score.hit,
-      color: this.baseColor,
-      position: { x: this.x, y: this.y },
-    });
-  }
-
-  drop(chance) {
-    const item = dropRandomItem(this.x, this.y, chance);
-    if (!item) return;
-    entityManager.add(item);
-  }
-
   #createDamageEffect() {
     if (this.#options.knockback) {
       this.speed = -62;
@@ -107,6 +86,27 @@ class Enemy extends Projectile {
     this.destroy();
   }
 
+  takeDamage(damage) {
+    this.health -= damage;
+    if (this.health <= 0) {
+      this.#die();
+      return this.#score.death;
+    }
+    this.#bleed(this.#options.bloodAmount);
+    this.#createDamageEffect();
+    eventManager.emit("enemyHit", {
+      score: this.score.hit,
+      color: this.baseColor,
+      position: { x: this.x, y: this.y },
+    });
+  }
+
+  drop(chance) {
+    const item = dropRandomItem(this.x, this.y, chance);
+    if (!item) return;
+    entityManager.add(item);
+  }
+
   onDestroy() {
     this.drop(0.1);
   }
@@ -117,5 +117,3 @@ class Enemy extends Projectile {
     this.#returnOriginalColor();
   }
 }
-
-export { Enemy };
