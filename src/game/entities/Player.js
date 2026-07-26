@@ -138,6 +138,15 @@ export class Player extends Projectile {
     this.#shield.reset();
   }
 
+  #emptyFuryMeter() {
+    if (this.#fury.isActive()) {
+      const elapsedTime = this.#fury.timer.elapsedTime;
+      const furyDelay = this.#fury.duration;
+      const timePerc = elapsedTime / furyDelay;
+      eventManager.emit("emptyFuryMeter", { timePerc });
+    }
+  }
+
   takeHit() {
     if (this.#godMode) return;
 
@@ -189,14 +198,5 @@ export class Player extends Projectile {
     this.#controller.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
     this.#emptyFuryMeter();
-  }
-
-  #emptyFuryMeter() {
-    if (this.#fury.isActive()) {
-      const elapsedTime = this.#fury.timer.elapsedTime;
-      const furyDelay = this.#fury.duration;
-      const timePerc = elapsedTime / furyDelay;
-      eventManager.emit("emptyFuryMeter", { timePerc });
-    }
   }
 }
