@@ -38,7 +38,7 @@ export class Player extends Projectile {
     const padding = this.radius + 24;
 
     for (let i = 0; i < maxShards; i++) {
-      const shard = new Shard(this, 5, 1, angle * i, "#fff", 10, padding);
+      const shard = new Shard(this, 5, 3, angle * i, "#fff", 10, padding);
       this.#shards.push(shard);
       entityManager.add(shard);
     }
