@@ -4,7 +4,6 @@ import { Particle } from "../Particle";
 import { Projectile } from "../Projectile";
 import { eventManager } from "../../../engine/systems/EventManager";
 import { WHITE } from "../../utils/constants/colors";
-import { EnemyAI } from "../../enemy/EnemyAI";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
 
 export class Enemy extends Projectile {
@@ -13,7 +12,6 @@ export class Enemy extends Projectile {
   #health;
   #baseColor;
   #score;
-  #ai;
   #options;
 
   constructor(x, y, radius, speed, color, health, score, target, options = {}) {
@@ -23,7 +21,6 @@ export class Enemy extends Projectile {
     this.#maxSpeed = speed;
     this.#baseColor = color;
     this.#score = score;
-    this.#ai = new EnemyAI(this);
     this.#options = { ...defaultStats, ...options };
   }
 
@@ -43,8 +40,14 @@ export class Enemy extends Projectile {
     this.#health = health;
   }
 
-  #move(delta) {
-    this.#ai.followTarget(this.#target, delta);
+  #followTarget(delta) {
+    const target = this.#target;
+    const position = { x: target.x, y: target.y };
+    const angle = this.angleTo(position);
+    if (this.distanceTo(position) > this.radius) {
+      this.x += Math.cos(angle) * this.speed * delta;
+      this.y += Math.sin(angle) * this.speed * delta;
+    }
   }
 
   #increaseSpeed(increase) {
@@ -112,7 +115,7 @@ export class Enemy extends Projectile {
   }
 
   update(delta) {
-    this.#move(delta);
+    this.#followTarget(delta);
     this.#increaseSpeed(delta * 390);
     this.#returnOriginalColor();
   }
