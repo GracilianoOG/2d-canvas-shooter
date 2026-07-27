@@ -59,20 +59,6 @@ npm run dev
 | `preview`   | `vite preview`               | Preview production build locally        |
 | `deploy`    | `gh-pages -d dist`           | Deploy to GitHub Pages                  |
 
-## 🗂️ Project structure
-
-```
-📁 public/ -> public assets.
-📁 src/ -> source code.
-  📁 assets/ -> local assets to be optimized.
-  📁 scripts/ -> game logic, objects, etc.
-  📁 styles/ -> styles for the game in ".scss" format.
-  📄 index.html -> entry point.
-📄 .gitignore -> files and folders to be ignored.
-📄 jsconfig.json -> JavaScript configuration.
-📄 vite.config.js -> Vite configuration.
-```
-
 ## 🛠️ Developed with
 
 [![Tool icons from skillicons](https://skillicons.dev/icons?i=js,sass,vite,nodejs,npm,vscode)](https://skillicons.dev)
@@ -85,42 +71,11 @@ npm run dev
 
 ## ✨ Features
 
-- Move the character around the screen and shoot enemies with projectiles.
-- Screen shake effect when the player or enemies die.
-- Infinite wave of different types of enemies.
-- Neat retro music and sound effects.
-
-### ⚔️ Weapons
-
-| Name              | Description                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| Acid Shotgun      | The same as the normal shotgun, but deals extra damage.                             |
-| Bazooka           | Shoots a missile that, in contact with an enemy, generates big explosion fragments. |
-| Bullet Hell       | Shoots bullets very fast in a 360° direction.                                       |
-| Cannon            | Releases big powerful projectiles that deal great damage.                           |
-| Crossbow          | Fast projectiles that deal great damage.                                            |
-| Flechette Shotgun | Shoots multiple projectiles that ricochet.                                          |
-| Grenade Launcher  | Weaker version of the Bazooka. Releases fragment grenades.                          |
-| Mine Launcher     | Releases mines around the map that explode on enemy contact.                        |
-| Minigun           | Very fast gun that deals extra damage.                                              |
-| Nuke Launcher     | Explosion hell.                                                                     |
-| Pistol            | Default weapon, slow but does the job.                                              |
-| Ricochet          | Bullets ricochet around the map.                                                    |
-| Shotgun           | Good old friend, shoots multiple projectiles at once.                               |
-| SMG               | Faster pistol, that's it.                                                           |
-
-### 🎁 Items
-
-| Name              | Description                                  |
-| ----------------- | -------------------------------------------- |
-| Adrenaline (fury) | Increases the fury meter.                    |
-| Life              | Heals player if injured.                     |
-| Shield            | Gives invulnerability for a few seconds.     |
-| Weapon Box        | Randomize player's weapon for a few seconds. |
-
-### 🔥 Fury
-
-Kill enough enemies or collect dropped adrenaline (fury) to fill up the fury meter. Activate it to make the character move and shoot faster.
+- Fast paced, bullet hell style;
+- Infinite waves of enemies;
+- Neat retro music and sound effects;
+- Several weapons and items to use during gameplay;
+- No engine (made from scratch).
 
 ## 🎬 Credits
 
