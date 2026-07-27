@@ -53,8 +53,8 @@ class Gun {
   }
 
   rollAccuracy() {
-    const spread = this.#options?.spread ?? 0;
-    return randomNumber(spread, -spread);
+    const spread = this.#options?.spread;
+    return spread ? randomNumber(spread, -spread) : 0;
   }
 
   shoot(x, y) {
