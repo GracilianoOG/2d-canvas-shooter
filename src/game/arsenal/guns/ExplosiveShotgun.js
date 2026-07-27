@@ -11,8 +11,9 @@ export class ExplosiveShotgun extends Shotgun {
       name,
       ammoType,
       options: {
-        cooldown: 300,
-        spread: 0.4,
+        cooldown: 350,
+        propagation: 0.3,
+        spread: 0.2,
         ...options,
       },
     });
