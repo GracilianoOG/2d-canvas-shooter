@@ -3,7 +3,7 @@ import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
 
-class Gun {
+export class Gun {
   #name;
   #cooldown;
   #ammoType;
@@ -69,5 +69,3 @@ class Gun {
     this.ammoType.create(x, y, angle + this.rollAccuracy());
   }
 }
-
-export { Gun };
