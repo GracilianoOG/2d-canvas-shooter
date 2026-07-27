@@ -13,7 +13,7 @@ class Shotgun extends Gun {
       options: {
         cooldown: 200,
         bullets: 3,
-        spread: 0.12,
+        spread: 0.08,
         ...options,
       },
     });
