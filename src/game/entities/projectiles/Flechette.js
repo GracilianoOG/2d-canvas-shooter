@@ -14,14 +14,12 @@ class Flechette extends Bullet {
     const { x: ballX, y: ballY, radius } = this;
     const { width: canvasW, height: canvasH } = canvas;
 
-    const LEFT = ballX < radius;
-    const RIGHT = ballX + radius > canvasW;
-    const TOP = ballY < radius;
-    const BOTTOM = ballY + radius > canvasH;
+    const X_AXIS = ballX < radius || ballX + radius > canvasW;
+    const Y_AXIS = ballY < radius || ballY + radius > canvasH;
 
-    if (LEFT || RIGHT) {
+    if (X_AXIS) {
       this.angle = Math.PI - this.angle;
-    } else if (TOP || BOTTOM) {
+    } else if (Y_AXIS) {
       this.angle = -this.angle;
     } else {
       return;
