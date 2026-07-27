@@ -4,6 +4,10 @@ export class Piercing extends Bullet {
   #collided = [];
   #hits = 3;
 
+  onDestroy() {
+    this.#collided = null;
+  }
+
   onCollision(object) {
     if (this.#collided.find((obj) => obj === object)) {
       return;
@@ -14,7 +18,6 @@ export class Piercing extends Bullet {
       this.#hits--;
     }
     if (!this.#hits) {
-      this.#collided = null;
       this.destroy();
     }
   }
