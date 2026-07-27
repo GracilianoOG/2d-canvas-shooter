@@ -175,6 +175,9 @@ These resources helped me to understand many things regarding game development i
 - [How to optimize your JavaScript apps using Loops](https://www.freecodecamp.org/news/how-to-optimize-your-javascript-apps-using-loops-d5eade9ba89f/)
 - [What is the Fastest Loop Type in JavaScript?](https://blog.bitsrc.io/finding-the-fastest-loop-type-in-javascript-38af16fe7b4f)
 - [When You Should Prefer Map Over Object In JavaScript](https://www.zhenghao.io/posts/object-vs-map)
+- [Optimising HTML5 Canvas Rendering](https://blog.ag-grid.com/optimising-html5-canvas-rendering-best-practices-and-techniques/)
+- [Garbage collection](https://javascript.info/garbage-collection)
+- [Performance tips for JavaScript Game Developers](https://www.reddit.com/r/incremental_games/comments/mwx2xd/performance_tips_for_javascript_game_developers/)
 
 ### Game Loop
 
@@ -208,6 +211,7 @@ These resources helped me to understand many things regarding game development i
 
 - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
 - [Nice colors](https://www.w3schools.com/cssref/css_colors.php)
+- [50+ JavaScript Games](https://freefrontend.com/javascript-games/)
 
 ## 🧑🏻‍💻 Author
 
