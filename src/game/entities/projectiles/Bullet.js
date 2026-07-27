@@ -37,12 +37,16 @@ class Bullet extends Projectile {
     return bx < -br || bx > cw + br || by < -br || by > ch + br;
   }
 
-  update(delta) {
-    this.x += Math.cos(this.angle) * this.speed * delta;
-    this.y += Math.sin(this.angle) * this.speed * delta;
+  destroyOutOfCanvas() {
     if (this.isOutOfCanvas()) {
       this.destroy();
     }
+  }
+
+  update(delta) {
+    this.x += Math.cos(this.angle) * this.speed * delta;
+    this.y += Math.sin(this.angle) * this.speed * delta;
+    this.destroyOutOfCanvas();
   }
 }
 
