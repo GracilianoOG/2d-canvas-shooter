@@ -16,20 +16,20 @@ import { ExplosiveShotgun } from "@/game/arsenal/guns/ExplosiveShotgun";
 import { Sonar } from "@/game/arsenal/guns/Sonar";
 
 const weapons = {
-  minigun: () => new Minigun(),
-  shotgun: () => new Shotgun(),
-  heavyShotgun: () => new HeavyShotgun(),
-  ricochetShotgun: () => new RicochetShotgun(),
-  explosiveShotgun: () => new ExplosiveShotgun(),
-  smg: () => new SubmachineGun(),
-  rifle: () => new Rifle(),
-  hell: () => new BulletHell(),
-  cannon: () => new Cannon(),
-  nuke: () => new NukeLauncher(),
-  launcher: () => new GrenadeLauncher(),
   bazooka: () => new RocketLauncher(),
+  broom: () => new ExplosiveShotgun(),
+  bouncy: () => new RicochetShotgun(),
+  cannon: () => new Cannon(),
+  hell: () => new BulletHell(),
+  launcher: () => new GrenadeLauncher(),
+  minigun: () => new Minigun(),
   mine: () => new MineLauncher(),
+  nuke: () => new NukeLauncher(),
+  rifle: () => new Rifle(),
   ricochet: () => new Ricochet(),
+  super: () => new HeavyShotgun(),
+  shotgun: () => new Shotgun(),
+  smg: () => new SubmachineGun(),
   sonar: () => new Sonar(),
 };
 
