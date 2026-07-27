@@ -36,7 +36,7 @@ class Gun {
     return this.#options;
   }
 
-  calcBulletPath(originX, originY) {
+  #calcBulletPath(originX, originY) {
     const { left, top } = gameState.getEntity("mainCanvas").offset;
     const scaleFactors = gameState.getEntity("mainCanvas").factors;
     const { x: mouseX, y: mouseY } = inputManager.getMousePosition(left, top);
@@ -59,14 +59,14 @@ class Gun {
 
   shoot(x, y) {
     if (this.#cooldown.active) return;
+    const bulletAngle = this.#calcBulletPath(x, y);
     this.#cooldown.reset();
-    this.createProjectile(x, y);
+    this.createProjectile(x, y, bulletAngle);
     gameState.getEntity("gameAudio").play("shot");
   }
 
-  createProjectile(x, y) {
-    const bulletAngle = this.calcBulletPath(x, y);
-    this.ammoType.create(x, y, bulletAngle + this.rollAccuracy());
+  createProjectile(x, y, angle) {
+    this.ammoType.create(x, y, angle + this.rollAccuracy());
   }
 }
 
