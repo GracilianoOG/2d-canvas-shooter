@@ -11,8 +11,9 @@ class HeavyShotgun extends Shotgun {
       name,
       ammoType,
       options: {
-        cooldown: 240,
-        spread: 0.3,
+        bullets: 2,
+        cooldown: 220,
+        spread: 0.02,
         ...options,
       },
     });
