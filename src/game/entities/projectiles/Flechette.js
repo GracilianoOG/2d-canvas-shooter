@@ -2,7 +2,7 @@ import { gameState } from "../../core/GameState";
 import { GRAY } from "../../utils/constants/colors";
 import { Bullet } from "./Bullet";
 
-class Flechette extends Bullet {
+export class Flechette extends Bullet {
   #bounces;
 
   constructor(x, y, radius, speed, angle, color, damage, bounces = 10) {
@@ -38,5 +38,3 @@ class Flechette extends Bullet {
     this.bounce();
   }
 }
-
-export { Flechette };
