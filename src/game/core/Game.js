@@ -96,10 +96,12 @@ class Game {
   }
 
   async loadAssets() {
-    await this.#audio.load("hit", audios.hit[0]);
-    await this.#audio.load("explosion", audios.explosion[0]);
-    await this.#audio.load("shot", audios.shot[0]);
-    await this.#audio.load("battle", audios.battle[0]);
+    await Promise.all([
+      this.#audio.load("hit", audios.hit[0]),
+      this.#audio.load("explosion", audios.explosion[0]),
+      this.#audio.load("shot", audios.shot[0]),
+      this.#audio.load("battle", audios.battle[0]),
+    ]);
   }
 
   async init() {
