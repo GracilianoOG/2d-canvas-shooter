@@ -2,11 +2,7 @@ import { GrenadeAmmo } from "../ammo/GrenadeAmmo";
 import { Shotgun } from "./Shotgun";
 
 export class ExplosiveShotgun extends Shotgun {
-  constructor({
-    name = "Boom Shotgun",
-    ammoType = new GrenadeAmmo(),
-    options,
-  } = {}) {
+  constructor({ name = "Broom", ammoType = new GrenadeAmmo(), options } = {}) {
     super({
       name,
       ammoType,
