@@ -43,9 +43,13 @@ class Bullet extends Projectile {
     }
   }
 
-  update(delta) {
+  moveTowards(delta) {
     this.x += Math.cos(this.angle) * this.speed * delta;
     this.y += Math.sin(this.angle) * this.speed * delta;
+  }
+
+  update(delta) {
+    this.moveTowards(delta);
     this.destroyOutOfCanvas();
   }
 }
