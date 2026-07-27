@@ -30,7 +30,7 @@ class Game {
   #settings;
 
   constructor({ width, height }) {
-    this.#enemyCreator = new EnemyCreator();
+    this.#enemyCreator = new EnemyCreator({ spawnTime: 500 });
     this.#audio = audioSystem;
     this.#canvas = new GameCanvas(width, height, Screens.game);
     this.#shaker = new Shaker(this.#canvas.ctx);
