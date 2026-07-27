@@ -4,7 +4,7 @@ import { Timer } from "../../engine/systems/Timer";
 import { Indicator } from "../ui/Indicator";
 import { CHARTREUSE } from "../utils/constants/colors";
 
-class PlayerArsenal {
+export class PlayerArsenal {
   #inventory;
   #duration;
   #timer;
@@ -37,24 +37,6 @@ class PlayerArsenal {
     return this.#timer;
   }
 
-  switchWeapon(origin, weapon) {
-    const [weaponId, addWeapon] = weapon;
-    this.#timer.reset();
-    if (!this.#has(weaponId)) {
-      this.#add(weaponId, addWeapon());
-    }
-    const prev = this.#equipped;
-    this.#equip(weaponId);
-
-    eventManager.emit("gunChange", { prev });
-
-    Indicator.create(
-      { x: origin.x, y: origin.y },
-      this.#equipped.name.toUpperCase(),
-      CHARTREUSE,
-    );
-  }
-
   #add(id, weapon) {
     this.#inventory.set(id, weapon);
   }
@@ -75,6 +57,22 @@ class PlayerArsenal {
     this.#timer.stop();
     this.#equipDefault();
   }
-}
 
-export { PlayerArsenal };
+  switchWeapon(origin, weapon) {
+    const [weaponId, addWeapon] = weapon;
+    this.#timer.reset();
+    if (!this.#has(weaponId)) {
+      this.#add(weaponId, addWeapon());
+    }
+    const prev = this.#equipped;
+    this.#equip(weaponId);
+
+    eventManager.emit("gunChange", { prev });
+
+    Indicator.create(
+      { x: origin.x, y: origin.y },
+      this.#equipped.name.toUpperCase(),
+      CHARTREUSE,
+    );
+  }
+}
