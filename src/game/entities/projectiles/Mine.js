@@ -1,6 +1,6 @@
 import { Explosive } from "./Explosive";
 
-class Mine extends Explosive {
+export class Mine extends Explosive {
   update(delta) {
     if (this.speed > 0) {
       const DEACCELERATION = 1000 * delta;
@@ -10,5 +10,3 @@ class Mine extends Explosive {
     this.destroyOutOfCanvas();
   }
 }
-
-export { Mine };
