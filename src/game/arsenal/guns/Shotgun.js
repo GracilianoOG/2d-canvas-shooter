@@ -14,13 +14,14 @@ class Shotgun extends Gun {
         cooldown: 200,
         bullets: 3,
         spread: 0.08,
+        propagation: 0.2,
         ...options,
       },
     });
   }
 
   createProjectile(x, y, angle) {
-    const propagation = 0.2;
+    const propagation = this.options.propagation;
     const amount = this.options.bullets;
     let nextCurve = -propagation * Math.floor(amount / 2);
 
