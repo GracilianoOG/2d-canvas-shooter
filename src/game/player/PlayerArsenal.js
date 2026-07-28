@@ -1,8 +1,9 @@
-import { Pistol } from "../arsenal/guns/Pistol";
+import { randomInt } from "@/engine/utils/math";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 import { Indicator } from "../ui/Indicator";
 import { CHARTREUSE } from "../utils/constants/colors";
+import { weaponIds, weapons } from "@/data/weapons";
 
 export class PlayerArsenal {
   #inventory;
@@ -11,9 +12,7 @@ export class PlayerArsenal {
   #equipped;
 
   constructor() {
-    this.#inventory = new Map();
-    this.#inventory.set("pistol", new Pistol());
-
+    this.#inventory = weapons;
     this.#equipDefault();
 
     this.#duration = 12_000;
@@ -24,9 +23,7 @@ export class PlayerArsenal {
     );
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
-    eventManager.subscribe("weaponBoxCollected", ({ origin, weapon }) =>
-      this.switchWeapon(origin, weapon),
-    );
+    eventManager.subscribe("gunPickup", this.switchWeapon.bind(this));
   }
 
   get equipped() {
@@ -37,16 +34,8 @@ export class PlayerArsenal {
     return this.#timer;
   }
 
-  #add(id, weapon) {
-    this.#inventory.set(id, weapon);
-  }
-
-  #has(id) {
-    return this.#inventory.has(id);
-  }
-
   #equip(id) {
-    this.#equipped = this.#inventory.get(id);
+    this.#equipped = this.#inventory[id];
   }
 
   #equipDefault() {
@@ -58,21 +47,18 @@ export class PlayerArsenal {
     this.#equipDefault();
   }
 
-  switchWeapon(origin, weapon) {
-    const [weaponId, addWeapon] = weapon;
+  #randomWeaponId() {
+    return weaponIds[randomInt(weaponIds.length)];
+  }
+
+  switchWeapon({ origin: { x, y } }) {
+    const weaponId = this.#randomWeaponId();
     this.#timer.reset();
-    if (!this.#has(weaponId)) {
-      this.#add(weaponId, addWeapon());
-    }
+
     const prev = this.#equipped;
     this.#equip(weaponId);
 
     eventManager.emit("gunChange", { prev });
-
-    Indicator.create(
-      { x: origin.x, y: origin.y },
-      this.#equipped.name.toUpperCase(),
-      CHARTREUSE,
-    );
+    Indicator.create({ x, y }, this.#equipped.name.toUpperCase(), CHARTREUSE);
   }
 }
