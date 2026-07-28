@@ -1,6 +1,6 @@
-import { TAU } from "@/engine/utils/math";
 import { PistolAmmo } from "../ammo/PistolAmmo";
 import { Gun } from "./Gun";
+import { Explosive } from "@/game/entities/projectiles/Explosive";
 
 class BulletHell extends Gun {
   constructor({
@@ -19,19 +19,12 @@ class BulletHell extends Gun {
     });
   }
 
-  #explode(pellets, createPellets) {
-    let rotation = 0;
-    const angle = TAU / pellets;
-
-    while (rotation <= TAU) {
-      createPellets(rotation);
-      rotation += angle;
-    }
-  }
-
   createProjectile(x, y) {
-    const pellets = this.options.bullets;
-    this.#explode(pellets, (rotation) => this.ammoType.create(x, y, rotation));
+    const amount = this.options.bullets;
+    Explosive.explode(x, y, {
+      amount,
+      createFragments: this.ammoType.create,
+    });
   }
 }
 
