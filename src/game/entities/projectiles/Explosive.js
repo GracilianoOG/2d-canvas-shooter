@@ -14,7 +14,7 @@ class Explosive extends Bullet {
     const angle = TAU / amount;
     let rotation = 0;
 
-    while (rotation <= TAU) {
+    for (let i = 0; i < amount; i++) {
       createFragments(x, y, rotation);
       rotation += angle;
     }
