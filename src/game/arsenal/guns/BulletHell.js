@@ -2,7 +2,7 @@ import { PistolAmmo } from "../ammo/PistolAmmo";
 import { Gun } from "./Gun";
 import { Explosive } from "@/game/entities/projectiles/Explosive";
 
-class BulletHell extends Gun {
+export class BulletHell extends Gun {
   constructor({
     name = "Bullet Hell",
     ammoType = new PistolAmmo(),
@@ -27,5 +27,3 @@ class BulletHell extends Gun {
     });
   }
 }
-
-export { BulletHell };
