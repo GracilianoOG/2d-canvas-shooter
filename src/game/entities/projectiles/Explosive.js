@@ -9,20 +9,20 @@ class Explosive extends Bullet {
     this.#fragments = { ...fragments };
   }
 
-  #explode() {
-    const { amount, createFragments } = this.#fragments;
+  static explode(x, y, fragments) {
+    const { amount, createFragments } = fragments;
     const angle = TAU / amount;
     let rotation = 0;
 
     while (rotation <= TAU) {
-      createFragments(this.x, this.y, rotation);
+      createFragments(x, y, rotation);
       rotation += angle;
     }
   }
 
   onDestroy() {
     if (this.isOutOfCanvas()) return;
-    this.#explode();
+    Explosive.explode(this.x, this.y, this.#fragments);
   }
 }
 
