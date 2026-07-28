@@ -12,11 +12,11 @@ const main = async () => {
   document.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    if (e.target.matches(".pause-btn, .pause-screen")) {
+    if (e.target.closest(".pause-btn, .pause-screen")) {
       pauseGame();
-    } else if (e.target.matches(".gameover-screen__btn")) {
+    } else if (e.target.closest(".gameover-screen__btn")) {
       restartGame();
-    } else if (e.target.matches(".start-screen")) {
+    } else if (e.target.closest(".start-screen")) {
       startGame();
     }
   });
