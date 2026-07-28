@@ -12,7 +12,7 @@ export class BulletHell extends Gun {
       name,
       ammoType,
       options: {
-        cooldown: 120,
+        cooldown: 150,
         bullets: 20,
         ...options,
       },
