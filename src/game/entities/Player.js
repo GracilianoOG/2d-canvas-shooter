@@ -48,7 +48,7 @@ export class Player extends Projectile {
     this.#fury = new Fury();
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
-    this.#shield = new PlayerShield(() => this.#onShieldDepletion());
+    this.#shield = new PlayerShield(this);
     this.#hud = new PlayerHUD(this);
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
@@ -118,10 +118,6 @@ export class Player extends Projectile {
     return this.#lives <= 0;
   }
 
-  #onShieldDepletion() {
-    this.#godMode = false;
-  }
-
   #onEnemyKilled() {
     if (!this.#fury.isActive()) {
       eventManager.emit("fillFuryMeter", { amount: 4 });
@@ -145,6 +141,10 @@ export class Player extends Projectile {
       const timePerc = elapsedTime / furyDelay;
       eventManager.emit("emptyFuryMeter", { timePerc });
     }
+  }
+
+  toggleGodMode(force) {
+    this.#godMode = force ?? !this.#godMode;
   }
 
   takeHit() {
@@ -191,6 +191,7 @@ export class Player extends Projectile {
     if (this.isDead) return;
     super.draw(ctx);
     this.#hud.drawHUD(ctx);
+    this.#shield.draw(ctx);
   }
 
   update(delta) {

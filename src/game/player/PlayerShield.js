@@ -1,14 +1,17 @@
 import { Timer } from "../../engine/systems/Timer";
+import { ENERGETIC_BLUE } from "../utils/constants/colors";
 import { defaultStats } from "./playerDefaultStats";
 
 class PlayerShield {
   #timer;
+  #player;
 
-  constructor(onShieldDepletion) {
+  constructor(player) {
+    this.#player = player;
     this.#timer = Timer.create(
       defaultStats.shieldDelay,
       { autostart: false, loop: false },
-      () => onShieldDepletion(),
+      () => this.#player.toggleGodMode(false),
     );
   }
 
@@ -32,6 +35,16 @@ class PlayerShield {
 
   get currentDelay() {
     return this.#timer.waitTime;
+  }
+
+  draw(ctx) {
+    if (!this.isActive()) return;
+
+    const { remainingTime, currentDelay } = this;
+    const delayProgress = remainingTime / currentDelay;
+    const padding = 15;
+
+    this.#player.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
   }
 }
 
