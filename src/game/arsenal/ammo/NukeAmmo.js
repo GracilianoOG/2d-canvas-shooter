@@ -1,12 +1,12 @@
 import { ARMY_GREEN } from "@/game/utils/constants/colors";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../../entities/projectiles/Explosive";
-import { MissileAmmo } from "./MissileAmmo";
 import { CANNON_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";
+import { CannonAmmo } from "./CannonAmmo";
 
 class NukeAmmo extends ExplosiveAmmo {
-  constructor(fragmentType = new MissileAmmo()) {
+  constructor(fragmentType = new CannonAmmo()) {
     super(fragmentType);
   }
 
