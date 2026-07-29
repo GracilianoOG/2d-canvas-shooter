@@ -45,7 +45,7 @@ export class Game {
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
     eventManager.subscribe("playerHit", () => this.shakeScreen(3.5, 300));
-    eventManager.subscribe("enemyHit", () => this.shakeScreen(5, 300));
+    eventManager.subscribe("enemyDeath", () => this.shakeScreen(5, 300));
   }
 
   get state() {
