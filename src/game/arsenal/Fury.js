@@ -25,14 +25,6 @@ export class Fury {
     });
   }
 
-  get timer() {
-    return this.#timer;
-  }
-
-  get duration() {
-    return this.#duration;
-  }
-
   #onEnemyKilled() {
     if (!this.isActive()) {
       eventManager.emit("fillFuryMeter", { amount: 4 });
@@ -59,8 +51,8 @@ export class Fury {
 
   update(_delta) {
     if (this.isActive()) {
-      const elapsedTime = this.timer.elapsedTime;
-      const furyDelay = this.duration;
+      const elapsedTime = this.#timer.elapsedTime;
+      const furyDelay = this.#duration;
       const timePerc = elapsedTime / furyDelay;
       eventManager.emit("emptyFuryMeter", { timePerc });
     }
