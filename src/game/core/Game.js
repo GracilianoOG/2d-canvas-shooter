@@ -20,7 +20,7 @@ import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
 import { Indicator } from "../ui/Indicator";
 
-class Game {
+export class Game {
   #state;
   #engine;
   #audio;
@@ -48,6 +48,60 @@ class Game {
 
   get state() {
     return this.#state;
+  }
+
+  #onPlayerDeath() {
+    this.#state = States.GAMEOVER;
+    this.#enemyCreator.stop();
+  }
+
+  #listenToWindowChange() {
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && this.state === States.RUNNING) this.pause();
+    });
+  }
+
+  #listenToResize() {
+    window.addEventListener("resize", () => this.#canvas.resize());
+  }
+
+  async loadAssets() {
+    await Promise.all([
+      this.#audio.load("hit", audios.hit[0]),
+      this.#audio.load("explosion", audios.explosion[0]),
+      this.#audio.load("shot", audios.shot[0]),
+      this.#audio.load("battle", audios.battle[0]),
+    ]);
+  }
+
+  async init() {
+    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
+    const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
+    const hud = document.querySelector("#hud");
+    const scoreboard = new Scoreboard(hud);
+    const furyMeter = new FuryMeter({
+      container: hud,
+      label: "fury",
+      value: 100,
+    });
+    const livesDisplay = new LivesDisplay(hud);
+    livesDisplay.showCurrentLives(player.lives);
+    entityManager.add(player);
+
+    await this.loadAssets();
+
+    gameState.addEntities({
+      mainCanvas: this.#canvas,
+      player,
+      gameAudio: this.#audio,
+      scoreboard,
+      furyMeter,
+      game: this,
+    });
+
+    Screens.loading.remove();
+    Screens.start.classList.remove("hide");
+    inputManager.init(Screens.game);
   }
 
   startLoop() {
@@ -95,46 +149,6 @@ class Game {
     }
   }
 
-  async loadAssets() {
-    await Promise.all([
-      this.#audio.load("hit", audios.hit[0]),
-      this.#audio.load("explosion", audios.explosion[0]),
-      this.#audio.load("shot", audios.shot[0]),
-      this.#audio.load("battle", audios.battle[0]),
-    ]);
-  }
-
-  async init() {
-    // GameState
-    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
-    const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
-    const hud = document.querySelector("#hud");
-    const scoreboard = new Scoreboard(hud);
-    const furyMeter = new FuryMeter({
-      container: hud,
-      label: "fury",
-      value: 100,
-    });
-    const livesDisplay = new LivesDisplay(hud);
-    livesDisplay.showCurrentLives(player.lives);
-    entityManager.add(player);
-
-    await this.loadAssets();
-
-    gameState.addEntities({
-      mainCanvas: this.#canvas,
-      player,
-      gameAudio: this.#audio,
-      scoreboard,
-      furyMeter,
-      game: this,
-    });
-
-    Screens.loading.remove();
-    Screens.start.classList.remove("hide");
-    inputManager.init(Screens.game);
-  }
-
   start() {
     this.#audio.playMusic("battle");
     this.#enemyCreator.start();
@@ -156,21 +170,4 @@ class Game {
     scoreManager.reset();
     this.startLoop();
   }
-
-  #onPlayerDeath() {
-    this.#state = States.GAMEOVER;
-    this.#enemyCreator.stop();
-  }
-
-  #listenToWindowChange() {
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden && this.state === States.RUNNING) this.pause();
-    });
-  }
-
-  #listenToResize() {
-    window.addEventListener("resize", () => this.#canvas.resize());
-  }
 }
-
-export { Game };
