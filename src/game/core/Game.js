@@ -30,9 +30,14 @@ export class Game {
   #shaker;
   #enemyCreator;
   #settings;
+  #player;
 
   constructor({ width, height }) {
-    this.#enemyCreator = new EnemyCreator({ spawnTime: 800 });
+    this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
+    this.#enemyCreator = new EnemyCreator({
+      spawnTime: 800,
+      target: this.#player,
+    });
     this.#audio = audioSystem;
     this.#canvas = new GameCanvas(width, height, Screens.game);
     this.#shaker = new Shaker(this.#canvas.ctx);
