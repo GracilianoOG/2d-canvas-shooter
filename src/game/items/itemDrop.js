@@ -1,5 +1,6 @@
 import { Adrenaline } from "../entities/items/Adrenaline";
 import { Life } from "../entities/items/Life";
+import { Nuke } from "../entities/items/Nuke";
 import { SentryBox } from "../entities/items/SentryBox";
 import { Shards } from "../entities/items/Shards";
 import { Shield } from "../entities/items/Shield";
@@ -12,6 +13,7 @@ const dropTable = [
   [(x, y) => new Shield(x, y), 30],
   [(x, y) => new Adrenaline(x, y), 60],
   [(x, y) => new WeaponBox(x, y), 100],
+  [(x, y) => new Nuke(x, y), 10000],
 ];
 
 export const dropRandomItem = (x, y, chance = 0.1) => {
