@@ -19,6 +19,8 @@ import audios from "@/data/audios";
 import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
 import { Indicator } from "../ui/Indicator";
+import { CSS_CLASSES } from "../utils/constants";
+import { StorageHandler } from "../StorageHandler";
 
 export class Game {
   #state;
@@ -56,6 +58,7 @@ export class Game {
     this.#state = States.GAMEOVER;
     this.#enemyCreator.stop();
     this.shakeScreen(6, 500);
+    this.#prepareRestart(2400);
   }
 
   #listenToWindowChange() {
@@ -66,6 +69,24 @@ export class Game {
 
   #listenToResize() {
     window.addEventListener("resize", () => this.#canvas.resize());
+  }
+
+  #calcHighscore() {
+    const highscoreEl = Screens.restart.querySelector(
+      CSS_CLASSES.HIGHSCORE_POINTS,
+    );
+    const recordEl = Screens.restart.querySelector(".highscore__new");
+    recordEl.classList.toggle("hide", !scoreManager.isHighscore());
+    scoreManager.save();
+    highscoreEl.textContent = StorageHandler.retrieveHighscore();
+  }
+
+  #prepareRestart(milliseconds) {
+    setTimeout(() => {
+      this.#calcHighscore();
+      this.stopLoop(States.NOT_RUNNING);
+      Screens.restart.classList.remove("hide");
+    }, milliseconds);
   }
 
   async loadAssets() {
