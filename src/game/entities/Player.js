@@ -67,20 +67,12 @@ export class Player extends Projectile {
     });
   }
 
-  get lives() {
-    return this.#lives;
-  }
-
-  get shield() {
-    return this.#shield;
-  }
-
-  get arsenal() {
-    return this.#arsenal;
-  }
-
   get weapon() {
     return this.#arsenal.equipped;
+  }
+
+  get lives() {
+    return this.#lives;
   }
 
   get isDead() {
