@@ -17,6 +17,12 @@ export class Fury {
     this.#duration = duration;
     eventManager.subscribe("activateFury", () => this.activate());
     eventManager.subscribe("playerDeath", this.deactivate.bind(this));
+    eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
+    eventManager.subscribe("furyCollected", (data) => {
+      if (!this.isActive()) {
+        eventManager.emit("checkFuryMeterToFill", data);
+      }
+    });
   }
 
   get timer() {
@@ -25,6 +31,12 @@ export class Fury {
 
   get duration() {
     return this.#duration;
+  }
+
+  #onEnemyKilled() {
+    if (!this.isActive()) {
+      eventManager.emit("fillFuryMeter", { amount: 4 });
+    }
   }
 
   activate() {

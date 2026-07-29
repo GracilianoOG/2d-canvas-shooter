@@ -37,17 +37,11 @@ export class Player extends Projectile {
     this.#fury = new Fury();
     this.#lives = defaultStats.lives;
 
-    eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("lifeCollected", ({ collect }) => {
       if (this.lives < defaultStats.lives) {
         this.#lives++;
         collect();
         eventManager.emit("playerHealed");
-      }
-    });
-    eventManager.subscribe("furyCollected", ({ collect, amount }) => {
-      if (!this.#fury.isActive()) {
-        eventManager.emit("checkFuryMeterToFill", { collect, amount });
       }
     });
     eventManager.subscribe("activatedFury", () => {
@@ -77,12 +71,6 @@ export class Player extends Projectile {
 
   get isDead() {
     return this.#lives <= 0;
-  }
-
-  #onEnemyKilled() {
-    if (!this.#fury.isActive()) {
-      eventManager.emit("fillFuryMeter", { amount: 4 });
-    }
   }
 
   takeHit() {
