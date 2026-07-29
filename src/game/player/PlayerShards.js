@@ -14,19 +14,24 @@ export class PlayerShards {
     this.#player = player;
     this.#maxShards = maxShards;
 
-    const angle = TAU / maxShards;
-    const padding = player.radius + 24;
-
-    for (let i = 0; i < maxShards; i++) {
-      const shard = new Shard(player, 5, 3, angle * i, WHITE, 10, padding);
-      this.#shards.push(shard);
-      entityManager.add(shard);
-    }
+    this.#initShards();
 
     eventManager.subscribe("shardsCollected", this.#restoreShards.bind(this));
     eventManager.subscribe("playerDeath", () =>
       this.#shards.forEach((shard) => shard.destroy()),
     );
+  }
+
+  #initShards() {
+    const angle = TAU / this.#maxShards;
+    const padding = this.#player.radius + 24;
+    const col = WHITE;
+
+    for (let i = 0; i < this.#maxShards; i++) {
+      const shard = new Shard(this.#player, 5, 3, angle * i, col, 10, padding);
+      this.#shards.push(shard);
+      entityManager.add(shard);
+    }
   }
 
   #restoreShards() {
