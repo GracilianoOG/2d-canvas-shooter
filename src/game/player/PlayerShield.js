@@ -3,7 +3,7 @@ import { Timer } from "../../engine/systems/Timer";
 import { ENERGETIC_BLUE } from "../utils/constants/colors";
 import { defaultStats } from "./playerDefaultStats";
 
-class PlayerShield {
+export class PlayerShield {
   #timer;
   #player;
 
@@ -42,5 +42,3 @@ class PlayerShield {
     this.#player.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
   }
 }
-
-export { PlayerShield };
