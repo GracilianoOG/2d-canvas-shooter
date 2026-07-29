@@ -29,19 +29,11 @@ class PlayerShield {
     return this.#timer.active;
   }
 
-  get remainingTime() {
-    return this.#timer.elapsedTime;
-  }
-
-  get currentDelay() {
-    return this.#timer.waitTime;
-  }
-
   draw(ctx) {
     if (!this.isActive()) return;
 
-    const { remainingTime, currentDelay } = this;
-    const delayProgress = remainingTime / currentDelay;
+    const { elapsedTime, waitTime } = this.#timer;
+    const delayProgress = elapsedTime / waitTime;
     const padding = 15;
 
     this.#player.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
