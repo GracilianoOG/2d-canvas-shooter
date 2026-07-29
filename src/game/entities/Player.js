@@ -134,15 +134,6 @@ export class Player extends Projectile {
     this.#shield.reset();
   }
 
-  #emptyFuryMeter() {
-    if (this.#fury.isActive()) {
-      const elapsedTime = this.#fury.timer.elapsedTime;
-      const furyDelay = this.#fury.duration;
-      const timePerc = elapsedTime / furyDelay;
-      eventManager.emit("emptyFuryMeter", { timePerc });
-    }
-  }
-
   toggleGodMode(force) {
     this.#godMode = force ?? !this.#godMode;
   }
@@ -199,7 +190,7 @@ export class Player extends Projectile {
     if (this.isDead) return;
     this.#controller.update(delta);
     this.#arsenal.update(delta);
+    this.#fury.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
-    this.#emptyFuryMeter();
   }
 }

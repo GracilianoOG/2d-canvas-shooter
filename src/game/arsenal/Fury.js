@@ -1,3 +1,4 @@
+import { inputManager } from "@/engine/systems/InputManager";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 
@@ -42,5 +43,17 @@ export class Fury {
 
   isActive() {
     return this.#isActive;
+  }
+
+  update(_delta) {
+    if (this.isActive()) {
+      const elapsedTime = this.timer.elapsedTime;
+      const furyDelay = this.duration;
+      const timePerc = elapsedTime / furyDelay;
+      eventManager.emit("emptyFuryMeter", { timePerc });
+    }
+    if (inputManager.isActionPressed("fury")) {
+      eventManager.emit("shouldActivateFury");
+    }
   }
 }

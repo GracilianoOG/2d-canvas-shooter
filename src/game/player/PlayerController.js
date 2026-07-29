@@ -35,16 +35,9 @@ class PlayerController {
     }
   }
 
-  #detectFury() {
-    if (inputManager.isActionPressed("fury")) {
-      eventManager.emit("shouldActivateFury");
-    }
-  }
-
   update(delta) {
     this.#delta = delta;
     this.#movePlayer();
-    this.#detectFury();
   }
 }
 
