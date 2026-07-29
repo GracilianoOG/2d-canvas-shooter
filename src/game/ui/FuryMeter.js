@@ -5,6 +5,7 @@ export class FuryMeter extends Bar {
   constructor(args) {
     super(args);
 
+    eventManager.subscribe("restart", () => (this.value = 0));
     eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
     eventManager.subscribe("checkFuryMeterToFill", ({ collect, amount }) => {
       if (!this.isFull()) {

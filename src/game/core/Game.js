@@ -117,7 +117,6 @@ export class Game {
     gameState.addEntities({
       mainCanvas: this.#canvas,
       player,
-      furyMeter,
     });
 
     Screens.loading.remove();
@@ -184,11 +183,11 @@ export class Game {
     const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
     const player = gameState.getEntity("player");
     this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
-    gameState.getEntity("furyMeter").value = 0;
     player.revive(mWidth / 2, mHeight / 2);
     this.#enemyCreator.reset();
     entityManager.clear([player]);
     scoreManager.reset();
     this.startLoop();
+    eventManager.emit("restart");
   }
 }
