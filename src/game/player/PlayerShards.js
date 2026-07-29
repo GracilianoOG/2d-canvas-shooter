@@ -14,8 +14,6 @@ export class PlayerShards {
     this.#player = player;
     this.#maxShards = maxShards;
 
-    this.#initShards();
-
     eventManager.subscribe("shardsCollected", this.#restoreShards.bind(this));
     eventManager.subscribe("playerDeath", () =>
       this.#shards.forEach((shard) => shard.destroy()),
@@ -35,6 +33,11 @@ export class PlayerShards {
   }
 
   #restoreShards() {
+    if (!this.#shards.length) {
+      this.#initShards();
+      return;
+    }
+
     const angle = TAU / this.#maxShards;
     const index = this.#shards.findIndex((shard) => !shard.destroyed);
     let prevAngle = index >= 0 ? this.#shards[index].angle : 0;
