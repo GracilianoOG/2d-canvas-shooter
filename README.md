@@ -117,6 +117,12 @@ These resources helped me to understand many things regarding game development i
 - [2D Vectors in JavaScript](https://www.youtube.com/watch?v=nzyOCd9FcCA)
 - [Vector Normalize](https://www.youtube.com/watch?v=ttz05d8DSOs)
 
+### Components (ECS)
+
+- [How You Can Easily Make Your Code Simpler in Godot 4](https://www.youtube.com/watch?v=74y6zWZfQKk&pp=ygUPZ29kb3QgY29tcG9uZW50)
+- [The Entity-Component-System pattern](https://jsforgames.com/ecs/)
+- [Use ECS to create a Match-3 game](https://medium.com/@rdolivo/ecs-for-gamedev-with-typescript-5a1204f594bc)
+
 ### Sound
 
 - [GitHub - howler.js Docs](https://github.com/goldfire/howler.js)
