@@ -52,22 +52,22 @@ export class Player extends Projectile {
     });
     eventManager.subscribe("activatedFury", () => {
       this.color = Colors.RED;
-      this.weapon.cooldown.waitTime -= upgrades.cooldown;
+      this.#weapon.cooldown.waitTime -= upgrades.cooldown;
       this.speed *= upgrades.speed;
     });
     eventManager.subscribe("deactivateFury", () => {
       this.color = Colors.WHITE;
-      this.weapon.cooldown.waitTime += upgrades.cooldown;
+      this.#weapon.cooldown.waitTime += upgrades.cooldown;
       this.speed /= upgrades.speed;
     });
     eventManager.subscribe("gunChange", ({ prev }) => {
       if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
-      this.weapon.cooldown.waitTime -= upgrades.cooldown;
+      this.#weapon.cooldown.waitTime -= upgrades.cooldown;
     });
   }
 
-  get weapon() {
+  get #weapon() {
     return this.#arsenal.equipped;
   }
 
