@@ -104,8 +104,7 @@ export class Game {
   }
 
   async init() {
-    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
-    const player = new Player(mWidth / 2, mHeight / 2, 15, 375, WHITE);
+    const player = this.#player;
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
     const furyMeter = new FuryMeter({
@@ -121,7 +120,6 @@ export class Game {
 
     gameState.addEntities({
       mainCanvas: this.#canvas,
-      player,
     });
 
     Screens.loading.remove();
@@ -186,10 +184,9 @@ export class Game {
 
   restart() {
     const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
-    const player = gameState.getEntity("player");
     this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
     this.#enemyCreator.reset();
-    entityManager.clear([player]);
+    entityManager.clear([this.#player]);
     scoreManager.reset();
     this.startLoop();
     eventManager.emit("restart");
