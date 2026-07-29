@@ -33,10 +33,6 @@ export class PlayerArsenal {
     return this.#equipped;
   }
 
-  get durationTimer() {
-    return this.#timer;
-  }
-
   #equip(id) {
     this.#equipped = this.#inventory[id];
   }
@@ -66,9 +62,9 @@ export class PlayerArsenal {
   }
 
   draw(ctx) {
-    if (this.durationTimer.active) {
-      const gunDelay = this.durationTimer.waitTime;
-      const { elapsedTime } = this.durationTimer;
+    if (this.#timer.active) {
+      const gunDelay = this.#timer.waitTime;
+      const { elapsedTime } = this.#timer;
       const timePerc = elapsedTime / gunDelay;
       const padding = 10;
 
