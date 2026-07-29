@@ -117,10 +117,7 @@ export class Game {
     gameState.addEntities({
       mainCanvas: this.#canvas,
       player,
-      gameAudio: this.#audio,
-      scoreboard,
       furyMeter,
-      game: this,
     });
 
     Screens.loading.remove();
