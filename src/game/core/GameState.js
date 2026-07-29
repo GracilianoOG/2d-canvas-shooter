@@ -26,7 +26,6 @@ class GameState {
 
   #onPlayerHit({ lives }) {
     if (lives) {
-      this.getEntity("gameAudio").play("hit");
       this.getEntity("game").shakeScreen(3.5, 300);
     }
   }
@@ -43,7 +42,6 @@ class GameState {
   }
 
   #onPlayerDeath() {
-    this.getEntity("gameAudio").play("explosion");
     this.getEntity("game").shakeScreen(6, 500);
     this.#prepareRestart(2400);
   }

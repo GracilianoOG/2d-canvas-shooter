@@ -11,6 +11,7 @@ import { Indicator } from "../ui/Indicator";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";
 import { config } from "../config";
+import { audioSystem } from "@/engine/systems/AudioSystem";
 
 const upgrades = {
   speed: 1.25,
@@ -71,6 +72,7 @@ export class Player extends Projectile {
     eventManager.emit("playerHit", { lives: this.#health.lives });
     const particles = !this.isDead ? 8 : 16;
     Particle.createParticles(this.x, this.y, 8, 313, this.color, particles);
+    audioSystem.play(!this.isDead ? "hit" : "explosion");
 
     if (this.isDead) {
       this.die();
