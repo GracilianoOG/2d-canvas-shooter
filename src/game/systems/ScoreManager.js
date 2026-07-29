@@ -1,11 +1,15 @@
 import { eventManager } from "../../engine/systems/EventManager";
 import { StorageHandler } from "../StorageHandler";
+import { Indicator } from "../ui/Indicator";
 
 class ScoreManager {
   #score;
 
   constructor() {
     this.#score = 0;
+
+    eventManager.subscribe("enemyHit", this.#countScore.bind(this));
+    eventManager.subscribe("enemyDeath", this.#countScore.bind(this));
   }
 
   get score() {
@@ -14,6 +18,11 @@ class ScoreManager {
 
   get highscore() {
     return parseInt(StorageHandler.retrieveHighscore(false));
+  }
+
+  #countScore({ position, score, color }) {
+    Indicator.create(position, score, color);
+    this.add(score);
   }
 
   add(score) {

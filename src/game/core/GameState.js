@@ -4,14 +4,11 @@ import { CSS_CLASSES } from "../utils/constants.js";
 import { NOT_RUNNING } from "../../engine/constants/gameStates.js";
 import { restart } from "../utils/screens.js";
 import { eventManager } from "../../engine/systems/EventManager.js";
-import { Indicator } from "../ui/Indicator.js";
 
 class GameState {
   #entities;
 
   constructor() {
-    eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
-    eventManager.subscribe("enemyHit", this.#onEnemyHit.bind(this));
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
   }
 
@@ -23,21 +20,8 @@ class GameState {
     return this.#entities[name];
   }
 
-  #onEnemyDeath({ position, score, color }) {
-    this.#countScore(position, score, color);
-  }
-
-  #onEnemyHit({ position, score, color }) {
-    this.#countScore(position, score, color);
-  }
-
   #onPlayerDeath() {
     this.#prepareRestart(2400);
-  }
-
-  #countScore(position, score, color) {
-    Indicator.create(position, score, color);
-    scoreManager.add(score);
   }
 
   #calcHighscore() {
