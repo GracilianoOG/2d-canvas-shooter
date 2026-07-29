@@ -5,6 +5,7 @@ import { Projectile } from "../Projectile";
 import { eventManager } from "../../../engine/systems/EventManager";
 import { WHITE } from "../../utils/constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
+import { audioSystem } from "@/engine/systems/AudioSystem";
 
 export class Enemy extends Projectile {
   #target;
@@ -91,6 +92,7 @@ export class Enemy extends Projectile {
 
   takeDamage(damage) {
     this.health -= damage;
+    audioSystem.play(this.health > 0 ? "hit" : "explosion");
     if (this.health <= 0) {
       this.#die();
       return this.#score.death;

@@ -31,13 +31,11 @@ class GameState {
   }
 
   #onEnemyDeath({ position, score, color }) {
-    this.getEntity("gameAudio").play("explosion");
     this.getEntity("game").shakeScreen(5, 300);
     this.#countScore(position, score, color);
   }
 
   #onEnemyHit({ position, score, color }) {
-    this.getEntity("gameAudio").play("hit");
     this.#countScore(position, score, color);
   }
 
