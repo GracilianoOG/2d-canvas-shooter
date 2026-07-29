@@ -1,4 +1,3 @@
-import { gameState } from "../core/GameState.js";
 import { Timer } from "../../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
@@ -18,11 +17,12 @@ class EnemyCreator {
   #spawnLevel;
   #modChance;
   #spawnMods;
+  #target;
 
   constructor(config = {}) {
     const timerConfig = { autostart: false };
     this.#config = { ...defaultConfig, ...config };
-    const { spawnTime, difficultyTime, minSpawnLevel, modChance } =
+    const { spawnTime, difficultyTime, minSpawnLevel, modChance, target } =
       this.#config;
 
     this.#spawnTimer = Timer.create(
@@ -40,6 +40,7 @@ class EnemyCreator {
     this.#spawnLevel = minSpawnLevel;
     this.#modChance = modChance;
     this.#spawnMods = [...defaultModifiers];
+    this.#target = target;
   }
 
   #randomizePosition(enemySize) {
@@ -58,8 +59,7 @@ class EnemyCreator {
   #randomizeEnemy() {
     const randomLevel = randomInt(this.#spawnLevel);
     const enemyConfig = [...enemyTypes[randomLevel]];
-    const target = gameState.getEntity("player");
-    enemyConfig.splice(enemyConfig.length - 1, 0, target);
+    enemyConfig.splice(enemyConfig.length - 1, 0, this.#target);
 
     if (this.#modChance > randomInt(100)) {
       this.#hardenEnemy(enemyConfig);
