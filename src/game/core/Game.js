@@ -44,6 +44,8 @@ export class Game {
     this.#listenToResize();
 
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
+    eventManager.subscribe("playerHit", () => this.shakeScreen(3.5, 300));
+    eventManager.subscribe("enemyHit", () => this.shakeScreen(5, 300));
   }
 
   get state() {
@@ -53,6 +55,7 @@ export class Game {
   #onPlayerDeath() {
     this.#state = States.GAMEOVER;
     this.#enemyCreator.stop();
+    this.shakeScreen(6, 500);
   }
 
   #listenToWindowChange() {

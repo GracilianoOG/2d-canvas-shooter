@@ -13,7 +13,6 @@ class GameState {
     eventManager.subscribe("enemyDeath", this.#onEnemyDeath.bind(this));
     eventManager.subscribe("enemyHit", this.#onEnemyHit.bind(this));
     eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
-    eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
   }
 
   addEntities(newEntities) {
@@ -24,14 +23,7 @@ class GameState {
     return this.#entities[name];
   }
 
-  #onPlayerHit({ lives }) {
-    if (lives) {
-      this.getEntity("game").shakeScreen(3.5, 300);
-    }
-  }
-
   #onEnemyDeath({ position, score, color }) {
-    this.getEntity("game").shakeScreen(5, 300);
     this.#countScore(position, score, color);
   }
 
@@ -40,7 +32,6 @@ class GameState {
   }
 
   #onPlayerDeath() {
-    this.getEntity("game").shakeScreen(6, 500);
     this.#prepareRestart(2400);
   }
 
