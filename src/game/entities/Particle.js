@@ -1,7 +1,7 @@
-import { entityManager } from "../systems/EntityManager.js";
-import { Projectile } from "./Projectile.js";
+import { entityManager } from "../systems/EntityManager";
+import { Projectile } from "./Projectile";
 
-class Particle extends Projectile {
+export class Particle extends Projectile {
   #angle = Math.random() * 2 * Math.PI;
   #randomizer = Math.random();
 
@@ -18,5 +18,3 @@ class Particle extends Projectile {
     this.shrink(delta * 12);
   }
 }
-
-export { Particle };
