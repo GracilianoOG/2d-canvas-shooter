@@ -2,8 +2,9 @@ import { Game } from "@/game/core/Game";
 import { StorageHandler } from "@/game/StorageHandler";
 import { CSS_CLASSES } from "@/game/utils/constants";
 import * as Screens from "@/game/utils/screens";
+import { config } from "./game/config";
 
-const game = new Game({ width: 800, height: 600 });
+const game = new Game(config);
 
 const main = async () => {
   const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
