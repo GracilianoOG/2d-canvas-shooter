@@ -15,6 +15,7 @@ class PlayerShield {
     });
 
     eventManager.subscribe("shieldCollected", () => this.activate(8000));
+    eventManager.subscribe("playerRevival", this.reset.bind(this));
   }
 
   activate(delay) {

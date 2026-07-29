@@ -7,10 +7,10 @@ import { eventManager } from "../../engine/systems/EventManager";
 import { PlayerArsenal } from "../player/PlayerArsenal";
 import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";
-import { PlayerHUD } from "../player/PlayerHUD";
 import * as Colors from "../utils/constants/colors";
 import { Indicator } from "../ui/Indicator";
 import { PlayerShards } from "../player/PlayerShards";
+import { PlayerHealth } from "../player/PlayerHealth";
 
 const upgrades = {
   speed: 1.25,
@@ -20,11 +20,10 @@ const upgrades = {
 export class Player extends Projectile {
   #controller;
   #fury;
-  #lives;
+  #health;
   #arsenal;
   #shield;
   #shards;
-  #hud;
 
   constructor(x, y, radius, speed, color) {
     super(x, y, radius, speed, color);
@@ -33,17 +32,9 @@ export class Player extends Projectile {
     this.#arsenal = new PlayerArsenal(this);
     this.#shield = new PlayerShield(this);
     this.#shards = new PlayerShards(this, 8);
-    this.#hud = new PlayerHUD(this);
+    this.#health = new PlayerHealth(this, defaultStats.lives);
     this.#fury = new Fury();
-    this.#lives = defaultStats.lives;
 
-    eventManager.subscribe("lifeCollected", ({ collect }) => {
-      if (this.lives < defaultStats.lives) {
-        this.#lives++;
-        collect();
-        eventManager.emit("playerHealed");
-      }
-    });
     eventManager.subscribe("activatedFury", () => {
       this.color = Colors.RED;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
@@ -66,18 +57,18 @@ export class Player extends Projectile {
   }
 
   get lives() {
-    return this.#lives;
+    return this.#health.lives;
   }
 
   get isDead() {
-    return this.#lives <= 0;
+    return this.lives <= 0;
   }
 
   takeHit() {
     if (this.#shield.isActive()) return;
 
-    this.#lives--;
-    eventManager.emit("playerHit", { lives: this.#lives });
+    this.#health.damage();
+    eventManager.emit("playerHit", { lives: this.#health.lives });
     const particles = !this.isDead ? 8 : 16;
     Particle.createParticles(this.x, this.y, 8, 313, this.color, particles);
 
@@ -95,11 +86,7 @@ export class Player extends Projectile {
   }
 
   revive(x = this.x, y = this.y) {
-    this.#lives = defaultStats.lives;
-    this.x = x;
-    this.y = y;
-    this.#shield.reset();
-    eventManager.emit("playerRevival", { lives: this.#lives });
+    this.#health.revive(x, y);
   }
 
   onCollision(object) {
@@ -115,7 +102,7 @@ export class Player extends Projectile {
   draw(ctx) {
     if (this.isDead) return;
     super.draw(ctx);
-    this.#hud.drawHUD(ctx);
+    this.#health.draw(ctx);
     this.#shield.draw(ctx);
     this.#arsenal.draw(ctx);
   }
