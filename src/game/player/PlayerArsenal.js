@@ -2,16 +2,19 @@ import { randomInt } from "@/engine/utils/math";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 import { Indicator } from "../ui/Indicator";
-import { CHARTREUSE } from "../utils/constants/colors";
+import { CHARTREUSE, LIGHT_YELLOW } from "../utils/constants/colors";
 import { weaponIds, weapons } from "@/data/weapons";
+import { inputManager } from "@/engine/systems/InputManager";
 
 export class PlayerArsenal {
   #inventory;
   #duration;
   #timer;
   #equipped;
+  #player;
 
-  constructor() {
+  constructor(player) {
+    this.#player = player;
     this.#inventory = weapons;
     this.#equipDefault();
 
@@ -60,5 +63,23 @@ export class PlayerArsenal {
 
     eventManager.emit("gunChange", { prev });
     Indicator.create({ x, y }, this.#equipped.name.toUpperCase(), CHARTREUSE);
+  }
+
+  draw(ctx) {
+    if (this.durationTimer.active) {
+      const gunDelay = this.durationTimer.waitTime;
+      const { elapsedTime } = this.durationTimer;
+      const timePerc = elapsedTime / gunDelay;
+      const padding = 10;
+
+      this.#player.drawArc(ctx, LIGHT_YELLOW, padding, timePerc);
+    }
+  }
+
+  update(_delta) {
+    if (!this.#player.isDead && inputManager.isActionPressed("shoot")) {
+      const { x, y } = this.#player;
+      this.#equipped.shoot(x, y);
+    }
   }
 }

@@ -16,13 +16,6 @@ class PlayerController {
     inputManager.bind("shoot", [Keys.LMB]);
   }
 
-  #detectShooting() {
-    if (this.#player.isDead || !inputManager.isActionPressed("shoot")) {
-      return;
-    }
-    this.#player.weapon.shoot(this.#player.x, this.#player.y);
-  }
-
   #move(direction, axis) {
     this.#player[axis] += this.#player.speed * this.#delta * direction;
   }
@@ -51,7 +44,6 @@ class PlayerController {
   update(delta) {
     this.#delta = delta;
     this.#movePlayer();
-    this.#detectShooting();
     this.#detectFury();
   }
 }

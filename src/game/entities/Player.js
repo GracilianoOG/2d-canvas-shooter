@@ -44,7 +44,7 @@ export class Player extends Projectile {
     }
 
     this.#controller = new PlayerController(this);
-    this.#arsenal = new PlayerArsenal();
+    this.#arsenal = new PlayerArsenal(this);
     this.#fury = new Fury();
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
@@ -192,11 +192,13 @@ export class Player extends Projectile {
     super.draw(ctx);
     this.#hud.drawHUD(ctx);
     this.#shield.draw(ctx);
+    this.#arsenal.draw(ctx);
   }
 
   update(delta) {
     if (this.isDead) return;
     this.#controller.update(delta);
+    this.#arsenal.update(delta);
     this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
     this.#emptyFuryMeter();
   }
