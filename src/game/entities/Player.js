@@ -45,11 +45,11 @@ export class Player extends Projectile {
 
     this.#controller = new PlayerController(this);
     this.#arsenal = new PlayerArsenal(this);
+    this.#shield = new PlayerShield(this);
+    this.#hud = new PlayerHUD(this);
     this.#fury = new Fury();
     this.#lives = defaultStats.lives;
     this.#godMode = defaultStats.godMode;
-    this.#shield = new PlayerShield(this);
-    this.#hud = new PlayerHUD(this);
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
     eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
