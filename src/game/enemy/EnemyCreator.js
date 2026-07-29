@@ -8,6 +8,7 @@ import * as EnemyMods from "../utils/constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
+import { config } from "../config/index.js";
 
 class EnemyCreator {
   #config;
@@ -42,7 +43,7 @@ class EnemyCreator {
   }
 
   #randomizePosition(enemySize) {
-    const { width, height } = gameState.getEntity("mainCanvas").canvasSize;
+    const { width, height } = config;
     const chance = Math.random() > 0.5;
     const maxWidthPoint = width + enemySize;
     const maxHeightPoint = height + enemySize;
