@@ -1,8 +1,8 @@
 import { Entity } from "../Entity";
-import { gameState } from "@/game/core/GameState";
 import { Timer } from "@/engine/systems/Timer";
 import { WHITE } from "@/game/utils/constants/colors";
 import { Indicator } from "@/game/ui/Indicator";
+import { config } from "@/game/config";
 
 class Item extends Entity {
   #despawnTimer;
@@ -16,7 +16,7 @@ class Item extends Entity {
       { loop: false, autodestruct: true },
       () => this.destroy(),
     );
-    this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
+    this.getInCanvas(config);
   }
 
   check() {}

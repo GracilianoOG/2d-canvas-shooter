@@ -1,7 +1,6 @@
 import { Particle } from "./Particle";
 import { PlayerController } from "../player/PlayerController";
 import { Projectile } from "./Projectile";
-import { gameState } from "../core/GameState";
 import { Fury } from "../arsenal/Fury";
 import { eventManager } from "../../engine/systems/EventManager";
 import { PlayerArsenal } from "../player/PlayerArsenal";
@@ -11,6 +10,7 @@ import * as Colors from "../utils/constants/colors";
 import { Indicator } from "../ui/Indicator";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";
+import { config } from "../config";
 
 const upgrades = {
   speed: 1.25,
@@ -112,6 +112,6 @@ export class Player extends Projectile {
     this.#controller.update(delta);
     this.#arsenal.update(delta);
     this.#fury.update(delta);
-    this.getInCanvas(gameState.getEntity("mainCanvas").canvasSize);
+    this.getInCanvas(config);
   }
 }
