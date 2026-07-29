@@ -14,6 +14,7 @@ import { Ricochet } from "@/game/arsenal/guns/Ricochet";
 import { ExplosiveShotgun } from "@/game/arsenal/guns/ExplosiveShotgun";
 import { Sonar } from "@/game/arsenal/guns/Sonar";
 import { Pistol } from "@/game/arsenal/guns/Pistol";
+import { ThatShotgun } from "@/game/arsenal/guns/ThatShotgun";
 
 export const weapons = {
   bazooka: new RocketLauncher(),
@@ -32,6 +33,7 @@ export const weapons = {
   shotgun: new Shotgun(),
   smg: new SubmachineGun(),
   sonar: new Sonar(),
+  that: new ThatShotgun(),
 };
 
 export const weaponIds = Object.keys(weapons).filter((id) => id !== "pistol");
