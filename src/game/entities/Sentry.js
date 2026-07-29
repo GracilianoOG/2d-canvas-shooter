@@ -2,7 +2,7 @@ import { Timer } from "@/engine/systems/Timer";
 import { PistolAmmo } from "../arsenal/ammo/PistolAmmo";
 import { entityManager } from "../systems/EntityManager";
 import { Entity } from "./Entity";
-import { gameState } from "../core/GameState";
+import { audioSystem } from "@/engine/systems/AudioSystem";
 
 export class Sentry extends Entity {
   #target;
@@ -27,7 +27,7 @@ export class Sentry extends Entity {
     this.#cooldown.reset();
     const direction = this.angleTo({ x: this.#target.x, y: this.#target.y });
     this.#ammoType.create(this.x, this.y, direction);
-    gameState.getEntity("gameAudio").play("shot");
+    audioSystem.play("shot");
   }
 
   #drawDespawnDelay(ctx) {
