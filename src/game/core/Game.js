@@ -183,7 +183,6 @@ export class Game {
     const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
     const player = gameState.getEntity("player");
     this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
-    player.revive(mWidth / 2, mHeight / 2);
     this.#enemyCreator.reset();
     entityManager.clear([player]);
     scoreManager.reset();

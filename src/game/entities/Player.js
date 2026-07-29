@@ -51,6 +51,9 @@ export class Player extends Projectile {
       prev.cooldown.waitTime += upgrades.cooldown;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
     });
+    eventManager.subscribe("restart", () =>
+      this.revive(config.width / 2, config.height / 2),
+    );
   }
 
   get #weapon() {
