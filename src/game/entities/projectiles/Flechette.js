@@ -1,4 +1,4 @@
-import { gameState } from "../../core/GameState";
+import { config } from "@/game/config";
 import { GRAY } from "../../utils/constants/colors";
 import { Bullet } from "./Bullet";
 
@@ -10,9 +10,9 @@ export class Flechette extends Bullet {
     this.#bounces = bounces;
   }
 
-  bounce(canvas = gameState.getEntity("mainCanvas").canvasSize) {
+  bounce() {
     const { x: ballX, y: ballY, radius } = this;
-    const { width: canvasW, height: canvasH } = canvas;
+    const { width: canvasW, height: canvasH } = config;
 
     const X_AXIS = ballX < radius || ballX + radius > canvasW;
     const Y_AXIS = ballY < radius || ballY + radius > canvasH;

@@ -1,5 +1,5 @@
+import { config } from "@/game/config";
 import { Projectile } from "@/game/entities/Projectile";
-import { gameState } from "@/game/core/GameState";
 
 class Bullet extends Projectile {
   #angle;
@@ -30,9 +30,9 @@ class Bullet extends Projectile {
     }
   }
 
-  isOutOfCanvas(canvas = gameState.getEntity("mainCanvas").canvasSize) {
+  isOutOfCanvas() {
     const { x: bx, y: by, radius: br } = this;
-    const { width: cw, height: ch } = canvas;
+    const { width: cw, height: ch } = config;
 
     return bx < -br || bx > cw + br || by < -br || by > ch + br;
   }
