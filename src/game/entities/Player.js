@@ -21,7 +21,6 @@ export class Player extends Projectile {
   #controller;
   #fury;
   #lives;
-  #godMode;
   #arsenal;
   #shield;
   #shards;
@@ -37,10 +36,8 @@ export class Player extends Projectile {
     this.#hud = new PlayerHUD(this);
     this.#fury = new Fury();
     this.#lives = defaultStats.lives;
-    this.#godMode = defaultStats.godMode;
 
     eventManager.subscribe("enemyDeath", this.#onEnemyKilled.bind(this));
-    eventManager.subscribe("shieldCollected", () => this.#activateShield(8000));
     eventManager.subscribe("lifeCollected", ({ collect }) => {
       if (this.lives < defaultStats.lives) {
         this.#lives++;
@@ -96,22 +93,8 @@ export class Player extends Projectile {
     }
   }
 
-  #activateShield(delay) {
-    this.#godMode = true;
-    this.#shield.activate(delay);
-  }
-
-  #resetShield() {
-    this.#godMode = false;
-    this.#shield.reset();
-  }
-
-  toggleGodMode(force) {
-    this.#godMode = force ?? !this.#godMode;
-  }
-
   takeHit() {
-    if (this.#godMode) return;
+    if (this.#shield.isActive()) return;
 
     this.#lives--;
     eventManager.emit("playerHit", { lives: this.#lives });
@@ -124,7 +107,7 @@ export class Player extends Projectile {
       return;
     }
 
-    this.#activateShield();
+    this.#shield.activate();
   }
 
   die() {
@@ -135,7 +118,7 @@ export class Player extends Projectile {
     this.#lives = defaultStats.lives;
     this.x = x;
     this.y = y;
-    this.#resetShield();
+    this.#shield.reset();
     eventManager.emit("playerRevival", { lives: this.#lives });
   }
 

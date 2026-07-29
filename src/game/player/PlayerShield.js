@@ -1,3 +1,4 @@
+import { eventManager } from "@/engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 import { ENERGETIC_BLUE } from "../utils/constants/colors";
 import { defaultStats } from "./playerDefaultStats";
@@ -8,11 +9,12 @@ class PlayerShield {
 
   constructor(player) {
     this.#player = player;
-    this.#timer = Timer.create(
-      defaultStats.shieldDelay,
-      { autostart: false, loop: false },
-      () => this.#player.toggleGodMode(false),
-    );
+    this.#timer = Timer.create(defaultStats.shieldDelay, {
+      autostart: false,
+      loop: false,
+    });
+
+    eventManager.subscribe("shieldCollected", () => this.activate(8000));
   }
 
   activate(delay) {
