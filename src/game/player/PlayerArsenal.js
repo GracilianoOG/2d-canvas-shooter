@@ -34,7 +34,11 @@ export class PlayerArsenal {
   }
 
   #equip(id) {
+    const prev = this.#equipped;
     this.#equipped = this.#inventory[id];
+    if (prev) {
+      eventManager.emit("gunChange", { prev });
+    }
   }
 
   #equipDefault() {
@@ -53,11 +57,8 @@ export class PlayerArsenal {
   switchWeapon({ origin: { x, y } }) {
     const weaponId = this.#randomWeaponId();
     this.#timer.reset();
-
-    const prev = this.#equipped;
     this.#equip(weaponId);
 
-    eventManager.emit("gunChange", { prev });
     Indicator.create({ x, y }, this.#equipped.name.toUpperCase(), CHARTREUSE);
   }
 
