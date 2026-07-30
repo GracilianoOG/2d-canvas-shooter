@@ -35,8 +35,9 @@ export class PlayerArsenal {
 
   #equip(id) {
     const prev = this.#equipped;
-    this.#equipped = this.#inventory[id];
-    if (prev) {
+    const next = this.#inventory[id];
+    if (prev !== next) {
+      this.#equipped = next;
       eventManager.emit("gunChange", { prev });
     }
   }
