@@ -16,7 +16,7 @@ export class PlayerArsenal {
   constructor(player) {
     this.#player = player;
     this.#inventory = weapons;
-    this.#equipDefault();
+    this.#equipped = this.#get("pistol");
 
     this.#duration = 12_000;
     this.#timer = Timer.create(
