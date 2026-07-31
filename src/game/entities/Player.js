@@ -6,7 +6,7 @@ import { eventManager } from "../../engine/systems/EventManager";
 import { PlayerArsenal } from "../player/PlayerArsenal";
 import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";
-import * as Colors from "../utils/constants/colors";
+import * as Colors from "../constants/colors";
 import { Indicator } from "../ui/Indicator";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";

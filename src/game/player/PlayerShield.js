@@ -1,6 +1,6 @@
 import { eventManager } from "@/engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
-import { ENERGETIC_BLUE } from "../utils/constants/colors";
+import { ENERGETIC_BLUE } from "../constants/colors";
 import { defaultStats } from "./playerDefaultStats";
 
 export class PlayerShield {

@@ -1,4 +1,4 @@
-import { GRAY } from "../utils/constants/colors";
+import { GRAY } from "../constants/colors";
 import { clamp, TAU } from "../../engine/utils/math";
 
 class Entity {

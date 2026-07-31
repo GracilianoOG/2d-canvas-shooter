@@ -3,7 +3,7 @@ import { dropRandomItem } from "../../items/itemDrop";
 import { Particle } from "../Particle";
 import { Projectile } from "../Projectile";
 import { eventManager } from "../../../engine/systems/EventManager";
-import { WHITE } from "../../utils/constants/colors";
+import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
 import { audioSystem } from "@/engine/systems/AudioSystem";
 

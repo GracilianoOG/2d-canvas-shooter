@@ -1,4 +1,4 @@
-import { RED } from "@/game/utils/constants/colors";
+import { RED } from "@/game/constants/colors";
 import { HEAVY_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";
 import { Piercing } from "@/game/entities/projectiles/Piercing";

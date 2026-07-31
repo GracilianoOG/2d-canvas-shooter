@@ -1,5 +1,5 @@
 import { inputManager } from "../../engine/systems/InputManager";
-import * as Keys from "../utils/constants/keys";
+import * as Keys from "../constants/keys";
 
 class PlayerController {
   #player;

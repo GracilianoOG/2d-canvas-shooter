@@ -1,5 +1,5 @@
 import { eventManager } from "@/engine/systems/EventManager";
-import { CHARTREUSE } from "@/game/utils/constants/colors";
+import { CHARTREUSE } from "@/game/constants/colors";
 import { Item } from "./Item";
 
 class WeaponBox extends Item {

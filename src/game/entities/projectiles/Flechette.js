@@ -1,5 +1,5 @@
 import { config } from "@/game/config";
-import { GRAY } from "../../utils/constants/colors";
+import { GRAY } from "../../constants/colors";
 import { Bullet } from "./Bullet";
 
 export class Flechette extends Bullet {

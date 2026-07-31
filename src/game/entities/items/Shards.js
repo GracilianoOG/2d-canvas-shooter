@@ -1,4 +1,4 @@
-import { WHITE } from "@/game/utils/constants/colors";
+import { WHITE } from "@/game/constants/colors";
 import { Item } from "./Item";
 import { eventManager } from "@/engine/systems/EventManager";
 

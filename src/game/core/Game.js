@@ -6,7 +6,7 @@ import { Scoreboard } from "../ui/Scoreboard";
 import * as Screens from "../utils/screens";
 import { Timer } from "../../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
-import { TRANSPARENT_BLACK, WHITE } from "../utils/constants/colors";
+import { TRANSPARENT_BLACK, WHITE } from "../constants/colors";
 import * as States from "../../engine/constants/gameStates";
 import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";

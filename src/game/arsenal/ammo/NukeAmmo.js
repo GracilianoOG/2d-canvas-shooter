@@ -1,4 +1,4 @@
-import { ARMY_GREEN } from "@/game/utils/constants/colors";
+import { ARMY_GREEN } from "@/game/constants/colors";
 import { ExplosiveAmmo } from "./ExplosiveAmmo";
 import { Explosive } from "../../entities/projectiles/Explosive";
 import { CANNON_DMG } from "./damages";

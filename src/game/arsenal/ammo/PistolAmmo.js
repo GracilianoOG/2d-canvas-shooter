@@ -1,4 +1,4 @@
-import { WHITE } from "@/game/utils/constants/colors";
+import { WHITE } from "@/game/constants/colors";
 import { BASE_DMG } from "./damages";
 import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";

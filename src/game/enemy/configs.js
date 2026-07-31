@@ -1,5 +1,5 @@
-import * as EnemyMods from "../utils/constants/enemyModTypes";
-import * as DiffMods from "../utils/constants/modifierTypes";
+import * as EnemyMods from "../constants/enemyModTypes";
+import * as DiffMods from "../constants/modifierTypes";
 
 export const defaultConfig = {
   spawnTime: 800,

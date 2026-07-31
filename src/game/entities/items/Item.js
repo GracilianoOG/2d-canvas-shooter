@@ -1,6 +1,6 @@
 import { Entity } from "../Entity";
 import { Timer } from "@/engine/systems/Timer";
-import { WHITE } from "@/game/utils/constants/colors";
+import { WHITE } from "@/game/constants/colors";
 import { Indicator } from "@/game/ui/Indicator";
 import { config } from "@/game/config";
 

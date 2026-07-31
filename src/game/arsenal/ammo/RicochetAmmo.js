@@ -1,4 +1,4 @@
-import { VIOLET } from "@/game/utils/constants/colors";
+import { VIOLET } from "@/game/constants/colors";
 import { Flechette } from "../../entities/projectiles/Flechette";
 import { RICOCHET_DMG } from "./damages";
 import { entityManager } from "@/game/systems/EntityManager";

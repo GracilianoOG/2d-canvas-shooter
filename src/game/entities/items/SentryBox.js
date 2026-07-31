@@ -1,4 +1,4 @@
-import { POWDER_BLUE, ROYAL_BLUE } from "@/game/utils/constants/colors";
+import { POWDER_BLUE, ROYAL_BLUE } from "@/game/constants/colors";
 import { Item } from "./Item";
 import { entityManager } from "@/game/systems/EntityManager";
 import { Sentry } from "../Sentry";

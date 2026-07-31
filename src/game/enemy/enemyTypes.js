@@ -1,4 +1,4 @@
-import * as Colors from "../utils/constants/colors.js";
+import * as Colors from "../constants/colors.js";
 
 // radius, speed, color, hp, score, options
 const enemyTypes = [

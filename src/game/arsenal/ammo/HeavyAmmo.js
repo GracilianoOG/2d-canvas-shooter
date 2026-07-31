@@ -1,4 +1,4 @@
-import { VERY_LIGHT_YELLOW } from "@/game/utils/constants/colors";
+import { VERY_LIGHT_YELLOW } from "@/game/constants/colors";
 import { HEAVY_DMG } from "./damages";
 import { Bullet } from "../../entities/projectiles/Bullet";
 import { entityManager } from "@/game/systems/EntityManager";

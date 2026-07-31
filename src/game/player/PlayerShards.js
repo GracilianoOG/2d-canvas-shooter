@@ -1,7 +1,7 @@
 import { TAU } from "@/engine/utils/math";
 import { Shard } from "../entities/projectiles/Shard";
 import { entityManager } from "../systems/EntityManager";
-import { WHITE } from "../utils/constants/colors";
+import { WHITE } from "../constants/colors";
 import { eventManager } from "@/engine/systems/EventManager";
 
 export class PlayerShards {

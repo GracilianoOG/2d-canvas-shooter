@@ -1,5 +1,5 @@
 import { eventManager } from "@/engine/systems/EventManager";
-import { BLOODY_RED } from "../utils/constants/colors";
+import { BLOODY_RED } from "../constants/colors";
 
 export class PlayerHealth {
   #player;

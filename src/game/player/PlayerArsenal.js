@@ -2,7 +2,7 @@ import { randomInt } from "@/engine/utils/math";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 import { Indicator } from "../ui/Indicator";
-import { CHARTREUSE, LIGHT_YELLOW } from "../utils/constants/colors";
+import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
 import { weaponIds, weapons } from "@/data/weapons";
 import { inputManager } from "@/engine/systems/InputManager";
 

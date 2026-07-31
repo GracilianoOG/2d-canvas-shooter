@@ -1,9 +1,9 @@
 import { Timer } from "../../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
 import { enemyTypes } from "./enemyTypes.js";
-import * as DiffMods from "../utils/constants/modifierTypes.js";
-import * as Colors from "../utils/constants/colors.js";
-import * as EnemyMods from "../utils/constants/enemyModTypes.js";
+import * as DiffMods from "../constants/modifierTypes.js";
+import * as Colors from "../constants/colors.js";
+import * as EnemyMods from "../constants/enemyModTypes.js";
 import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
