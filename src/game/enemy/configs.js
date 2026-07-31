@@ -8,6 +8,7 @@ export const defaultConfig = {
   modChanceIncrement: 0.25,
   specialChance: 0,
   specialIncrement: 0.005,
+  maxSpecialChance: 0.3,
   maxModChance: 75,
   minSpawnLevel: 1,
   spawnDecrementMs: 5,

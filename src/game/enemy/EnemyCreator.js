@@ -133,6 +133,9 @@ class EnemyCreator {
         break;
       case DiffMods.SPECIAL_CHANCE:
         this.#specialChance += this.#config.specialIncrement;
+        if (this.#specialChance >= this.#config.maxSpecialChance) {
+          this.#removeSpawnMod(DiffMods.SPECIAL_CHANCE);
+        }
         break;
     }
   }
