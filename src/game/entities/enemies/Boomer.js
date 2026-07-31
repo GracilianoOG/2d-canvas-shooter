@@ -1,5 +1,6 @@
 import { randomInt } from "@/engine/utils/math";
 import { Enemy } from "./Enemy";
+import { entityManager } from "@/game/systems/EntityManager";
 
 class Boomer extends Enemy {
   #baseSize;
@@ -21,7 +22,7 @@ class Boomer extends Enemy {
     const { min, max } = this.#options.minions;
     const amount = randomInt(max + 1, min);
     for (let i = 0; i < amount; i++) {
-      new Enemy(
+      const minion = new Enemy(
         this.x + randomInt(this.#baseSize, -this.#baseSize),
         this.y + randomInt(this.#baseSize, -this.#baseSize),
         Math.max(this.#baseSize / 2, 10),
@@ -31,6 +32,7 @@ class Boomer extends Enemy {
         this.score,
         this.#target,
       );
+      entityManager.add(minion);
     }
     this.drop(0.05);
   }
