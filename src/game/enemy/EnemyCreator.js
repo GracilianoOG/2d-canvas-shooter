@@ -8,6 +8,10 @@ import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
 import { config } from "../config/index.js";
+import { Boomer } from "../entities/enemies/Boomer.js";
+import { Cloaker } from "../entities/enemies/Cloaker.js";
+import { Crazy } from "../entities/enemies/Crazy.js";
+import { Void } from "../entities/enemies/Void.js";
 
 class EnemyCreator {
   #config;
@@ -18,12 +22,20 @@ class EnemyCreator {
   #modChance;
   #spawnMods;
   #target;
+  #specialChance;
+  #specials;
 
   constructor(config = {}) {
     const timerConfig = { autostart: false };
     this.#config = { ...defaultConfig, ...config };
-    const { spawnTime, difficultyTime, minSpawnLevel, modChance, target } =
-      this.#config;
+    const {
+      spawnTime,
+      difficultyTime,
+      minSpawnLevel,
+      modChance,
+      target,
+      specialChance,
+    } = this.#config;
 
     this.#spawnTimer = Timer.create(
       spawnTime,
@@ -39,8 +51,10 @@ class EnemyCreator {
     this.#spawnTime = spawnTime;
     this.#spawnLevel = minSpawnLevel;
     this.#modChance = modChance;
+    this.#specialChance = specialChance;
     this.#spawnMods = [...defaultModifiers];
     this.#target = target;
+    this.#specials = [Boomer, Cloaker, Crazy, Void];
   }
 
   #randomizePosition(enemySize) {
@@ -117,6 +131,9 @@ class EnemyCreator {
           this.#removeSpawnMod(DiffMods.NEW_ENEMY);
         }
         break;
+      case DiffMods.SPECIAL_CHANCE:
+        this.#specialChance += this.#config.specialIncrement;
+        break;
     }
   }
 
@@ -126,10 +143,15 @@ class EnemyCreator {
   }
 
   #create() {
+    const special = this.#specialChance >= Math.random();
+    const EnemyClass = !special
+      ? Enemy
+      : this.#specials[randomInt(this.#specials.length)];
+
     const enemyConfig = this.#randomizeEnemy();
     const radius = enemyConfig[0];
     const position = this.#randomizePosition(radius);
-    const enemy = new Enemy(...position, ...enemyConfig);
+    const enemy = new EnemyClass(...position, ...enemyConfig);
     entityManager.add(enemy);
   }
 
@@ -149,6 +171,7 @@ class EnemyCreator {
     this.#difficultyTimer.reset();
     this.#spawnLevel = this.#config.minSpawnLevel;
     this.#modChance = this.#config.modChance;
+    this.#specialChance = this.#config.specialChance;
     this.#spawnMods = [...defaultModifiers];
   }
 }
