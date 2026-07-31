@@ -173,6 +173,7 @@ These resources helped me to understand many things regarding game development i
 - [Diagonal movement in games](https://www.youtube.com/shorts/0cYjreg7dpg?feature=share)
 - [Nice colors](https://www.w3schools.com/cssref/css_colors.php)
 - [50+ JavaScript Games](https://freefrontend.com/javascript-games/)
+- [Tools, assets and tutorials (JS13K)](https://js13kgames.com/resources)
 
 ## 🧑🏻‍💻 Author
 
