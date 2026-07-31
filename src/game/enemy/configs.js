@@ -15,7 +15,9 @@ export const defaultModifiers = [
   DiffMods.SPAWN_TIME,
   DiffMods.NEW_ENEMY,
   DiffMods.MOD_CHANCE,
+  DiffMods.SPECIAL_CHANCE,
 ];
+
 export const enemyModifiers = [
   EnemyMods.FAST,
   EnemyMods.STRONG,
