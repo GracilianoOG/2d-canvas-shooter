@@ -6,6 +6,8 @@ export const defaultConfig = {
   difficultyTime: 5000,
   modChance: 0,
   modChanceIncrement: 0.25,
+  specialChance: 0,
+  specialIncrement: 0.01,
   maxModChance: 75,
   minSpawnLevel: 1,
   spawnDecrementMs: 5,
