@@ -1,4 +1,4 @@
-import { Scoreboard } from "./ui/Scoreboard";
+import { Scoreboard } from "../ui/Scoreboard";
 
 class StorageHandler {
   static KEY_POINTS = "circle-chaos:highscore";

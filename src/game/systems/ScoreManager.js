@@ -1,5 +1,5 @@
 import { eventManager } from "../../engine/systems/EventManager";
-import { StorageHandler } from "../StorageHandler";
+import { StorageHandler } from "../utils/StorageHandler";
 import { Indicator } from "../ui/Indicator";
 
 class ScoreManager {

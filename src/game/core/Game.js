@@ -20,7 +20,7 @@ import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
 import { Indicator } from "../ui/Indicator";
 import { CSS_CLASSES } from "../utils/constants";
-import { StorageHandler } from "../StorageHandler";
+import { StorageHandler } from "../utils/StorageHandler";
 
 export class Game {
   #state;

@@ -1,5 +1,5 @@
 import { Game } from "@/game/core/Game";
-import { StorageHandler } from "@/game/StorageHandler";
+import { StorageHandler } from "@/game/utils/StorageHandler";
 import { CSS_CLASSES } from "@/game/utils/constants";
 import * as Screens from "@/game/utils/screens";
 import { config } from "./game/config";
