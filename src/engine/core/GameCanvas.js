@@ -8,7 +8,7 @@ export class GameCanvas {
   #height;
   #margin;
 
-  constructor(width, height, container) {
+  constructor({ width, height, container }) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
