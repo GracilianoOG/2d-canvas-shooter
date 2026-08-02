@@ -8,7 +8,7 @@ export class GameCanvas {
   #height;
   #margin;
 
-  constructor({ width, height, container }) {
+  constructor({ width, height, margin, container }) {
     this.#canvas = document.createElement("canvas");
     this.#canvas.width = width;
     this.#canvas.height = height;
@@ -22,7 +22,7 @@ export class GameCanvas {
 
     this.#width = width;
     this.#height = height;
-    this.#margin = 16;
+    this.#margin = margin ?? 0;
 
     if (!container) {
       throw new Error("An HTML container must be provided to GameCanvas!");
