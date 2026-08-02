@@ -6,6 +6,7 @@ export class GameCanvas {
   #rect;
   #width;
   #height;
+  #margin;
 
   constructor(width, height, container) {
     this.#canvas = document.createElement("canvas");
@@ -21,6 +22,7 @@ export class GameCanvas {
 
     this.#width = width;
     this.#height = height;
+    this.#margin = 16;
 
     if (!container) {
       throw new Error("An HTML container must be provided to GameCanvas!");
@@ -64,8 +66,8 @@ export class GameCanvas {
       width = screenHeight / canvasRatio;
     }
 
-    this.#canvas.width = width;
-    this.#canvas.height = height;
+    this.#canvas.width = width - this.#margin * 2;
+    this.#canvas.height = height - this.#margin * 2;
 
     this.#canvasCtx.drawImage(this.#buffer, 0, 0, width, height);
     this.#cacheRect();
