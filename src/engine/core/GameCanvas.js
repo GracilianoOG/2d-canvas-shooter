@@ -30,13 +30,6 @@ export class GameCanvas {
     this.resize();
   }
 
-  get canvasSize() {
-    return {
-      width: this.#width,
-      height: this.#height,
-    };
-  }
-
   get factors() {
     return {
       x: this.#canvas.width / this.#width,
