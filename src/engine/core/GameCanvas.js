@@ -61,16 +61,19 @@ export class GameCanvas {
     const screenHeight = window.innerHeight;
     const canvasRatio = this.#height / this.#width;
     const screenRatio = screenHeight / screenWidth;
+    let width, height;
 
     if (screenRatio > canvasRatio) {
-      this.#canvas.width = screenWidth;
-      this.#canvas.height = screenWidth * canvasRatio;
+      width = screenWidth;
+      height = screenWidth * canvasRatio;
     } else {
-      this.#canvas.height = screenHeight;
-      this.#canvas.width = screenHeight / canvasRatio;
+      height = screenHeight;
+      width = screenHeight / canvasRatio;
     }
 
-    const { width, height } = this.#canvas;
+    this.#canvas.width = width;
+    this.#canvas.height = height;
+
     this.#canvasCtx.drawImage(this.#buffer, 0, 0, width, height);
     this.#cacheRect();
   }
