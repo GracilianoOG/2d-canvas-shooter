@@ -21,6 +21,7 @@ import { Shaker } from "@/engine/systems/Shaker";
 import { Indicator } from "../ui/Indicator";
 import { CSS_CLASSES } from "../utils/constants";
 import { StorageHandler } from "../utils/StorageHandler";
+import { config } from "../config";
 
 export class Game {
   #state;
@@ -161,7 +162,7 @@ export class Game {
   }
 
   render() {
-    const { width, height } = this.#canvas.canvasSize;
+    const { width, height } = config;
     this.#canvas.render();
 
     if (this.#settings.trails) {
@@ -183,8 +184,8 @@ export class Game {
   }
 
   restart() {
-    const { width: mWidth, height: mHeight } = this.#canvas.canvasSize;
-    this.#canvas.ctx.clearRect(0, 0, mWidth, mHeight);
+    const { width, height } = config;
+    this.#canvas.ctx.clearRect(0, 0, width, height);
     this.#enemyCreator.reset();
     entityManager.clear([this.#player]);
     scoreManager.reset();
