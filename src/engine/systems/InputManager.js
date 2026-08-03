@@ -20,6 +20,7 @@ class InputManager {
     document.addEventListener("keydown", (e) => this.#onKey(e.code));
     document.addEventListener("keyup", (e) => this.#onKey(e.code, false));
     document.addEventListener("contextmenu", () => (this.#actions = {}));
+    document.addEventListener("blur", () => (this.#actions = {}));
 
     container.addEventListener("mousedown", (e) => this.#onMouse(e.button));
     container.addEventListener("mouseup", (e) =>
