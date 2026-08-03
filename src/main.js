@@ -1,43 +1,6 @@
 import { Game } from "@/game/core/Game";
-import { StorageHandler } from "@/game/utils/StorageHandler";
-import { CSS_CLASSES } from "@/game/utils/constants";
-import * as Screens from "@/game/utils/screens";
 import { config } from "./game/config";
 
 const game = new Game(config);
-
-const main = async () => {
-  const highscoreBoard = document.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
-  highscoreBoard.textContent = StorageHandler.retrieveHighscore();
-
-  document.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    if (e.target.closest(".pause-btn, .pause-screen")) {
-      pauseGame();
-    } else if (e.target.closest(".gameover-screen__btn")) {
-      restartGame();
-    } else if (e.target.closest(".start-screen")) {
-      startGame();
-    }
-  });
-
-  await game.init();
-};
-
-const startGame = () => {
-  Screens.start.remove();
-  Screens.game.classList.remove("hide");
-  game.start();
-};
-
-const pauseGame = () => {
-  game.pause();
-};
-
-const restartGame = () => {
-  Screens.restart.classList.add("hide");
-  game.restart();
-};
-
+const main = async () => await game.init();
 main();
