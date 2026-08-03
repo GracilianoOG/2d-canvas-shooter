@@ -1,6 +1,6 @@
 import { eventManager } from "../../engine/systems/EventManager.js";
 
-class Scoreboard {
+export class Scoreboard {
   #length = 7;
   #scoreboardEl;
 
@@ -23,5 +23,3 @@ class Scoreboard {
     );
   }
 }
-
-export { Scoreboard };
