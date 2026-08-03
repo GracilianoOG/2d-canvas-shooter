@@ -1,5 +1,4 @@
 import { eventManager } from "../../engine/systems/EventManager.js";
-import { Indicator } from "./Indicator.js";
 
 class Scoreboard {
   #length = 7;
