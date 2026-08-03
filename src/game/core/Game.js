@@ -3,7 +3,6 @@ import { GameCanvas } from "../../engine/core/GameCanvas";
 import { gameState } from "./GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
-import * as Screens from "../utils/screens";
 import { Timer } from "../../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../constants/colors";
@@ -22,6 +21,7 @@ import { Indicator } from "../ui/Indicator";
 import { CSS_CLASSES } from "../utils/constants";
 import { StorageHandler } from "../utils/StorageHandler";
 import { config } from "../config";
+import { ScreenManager } from "../systems/ScreenManager";
 
 export class Game {
   #state;
@@ -32,19 +32,23 @@ export class Game {
   #enemyCreator;
   #settings;
   #player;
+  #screens;
 
   constructor({ width, height, margin }) {
-    const container = Screens.game;
     this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
       target: this.#player,
     });
     this.#audio = audioSystem;
-    this.#canvas = new GameCanvas({ width, height, margin, container });
-    this.#shaker = new Shaker(this.#canvas.ctx);
+    this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
+
+    const container = this.#screens.container;
+    this.#canvas = new GameCanvas({ width, height, margin, container });
+    this.#shaker = new Shaker(this.#canvas.ctx);
+
     this.#settings = {
       trails: true,
     };
@@ -79,10 +83,10 @@ export class Game {
   }
 
   #calcHighscore() {
-    const highscoreEl = Screens.restart.querySelector(
+    const highscoreEl = this.#screens.restart.querySelector(
       CSS_CLASSES.HIGHSCORE_POINTS,
     );
-    const recordEl = Screens.restart.querySelector(".highscore__new");
+    const recordEl = this.#screens.restart.querySelector(".highscore__new");
     recordEl.classList.toggle("hide", !scoreManager.isHighscore());
     scoreManager.save();
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
@@ -92,7 +96,7 @@ export class Game {
     setTimeout(() => {
       this.#calcHighscore();
       this.stopLoop(States.NOT_RUNNING);
-      Screens.restart.classList.remove("hide");
+      this.#screens.restart.classList.remove("hide");
     }, milliseconds);
   }
 
@@ -124,9 +128,9 @@ export class Game {
       mainCanvas: this.#canvas,
     });
 
-    Screens.loading.remove();
-    Screens.start.classList.remove("hide");
-    inputManager.init(Screens.game);
+    this.#screens.loading.remove();
+    this.#screens.start.classList.remove("hide");
+    inputManager.init(this.#screens.container);
   }
 
   startLoop() {
@@ -146,7 +150,7 @@ export class Game {
 
     Indicator.toggleIndicators(this.#engine.isRunning);
 
-    Screens.pause.classList.toggle("hide");
+    this.#screens.pause.classList.toggle("hide");
   }
 
   shakeScreen(strength, duration) {
