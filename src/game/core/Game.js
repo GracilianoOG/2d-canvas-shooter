@@ -140,6 +140,8 @@ export class Game {
       mainCanvas: this.#canvas,
     });
 
+    inputManager.initInputCanvas(this.#canvas);
+
     this.#screens.loading.remove();
     this.#screens.start.classList.remove("hide");
     inputManager.init(this.#screens.container);
