@@ -1,7 +1,6 @@
 import { randomInt } from "@/engine/utils/math";
 import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
-import { Indicator } from "../ui/Indicator";
 import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
 import { weaponIds, weapons } from "@/data/weapons";
 import { inputManager } from "@/engine/systems/InputManager";
@@ -64,7 +63,12 @@ export class PlayerArsenal {
     this.#timer.reset();
     this.#equip(weaponId);
 
-    Indicator.create({ x, y }, this.#equipped.name.toUpperCase(), CHARTREUSE);
+    eventManager.emit(
+      "indicate",
+      { x, y },
+      this.#equipped.name.toUpperCase(),
+      CHARTREUSE,
+    );
   }
 
   draw(ctx) {
