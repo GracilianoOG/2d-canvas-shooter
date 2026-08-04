@@ -107,7 +107,7 @@ export class Game {
     setTimeout(() => {
       this.#calcHighscore();
       this.stopLoop(States.NOT_RUNNING);
-      this.#screens.restart.classList.remove("hide");
+      this.#screens.show("restart");
     }, milliseconds);
   }
 
@@ -136,7 +136,7 @@ export class Game {
     await this.loadAssets();
 
     this.#screens.remove("loading");
-    this.#screens.start.classList.remove("hide");
+    this.#screens.show("start");
     inputManager.init(this.#canvas);
   }
 
