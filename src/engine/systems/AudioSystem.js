@@ -1,4 +1,4 @@
-class AudioSystem {
+export class AudioSystem {
   #audios;
   #context;
   #master;
@@ -49,5 +49,3 @@ class AudioSystem {
     source.start();
   }
 }
-
-export const audioSystem = new AudioSystem();
