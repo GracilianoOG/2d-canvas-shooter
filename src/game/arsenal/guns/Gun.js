@@ -2,7 +2,7 @@ import { gameState } from "@/game/core/GameState";
 import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
-import { audioSystem } from "@/engine/systems/AudioSystem";
+import { eventManager } from "@/engine/systems/EventManager";
 
 export class Gun {
   #name;
@@ -63,7 +63,7 @@ export class Gun {
     const bulletAngle = this.#calcBulletPath(x, y);
     this.#cooldown.reset();
     this.createProjectile(x, y, bulletAngle);
-    audioSystem.play("shot");
+    eventManager.emit("audio", "shot");
   }
 
   createProjectile(x, y, angle) {
