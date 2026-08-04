@@ -10,10 +10,6 @@ class InputManager {
     this.#bindings = {};
   }
 
-  initInputCanvas(canvas) {
-    this.#canvas = canvas;
-  }
-
   getMousePosition() {
     const { offset, factors } = this.#canvas;
 
@@ -23,23 +19,25 @@ class InputManager {
     };
   }
 
-  init(container) {
+  init(canvas) {
     document.addEventListener("keydown", (e) => this.#onKey(e.code));
     document.addEventListener("keyup", (e) => this.#onKey(e.code, false));
     document.addEventListener("contextmenu", () => (this.#actions = {}));
     document.addEventListener("blur", () => (this.#actions = {}));
 
-    container.addEventListener("mousedown", (e) => this.#onMouse(e.button));
-    container.addEventListener("mouseup", (e) =>
+    canvas.parent.addEventListener("mousedown", (e) => this.#onMouse(e.button));
+    canvas.parent.addEventListener("mouseup", (e) =>
       this.#onMouse(e.button, false),
     );
 
-    container.addEventListener("mouseenter", this.#onMouseMove.bind(this), {
+    canvas.parent.addEventListener("mouseenter", this.#onMouseMove.bind(this), {
       once: true,
     });
 
-    container.addEventListener("mousemove", this.#onMouseMove.bind(this));
-    container.addEventListener("mouseleave", this.#onMouseLeave.bind(this));
+    canvas.parent.addEventListener("mousemove", this.#onMouseMove.bind(this));
+    canvas.parent.addEventListener("mouseleave", this.#onMouseLeave.bind(this));
+
+    this.#canvas = canvas;
   }
 
   #onKey(code, pressed = true) {
