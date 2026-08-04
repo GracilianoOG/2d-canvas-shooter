@@ -16,8 +16,8 @@ class EventManager {
     );
   }
 
-  emit(event, data = null) {
-    this.#listeners[event]?.forEach((listener) => listener(data));
+  emit(event, ...data) {
+    this.#listeners[event]?.forEach((listener) => listener(...data));
   }
 }
 
