@@ -67,6 +67,9 @@ export class Game {
     });
     eventManager.subscribe("enemyDeath", () => this.shakeScreen(5, 300));
     eventManager.subscribe("audio", (name) => this.#audio.play(name));
+    eventManager.subscribe("indicate", (pos, txt, col) =>
+      Indicator.create(pos, txt, col),
+    );
   }
 
   get state() {
