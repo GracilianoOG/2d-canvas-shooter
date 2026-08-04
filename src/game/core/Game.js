@@ -170,7 +170,7 @@ export class Game {
     entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
     this.#shaker.restore();
 
-    this.#collision.checkCollisions();
+    this.#collision.check();
     Timer.updateAll(delta);
   }
 

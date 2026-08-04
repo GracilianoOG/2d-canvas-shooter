@@ -30,7 +30,7 @@ export class CollisionManager {
     this.#items = [];
   }
 
-  checkCollisions() {
+  check() {
     this.#initCollisionBatches();
     this.#filterInstances();
 
