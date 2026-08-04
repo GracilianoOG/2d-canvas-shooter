@@ -80,12 +80,8 @@ export class Enemy extends Projectile {
   }
 
   #die() {
+    eventManager.emit("enemyDeath");
     this.#bleed(this.#options.bloodAmount * 2);
-    eventManager.emit("enemyDeath", {
-      score: this.score.death,
-      color: this.baseColor,
-      position: { x: this.x, y: this.y },
-    });
     this.destroy();
   }
 
