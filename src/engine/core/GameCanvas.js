@@ -7,6 +7,7 @@ export class GameCanvas {
   #width;
   #height;
   #margin;
+  #parent;
 
   constructor({ width, height, margin, container }) {
     this.#canvas = document.createElement("canvas");
@@ -29,6 +30,8 @@ export class GameCanvas {
     }
 
     container.appendChild(this.#canvas);
+
+    this.#parent = container;
     this.resize();
   }
 
@@ -45,6 +48,10 @@ export class GameCanvas {
 
   get ctx() {
     return this.#bufferCtx;
+  }
+
+  get parent() {
+    return this.#parent;
   }
 
   #cacheRect() {
