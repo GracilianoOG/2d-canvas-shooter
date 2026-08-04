@@ -1,4 +1,3 @@
-import { gameState } from "@/game/core/GameState";
 import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
@@ -38,19 +37,9 @@ export class Gun {
   }
 
   #calcBulletPath(originX, originY) {
-    const { left, top } = gameState.getEntity("mainCanvas").offset;
-    const scaleFactors = gameState.getEntity("mainCanvas").factors;
-    const { x: mouseX, y: mouseY } = inputManager.getMousePosition(left, top);
-
-    const scaledMouseX = mouseX / scaleFactors.x;
-    const scaledMouseY = mouseY / scaleFactors.y;
-
-    const dirX = scaledMouseX - originX;
-    const dirY = scaledMouseY - originY;
-
-    const bulletAngle = Math.atan2(dirY, dirX);
-
-    return bulletAngle;
+    const { x: mx, y: my } = inputManager.getMousePosition();
+    const angle = Math.atan2(my - originY, mx - originX);
+    return angle;
   }
 
   rollAccuracy() {
