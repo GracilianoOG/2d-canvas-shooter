@@ -40,7 +40,7 @@ export class ScreenManager {
   }
 
   restartGame() {
-    this.restart.classList.add("hide");
+    this.toggle("restart", true);
     this.game.restart();
   }
 
