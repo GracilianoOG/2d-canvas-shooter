@@ -174,6 +174,7 @@ These resources helped me to understand many things regarding game development i
 - [Nice colors](https://www.w3schools.com/cssref/css_colors.php)
 - [50+ JavaScript Games](https://freefrontend.com/javascript-games/)
 - [Tools, assets and tutorials (JS13K)](https://js13kgames.com/resources)
+- [Nullish coalescing assignment (??=)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)
 
 ## 🧑🏻‍💻 Author
 
