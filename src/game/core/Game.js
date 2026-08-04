@@ -159,7 +159,7 @@ export class Game {
 
     Indicator.toggleIndicators(this.#engine.isRunning);
 
-    this.#screens.pause.classList.toggle("hide");
+    this.#screens.toggle("pause");
   }
 
   shakeScreen(strength, duration) {
