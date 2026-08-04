@@ -11,7 +11,7 @@ import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
 import { entityManager } from "../systems/EntityManager";
-import { collisionManager } from "../systems/CollisionManager";
+import { CollisionManager } from "../systems/CollisionManager";
 import { ScoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
 import { inputManager } from "../../engine/systems/InputManager";
@@ -34,6 +34,7 @@ export class Game {
   #player;
   #screens;
   #score;
+  #collision;
 
   constructor({ width, height, margin }) {
     this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
@@ -43,6 +44,7 @@ export class Game {
       target: this.#player,
     });
     this.#audio = new AudioSystem();
+    this.#collision = new CollisionManager();
     this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
@@ -168,7 +170,7 @@ export class Game {
     entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
     this.#shaker.restore();
 
-    collisionManager.checkCollisions();
+    this.#collision.checkCollisions();
     Timer.updateAll(delta);
   }
 
