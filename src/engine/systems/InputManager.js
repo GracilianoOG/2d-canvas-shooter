@@ -2,6 +2,7 @@ class InputManager {
   #actions;
   #mouse;
   #bindings;
+  #canvas;
 
   constructor() {
     this.#actions = {};
@@ -9,10 +10,16 @@ class InputManager {
     this.#bindings = {};
   }
 
-  getMousePosition(offsetX, offsetY) {
+  initInputCanvas(canvas) {
+    this.#canvas = canvas;
+  }
+
+  getMousePosition() {
+    const { offset, factors } = this.#canvas;
+
     return {
-      x: this.#mouse.x - offsetX,
-      y: this.#mouse.y - offsetY,
+      x: (this.#mouse.x - offset.left) / factors.x,
+      y: (this.#mouse.y - offset.top) / factors.y,
     };
   }
 
