@@ -135,7 +135,7 @@ export class Game {
 
     await this.loadAssets();
 
-    this.#screens.loading.remove();
+    this.#screens.remove("loading");
     this.#screens.start.classList.remove("hide");
     inputManager.init(this.#canvas);
   }
