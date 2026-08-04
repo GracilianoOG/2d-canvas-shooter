@@ -62,6 +62,7 @@ export class Game {
       this.#audio.play(lives ? "hit" : "explosion");
     });
     eventManager.subscribe("enemyDeath", () => this.shakeScreen(5, 300));
+    eventManager.subscribe("audio", (name) => this.#audio.play(name));
   }
 
   get state() {
