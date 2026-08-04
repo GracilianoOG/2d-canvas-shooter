@@ -1,6 +1,5 @@
 import { eventManager } from "../../engine/systems/EventManager";
 import { StorageHandler } from "../utils/StorageHandler";
-import { Indicator } from "../ui/Indicator";
 
 export class ScoreManager {
   #score;
@@ -19,7 +18,7 @@ export class ScoreManager {
   }
 
   #countScore({ position, score, color }) {
-    Indicator.create(position, score, color);
+    eventManager.emit("indicate", position, score, color);
     this.add(score);
   }
 
