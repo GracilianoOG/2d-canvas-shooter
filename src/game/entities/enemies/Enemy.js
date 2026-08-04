@@ -91,18 +91,19 @@ export class Enemy extends Projectile {
 
   takeDamage(damage) {
     this.health -= damage;
-    eventManager.emit("audio", this.health > 0 ? "hit" : "explosion");
+    const alive = this.health > 0;
+    eventManager.emit("audio", alive ? "hit" : "explosion");
     if (this.health <= 0) {
       this.#die();
       return this.#score.death;
     }
-    this.#bleed(this.#options.bloodAmount);
-    this.#createDamageEffect();
     eventManager.emit("enemyHit", {
-      score: this.score.hit,
       color: this.baseColor,
       position: { x: this.x, y: this.y },
+      score: alive ? this.score.hit : this.score.death,
     });
+    this.#bleed(this.#options.bloodAmount);
+    this.#createDamageEffect();
   }
 
   drop(chance) {
