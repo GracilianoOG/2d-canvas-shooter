@@ -135,11 +135,9 @@ export class Game {
 
     await this.loadAssets();
 
-    inputManager.initInputCanvas(this.#canvas);
-
     this.#screens.loading.remove();
     this.#screens.start.classList.remove("hide");
-    inputManager.init(this.#screens.container);
+    inputManager.init(this.#canvas);
   }
 
   startLoop() {
