@@ -2,7 +2,7 @@ import { eventManager } from "../../engine/systems/EventManager";
 import { StorageHandler } from "../utils/StorageHandler";
 import { Indicator } from "../ui/Indicator";
 
-class ScoreManager {
+export class ScoreManager {
   #score;
 
   constructor() {
@@ -45,5 +45,3 @@ class ScoreManager {
     eventManager.emit("setScore", { score: 0 });
   }
 }
-
-export const scoreManager = new ScoreManager();
