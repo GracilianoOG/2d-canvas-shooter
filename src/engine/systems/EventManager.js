@@ -10,10 +10,10 @@ class EventManager {
   }
 
   unsubscribe(event, listener) {
-    const filteredCallbacks = this.#listeners[event]?.filter(
+    if (!this.#listeners[event]) return;
+    this.#listeners[event] = this.#listeners[event]?.filter(
       (cb) => cb !== listener,
     );
-    this.#listeners[event] = filteredCallbacks;
   }
 
   emit(event, data = null) {
