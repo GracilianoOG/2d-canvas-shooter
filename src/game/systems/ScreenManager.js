@@ -43,4 +43,9 @@ export class ScreenManager {
     this.restart.classList.add("hide");
     this.game.restart();
   }
+
+  remove(name) {
+    this[name].remove();
+    this[name] = null;
+  }
 }
