@@ -13,7 +13,9 @@ export class ScreenManager {
   }
 
   init() {
-    const highscore = this.start.querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+    const highscore = this.get("start").querySelector(
+      CSS_CLASSES.HIGHSCORE_POINTS,
+    );
     highscore.textContent = StorageHandler.retrieveHighscore();
 
     document.addEventListener("click", (e) => {
