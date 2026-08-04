@@ -7,7 +7,6 @@ import { PlayerArsenal } from "../player/PlayerArsenal";
 import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";
 import * as Colors from "../constants/colors";
-import { Indicator } from "../ui/Indicator";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";
 import { config } from "../config";
@@ -77,7 +76,7 @@ export class Player extends Projectile {
 
     if (this.isDead) {
       this.die();
-      Indicator.create({ x: this.x, y: this.y }, "DEATH!");
+      eventManager.emit("indicate", { x: this.x, y: this.y }, "DEATH!");
       return;
     }
 
