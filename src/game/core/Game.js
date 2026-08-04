@@ -10,7 +10,6 @@ import * as States from "../../engine/constants/gameStates";
 import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
-import { audioSystem } from "../../engine/systems/AudioSystem";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
 import { scoreManager } from "../systems/ScoreManager";
@@ -22,6 +21,7 @@ import { CSS_CLASSES } from "../utils/constants";
 import { StorageHandler } from "../utils/StorageHandler";
 import { config } from "../config";
 import { ScreenManager } from "../systems/ScreenManager";
+import { AudioSystem } from "@/engine/systems/AudioSystem";
 
 export class Game {
   #state;
@@ -40,7 +40,7 @@ export class Game {
       spawnTime: 800,
       target: this.#player,
     });
-    this.#audio = audioSystem;
+    this.#audio = new AudioSystem();
     this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
