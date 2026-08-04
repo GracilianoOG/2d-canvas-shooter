@@ -52,6 +52,10 @@ export class ScreenManager {
     this[name].classList.remove("hide");
   }
 
+  toggle(name, force) {
+    this[name].classList.toggle("hide", force);
+  }
+
   remove(name) {
     this[name].remove();
     this[name] = null;
