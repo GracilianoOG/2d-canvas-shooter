@@ -4,7 +4,7 @@ import { entityManager } from "./EntityManager";
 import { Item } from "../entities/items/Item";
 import { Player } from "../entities/Player";
 
-class CollisionManager {
+export class CollisionManager {
   #enemies;
   #bullets;
   #items;
@@ -52,5 +52,3 @@ class CollisionManager {
     }
   }
 }
-
-export const collisionManager = new CollisionManager();
