@@ -6,10 +6,7 @@ class EventManager {
   }
 
   subscribe(event, listener) {
-    if (!this.#listeners[event]) {
-      this.#listeners[event] = [];
-    }
-    this.#listeners[event].push(listener);
+    (this.#listeners[event] ??= []).push(listener);
   }
 
   unsubscribe(event, listener) {
