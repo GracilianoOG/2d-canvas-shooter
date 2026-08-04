@@ -48,7 +48,7 @@ export class Game {
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#state = States.NOT_RUNNING;
 
-    const container = this.#screens.container;
+    const container = this.#screens.get("container");
     this.#canvas = new GameCanvas({ width, height, margin, container });
     this.#shaker = new Shaker(this.#canvas.ctx);
 
@@ -94,10 +94,12 @@ export class Game {
   }
 
   #calcHighscore() {
-    const highscoreEl = this.#screens.restart.querySelector(
-      CSS_CLASSES.HIGHSCORE_POINTS,
-    );
-    const recordEl = this.#screens.restart.querySelector(".highscore__new");
+    const highscoreEl = this.#screens
+      .get("restart")
+      .querySelector(CSS_CLASSES.HIGHSCORE_POINTS);
+    const recordEl = this.#screens
+      .get("restart")
+      .querySelector(".highscore__new");
     recordEl.classList.toggle("hide", !this.#score.isHighscore());
     this.#score.save();
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
