@@ -2,13 +2,18 @@ import { CSS_CLASSES } from "../utils/constants";
 import { StorageHandler } from "../utils/StorageHandler";
 
 export class ScreenManager {
+  #screens;
+
   constructor(game) {
     this.game = game;
-    this.container = document.querySelector("#game-container");
-    this.start = document.querySelector(".start-screen");
-    this.pause = document.querySelector(".pause-screen");
-    this.restart = document.querySelector(".gameover-screen");
-    this.loading = document.querySelector(".loading-screen");
+
+    this.#screens = new Map();
+    this.#screens.set("container", document.querySelector("#game-container"));
+    this.#screens.set("start", document.querySelector(".start-screen"));
+    this.#screens.set("pause", document.querySelector(".pause-screen"));
+    this.#screens.set("restart", document.querySelector(".gameover-screen"));
+    this.#screens.set("loading", document.querySelector(".loading-screen"));
+
     this.init();
   }
 
@@ -47,19 +52,19 @@ export class ScreenManager {
   }
 
   get(name) {
-    return this[name];
+    return this.#screens.get(name);
   }
 
   show(name) {
-    this[name].classList.remove("hide");
+    this.get(name).classList.remove("hide");
   }
 
   toggle(name, force) {
-    this[name].classList.toggle("hide", force);
+    this.get(name).classList.toggle("hide", force);
   }
 
   remove(name) {
-    this[name].remove();
-    this[name] = null;
+    this.get(name).remove();
+    this.#screens.delete(name);
   }
 }
