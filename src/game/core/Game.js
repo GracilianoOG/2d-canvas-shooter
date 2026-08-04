@@ -58,10 +58,10 @@ export class Game {
     this.#listenToWindowChange();
     this.#listenToResize();
 
-    eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
     eventManager.subscribe("playerHit", ({ lives }) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
+      if (!lives) this.#onPlayerDeath();
     });
     eventManager.subscribe("enemyDeath", () => this.shakeScreen(5, 300));
     eventManager.subscribe("audio", (name) => this.#audio.play(name));
