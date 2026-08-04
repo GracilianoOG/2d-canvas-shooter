@@ -1,6 +1,5 @@
 import { Player } from "../entities/Player";
 import { GameCanvas } from "../../engine/core/GameCanvas";
-import { gameState } from "./GameState";
 import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import { Timer } from "../../engine/systems/Timer";
@@ -135,10 +134,6 @@ export class Game {
     entityManager.add(player);
 
     await this.loadAssets();
-
-    gameState.addEntities({
-      mainCanvas: this.#canvas,
-    });
 
     inputManager.initInputCanvas(this.#canvas);
 
