@@ -1,8 +1,8 @@
 import { Entity } from "../Entity";
 import { Timer } from "@/engine/systems/Timer";
 import { WHITE } from "@/game/constants/colors";
-import { Indicator } from "@/game/ui/Indicator";
 import { config } from "@/game/config";
+import { eventManager } from "@/engine/systems/EventManager";
 
 class Item extends Entity {
   #despawnTimer;
@@ -22,7 +22,8 @@ class Item extends Entity {
   check() {}
 
   onCollect() {
-    Indicator.create(
+    eventManager.emit(
+      "indicate",
       { x: this.x, y: this.y },
       this.#label.toUpperCase(),
       this.color,
