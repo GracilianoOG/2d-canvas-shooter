@@ -12,7 +12,7 @@ import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
 import { entityManager } from "../systems/EntityManager";
 import { collisionManager } from "../systems/CollisionManager";
-import { scoreManager } from "../systems/ScoreManager";
+import { ScoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
 import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
@@ -33,9 +33,11 @@ export class Game {
   #settings;
   #player;
   #screens;
+  #score;
 
   constructor({ width, height, margin }) {
     this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
+    this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
       target: this.#player,
@@ -91,8 +93,8 @@ export class Game {
       CSS_CLASSES.HIGHSCORE_POINTS,
     );
     const recordEl = this.#screens.restart.querySelector(".highscore__new");
-    recordEl.classList.toggle("hide", !scoreManager.isHighscore());
-    scoreManager.save();
+    recordEl.classList.toggle("hide", !this.#score.isHighscore());
+    this.#score.save();
     highscoreEl.textContent = StorageHandler.retrieveHighscore();
   }
 
@@ -197,7 +199,7 @@ export class Game {
     this.#canvas.ctx.clearRect(0, 0, width, height);
     this.#enemyCreator.reset();
     entityManager.clear([this.#player]);
-    scoreManager.reset();
+    this.#score.reset();
     this.startLoop();
     eventManager.emit("restart");
   }
