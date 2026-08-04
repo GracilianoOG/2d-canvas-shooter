@@ -31,7 +31,7 @@ export class ScreenManager {
 
   startGame() {
     this.remove("start");
-    this.container.classList.remove("hide");
+    this.show("container");
     this.game.start();
   }
 
