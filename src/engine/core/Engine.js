@@ -23,12 +23,7 @@ export class Engine {
   }
 
   animate = (currentTime) => {
-    if (!this.#lastTime) {
-      this.#lastTime = currentTime;
-    }
-
     const deltaTime = currentTime - this.#lastTime;
-
     this.#lastTime = currentTime;
 
     if (this.#state === States.RUNNING) {
@@ -41,6 +36,7 @@ export class Engine {
 
   start() {
     if (this.#state === States.OFF) {
+      this.#lastTime = performance.now();
       this.#tick();
     }
     this.#state = States.RUNNING;
