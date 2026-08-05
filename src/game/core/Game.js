@@ -5,7 +5,6 @@ import { Scoreboard } from "../ui/Scoreboard";
 import { Timer } from "../../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
 import { TRANSPARENT_BLACK, WHITE } from "../constants/colors";
-import * as States from "../../engine/constants/gameStates";
 import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
@@ -21,9 +20,9 @@ import { StorageHandler } from "../utils/StorageHandler";
 import { config } from "../config";
 import { ScreenManager } from "../systems/ScreenManager";
 import { AudioSystem } from "@/engine/systems/AudioSystem";
+import { States } from "@/engine/constants/gameStates";
 
 export class Game {
-  #state;
   #engine;
   #audio;
   #canvas;
@@ -46,7 +45,6 @@ export class Game {
     this.#collision = new CollisionManager();
     this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
-    this.#state = States.NOT_RUNNING;
 
     const container = this.#screens.get("container");
     this.#canvas = new GameCanvas({ width, height, margin, container });
@@ -73,11 +71,10 @@ export class Game {
   }
 
   get state() {
-    return this.#state;
+    return this.#engine.state;
   }
 
   #onPlayerDeath() {
-    this.#state = States.GAMEOVER;
     this.#enemyCreator.stop();
     this.shakeScreen(6, 500);
     this.#prepareRestart(2400);
@@ -108,7 +105,7 @@ export class Game {
   #prepareRestart(milliseconds) {
     setTimeout(() => {
       this.#calcHighscore();
-      this.stopLoop(States.NOT_RUNNING);
+      this.stopLoop();
       this.#screens.show("restart");
     }, milliseconds);
   }
@@ -144,22 +141,22 @@ export class Game {
 
   startLoop() {
     this.#engine.start();
-    this.#state = States.RUNNING;
   }
 
-  stopLoop(state) {
+  stopLoop() {
     this.#engine.stop();
-    this.#state = state;
   }
 
   pause() {
-    if (this.#state !== States.RUNNING && this.#state !== States.PAUSED) return;
-    this.#engine.isRunning = !this.#engine.isRunning;
-    this.#state = this.#engine.isRunning ? States.RUNNING : States.PAUSED;
-
-    Indicator.toggleIndicators(this.#engine.isRunning);
-
-    this.#screens.toggle("pause");
+    if (this.state === States.RUNNING) {
+      Indicator.toggleIndicators(false);
+      this.#screens.toggle("pause", false);
+      this.stopLoop();
+    } else if (this.state === States.STOPPED) {
+      Indicator.toggleIndicators(true);
+      this.#screens.toggle("pause", true);
+      this.startLoop();
+    }
   }
 
   shakeScreen(strength, duration) {
