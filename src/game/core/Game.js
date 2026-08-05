@@ -149,15 +149,10 @@ export class Game {
 
   pause() {
     if (this.#player.isDead) return;
-    if (this.state === States.RUNNING) {
-      Indicator.toggleIndicators(false);
-      this.#screens.toggle("pause", false);
-      this.stopLoop();
-    } else if (this.state === States.STOPPED) {
-      Indicator.toggleIndicators(true);
-      this.#screens.toggle("pause", true);
-      this.startLoop();
-    }
+    const isRunning = this.state === States.RUNNING;
+    Indicator.toggleIndicators(isRunning);
+    this.#screens.toggle("pause", !isRunning);
+    isRunning ? this.stopLoop() : this.startLoop();
   }
 
   shakeScreen(strength, duration) {
