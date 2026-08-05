@@ -148,6 +148,7 @@ export class Game {
   }
 
   pause() {
+    if (this.#player.isDead) return;
     if (this.state === States.RUNNING) {
       Indicator.toggleIndicators(false);
       this.#screens.toggle("pause", false);
