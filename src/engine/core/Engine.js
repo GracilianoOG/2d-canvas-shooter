@@ -20,6 +20,10 @@ export class Engine {
     this.#isRunning = isRunning;
   }
 
+  #tick() {
+    this.#rafId = requestAnimationFrame(this.animate);
+  }
+
   animate = (currentTime) => {
     if (!this.#lastTime) {
       this.#lastTime = currentTime;
@@ -34,16 +38,12 @@ export class Engine {
       this.render();
     }
 
-    this.tick();
+    this.#tick();
   };
-
-  tick() {
-    this.#rafId = requestAnimationFrame(this.animate);
-  }
 
   start() {
     this.isRunning = true;
-    this.tick();
+    this.#tick();
   }
 
   stop() {
