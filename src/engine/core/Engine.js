@@ -1,7 +1,9 @@
+import { States } from "../constants/gameStates";
+
 export class Engine {
   #rafId;
   #lastTime;
-  #isRunning;
+  #state;
 
   constructor(update, render) {
     this.update = update;
@@ -9,15 +11,11 @@ export class Engine {
 
     this.#rafId = null;
     this.#lastTime = null;
-    this.#isRunning = false;
+    this.#state = States.OFF;
   }
 
-  get isRunning() {
-    return this.#isRunning;
-  }
-
-  set isRunning(isRunning) {
-    this.#isRunning = isRunning;
+  get state() {
+    return this.#state;
   }
 
   #tick() {
@@ -33,7 +31,7 @@ export class Engine {
 
     this.#lastTime = currentTime;
 
-    if (this.#isRunning) {
+    if (this.#state === States.RUNNING) {
       this.update(deltaTime);
       this.render();
     }
@@ -42,16 +40,19 @@ export class Engine {
   };
 
   start() {
-    this.isRunning = true;
-    this.#tick();
+    if (this.#state === States.OFF) {
+      this.#tick();
+    }
+    this.#state = States.RUNNING;
   }
 
   stop() {
-    this.isRunning = false;
+    this.#state = States.STOPPED;
   }
 
   abort() {
     this.#lastTime = null;
+    this.#state = States.OFF;
     cancelAnimationFrame(this.#rafId);
   }
 }
