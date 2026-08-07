@@ -9,7 +9,7 @@ class Boomer extends Enemy {
   #target;
   #options;
 
-  constructor(x, y, radius, speed, color, health, score, target, options = {}) {
+  constructor(x, y, radius, speed, color, health, score, target, options) {
     super(x, y, radius, speed, color, health, score, target, options);
     this.#target = target;
     this.#baseSize = radius;

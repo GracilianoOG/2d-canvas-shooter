@@ -14,7 +14,7 @@ export class Enemy extends Projectile {
   #score;
   #options;
 
-  constructor(x, y, radius, speed, color, health, score, target, options = {}) {
+  constructor(x, y, radius, speed, color, health, score, target, options) {
     super(x, y, radius, speed, color);
     this.#target = target;
     this.#health = health;
