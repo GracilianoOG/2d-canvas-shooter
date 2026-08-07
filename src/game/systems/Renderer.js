@@ -25,7 +25,7 @@ export class Renderer {
   }
 
   renderEntities(entities) {
-    for (let i = 0; i < entities.length; i++) {
+    for (let i = entities.length - 1; i >= 0; i--) {
       entities[i].draw(this.#ctx);
     }
   }
