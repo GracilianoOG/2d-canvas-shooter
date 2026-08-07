@@ -106,10 +106,7 @@ class EnemyCreator {
         break;
     }
 
-    const newScore = { ...enemyConfig[4] };
-    newScore.hit *= 2;
-    newScore.death *= 2;
-    enemyConfig[4] = newScore;
+    enemyConfig[4] *= 2;
   }
 
   #hardenSpawn() {

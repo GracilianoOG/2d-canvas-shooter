@@ -33,11 +33,6 @@ const enemyTypes = [
   ],
 ];
 
-enemyTypes.forEach((type) => {
-  const score = {};
-  score.hit = type[3] * 10;
-  score.death = score.hit * 3;
-  type.splice(type.length - 1, 0, score);
-});
+enemyTypes.forEach((type) => type.splice(type.length - 1, 0, type[3] * 10));
 
 export { enemyTypes };
