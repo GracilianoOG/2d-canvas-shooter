@@ -21,6 +21,7 @@ import { config } from "../config";
 import { ScreenManager } from "../systems/ScreenManager";
 import { AudioSystem } from "@/engine/systems/AudioSystem";
 import { States } from "@/engine/constants/gameStates";
+import { Renderer } from "../systems/Renderer";
 
 export class Game {
   #engine;
@@ -33,6 +34,7 @@ export class Game {
   #screens;
   #score;
   #collision;
+  #renderer;
 
   constructor({ width, height, margin }) {
     this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
@@ -53,6 +55,8 @@ export class Game {
     this.#settings = {
       trails: true,
     };
+
+    this.#renderer = new Renderer(this.#canvas, this.#settings);
 
     this.#listenToWindowChange();
     this.#listenToResize();
@@ -160,24 +164,15 @@ export class Game {
   }
 
   update(delta) {
-    this.#shaker.shake();
-    entityManager.renderAll(this.#canvas.ctx, delta * 0.001);
-    this.#shaker.restore();
-
+    entityManager.manage(delta * 0.001);
     this.#collision.check();
     Timer.updateAll(delta);
   }
 
   render() {
-    const { width, height } = config;
-    this.#canvas.render();
-
-    if (this.#settings.trails) {
-      this.#canvas.ctx.fillStyle = TRANSPARENT_BLACK;
-      this.#canvas.ctx.fillRect(0, 0, width, height);
-    } else {
-      this.#canvas.ctx.clearRect(0, 0, width, height);
-    }
+    this.#shaker.shake();
+    this.#renderer.render(entityManager.entities);
+    this.#shaker.restore();
   }
 
   start() {
