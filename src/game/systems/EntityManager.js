@@ -2,11 +2,9 @@ import { Entity } from "../entities/Entity";
 
 class EntityManager {
   #entities;
-  #queue;
 
   constructor() {
     this.#entities = [];
-    this.#queue = [];
   }
 
   get entities() {
@@ -23,11 +21,6 @@ class EntityManager {
     this.#entities = this.#entities.filter((e) => !e.destroyed);
   }
 
-  #addFromQueue() {
-    this.#entities.push(...this.#queue);
-    this.#queue = [];
-  }
-
   #orderEntities() {
     this.#entities.sort((a, b) => a.radius - b.radius);
   }
@@ -37,7 +30,8 @@ class EntityManager {
       if (!(entity instanceof Entity)) {
         throw new Error("Invalid entity!");
       }
-      this.#queue.push(entity);
+
+      this.#entities.push(entity);
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +40,6 @@ class EntityManager {
   manage(delta) {
     this.#updateEntities(delta);
     this.#removeDestroyed();
-    this.#addFromQueue();
     this.#orderEntities();
   }
 
