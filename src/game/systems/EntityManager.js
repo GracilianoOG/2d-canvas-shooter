@@ -13,11 +13,9 @@ class EntityManager {
     return this.#entities;
   }
 
-  #renderEntities(ctx, delta) {
+  #updateEntities(delta) {
     for (let i = 0; i < this.#entities.length; i++) {
-      const entity = this.#entities[i];
-      entity.draw(ctx);
-      entity.update(delta);
+      this.#entities[i].update(delta);
     }
   }
 
@@ -45,8 +43,8 @@ class EntityManager {
     }
   }
 
-  renderAll(ctx, delta) {
-    this.#renderEntities(ctx, delta);
+  manage(delta) {
+    this.#updateEntities(delta);
     this.#removeDestroyed();
     this.#addFromQueue();
     this.#orderEntities();
