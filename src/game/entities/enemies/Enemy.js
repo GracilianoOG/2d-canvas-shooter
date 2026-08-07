@@ -96,7 +96,7 @@ export class Enemy extends Projectile {
     this.#bleed(this.#options.bloodAmount * (Number(!alive) + 1));
     if (this.health <= 0) {
       this.#die();
-      return this.score * 3;
+      return;
     }
     this.#createDamageEffect();
   }
