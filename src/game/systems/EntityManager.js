@@ -14,7 +14,7 @@ class EntityManager {
   }
 
   #updateEntities(delta) {
-    for (let i = 0; i < this.#entities.length; i++) {
+    for (let i = this.#entities.length - 1; i >= 0; i--) {
       this.#entities[i].update(delta);
     }
   }
