@@ -1,16 +1,14 @@
-import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
-
 export const weaponData = {
   bazooka: {
     name: "Bazooka",
-    ammoType: AmmoFactory.request("rocket"),
+    ammoType: "rocket",
     options: {
       cooldown: 300,
     },
   },
   broom: {
     name: "Broom",
-    ammoType: AmmoFactory.request("grenade"),
+    ammoType: "grenade",
     options: {
       bullets: 3,
       cooldown: 350,
@@ -20,7 +18,7 @@ export const weaponData = {
   },
   bouncy: {
     name: "Bouncy Shotgun",
-    ammoType: AmmoFactory.request("bouncy"),
+    ammoType: "bouncy",
     options: {
       bullets: 3,
       cooldown: 200,
@@ -30,14 +28,14 @@ export const weaponData = {
   },
   cannon: {
     name: "Cannon",
-    ammoType: AmmoFactory.request("cannon"),
+    ammoType: "cannon",
     options: {
       cooldown: 250,
     },
   },
   hell: {
     name: "Bullet Hell",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       bullets: 20,
       cooldown: 150,
@@ -45,14 +43,14 @@ export const weaponData = {
   },
   launcher: {
     name: "Grenade Launcher",
-    ammoType: AmmoFactory.request("grenade"),
+    ammoType: "grenade",
     options: {
       cooldown: 220,
     },
   },
   minigun: {
     name: "Minigun",
-    ammoType: AmmoFactory.request("heavy"),
+    ammoType: "heavy",
     options: {
       cooldown: 100,
       spread: 0.1,
@@ -60,42 +58,42 @@ export const weaponData = {
   },
   mine: {
     name: "Mine Launcher",
-    ammoType: AmmoFactory.request("mine"),
+    ammoType: "mine",
     options: {
       cooldown: 280,
     },
   },
   nuke: {
     name: "BFG",
-    ammoType: AmmoFactory.request("nuke"),
+    ammoType: "nuke",
     options: {
       cooldown: 380,
     },
   },
   pistol: {
     name: "Pistol",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       cooldown: 150,
     },
   },
   rifle: {
     name: "Rifle",
-    ammoType: AmmoFactory.request("pierce"),
+    ammoType: "pierce",
     options: {
       cooldown: 200,
     },
   },
   ricochet: {
     name: "Ricochet Pistol",
-    ammoType: AmmoFactory.request("bouncy"),
+    ammoType: "bouncy",
     options: {
       cooldown: 140,
     },
   },
   super: {
     name: "Super Shotgun",
-    ammoType: AmmoFactory.request("heavy"),
+    ammoType: "heavy",
     options: {
       bullets: 2,
       cooldown: 220,
@@ -105,7 +103,7 @@ export const weaponData = {
   },
   shotgun: {
     name: "Shotgun",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       bullets: 3,
       cooldown: 200,
@@ -115,7 +113,7 @@ export const weaponData = {
   },
   smg: {
     name: "SMG",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       cooldown: 110,
       spread: 0.05,
@@ -123,7 +121,7 @@ export const weaponData = {
   },
   sonar: {
     name: "Sonar",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       bullets: 8,
       cooldown: 300,
@@ -133,7 +131,7 @@ export const weaponData = {
   },
   that: {
     name: "That Shotgun",
-    ammoType: AmmoFactory.request("common"),
+    ammoType: "common",
     options: {
       bullets: 13,
       cooldown: 500,

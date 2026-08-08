@@ -2,6 +2,7 @@ import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
 import { eventManager } from "@/engine/systems/EventManager";
+import { AmmoFactory } from "../ammo/AmmoFactory";
 
 export class Gun {
   #name;
@@ -13,7 +14,7 @@ export class Gun {
     this.#name = name;
     this.#options = options;
     this.#cooldown = Timer.create(options.cooldown, { loop: false });
-    this.#ammoType = ammoType;
+    this.#ammoType = AmmoFactory.request(ammoType);
   }
 
   get name() {
