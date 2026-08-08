@@ -1,4 +1,4 @@
-import * as Damage from "@/game/arsenal/ammo/damages";
+import * as Damage from "@/game/constants/damages";
 import * as Colors from "@/game/constants/colors";
 
 export const ammoData = {
