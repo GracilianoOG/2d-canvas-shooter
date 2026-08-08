@@ -1,8 +1,8 @@
 import { Timer } from "@/engine/systems/Timer";
-import { PistolAmmo } from "../arsenal/ammo/PistolAmmo";
 import { entityManager } from "../systems/EntityManager";
 import { Entity } from "./Entity";
 import { eventManager } from "@/engine/systems/EventManager";
+import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
 
 export class Sentry extends Entity {
   #target;
@@ -14,7 +14,7 @@ export class Sentry extends Entity {
   constructor(x, y, radius, color, range = 250, duration = 20_000) {
     super(x, y, radius, color);
     this.#target = null;
-    this.#ammoType = new PistolAmmo();
+    this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
     this.#cooldown = Timer.create(150, { loop: false });
     this.#despawnTimer = Timer.create(duration, { autodestruct: true }, () =>
