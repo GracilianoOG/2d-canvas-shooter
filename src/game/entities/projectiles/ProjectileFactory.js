@@ -4,7 +4,6 @@ import { Explosive } from "./Explosive";
 import { Flechette } from "./Flechette";
 import { Piercing } from "./Piercing";
 import { Mine } from "./Mine";
-import { AmmoCreator } from "@/game/arsenal/ammo/AmmoCreator";
 import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
 export class ProjectileFactory {
