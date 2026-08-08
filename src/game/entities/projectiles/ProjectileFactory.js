@@ -21,14 +21,12 @@ export class ProjectileFactory {
       case "nuke":
         return new Explosive(x, y, radius, speed, angle, color, damage, {
           amount: fragments.amount,
-          createFragments: (x, y, angle) =>
-            AmmoFactory.request(fragments.type).create(x, y, angle),
+          creator: AmmoFactory.request(fragments.type),
         });
       case "mine":
         return new Mine(x, y, radius, speed, angle, color, damage, {
           amount: fragments.amount,
-          createFragments: (x, y, angle) =>
-            AmmoFactory.request(fragments.type).create(x, y, angle),
+          creator: AmmoFactory.request(fragments.type),
         });
       case "bouncy":
         return new Flechette(x, y, radius, speed, angle, color, damage);
