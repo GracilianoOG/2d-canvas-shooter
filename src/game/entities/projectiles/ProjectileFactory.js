@@ -5,6 +5,7 @@ import { Flechette } from "./Flechette";
 import { Piercing } from "./Piercing";
 import { Mine } from "./Mine";
 import { AmmoCreator } from "@/game/arsenal/ammo/AmmoCreator";
+import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
 export class ProjectileFactory {
   static create(type, x, y, angle) {
@@ -22,13 +23,13 @@ export class ProjectileFactory {
         return new Explosive(x, y, radius, speed, angle, color, damage, {
           amount: fragments.amount,
           createFragments: (x, y, angle) =>
-            new AmmoCreator(fragments.type).create(x, y, angle),
+            AmmoFactory.request(fragments.type).create(x, y, angle),
         });
       case "mine":
         return new Mine(x, y, radius, speed, angle, color, damage, {
           amount: fragments.amount,
           createFragments: (x, y, angle) =>
-            new AmmoCreator(fragments.type).create(x, y, angle),
+            AmmoFactory.request(fragments.type).create(x, y, angle),
         });
       case "bouncy":
         return new Flechette(x, y, radius, speed, angle, color, damage);
