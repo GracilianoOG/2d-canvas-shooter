@@ -2,6 +2,7 @@ export const weaponData = {
   bazooka: {
     name: "Bazooka",
     ammoType: "rocket",
+    patternType: "single",
     options: {
       cooldown: 300,
     },
@@ -9,6 +10,7 @@ export const weaponData = {
   broom: {
     name: "Broom",
     ammoType: "grenade",
+    patternType: "multi",
     options: {
       bullets: 3,
       cooldown: 350,
@@ -19,6 +21,7 @@ export const weaponData = {
   bouncy: {
     name: "Bouncy Shotgun",
     ammoType: "bouncy",
+    patternType: "multi",
     options: {
       bullets: 3,
       cooldown: 200,
@@ -29,6 +32,7 @@ export const weaponData = {
   cannon: {
     name: "Cannon",
     ammoType: "cannon",
+    patternType: "single",
     options: {
       cooldown: 250,
     },
@@ -36,6 +40,7 @@ export const weaponData = {
   hell: {
     name: "Bullet Hell",
     ammoType: "common",
+    patternType: "explosive",
     options: {
       bullets: 20,
       cooldown: 150,
@@ -44,6 +49,7 @@ export const weaponData = {
   launcher: {
     name: "Grenade Launcher",
     ammoType: "grenade",
+    patternType: "single",
     options: {
       cooldown: 220,
     },
@@ -51,6 +57,7 @@ export const weaponData = {
   minigun: {
     name: "Minigun",
     ammoType: "heavy",
+    patternType: "single",
     options: {
       cooldown: 100,
       spread: 0.1,
@@ -59,6 +66,7 @@ export const weaponData = {
   mine: {
     name: "Mine Launcher",
     ammoType: "mine",
+    patternType: "single",
     options: {
       cooldown: 280,
     },
@@ -66,6 +74,7 @@ export const weaponData = {
   nuke: {
     name: "BFG",
     ammoType: "nuke",
+    patternType: "single",
     options: {
       cooldown: 380,
     },
@@ -73,6 +82,7 @@ export const weaponData = {
   pistol: {
     name: "Pistol",
     ammoType: "common",
+    patternType: "single",
     options: {
       cooldown: 150,
     },
@@ -80,6 +90,7 @@ export const weaponData = {
   rifle: {
     name: "Rifle",
     ammoType: "pierce",
+    patternType: "single",
     options: {
       cooldown: 200,
     },
@@ -87,6 +98,7 @@ export const weaponData = {
   ricochet: {
     name: "Ricochet Pistol",
     ammoType: "bouncy",
+    patternType: "single",
     options: {
       cooldown: 140,
     },
@@ -94,6 +106,7 @@ export const weaponData = {
   super: {
     name: "Super Shotgun",
     ammoType: "heavy",
+    patternType: "multi",
     options: {
       bullets: 2,
       cooldown: 220,
@@ -104,6 +117,7 @@ export const weaponData = {
   shotgun: {
     name: "Shotgun",
     ammoType: "common",
+    patternType: "multi",
     options: {
       bullets: 3,
       cooldown: 200,
@@ -114,6 +128,7 @@ export const weaponData = {
   smg: {
     name: "SMG",
     ammoType: "common",
+    patternType: "single",
     options: {
       cooldown: 110,
       spread: 0.05,
@@ -122,6 +137,7 @@ export const weaponData = {
   sonar: {
     name: "Sonar",
     ammoType: "common",
+    patternType: "multi",
     options: {
       bullets: 8,
       cooldown: 300,
@@ -132,6 +148,7 @@ export const weaponData = {
   that: {
     name: "That Shotgun",
     ammoType: "common",
+    patternType: "multi",
     options: {
       bullets: 13,
       cooldown: 500,
