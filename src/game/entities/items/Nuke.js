@@ -1,8 +1,9 @@
+import { YELLOW } from "@/game/constants/colors";
 import { Item } from "./Item";
 import { entityManager } from "@/game/systems/EntityManager";
 
 export class Nuke extends Item {
-  constructor(x, y, radius, color = "#ff0", label = "nuke") {
+  constructor(x, y, radius, color = YELLOW, label = "nuke") {
     super(x, y, radius, color, label);
   }
 
