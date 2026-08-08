@@ -167,6 +167,9 @@ These resources helped me to understand many things regarding game development i
 
 - [Observable Pattern](https://oieduardorabelo.medium.com/padr%C3%B5es-em-js-observer-pattern-bff0ecc55d01)
 - [Observable in Game App](https://dev.to/walosha/observer-pattern-in-the-context-of-a-game-app-5gck)
+- [JavaScript Factory Method Design Pattern](https://dofactory.com/javascript/design-patterns/factory-method)
+- [JavaScript Flyweight Design Pattern](https://www.dofactory.com/javascript/design-patterns/flyweight)
+- [Javascript, Flyweight Pattern](https://mustafauzun.co/blog/javascript-flyweight-pattern/)
 
 ### Other
 
@@ -175,6 +178,8 @@ These resources helped me to understand many things regarding game development i
 - [50+ JavaScript Games](https://freefrontend.com/javascript-games/)
 - [Tools, assets and tutorials (JS13K)](https://js13kgames.com/resources)
 - [Nullish coalescing assignment (??=)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)
+- [Env Variables and Modes ](https://vite.dev/guide/env-and-mode)
+- [Vanilla JavaScript Game Development Course](https://www.youtube.com/playlist?list=PLYElE_rzEw_tjnJ_5gzRw0ZM5HRn7AIS0)
 
 ## 🧑🏻‍💻 Author
 
