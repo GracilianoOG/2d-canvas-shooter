@@ -1,10 +1,10 @@
-import { PistolAmmo } from "../ammo/PistolAmmo";
+import { AmmoFactory } from "../ammo/AmmoFactory";
 import { Gun } from "./Gun";
 
 class Pistol extends Gun {
   constructor({
     name = "Pistol",
-    ammoType = new PistolAmmo(),
+    ammoType = AmmoFactory.request("common"),
     options = {},
   } = {}) {
     super({
