@@ -96,6 +96,10 @@ export class Timer {
     });
   }
 
+  timeLeft() {
+    return this.#elapsedTime / this.#waitTime;
+  }
+
   update(deltaTime) {
     if (!this.#active) {
       this.#sleep(deltaTime);
