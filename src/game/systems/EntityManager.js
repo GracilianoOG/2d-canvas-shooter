@@ -33,13 +33,16 @@ class EntityManager {
     this.#entities.sort((a, b) => b.radius - a.radius);
   }
 
-  add(entity) {
+  add(entity, group = "others") {
     try {
       if (!(entity instanceof Entity)) {
         throw new Error("Invalid entity!");
       }
 
-      this.#entities.push(entity);
+      if (!this.#entityGroups.has(group)) {
+        this.#entityGroups.set(group, []);
+      }
+      this.#entityGroups.get(group).push(entity);
     } catch (error) {
       console.error(error);
     }
