@@ -71,12 +71,8 @@ export class PlayerArsenal {
 
   draw(ctx) {
     if (this.#timer.active) {
-      const gunDelay = this.#timer.waitTime;
-      const { elapsedTime } = this.#timer;
-      const timePerc = elapsedTime / gunDelay;
       const padding = 10;
-
-      this.#player.drawArc(ctx, LIGHT_YELLOW, padding, timePerc);
+      this.#player.drawArc(ctx, LIGHT_YELLOW, padding, this.#timer.timeLeft());
     }
   }
 
