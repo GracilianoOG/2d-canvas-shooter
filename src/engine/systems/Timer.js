@@ -9,8 +9,8 @@ export class Timer {
   #sleepTimer;
   #isAsleep;
 
-  static timers = [];
-  static asleep = [];
+  static #timers = [];
+  static #asleep = [];
 
   constructor(waitTime, options, callback = null) {
     this.#options = { ...options };
@@ -26,14 +26,14 @@ export class Timer {
   }
 
   static updateAll(deltaTime) {
-    for (const t of Timer.timers) {
+    for (const t of Timer.#timers) {
       t.update(deltaTime);
     }
   }
 
   static create(waitTime, options, callback = null) {
     const timer = new Timer(waitTime, options, callback);
-    Timer.timers.push(timer);
+    Timer.#timers.push(timer);
     return timer;
   }
 
@@ -63,16 +63,16 @@ export class Timer {
       this.remove();
       this.#sleepTimer = this.#sleepTime;
       this.#isAsleep = true;
-      Timer.asleep.push(this);
+      Timer.#asleep.push(this);
     }
   }
 
   #wake() {
     if (this.#isAsleep) {
-      const timerIndex = Timer.asleep.findIndex((t) => t === this);
-      const timer = Timer.asleep.splice(timerIndex, 1)[0];
+      const timerIndex = Timer.#asleep.findIndex((t) => t === this);
+      const timer = Timer.#asleep.splice(timerIndex, 1)[0];
       this.#isAsleep = false;
-      Timer.timers.push(timer);
+      Timer.#timers.push(timer);
     }
   }
 
@@ -91,7 +91,7 @@ export class Timer {
   }
 
   remove() {
-    Timer.timers = Timer.timers.filter((timer) => {
+    Timer.#timers = Timer.#timers.filter((timer) => {
       return timer !== this;
     });
   }
