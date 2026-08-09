@@ -14,8 +14,14 @@ class EntityManager {
   }
 
   #updateEntities(delta) {
-    for (let i = this.#entities.length - 1; i >= 0; i--) {
-      this.#entities[i].update(delta);
+    for (const entry of this.#entityGroups) {
+      const group = entry[0];
+      let list = entry[1];
+      for (let i = list.length - 1; i >= 0; i--) {
+        list[i].update(delta);
+      }
+      list = list.filter((e) => !e.destroyed);
+      this.#entityGroups.set(group, list);
     }
   }
 
