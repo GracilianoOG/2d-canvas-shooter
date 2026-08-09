@@ -17,9 +17,10 @@ export class Sentry extends Entity {
     this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
     this.#cooldown = Timer.create(150, { loop: false });
-    this.#despawnTimer = Timer.create(duration, { autodestruct: true }, () =>
-      this.destroy(),
-    );
+    this.#despawnTimer = Timer.create(duration, { autodestruct: true }, () => {
+      this.#cooldown.remove();
+      this.destroy();
+    });
   }
 
   #shoot() {
