@@ -26,7 +26,7 @@ class EnemyCreator {
   #specials;
 
   constructor(config = {}) {
-    const timerConfig = { autostart: false };
+    const timerConfig = { autostart: false, loop: true };
     this.#config = { ...defaultConfig, ...config };
     const {
       spawnTime,

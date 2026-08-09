@@ -11,7 +11,6 @@ export class PlayerShield {
     this.#player = player;
     this.#timer = Timer.create(defaultStats.shieldDelay, {
       autostart: false,
-      loop: false,
     });
 
     eventManager.subscribe("shieldCollected", () => this.activate(8000));

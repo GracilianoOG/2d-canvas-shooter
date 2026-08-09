@@ -15,7 +15,7 @@ export class Gun {
   constructor({ name, ammoType, patternType, options }) {
     this.#name = name;
     this.#options = options;
-    this.#cooldown = Timer.create(options.cooldown, { loop: false });
+    this.#cooldown = Timer.create(options.cooldown);
     this.#ammoType = AmmoFactory.request(ammoType);
     this.#pattern = PatternFactory.create(patternType);
   }

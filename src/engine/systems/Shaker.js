@@ -7,7 +7,7 @@ class Shaker {
   #ctx;
 
   constructor(ctx) {
-    this.#timer = Timer.create(0, { loop: false });
+    this.#timer = Timer.create(0);
     this.#ctx = ctx;
   }
 

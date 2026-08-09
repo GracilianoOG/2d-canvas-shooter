@@ -10,7 +10,7 @@ export class Fury {
   constructor(duration = 5000) {
     this.#timer = Timer.create(
       duration,
-      { autostart: false, loop: false },
+      { autostart: false },
       this.deactivate.bind(this),
     );
     this.#isActive = false;
