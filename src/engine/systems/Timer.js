@@ -5,8 +5,12 @@ class Timer {
   #loop;
   #callback;
   #options;
+  #sleepTime;
+  #sleepTimer;
+  #isAsleep;
 
   static timers = [];
+  static asleep = [];
 
   constructor(waitTime, options, callback = null) {
     this.#options = { ...options };
@@ -15,6 +19,10 @@ class Timer {
     this.#active = options?.autostart ?? true;
     this.#loop = options?.loop ?? true;
     this.#callback = callback;
+
+    this.#sleepTime = 10_000;
+    this.#sleepTimer = this.#sleepTime;
+    this.#isAsleep = false;
   }
 
   static updateAll(deltaTime) {
@@ -49,7 +57,27 @@ class Timer {
     return this.#loop;
   }
 
+  #sleep(deltaTime) {
+    this.#sleepTimer -= deltaTime;
+    if (this.#sleepTimer <= 0) {
+      this.remove();
+      this.#sleepTimer = this.#sleepTime;
+      this.#isAsleep = true;
+      Timer.asleep.push(this);
+    }
+  }
+
+  #wake() {
+    if (this.#isAsleep) {
+      const timerIndex = Timer.asleep.findIndex((t) => t === this);
+      const timer = Timer.asleep.splice(timerIndex, 1)[0];
+      this.#isAsleep = false;
+      Timer.timers.push(timer);
+    }
+  }
+
   start() {
+    this.#wake();
     this.#active = true;
   }
 
@@ -69,7 +97,10 @@ class Timer {
   }
 
   update(deltaTime) {
-    if (!this.#active) return;
+    if (!this.#active) {
+      this.#sleep(deltaTime);
+      return;
+    }
 
     const time = Math.max(this.#elapsedTime - deltaTime, 0);
     this.#elapsedTime = time;
