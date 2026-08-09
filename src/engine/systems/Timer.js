@@ -4,7 +4,7 @@ export class Timer {
   #active;
   #loop;
   #callback;
-  #options;
+  #autoremove;
   #sleepTime;
   #sleepTimer;
   #isAsleep;
@@ -13,9 +13,9 @@ export class Timer {
   static #asleep = [];
 
   constructor(waitTime, options, callback = null) {
-    this.#options = { ...options };
     this.#waitTime = waitTime;
     this.#elapsedTime = this.waitTime;
+    this.#autoremove = options?.autodestruct ?? false;
     this.#active = options?.autostart ?? true;
     this.#loop = options?.loop ?? false;
     this.#callback = callback;
@@ -108,7 +108,7 @@ export class Timer {
     if (this.#elapsedTime <= 0) {
       if (!this.#loop) this.stop();
       if (this.#callback) this.#callback();
-      if (this.#options.autodestruct) {
+      if (this.#autoremove) {
         this.stop();
         this.remove();
         return;
