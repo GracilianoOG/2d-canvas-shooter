@@ -33,11 +33,7 @@ export class PlayerShield {
 
   draw(ctx) {
     if (!this.isActive()) return;
-
-    const { elapsedTime, waitTime } = this.#timer;
-    const delayProgress = elapsedTime / waitTime;
     const padding = 15;
-
-    this.#player.drawArc(ctx, ENERGETIC_BLUE, padding, delayProgress);
+    this.#player.drawArc(ctx, ENERGETIC_BLUE, padding, this.#timer.timeLeft());
   }
 }
