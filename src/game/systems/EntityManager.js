@@ -25,14 +25,6 @@ class EntityManager {
     }
   }
 
-  #removeDestroyed() {
-    this.#entities = this.#entities.filter((e) => !e.destroyed);
-  }
-
-  #orderEntities() {
-    this.#entities.sort((a, b) => b.radius - a.radius);
-  }
-
   add(entity, group = "others") {
     try {
       if (!(entity instanceof Entity)) {
@@ -50,8 +42,6 @@ class EntityManager {
 
   manage(delta) {
     this.#updateEntities(delta);
-    this.#removeDestroyed();
-    this.#orderEntities();
   }
 
   clear(keep) {
