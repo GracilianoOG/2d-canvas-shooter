@@ -2,9 +2,11 @@ import { Entity } from "../entities/Entity";
 
 class EntityManager {
   #entities;
+  #entityGroups;
 
   constructor() {
     this.#entities = [];
+    this.#entityGroups = new Map();
   }
 
   get entities() {
