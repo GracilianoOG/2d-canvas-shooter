@@ -32,12 +32,8 @@ export class Sentry extends Entity {
   }
 
   #drawDespawnDelay(ctx) {
-    const { waitTime: despawnDelay } = this.#despawnTimer;
-    const { elapsedTime } = this.#despawnTimer;
-    const timePerc = elapsedTime / despawnDelay;
     const padding = 3;
-
-    this.drawArc(ctx, this.color, padding, timePerc);
+    this.drawArc(ctx, this.color, padding, this.#despawnTimer.timeLeft());
   }
 
   #scanForTarget() {
