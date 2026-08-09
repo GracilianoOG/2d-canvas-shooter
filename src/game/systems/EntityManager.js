@@ -22,7 +22,7 @@ class EntityManager {
   }
 
   #orderEntities() {
-    this.#entities.sort((a, b) => a.radius - b.radius);
+    this.#entities.sort((a, b) => b.radius - a.radius);
   }
 
   add(entity) {
