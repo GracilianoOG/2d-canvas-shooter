@@ -1,4 +1,4 @@
-class Timer {
+export class Timer {
   #waitTime;
   #elapsedTime;
   #active;
@@ -125,5 +125,3 @@ class Timer {
     return Math.ceil(this.#elapsedTime);
   }
 }
-
-export { Timer };
