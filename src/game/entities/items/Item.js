@@ -51,9 +51,7 @@ class Item extends Entity {
   }
 
   #drawDespawnDelay(ctx) {
-    const { waitTime: despawnDelay } = this.#despawnTimer;
-    const { elapsedTime } = this.#despawnTimer;
-    const timePerc = elapsedTime / despawnDelay;
+    const timePerc = this.#despawnTimer.timeLeft();
     const padding = 3;
 
     this.drawArc(ctx, this.color, padding, timePerc);
