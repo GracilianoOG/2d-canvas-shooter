@@ -3,6 +3,7 @@ import { Shard } from "../entities/projectiles/Shard";
 import { entityManager } from "../systems/EntityManager";
 import { WHITE } from "../constants/colors";
 import { eventManager } from "@/engine/systems/EventManager";
+import { Layers } from "../constants/layers";
 
 export class PlayerShards {
   #shards;
@@ -28,7 +29,7 @@ export class PlayerShards {
     for (let i = 0; i < this.#maxShards; i++) {
       const shard = new Shard(this.#player, 5, 3, angle * i, col, 10, padding);
       this.#shards.push(shard);
-      entityManager.add(shard);
+      entityManager.add(shard, Layers.AMMO);
     }
   }
 
@@ -51,7 +52,7 @@ export class PlayerShards {
 
       if (shard.destroyed) {
         shard.restore();
-        entityManager.add(shard);
+        entityManager.add(shard, Layers.AMMO);
       }
     }
   }
