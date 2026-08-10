@@ -40,6 +40,10 @@ class EntityManager {
     }
   }
 
+  get(group) {
+    return this.#entityGroups.get(group);
+  }
+
   manage(delta) {
     this.#updateEntities(delta);
   }
