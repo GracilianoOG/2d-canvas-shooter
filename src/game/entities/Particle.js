@@ -8,7 +8,7 @@ export class Particle extends Projectile {
   static createParticles(x, y, size, speed, color, amount) {
     for (let i = 0; i < amount; i++) {
       const particle = new Particle(x, y, size, speed, color);
-      entityManager.add(particle);
+      entityManager.add(particle, "particles");
     }
   }
 
