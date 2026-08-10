@@ -1,39 +1,5 @@
-import { Bullet } from "../entities/projectiles/Bullet";
-import { Enemy } from "../entities/enemies/Enemy";
-import { entityManager } from "./EntityManager";
-import { Item } from "../entities/items/Item";
-import { Player } from "../entities/Player";
-
 export class CollisionManager {
-  #enemies;
-  #bullets;
-  #items;
-  #player;
-
-  #filterInstances() {
-    for (let i = 0, len = entityManager.entities.length; i < len; i++) {
-      const entity = entityManager.entities[i];
-
-      if (entity instanceof Enemy) {
-        this.#enemies.push(entity);
-      } else if (entity instanceof Bullet) {
-        this.#bullets.push(entity);
-      } else if (entity instanceof Item) {
-        this.#items.push(entity);
-      }
-    }
-  }
-
-  #initCollisionBatches() {
-    this.#enemies = [];
-    this.#bullets = [];
-    this.#items = [];
-  }
-
   check(entities) {
-    this.#initCollisionBatches();
-    this.#filterInstances();
-
     const player = entities.get("player")[0];
 
     for (const item of entities.get("items")) {
