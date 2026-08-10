@@ -7,4 +7,4 @@ export const Layers = {
   PARTICLES: "particles",
 };
 
-export const LayerList = Object.values(Layers);
+export const layerList = Object.values(Layers);
