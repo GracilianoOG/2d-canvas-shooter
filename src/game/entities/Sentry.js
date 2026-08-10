@@ -3,6 +3,7 @@ import { entityManager } from "../systems/EntityManager";
 import { Entity } from "./Entity";
 import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
+import { Layers } from "../constants/layers";
 
 export class Sentry extends Entity {
   #target;
@@ -37,9 +38,7 @@ export class Sentry extends Entity {
   }
 
   #scanForTarget() {
-    const enemies = entityManager.entities.filter((ent) => ent?.drop);
-
-    for (const enemy of enemies) {
+    for (const enemy of entityManager.get(Layers.ENEMIES)) {
       if (this.distanceTo({ x: enemy.x, y: enemy.y }) <= this.#range) {
         this.#target = enemy;
         return;
