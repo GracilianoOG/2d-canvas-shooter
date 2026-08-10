@@ -32,6 +32,8 @@ export class Renderer {
 
   render(entities) {
     this.renderCanvas();
-    this.renderEntities(entities);
+    this.renderEntities(entities.get("others"));
+    this.renderEntities(entities.get("player"));
+    this.renderEntities(entities.get("enemies"));
   }
 }
