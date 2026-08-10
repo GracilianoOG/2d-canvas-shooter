@@ -165,7 +165,7 @@ export class Game {
 
   update(delta) {
     entityManager.manage(delta * 0.001);
-    this.#collision.check();
+    this.#collision.check(entityManager);
     Timer.updateAll(delta);
   }
 

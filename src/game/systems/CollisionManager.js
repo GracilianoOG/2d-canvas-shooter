@@ -30,23 +30,19 @@ export class CollisionManager {
     this.#items = [];
   }
 
-  check() {
+  check(entities) {
     this.#initCollisionBatches();
     this.#filterInstances();
 
-    if (!this.#player) {
-      this.#player = entityManager.entities.find(
-        (ent) => ent instanceof Player,
-      );
+    const player = entities.get("player")[0];
+
+    for (const item of entities.get("items")) {
+      player.collidedWith(item);
     }
 
-    for (const item of this.#items) {
-      this.#player.collidedWith(item);
-    }
-
-    for (const enemy of this.#enemies) {
-      this.#player.collidedWith(enemy);
-      for (const bullet of this.#bullets) {
+    for (const enemy of entities.get("enemies")) {
+      player.collidedWith(enemy);
+      for (const bullet of entities.get("ammo")) {
         if (bullet.collidedWith(enemy)) return;
       }
     }
