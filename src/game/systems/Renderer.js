@@ -1,6 +1,6 @@
 import { config } from "../config";
 import { TRANSPARENT_BLACK } from "../constants/colors";
-import { LayerList } from "../constants/layers";
+import { layerList } from "../constants/layers";
 
 export class Renderer {
   #canvas;
@@ -33,7 +33,7 @@ export class Renderer {
 
   render(entities) {
     this.renderCanvas();
-    for (const layer of LayerList) {
+    for (const layer of layerList) {
       this.renderEntities(entities.get(layer));
     }
   }
