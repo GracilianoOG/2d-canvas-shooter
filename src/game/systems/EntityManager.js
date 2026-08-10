@@ -41,7 +41,7 @@ class EntityManager {
   }
 
   get(group) {
-    return this.#entityGroups.get(group);
+    return this.#entityGroups.get(group) ?? [];
   }
 
   manage(delta) {
