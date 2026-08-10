@@ -43,7 +43,9 @@ class EntityManager {
     this.#updateEntities(delta);
   }
 
-  clear(keep) {}
+  clear() {
+    this.#entityGroups.clear();
+  }
 }
 
 export const entityManager = new EntityManager();
