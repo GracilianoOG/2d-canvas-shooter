@@ -9,6 +9,9 @@ export class AmmoCreator {
   }
 
   create(x, y, angle) {
-    entityManager.add(ProjectileFactory.create(this.#type, x, y, angle));
+    entityManager.add(
+      ProjectileFactory.create(this.#type, x, y, angle),
+      "ammo",
+    );
   }
 }
