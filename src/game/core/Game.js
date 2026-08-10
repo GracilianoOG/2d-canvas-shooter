@@ -171,7 +171,7 @@ export class Game {
 
   render() {
     this.#shaker.shake();
-    this.#renderer.render(entityManager.entities);
+    this.#renderer.render(entityManager);
     this.#shaker.restore();
   }
 
