@@ -22,6 +22,7 @@ import { ScreenManager } from "../systems/ScreenManager";
 import { AudioSystem } from "@/engine/systems/AudioSystem";
 import { States } from "@/engine/constants/gameStates";
 import { Renderer } from "../systems/Renderer";
+import { Layers } from "../constants/layers";
 
 export class Game {
   #engine;
@@ -134,7 +135,7 @@ export class Game {
     });
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
-    entityManager.add(player, "player");
+    entityManager.add(player, Layers.PLAYER);
 
     await this.loadAssets();
 

@@ -12,6 +12,7 @@ import { Boomer } from "../entities/enemies/Boomer.js";
 import { Cloaker } from "../entities/enemies/Cloaker.js";
 import { Crazy } from "../entities/enemies/Crazy.js";
 import { Void } from "../entities/enemies/Void.js";
+import { Layers } from "../constants/layers.js";
 
 class EnemyCreator {
   #config;
@@ -152,7 +153,7 @@ class EnemyCreator {
     const radius = enemyConfig[0];
     const position = this.#randomizePosition(radius);
     const enemy = new EnemyClass(...position, ...enemyConfig);
-    entityManager.add(enemy, "enemies");
+    entityManager.add(enemy, Layers.ENEMIES);
   }
 
   start() {

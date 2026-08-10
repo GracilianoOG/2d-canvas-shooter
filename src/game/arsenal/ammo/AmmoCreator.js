@@ -1,3 +1,4 @@
+import { Layers } from "@/game/constants/layers";
 import { ProjectileFactory } from "@/game/entities/projectiles/ProjectileFactory";
 import { entityManager } from "@/game/systems/EntityManager";
 
@@ -11,7 +12,7 @@ export class AmmoCreator {
   create(x, y, angle) {
     entityManager.add(
       ProjectileFactory.create(this.#type, x, y, angle),
-      "ammo",
+      Layers.AMMO,
     );
   }
 }

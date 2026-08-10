@@ -1,3 +1,4 @@
+import { Layers } from "../constants/layers";
 import { entityManager } from "../systems/EntityManager";
 import { Projectile } from "./Projectile";
 
@@ -8,7 +9,7 @@ export class Particle extends Projectile {
   static createParticles(x, y, size, speed, color, amount) {
     for (let i = 0; i < amount; i++) {
       const particle = new Particle(x, y, size, speed, color);
-      entityManager.add(particle, "particles");
+      entityManager.add(particle, Layers.PARTICLES);
     }
   }
 
