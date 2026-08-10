@@ -1,6 +1,7 @@
 import { randomInt } from "@/engine/utils/math";
 import { Enemy } from "./Enemy";
 import { entityManager } from "@/game/systems/EntityManager";
+import { Layers } from "@/game/constants/layers";
 
 class Boomer extends Enemy {
   #baseSize;
@@ -32,7 +33,7 @@ class Boomer extends Enemy {
         this.score,
         this.#target,
       );
-      entityManager.add(minion);
+      entityManager.add(minion, Layers.ENEMIES);
     }
     this.drop(0.05);
   }
