@@ -1,3 +1,4 @@
+import { Layers } from "../constants/layers";
 import { Entity } from "../entities/Entity";
 
 class EntityManager {
@@ -25,7 +26,7 @@ class EntityManager {
     }
   }
 
-  add(entity, group = "others") {
+  add(entity, group = Layers.OTHERS) {
     try {
       if (!(entity instanceof Entity)) {
         throw new Error("Invalid entity!");
