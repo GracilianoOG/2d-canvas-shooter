@@ -2,16 +2,10 @@ import { Layers } from "../constants/layers";
 import { Entity } from "../entities/Entity";
 
 class EntityManager {
-  #entities;
   #entityGroups;
 
   constructor() {
-    this.#entities = [];
     this.#entityGroups = new Map();
-  }
-
-  get entities() {
-    return this.#entities;
   }
 
   #updateEntities(delta) {
@@ -49,9 +43,7 @@ class EntityManager {
     this.#updateEntities(delta);
   }
 
-  clear(keep) {
-    this.#entities = [...keep];
-  }
+  clear(keep) {}
 }
 
 export const entityManager = new EntityManager();
