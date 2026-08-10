@@ -134,7 +134,7 @@ export class Game {
     });
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
-    entityManager.add(player);
+    entityManager.add(player, "player");
 
     await this.loadAssets();
 
