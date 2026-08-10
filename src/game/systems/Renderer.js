@@ -33,7 +33,10 @@ export class Renderer {
   render(entities) {
     this.renderCanvas();
     this.renderEntities(entities.get("others"));
+    this.renderEntities(entities.get("items"));
+    this.renderEntities(entities.get("ammo"));
     this.renderEntities(entities.get("player"));
     this.renderEntities(entities.get("enemies"));
+    this.renderEntities(entities.get("particles"));
   }
 }
