@@ -190,7 +190,8 @@ export class Game {
     const { width, height } = config;
     this.#canvas.ctx.clearRect(0, 0, width, height);
     this.#enemyCreator.reset();
-    entityManager.clear([this.#player]);
+    entityManager.clear();
+    entityManager.add(this.#player, Layers.PLAYER);
     this.#score.reset();
     this.startLoop();
     eventManager.emit("restart");
