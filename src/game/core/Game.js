@@ -62,9 +62,10 @@ export class Game {
     this.#listenToWindowChange();
     this.#listenToResize();
 
-    eventManager.on("drop", (x, y, item) =>
-      entityManager.add(x, y, item, Layers.ITEMS),
-    );
+    eventManager.on("drop", (x, y, item) => {
+      entityManager.add(x, y, item, Layers.ITEMS);
+      item.getInCanvas(config);
+    });
     eventManager.on("playerHit", ({ lives }) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
