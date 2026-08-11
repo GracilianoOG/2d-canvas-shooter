@@ -14,13 +14,15 @@ export class Enemy extends Projectile {
   #baseColor;
   #score;
   #options;
+  #dropChance;
 
-  constructor({ radius, speed, color, hp, score, options }) {
+  constructor({ radius, speed, color, hp, score, options, dropChance }) {
     super(radius, speed, color);
     this.#health = hp;
     this.#maxSpeed = speed;
     this.#baseColor = color;
     this.#score = score;
+    this.#dropChance = dropChance;
     this.#options = { ...defaultStats, ...options };
   }
 
@@ -117,7 +119,7 @@ export class Enemy extends Projectile {
   }
 
   onDestroy() {
-    this.drop(0.1);
+    this.drop(this.#dropChance);
   }
 
   update(delta) {
