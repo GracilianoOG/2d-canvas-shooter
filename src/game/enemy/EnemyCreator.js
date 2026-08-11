@@ -151,8 +151,7 @@ class EnemyCreator {
       : this.#specials[randomInt(this.#specials.length)];
 
     const enemyConfig = this.#randomizeEnemy();
-    const radius = enemyConfig[0];
-    const position = this.#randomizePosition(radius);
+    const position = this.#randomizePosition(enemyConfig.radius);
     const enemy = new EnemyClass(...enemyConfig).target(this.#target);
     entityManager.add(...position, enemy, Layers.ENEMIES);
   }
