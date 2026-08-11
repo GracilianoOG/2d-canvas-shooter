@@ -6,10 +6,6 @@ class Void extends Enemy {
     this.grow(this.radius * 0.1);
   }
 
-  onDestroy() {
-    this.drop(0.2);
-  }
-
   draw(ctx) {
     super.draw(ctx);
     ctx.save();
