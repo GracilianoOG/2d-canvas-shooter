@@ -19,10 +19,6 @@ export const ammoData = {
     speed: 500,
     color: Colors.ARMY_GREEN,
     damage: Damage.BASE_DMG,
-    fragments: {
-      amount: 10,
-      type: "common",
-    },
   },
   heavy: {
     radius: 5,
@@ -35,30 +31,18 @@ export const ammoData = {
     speed: 500,
     color: Colors.ARMY_GREEN,
     damage: Damage.HEAVY_DMG,
-    fragments: {
-      amount: 16,
-      type: "common",
-    },
   },
   rocket: {
     radius: 12,
     speed: 400,
     color: Colors.ARMY_GREEN,
     damage: Damage.HEAVY_DMG,
-    fragments: {
-      amount: 20,
-      type: "common",
-    },
   },
   nuke: {
     radius: 20,
     speed: 350,
     color: Colors.ARMY_GREEN,
     damage: Damage.CANNON_DMG,
-    fragments: {
-      amount: 10,
-      type: "cannon",
-    },
   },
   pierce: {
     radius: 4,
@@ -71,5 +55,24 @@ export const ammoData = {
     speed: 750,
     color: Colors.VIOLET,
     damage: Damage.RICOCHET_DMG,
+  },
+};
+
+export const fragmentData = {
+  grenade: {
+    amount: 10,
+    type: "common",
+  },
+  mine: {
+    amount: 16,
+    type: "common",
+  },
+  rocket: {
+    amount: 20,
+    type: "common",
+  },
+  nuke: {
+    amount: 10,
+    type: "cannon",
   },
 };
