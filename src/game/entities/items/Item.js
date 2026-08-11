@@ -1,7 +1,6 @@
 import { Entity } from "../Entity";
 import { Timer } from "@/engine/systems/Timer";
 import { WHITE } from "@/game/constants/colors";
-import { config } from "@/game/config";
 import { eventManager } from "@/engine/systems/EventManager";
 
 class Item extends Entity {
@@ -14,7 +13,6 @@ class Item extends Entity {
     this.#despawnTimer = Timer.create(despawnTime, { autodestruct: true }, () =>
       this.destroy(),
     );
-    this.getInCanvas(config);
   }
 
   check() {}
