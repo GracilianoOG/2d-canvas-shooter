@@ -7,6 +7,7 @@ export const enemyData = {
     color: Colors.RED,
     hp: 20,
     options: null,
+    dropChance: 0.05,
   },
   pinky: {
     radius: 14,
@@ -14,6 +15,7 @@ export const enemyData = {
     color: Colors.PINK,
     hp: 10,
     options: null,
+    dropChance: 0.02,
   },
   bluey: {
     radius: 25,
@@ -21,6 +23,7 @@ export const enemyData = {
     color: Colors.LIGHT_BLUE,
     hp: 30,
     options: { aggressive: false },
+    dropChance: 0.08,
   },
   purply: {
     radius: 20,
@@ -28,6 +31,7 @@ export const enemyData = {
     color: Colors.LIGHT_PURPLE,
     hp: 30,
     options: null,
+    dropChance: 0.1,
   },
   greeny: {
     radius: 30,
@@ -39,6 +43,7 @@ export const enemyData = {
       aggressive: false,
       bloodAmount: 12,
     },
+    dropChance: 0.15,
   },
   blacky: {
     radius: 20,
@@ -46,6 +51,7 @@ export const enemyData = {
     color: Colors.ALMOST_BLACK,
     hp: 20,
     options: { aggressive: false },
+    dropChance: 0.1,
   },
   orangey: {
     radius: 10,
@@ -53,6 +59,7 @@ export const enemyData = {
     color: Colors.ORANGE,
     hp: 10,
     options: null,
+    dropChance: 0.1,
   },
   lightReddy: {
     radius: 40,
@@ -65,6 +72,7 @@ export const enemyData = {
       shrinkable: false,
       bloodAmount: 16,
     },
+    dropChance: 0.15,
   },
 };
 
