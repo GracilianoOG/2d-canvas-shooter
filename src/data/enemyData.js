@@ -62,10 +62,10 @@ export const enemyData = {
     dropChance: 0.1,
   },
   lightReddy: {
-    radius: 40,
-    speed: 62,
+    radius: 35,
+    speed: 90,
     color: Colors.LIGHT_RED,
-    hp: 80,
+    hp: 50,
     options: {
       knockback: false,
       aggressive: false,
