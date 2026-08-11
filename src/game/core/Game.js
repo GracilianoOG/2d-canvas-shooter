@@ -193,7 +193,7 @@ export class Game {
     this.#canvas.ctx.clearRect(0, 0, width, height);
     this.#enemyCreator.reset();
     entityManager.clear();
-    entityManager.add(this.#player, Layers.PLAYER);
+    entityManager.add(width / 2, height / 2, this.#player, Layers.PLAYER);
     this.#score.reset();
     this.startLoop();
     eventManager.emit("restart");
