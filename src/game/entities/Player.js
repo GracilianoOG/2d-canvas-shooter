@@ -72,7 +72,7 @@ export class Player extends Projectile {
     this.#health.damage();
     eventManager.emit("playerHit", { lives: this.#health.lives });
     const particles = !this.isDead ? 8 : 16;
-    Particle.createParticles(this.x, this.y, 8, 313, this.color, particles);
+    Particle.create(this.x, this.y, 8, 313, this.color, particles);
 
     if (this.isDead) {
       this.die();

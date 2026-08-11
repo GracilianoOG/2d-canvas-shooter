@@ -76,7 +76,7 @@ export class Enemy extends Projectile {
   }
 
   #bleed(amount) {
-    Particle.createParticles(this.x, this.y, 8, 313, this.baseColor, amount);
+    Particle.create(this.x, this.y, 8, 313, this.baseColor, amount);
   }
 
   #die() {
