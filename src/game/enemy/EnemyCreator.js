@@ -86,29 +86,29 @@ class EnemyCreator {
 
   #hardenEnemy(enemyConfig) {
     const length = enemyModifiers.length;
-    const radius = enemyConfig[0];
-    const speed = enemyConfig[1];
+    const radius = enemyConfig.radius;
+    const speed = enemyConfig.speed;
 
     switch (enemyModifiers[randomInt(length)]) {
       case EnemyMods.FAST:
-        enemyConfig[0] = Math.max(Math.ceil(radius * 0.8), 10);
-        enemyConfig[1] += 1;
-        enemyConfig[2] = Colors.VERY_LIGHT_BLUE;
+        enemyConfig.radius = Math.max(Math.ceil(radius * 0.8), 10);
+        enemyConfig.speed += 1;
+        enemyConfig.color = Colors.VERY_LIGHT_BLUE;
         break;
       case EnemyMods.STRONG:
-        enemyConfig[0] = Math.ceil(radius * 1.25);
-        enemyConfig[2] = Colors.VERY_LIGHT_PINK;
-        enemyConfig[3] += 20;
+        enemyConfig.radius = Math.ceil(radius * 1.25);
+        enemyConfig.color = Colors.VERY_LIGHT_PINK;
+        enemyConfig.hp += 20;
         break;
       case EnemyMods.SLOW_STRONGER:
-        enemyConfig[0] = Math.ceil(radius * 1.5);
-        enemyConfig[1] = Math.max(speed - 1, 1);
-        enemyConfig[2] = Colors.GOLDEN;
-        enemyConfig[3] += 40;
+        enemyConfig.radius = Math.ceil(radius * 1.5);
+        enemyConfig.speed = Math.max(speed - 1, 1);
+        enemyConfig.color = Colors.GOLDEN;
+        enemyConfig.hp += 40;
         break;
     }
 
-    enemyConfig[4] *= 2;
+    enemyConfig.score *= 2;
   }
 
   #hardenSpawn() {
