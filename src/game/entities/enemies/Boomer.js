@@ -9,12 +9,12 @@ class Boomer extends Enemy {
   #baseHp;
   #options;
 
-  constructor(radius, speed, color, health, score, options) {
-    super(radius, speed, color, health, score, options);
-    this.#baseSize = radius;
-    this.#baseSpeed = speed;
-    this.#baseHp = health;
-    this.#options = { minions: { min: 2, max: 5 }, ...options };
+  constructor(enemyData) {
+    super(enemyData);
+    this.#baseSize = enemyData.radius;
+    this.#baseSpeed = enemyData.speed;
+    this.#baseHp = enemyData.hp;
+    this.#options = { minions: { min: 2, max: 5 }, ...enemyData.options };
   }
 
   onDestroy() {
