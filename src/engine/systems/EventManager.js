@@ -9,6 +9,10 @@ class EventManager {
     (this.#listeners[event] ??= []).push(listener);
   }
 
+  on(event, listener) {
+    this.subscribe(event, listener);
+  }
+
   unsubscribe(event, listener) {
     if (!this.#listeners[event]) return;
     this.#listeners[event] = this.#listeners[event]?.filter(
