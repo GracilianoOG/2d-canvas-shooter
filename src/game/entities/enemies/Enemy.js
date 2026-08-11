@@ -1,11 +1,9 @@
-import { entityManager } from "../../systems/EntityManager";
 import { dropRandomItem } from "../../items/itemDrop";
 import { Particle } from "../Particle";
 import { Projectile } from "../Projectile";
 import { eventManager } from "../../../engine/systems/EventManager";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
-import { Layers } from "@/game/constants/layers";
 
 export class Enemy extends Projectile {
   #target;
@@ -115,8 +113,9 @@ export class Enemy extends Projectile {
 
   drop(chance) {
     const item = dropRandomItem(chance);
-    if (!item) return;
-    entityManager.add(this.x, this.y, item, Layers.ITEMS);
+    if (item) {
+      eventManager.emit("drop", this.x, this.y, item);
+    }
   }
 
   update(delta) {
