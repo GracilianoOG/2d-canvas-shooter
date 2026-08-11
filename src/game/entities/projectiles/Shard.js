@@ -4,8 +4,8 @@ export class Shard extends Bullet {
   #owner;
   #padding;
 
-  constructor(owner, radius, speed, angle, color, damage, padding) {
-    super(radius, speed, angle, color, damage);
+  constructor(owner, angle, radius, speed, color, damage, padding) {
+    super(angle, radius, speed, color, damage);
     this.#owner = owner;
     this.#padding = padding;
   }

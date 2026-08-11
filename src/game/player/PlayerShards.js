@@ -27,7 +27,7 @@ export class PlayerShards {
     const col = WHITE;
 
     for (let i = 0; i < this.#maxShards; i++) {
-      const shard = new Shard(this.#player, 5, 3, angle * i, col, 10, padding);
+      const shard = new Shard(this.#player, angle * i, 5, 3, col, 10, padding);
       this.#shards.push(shard);
       entityManager.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
     }

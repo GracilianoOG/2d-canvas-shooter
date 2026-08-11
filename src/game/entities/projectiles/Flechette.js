@@ -5,8 +5,8 @@ import { Bullet } from "./Bullet";
 export class Flechette extends Bullet {
   #bounces;
 
-  constructor(radius, speed, angle, color, damage, bounces = 10) {
-    super(radius, speed, angle, color, damage);
+  constructor(angle, radius, speed, color, damage, bounces = 10) {
+    super(angle, radius, speed, color, damage);
     this.#bounces = bounces;
   }
 

@@ -15,26 +15,26 @@ export class ProjectileFactory {
       case "common":
       case "cannon":
       case "heavy":
-        return new Bullet(radius, speed, angle, color, damage);
+        return new Bullet(angle, radius, speed, color, damage);
       case "grenade":
       case "rocket":
       case "nuke":
-        return new Explosive(radius, speed, angle, color, damage, {
+        return new Explosive(angle, radius, speed, color, damage, {
           amount: fragments.amount,
           creator: AmmoFactory.request(fragments.type),
         });
       case "mine":
-        return new Mine(radius, speed, angle, color, damage, {
+        return new Mine(angle, radius, speed, color, damage, {
           amount: fragments.amount,
           creator: AmmoFactory.request(fragments.type),
         });
       case "bouncy":
-        return new Flechette(radius, speed, angle, color, damage);
+        return new Flechette(angle, radius, speed, color, damage);
       case "pierce":
-        return new Piercing(radius, speed, angle, color, damage);
+        return new Piercing(angle, radius, speed, color, damage);
       default:
         console.error("Unknown projectile type: " + type);
-        return new Bullet(radius, speed, angle, color, damage);
+        return new Bullet(angle, radius, speed, color, damage);
     }
   }
 }
