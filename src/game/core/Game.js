@@ -62,6 +62,9 @@ export class Game {
     this.#listenToWindowChange();
     this.#listenToResize();
 
+    eventManager.subscribe("drop", (x, y, item) =>
+      entityManager.add(x, y, item, Layers.ITEMS),
+    );
     eventManager.subscribe("playerHit", ({ lives }) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
