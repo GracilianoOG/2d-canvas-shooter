@@ -17,17 +17,13 @@ class Item extends Entity {
 
   check() {}
 
-  onCollect() {
-    eventManager.emit(
-      "indicate",
-      { x: this.x, y: this.y },
-      this.#label.toUpperCase(),
-      this.color,
-    );
-  }
+  onCollect() {}
 
-  collect() {
+  collect(nofity = true) {
     this.#despawnTimer.remove();
+    if (nofity) {
+      this.#notify();
+    }
     this.onCollect();
     this.destroy();
   }
@@ -36,6 +32,15 @@ class Item extends Entity {
     super.draw(ctx);
     this.#drawDespawnDelay(ctx);
     this.#drawLabel(ctx);
+  }
+
+  #notify() {
+    eventManager.emit(
+      "indicate",
+      { x: this.x, y: this.y },
+      this.#label.toUpperCase(),
+      this.color,
+    );
   }
 
   #drawLabel(ctx) {
