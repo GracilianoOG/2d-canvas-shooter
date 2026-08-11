@@ -20,18 +20,20 @@ class Boomer extends Enemy {
   onDestroy() {
     const { min, max } = this.#options.minions;
     const amount = randomInt(max + 1, min);
+    const x = this.x + randomInt(this.#baseSize, -this.#baseSize);
+    const y = this.y + randomInt(this.#baseSize, -this.#baseSize);
+
     for (let i = 0; i < amount; i++) {
-      const minion = new Enemy(
-        this.x + randomInt(this.#baseSize, -this.#baseSize),
-        this.y + randomInt(this.#baseSize, -this.#baseSize),
-        Math.max(this.#baseSize / 2, 10),
-        Math.max(Math.floor(this.#baseSpeed / 2), 5),
-        this.baseColor,
-        Math.max(this.#baseHp / 2, 10),
-        this.score,
-      ).target(this.target);
-      entityManager.add(this.x, this.y, minion, Layers.ENEMIES);
+      const minion = new Enemy({
+        radius: Math.max(this.#baseSize / 2, 10),
+        speed: Math.max(Math.floor(this.#baseSpeed / 2), 5),
+        color: this.baseColor,
+        hp: Math.max(this.#baseHp / 2, 10),
+        score: this.score,
+      }).target(this.currentTarget());
+      entityManager.add(x, y, minion, Layers.ENEMIES);
     }
+
     this.drop(0.05);
   }
 
