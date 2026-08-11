@@ -34,8 +34,6 @@ class Boomer extends Enemy {
       const minion = new Enemy(preset).target(this.currentTarget());
       entityManager.add(x, y, minion, Layers.ENEMIES);
     }
-
-    this.drop(0.05);
   }
 
   draw(ctx) {
