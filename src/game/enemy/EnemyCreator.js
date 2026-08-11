@@ -74,7 +74,6 @@ class EnemyCreator {
   #randomizeEnemy() {
     const randomLevel = randomInt(this.#spawnLevel);
     const enemyConfig = [...enemyTypes[randomLevel]];
-    enemyConfig.splice(enemyConfig.length - 1, 0, this.#target);
 
     if (this.#modChance > randomInt(100)) {
       this.#hardenEnemy(enemyConfig);
@@ -152,7 +151,7 @@ class EnemyCreator {
     const enemyConfig = this.#randomizeEnemy();
     const radius = enemyConfig[0];
     const position = this.#randomizePosition(radius);
-    const enemy = new EnemyClass(...enemyConfig);
+    const enemy = new EnemyClass(...enemyConfig).target(this.#target);
     entityManager.add(...position, enemy, Layers.ENEMIES);
   }
 
