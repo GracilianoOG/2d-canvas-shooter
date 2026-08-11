@@ -126,7 +126,7 @@ class EnemyCreator {
         break;
       case DiffMods.NEW_ENEMY:
         this.#spawnLevel++;
-        if (enemyTypes.length === this.#spawnLevel) {
+        if (enemyIds.length === this.#spawnLevel) {
           this.#removeSpawnMod(DiffMods.NEW_ENEMY);
         }
         break;
