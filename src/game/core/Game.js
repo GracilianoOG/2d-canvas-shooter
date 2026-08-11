@@ -23,6 +23,7 @@ import { AudioSystem } from "@/engine/systems/AudioSystem";
 import { States } from "@/engine/constants/gameStates";
 import { Renderer } from "../systems/Renderer";
 import { Layers } from "../constants/layers";
+import { playerData } from "@/data/playerData";
 
 export class Game {
   #engine;
@@ -38,7 +39,7 @@ export class Game {
   #renderer;
 
   constructor({ width, height, margin }) {
-    this.#player = new Player(15, 375, WHITE);
+    this.#player = new Player(playerData);
     this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
