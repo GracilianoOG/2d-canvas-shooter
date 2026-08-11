@@ -62,17 +62,17 @@ export class Game {
     this.#listenToWindowChange();
     this.#listenToResize();
 
-    eventManager.subscribe("drop", (x, y, item) =>
+    eventManager.on("drop", (x, y, item) =>
       entityManager.add(x, y, item, Layers.ITEMS),
     );
-    eventManager.subscribe("playerHit", ({ lives }) => {
+    eventManager.on("playerHit", ({ lives }) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
       if (!lives) this.#onPlayerDeath();
     });
-    eventManager.subscribe("enemyDeath", () => this.shakeScreen(5, 300));
-    eventManager.subscribe("audio", (name) => this.#audio.play(name));
-    eventManager.subscribe("indicate", (pos, txt, col) => {
+    eventManager.on("enemyDeath", () => this.shakeScreen(5, 300));
+    eventManager.on("audio", (name) => this.#audio.play(name));
+    eventManager.on("indicate", (pos, txt, col) => {
       const { x: fX, y: fY } = this.#canvas.factors;
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
     });

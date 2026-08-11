@@ -5,19 +5,16 @@ export class FuryMeter extends Bar {
   constructor(args) {
     super(args);
 
-    eventManager.subscribe("restart", () => (this.value = 0));
-    eventManager.subscribe("fillFuryMeter", ({ amount }) => this.fill(amount));
-    eventManager.subscribe("checkFuryMeterToFill", ({ collect, amount }) => {
+    eventManager.on("restart", () => (this.value = 0));
+    eventManager.on("fillFuryMeter", ({ amount }) => this.fill(amount));
+    eventManager.on("checkFuryMeterToFill", ({ collect, amount }) => {
       if (!this.isFull()) {
         this.fill(amount);
         collect();
       }
     });
-    eventManager.subscribe(
-      "shouldActivateFury",
-      this.#onFuryActivation.bind(this),
-    );
-    eventManager.subscribe("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
+    eventManager.on("shouldActivateFury", this.#onFuryActivation.bind(this));
+    eventManager.on("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
   }
 
   #onEmptyFuryMeter({ timePerc }) {

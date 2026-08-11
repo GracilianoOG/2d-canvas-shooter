@@ -22,8 +22,8 @@ export class PlayerArsenal {
       this.#equipDefault(),
     );
 
-    eventManager.subscribe("playerDeath", this.#onPlayerDeath.bind(this));
-    eventManager.subscribe("gunPickup", this.switchWeapon.bind(this));
+    eventManager.on("playerDeath", this.#onPlayerDeath.bind(this));
+    eventManager.on("gunPickup", this.switchWeapon.bind(this));
   }
 
   get equipped() {

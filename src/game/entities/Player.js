@@ -34,22 +34,22 @@ export class Player extends Projectile {
     this.#health = new PlayerHealth(this, defaultStats.lives);
     this.#fury = new Fury();
 
-    eventManager.subscribe("activatedFury", () => {
+    eventManager.on("activatedFury", () => {
       this.color = Colors.RED;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
       this.speed *= upgrades.speed;
     });
-    eventManager.subscribe("deactivateFury", () => {
+    eventManager.on("deactivateFury", () => {
       this.color = Colors.WHITE;
       this.#weapon.cooldown.waitTime += upgrades.cooldown;
       this.speed /= upgrades.speed;
     });
-    eventManager.subscribe("gunChange", ({ prev }) => {
+    eventManager.on("gunChange", ({ prev }) => {
       if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
     });
-    eventManager.subscribe("restart", () =>
+    eventManager.on("restart", () =>
       this.revive(config.width / 2, config.height / 2),
     );
   }

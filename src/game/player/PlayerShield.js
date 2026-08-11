@@ -13,8 +13,8 @@ export class PlayerShield {
       autostart: false,
     });
 
-    eventManager.subscribe("shieldCollected", () => this.activate(8000));
-    eventManager.subscribe("playerRevival", this.reset.bind(this));
+    eventManager.on("shieldCollected", () => this.activate(8000));
+    eventManager.on("playerRevival", this.reset.bind(this));
   }
 
   activate(delay) {

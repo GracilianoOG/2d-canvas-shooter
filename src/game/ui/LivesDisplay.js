@@ -24,9 +24,9 @@ class LivesDisplay {
 
     this.#displayContent = displayContent;
 
-    eventManager.subscribe("playerRevival", this.#onPlayerRevival.bind(this));
-    eventManager.subscribe("playerHit", this.#onPlayerHit.bind(this));
-    eventManager.subscribe("playerHealed", this.#onPlayerHeal.bind(this));
+    eventManager.on("playerRevival", this.#onPlayerRevival.bind(this));
+    eventManager.on("playerHit", this.#onPlayerHit.bind(this));
+    eventManager.on("playerHealed", this.#onPlayerHeal.bind(this));
   }
 
   showCurrentLives(lives) {

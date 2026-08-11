@@ -15,8 +15,8 @@ export class PlayerShards {
     this.#player = player;
     this.#maxShards = maxShards;
 
-    eventManager.subscribe("shardsCollected", this.#restoreShards.bind(this));
-    eventManager.subscribe("playerDeath", () =>
+    eventManager.on("shardsCollected", this.#restoreShards.bind(this));
+    eventManager.on("playerDeath", () =>
       this.#shards.forEach((shard) => shard.destroy()),
     );
   }

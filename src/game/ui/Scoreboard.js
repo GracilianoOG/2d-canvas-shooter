@@ -13,7 +13,7 @@ export class Scoreboard {
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
     this.#showScore(0);
-    eventManager.subscribe("setScore", ({ score }) => this.#showScore(score));
+    eventManager.on("setScore", ({ score }) => this.#showScore(score));
   }
 
   #showScore(score) {
