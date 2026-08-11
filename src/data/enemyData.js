@@ -1,3 +1,5 @@
+import * as Colors from "@/game/constants/colors";
+
 export const enemyData = {
   reddy: {
     radius: 18,
