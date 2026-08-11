@@ -1,6 +1,5 @@
 import { Timer } from "../../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
-import { enemyTypes } from "./enemyTypes.js";
 import * as DiffMods from "../constants/modifierTypes.js";
 import * as Colors from "../constants/colors.js";
 import * as EnemyMods from "../constants/enemyModTypes.js";
