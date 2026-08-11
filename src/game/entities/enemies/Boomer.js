@@ -22,15 +22,16 @@ class Boomer extends Enemy {
     const amount = randomInt(max + 1, min);
     const x = this.x + randomInt(this.#baseSize, -this.#baseSize);
     const y = this.y + randomInt(this.#baseSize, -this.#baseSize);
+    const preset = {
+      radius: Math.max(this.#baseSize / 2, 10),
+      speed: Math.max(Math.floor(this.#baseSpeed / 2), 5),
+      color: this.baseColor,
+      hp: Math.max(this.#baseHp / 2, 10),
+      score: this.score,
+    };
 
     for (let i = 0; i < amount; i++) {
-      const minion = new Enemy({
-        radius: Math.max(this.#baseSize / 2, 10),
-        speed: Math.max(Math.floor(this.#baseSpeed / 2), 5),
-        color: this.baseColor,
-        hp: Math.max(this.#baseHp / 2, 10),
-        score: this.score,
-      }).target(this.currentTarget());
+      const minion = new Enemy(preset).target(this.currentTarget());
       entityManager.add(x, y, minion, Layers.ENEMIES);
     }
 
