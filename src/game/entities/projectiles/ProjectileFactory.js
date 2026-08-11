@@ -1,4 +1,4 @@
-import { ammoData } from "@/data/ammoData";
+import { ammoData, fragmentData } from "@/data/ammoData";
 import { Bullet } from "./Bullet";
 import { Explosive } from "./Explosive";
 import { Flechette } from "./Flechette";
@@ -8,7 +8,7 @@ import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
 export class ProjectileFactory {
   static create(type, angle) {
-    const { radius, speed, color, damage, fragments } =
+    const { radius, speed, color, damage } =
       ammoData[type] ?? ammoData["common"];
 
     switch (type) {
@@ -20,13 +20,13 @@ export class ProjectileFactory {
       case "rocket":
       case "nuke":
         return new Explosive(angle, radius, speed, color, damage, {
-          amount: fragments.amount,
-          creator: AmmoFactory.request(fragments.type),
+          amount: fragmentData[type].amount,
+          creator: AmmoFactory.request(fragmentData[type].type),
         });
       case "mine":
         return new Mine(angle, radius, speed, color, damage, {
-          amount: fragments.amount,
-          creator: AmmoFactory.request(fragments.type),
+          amount: fragmentData[type].amount,
+          creator: AmmoFactory.request(fragmentData[type].type),
         });
       case "bouncy":
         return new Flechette(angle, radius, speed, color, damage);
