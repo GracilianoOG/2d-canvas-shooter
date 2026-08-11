@@ -83,6 +83,7 @@ export class Enemy extends Projectile {
 
   #die() {
     eventManager.emit("enemyDeath");
+    this.drop(this.#dropChance);
     this.destroy();
   }
 
@@ -116,10 +117,6 @@ export class Enemy extends Projectile {
     const item = dropRandomItem(chance);
     if (!item) return;
     entityManager.add(this.x, this.y, item, Layers.ITEMS);
-  }
-
-  onDestroy() {
-    this.drop(this.#dropChance);
   }
 
   update(delta) {
