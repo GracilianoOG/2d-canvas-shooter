@@ -6,10 +6,8 @@ class WeaponBox extends Item {
     eventManager.emit("gunPickup", {
       origin: { x: this.x, y: this.y },
     });
-    super.collect();
+    super.collect(false);
   }
-
-  onCollect() {}
 }
 
 export { WeaponBox };
