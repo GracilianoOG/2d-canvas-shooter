@@ -37,7 +37,7 @@ export const enemyData = {
     radius: 30,
     speed: 125,
     color: Colors.GREEN,
-    hp: 50,
+    hp: 40,
     options: {
       shrinkable: false,
       aggressive: false,
