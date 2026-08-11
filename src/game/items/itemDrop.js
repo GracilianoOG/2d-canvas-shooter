@@ -1,3 +1,4 @@
+import { itemData } from "@/data/itemData";
 import { Adrenaline } from "../entities/items/Adrenaline";
 import { Life } from "../entities/items/Life";
 import { Nuke } from "../entities/items/Nuke";
@@ -7,13 +8,13 @@ import { Shield } from "../entities/items/Shield";
 import { WeaponBox } from "../entities/items/WeaponBox";
 
 const dropTable = [
-  [() => new Nuke(), 5],
-  [() => new Life(), 10],
-  [() => new Shards(), 20],
-  [() => new SentryBox(), 20],
-  [() => new Shield(), 30],
-  [() => new Adrenaline(), 60],
-  [() => new WeaponBox(), 100],
+  [() => new Nuke(itemData.nuke), 5],
+  [() => new Life(itemData.life), 10],
+  [() => new Shards(itemData.shards), 20],
+  [() => new SentryBox(itemData.sentry), 20],
+  [() => new Shield(itemData.shield), 30],
+  [() => new Adrenaline(itemData.fury), 60],
+  [() => new WeaponBox(itemData.weapon), 100],
 ];
 
 export const dropRandomItem = (chance = 0.1) => {
