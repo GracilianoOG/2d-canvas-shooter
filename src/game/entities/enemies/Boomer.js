@@ -31,7 +31,6 @@ class Boomer extends Enemy {
         this.baseColor,
         Math.max(this.#baseHp / 2, 10),
         this.score,
-        this.#target,
       );
       entityManager.add(this.x, this.y, minion, Layers.ENEMIES);
     }
