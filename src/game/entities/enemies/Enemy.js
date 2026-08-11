@@ -15,9 +15,8 @@ export class Enemy extends Projectile {
   #score;
   #options;
 
-  constructor(radius, speed, color, health, score, target, options) {
+  constructor(radius, speed, color, health, score, options) {
     super(radius, speed, color);
-    this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
     this.#baseColor = color;
@@ -83,6 +82,11 @@ export class Enemy extends Projectile {
   #die() {
     eventManager.emit("enemyDeath");
     this.destroy();
+  }
+
+  target(target) {
+    this.#target = target;
+    return this;
   }
 
   takeDamage(damage) {
