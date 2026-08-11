@@ -13,6 +13,7 @@ import { Cloaker } from "../entities/enemies/Cloaker.js";
 import { Crazy } from "../entities/enemies/Crazy.js";
 import { Void } from "../entities/enemies/Void.js";
 import { Layers } from "../constants/layers.js";
+import { enemyData, enemyIds } from "@/data/enemyData.js";
 
 class EnemyCreator {
   #config;
@@ -72,8 +73,9 @@ class EnemyCreator {
   }
 
   #randomizeEnemy() {
-    const randomLevel = randomInt(this.#spawnLevel);
-    const enemyConfig = [...enemyTypes[randomLevel]];
+    const randomId = enemyIds[randomInt(this.#spawnLevel - 1)];
+    const enemyConfig = { ...enemyData[randomId] };
+    enemyConfig.score = enemyConfig.hp * 10;
 
     if (this.#modChance > randomInt(100)) {
       this.#hardenEnemy(enemyConfig);
