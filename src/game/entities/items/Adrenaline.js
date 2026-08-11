@@ -3,8 +3,8 @@ import { ORANGE_RED } from "@/game/constants/colors";
 import { Item } from "./Item";
 
 class Adrenaline extends Item {
-  constructor(x, y, radius, color = ORANGE_RED, label = "fury") {
-    super(x, y, radius, color, label);
+  constructor(radius, color = ORANGE_RED, label = "fury") {
+    super(radius, color, label);
   }
 
   check() {

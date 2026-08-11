@@ -38,7 +38,7 @@ export class Game {
   #renderer;
 
   constructor({ width, height, margin }) {
-    this.#player = new Player(width / 2, height / 2, 15, 375, WHITE);
+    this.#player = new Player(15, 375, WHITE);
     this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
@@ -135,7 +135,8 @@ export class Game {
     });
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
-    entityManager.add(player, Layers.PLAYER);
+    const { width, height } = config;
+    entityManager.add(width / 2, height / 2, player, Layers.PLAYER);
 
     await this.loadAssets();
 

@@ -7,8 +7,8 @@ class Entity {
   #radius;
   #destroyed;
 
-  constructor(x, y, radius, color) {
-    this.#position = { x, y };
+  constructor(radius, color) {
+    this.#position = { x: 0, y: 0 };
     this.#color = color;
     this.#radius = radius;
     this.#destroyed = false;

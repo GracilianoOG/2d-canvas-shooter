@@ -3,8 +3,8 @@ import { Entity } from "./Entity.js";
 class Projectile extends Entity {
   #speed;
 
-  constructor(x, y, radius, speed, color) {
-    super(x, y, radius, color);
+  constructor(radius, speed, color) {
+    super(radius, color);
     this.speed = speed;
   }
 

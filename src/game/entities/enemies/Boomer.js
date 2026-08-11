@@ -10,8 +10,8 @@ class Boomer extends Enemy {
   #target;
   #options;
 
-  constructor(x, y, radius, speed, color, health, score, target, options) {
-    super(x, y, radius, speed, color, health, score, target, options);
+  constructor(radius, speed, color, health, score, target, options) {
+    super(radius, speed, color, health, score, target, options);
     this.#target = target;
     this.#baseSize = radius;
     this.#baseSpeed = speed;
@@ -33,7 +33,7 @@ class Boomer extends Enemy {
         this.score,
         this.#target,
       );
-      entityManager.add(minion, Layers.ENEMIES);
+      entityManager.add(this.x, this.y, minion, Layers.ENEMIES);
     }
     this.drop(0.05);
   }

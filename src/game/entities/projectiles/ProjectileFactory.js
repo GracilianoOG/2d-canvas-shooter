@@ -7,7 +7,7 @@ import { Mine } from "./Mine";
 import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
 export class ProjectileFactory {
-  static create(type, x, y, angle) {
+  static create(type, angle) {
     const { radius, speed, color, damage, fragments } =
       ammoData[type] ?? ammoData["common"];
 
@@ -15,26 +15,26 @@ export class ProjectileFactory {
       case "common":
       case "cannon":
       case "heavy":
-        return new Bullet(x, y, radius, speed, angle, color, damage);
+        return new Bullet(radius, speed, angle, color, damage);
       case "grenade":
       case "rocket":
       case "nuke":
-        return new Explosive(x, y, radius, speed, angle, color, damage, {
+        return new Explosive(radius, speed, angle, color, damage, {
           amount: fragments.amount,
           creator: AmmoFactory.request(fragments.type),
         });
       case "mine":
-        return new Mine(x, y, radius, speed, angle, color, damage, {
+        return new Mine(radius, speed, angle, color, damage, {
           amount: fragments.amount,
           creator: AmmoFactory.request(fragments.type),
         });
       case "bouncy":
-        return new Flechette(x, y, radius, speed, angle, color, damage);
+        return new Flechette(radius, speed, angle, color, damage);
       case "pierce":
-        return new Piercing(x, y, radius, speed, angle, color, damage);
+        return new Piercing(radius, speed, angle, color, damage);
       default:
         console.error("Unknown projectile type: " + type);
-        return new Bullet(x, y, radius, speed, angle, color, damage);
+        return new Bullet(radius, speed, angle, color, damage);
     }
   }
 }

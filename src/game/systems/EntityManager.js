@@ -20,11 +20,14 @@ class EntityManager {
     }
   }
 
-  add(entity, group = Layers.OTHERS) {
+  add(x, y, entity, group = Layers.OTHERS) {
     try {
       if (!(entity instanceof Entity)) {
         throw new Error("Invalid entity!");
       }
+
+      entity.x = x;
+      entity.y = y;
 
       if (!this.#entityGroups.has(group)) {
         this.#entityGroups.set(group, []);

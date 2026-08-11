@@ -4,8 +4,8 @@ import { entityManager } from "@/game/systems/EntityManager";
 import { Layers } from "@/game/constants/layers";
 
 export class Nuke extends Item {
-  constructor(x, y, radius, color = YELLOW, label = "nuke") {
-    super(x, y, radius, color, label);
+  constructor(radius, color = YELLOW, label = "nuke") {
+    super(radius, color, label);
   }
 
   check() {

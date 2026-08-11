@@ -15,8 +15,8 @@ export class Enemy extends Projectile {
   #score;
   #options;
 
-  constructor(x, y, radius, speed, color, health, score, target, options) {
-    super(x, y, radius, speed, color);
+  constructor(radius, speed, color, health, score, target, options) {
+    super(radius, speed, color);
     this.#target = target;
     this.#health = health;
     this.#maxSpeed = speed;
@@ -103,9 +103,9 @@ export class Enemy extends Projectile {
   }
 
   drop(chance) {
-    const item = dropRandomItem(this.x, this.y, chance);
+    const item = dropRandomItem(chance);
     if (!item) return;
-    entityManager.add(item, Layers.ITEMS);
+    entityManager.add(this.x, this.y, item, Layers.ITEMS);
   }
 
   onDestroy() {

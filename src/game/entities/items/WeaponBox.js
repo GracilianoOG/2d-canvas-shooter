@@ -3,8 +3,8 @@ import { CHARTREUSE } from "@/game/constants/colors";
 import { Item } from "./Item";
 
 class WeaponBox extends Item {
-  constructor(x, y, radius, color = CHARTREUSE, label = "gun") {
-    super(x, y, radius, color, label);
+  constructor(radius, color = CHARTREUSE, label = "gun") {
+    super(radius, color, label);
   }
 
   check() {

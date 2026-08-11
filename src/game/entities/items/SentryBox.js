@@ -4,13 +4,13 @@ import { entityManager } from "@/game/systems/EntityManager";
 import { Sentry } from "../Sentry";
 
 export class SentryBox extends Item {
-  constructor(x, y, radius, color = ROYAL_BLUE, label = "sentry") {
-    super(x, y, radius, color, label);
+  constructor(radius, color = ROYAL_BLUE, label = "sentry") {
+    super(radius, color, label);
   }
 
   check() {
-    const turret = new Sentry(this.x, this.y, 12, POWDER_BLUE);
-    entityManager.add(turret);
+    const turret = new Sentry(12, POWDER_BLUE);
+    entityManager.add(this.x, this.y, turret);
     this.collect();
   }
 }

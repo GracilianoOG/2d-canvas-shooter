@@ -12,8 +12,8 @@ export class Sentry extends Entity {
   #cooldown;
   #despawnTimer;
 
-  constructor(x, y, radius, color, range = 250, duration = 20_000) {
-    super(x, y, radius, color);
+  constructor(radius, color, range = 250, duration = 20_000) {
+    super(radius, color);
     this.#target = null;
     this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
