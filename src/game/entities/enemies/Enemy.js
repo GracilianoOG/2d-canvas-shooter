@@ -89,6 +89,10 @@ export class Enemy extends Projectile {
     return this;
   }
 
+  currentTarget() {
+    return this.#target;
+  }
+
   takeDamage(damage) {
     this.health -= damage;
     const alive = this.health > 0;
