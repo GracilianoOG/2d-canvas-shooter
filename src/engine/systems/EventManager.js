@@ -20,6 +20,10 @@ class EventManager {
     );
   }
 
+  off(event, listener) {
+    this.unsubscribe(event, listener);
+  }
+
   emit(event, ...data) {
     this.#listeners[event]?.forEach((listener) => listener(...data));
   }
