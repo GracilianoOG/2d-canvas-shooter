@@ -81,6 +81,12 @@ export class Game {
       entityManager.add(sentryItem.x, sentryItem.y, new Sentry());
       sentryItem.collect();
     });
+    eventManager.on("nukePickup", (nukeItem) => {
+      for (const enemy of entityManager.get(Layers.ENEMIES)) {
+        enemy.takeDamage(enemy.health);
+      }
+      nukeItem.collect();
+    });
   }
 
   get state() {
