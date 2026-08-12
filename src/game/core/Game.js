@@ -22,7 +22,6 @@ import { AudioSystem } from "@/engine/systems/AudioSystem";
 import { States } from "@/engine/constants/gameStates";
 import { Renderer } from "../systems/Renderer";
 import { Layers } from "../constants/layers";
-import { playerData } from "@/data/playerData";
 import { Sentry } from "../entities/Sentry";
 
 export class Game {
@@ -39,7 +38,7 @@ export class Game {
   #renderer;
 
   constructor({ width, height, margin }) {
-    this.#player = new Player(playerData);
+    this.#player = new Player();
     this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
