@@ -13,7 +13,10 @@ export class PlayerShield {
       autostart: false,
     });
 
-    eventManager.on("shieldCollected", () => this.activate(8000));
+    eventManager.on("shieldPickup", (shieldItem) => {
+      this.activate(8000);
+      shieldItem.collect();
+    });
     eventManager.on("playerRevival", this.reset.bind(this));
   }
 
