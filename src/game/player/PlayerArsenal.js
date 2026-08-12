@@ -56,17 +56,19 @@ export class PlayerArsenal {
     return weaponIds[randomInt(weaponIds.length)];
   }
 
-  switchWeapon({ origin: { x, y } }) {
+  switchWeapon(item) {
     const weaponId = this.#randomWeaponId();
     this.#timer.reset();
     this.#equip(weaponId);
 
     eventManager.emit(
       "indicate",
-      { x, y },
+      { x: item.x, y: item.y },
       this.#equipped.name.toUpperCase(),
       CHARTREUSE,
     );
+
+    item.collect(false);
   }
 
   draw(ctx) {
