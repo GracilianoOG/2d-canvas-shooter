@@ -18,7 +18,7 @@ export class Fury {
     eventManager.on("activateFury", () => this.activate());
     eventManager.on("playerDeath", this.deactivate.bind(this));
     eventManager.on("enemyDeath", this.#onEnemyKilled.bind(this));
-    eventManager.on("furyCollected", (furyItem) => {
+    eventManager.on("furyPickup", (furyItem) => {
       if (!this.isActive()) {
         eventManager.emit("checkFuryMeterToFill", furyItem);
       }
