@@ -9,7 +9,7 @@ export class Piercing extends Bullet {
   }
 
   onCollision(object) {
-    if (this.#collided.find((obj) => obj === object)) {
+    if (this.#collided.includes(object)) {
       return;
     }
     if (object?.takeDamage) {
