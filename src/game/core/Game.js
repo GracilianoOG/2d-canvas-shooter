@@ -23,6 +23,7 @@ import { States } from "@/engine/constants/gameStates";
 import { Renderer } from "../systems/Renderer";
 import { Layers } from "../constants/layers";
 import { playerData } from "@/data/playerData";
+import { Sentry } from "../entities/Sentry";
 
 export class Game {
   #engine;
@@ -76,6 +77,10 @@ export class Game {
     eventManager.on("indicate", (pos, txt, col) => {
       const { x: fX, y: fY } = this.#canvas.factors;
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
+    });
+    eventManager.on("sentryPickup", (sentryItem) => {
+      entityManager.add(sentryItem.x, sentryItem.y, new Sentry());
+      sentryItem.collect();
     });
   }
 
