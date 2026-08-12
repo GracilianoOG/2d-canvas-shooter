@@ -15,7 +15,9 @@ class Item extends Entity {
     );
   }
 
-  check() {}
+  check() {
+    eventManager.emit(`${this.#label}Pickup`, this);
+  }
 
   onCollect() {}
 
