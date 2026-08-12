@@ -1,20 +1,20 @@
 import { Bullet } from "./Bullet";
 
 export class Piercing extends Bullet {
-  #collided = [];
+  #hitList = [];
   #hits = 3;
 
   onDestroy() {
-    this.#collided = null;
+    this.#hitList = null;
   }
 
   onCollision(object) {
-    if (this.#collided.includes(object)) {
+    if (this.#hitList.includes(object)) {
       return;
     }
     if (object?.takeDamage) {
       object.takeDamage(this.damage);
-      this.#collided.push(object);
+      this.#hitList.push(object);
       this.#hits--;
     }
     if (!this.#hits) {
