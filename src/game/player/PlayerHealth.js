@@ -11,9 +11,9 @@ export class PlayerHealth {
     this.#lives = lives;
     this.#maxLives = lives;
 
-    eventManager.on("lifeCollected", ({ collect }) => {
+    eventManager.on("lifePickup", (item) => {
       if (this.#lives < this.#maxLives) {
-        collect();
+        item.collect();
         this.heal();
         eventManager.emit("playerHealed");
       }
