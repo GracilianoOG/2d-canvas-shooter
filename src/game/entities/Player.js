@@ -10,6 +10,7 @@ import * as Colors from "../constants/colors";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";
 import { config } from "../config";
+import { playerData } from "@/data/playerData";
 
 const upgrades = {
   speed: 1.25,
@@ -24,7 +25,8 @@ export class Player extends Projectile {
   #shield;
   #shards;
 
-  constructor({ radius, speed, color }) {
+  constructor() {
+    const { radius, speed, color } = playerData;
     super(radius, speed, color);
 
     this.#controller = new PlayerController(this);
