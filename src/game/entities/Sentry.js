@@ -4,6 +4,7 @@ import { Entity } from "./Entity";
 import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
 import { Layers } from "../constants/layers";
+import { sentryData } from "@/data/sentryData";
 
 export class Sentry extends Entity {
   #target;
@@ -12,7 +13,8 @@ export class Sentry extends Entity {
   #cooldown;
   #despawnTimer;
 
-  constructor({ radius, color, range, duration }) {
+  constructor() {
+    const { radius, color, range, duration } = sentryData;
     super(radius, color);
     this.#target = null;
     this.#ammoType = AmmoFactory.request("common");
