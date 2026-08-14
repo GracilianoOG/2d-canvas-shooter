@@ -17,7 +17,11 @@
         <h1>Loading...</h1>
       </div>
       <!-- Start Screen -->
-      <div class="screen start-screen hide" data-screen="start">
+      <div
+        class="screen start-screen hide"
+        data-screen="start"
+        data-action="start"
+      >
         <h1 class="start-screen__main-title">Circle Chaos</h1>
         <p class="start-screen__title">Click anywhere to begin</p>
         <div class="highscore">
@@ -32,22 +36,36 @@
         <div class="screen menu-screen hide" data-screen="menu">
           <h1 class="menu-screen__title">Circle chaos</h1>
           <div class="menu-screen__buttons">
-            <button class="menu-screen__btn" type="button">Start game</button>
-            <button class="menu-screen__btn" type="button">Options</button>
-            <button class="menu-screen__btn" type="button">About</button>
+            <button class="menu-screen__btn" type="button" data-action="play">
+              Start game
+            </button>
+            <button
+              class="menu-screen__btn"
+              type="button"
+              data-action="options"
+            >
+              Options
+            </button>
+            <button class="menu-screen__btn" type="button" data-action="info">
+              About
+            </button>
           </div>
           <h2 class="menu-screen__copy">Circle Chaos @ 2026</h2>
         </div>
 
         <div id="hud">
-          <button class="pause-btn"></button>
+          <button class="pause-btn" data-action="pause"></button>
         </div>
 
         <!-- Score status -->
         <div id="status-container"></div>
 
         <!-- Pause Screen -->
-        <div class="screen pause-screen hide" data-screen="pause">
+        <div
+          class="screen pause-screen hide"
+          data-screen="pause"
+          data-action="pause"
+        >
           <h2 class="pause-screen__title">Game paused</h2>
           <p class="pause-screen__text">
             Click or press <span class="key">&lt;P&gt;</span> to resume
@@ -57,7 +75,9 @@
         <!-- Gameover Screen -->
         <div class="screen gameover-screen hide" data-screen="restart">
           <h2 class="gameover-screen__title">Game over!</h2>
-          <button class="gameover-screen__btn">Continue?</button>
+          <button class="gameover-screen__btn" data-action="restart">
+            Continue?
+          </button>
           <div class="highscore">
             <h2 class="highscore__title">Highscore</h2>
             <p class="highscore__points"></p>
