@@ -158,6 +158,7 @@ These resources helped me to understand many things regarding game development i
 - [Value of "this" in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
 - [Object freeze() - FCC](https://www.freecodecamp.org/news/javascript-immutability-frozen-objects-with-examples/)
 - [Object freeze benefits and drawbacks - Dev](https://dev.to/mattlewandowski93/objectfreeze-goes-hard-5cn1)
+- [Use data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes)
 
 ### Sass
 
