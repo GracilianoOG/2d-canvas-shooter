@@ -1,0 +1,39 @@
+.menu-screen {
+  background-color: var(--color-black);
+
+  &__title {
+    text-shadow: 0 0 0.75rem currentColor;
+    text-transform: uppercase;
+    font-size: 5rem;
+    margin-bottom: 92px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-white);
+    font-size: 24px;
+    padding: 16px;
+    text-align: center;
+    text-shadow: 0 0 0.25rem currentColor;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-gold);
+    }
+  }
+
+  &__copy {
+    font-size: 14px;
+    position: absolute;
+    bottom: 16px;
+    text-shadow: 0 0 0.2rem currentColor;
+  }
+}
