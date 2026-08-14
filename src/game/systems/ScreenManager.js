@@ -43,8 +43,7 @@ export class ScreenManager {
   }
 
   startGame() {
-    this.remove("start");
-    this.show("container");
+    this.toggle("menu", true);
     this.game.start();
   }
 
