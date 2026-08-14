@@ -13,11 +13,11 @@
   <body>
     <main>
       <!-- Loading Screen -->
-      <div class="screen loading-screen">
+      <div class="screen loading-screen" data-screen="loading">
         <h1>Loading...</h1>
       </div>
       <!-- Start Screen -->
-      <div class="screen start-screen hide">
+      <div class="screen start-screen hide" data-screen="start">
         <h1 class="start-screen__main-title">Circle Chaos</h1>
         <p class="start-screen__title">Click anywhere to begin</p>
         <div class="highscore">
@@ -27,9 +27,9 @@
       </div>
 
       <!-- Game Container -->
-      <div id="game-container" class="hide">
+      <div id="game-container" class="hide" data-screen="container">
         <!-- Game Menu -->
-        <div class="screen menu-screen hide">
+        <div class="screen menu-screen hide" data-screen="menu">
           <h1 class="menu-screen__title">Circle chaos</h1>
           <div class="menu-screen__buttons">
             <button class="menu-screen__btn" type="button">Start game</button>
@@ -47,7 +47,7 @@
         <div id="status-container"></div>
 
         <!-- Pause Screen -->
-        <div class="screen pause-screen hide">
+        <div class="screen pause-screen hide" data-screen="pause">
           <h2 class="pause-screen__title">Game paused</h2>
           <p class="pause-screen__text">
             Click or press <span class="key">&lt;P&gt;</span> to resume
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Gameover Screen -->
-        <div class="screen gameover-screen hide">
+        <div class="screen gameover-screen hide" data-screen="restart">
           <h2 class="gameover-screen__title">Game over!</h2>
           <button class="gameover-screen__btn">Continue?</button>
           <div class="highscore">
