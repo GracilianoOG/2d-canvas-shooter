@@ -3,11 +3,18 @@ import { StorageHandler } from "../utils/StorageHandler";
 
 export class ScreenManager {
   #screens;
+  #actions;
 
   constructor(game) {
     this.game = game;
 
     this.#screens = new Map();
+    this.#actions = {
+      pause: this.pauseGame.bind(this),
+      restart: this.restartGame.bind(this),
+      start: this.openMenu.bind(this),
+      play: this.startGame.bind(this),
+    };
 
     const screens = document.querySelectorAll("[data-screen]");
     screens.forEach((screenEl) => {
@@ -26,14 +33,11 @@ export class ScreenManager {
     document.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      if (e.target.closest("[data-action='pause']")) {
-        this.pauseGame();
-      } else if (e.target.closest("[data-action='restart']")) {
-        this.restartGame();
-      } else if (e.target.closest("[data-action='start']")) {
-        this.openMenu();
-      } else if (e.target.closest("[data-action='play']")) {
-        this.startGame();
+      const clicked = e.target.closest("[data-action]");
+      const action = clicked?.dataset.action;
+
+      if (action && this.#actions[action]) {
+        this.#actions[action]();
       }
     });
   }
