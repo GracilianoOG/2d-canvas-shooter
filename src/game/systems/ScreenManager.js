@@ -32,6 +32,8 @@ export class ScreenManager {
         this.restartGame();
       } else if (e.target.closest("[data-action='start']")) {
         this.openMenu();
+      } else if (e.target.closest("[data-action='play']")) {
+        this.startGame();
       }
     });
   }
