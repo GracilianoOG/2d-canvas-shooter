@@ -26,11 +26,11 @@ export class ScreenManager {
     document.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      if (e.target.closest(".pause-btn, .pause-screen")) {
+      if (e.target.closest("[data-action='pause']")) {
         this.pauseGame();
-      } else if (e.target.closest(".gameover-screen__btn")) {
+      } else if (e.target.closest("[data-action='restart']")) {
         this.restartGame();
-      } else if (e.target.closest(".start-screen")) {
+      } else if (e.target.closest("[data-action='start']")) {
         this.openMenu();
       }
     });
