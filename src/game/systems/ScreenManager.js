@@ -31,9 +31,14 @@ export class ScreenManager {
       } else if (e.target.closest(".gameover-screen__btn")) {
         this.restartGame();
       } else if (e.target.closest(".start-screen")) {
-        this.startGame();
+        this.openMenu();
       }
     });
+  }
+
+  openMenu() {
+    this.remove("start");
+    this.show("container");
   }
 
   startGame() {
