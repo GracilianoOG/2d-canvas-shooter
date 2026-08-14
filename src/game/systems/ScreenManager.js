@@ -8,12 +8,11 @@ export class ScreenManager {
     this.game = game;
 
     this.#screens = new Map();
-    this.#screens.set("container", document.querySelector("#game-container"));
-    this.#screens.set("start", document.querySelector(".start-screen"));
-    this.#screens.set("pause", document.querySelector(".pause-screen"));
-    this.#screens.set("restart", document.querySelector(".gameover-screen"));
-    this.#screens.set("loading", document.querySelector(".loading-screen"));
-    this.#screens.set("menu", document.querySelector(".menu-screen"));
+
+    const screens = document.querySelectorAll("[data-screen]");
+    screens.forEach((screenEl) => {
+      this.#screens.set(screenEl.dataset.screen, screenEl);
+    });
 
     this.init();
   }
