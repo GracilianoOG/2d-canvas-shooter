@@ -31,8 +31,6 @@ export class ScreenManager {
     highscore.textContent = StorageHandler.retrieveHighscore();
 
     document.addEventListener("click", (e) => {
-      e.stopPropagation();
-
       const clicked = e.target.closest("[data-action]");
       const action = clicked?.dataset.action;
 
