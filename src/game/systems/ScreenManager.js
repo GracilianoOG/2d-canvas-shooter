@@ -13,6 +13,7 @@ export class ScreenManager {
     this.#screens.set("pause", document.querySelector(".pause-screen"));
     this.#screens.set("restart", document.querySelector(".gameover-screen"));
     this.#screens.set("loading", document.querySelector(".loading-screen"));
+    this.#screens.set("menu", document.querySelector(".menu-screen"));
 
     this.init();
   }
