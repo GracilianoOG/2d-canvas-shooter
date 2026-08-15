@@ -1,13 +1,16 @@
-import { inputManager } from "@/engine/systems/InputManager";
-import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 
 export class Fury {
   #timer;
   #isActive;
   #duration;
+  #events;
+  #input;
 
-  constructor(duration = 5000) {
+  constructor(events, input, duration = 5000) {
+    this.#events = events;
+    this.#input = input;
+
     this.#timer = Timer.create(
       duration,
       { autostart: false },
@@ -15,19 +18,19 @@ export class Fury {
     );
     this.#isActive = false;
     this.#duration = duration;
-    eventManager.on("activateFury", () => this.activate());
-    eventManager.on("playerDeath", this.deactivate.bind(this));
-    eventManager.on("enemyDeath", this.#onEnemyKilled.bind(this));
-    eventManager.on("furyPickup", (furyItem) => {
+    events.on("activateFury", () => this.activate());
+    events.on("playerDeath", this.deactivate.bind(this));
+    events.on("enemyDeath", this.#onEnemyKilled.bind(this));
+    events.on("furyPickup", (furyItem) => {
       if (!this.isActive()) {
-        eventManager.emit("checkFuryMeterToFill", furyItem);
+        events.emit("checkFuryMeterToFill", furyItem);
       }
     });
   }
 
   #onEnemyKilled() {
     if (!this.isActive()) {
-      eventManager.emit("fillFuryMeter", { amount: 4 });
+      this.#events.emit("fillFuryMeter", { amount: 4 });
     }
   }
 
@@ -35,14 +38,14 @@ export class Fury {
     if (this.isActive()) return;
     this.#timer.reset();
     this.#isActive = true;
-    eventManager.emit("activatedFury");
+    this.#events.emit("activatedFury");
   }
 
   deactivate() {
     if (!this.isActive()) return;
     this.#timer.stop();
     this.#isActive = false;
-    eventManager.emit("deactivateFury");
+    this.#events.emit("deactivateFury");
   }
 
   isActive() {
@@ -54,10 +57,10 @@ export class Fury {
       const elapsedTime = this.#timer.elapsedTime;
       const furyDelay = this.#duration;
       const timePerc = elapsedTime / furyDelay;
-      eventManager.emit("emptyFuryMeter", { timePerc });
+      this.#events.emit("emptyFuryMeter", { timePerc });
     }
-    if (inputManager.isActionPressed("fury")) {
-      eventManager.emit("shouldActivateFury");
+    if (this.#input.isActionPressed("fury")) {
+      this.#events.emit("shouldActivateFury");
     }
   }
 }
