@@ -1,7 +1,5 @@
 import { randomInt } from "@/engine/utils/math";
 import { Enemy } from "./Enemy";
-import { entityManager } from "@/game/systems/EntityManager";
-import { Layers } from "@/game/constants/layers";
 
 class Boomer extends Enemy {
   #baseSize;
@@ -30,10 +28,7 @@ class Boomer extends Enemy {
       score: this.score,
     };
 
-    for (let i = 0; i < amount; i++) {
-      const minion = new Enemy(preset, this.target, this.events);
-      entityManager.add(x, y, minion, Layers.ENEMIES);
-    }
+    this.events.emit("spawnMinions", x, y, amount, preset);
   }
 
   draw(ctx) {

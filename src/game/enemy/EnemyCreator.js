@@ -58,6 +58,13 @@ class EnemyCreator {
     this.#entities = entities;
     this.#events = events;
     this.#specials = [Boomer, Cloaker, Crazy, Void];
+
+    events.on("spawnMinions", (x, y, amount, preset) => {
+      for (let i = 0; i < amount; i++) {
+        const minion = new Enemy(preset, target, events);
+        entities.add(x, y, minion, Layers.ENEMIES);
+      }
+    });
   }
 
   #randomizePosition(enemySize) {
@@ -153,7 +160,7 @@ class EnemyCreator {
 
     const enemyConfig = this.#randomizeEnemy();
     const position = this.#randomizePosition(enemyConfig.radius);
-    const enemy = new EnemyClass(enemyConfig, this.#target, this.#events);
+    const enemy = new Boomer(enemyConfig, this.#target, this.#events);
     this.#entities.add(...position, enemy, Layers.ENEMIES);
   }
 
