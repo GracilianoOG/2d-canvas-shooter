@@ -12,7 +12,8 @@ export class Gun {
   #options;
   #pattern;
 
-  constructor({ name, ammoType, patternType, options }) {
+  constructor(gunData) {
+    const { name, ammoType, patternType, options } = gunData;
     this.#name = name;
     this.#options = options;
     this.#cooldown = Timer.create(options.cooldown);
