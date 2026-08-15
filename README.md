@@ -171,6 +171,8 @@ These resources helped me to understand many things regarding game development i
 - [JavaScript Factory Method Design Pattern](https://dofactory.com/javascript/design-patterns/factory-method)
 - [JavaScript Flyweight Design Pattern](https://www.dofactory.com/javascript/design-patterns/flyweight)
 - [Javascript, Flyweight Pattern](https://mustafauzun.co/blog/javascript-flyweight-pattern/)
+- [An introduction to finite state machines and the state pattern for game development](https://www.youtube.com/watch?v=-ZP2Xm-mY4E&pp=ygUcdGhlIHNoYWdneSBkZXYgc3RhdGUgbWFjaGluZQ%3D%3D)
+- [Finite State Machines in Godot 4 in Under 10 Minutes](https://www.youtube.com/watch?v=ow_Lum-Agbs&pp=ygUTZ29kb3Qgc3RhdGUgbWFjaGluZQ%3D%3D)
 
 ### Other
 
