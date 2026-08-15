@@ -35,11 +35,16 @@ export class PlayerArsenal {
 
   #get(id) {
     const gun = this.#inventory[id];
-    if (!gun) {
-      // console.error(`Provided "${id}" weapon doesn't exist!`);
-      // return this.#inventory["pistol"];
-      this.#inventory[id] = new Gun(weaponData[id]);
+    const gunData = weaponData[id];
+
+    if (!gunData) {
+      console.error(`Provided "${id}" weapon doesn't exist!`);
+      return this.#get("pistol");
     }
+    if (!gun) {
+      this.#inventory[id] = new Gun(gunData);
+    }
+
     return this.#inventory[id];
   }
 
