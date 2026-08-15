@@ -42,7 +42,7 @@ export class PlayerArsenal {
       return this.#get("pistol");
     }
     if (!gun) {
-      this.#inventory[id] = new Gun(gunData);
+      this.#inventory[id] = new Gun(gunData, this.#events, this.#input);
     }
 
     return this.#inventory[id];

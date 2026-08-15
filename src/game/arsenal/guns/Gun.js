@@ -1,7 +1,5 @@
-import { inputManager } from "@/engine/systems/InputManager";
 import { Timer } from "@/engine/systems/Timer";
 import { randomNumber } from "@/engine/utils/math";
-import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../ammo/AmmoFactory";
 import { PatternFactory } from "./patterns/PatternFactory";
 
@@ -11,14 +9,18 @@ export class Gun {
   #ammoType;
   #options;
   #pattern;
+  #events;
+  #input;
 
-  constructor(gunData) {
+  constructor(gunData, events, input) {
     const { name, ammoType, patternType, options } = gunData;
     this.#name = name;
     this.#options = options;
     this.#cooldown = Timer.create(options.cooldown);
     this.#ammoType = AmmoFactory.request(ammoType);
     this.#pattern = PatternFactory.create(patternType);
+    this.#events = events;
+    this.#input = input;
   }
 
   get name() {
@@ -42,7 +44,7 @@ export class Gun {
   }
 
   #calcBulletPath(originX, originY) {
-    const { x: mx, y: my } = inputManager.getMousePosition();
+    const { x: mx, y: my } = this.#input.getMousePosition();
     const angle = Math.atan2(my - originY, mx - originX);
     return angle;
   }
@@ -57,6 +59,6 @@ export class Gun {
     const bulletAngle = this.#calcBulletPath(x, y);
     this.#cooldown.reset();
     this.#pattern.create(this, x, y, bulletAngle);
-    eventManager.emit("audio", "shot");
+    this.#events.emit("audio", "shot");
   }
 }
