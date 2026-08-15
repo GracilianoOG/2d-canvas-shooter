@@ -1,11 +1,10 @@
 import { Timer } from "@/engine/systems/Timer";
-import { entityManager } from "../systems/EntityManager";
 import { Entity } from "./Entity";
 import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
-import { Layers } from "../constants/layers";
 import { sentryData } from "@/data/sentryData";
 import { SentryStates } from "../constants/states";
+import { Layers } from "../constants/layers";
 
 export class Sentry extends Entity {
   #target;
@@ -14,14 +13,16 @@ export class Sentry extends Entity {
   #cooldown;
   #despawnTimer;
   #state;
+  #entities;
 
-  constructor() {
+  constructor(entities) {
     const { radius, color, range, duration } = sentryData;
     super(radius, color);
     this.#state = SentryStates.SCAN;
     this.#target = null;
     this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
+    this.#entities = entities;
     this.#cooldown = Timer.create(150);
     this.#despawnTimer = Timer.create(duration, { autodestruct: true }, () => {
       this.#cooldown.remove();
@@ -43,7 +44,7 @@ export class Sentry extends Entity {
   }
 
   #scanForTarget() {
-    for (const enemy of entityManager.get(Layers.ENEMIES)) {
+    for (const enemy of this.#entities.get(Layers.ENEMIES)) {
       if (this.distanceTo({ x: enemy.x, y: enemy.y }) <= this.#range) {
         this.#target = enemy;
         this.#state = SentryStates.WAIT;

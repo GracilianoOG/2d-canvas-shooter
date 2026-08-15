@@ -92,7 +92,11 @@ export class Game {
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
     });
     this.#events.on("sentryPickup", (sentryItem) => {
-      this.#entities.add(sentryItem.x, sentryItem.y, new Sentry());
+      this.#entities.add(
+        sentryItem.x,
+        sentryItem.y,
+        new Sentry(this.#entities),
+      );
       sentryItem.collect();
     });
     this.#events.on("nukePickup", (nukeItem) => {
