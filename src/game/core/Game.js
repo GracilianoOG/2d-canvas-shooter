@@ -155,7 +155,7 @@ export class Game {
   async init() {
     const player = this.#player;
     const hud = document.querySelector("#hud");
-    const scoreboard = new Scoreboard(hud);
+    const scoreboard = new Scoreboard(hud, this.#events);
     const furyMeter = new FuryMeter(
       {
         container: hud,

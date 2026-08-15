@@ -1,5 +1,3 @@
-import { eventManager } from "../../engine/systems/EventManager.js";
-
 export class Scoreboard {
   #length = 7;
   #scoreboardEl;
@@ -8,12 +6,12 @@ export class Scoreboard {
     return string.padStart(length, "0");
   }
 
-  constructor(containerEl) {
+  constructor(containerEl, events) {
     this.#scoreboardEl = document.createElement("h2");
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
     this.#showScore(0);
-    eventManager.on("setScore", ({ score }) => this.#showScore(score));
+    events.on("setScore", ({ score }) => this.#showScore(score));
   }
 
   #showScore(score) {
