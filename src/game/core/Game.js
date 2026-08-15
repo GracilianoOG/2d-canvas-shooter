@@ -38,6 +38,7 @@ export class Game {
   #renderer;
   #entities;
   #events;
+  #input;
 
   constructor({ width, height, margin }) {
     this.#audio = new AudioSystem();
@@ -45,6 +46,7 @@ export class Game {
     this.#screens = new ScreenManager(this);
     this.#entities = entityManager;
     this.#events = eventManager;
+    this.#input = inputManager;
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
 
     this.#settings = {
