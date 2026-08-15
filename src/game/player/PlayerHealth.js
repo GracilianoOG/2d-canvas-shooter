@@ -1,4 +1,3 @@
-import { eventManager } from "@/engine/systems/EventManager";
 import { BLOODY_RED } from "../constants/colors";
 import { playerData } from "@/data/playerData";
 
@@ -6,17 +5,19 @@ export class PlayerHealth {
   #player;
   #lives;
   #maxLives;
+  #events;
 
-  constructor(player) {
+  constructor(player, events) {
     this.#player = player;
     this.#lives = playerData.lives;
     this.#maxLives = playerData.lives;
+    this.#events = events;
 
-    eventManager.on("lifePickup", (item) => {
+    events.on("lifePickup", (item) => {
       if (this.#lives < this.#maxLives) {
         item.collect();
         this.heal();
-        eventManager.emit("playerHealed");
+        events.emit("playerHealed");
       }
     });
   }
@@ -37,7 +38,7 @@ export class PlayerHealth {
     this.#player.x = x;
     this.#player.y = y;
     this.#lives = this.#maxLives;
-    eventManager.emit("playerRevival", { lives: this.#lives });
+    this.#events.emit("playerRevival", { lives: this.#lives });
   }
 
   draw(ctx) {
