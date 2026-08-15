@@ -1,7 +1,7 @@
 import * as EnemyMods from "../constants/enemyModTypes";
 import * as DiffMods from "../constants/modifierTypes";
 
-export const defaultConfig = {
+export const spawnerConfig = {
   spawnTime: 800,
   difficultyTime: 5000,
   modChance: 0,
