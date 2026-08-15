@@ -5,6 +5,7 @@ import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
 import { Layers } from "../constants/layers";
 import { sentryData } from "@/data/sentryData";
+import { SentryStates } from "../constants/states";
 
 export class Sentry extends Entity {
   #target;
@@ -12,10 +13,12 @@ export class Sentry extends Entity {
   #range;
   #cooldown;
   #despawnTimer;
+  #state;
 
   constructor() {
     const { radius, color, range, duration } = sentryData;
     super(radius, color);
+    this.#state = SentryStates.SCAN;
     this.#target = null;
     this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
@@ -27,8 +30,8 @@ export class Sentry extends Entity {
   }
 
   #shoot() {
-    if (this.#cooldown.active) return;
     this.#cooldown.reset();
+    this.#state = SentryStates.WAIT;
     const direction = this.angleTo({ x: this.#target.x, y: this.#target.y });
     this.#ammoType.create(this.x, this.y, direction);
     eventManager.emit("audio", "shot");
@@ -43,6 +46,7 @@ export class Sentry extends Entity {
     for (const enemy of entityManager.get(Layers.ENEMIES)) {
       if (this.distanceTo({ x: enemy.x, y: enemy.y }) <= this.#range) {
         this.#target = enemy;
+        this.#state = SentryStates.WAIT;
         return;
       }
     }
@@ -59,16 +63,20 @@ export class Sentry extends Entity {
   }
 
   update() {
-    if (this.#target) {
-      this.#shoot();
-
-      if (this.#targetInRange()) {
-        return;
-      }
-
-      this.#target = null;
+    switch (this.#state) {
+      case SentryStates.SHOOT:
+        this.#shoot();
+        break;
+      case SentryStates.WAIT:
+        if (!this.#targetInRange()) {
+          this.#state = SentryStates.SCAN;
+        } else if (!this.#cooldown.active) {
+          this.#state = SentryStates.SHOOT;
+        }
+        break;
+      case SentryStates.SCAN:
+        this.#scanForTarget();
+        break;
     }
-
-    this.#scanForTarget();
   }
 }
