@@ -40,28 +40,28 @@ export class Game {
   #events;
 
   constructor({ width, height, margin }) {
+    this.#audio = new AudioSystem();
+    this.#collision = new CollisionManager();
+    this.#screens = new ScreenManager(this);
+    this.#entities = entityManager;
+    this.#events = eventManager;
+    this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
+
+    this.#settings = {
+      trails: true,
+    };
+
+    const container = this.#screens.get("container");
+    this.#canvas = new GameCanvas({ width, height, margin, container });
+    this.#shaker = new Shaker(this.#canvas.ctx);
+    this.#renderer = new Renderer(this.#canvas, this.#settings);
+
     this.#player = new Player();
     this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator({
       spawnTime: 800,
       target: this.#player,
     });
-    this.#audio = new AudioSystem();
-    this.#collision = new CollisionManager();
-    this.#screens = new ScreenManager(this);
-    this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
-    this.#entities = entityManager;
-    this.#events = eventManager;
-
-    const container = this.#screens.get("container");
-    this.#canvas = new GameCanvas({ width, height, margin, container });
-    this.#shaker = new Shaker(this.#canvas.ctx);
-
-    this.#settings = {
-      trails: true,
-    };
-
-    this.#renderer = new Renderer(this.#canvas, this.#settings);
 
     this.#listenToWindowChange();
     this.#listenToResize();
