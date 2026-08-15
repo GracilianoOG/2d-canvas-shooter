@@ -47,6 +47,10 @@ export class Enemy extends Projectile {
     return this.#target;
   }
 
+  get events() {
+    return this.#events;
+  }
+
   #followTarget(delta) {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
