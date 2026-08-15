@@ -1,9 +1,7 @@
 import { randomInt } from "@/engine/utils/math";
-import { eventManager } from "../../engine/systems/EventManager";
 import { Timer } from "../../engine/systems/Timer";
 import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
 import { weaponIds, weapons } from "@/data/weapons";
-import { inputManager } from "@/engine/systems/InputManager";
 
 export class PlayerArsenal {
   #inventory;
@@ -11,9 +9,13 @@ export class PlayerArsenal {
   #timer;
   #equipped;
   #player;
+  #events;
+  #input;
 
-  constructor(player) {
+  constructor(player, events, input) {
     this.#player = player;
+    this.#events = events;
+    this.#input = input;
     this.#inventory = weapons;
     this.#equipped = this.#get("pistol");
 
@@ -22,8 +24,8 @@ export class PlayerArsenal {
       this.#equipDefault(),
     );
 
-    eventManager.on("playerDeath", this.#onPlayerDeath.bind(this));
-    eventManager.on("gunPickup", this.switchWeapon.bind(this));
+    this.#events.on("playerDeath", this.#onPlayerDeath.bind(this));
+    this.#events.on("gunPickup", this.switchWeapon.bind(this));
   }
 
   get equipped() {
@@ -44,7 +46,7 @@ export class PlayerArsenal {
     const next = this.#get(id);
     if (prev !== next) {
       this.#equipped = next;
-      eventManager.emit("gunChange", { prev });
+      this.#events.emit("gunChange", { prev });
     }
   }
 
@@ -66,7 +68,7 @@ export class PlayerArsenal {
     this.#timer.reset();
     this.#equip(weaponId);
 
-    eventManager.emit(
+    this.#events.emit(
       "indicate",
       { x: item.x, y: item.y },
       this.#equipped.name.toUpperCase(),
@@ -84,7 +86,7 @@ export class PlayerArsenal {
   }
 
   update(_delta) {
-    if (!this.#player.isDead && inputManager.isActionPressed("shoot")) {
+    if (!this.#player.isDead && this.#input.isActionPressed("shoot")) {
       const { x, y } = this.#player;
       this.#equipped.shoot(x, y);
     }
