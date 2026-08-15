@@ -31,7 +31,7 @@ export class Player extends Projectile {
 
     this.#controller = new PlayerController(this, input);
     this.#arsenal = new PlayerArsenal(this, events, input);
-    this.#shield = new PlayerShield(this);
+    this.#shield = new PlayerShield(this, events);
     this.#shards = new PlayerShards(this, entities, events);
     this.#health = new PlayerHealth(this, defaultStats.lives);
     this.#fury = new Fury();
