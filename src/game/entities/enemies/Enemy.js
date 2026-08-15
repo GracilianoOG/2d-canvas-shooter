@@ -42,6 +42,10 @@ export class Enemy extends Projectile {
     this.#health = health;
   }
 
+  get target() {
+    return this.#target;
+  }
+
   #followTarget(delta) {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
@@ -85,10 +89,6 @@ export class Enemy extends Projectile {
     eventManager.emit("enemyDeath");
     this.drop(this.#dropChance);
     this.destroy();
-  }
-
-  currentTarget() {
-    return this.#target;
   }
 
   takeDamage(damage) {
