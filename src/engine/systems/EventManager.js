@@ -1,4 +1,4 @@
-class EventManager {
+export class EventManager {
   #listeners;
 
   constructor() {
@@ -28,5 +28,3 @@ class EventManager {
     this.#listeners[event]?.forEach((listener) => listener(...data));
   }
 }
-
-export const eventManager = new EventManager();

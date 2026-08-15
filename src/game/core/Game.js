@@ -4,14 +4,12 @@ import { EnemyCreator } from "../enemy/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import { Timer } from "../../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";
-import { eventManager } from "../../engine/systems/EventManager";
 import { LivesDisplay } from "../ui/LivesDisplay";
 import { Engine } from "../../engine/core/Engine";
 import { entityManager } from "../systems/EntityManager";
 import { CollisionManager } from "../systems/CollisionManager";
 import { ScoreManager } from "../systems/ScoreManager";
 import audios from "@/data/audios";
-import { inputManager } from "../../engine/systems/InputManager";
 import { Shaker } from "@/engine/systems/Shaker";
 import { Indicator } from "../ui/Indicator";
 import { CSS_CLASSES } from "../utils/constants";
@@ -23,6 +21,8 @@ import { States } from "@/engine/constants/gameStates";
 import { Renderer } from "../systems/Renderer";
 import { Layers } from "../constants/layers";
 import { Sentry } from "../entities/Sentry";
+import { EventManager } from "@/engine/systems/EventManager";
+import { InputManager } from "@/engine/systems/InputManager";
 
 export class Game {
   #engine;
@@ -45,8 +45,8 @@ export class Game {
     this.#collision = new CollisionManager();
     this.#screens = new ScreenManager(this);
     this.#entities = entityManager;
-    this.#events = eventManager;
-    this.#input = inputManager;
+    this.#events = new EventManager();
+    this.#input = new InputManager();
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
 
     this.#settings = {

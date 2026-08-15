@@ -1,4 +1,4 @@
-class InputManager {
+export class InputManager {
   #actions;
   #mouse;
   #bindings;
@@ -74,5 +74,3 @@ class InputManager {
     this.#bindings[action] = keys;
   }
 }
-
-export const inputManager = new InputManager();
