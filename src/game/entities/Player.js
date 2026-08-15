@@ -2,7 +2,6 @@ import { Particle } from "./Particle";
 import { PlayerController } from "../player/PlayerController";
 import { Projectile } from "./Projectile";
 import { Fury } from "../arsenal/Fury";
-import { eventManager } from "../../engine/systems/EventManager";
 import { PlayerArsenal } from "../player/PlayerArsenal";
 import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";
@@ -24,8 +23,9 @@ export class Player extends Projectile {
   #arsenal;
   #shield;
   #shards;
+  #events;
 
-  constructor() {
+  constructor(events) {
     const { radius, speed, color } = playerData;
     super(radius, speed, color);
 
@@ -35,23 +35,24 @@ export class Player extends Projectile {
     this.#shards = new PlayerShards(this, 8);
     this.#health = new PlayerHealth(this, defaultStats.lives);
     this.#fury = new Fury();
+    this.#events = events;
 
-    eventManager.on("activatedFury", () => {
+    this.#events.on("activatedFury", () => {
       this.color = Colors.RED;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
       this.speed *= upgrades.speed;
     });
-    eventManager.on("deactivateFury", () => {
+    this.#events.on("deactivateFury", () => {
       this.color = Colors.WHITE;
       this.#weapon.cooldown.waitTime += upgrades.cooldown;
       this.speed /= upgrades.speed;
     });
-    eventManager.on("gunChange", ({ prev }) => {
+    this.#events.on("gunChange", ({ prev }) => {
       if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
     });
-    eventManager.on("restart", () =>
+    this.#events.on("restart", () =>
       this.revive(config.width / 2, config.height / 2),
     );
   }
@@ -72,13 +73,13 @@ export class Player extends Projectile {
     if (this.#shield.isActive()) return;
 
     this.#health.damage();
-    eventManager.emit("playerHit", { lives: this.#health.lives });
+    this.#events.emit("playerHit", { lives: this.#health.lives });
     const particles = !this.isDead ? 8 : 16;
     Particle.create(this.x, this.y, 8, 313, this.color, particles);
 
     if (this.isDead) {
       this.die();
-      eventManager.emit("indicate", { x: this.x, y: this.y }, "DEATH!");
+      this.#events.emit("indicate", { x: this.x, y: this.y }, "DEATH!");
       return;
     }
 
@@ -86,7 +87,7 @@ export class Player extends Projectile {
   }
 
   die() {
-    eventManager.emit("playerDeath");
+    this.#events.emit("playerDeath");
   }
 
   revive(x = this.x, y = this.y) {
