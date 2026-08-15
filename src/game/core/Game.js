@@ -164,7 +164,7 @@ export class Game {
       },
       this.#events,
     );
-    const livesDisplay = new LivesDisplay(hud);
+    const livesDisplay = new LivesDisplay(hud, this.#events);
     livesDisplay.showCurrentLives(player.lives);
     const { width, height } = config;
     this.#entities.add(width / 2, height / 2, player, Layers.PLAYER);

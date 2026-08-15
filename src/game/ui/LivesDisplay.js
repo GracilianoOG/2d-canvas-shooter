@@ -1,12 +1,10 @@
-import { eventManager } from "../../engine/systems/EventManager";
-
 const ICON_CLASS = "life-icon";
 const EMPTY_CLASS = `${ICON_CLASS}--empty`;
 
 class LivesDisplay {
   #displayContent;
 
-  constructor(container) {
+  constructor(container, events) {
     const label = "Lives";
     const labelEl = document.createElement("span");
     labelEl.textContent = label;
@@ -24,9 +22,9 @@ class LivesDisplay {
 
     this.#displayContent = displayContent;
 
-    eventManager.on("playerRevival", this.#onPlayerRevival.bind(this));
-    eventManager.on("playerHit", this.#onPlayerHit.bind(this));
-    eventManager.on("playerHealed", this.#onPlayerHeal.bind(this));
+    events.on("playerRevival", this.#onPlayerRevival.bind(this));
+    events.on("playerHit", this.#onPlayerHit.bind(this));
+    events.on("playerHealed", this.#onPlayerHeal.bind(this));
   }
 
   showCurrentLives(lives) {
