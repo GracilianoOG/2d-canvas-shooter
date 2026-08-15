@@ -160,7 +160,7 @@ class EnemyCreator {
 
     const enemyConfig = this.#randomizeEnemy();
     const position = this.#randomizePosition(enemyConfig.radius);
-    const enemy = new Boomer(enemyConfig, this.#target, this.#events);
+    const enemy = new EnemyClass(enemyConfig, this.#target, this.#events);
     this.#entities.add(...position, enemy, Layers.ENEMIES);
   }
 
