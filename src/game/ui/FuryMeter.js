@@ -1,20 +1,22 @@
-import { eventManager } from "../../engine/systems/EventManager";
 import { Bar } from "../../engine/ui/Bar";
 
 export class FuryMeter extends Bar {
-  constructor(args) {
-    super(args);
+  #events;
 
-    eventManager.on("restart", () => (this.value = 0));
-    eventManager.on("fillFuryMeter", ({ amount }) => this.fill(amount));
-    eventManager.on("checkFuryMeterToFill", (furyItem) => {
+  constructor(args, events) {
+    super(args);
+    this.#events = events;
+
+    events.on("restart", () => (this.value = 0));
+    events.on("fillFuryMeter", ({ amount }) => this.fill(amount));
+    events.on("checkFuryMeterToFill", (furyItem) => {
       if (!this.isFull()) {
         this.fill(10);
         furyItem.collect();
       }
     });
-    eventManager.on("shouldActivateFury", this.#onFuryActivation.bind(this));
-    eventManager.on("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
+    events.on("shouldActivateFury", this.#onFuryActivation.bind(this));
+    events.on("emptyFuryMeter", this.#onEmptyFuryMeter.bind(this));
   }
 
   #onEmptyFuryMeter({ timePerc }) {
@@ -23,7 +25,7 @@ export class FuryMeter extends Bar {
 
   #onFuryActivation() {
     if (this.isFull()) {
-      eventManager.emit("activateFury");
+      this.#events.emit("activateFury");
     }
   }
 }

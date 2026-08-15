@@ -156,11 +156,14 @@ export class Game {
     const player = this.#player;
     const hud = document.querySelector("#hud");
     const scoreboard = new Scoreboard(hud);
-    const furyMeter = new FuryMeter({
-      container: hud,
-      label: "fury",
-      value: 100,
-    });
+    const furyMeter = new FuryMeter(
+      {
+        container: hud,
+        label: "fury",
+        value: 100,
+      },
+      this.#events,
+    );
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
     const { width, height } = config;
