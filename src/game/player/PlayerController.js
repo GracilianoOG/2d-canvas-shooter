@@ -1,18 +1,20 @@
-import { inputManager } from "../../engine/systems/InputManager";
 import * as Keys from "../constants/keys";
 
 class PlayerController {
   #player;
+  #input;
   #delta;
 
-  constructor(player) {
+  constructor(player, input) {
     this.#player = player;
-    inputManager.bind("moveLeft", [Keys.A, Keys.LEFT]);
-    inputManager.bind("moveRight", [Keys.D, Keys.RIGHT]);
-    inputManager.bind("moveUp", [Keys.W, Keys.UP]);
-    inputManager.bind("moveDown", [Keys.S, Keys.DOWN]);
-    inputManager.bind("fury", [Keys.SPACE, Keys.CTRL_RIGHT]);
-    inputManager.bind("shoot", [Keys.LMB]);
+    this.#input = input;
+
+    input.bind("moveLeft", [Keys.A, Keys.LEFT]);
+    input.bind("moveRight", [Keys.D, Keys.RIGHT]);
+    input.bind("moveUp", [Keys.W, Keys.UP]);
+    input.bind("moveDown", [Keys.S, Keys.DOWN]);
+    input.bind("fury", [Keys.SPACE, Keys.CTRL_RIGHT]);
+    input.bind("shoot", [Keys.LMB]);
   }
 
   #move(direction, axis) {
@@ -20,16 +22,16 @@ class PlayerController {
   }
 
   #movePlayer() {
-    if (inputManager.isActionPressed("moveLeft")) {
+    if (this.#input.isActionPressed("moveLeft")) {
       this.#move(-1, "x");
     }
-    if (inputManager.isActionPressed("moveRight")) {
+    if (this.#input.isActionPressed("moveRight")) {
       this.#move(1, "x");
     }
-    if (inputManager.isActionPressed("moveUp")) {
+    if (this.#input.isActionPressed("moveUp")) {
       this.#move(-1, "y");
     }
-    if (inputManager.isActionPressed("moveDown")) {
+    if (this.#input.isActionPressed("moveDown")) {
       this.#move(1, "y");
     }
   }

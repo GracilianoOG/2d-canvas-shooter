@@ -25,11 +25,11 @@ export class Player extends Projectile {
   #shards;
   #events;
 
-  constructor(entities, events) {
+  constructor(entities, events, input) {
     const { radius, speed, color } = playerData;
     super(radius, speed, color);
 
-    this.#controller = new PlayerController(this);
+    this.#controller = new PlayerController(this, input);
     this.#arsenal = new PlayerArsenal(this);
     this.#shield = new PlayerShield(this);
     this.#shards = new PlayerShards(this, entities, events);
