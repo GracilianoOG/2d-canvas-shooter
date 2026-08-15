@@ -1,14 +1,16 @@
+import { Layers } from "../constants/layers";
+
 export class CollisionManager {
   check(entities) {
-    const player = entities.get("player")[0];
+    const player = entities.get(Layers.PLAYER)[0];
 
-    for (const item of entities.get("items")) {
+    for (const item of entities.get(Layers.ITEMS)) {
       player.collidedWith(item);
     }
 
-    for (const enemy of entities.get("enemies")) {
+    for (const enemy of entities.get(Layers.ENEMIES)) {
       player.collidedWith(enemy);
-      for (const bullet of entities.get("ammo")) {
+      for (const bullet of entities.get(Layers.AMMO)) {
         if (bullet.collidedWith(enemy)) return;
       }
     }
