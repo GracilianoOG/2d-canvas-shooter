@@ -1,17 +1,18 @@
 import { TAU } from "@/engine/utils/math";
 import { Shard } from "../entities/projectiles/Shard";
-import { entityManager } from "../systems/EntityManager";
 import { Layers } from "../constants/layers";
 import { shardsData } from "@/data/shardsData";
 
 export class PlayerShards {
   #shards;
   #player;
+  #entities;
   #maxShards;
 
-  constructor(player, events) {
+  constructor(player, entities, events) {
     this.#shards = [];
     this.#player = player;
+    this.#entities = entities;
     this.#maxShards = shardsData.max;
 
     events.on("shardsPickup", this.#restoreShards.bind(this));
@@ -28,7 +29,7 @@ export class PlayerShards {
     for (let i = 0; i < this.#maxShards; i++) {
       const shard = new Shard(this.#player, angle * i, 5, 3, col, 10, padding);
       this.#shards.push(shard);
-      entityManager.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
+      this.#entities.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
     }
   }
 
@@ -53,7 +54,7 @@ export class PlayerShards {
 
       if (shard.destroyed) {
         shard.restore();
-        entityManager.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
+        this.#entities.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
       }
     }
   }
