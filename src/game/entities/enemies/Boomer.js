@@ -9,8 +9,8 @@ class Boomer extends Enemy {
   #baseHp;
   #options;
 
-  constructor(enemyData, target) {
-    super(enemyData, target);
+  constructor(enemyData, target, events) {
+    super(enemyData, target, events);
     this.#baseSize = enemyData.radius;
     this.#baseSpeed = enemyData.speed;
     this.#baseHp = enemyData.hp;
