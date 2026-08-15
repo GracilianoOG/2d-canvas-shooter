@@ -170,7 +170,7 @@ export class Game {
 
     this.#screens.remove("loading");
     this.#screens.show("start");
-    inputManager.init(this.#canvas);
+    this.#input.init(this.#canvas);
   }
 
   startLoop() {
