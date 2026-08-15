@@ -1,7 +1,6 @@
 import { TAU } from "@/engine/utils/math";
 import { Shard } from "../entities/projectiles/Shard";
 import { entityManager } from "../systems/EntityManager";
-import { eventManager } from "@/engine/systems/EventManager";
 import { Layers } from "../constants/layers";
 import { shardsData } from "@/data/shardsData";
 
@@ -10,13 +9,13 @@ export class PlayerShards {
   #player;
   #maxShards;
 
-  constructor(player) {
+  constructor(player, events) {
     this.#shards = [];
     this.#player = player;
     this.#maxShards = shardsData.max;
 
-    eventManager.on("shardsPickup", this.#restoreShards.bind(this));
-    eventManager.on("playerDeath", () =>
+    events.on("shardsPickup", this.#restoreShards.bind(this));
+    events.on("playerDeath", () =>
       this.#shards.forEach((shard) => shard.destroy()),
     );
   }
