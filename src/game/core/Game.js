@@ -65,7 +65,20 @@ export class Game {
 
     this.#listenToWindowChange();
     this.#listenToResize();
+    this.#initListeners();
+  }
 
+  get state() {
+    return this.#engine.state;
+  }
+
+  #onPlayerDeath() {
+    this.#enemyCreator.stop();
+    this.shakeScreen(6, 500);
+    this.#prepareRestart(2400);
+  }
+
+  #initListeners() {
     this.#events.on("drop", (x, y, item) => {
       this.#entities.add(x, y, item, Layers.ITEMS);
       item.getInCanvas(config);
@@ -91,16 +104,6 @@ export class Game {
       }
       nukeItem.collect();
     });
-  }
-
-  get state() {
-    return this.#engine.state;
-  }
-
-  #onPlayerDeath() {
-    this.#enemyCreator.stop();
-    this.shakeScreen(6, 500);
-    this.#prepareRestart(2400);
   }
 
   #listenToWindowChange() {
