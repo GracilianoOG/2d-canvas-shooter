@@ -58,7 +58,11 @@ export class Game {
 
     this.#player = new Player(this.#entities, this.#events);
     this.#score = new ScoreManager();
-    this.#enemyCreator = new EnemyCreator(this.#player, this.#entities);
+    this.#enemyCreator = new EnemyCreator(
+      this.#player,
+      this.#entities,
+      this.#events,
+    );
 
     this.#listenToWindowChange();
     this.#listenToResize();

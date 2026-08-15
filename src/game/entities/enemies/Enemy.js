@@ -1,7 +1,6 @@
 import { dropRandomItem } from "../../items/itemDrop";
 import { Particle } from "../Particle";
 import { Projectile } from "../Projectile";
-import { eventManager } from "../../../engine/systems/EventManager";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
 
@@ -13,8 +12,9 @@ export class Enemy extends Projectile {
   #score;
   #options;
   #dropChance;
+  #events;
 
-  constructor(enemyData, target) {
+  constructor(enemyData, target, events) {
     const { radius, speed, color, hp, score, options, dropChance } = enemyData;
     super(radius, speed, color);
     this.#health = hp;
@@ -23,6 +23,7 @@ export class Enemy extends Projectile {
     this.#score = score;
     this.#dropChance = dropChance;
     this.#target = target;
+    this.#events = events;
     this.#options = { ...defaultStats, ...options };
   }
 
@@ -86,7 +87,7 @@ export class Enemy extends Projectile {
   }
 
   #die() {
-    eventManager.emit("enemyDeath");
+    this.#events.emit("enemyDeath");
     this.drop(this.#dropChance);
     this.destroy();
   }
@@ -94,8 +95,8 @@ export class Enemy extends Projectile {
   takeDamage(damage) {
     this.health -= damage;
     const alive = this.health > 0;
-    eventManager.emit("audio", alive ? "hit" : "explosion");
-    eventManager.emit("enemyHit", {
+    this.#events.emit("audio", alive ? "hit" : "explosion");
+    this.#events.emit("enemyHit", {
       color: this.baseColor,
       position: { x: this.x, y: this.y },
       score: alive ? this.score : this.score * 3,
@@ -111,7 +112,7 @@ export class Enemy extends Projectile {
   drop(chance) {
     const item = dropRandomItem(chance);
     if (item) {
-      eventManager.emit("drop", this.x, this.y, item);
+      this.#events.emit("drop", this.x, this.y, item);
     }
   }
 

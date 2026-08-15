@@ -25,8 +25,9 @@ class EnemyCreator {
   #specialChance;
   #specials;
   #entities;
+  #events;
 
-  constructor(target, entities) {
+  constructor(target, entities, events) {
     const timerConfig = { autostart: false, loop: true };
     this.#config = { ...spawnerConfig };
     const {
@@ -55,6 +56,7 @@ class EnemyCreator {
     this.#spawnMods = [...defaultModifiers];
     this.#target = target;
     this.#entities = entities;
+    this.#events = events;
     this.#specials = [Boomer, Cloaker, Crazy, Void];
   }
 
@@ -151,7 +153,7 @@ class EnemyCreator {
 
     const enemyConfig = this.#randomizeEnemy();
     const position = this.#randomizePosition(enemyConfig.radius);
-    const enemy = new EnemyClass(enemyConfig, this.#target);
+    const enemy = new EnemyClass(enemyConfig, this.#target, this.#events);
     this.#entities.add(...position, enemy, Layers.ENEMIES);
   }
 
