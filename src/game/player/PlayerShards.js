@@ -1,19 +1,19 @@
 import { TAU } from "@/engine/utils/math";
 import { Shard } from "../entities/projectiles/Shard";
 import { entityManager } from "../systems/EntityManager";
-import { WHITE } from "../constants/colors";
 import { eventManager } from "@/engine/systems/EventManager";
 import { Layers } from "../constants/layers";
+import { shardsData } from "@/data/shardsData";
 
 export class PlayerShards {
   #shards;
   #player;
   #maxShards;
 
-  constructor(player, maxShards) {
+  constructor(player) {
     this.#shards = [];
     this.#player = player;
-    this.#maxShards = maxShards;
+    this.#maxShards = shardsData.max;
 
     eventManager.on("shardsPickup", this.#restoreShards.bind(this));
     eventManager.on("playerDeath", () =>
@@ -24,7 +24,7 @@ export class PlayerShards {
   #initShards() {
     const angle = TAU / this.#maxShards;
     const padding = this.#player.radius + 24;
-    const col = WHITE;
+    const col = shardsData.color;
 
     for (let i = 0; i < this.#maxShards; i++) {
       const shard = new Shard(this.#player, angle * i, 5, 3, col, 10, padding);
