@@ -59,7 +59,7 @@ export class Game {
     this.#renderer = new Renderer(this.#canvas, this.#settings);
 
     this.#player = new Player(this.#entities, this.#events, this.#input);
-    this.#score = new ScoreManager();
+    this.#score = new ScoreManager(this.#events);
     this.#enemyCreator = new EnemyCreator(
       this.#player,
       this.#entities,

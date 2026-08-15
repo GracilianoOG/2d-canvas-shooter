@@ -1,12 +1,13 @@
-import { eventManager } from "../../engine/systems/EventManager";
 import { StorageHandler } from "../utils/StorageHandler";
 
 export class ScoreManager {
   #score;
+  #events;
 
-  constructor() {
+  constructor(events) {
     this.#score = 0;
-    eventManager.on("enemyHit", this.#countScore.bind(this));
+    this.#events = events;
+    events.on("enemyHit", this.#countScore.bind(this));
   }
 
   get score() {
@@ -18,13 +19,13 @@ export class ScoreManager {
   }
 
   #countScore({ position, score, color }) {
-    eventManager.emit("indicate", position, score, color);
+    this.#events.emit("indicate", position, score, color);
     this.add(score);
   }
 
   add(score) {
     this.#score += score;
-    eventManager.emit("setScore", { score: this.#score });
+    this.#events.emit("setScore", { score: this.#score });
   }
 
   isHighscore() {
@@ -39,6 +40,6 @@ export class ScoreManager {
 
   reset() {
     this.#score = 0;
-    eventManager.emit("setScore", { score: 0 });
+    this.#events.emit("setScore", { score: 0 });
   }
 }
