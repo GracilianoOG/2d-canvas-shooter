@@ -58,7 +58,7 @@ export class Game {
     this.#shaker = new Shaker(this.#canvas.ctx);
     this.#renderer = new Renderer(this.#canvas, this.#settings);
 
-    this.#player = new Player(this.#entities, this.#events);
+    this.#player = new Player(this.#entities, this.#events, this.#input);
     this.#score = new ScoreManager();
     this.#enemyCreator = new EnemyCreator(
       this.#player,
