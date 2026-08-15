@@ -10,14 +10,15 @@ export class Fury {
   constructor(events, input, duration = 5000) {
     this.#events = events;
     this.#input = input;
+    this.#isActive = false;
+    this.#duration = duration;
 
     this.#timer = Timer.create(
       duration,
       { autostart: false },
       this.deactivate.bind(this),
     );
-    this.#isActive = false;
-    this.#duration = duration;
+
     events.on("activateFury", () => this.activate());
     events.on("playerDeath", this.deactivate.bind(this));
     events.on("enemyDeath", this.#onEnemyKilled.bind(this));
