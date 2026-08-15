@@ -1,6 +1,5 @@
 import { Timer } from "@/engine/systems/Timer";
 import { Entity } from "./Entity";
-import { eventManager } from "@/engine/systems/EventManager";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
 import { sentryData } from "@/data/sentryData";
 import { SentryStates } from "../constants/states";
@@ -14,8 +13,9 @@ export class Sentry extends Entity {
   #despawnTimer;
   #state;
   #entities;
+  #events;
 
-  constructor(entities) {
+  constructor(entities, events) {
     const { radius, color, range, duration } = sentryData;
     super(radius, color);
     this.#state = SentryStates.SCAN;
@@ -23,6 +23,7 @@ export class Sentry extends Entity {
     this.#ammoType = AmmoFactory.request("common");
     this.#range = range;
     this.#entities = entities;
+    this.#events = events;
     this.#cooldown = Timer.create(150);
     this.#despawnTimer = Timer.create(duration, { autodestruct: true }, () => {
       this.#cooldown.remove();
@@ -35,7 +36,7 @@ export class Sentry extends Entity {
     this.#state = SentryStates.WAIT;
     const direction = this.angleTo({ x: this.#target.x, y: this.#target.y });
     this.#ammoType.create(this.x, this.y, direction);
-    eventManager.emit("audio", "shot");
+    this.#events.emit("audio", "shot");
   }
 
   #drawDespawnDelay(ctx) {

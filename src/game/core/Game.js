@@ -95,7 +95,7 @@ export class Game {
       this.#entities.add(
         sentryItem.x,
         sentryItem.y,
-        new Sentry(this.#entities),
+        new Sentry(this.#entities, this.#events),
       );
       sentryItem.collect();
     });
