@@ -1,8 +1,8 @@
 import { randomInt } from "@/engine/utils/math";
 import { Timer } from "../../engine/systems/Timer";
 import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
-import { weapons } from "@/data/weapons";
-import { weaponIds } from "@/data/weaponData";
+import { weaponData, weaponIds } from "@/data/weaponData";
+import { Gun } from "../arsenal/guns/Gun";
 
 export class PlayerArsenal {
   #inventory;
@@ -17,7 +17,7 @@ export class PlayerArsenal {
     this.#player = player;
     this.#events = events;
     this.#input = input;
-    this.#inventory = weapons;
+    this.#inventory = {};
     this.#equipped = this.#get("pistol");
 
     this.#duration = 12_000;
@@ -36,8 +36,9 @@ export class PlayerArsenal {
   #get(id) {
     const gun = this.#inventory[id];
     if (!gun) {
-      console.error(`Provided "${id}" weapon doesn't exist!`);
-      return this.#inventory["pistol"];
+      // console.error(`Provided "${id}" weapon doesn't exist!`);
+      // return this.#inventory["pistol"];
+      this.#inventory[id] = new Gun(weaponData[id]);
     }
     return this.#inventory[id];
   }
