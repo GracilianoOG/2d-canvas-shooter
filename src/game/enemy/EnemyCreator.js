@@ -5,7 +5,6 @@ import * as Colors from "../constants/colors.js";
 import * as EnemyMods from "../constants/enemyModTypes.js";
 import { spawnerConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
-import { entityManager } from "../systems/EntityManager.js";
 import { config } from "../config/index.js";
 import { Boomer } from "../entities/enemies/Boomer.js";
 import { Cloaker } from "../entities/enemies/Cloaker.js";
@@ -25,8 +24,9 @@ class EnemyCreator {
   #target;
   #specialChance;
   #specials;
+  #entities;
 
-  constructor(target) {
+  constructor(target, entities) {
     const timerConfig = { autostart: false, loop: true };
     this.#config = { ...spawnerConfig };
     const {
@@ -54,6 +54,7 @@ class EnemyCreator {
     this.#specialChance = specialChance;
     this.#spawnMods = [...defaultModifiers];
     this.#target = target;
+    this.#entities = entities;
     this.#specials = [Boomer, Cloaker, Crazy, Void];
   }
 
@@ -151,7 +152,7 @@ class EnemyCreator {
     const enemyConfig = this.#randomizeEnemy();
     const position = this.#randomizePosition(enemyConfig.radius);
     const enemy = new EnemyClass(enemyConfig, this.#target);
-    entityManager.add(...position, enemy, Layers.ENEMIES);
+    this.#entities.add(...position, enemy, Layers.ENEMIES);
   }
 
   start() {
