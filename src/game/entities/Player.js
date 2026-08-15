@@ -3,7 +3,6 @@ import { PlayerController } from "../player/PlayerController";
 import { Projectile } from "./Projectile";
 import { Fury } from "../arsenal/Fury";
 import { PlayerArsenal } from "../player/PlayerArsenal";
-import { defaultStats } from "../player/playerDefaultStats";
 import { PlayerShield } from "../player/PlayerShield";
 import * as Colors from "../constants/colors";
 import { PlayerShards } from "../player/PlayerShards";
@@ -33,7 +32,7 @@ export class Player extends Projectile {
     this.#arsenal = new PlayerArsenal(this, events, input);
     this.#shield = new PlayerShield(this, events);
     this.#shards = new PlayerShards(this, entities, events);
-    this.#health = new PlayerHealth(this, defaultStats.lives);
+    this.#health = new PlayerHealth(this);
     this.#fury = new Fury();
     this.#events = events;
 

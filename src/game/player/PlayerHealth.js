@@ -1,15 +1,16 @@
 import { eventManager } from "@/engine/systems/EventManager";
 import { BLOODY_RED } from "../constants/colors";
+import { playerData } from "@/data/playerData";
 
 export class PlayerHealth {
   #player;
   #lives;
   #maxLives;
 
-  constructor(player, lives) {
+  constructor(player) {
     this.#player = player;
-    this.#lives = lives;
-    this.#maxLives = lives;
+    this.#lives = playerData.lives;
+    this.#maxLives = playerData.lives;
 
     eventManager.on("lifePickup", (item) => {
       if (this.#lives < this.#maxLives) {

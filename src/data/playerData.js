@@ -4,4 +4,5 @@ export const playerData = {
   radius: 15,
   speed: 375,
   color: WHITE,
+  lives: 3,
 };
