@@ -37,6 +37,7 @@ export class Game {
   #collision;
   #renderer;
   #entities;
+  #events;
 
   constructor({ width, height, margin }) {
     this.#player = new Player();
@@ -50,6 +51,7 @@ export class Game {
     this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
     this.#entities = entityManager;
+    this.#events = eventManager;
 
     const container = this.#screens.get("container");
     this.#canvas = new GameCanvas({ width, height, margin, container });
@@ -64,26 +66,26 @@ export class Game {
     this.#listenToWindowChange();
     this.#listenToResize();
 
-    eventManager.on("drop", (x, y, item) => {
+    this.#events.on("drop", (x, y, item) => {
       this.#entities.add(x, y, item, Layers.ITEMS);
       item.getInCanvas(config);
     });
-    eventManager.on("playerHit", ({ lives }) => {
+    this.#events.on("playerHit", ({ lives }) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
       if (!lives) this.#onPlayerDeath();
     });
-    eventManager.on("enemyDeath", () => this.shakeScreen(5, 300));
-    eventManager.on("audio", (name) => this.#audio.play(name));
-    eventManager.on("indicate", (pos, txt, col) => {
+    this.#events.on("enemyDeath", () => this.shakeScreen(5, 300));
+    this.#events.on("audio", (name) => this.#audio.play(name));
+    this.#events.on("indicate", (pos, txt, col) => {
       const { x: fX, y: fY } = this.#canvas.factors;
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
     });
-    eventManager.on("sentryPickup", (sentryItem) => {
+    this.#events.on("sentryPickup", (sentryItem) => {
       this.#entities.add(sentryItem.x, sentryItem.y, new Sentry());
       sentryItem.collect();
     });
-    eventManager.on("nukePickup", (nukeItem) => {
+    this.#events.on("nukePickup", (nukeItem) => {
       for (const enemy of this.#entities.get(Layers.ENEMIES)) {
         enemy.takeDamage(enemy.health);
       }
@@ -211,6 +213,6 @@ export class Game {
     this.#entities.add(width / 2, height / 2, this.#player, Layers.PLAYER);
     this.#score.reset();
     this.startLoop();
-    eventManager.emit("restart");
+    this.#events.emit("restart");
   }
 }
