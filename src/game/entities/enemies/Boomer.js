@@ -31,7 +31,7 @@ class Boomer extends Enemy {
     };
 
     for (let i = 0; i < amount; i++) {
-      const minion = new Enemy(preset, this.target);
+      const minion = new Enemy(preset, this.target, this.events);
       entityManager.add(x, y, minion, Layers.ENEMIES);
     }
   }
