@@ -1,7 +1,8 @@
 import { randomInt } from "@/engine/utils/math";
 import { Timer } from "../../engine/systems/Timer";
 import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
-import { weaponIds, weapons } from "@/data/weapons";
+import { weapons } from "@/data/weapons";
+import { weaponIds } from "@/data/weaponData";
 
 export class PlayerArsenal {
   #inventory;

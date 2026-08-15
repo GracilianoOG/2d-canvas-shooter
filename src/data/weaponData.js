@@ -157,3 +157,7 @@ export const weaponData = {
     },
   },
 };
+
+export const weaponIds = Object.keys(weaponData).filter(
+  (id) => id !== "pistol",
+);

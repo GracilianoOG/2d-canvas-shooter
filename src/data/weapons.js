@@ -20,5 +20,3 @@ export const weapons = {
   sonar: new Gun(weaponData.sonar),
   that: new Gun(weaponData.that),
 };
-
-export const weaponIds = Object.keys(weapons).filter((id) => id !== "pistol");
