@@ -1,14 +1,15 @@
 import { Entity } from "../Entity";
 import { Timer } from "@/engine/systems/Timer";
 import { WHITE } from "@/game/constants/colors";
-import { eventManager } from "@/engine/systems/EventManager";
 
 class Item extends Entity {
   #despawnTimer;
   #label;
+  #events;
 
-  constructor({ radius, color, label, despawnTime }) {
+  constructor({ radius, color, label, despawnTime }, events) {
     super(radius, color);
+    this.#events = events;
     this.#label = label;
     this.#despawnTimer = Timer.create(despawnTime, { autodestruct: true }, () =>
       this.destroy(),
@@ -16,7 +17,7 @@ class Item extends Entity {
   }
 
   check() {
-    eventManager.emit(`${this.#label}Pickup`, this);
+    this.#events.emit(`${this.#label}Pickup`, this);
   }
 
   onCollect() {}
@@ -37,7 +38,7 @@ class Item extends Entity {
   }
 
   #notify() {
-    eventManager.emit(
+    this.#events.emit(
       "indicate",
       { x: this.x, y: this.y },
       this.#label.toUpperCase(),

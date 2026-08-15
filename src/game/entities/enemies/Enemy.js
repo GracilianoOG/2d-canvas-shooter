@@ -114,7 +114,7 @@ export class Enemy extends Projectile {
   }
 
   drop(chance) {
-    const item = dropRandomItem(chance);
+    const item = dropRandomItem(chance, this.#events);
     if (item) {
       this.#events.emit("drop", this.x, this.y, item);
     }
