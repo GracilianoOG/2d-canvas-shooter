@@ -3,7 +3,7 @@ import { Enemy } from "../entities/enemies/Enemy.js";
 import * as DiffMods from "../constants/modifierTypes.js";
 import * as Colors from "../constants/colors.js";
 import * as EnemyMods from "../constants/enemyModTypes.js";
-import { defaultConfig, defaultModifiers, enemyModifiers } from "./configs.js";
+import { spawnerConfig, defaultModifiers, enemyModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { entityManager } from "../systems/EntityManager.js";
 import { config } from "../config/index.js";
@@ -26,15 +26,14 @@ class EnemyCreator {
   #specialChance;
   #specials;
 
-  constructor(config = {}) {
+  constructor(target) {
     const timerConfig = { autostart: false, loop: true };
-    this.#config = { ...defaultConfig, ...config };
+    this.#config = { ...spawnerConfig };
     const {
       spawnTime,
       difficultyTime,
       minSpawnLevel,
       modChance,
-      target,
       specialChance,
     } = this.#config;
 
