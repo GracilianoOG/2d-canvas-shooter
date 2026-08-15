@@ -36,6 +36,7 @@ export class Game {
   #score;
   #collision;
   #renderer;
+  #entities;
 
   constructor({ width, height, margin }) {
     this.#player = new Player();
@@ -48,6 +49,7 @@ export class Game {
     this.#collision = new CollisionManager();
     this.#screens = new ScreenManager(this);
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
+    this.#entities = entityManager;
 
     const container = this.#screens.get("container");
     this.#canvas = new GameCanvas({ width, height, margin, container });
@@ -63,7 +65,7 @@ export class Game {
     this.#listenToResize();
 
     eventManager.on("drop", (x, y, item) => {
-      entityManager.add(x, y, item, Layers.ITEMS);
+      this.#entities.add(x, y, item, Layers.ITEMS);
       item.getInCanvas(config);
     });
     eventManager.on("playerHit", ({ lives }) => {
@@ -78,11 +80,11 @@ export class Game {
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
     });
     eventManager.on("sentryPickup", (sentryItem) => {
-      entityManager.add(sentryItem.x, sentryItem.y, new Sentry());
+      this.#entities.add(sentryItem.x, sentryItem.y, new Sentry());
       sentryItem.collect();
     });
     eventManager.on("nukePickup", (nukeItem) => {
-      for (const enemy of entityManager.get(Layers.ENEMIES)) {
+      for (const enemy of this.#entities.get(Layers.ENEMIES)) {
         enemy.takeDamage(enemy.health);
       }
       nukeItem.collect();
@@ -150,7 +152,7 @@ export class Game {
     const livesDisplay = new LivesDisplay(hud);
     livesDisplay.showCurrentLives(player.lives);
     const { width, height } = config;
-    entityManager.add(width / 2, height / 2, player, Layers.PLAYER);
+    this.#entities.add(width / 2, height / 2, player, Layers.PLAYER);
 
     await this.loadAssets();
 
@@ -180,14 +182,14 @@ export class Game {
   }
 
   update(delta) {
-    entityManager.manage(delta * 0.001);
-    this.#collision.check(entityManager);
+    this.#entities.manage(delta * 0.001);
+    this.#collision.check(this.#entities);
     Timer.updateAll(delta);
   }
 
   render() {
     this.#shaker.shake();
-    this.#renderer.render(entityManager);
+    this.#renderer.render(this.#entities);
     this.#shaker.restore();
   }
 
@@ -205,8 +207,8 @@ export class Game {
     const { width, height } = config;
     this.#canvas.ctx.clearRect(0, 0, width, height);
     this.#enemyCreator.reset();
-    entityManager.clear();
-    entityManager.add(width / 2, height / 2, this.#player, Layers.PLAYER);
+    this.#entities.clear();
+    this.#entities.add(width / 2, height / 2, this.#player, Layers.PLAYER);
     this.#score.reset();
     this.startLoop();
     eventManager.emit("restart");
