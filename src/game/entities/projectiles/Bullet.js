@@ -47,6 +47,16 @@ class Bullet extends Projectile {
     return X_AXIS || Y_AXIS;
   }
 
+  touchedBorder() {
+    const { x: bx, y: by, radius: br } = this;
+    const { width: cw, height: ch } = config;
+
+    const X_AXIS = (bx < br || bx + br > cw) && "x";
+    const Y_AXIS = (by < br || by + br > ch) && "y";
+
+    return X_AXIS || Y_AXIS || null;
+  }
+
   isOutOfCanvas() {
     const { x: bx, y: by, radius: br } = this;
     const { width: cw, height: ch } = config;
