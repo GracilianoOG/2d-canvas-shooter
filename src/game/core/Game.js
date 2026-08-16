@@ -23,6 +23,7 @@ import { Layers } from "../constants/layers";
 import { Sentry } from "../entities/Sentry";
 import { EventManager } from "@/engine/systems/EventManager";
 import { InputManager } from "@/engine/systems/InputManager";
+import { Particle } from "../entities/Particle";
 
 export class Game {
   #engine;
@@ -110,6 +111,9 @@ export class Game {
         enemy.takeDamage(enemy.health);
       }
       nukeItem.collect();
+    });
+    this.#events.on("spawnParticles", (x, y, amount, color) => {
+      Particle.create(this.#entities, x, y, amount, color);
     });
   }
 
