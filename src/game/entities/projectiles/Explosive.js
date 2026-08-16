@@ -1,12 +1,16 @@
 import { TAU } from "@/engine/utils/math";
 import { Bullet } from "./Bullet";
+import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
 class Explosive extends Bullet {
   #fragments;
 
-  constructor(angle, data, fragments = {}) {
+  constructor(angle, data) {
     super(angle, data);
-    this.#fragments = { ...fragments };
+    this.#fragments = {
+      amount: data.explosionData.amount,
+      creator: AmmoFactory.request(data.explosionData.type),
+    };
   }
 
   static explode(x, y, amount, creator) {
