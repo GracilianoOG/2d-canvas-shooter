@@ -34,10 +34,14 @@ export class Bullet extends Projectile {
   bounce() {
     const axis = this.touchedBorder();
 
-    if (axis === "x") {
-      this.angle = Math.PI - this.angle;
-    } else if (axis === "y") {
-      this.angle = -this.angle;
+    if (axis) {
+      this.getInCanvas(config);
+
+      if (axis === "x") {
+        this.angle = Math.PI - this.angle;
+      } else if (axis === "y") {
+        this.angle = -this.angle;
+      }
     }
 
     return !!axis;
