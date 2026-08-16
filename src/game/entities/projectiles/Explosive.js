@@ -4,8 +4,8 @@ import { Bullet } from "./Bullet";
 class Explosive extends Bullet {
   #fragments;
 
-  constructor(angle, radius, speed, color, damage, fragments = {}) {
-    super(angle, radius, speed, color, damage);
+  constructor(angle, data, fragments = {}) {
+    super(angle, data);
     this.#fragments = { ...fragments };
   }
 

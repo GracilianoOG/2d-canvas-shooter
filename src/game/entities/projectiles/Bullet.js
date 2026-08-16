@@ -5,7 +5,8 @@ class Bullet extends Projectile {
   #angle;
   #damage;
 
-  constructor(angle, radius, speed, color, damage) {
+  constructor(angle, data) {
+    const { radius, speed, color, damage } = data;
     super(radius, speed, color);
     this.#angle = angle;
     this.#damage = damage;

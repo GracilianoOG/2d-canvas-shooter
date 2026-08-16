@@ -16,40 +16,29 @@ export class ProjectileFactory {
 
   static create(type, angle) {
     const data = ammoData[type] ?? ammoData["common"];
-    const { radius, speed, color, damage } = data;
 
     switch (type) {
       case "common":
       case "cannon":
       case "heavy":
-        return new Bullet(angle, radius, speed, color, damage);
+        return new Bullet(angle, data);
       case "grenade":
       case "rocket":
       case "nuke":
         return new Explosive(
           angle,
-          radius,
-          speed,
-          color,
-          damage,
+          data,
           ProjectileFactory.#setupFragments(type),
         );
       case "mine":
-        return new Mine(
-          angle,
-          radius,
-          speed,
-          color,
-          damage,
-          ProjectileFactory.#setupFragments(type),
-        );
+        return new Mine(angle, data, ProjectileFactory.#setupFragments(type));
       case "bouncy":
-        return new Flechette(angle, radius, speed, color, damage);
+        return new Flechette(angle, data);
       case "pierce":
-        return new Piercing(angle, radius, speed, color, damage);
+        return new Piercing(angle, data);
       default:
         console.error("Unknown projectile type: " + type);
-        return new Bullet(angle, radius, speed, color, damage);
+        return new Bullet(angle, data);
     }
   }
 }
