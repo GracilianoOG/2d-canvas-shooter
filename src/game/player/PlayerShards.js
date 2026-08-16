@@ -23,11 +23,11 @@ export class PlayerShards {
 
   #initShards() {
     const angle = TAU / this.#maxShards;
-    const padding = this.#player.radius + 24;
-    const col = shardsData.color;
+    const padding = this.#player.radius;
+    const data = { ...shardsData, padding: padding + shardsData.padding };
 
     for (let i = 0; i < this.#maxShards; i++) {
-      const shard = new Shard(this.#player, angle * i, 5, 3, col, 10, padding);
+      const shard = new Shard(this.#player, angle * i, data);
       this.#shards.push(shard);
       this.#entities.add(this.#player.x, this.#player.y, shard, Layers.AMMO);
     }
