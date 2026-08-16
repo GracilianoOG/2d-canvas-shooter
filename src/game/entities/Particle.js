@@ -1,7 +1,7 @@
 import { TAU } from "@/engine/utils/math";
 import { Layers } from "../constants/layers";
-import { entityManager } from "../systems/EntityManager";
 import { Projectile } from "./Projectile";
+import { particleData } from "@/data/particleData";
 
 export class Particle extends Projectile {
   #angle = Math.random() * TAU;
@@ -10,17 +10,18 @@ export class Particle extends Projectile {
   #lifetime;
   #baseRadius;
 
-  constructor(radius, speed, color) {
-    super(radius, speed, color);
+  constructor(data, color) {
+    const { radius, speed } = data;
+    super(radius, speed, color ?? data.color);
     this.#age = 0;
     this.#lifetime = 0.1;
     this.#baseRadius = this.radius;
   }
 
-  static create(x, y, size, speed, color, amount) {
+  static create(entities, x, y, amount, color) {
     for (let i = 0; i < amount; i++) {
-      const particle = new Particle(size, speed, color);
-      entityManager.add(x, y, particle, Layers.PARTICLES);
+      const particle = new Particle(particleData, color);
+      entities.add(x, y, particle, Layers.PARTICLES);
     }
   }
 
