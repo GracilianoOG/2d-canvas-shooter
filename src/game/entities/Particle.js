@@ -5,6 +5,16 @@ import { Projectile } from "./Projectile";
 export class Particle extends Projectile {
   #angle = Math.random() * 2 * Math.PI;
   #randomizer = Math.random();
+  #age;
+  #lifetime;
+  #baseRadius;
+
+  constructor(radius, speed, color) {
+    super(radius, speed, color);
+    this.#age = 0;
+    this.#lifetime = 0.1;
+    this.#baseRadius = this.radius;
+  }
 
   static create(x, y, size, speed, color, amount) {
     for (let i = 0; i < amount; i++) {
@@ -16,6 +26,7 @@ export class Particle extends Projectile {
   update(delta) {
     this.x += Math.cos(this.#angle) * this.speed * delta + this.#randomizer;
     this.y += Math.sin(this.#angle) * this.speed * delta + this.#randomizer;
-    this.shrink(delta * 12);
+    this.shrink(this.#baseRadius * (this.#age / this.#lifetime) * delta);
+    this.#age += delta;
   }
 }
