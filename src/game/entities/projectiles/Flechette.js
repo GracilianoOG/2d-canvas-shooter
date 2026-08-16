@@ -21,11 +21,9 @@ export class Flechette extends Bullet {
       this.angle = Math.PI - this.angle;
     } else if (Y_AXIS) {
       this.angle = -this.angle;
-    } else {
-      return;
     }
 
-    this.#bounces--;
+    return X_AXIS || Y_AXIS;
   }
 
   update(delta) {
@@ -35,6 +33,8 @@ export class Flechette extends Bullet {
       this.color = GRAY;
       return;
     }
-    this.bounce();
+    if (this.bounce()) {
+      this.#bounces--;
+    }
   }
 }
