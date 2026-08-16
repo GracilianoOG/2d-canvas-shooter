@@ -32,19 +32,15 @@ class Bullet extends Projectile {
   }
 
   bounce() {
-    const { x: ballX, y: ballY, radius } = this;
-    const { width: canvasW, height: canvasH } = config;
+    const axis = this.touchedBorder();
 
-    const X_AXIS = ballX < radius || ballX + radius > canvasW;
-    const Y_AXIS = ballY < radius || ballY + radius > canvasH;
-
-    if (X_AXIS) {
+    if (axis === "x") {
       this.angle = Math.PI - this.angle;
-    } else if (Y_AXIS) {
+    } else if (axis === "y") {
       this.angle = -this.angle;
     }
 
-    return X_AXIS || Y_AXIS;
+    return !!axis;
   }
 
   touchedBorder() {
