@@ -1,5 +1,4 @@
 import { dropRandomItem } from "../../items/itemDrop";
-import { Particle } from "../Particle";
 import { Projectile } from "../Projectile";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
@@ -87,7 +86,7 @@ export class Enemy extends Projectile {
   }
 
   #bleed(amount) {
-    Particle.create(this.x, this.y, 8, 313, this.baseColor, amount);
+    this.#events.emit("spawnParticles", this.x, this.y, amount, this.baseColor);
   }
 
   #die() {

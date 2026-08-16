@@ -1,4 +1,3 @@
-import { Particle } from "./Particle";
 import { PlayerController } from "../player/PlayerController";
 import { Projectile } from "./Projectile";
 import { Fury } from "../arsenal/Fury";
@@ -73,8 +72,8 @@ export class Player extends Projectile {
 
     this.#health.damage();
     this.#events.emit("playerHit", { lives: this.#health.lives });
-    const particles = !this.isDead ? 8 : 16;
-    Particle.create(this.x, this.y, 8, 313, this.color, particles);
+    const amount = !this.isDead ? 8 : 16;
+    this.#events.emit("spawnParticles", this.x, this.y, amount);
 
     if (this.isDead) {
       this.die();
