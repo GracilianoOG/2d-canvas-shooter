@@ -1,9 +1,10 @@
+import { TAU } from "@/engine/utils/math";
 import { Layers } from "../constants/layers";
 import { entityManager } from "../systems/EntityManager";
 import { Projectile } from "./Projectile";
 
 export class Particle extends Projectile {
-  #angle = Math.random() * 2 * Math.PI;
+  #angle = Math.random() * TAU;
   #randomizer = Math.random();
   #age;
   #lifetime;
