@@ -4,6 +4,11 @@ export class Piercing extends Bullet {
   #hitList = [];
   #hits = 3;
 
+  constructor(angle, data) {
+    super(angle, data);
+    this.#hits = data.maxHits;
+  }
+
   onDestroy() {
     this.#hitList = null;
   }

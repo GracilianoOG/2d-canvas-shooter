@@ -49,6 +49,7 @@ export const ammoData = {
     speed: 1500,
     color: Colors.RED,
     damage: Damage.HEAVY_DMG,
+    maxHits: 3,
   },
   bouncy: {
     radius: 8,
