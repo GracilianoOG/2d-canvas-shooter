@@ -55,6 +55,7 @@ export const ammoData = {
     speed: 750,
     color: Colors.VIOLET,
     damage: Damage.RICOCHET_DMG,
+    bounces: 10,
   },
 };
 
