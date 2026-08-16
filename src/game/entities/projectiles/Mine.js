@@ -6,7 +6,7 @@ export class Mine extends Explosive {
       const DEACCELERATION = 1000 * delta;
       this.speed = Math.max(this.speed - DEACCELERATION, 0);
       this.moveTowards(delta);
-      this.destroyOutOfCanvas();
+      this.bounce();
     }
   }
 }
