@@ -1,12 +1,13 @@
 import { Bullet } from "./Bullet";
 
 export class Piercing extends Bullet {
-  #hitList = [];
-  #hits = 3;
+  #hitList;
+  #hits;
 
   constructor(angle, data) {
     super(angle, data);
     this.#hits = data.maxHits;
+    this.#hitList = [];
   }
 
   onDestroy() {
