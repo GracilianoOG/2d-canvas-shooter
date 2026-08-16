@@ -1,7 +1,7 @@
 import { config } from "@/game/config";
 import { Projectile } from "@/game/entities/Projectile";
 
-class Bullet extends Projectile {
+export class Bullet extends Projectile {
   #angle;
   #damage;
 
@@ -76,5 +76,3 @@ class Bullet extends Projectile {
     this.destroyOutOfCanvas();
   }
 }
-
-export { Bullet };
