@@ -2,7 +2,7 @@ import { TAU } from "@/engine/utils/math";
 import { Bullet } from "./Bullet";
 import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 
-class Explosive extends Bullet {
+export class Explosive extends Bullet {
   #fragments;
 
   constructor(angle, data) {
@@ -29,5 +29,3 @@ class Explosive extends Bullet {
     Explosive.explode(this.x, this.y, amount, creator);
   }
 }
-
-export { Explosive };
