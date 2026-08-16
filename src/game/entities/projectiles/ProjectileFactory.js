@@ -15,8 +15,8 @@ export class ProjectileFactory {
   }
 
   static create(type, angle) {
-    const { radius, speed, color, damage } =
-      ammoData[type] ?? ammoData["common"];
+    const data = ammoData[type] ?? ammoData["common"];
+    const { radius, speed, color, damage } = data;
 
     switch (type) {
       case "common":
