@@ -4,10 +4,12 @@ export class InputManager {
   #bindings;
   #canvas;
 
-  constructor() {
+  constructor(canvas) {
     this.#actions = {};
     this.#mouse = { x: 0, y: 0 };
     this.#bindings = {};
+    this.#canvas = canvas;
+    this.#initListeners(this.#canvas);
   }
 
   getMousePosition() {
@@ -19,7 +21,7 @@ export class InputManager {
     };
   }
 
-  init(canvas) {
+  #initListeners(canvas) {
     document.addEventListener("keydown", (e) => this.#onKey(e.code));
     document.addEventListener("keyup", (e) => this.#onKey(e.code, false));
     document.addEventListener("contextmenu", () => (this.#actions = {}));
@@ -36,8 +38,6 @@ export class InputManager {
 
     canvas.parent.addEventListener("mousemove", this.#onMouseMove.bind(this));
     canvas.parent.addEventListener("mouseleave", this.#onMouseLeave.bind(this));
-
-    this.#canvas = canvas;
   }
 
   #onKey(code, pressed = true) {

@@ -47,7 +47,6 @@ export class Game {
     this.#entities = entityManager;
     this.#collision = new CollisionManager();
     this.#screens = new ScreenManager(this.#events);
-    this.#input = new InputManager();
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
 
     this.#settings = {
@@ -58,6 +57,7 @@ export class Game {
     this.#canvas = new GameCanvas({ width, height, margin, container });
     this.#shaker = new Shaker(this.#canvas.ctx);
     this.#renderer = new Renderer(this.#canvas, this.#settings);
+    this.#input = new InputManager(this.#canvas);
 
     this.#player = new Player(this.#entities, this.#events, this.#input);
     this.#score = new ScoreManager(this.#events);
@@ -180,7 +180,6 @@ export class Game {
 
     this.#screens.remove("loading");
     this.#screens.show("start");
-    this.#input.init(this.#canvas);
   }
 
   startLoop() {
