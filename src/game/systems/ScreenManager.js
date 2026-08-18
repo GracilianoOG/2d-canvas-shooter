@@ -4,9 +4,10 @@ import { StorageHandler } from "../utils/StorageHandler";
 export class ScreenManager {
   #screens;
   #actions;
+  #events;
 
-  constructor(game) {
-    this.game = game;
+  constructor(events) {
+    this.#events = events;
 
     this.#screens = new Map();
     this.#actions = {
@@ -48,16 +49,16 @@ export class ScreenManager {
 
   startGame() {
     this.toggle("menu", true);
-    this.game.start();
+    this.#events.emit("startGame");
   }
 
   pauseGame() {
-    this.game.pause();
+    this.#events.emit("pauseGame");
   }
 
   restartGame() {
     this.toggle("restart", true);
-    this.game.restart();
+    this.#events.emit("restartGame");
   }
 
   get(name) {

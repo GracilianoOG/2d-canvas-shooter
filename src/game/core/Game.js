@@ -43,10 +43,10 @@ export class Game {
 
   constructor({ width, height, margin }) {
     this.#audio = new AudioSystem();
-    this.#collision = new CollisionManager();
-    this.#screens = new ScreenManager(this);
-    this.#entities = entityManager;
     this.#events = new EventManager();
+    this.#entities = entityManager;
+    this.#collision = new CollisionManager();
+    this.#screens = new ScreenManager(this.#events);
     this.#input = new InputManager();
     this.#engine = new Engine(this.update.bind(this), this.render.bind(this));
 
@@ -83,6 +83,9 @@ export class Game {
   }
 
   #initListeners() {
+    this.#events.on("startGame", () => this.start());
+    this.#events.on("restartGame", () => this.restart());
+    this.#events.on("pauseGame", () => this.pause());
     this.#events.on("drop", (x, y, item) => {
       this.#entities.add(x, y, item, Layers.ITEMS);
       item.getInCanvas(config);
