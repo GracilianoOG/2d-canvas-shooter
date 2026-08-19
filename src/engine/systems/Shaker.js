@@ -1,7 +1,7 @@
 import { Timer } from "./Timer";
 import { randomInt } from "../utils/math";
 
-class Shaker {
+export class Shaker {
   #timer;
   #strength;
   #ctx;
@@ -31,5 +31,3 @@ class Shaker {
     }
   }
 }
-
-export { Shaker };
