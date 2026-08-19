@@ -26,7 +26,9 @@ class Shaker {
   }
 
   restore() {
-    this.#ctx.setTransform(1, 0, 0, 1, 0, 0);
+    if (this.#timer.active) {
+      this.#ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
   }
 }
 
