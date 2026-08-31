@@ -1,4 +1,8 @@
 import * as Colors from "@/game/constants/colors";
+import { Boomer } from "@/game/entities/enemies/Boomer";
+import { Cloaker } from "@/game/entities/enemies/Cloaker";
+import { Enemy } from "@/game/entities/enemies/Enemy";
+import { Void } from "@/game/entities/enemies/Void";
 
 export const enemyData = {
   reddy: {
@@ -76,4 +80,58 @@ export const enemyData = {
   },
 };
 
+export const specialData = {
+  wall: {
+    Class: Enemy,
+    radius: 50,
+    speed: 60,
+    color: Colors.GOLDEN,
+    hp: 80,
+    options: {
+      knockback: false,
+      aggressive: false,
+      shrinkable: false,
+      bloodAmount: 16,
+    },
+    dropChance: 0.25,
+  },
+  boomer: {
+    Class: Boomer,
+    radius: 35,
+    speed: 80,
+    color: Colors.VIOLET,
+    hp: 50,
+    options: {
+      aggressive: false,
+      shrinkable: false,
+    },
+    dropChance: 0.2,
+  },
+  void: {
+    Class: Void,
+    radius: 30,
+    speed: 150,
+    color: Colors.WHITE,
+    hp: 40,
+    options: {
+      aggressive: false,
+      shrinkable: false,
+      grow: true,
+    },
+    dropChance: 0.15,
+  },
+  cloaker: {
+    Class: Cloaker,
+    radius: 25,
+    speed: 200,
+    color: Colors.VERY_LIGHT_BLUE,
+    hp: 30,
+    options: {
+      shrinkable: false,
+    },
+    dropChance: 0.15,
+  },
+};
+
 export const enemyIds = Object.keys(enemyData);
+export const specialIds = Object.keys(specialData);
