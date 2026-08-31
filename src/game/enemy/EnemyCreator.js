@@ -4,12 +4,13 @@ import * as DiffMods from "../constants/modifierTypes.js";
 import { spawnerConfig, defaultModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { config } from "../config/index.js";
-import { Boomer } from "../entities/enemies/Boomer.js";
-import { Cloaker } from "../entities/enemies/Cloaker.js";
-import { Crazy } from "../entities/enemies/Crazy.js";
-import { Void } from "../entities/enemies/Void.js";
 import { Layers } from "../constants/layers.js";
-import { enemyData, enemyIds } from "@/data/enemyData.js";
+import {
+  enemyData,
+  enemyIds,
+  specialData,
+  specialIds,
+} from "@/data/enemyData.js";
 
 export class EnemyCreator {
   #config;
@@ -20,7 +21,6 @@ export class EnemyCreator {
   #spawnMods;
   #target;
   #specialChance;
-  #specials;
   #entities;
   #events;
 
@@ -48,7 +48,6 @@ export class EnemyCreator {
     this.#target = target;
     this.#entities = entities;
     this.#events = events;
-    this.#specials = [Boomer, Cloaker, Crazy, Void];
 
     events.on("spawnMinions", (x, y, amount, preset) => {
       for (let i = 0; i < amount; i++) {
@@ -79,6 +78,14 @@ export class EnemyCreator {
     return enemyConfig;
   }
 
+  #randomizeSpecial() {
+    const specialId = specialIds[randomInt(specialIds.length)];
+    const specialConfig = { ...specialData[specialId] };
+    specialConfig.score = specialConfig.hp * 10;
+
+    return specialConfig;
+  }
+
   #hardenSpawn() {
     const length = this.#spawnMods.length;
 
@@ -107,13 +114,14 @@ export class EnemyCreator {
   }
 
   #create() {
-    const special = this.#specialChance >= Math.random();
-    const EnemyClass = !special
-      ? Enemy
-      : this.#specials[randomInt(this.#specials.length)];
+    const isSpecial = this.#specialChance >= Math.random();
 
-    const enemyConfig = this.#randomizeEnemy();
+    const enemyConfig = !isSpecial
+      ? this.#randomizeEnemy()
+      : this.#randomizeSpecial();
+
     const position = this.#randomizePosition(enemyConfig.radius);
+    const EnemyClass = enemyConfig.Class ?? Enemy;
     const enemy = new EnemyClass(enemyConfig, this.#target, this.#events);
     this.#entities.add(...position, enemy, Layers.ENEMIES);
   }
