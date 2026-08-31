@@ -1,0 +1,95 @@
+import { TAU } from "@/engine/utils/math";
+import { Projectile } from "./Projectile";
+import { config } from "../config";
+import { GOLDEN } from "../constants/colors";
+
+export class Orb extends Projectile {
+  #entities;
+  #events;
+  #target;
+  #state;
+  #angle;
+
+  constructor(data, entities, events) {
+    super(6, 300, GOLDEN);
+    // super(data.radius, data.speed, data.color);
+    this.#entities = entities;
+    this.#events = events;
+    this.#state = "scatter";
+    this.#angle = Math.random() * TAU;
+    this.#target = this.#entities.get("player")[0];
+  }
+
+  #followTarget(delta) {
+    const target = this.#target;
+    const position = { x: target.x, y: target.y };
+    this.#angle = this.angleTo(position);
+
+    this.x += Math.cos(this.#angle) * this.speed * delta;
+    this.y += Math.sin(this.#angle) * this.speed * delta;
+
+    this.speed += delta * 800;
+  }
+
+  #deaccelerate(delta) {
+    const DEACCELERATION = delta * 200;
+    this.speed = Math.max(this.speed - DEACCELERATION, 0);
+
+    this.x += Math.cos(this.#angle) * this.speed * delta;
+    this.y += Math.sin(this.#angle) * this.speed * delta;
+  }
+
+  #notify() {
+    this.#events.emit("indicate", { x: this.x, y: this.y }, "100", this.color);
+  }
+
+  grab() {
+    this.#notify();
+    this.destroy();
+  }
+
+  bounce() {
+    const axis = this.touchedBorder();
+
+    if (axis) {
+      this.getInCanvas(config);
+
+      if (axis === "x") {
+        this.#angle = Math.PI - this.#angle;
+      } else if (axis === "y") {
+        this.#angle = -this.#angle;
+      }
+    }
+
+    return !!axis;
+  }
+
+  touchedBorder() {
+    const { x: bx, y: by, radius: br } = this;
+    const { width: cw, height: ch } = config;
+
+    const X_AXIS = (bx < br || bx + br > cw) && "x";
+    const Y_AXIS = (by < br || by + br > ch) && "y";
+
+    return X_AXIS || Y_AXIS || null;
+  }
+
+  update(delta) {
+    if (this.#state === "follow") {
+      this.#followTarget(delta);
+      return;
+    }
+
+    if (this.#state === "scatter") {
+      if (this.distanceTo({ x: this.#target.x, y: this.#target.y }) <= 100) {
+        this.#state = "follow";
+        return;
+      }
+
+      if (this.speed > 0) {
+        this.#deaccelerate(delta);
+        this.bounce();
+      }
+    }
+  }
+}
