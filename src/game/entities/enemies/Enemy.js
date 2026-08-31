@@ -58,8 +58,7 @@ export class Enemy extends Projectile {
     this.angle = this.angleTo(position);
 
     if (this.distanceTo(position) > target.radius) {
-      this.x += Math.cos(this.angle) * this.speed * delta;
-      this.y += Math.sin(this.angle) * this.speed * delta;
+      this.moveTowards(delta);
     }
   }
 

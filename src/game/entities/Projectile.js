@@ -53,6 +53,11 @@ class Projectile extends Entity {
     return X_AXIS || Y_AXIS || null;
   }
 
+  moveTowards(delta, randomizer = 0) {
+    this.x += Math.cos(this.angle) * this.speed * delta + randomizer;
+    this.y += Math.sin(this.angle) * this.speed * delta + randomizer;
+  }
+
   shrink(amount) {
     const newRadius = Math.max(this.radius - amount, 0);
     this.radius = newRadius;

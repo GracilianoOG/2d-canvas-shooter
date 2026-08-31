@@ -25,8 +25,7 @@ export class Particle extends Projectile {
   }
 
   update(delta) {
-    this.x += Math.cos(this.angle) * this.speed * delta + this.#randomizer;
-    this.y += Math.sin(this.angle) * this.speed * delta + this.#randomizer;
+    this.moveTowards(delta, this.#randomizer);
     this.shrink(this.#baseRadius * (this.#age / this.#lifetime) * delta);
     this.#age += delta;
   }

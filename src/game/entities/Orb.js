@@ -22,19 +22,14 @@ export class Orb extends Projectile {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
     this.angle = this.angleTo(position);
-
-    this.x += Math.cos(this.angle) * this.speed * delta;
-    this.y += Math.sin(this.angle) * this.speed * delta;
-
+    this.moveTowards(delta);
     this.speed += delta * 800;
   }
 
   #deaccelerate(delta) {
     const DEACCELERATION = delta * 200;
     this.speed = Math.max(this.speed - DEACCELERATION, 0);
-
-    this.x += Math.cos(this.angle) * this.speed * delta;
-    this.y += Math.sin(this.angle) * this.speed * delta;
+    this.moveTowards(delta);
   }
 
   #notify() {
