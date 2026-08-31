@@ -11,7 +11,7 @@ import { Void } from "../entities/enemies/Void.js";
 import { Layers } from "../constants/layers.js";
 import { enemyData, enemyIds } from "@/data/enemyData.js";
 
-class EnemyCreator {
+export class EnemyCreator {
   #config;
   #spawnTimer;
   #difficultyTimer;
@@ -137,5 +137,3 @@ class EnemyCreator {
     this.#spawnMods = [...defaultModifiers];
   }
 }
-
-export { EnemyCreator };
