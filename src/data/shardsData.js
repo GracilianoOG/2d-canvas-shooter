@@ -4,7 +4,7 @@ export const shardsData = {
   color: WHITE,
   max: 8,
   radius: 5,
-  speed: 3,
+  speed: 5,
   damage: 10,
   padding: 24,
 };
