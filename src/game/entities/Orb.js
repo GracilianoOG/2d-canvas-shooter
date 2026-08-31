@@ -2,7 +2,6 @@ import { TAU } from "@/engine/utils/math";
 import { Projectile } from "./Projectile";
 
 export class Orb extends Projectile {
-  #entities;
   #events;
   #target;
   #state;
@@ -11,12 +10,11 @@ export class Orb extends Projectile {
 
   constructor(data, entities, events) {
     super(data.radius, data.speed, data.color, Math.random() * TAU);
-    this.#entities = entities;
     this.#events = events;
     this.#state = "scatter";
     this.#range = data.range;
     this.#value = data.value;
-    this.#target = this.#entities.get("player")[0];
+    this.#target = entities.get("player")[0];
   }
 
   #followTarget(delta) {
