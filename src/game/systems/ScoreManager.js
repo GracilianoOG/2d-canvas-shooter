@@ -7,7 +7,7 @@ export class ScoreManager {
   constructor(events) {
     this.#score = 0;
     this.#events = events;
-    events.on("enemyHit", this.#countScore.bind(this));
+    events.on("score", this.#countScore.bind(this));
   }
 
   get score() {
