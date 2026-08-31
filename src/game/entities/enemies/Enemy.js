@@ -83,7 +83,7 @@ export class Enemy extends Projectile {
       this.shrink(this.radius * 0.05);
     }
     if (this.#options.grow) {
-      this.grow(this.radius * 0.1);
+      this.grow(this.radius * 0.02);
     }
     this.color = WHITE;
   }
