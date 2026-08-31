@@ -2,10 +2,12 @@ import { Entity } from "./Entity.js";
 
 class Projectile extends Entity {
   #speed;
+  #angle;
 
-  constructor(radius, speed, color) {
+  constructor(radius, speed, color, angle = 0) {
     super(radius, color);
     this.speed = speed;
+    this.#angle = angle;
   }
 
   get speed() {
@@ -14,6 +16,14 @@ class Projectile extends Entity {
 
   set speed(speed) {
     this.#speed = speed;
+  }
+
+  get angle() {
+    return this.#angle;
+  }
+
+  set angle(angle) {
+    this.#angle = angle;
   }
 
   shrink(amount) {
