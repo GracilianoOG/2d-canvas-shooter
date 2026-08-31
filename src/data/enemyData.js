@@ -122,7 +122,7 @@ export const specialData = {
   },
   cloaker: {
     Class: Cloaker,
-    radius: 25,
+    radius: 20,
     speed: 200,
     color: Colors.VERY_LIGHT_BLUE,
     hp: 30,
