@@ -1,7 +1,7 @@
 import { config } from "../config/index.js";
 import { Entity } from "./Entity.js";
 
-class Projectile extends Entity {
+export class Projectile extends Entity {
   #speed;
   #angle;
 
@@ -68,5 +68,3 @@ class Projectile extends Entity {
     this.radius += amount;
   }
 }
-
-export { Projectile };
