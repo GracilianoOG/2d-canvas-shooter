@@ -1,9 +1,7 @@
 import { Timer } from "../../engine/systems/Timer.js";
 import { Enemy } from "../entities/enemies/Enemy.js";
 import * as DiffMods from "../constants/modifierTypes.js";
-import * as Colors from "../constants/colors.js";
-import * as EnemyMods from "../constants/enemyModTypes.js";
-import { spawnerConfig, defaultModifiers, enemyModifiers } from "./configs.js";
+import { spawnerConfig, defaultModifiers } from "./configs.js";
 import { between, randomInt } from "../../engine/utils/math.js";
 import { config } from "../config/index.js";
 import { Boomer } from "../entities/enemies/Boomer.js";
@@ -19,7 +17,6 @@ class EnemyCreator {
   #difficultyTimer;
   #spawnTime;
   #spawnLevel;
-  #modChance;
   #spawnMods;
   #target;
   #specialChance;
@@ -30,13 +27,8 @@ class EnemyCreator {
   constructor(target, entities, events) {
     const timerConfig = { autostart: false, loop: true };
     this.#config = { ...spawnerConfig };
-    const {
-      spawnTime,
-      difficultyTime,
-      minSpawnLevel,
-      modChance,
-      specialChance,
-    } = this.#config;
+    const { spawnTime, difficultyTime, minSpawnLevel, specialChance } =
+      this.#config;
 
     this.#spawnTimer = Timer.create(
       spawnTime,
@@ -51,7 +43,6 @@ class EnemyCreator {
 
     this.#spawnTime = spawnTime;
     this.#spawnLevel = minSpawnLevel;
-    this.#modChance = modChance;
     this.#specialChance = specialChance;
     this.#spawnMods = [...defaultModifiers];
     this.#target = target;
@@ -85,38 +76,7 @@ class EnemyCreator {
     const enemyConfig = { ...enemyData[randomId] };
     enemyConfig.score = enemyConfig.hp * 10;
 
-    if (this.#modChance > randomInt(100)) {
-      this.#hardenEnemy(enemyConfig);
-    }
-
     return enemyConfig;
-  }
-
-  #hardenEnemy(enemyConfig) {
-    const length = enemyModifiers.length;
-    const radius = enemyConfig.radius;
-    const speed = enemyConfig.speed;
-
-    switch (enemyModifiers[randomInt(length)]) {
-      case EnemyMods.FAST:
-        enemyConfig.radius = Math.max(Math.ceil(radius * 0.8), 10);
-        enemyConfig.speed += 1;
-        enemyConfig.color = Colors.VERY_LIGHT_BLUE;
-        break;
-      case EnemyMods.STRONG:
-        enemyConfig.radius = Math.ceil(radius * 1.25);
-        enemyConfig.color = Colors.VERY_LIGHT_PINK;
-        enemyConfig.hp += 20;
-        break;
-      case EnemyMods.SLOW_STRONGER:
-        enemyConfig.radius = Math.ceil(radius * 1.5);
-        enemyConfig.speed = Math.max(speed - 1, 1);
-        enemyConfig.color = Colors.GOLDEN;
-        enemyConfig.hp += 40;
-        break;
-    }
-
-    enemyConfig.score *= 2;
   }
 
   #hardenSpawn() {
@@ -125,12 +85,6 @@ class EnemyCreator {
     switch (this.#spawnMods[randomInt(length)]) {
       case DiffMods.SPAWN_TIME:
         this.#spawnTimer.waitTime -= this.#config.spawnDecrementMs;
-        break;
-      case DiffMods.MOD_CHANCE:
-        this.#modChance += this.#config.modChanceIncrement;
-        if (this.#modChance === this.#config.maxModChance) {
-          this.#removeSpawnMod(DiffMods.MOD_CHANCE);
-        }
         break;
       case DiffMods.NEW_ENEMY:
         this.#spawnLevel++;
@@ -179,7 +133,6 @@ class EnemyCreator {
     this.#spawnTimer.reset();
     this.#difficultyTimer.reset();
     this.#spawnLevel = this.#config.minSpawnLevel;
-    this.#modChance = this.#config.modChance;
     this.#specialChance = this.#config.specialChance;
     this.#spawnMods = [...defaultModifiers];
   }
