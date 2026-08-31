@@ -80,7 +80,7 @@ export class Enemy extends Projectile {
       this.#maxSpeed += 62;
     }
     if (this.#options.shrinkable) {
-      this.shrink(1);
+      this.shrink(this.radius * 0.05);
     }
     if (this.#options.grow) {
       this.grow(this.radius * 0.1);
