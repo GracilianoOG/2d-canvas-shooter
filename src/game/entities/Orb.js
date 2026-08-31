@@ -30,6 +30,7 @@ export class Orb extends Projectile {
     const DEACCELERATION = delta * 200;
     this.speed = Math.max(this.speed - DEACCELERATION, 0);
     this.moveTowards(delta);
+    this.bounce();
   }
 
   #notify() {
@@ -42,21 +43,17 @@ export class Orb extends Projectile {
   }
 
   update(delta) {
-    if (this.#state === "follow") {
-      this.#followTarget(delta);
-      return;
-    }
-
-    if (this.#state === "scatter") {
-      if (this.distanceTo({ x: this.#target.x, y: this.#target.y }) <= 100) {
-        this.#state = "follow";
-        return;
-      }
-
-      if (this.speed > 0) {
+    switch (this.#state) {
+      case "follow":
+        this.#followTarget(delta);
+        break;
+      case "scatter":
+        if (this.distanceTo({ x: this.#target.x, y: this.#target.y }) <= 100) {
+          this.#state = "follow";
+          return;
+        }
         this.#deaccelerate(delta);
-        this.bounce();
-      }
+        break;
     }
   }
 }
