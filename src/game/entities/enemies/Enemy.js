@@ -2,6 +2,7 @@ import { dropRandomItem } from "../../items/itemDrop";
 import { Projectile } from "../Projectile";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
+import { randomInt } from "@/engine/utils/math";
 
 export class Enemy extends Projectile {
   #target;
@@ -94,6 +95,7 @@ export class Enemy extends Projectile {
 
   #die() {
     this.#events.emit("enemyDeath");
+    this.#events.emit("spawnOrbs", this.x, this.y, randomInt(7));
     this.drop(this.#dropChance);
     this.destroy();
   }
