@@ -1,6 +1,5 @@
 import { TAU } from "@/engine/utils/math";
 import { Projectile } from "./Projectile";
-import { config } from "../config";
 import { GOLDEN } from "../constants/colors";
 
 export class Orb extends Projectile {
