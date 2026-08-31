@@ -25,6 +25,7 @@ import { EventManager } from "@/engine/systems/EventManager";
 import { InputManager } from "@/engine/systems/InputManager";
 import { Particle } from "../entities/Particle";
 import { Orb } from "../entities/Orb";
+import { orbData } from "@/data/orbData";
 
 export class Game {
   #engine;
@@ -124,7 +125,7 @@ export class Game {
         this.#entities.add(
           x,
           y,
-          new Orb({}, this.#entities, this.#events),
+          new Orb(orbData, this.#entities, this.#events),
           Layers.ORB,
         );
       }

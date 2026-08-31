@@ -1,19 +1,21 @@
 import { TAU } from "@/engine/utils/math";
 import { Projectile } from "./Projectile";
-import { GOLDEN } from "../constants/colors";
 
 export class Orb extends Projectile {
   #entities;
   #events;
   #target;
   #state;
+  #range;
+  #value;
 
   constructor(data, entities, events) {
-    super(6, 300, GOLDEN, Math.random() * TAU);
-    // super(data.radius, data.speed, data.color);
+    super(data.radius, data.speed, data.color, Math.random() * TAU);
     this.#entities = entities;
     this.#events = events;
     this.#state = "scatter";
+    this.#range = data.range;
+    this.#value = data.value;
     this.#target = this.#entities.get("player")[0];
   }
 
@@ -33,7 +35,12 @@ export class Orb extends Projectile {
   }
 
   #notify() {
-    this.#events.emit("indicate", { x: this.x, y: this.y }, "100", this.color);
+    this.#events.emit(
+      "indicate",
+      { x: this.x, y: this.y },
+      this.#value,
+      this.color,
+    );
   }
 
   grab() {
@@ -47,7 +54,10 @@ export class Orb extends Projectile {
         this.#followTarget(delta);
         break;
       case "scatter":
-        if (this.distanceTo({ x: this.#target.x, y: this.#target.y }) <= 100) {
+        if (
+          this.distanceTo({ x: this.#target.x, y: this.#target.y }) <=
+          this.#range
+        ) {
           this.#state = "follow";
           return;
         }
