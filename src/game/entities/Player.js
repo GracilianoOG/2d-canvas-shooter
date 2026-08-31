@@ -99,6 +99,8 @@ export class Player extends Projectile {
       object.check();
     } else if (object?.drop) {
       this.takeHit();
+    } else if (object?.grab) {
+      object.grab();
     }
   }
 
