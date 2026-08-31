@@ -2,22 +2,12 @@ import { config } from "@/game/config";
 import { Projectile } from "@/game/entities/Projectile";
 
 export class Bullet extends Projectile {
-  #angle;
   #damage;
 
   constructor(angle, data) {
     const { radius, speed, color, damage } = data;
-    super(radius, speed, color);
-    this.#angle = angle;
+    super(radius, speed, color, angle);
     this.#damage = damage;
-  }
-
-  get angle() {
-    return this.#angle;
-  }
-
-  set angle(angle) {
-    this.#angle = angle;
   }
 
   get damage() {

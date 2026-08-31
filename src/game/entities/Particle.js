@@ -4,7 +4,6 @@ import { Projectile } from "./Projectile";
 import { particleData } from "@/data/particleData";
 
 export class Particle extends Projectile {
-  #angle = Math.random() * TAU;
   #randomizer = Math.random();
   #age;
   #lifetime;
@@ -12,7 +11,7 @@ export class Particle extends Projectile {
 
   constructor(data, color) {
     const { radius, speed } = data;
-    super(radius, speed, color ?? data.color);
+    super(radius, speed, color ?? data.color, Math.random() * TAU);
     this.#age = 0;
     this.#lifetime = 0.1;
     this.#baseRadius = this.radius;
@@ -26,8 +25,8 @@ export class Particle extends Projectile {
   }
 
   update(delta) {
-    this.x += Math.cos(this.#angle) * this.speed * delta + this.#randomizer;
-    this.y += Math.sin(this.#angle) * this.speed * delta + this.#randomizer;
+    this.x += Math.cos(this.angle) * this.speed * delta + this.#randomizer;
+    this.y += Math.sin(this.angle) * this.speed * delta + this.#randomizer;
     this.shrink(this.#baseRadius * (this.#age / this.#lifetime) * delta);
     this.#age += delta;
   }

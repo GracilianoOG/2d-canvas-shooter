@@ -8,25 +8,23 @@ export class Orb extends Projectile {
   #events;
   #target;
   #state;
-  #angle;
 
   constructor(data, entities, events) {
-    super(6, 300, GOLDEN);
+    super(6, 300, GOLDEN, Math.random() * TAU);
     // super(data.radius, data.speed, data.color);
     this.#entities = entities;
     this.#events = events;
     this.#state = "scatter";
-    this.#angle = Math.random() * TAU;
     this.#target = this.#entities.get("player")[0];
   }
 
   #followTarget(delta) {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
-    this.#angle = this.angleTo(position);
+    this.angle = this.angleTo(position);
 
-    this.x += Math.cos(this.#angle) * this.speed * delta;
-    this.y += Math.sin(this.#angle) * this.speed * delta;
+    this.x += Math.cos(this.angle) * this.speed * delta;
+    this.y += Math.sin(this.angle) * this.speed * delta;
 
     this.speed += delta * 800;
   }
@@ -35,8 +33,8 @@ export class Orb extends Projectile {
     const DEACCELERATION = delta * 200;
     this.speed = Math.max(this.speed - DEACCELERATION, 0);
 
-    this.x += Math.cos(this.#angle) * this.speed * delta;
-    this.y += Math.sin(this.#angle) * this.speed * delta;
+    this.x += Math.cos(this.angle) * this.speed * delta;
+    this.y += Math.sin(this.angle) * this.speed * delta;
   }
 
   #notify() {
@@ -55,9 +53,9 @@ export class Orb extends Projectile {
       this.getInCanvas(config);
 
       if (axis === "x") {
-        this.#angle = Math.PI - this.#angle;
+        this.angle = Math.PI - this.angle;
       } else if (axis === "y") {
-        this.#angle = -this.#angle;
+        this.angle = -this.angle;
       }
     }
 
