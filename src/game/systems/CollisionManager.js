@@ -8,6 +8,10 @@ export class CollisionManager {
       player.collidedWith(item);
     }
 
+    for (const orb of entities.get(Layers.ORB)) {
+      player.collidedWith(orb);
+    }
+
     for (const enemy of entities.get(Layers.ENEMIES)) {
       player.collidedWith(enemy);
       for (const bullet of entities.get(Layers.AMMO)) {

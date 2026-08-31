@@ -1,6 +1,7 @@
 export const Layers = {
   OTHERS: "others",
   ITEMS: "items",
+  ORB: "orb",
   AMMO: "ammo",
   PLAYER: "player",
   ENEMIES: "enemies",
