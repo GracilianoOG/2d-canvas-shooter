@@ -24,6 +24,7 @@ import { Sentry } from "../entities/Sentry";
 import { EventManager } from "@/engine/systems/EventManager";
 import { InputManager } from "@/engine/systems/InputManager";
 import { Particle } from "../entities/Particle";
+import { Orb } from "../entities/Orb";
 
 export class Game {
   #engine;
@@ -117,6 +118,16 @@ export class Game {
     });
     this.#events.on("spawnParticles", (x, y, amount, color) => {
       Particle.create(this.#entities, x, y, amount, color);
+    });
+    this.#events.on("spawnOrbs", (x, y, orbs) => {
+      for (let i = 0; i < orbs; i++) {
+        this.#entities.add(
+          x,
+          y,
+          new Orb({}, this.#entities, this.#events),
+          Layers.ORB,
+        );
+      }
     });
   }
 
