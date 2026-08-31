@@ -18,12 +18,13 @@ class Boomer extends Enemy {
   onDestroy() {
     const { min, max } = this.#options.minions;
     const amount = randomInt(max + 1, min);
+    const hp = Math.max(this.#baseHp / 2, 10);
     const preset = {
       radius: Math.max(this.#baseSize / 2, 10),
       speed: Math.max(Math.floor(this.#baseSpeed / 2), 5),
       color: this.baseColor,
-      hp: Math.max(this.#baseHp / 2, 10),
-      score: this.score,
+      hp: hp,
+      score: hp * 5,
     };
 
     this.events.emit("spawnMinions", this.x, this.y, amount, preset);
