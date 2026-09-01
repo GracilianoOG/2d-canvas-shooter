@@ -25,7 +25,8 @@ import { EventManager } from "@/engine/systems/EventManager";
 import { InputManager } from "@/engine/systems/InputManager";
 import { Particle } from "../entities/Particle";
 import { Orb } from "../entities/Orb";
-import { orbData } from "@/data/orbData";
+import { orbData, orbIds } from "@/data/orbData";
+import { randomInt } from "@/engine/utils/math";
 
 export class Game {
   #engine;
@@ -122,7 +123,8 @@ export class Game {
     });
     this.#events.on("spawnOrbs", (x, y, orbs) => {
       for (let i = 0; i < orbs; i++) {
-        const orbType = Math.random() >= 0.5 ? orbData.score1 : orbData.score2;
+        const orbType = orbData[orbIds[randomInt(orbIds.length)]];
+
         this.#entities.add(
           x,
           y,
