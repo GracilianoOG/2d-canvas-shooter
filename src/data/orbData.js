@@ -19,6 +19,7 @@ export const orbData = {
   },
   energy: {
     type: "energy",
+    text: "ENERGY",
     color: Colors.ORANGE_RED,
     radius: 6,
     speed: 300,
