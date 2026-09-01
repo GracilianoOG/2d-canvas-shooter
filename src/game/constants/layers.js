@@ -3,6 +3,7 @@ export const Layers = {
   ITEMS: "items",
   ORB: "orb",
   AMMO: "ammo",
+  SENTRY: "sentry",
   PLAYER: "player",
   ENEMIES: "enemies",
   PARTICLES: "particles",

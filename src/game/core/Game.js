@@ -109,6 +109,7 @@ export class Game {
         sentryItem.x,
         sentryItem.y,
         new Sentry(this.#entities, this.#events),
+        Layers.SENTRY,
       );
       sentryItem.collect();
     });
