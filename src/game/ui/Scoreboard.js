@@ -11,7 +11,7 @@ export class Scoreboard {
     this.#scoreboardEl.classList.add("scoreboard");
     containerEl.prepend(this.#scoreboardEl);
     this.#showScore(0);
-    events.on("setScore", ({ score }) => this.#showScore(score));
+    events.on("setScore", (score) => this.#showScore(score));
   }
 
   #showScore(score) {

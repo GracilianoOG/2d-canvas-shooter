@@ -25,7 +25,7 @@ export class ScoreManager {
 
   add(score) {
     this.#score += score;
-    this.#events.emit("setScore", { score: this.#score });
+    this.#events.emit("setScore", this.#score);
   }
 
   isHighscore() {
@@ -40,6 +40,6 @@ export class ScoreManager {
 
   reset() {
     this.#score = 0;
-    this.#events.emit("setScore", { score: 0 });
+    this.#events.emit("setScore", 0);
   }
 }
