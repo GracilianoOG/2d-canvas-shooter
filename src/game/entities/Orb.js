@@ -8,6 +8,7 @@ export class Orb extends Projectile {
   #range;
   #value;
   #type;
+  #text;
 
   constructor(data, entities, events) {
     super(data.radius, data.speed, data.color, Math.random() * TAU);
@@ -16,6 +17,7 @@ export class Orb extends Projectile {
     this.#range = data.range;
     this.#value = data.value;
     this.#type = data.type;
+    this.#text = data?.text ?? data.value;
     this.#target = entities.get("player")[0];
   }
 
@@ -41,7 +43,7 @@ export class Orb extends Projectile {
         x: this.x,
         y: this.y,
       },
-      this.#value,
+      this.#text,
       this.color,
     );
   }
