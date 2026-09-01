@@ -18,7 +18,7 @@ export class ScoreManager {
     return parseInt(StorageHandler.retrieveHighscore(false));
   }
 
-  #countScore({ position, score, color }) {
+  #countScore(position, score, color) {
     this.#events.emit("indicate", position, score, color);
     this.add(score);
   }
