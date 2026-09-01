@@ -26,3 +26,5 @@ export const orbData = {
     value: 4,
   },
 };
+
+export const orbIds = Object.keys(orbData);
