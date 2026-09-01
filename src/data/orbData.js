@@ -23,7 +23,7 @@ export const orbData = {
     radius: 6,
     speed: 300,
     range: 100,
-    value: 4,
+    value: 1,
   },
 };
 
