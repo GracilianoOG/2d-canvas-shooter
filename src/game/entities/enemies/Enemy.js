@@ -13,9 +13,11 @@ export class Enemy extends Projectile {
   #options;
   #dropChance;
   #events;
+  #orbs;
 
   constructor(enemyData, target, events) {
-    const { radius, speed, color, hp, score, options, dropChance } = enemyData;
+    const { radius, speed, color, hp, score, options, dropChance, orbs } =
+      enemyData;
     super(radius, speed, color);
     this.#health = hp;
     this.#maxSpeed = speed;
@@ -24,6 +26,7 @@ export class Enemy extends Projectile {
     this.#dropChance = dropChance;
     this.#target = target;
     this.#events = events;
+    this.#orbs = orbs;
     this.#options = { ...defaultStats, ...options };
   }
 
@@ -96,7 +99,7 @@ export class Enemy extends Projectile {
 
   #die() {
     this.#events.emit("enemyDeath");
-    this.#events.emit("spawnOrbs", this.x, this.y, randomInt(7));
+    this.#events.emit("spawnOrbs", this.x, this.y, randomInt(this.#orbs + 1));
     this.drop(this.#dropChance);
     this.destroy();
   }
