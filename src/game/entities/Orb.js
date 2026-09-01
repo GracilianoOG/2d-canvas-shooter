@@ -56,7 +56,7 @@ export class Orb extends Projectile {
         this.#events.emit("addScore", this.#value);
         break;
       case "energy":
-        this.#events.emit("fillFuryMeter", { amount: this.#value });
+        this.#events.emit("fillFuryMeter", this.#value);
         break;
     }
 
