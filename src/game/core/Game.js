@@ -122,10 +122,11 @@ export class Game {
     });
     this.#events.on("spawnOrbs", (x, y, orbs) => {
       for (let i = 0; i < orbs; i++) {
+        const orbType = Math.random() >= 0.5 ? orbData.score1 : orbData.score2;
         this.#entities.add(
           x,
           y,
-          new Orb(orbData, this.#entities, this.#events),
+          new Orb(orbType, this.#entities, this.#events),
           Layers.ORB,
         );
       }
