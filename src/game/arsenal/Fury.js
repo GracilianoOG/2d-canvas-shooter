@@ -31,7 +31,7 @@ export class Fury {
 
   #onEnemyKilled() {
     if (!this.isActive()) {
-      this.#events.emit("fillFuryMeter", { amount: 4 });
+      this.#events.emit("fillFuryMeter", { amount: 1 });
     }
   }
 
