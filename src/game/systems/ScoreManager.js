@@ -8,6 +8,7 @@ export class ScoreManager {
     this.#score = 0;
     this.#events = events;
     events.on("score", this.#countScore.bind(this));
+    events.on("addScore", (score) => this.add(score));
   }
 
   get score() {
