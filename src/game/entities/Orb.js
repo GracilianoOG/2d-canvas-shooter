@@ -7,6 +7,7 @@ export class Orb extends Projectile {
   #state;
   #range;
   #value;
+  #type;
 
   constructor(data, entities, events) {
     super(data.radius, data.speed, data.color, Math.random() * TAU);
@@ -14,6 +15,7 @@ export class Orb extends Projectile {
     this.#state = "scatter";
     this.#range = data.range;
     this.#value = data.value;
+    this.#type = data.type;
     this.#target = entities.get("player")[0];
   }
 
@@ -46,6 +48,16 @@ export class Orb extends Projectile {
 
   grab() {
     this.#notify();
+
+    switch (this.#type) {
+      case "score":
+        this.#events.emit("addScore", this.#value);
+        break;
+      case "energy":
+        this.#events.emit("fillFuryMeter", { amount: this.#value });
+        break;
+    }
+
     this.destroy();
   }
 
