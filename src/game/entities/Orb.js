@@ -33,11 +33,15 @@ export class Orb extends Projectile {
   }
 
   #notify() {
-    this.#events.emit("score", {
-      color: this.color,
-      score: this.#value,
-      position: { x: this.x, y: this.y },
-    });
+    this.#events.emit(
+      "indicate",
+      {
+        x: this.x,
+        y: this.y,
+      },
+      this.#value,
+      this.color,
+    );
   }
 
   grab() {
