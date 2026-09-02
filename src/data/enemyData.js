@@ -11,6 +11,7 @@ export const enemyData = {
     speed: 250,
     color: Colors.RED,
     hp: 20,
+    score: 100,
     options: null,
     dropChance: 0.05,
     orbs: 3,
@@ -20,6 +21,7 @@ export const enemyData = {
     speed: 312,
     color: Colors.PINK,
     hp: 10,
+    score: 100,
     options: null,
     dropChance: 0.02,
     orbs: 2,
@@ -29,6 +31,7 @@ export const enemyData = {
     speed: 187,
     color: Colors.LIGHT_BLUE,
     hp: 30,
+    score: 200,
     options: { aggressive: false },
     dropChance: 0.08,
     orbs: 4,
@@ -38,6 +41,7 @@ export const enemyData = {
     speed: 250,
     color: Colors.LIGHT_PURPLE,
     hp: 30,
+    score: 200,
     options: null,
     dropChance: 0.1,
     orbs: 4,
@@ -47,6 +51,7 @@ export const enemyData = {
     speed: 125,
     color: Colors.GREEN,
     hp: 40,
+    score: 400,
     options: {
       shrinkable: false,
       aggressive: false,
@@ -60,6 +65,7 @@ export const enemyData = {
     speed: 250,
     color: Colors.ALMOST_BLACK,
     hp: 20,
+    score: 300,
     options: { aggressive: false },
     dropChance: 0.1,
     orbs: 3,
@@ -69,6 +75,7 @@ export const enemyData = {
     speed: 375,
     color: Colors.ORANGE,
     hp: 10,
+    score: 200,
     options: null,
     dropChance: 0.1,
     orbs: 3,
@@ -78,6 +85,7 @@ export const enemyData = {
     speed: 90,
     color: Colors.LIGHT_RED,
     hp: 50,
+    score: 300,
     options: {
       knockback: false,
       aggressive: false,
@@ -96,6 +104,7 @@ export const specialData = {
     speed: 60,
     color: Colors.GOLDEN,
     hp: 80,
+    score: 500,
     options: {
       knockback: false,
       aggressive: false,
@@ -111,6 +120,7 @@ export const specialData = {
     speed: 80,
     color: Colors.VIOLET,
     hp: 50,
+    score: 600,
     options: {
       aggressive: false,
       shrinkable: false,
@@ -124,6 +134,7 @@ export const specialData = {
     speed: 70,
     color: Colors.VERY_LIGHT_PINK,
     hp: 60,
+    score: 600,
     options: {
       aggressive: false,
       shrinkable: false,
@@ -138,6 +149,7 @@ export const specialData = {
     speed: 150,
     color: Colors.WHITE,
     hp: 40,
+    score: 500,
     options: {
       aggressive: false,
       shrinkable: false,
@@ -152,6 +164,7 @@ export const specialData = {
     speed: 200,
     color: Colors.VERY_LIGHT_BLUE,
     hp: 30,
+    score: 300,
     options: {
       shrinkable: false,
     },
