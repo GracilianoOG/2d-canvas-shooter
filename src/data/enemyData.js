@@ -2,6 +2,7 @@ import * as Colors from "@/game/constants/colors";
 import { Boomer } from "@/game/entities/enemies/Boomer";
 import { Cloaker } from "@/game/entities/enemies/Cloaker";
 import { Enemy } from "@/game/entities/enemies/Enemy";
+import { Spawner } from "@/game/entities/enemies/Spawner";
 import { Void } from "@/game/entities/enemies/Void";
 
 export const enemyData = {
@@ -115,6 +116,20 @@ export const specialData = {
       shrinkable: false,
     },
     dropChance: 0.2,
+    orbs: 8,
+  },
+  spawner: {
+    Class: Spawner,
+    radius: 35,
+    speed: 70,
+    color: Colors.VERY_LIGHT_PINK,
+    hp: 60,
+    options: {
+      aggressive: false,
+      shrinkable: false,
+      knockback: false,
+    },
+    dropChance: 0.25,
     orbs: 8,
   },
   void: {
