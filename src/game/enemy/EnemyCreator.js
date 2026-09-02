@@ -76,10 +76,7 @@ export class EnemyCreator {
 
   #randomizeEnemy() {
     const randomId = enemyIds[randomInt(this.#spawnLevel)];
-    const enemyConfig = { ...enemyData[randomId] };
-    enemyConfig.score = enemyConfig.hp * 10;
-
-    return enemyConfig;
+    return { ...enemyData[randomId] };
   }
 
   #randomizeSpecial() {
