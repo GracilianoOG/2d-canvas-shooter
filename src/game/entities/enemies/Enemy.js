@@ -120,16 +120,20 @@ export class Enemy extends Projectile {
     this.#events.emit("audio", this.#isAlive() ? "hit" : "explosion");
   }
 
+  #notifyScore() {
+    this.#events.emit(
+      "score",
+      { x: this.x, y: this.y },
+      this.#isAlive() ? this.score : this.score * 3,
+      this.baseColor,
+    );
+  }
+
   takeDamage(damage) {
     this.health -= damage;
     const alive = this.#isAlive();
     this.#playHurtAudio();
-    this.#events.emit(
-      "score",
-      { x: this.x, y: this.y },
-      alive ? this.score : this.score * 3,
-      this.baseColor,
-    );
+    this.#notifyScore();
     this.#bleed(this.#options.bloodAmount * (Number(!alive) + 1));
     if (this.health <= 0) {
       this.#die();
