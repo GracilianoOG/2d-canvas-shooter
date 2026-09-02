@@ -116,10 +116,14 @@ export class Enemy extends Projectile {
     return this.health > 0;
   }
 
+  #playHurtAudio() {
+    this.#events.emit("audio", this.#isAlive() ? "hit" : "explosion");
+  }
+
   takeDamage(damage) {
     this.health -= damage;
     const alive = this.#isAlive();
-    this.#events.emit("audio", alive ? "hit" : "explosion");
+    this.#playHurtAudio();
     this.#events.emit(
       "score",
       { x: this.x, y: this.y },
