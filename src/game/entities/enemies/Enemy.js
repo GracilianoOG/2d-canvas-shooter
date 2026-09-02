@@ -3,6 +3,7 @@ import { Projectile } from "../Projectile";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
 import { randomInt } from "@/engine/utils/math";
+import { Timer } from "@/engine/systems/Timer";
 
 export class Enemy extends Projectile {
   #target;
@@ -14,6 +15,7 @@ export class Enemy extends Projectile {
   #dropChance;
   #events;
   #orbs;
+  #colorTimer;
 
   constructor(enemyData, target, events) {
     const { radius, speed, color, hp, score, options, dropChance, orbs } =
@@ -28,6 +30,11 @@ export class Enemy extends Projectile {
     this.#events = events;
     this.#orbs = orbs;
     this.#options = { ...defaultStats, ...options };
+    this.#colorTimer = Timer.create(
+      250,
+      { autostart: false },
+      () => (this.color = this.baseColor),
+    );
   }
 
   get baseColor() {
@@ -71,12 +78,6 @@ export class Enemy extends Projectile {
     }
   }
 
-  #returnOriginalColor() {
-    if (this.color != this.#baseColor && this.speed > 0) {
-      this.color = this.#baseColor;
-    }
-  }
-
   #createDamageEffect() {
     if (this.#options.knockback) {
       this.speed = -62;
@@ -91,6 +92,7 @@ export class Enemy extends Projectile {
       this.grow(this.radius * 0.02);
     }
     this.color = WHITE;
+    this.#colorTimer.start();
   }
 
   #bleed(amount) {
@@ -100,6 +102,7 @@ export class Enemy extends Projectile {
   #die() {
     this.#events.emit("enemyDeath");
     this.#events.emit("spawnOrbs", this.x, this.y, randomInt(this.#orbs + 1));
+    this.#colorTimer.remove();
     this.drop(this.#dropChance);
     this.destroy();
   }
@@ -132,6 +135,5 @@ export class Enemy extends Projectile {
   update(delta) {
     this.#followTarget(delta);
     this.#increaseSpeed(delta * 390);
-    this.#returnOriginalColor();
   }
 }
