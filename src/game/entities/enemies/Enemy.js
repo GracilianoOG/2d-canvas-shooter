@@ -135,7 +135,7 @@ export class Enemy extends Projectile {
     this.#playHurtAudio();
     this.#notifyScore();
     this.#bleed();
-    if (this.health <= 0) {
+    if (!this.#isAlive()) {
       this.#die();
       return;
     }
