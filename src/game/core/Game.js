@@ -24,7 +24,7 @@ import { Sentry } from "../entities/Sentry";
 import { EventManager } from "@/engine/systems/EventManager";
 import { InputManager } from "@/engine/systems/InputManager";
 import { Particle } from "../entities/Particle";
-import { Orb } from "../entities/Orb";
+import { Orb } from "../entities/collectibles/Orb";
 import { orbData, orbIds } from "@/data/orbData";
 import { randomInt } from "@/engine/utils/math";
 
