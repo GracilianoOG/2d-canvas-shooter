@@ -67,7 +67,7 @@ export class Enemy extends Projectile {
     return this.#events;
   }
 
-  #followTarget(delta) {
+  #chaseTarget(delta) {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
 
@@ -138,7 +138,7 @@ export class Enemy extends Projectile {
   }
 
   update(delta) {
-    this.#followTarget(delta);
+    this.#chaseTarget(delta);
     this.#increaseSpeed(delta * 390);
   }
 }
