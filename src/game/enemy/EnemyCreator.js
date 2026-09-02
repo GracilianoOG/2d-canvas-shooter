@@ -55,6 +55,10 @@ export class EnemyCreator {
         entities.add(x, y, minion, Layers.ENEMIES);
       }
     });
+    events.on("spawnChaser", (x, y) => {
+      const chaser = new Enemy(enemyData.pinky, this.#target, this.#events);
+      entities.add(x, y, chaser, Layers.ENEMIES);
+    });
   }
 
   #randomizePosition(enemySize) {
