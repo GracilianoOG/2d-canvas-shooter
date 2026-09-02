@@ -4,6 +4,12 @@ import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../enemy/enemyDefaultStats";
 import { randomInt } from "@/engine/utils/math";
 import { Timer } from "@/engine/systems/Timer";
+import {
+  AGRESSIVENESS_BUFF,
+  GROWTH_RATE,
+  KNOCKBACK_FORCE,
+  SHRINKAGE_RATE,
+} from "@/game/constants/hitEffects";
 
 export class Enemy extends Projectile {
   #target;
@@ -80,16 +86,16 @@ export class Enemy extends Projectile {
 
   #createDamageEffect() {
     if (this.#options.knockback) {
-      this.speed = -62;
+      this.speed = -KNOCKBACK_FORCE;
     }
     if (this.#options.aggressive) {
-      this.#maxSpeed += 62;
+      this.#maxSpeed += AGRESSIVENESS_BUFF;
     }
     if (this.#options.shrinkable) {
-      this.shrink(this.radius * 0.05);
+      this.shrink(this.radius * SHRINKAGE_RATE);
     }
     if (this.#options.grow) {
-      this.grow(this.radius * 0.02);
+      this.grow(this.radius * GROWTH_RATE);
     }
     this.color = WHITE;
     this.#colorTimer.start();
