@@ -71,9 +71,8 @@ export class Enemy extends Projectile {
     const target = this.#target;
     const position = { x: target.x, y: target.y };
 
-    this.angle = this.angleTo(position);
-
     if (this.distanceTo(position) > target.radius) {
+      this.angle = this.angleTo(position);
       this.moveTowards(delta);
     }
   }
