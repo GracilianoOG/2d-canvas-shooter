@@ -1,5 +1,5 @@
 import { itemData } from "@/data/itemData";
-import { Item } from "../entities/items/Item";
+import { Item } from "../entities/collectibles/Item";
 
 const dropTable = [
   [(events) => new Item(itemData.nuke, events), 5],
