@@ -7,6 +7,7 @@ import { Timer } from "@/engine/systems/Timer";
 import {
   AGRESSIVENESS_BUFF,
   GROWTH_RATE,
+  INITIAL_SPEED_RATE,
   KNOCKBACK_FORCE,
   SHRINKAGE_RATE,
 } from "@/game/constants/hitEffects";
@@ -41,6 +42,7 @@ export class Enemy extends Projectile {
       { autostart: false },
       () => (this.color = this.baseColor),
     );
+    this.speed = this.#maxSpeed * INITIAL_SPEED_RATE;
   }
 
   get baseColor() {
