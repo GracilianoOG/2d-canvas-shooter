@@ -81,10 +81,7 @@ export class EnemyCreator {
 
   #randomizeSpecial() {
     const specialId = specialIds[randomInt(specialIds.length)];
-    const specialConfig = { ...specialData[specialId] };
-    specialConfig.score = specialConfig.hp * 10;
-
-    return specialConfig;
+    return { ...specialData[specialId] };
   }
 
   #hardenSpawn() {
