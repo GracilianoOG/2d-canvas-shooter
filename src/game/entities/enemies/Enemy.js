@@ -100,7 +100,8 @@ export class Enemy extends Projectile {
     this.#colorTimer.start();
   }
 
-  #bleed(amount) {
+  #bleed() {
+    const amount = this.#options.bloodAmount * (Number(!this.#isAlive()) + 1);
     this.#events.emit("spawnParticles", this.x, this.y, amount, this.baseColor);
   }
 
@@ -131,10 +132,9 @@ export class Enemy extends Projectile {
 
   takeDamage(damage) {
     this.health -= damage;
-    const alive = this.#isAlive();
     this.#playHurtAudio();
     this.#notifyScore();
-    this.#bleed(this.#options.bloodAmount * (Number(!alive) + 1));
+    this.#bleed();
     if (this.health <= 0) {
       this.#die();
       return;
