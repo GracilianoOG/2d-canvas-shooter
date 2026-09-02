@@ -7,7 +7,7 @@ export class FuryMeter extends Bar {
     super(args);
     this.#events = events;
 
-    events.on("restart", () => (this.value = 0));
+    events.on("playerDeath", () => (this.value = 0));
     events.on("fillFuryMeter", (amount) => this.fill(amount));
     events.on("checkFuryMeterToFill", (furyItem) => {
       if (!this.isFull()) {
