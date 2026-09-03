@@ -17,6 +17,14 @@ export const orbData = {
     range: 100,
     value: 50,
   },
+  score3: {
+    type: "score",
+    color: Colors.VERY_LIGHT_PINK,
+    radius: 6,
+    speed: 300,
+    range: 100,
+    value: 10,
+  },
   energy: {
     type: "energy",
     text: "ENERGY",
