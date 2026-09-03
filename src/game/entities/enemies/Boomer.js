@@ -2,32 +2,17 @@ import { randomInt } from "@/engine/utils/math";
 import { Enemy } from "./Enemy";
 
 class Boomer extends Enemy {
-  #baseSize;
-  #baseSpeed;
-  #baseHp;
   #options;
 
   constructor(enemyData, target, events) {
     super(enemyData, target, events);
-    this.#baseSize = enemyData.radius;
-    this.#baseSpeed = enemyData.speed;
-    this.#baseHp = enemyData.hp;
     this.#options = { minions: { min: 2, max: 5 }, ...enemyData.options };
   }
 
   onDestroy() {
     const { min, max } = this.#options.minions;
     const amount = randomInt(max + 1, min);
-    const hp = Math.max(this.#baseHp / 2, 10);
-    const preset = {
-      radius: Math.max(this.#baseSize / 2, 10),
-      speed: Math.max(Math.floor(this.#baseSpeed / 2), 5),
-      color: this.baseColor,
-      hp: hp,
-      score: hp * 5,
-    };
-
-    this.events.emit("spawnMinions", this.x, this.y, amount, preset);
+    this.events.emit("spawnMinions", this.x, this.y, amount);
   }
 
   draw(ctx) {
