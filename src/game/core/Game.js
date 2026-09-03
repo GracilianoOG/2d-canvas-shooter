@@ -125,13 +125,8 @@ export class Game {
     this.#events.on("spawnOrbs", (x, y, orbs) => {
       for (let i = 0; i < orbs; i++) {
         const orbType = orbData[orbIds[randomInt(orbIds.length)]];
-
-        this.#entities.add(
-          x,
-          y,
-          new Orb(orbType, this.#entities, this.#events),
-          Layers.ORB,
-        );
+        const orb = new Orb(orbType, this.#entities, this.#events);
+        this.#entities.add(x, y, orb, Layers.ORB);
       }
     });
   }
