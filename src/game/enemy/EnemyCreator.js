@@ -11,6 +11,7 @@ import {
   specialData,
   specialIds,
 } from "@/data/enemyData.js";
+import { KNOCKBACK_FORCE } from "../constants/hitEffects.js";
 
 export class EnemyCreator {
   #config;
@@ -49,10 +50,14 @@ export class EnemyCreator {
     this.#entities = entities;
     this.#events = events;
 
-    events.on("spawnMinions", (x, y, amount, preset) => {
+    events.on("spawnMinions", (x, y, amount) => {
       for (let i = 0; i < amount; i++) {
-        const minion = new Enemy(preset, target, events);
-        entities.add(x, y, minion, Layers.ENEMIES);
+        const minion = new Enemy(enemyData.pinky, target, events);
+        const gap = 10;
+        const mx = x + randomInt(gap, -gap);
+        const my = y + randomInt(gap, -gap);
+        minion.speed = -KNOCKBACK_FORCE;
+        entities.add(mx, my, minion, Layers.ENEMIES);
       }
     });
     events.on("spawnChaser", (x, y) => {
