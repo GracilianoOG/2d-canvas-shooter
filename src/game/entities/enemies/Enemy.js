@@ -1,7 +1,7 @@
 import { dropRandomItem } from "../../items/itemDrop";
 import { Projectile } from "../Projectile";
 import { WHITE } from "../../constants/colors";
-import { defaultStats } from "../../enemy/enemyDefaultStats";
+import { defaultStats } from "../../spawner/enemyDefaultStats";
 import { randomInt } from "@/engine/utils/math";
 import { Timer } from "@/engine/systems/Timer";
 import {
