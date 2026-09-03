@@ -1,6 +1,6 @@
 import { Player } from "../entities/Player";
 import { GameCanvas } from "../../engine/core/GameCanvas";
-import { EnemyCreator } from "../spawner/EnemyCreator";
+import { EnemyCreator } from "../systems/spawner/EnemyCreator";
 import { Scoreboard } from "../ui/Scoreboard";
 import { Timer } from "../../engine/systems/Timer";
 import { FuryMeter } from "../ui/FuryMeter";

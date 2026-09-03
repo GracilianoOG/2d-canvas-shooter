@@ -1,4 +1,4 @@
-import * as DiffMods from "../constants/modifierTypes";
+import * as DiffMods from "../../constants/modifierTypes";
 
 export const spawnerConfig = {
   spawnTime: 800,
