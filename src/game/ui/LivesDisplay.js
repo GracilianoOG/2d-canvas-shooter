@@ -5,7 +5,7 @@ class LivesDisplay {
   #displayContent;
 
   constructor(container, events) {
-    const label = "Lives";
+    const label = "+";
     const labelEl = document.createElement("span");
     labelEl.textContent = label;
     labelEl.classList.add("display__label");
