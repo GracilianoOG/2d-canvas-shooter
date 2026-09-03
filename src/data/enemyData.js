@@ -68,7 +68,7 @@ export const enemyData = {
     score: 200,
     options: null,
     dropChance: 0.1,
-    orbs: 3,
+    orbs: 4,
   },
   lightReddy: {
     radius: 35,
