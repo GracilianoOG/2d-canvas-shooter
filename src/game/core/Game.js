@@ -104,14 +104,10 @@ export class Game {
       const { x: fX, y: fY } = this.#canvas.factors;
       Indicator.create({ x: pos.x * fX, y: pos.y * fY }, txt, col);
     });
-    this.#events.on("sentryPickup", (sentryItem) => {
-      this.#entities.add(
-        sentryItem.x,
-        sentryItem.y,
-        new Sentry(this.#entities, this.#events),
-        Layers.SENTRY,
-      );
-      sentryItem.collect();
+    this.#events.on("sentryPickup", ({ x, y, collect }) => {
+      const sentry = new Sentry(this.#entities, this.#events);
+      this.#entities.add(x, y, sentry, Layers.SENTRY);
+      collect();
     });
     this.#events.on("nukePickup", (nukeItem) => {
       for (const enemy of this.#entities.get(Layers.ENEMIES)) {
