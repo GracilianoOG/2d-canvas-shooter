@@ -102,7 +102,7 @@ export const specialData = {
       bloodAmount: 16,
     },
     dropChance: 0.25,
-    orbs: 8,
+    orbs: 10,
   },
   boomer: {
     Class: Boomer,
