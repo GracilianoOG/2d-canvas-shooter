@@ -1,4 +1,4 @@
-import { Timer } from "@/engine/systems/Timer";
+import { Timer } from "@/game/systems/Timer";
 import { Entity } from "./Entity";
 import { AmmoFactory } from "../arsenal/ammo/AmmoFactory";
 import { sentryData } from "@/data/sentryData";

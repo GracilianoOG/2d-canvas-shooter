@@ -1,4 +1,4 @@
-import { Timer } from "../../engine/systems/Timer";
+import { Timer } from "../systems/Timer";
 import { ENERGETIC_BLUE } from "../constants/colors";
 import { defaultStats } from "./playerDefaultStats";
 

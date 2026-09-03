@@ -1,5 +1,5 @@
-import { randomInt } from "@/engine/utils/math";
-import { Timer } from "../../engine/systems/Timer";
+import { randomInt } from "@/game/utils/math";
+import { Timer } from "../systems/Timer";
 import { CHARTREUSE, LIGHT_YELLOW } from "../constants/colors";
 import { weaponData, weaponIds } from "@/data/weaponData";
 import { Gun } from "../arsenal/guns/Gun";

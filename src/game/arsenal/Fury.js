@@ -1,4 +1,4 @@
-import { Timer } from "../../engine/systems/Timer";
+import { Timer } from "../systems/Timer";
 
 export class Fury {
   #timer;

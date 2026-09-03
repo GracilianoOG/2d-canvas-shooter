@@ -1,4 +1,4 @@
-import { States } from "../constants/gameStates";
+import { States } from "../../game/constants/gameStates";
 
 export class Engine {
   #rafId;

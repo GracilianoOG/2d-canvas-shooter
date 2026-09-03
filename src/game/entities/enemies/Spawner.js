@@ -1,4 +1,4 @@
-import { Timer } from "@/engine/systems/Timer";
+import { Timer } from "@/game/systems/Timer";
 import { Enemy } from "./Enemy";
 
 export class Spawner extends Enemy {

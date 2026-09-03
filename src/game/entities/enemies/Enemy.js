@@ -2,8 +2,8 @@ import { dropRandomItem } from "../../items/itemDrop";
 import { Projectile } from "../Projectile";
 import { WHITE } from "../../constants/colors";
 import { defaultStats } from "../../systems/spawner/enemyDefaultStats";
-import { randomInt } from "@/engine/utils/math";
-import { Timer } from "@/engine/systems/Timer";
+import { randomInt } from "@/game/utils/math";
+import { Timer } from "@/game/systems/Timer";
 import {
   AGRESSIVENESS_BUFF,
   GROWTH_RATE,

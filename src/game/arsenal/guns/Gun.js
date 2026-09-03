@@ -1,5 +1,5 @@
-import { Timer } from "@/engine/systems/Timer";
-import { randomNumber } from "@/engine/utils/math";
+import { Timer } from "@/game/systems/Timer";
+import { randomNumber } from "@/game/utils/math";
 import { AmmoFactory } from "../ammo/AmmoFactory";
 import { PatternFactory } from "./patterns/PatternFactory";
 

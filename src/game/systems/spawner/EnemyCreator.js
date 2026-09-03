@@ -1,8 +1,8 @@
-import { Timer } from "../../../engine/systems/Timer.js";
+import { Timer } from "../Timer.js";
 import { Enemy } from "../../entities/enemies/Enemy.js";
 import * as DiffMods from "../../constants/modifierTypes.js";
 import { spawnerConfig, defaultModifiers } from "./configs.js";
-import { between, randomInt } from "../../../engine/utils/math.js";
+import { between, randomInt } from "../../utils/math.js";
 import { config } from "../../config/index.js";
 import { Layers } from "../../constants/layers.js";
 import {

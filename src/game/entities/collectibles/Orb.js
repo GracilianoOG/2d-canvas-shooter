@@ -1,4 +1,4 @@
-import { TAU } from "@/engine/utils/math";
+import { TAU } from "@/game/utils/math";
 import { Projectile } from "../Projectile";
 
 export class Orb extends Projectile {

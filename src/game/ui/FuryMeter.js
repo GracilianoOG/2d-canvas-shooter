@@ -1,4 +1,4 @@
-import { Bar } from "../../engine/ui/Bar";
+import { Bar } from "./Bar";
 
 export class FuryMeter extends Bar {
   #events;

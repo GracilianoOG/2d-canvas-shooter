@@ -1,4 +1,4 @@
-import { TAU } from "@/engine/utils/math";
+import { TAU } from "@/game/utils/math";
 import { Layers } from "../constants/layers";
 import { Projectile } from "./Projectile";
 import { particleData } from "@/data/particleData";

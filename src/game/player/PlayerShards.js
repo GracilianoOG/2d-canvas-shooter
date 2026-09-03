@@ -1,4 +1,4 @@
-import { TAU } from "@/engine/utils/math";
+import { TAU } from "@/game/utils/math";
 import { Shard } from "../entities/projectiles/Shard";
 import { Layers } from "../constants/layers";
 import { shardsData } from "@/data/shardsData";

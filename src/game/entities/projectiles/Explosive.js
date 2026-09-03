@@ -1,4 +1,4 @@
-import { TAU } from "@/engine/utils/math";
+import { TAU } from "@/game/utils/math";
 import { Bullet } from "./Bullet";
 import { AmmoFactory } from "@/game/arsenal/ammo/AmmoFactory";
 

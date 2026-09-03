@@ -1,4 +1,4 @@
-import { clamp } from "@/engine/utils/math";
+import { clamp } from "@/game/utils/math";
 
 export class Bar {
   #meterBar;

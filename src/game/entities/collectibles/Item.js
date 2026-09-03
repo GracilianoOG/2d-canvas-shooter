@@ -1,5 +1,5 @@
 import { Entity } from "../Entity";
-import { Timer } from "@/engine/systems/Timer";
+import { Timer } from "@/game/systems/Timer";
 import { WHITE } from "@/game/constants/colors";
 
 class Item extends Entity {
