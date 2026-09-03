@@ -8,7 +8,7 @@ const sharedData = {
 export const itemData = {
   fury: {
     color: Colors.ORANGE_RED,
-    label: "fury",
+    label: "charge",
     ...sharedData,
   },
   life: {
