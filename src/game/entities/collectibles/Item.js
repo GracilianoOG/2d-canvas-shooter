@@ -5,19 +5,21 @@ import { WHITE } from "@/game/constants/colors";
 class Item extends Entity {
   #despawnTimer;
   #label;
+  #event;
   #events;
 
-  constructor({ radius, color, label, despawnTime }, events) {
+  constructor({ radius, color, label, event, despawnTime }, events) {
     super(radius, color);
     this.#events = events;
     this.#label = label;
+    this.#event = event;
     this.#despawnTimer = Timer.create(despawnTime, { autodestruct: true }, () =>
       this.destroy(),
     );
   }
 
   check() {
-    this.#events.emit(`${this.#label}Pickup`, this);
+    this.#events.emit(`${this.#event}Pickup`, this);
   }
 
   onCollect() {}
