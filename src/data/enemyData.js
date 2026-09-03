@@ -60,16 +60,6 @@ export const enemyData = {
     dropChance: 0.15,
     orbs: 5,
   },
-  blacky: {
-    radius: 20,
-    speed: 250,
-    color: Colors.ALMOST_BLACK,
-    hp: 20,
-    score: 300,
-    options: { aggressive: false },
-    dropChance: 0.1,
-    orbs: 3,
-  },
   orangey: {
     radius: 10,
     speed: 375,
