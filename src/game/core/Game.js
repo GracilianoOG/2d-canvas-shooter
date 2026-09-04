@@ -168,18 +168,6 @@ export class Game {
 
   async init() {
     const player = this.#player;
-    const hud = document.querySelector("#hud");
-    const scoreboard = new Scoreboard(hud, this.#events);
-    const furyMeter = new FuryMeter(
-      {
-        container: hud,
-        label: "fury",
-        value: 100,
-      },
-      this.#events,
-    );
-    const livesDisplay = new LivesDisplay(hud, this.#events);
-    livesDisplay.showCurrentLives(player.lives);
     const { width, height } = config;
     this.#entities.add(width / 2, height / 2, player, Layers.PLAYER);
 

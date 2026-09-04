@@ -1,3 +1,7 @@
+import { playerData } from "@/data/playerData";
+import { FuryMeter } from "../ui/FuryMeter";
+import { LivesDisplay } from "../ui/LivesDisplay";
+import { Scoreboard } from "../ui/Scoreboard";
 import { CSS_CLASSES } from "../utils/constants";
 import { StorageHandler } from "../utils/StorageHandler";
 
@@ -23,6 +27,22 @@ export class ScreenManager {
     });
 
     this.init();
+    this.#initHudElements();
+  }
+
+  #initHudElements() {
+    const hud = document.querySelector("#hud");
+    new Scoreboard(hud, this.#events);
+    new FuryMeter(
+      {
+        container: hud,
+        label: "fury",
+        value: 100,
+      },
+      this.#events,
+    );
+    const livesDisplay = new LivesDisplay(hud, this.#events);
+    livesDisplay.showCurrentLives(playerData.lives);
   }
 
   init() {
