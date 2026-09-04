@@ -30,10 +30,9 @@ export class Indicator {
 
   static toggle(state) {
     const indicators = document.querySelectorAll(".indicator");
-    const playState = state ? "" : "paused";
 
     for (const ind of indicators) {
-      ind.style.animationPlayState = playState;
+      ind.style.animationPlayState = state ? "" : "paused";
     }
   }
 }
