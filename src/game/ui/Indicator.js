@@ -1,7 +1,20 @@
 export class Indicator {
   static create(position, text, color = "#fff") {
-    const indicator = document.createElement("div");
     const container = document.querySelector("#status-container");
+
+    const pooled = container.querySelector("[data-pooled]");
+
+    if (pooled) {
+      pooled.textContent = text;
+      pooled.style.left = `${position.x}px`;
+      pooled.style.top = `${position.y}px`;
+      pooled.style.color = color;
+      pooled.getAnimations()[0].play();
+      pooled.removeAttribute("data-pooled");
+      return;
+    }
+
+    const indicator = document.createElement("div");
 
     indicator.setAttribute("class", "indicator");
     indicator.textContent = text;
@@ -11,8 +24,7 @@ export class Indicator {
 
     indicator.addEventListener(
       "animationend",
-      () => container.removeChild(indicator),
-      { once: true },
+      () => (indicator.dataset.pooled = ""),
     );
     container.appendChild(indicator);
   }
