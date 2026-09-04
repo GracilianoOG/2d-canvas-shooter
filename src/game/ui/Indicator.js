@@ -31,7 +31,7 @@ export class Indicator {
 
   static toggleIndicators(state) {
     const indicators = document.querySelectorAll(".indicator");
-    const playState = state ? "running" : "paused";
+    const playState = state ? "" : "paused";
 
     for (const ind of indicators) {
       ind.style.animationPlayState = playState;
