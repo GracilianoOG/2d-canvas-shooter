@@ -5,23 +5,17 @@ export class EventManager {
     this.#listeners = {};
   }
 
-  subscribe(event, listener) {
+  /** Subscribe a listener to an event */
+  on(event, listener) {
     (this.#listeners[event] ??= []).push(listener);
   }
 
-  on(event, listener) {
-    this.subscribe(event, listener);
-  }
-
-  unsubscribe(event, listener) {
+  /** Unsubscribe a listener from an event */
+  off(event, listener) {
     if (!this.#listeners[event]) return;
     this.#listeners[event] = this.#listeners[event]?.filter(
       (cb) => cb !== listener,
     );
-  }
-
-  off(event, listener) {
-    this.unsubscribe(event, listener);
   }
 
   emit(event, ...data) {
