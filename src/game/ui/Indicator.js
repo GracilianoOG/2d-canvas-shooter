@@ -32,7 +32,7 @@ export class Indicator {
     const indicators = document.querySelectorAll(".indicator");
 
     for (const ind of indicators) {
-      ind.style.animationPlayState = state ? "" : "paused";
+      ind.classList.toggle("indicator--paused", !state);
     }
   }
 }
