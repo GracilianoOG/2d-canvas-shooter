@@ -37,7 +37,7 @@ export class Bar {
 
   set value(value) {
     this.#value = clamp(0, value, this.#maxValue);
-    this.#meterFill.style.width = `${(this.#value / this.#maxValue) * 100}%`;
+    this.#meterFill.style.transform = `scaleX(${this.#value / this.#maxValue})`;
 
     this.#meterBar.classList.toggle("bar--full", this.isFull());
     this.#meterFill.classList.toggle("bar__fill--full", this.isFull());
