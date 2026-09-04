@@ -28,7 +28,7 @@ export class Indicator {
     container.appendChild(indicator);
   }
 
-  static toggleIndicators(state) {
+  static toggle(state) {
     const indicators = document.querySelectorAll(".indicator");
     const playState = state ? "" : "paused";
 
