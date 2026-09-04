@@ -3,7 +3,6 @@ import { Projectile } from "./Projectile";
 import { Fury } from "../arsenal/Fury";
 import { PlayerArsenal } from "../player/PlayerArsenal";
 import { PlayerShield } from "../player/PlayerShield";
-import * as Colors from "../constants/colors";
 import { PlayerShards } from "../player/PlayerShards";
 import { PlayerHealth } from "../player/PlayerHealth";
 import { config } from "../config";
@@ -36,12 +35,12 @@ export class Player extends Projectile {
     this.#events = events;
 
     this.#events.on("activatedFury", () => {
-      this.color = Colors.RED;
+      this.color = playerData.angryColor;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
       this.speed *= upgrades.speed;
     });
     this.#events.on("deactivateFury", () => {
-      this.color = Colors.WHITE;
+      this.color = playerData.color;
       this.#weapon.cooldown.waitTime += upgrades.cooldown;
       this.speed /= upgrades.speed;
     });
