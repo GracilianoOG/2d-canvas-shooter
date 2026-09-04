@@ -1,6 +1,6 @@
 import { Timer } from "../systems/Timer";
 import { ENERGETIC_BLUE } from "../constants/colors";
-import { defaultStats } from "./playerDefaultStats";
+import { playerData } from "@/data/playerData";
 
 export class PlayerShield {
   #timer;
@@ -8,25 +8,25 @@ export class PlayerShield {
 
   constructor(player, events) {
     this.#player = player;
-    this.#timer = Timer.create(defaultStats.shieldDelay, {
+    this.#timer = Timer.create(playerData.damageCooldown, {
       autostart: false,
     });
 
     events.on("shieldPickup", (shieldItem) => {
-      this.activate(8000);
+      this.activate(playerData.shieldCooldown);
       shieldItem.collect();
     });
     events.on("playerRevival", this.reset.bind(this));
   }
 
   activate(delay) {
-    this.#timer.waitTime = delay ?? defaultStats.shieldDelay;
+    this.#timer.waitTime = delay ?? playerData.damageCooldown;
     this.#timer.reset();
   }
 
   reset() {
     this.#timer.stop();
-    this.#timer.waitTime = defaultStats.shieldDelay;
+    this.#timer.waitTime = playerData.damageCooldown;
   }
 
   isActive() {
