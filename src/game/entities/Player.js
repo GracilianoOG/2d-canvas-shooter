@@ -71,7 +71,7 @@ export class Player extends Projectile {
     if (this.#shield.isActive()) return;
 
     this.#health.damage();
-    this.#events.emit("playerHit", { lives: this.#health.lives });
+    this.#events.emit("playerHit", this.#health.lives);
     const amount = !this.isDead ? 8 : 16;
     this.#events.emit("spawnParticles", this.x, this.y, amount);
 

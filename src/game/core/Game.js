@@ -93,7 +93,7 @@ export class Game {
       this.#entities.add(x, y, item, Layers.ITEMS);
       item.getInCanvas(config);
     });
-    this.#events.on("playerHit", ({ lives }) => {
+    this.#events.on("playerHit", (lives) => {
       this.shakeScreen(3.5, 300);
       this.#audio.play(lives ? "hit" : "explosion");
       if (!lives) this.#onPlayerDeath();

@@ -51,7 +51,7 @@ class LivesDisplay {
     this.showCurrentLives(lives);
   }
 
-  #onPlayerHit({ lives }) {
+  #onPlayerHit(lives) {
     this.#removeLife(lives);
   }
 
