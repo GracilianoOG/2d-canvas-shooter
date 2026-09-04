@@ -27,6 +27,7 @@ export class ScreenManager {
     });
 
     this.#initUIActions();
+    this.#initHighscoreDisplay();
     this.#initHudElements();
   }
 
@@ -45,12 +46,14 @@ export class ScreenManager {
     livesDisplay.showCurrentLives(playerData.lives);
   }
 
-  #initUIActions() {
+  #initHighscoreDisplay() {
     const highscore = this.get("start").querySelector(
       CSS_CLASSES.HIGHSCORE_POINTS,
     );
     highscore.textContent = StorageHandler.retrieveHighscore();
+  }
 
+  #initUIActions() {
     document.addEventListener("click", (e) => {
       const clicked = e.target.closest("[data-action]");
       const action = clicked?.dataset.action;
