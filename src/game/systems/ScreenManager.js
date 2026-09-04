@@ -26,7 +26,7 @@ export class ScreenManager {
       this.#screens.set(screenEl.dataset.screen, screenEl);
     });
 
-    this.init();
+    this.#initUIActions();
     this.#initHudElements();
   }
 
@@ -45,7 +45,7 @@ export class ScreenManager {
     livesDisplay.showCurrentLives(playerData.lives);
   }
 
-  init() {
+  #initUIActions() {
     const highscore = this.get("start").querySelector(
       CSS_CLASSES.HIGHSCORE_POINTS,
     );
