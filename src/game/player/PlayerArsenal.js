@@ -53,7 +53,7 @@ export class PlayerArsenal {
     const next = this.#get(id);
     if (prev !== next) {
       this.#equipped = next;
-      this.#events.emit("gunChange", { prev });
+      this.#events.emit("gunChange", prev);
     }
   }
 

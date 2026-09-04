@@ -44,7 +44,7 @@ export class Player extends Projectile {
       this.#weapon.cooldown.waitTime += upgrades.cooldown;
       this.speed /= upgrades.speed;
     });
-    this.#events.on("gunChange", ({ prev }) => {
+    this.#events.on("gunChange", (prev) => {
       if (!this.#fury.isActive()) return;
       prev.cooldown.waitTime += upgrades.cooldown;
       this.#weapon.cooldown.waitTime -= upgrades.cooldown;
