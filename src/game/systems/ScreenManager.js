@@ -60,7 +60,7 @@ export class ScreenManager {
       const action = clicked?.dataset.action;
 
       if (action && this.#actions[action]) {
-        this.#actions[action]();
+        this.#actions[action](e);
       }
     });
   }
