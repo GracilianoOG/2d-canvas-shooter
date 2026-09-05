@@ -20,6 +20,7 @@ export class ScreenManager {
       start: this.openMenu.bind(this),
       play: this.startGame.bind(this),
       info: this.openAbout.bind(this),
+      close: this.closeScreen.bind(this),
     };
 
     const screens = document.querySelectorAll("[data-screen]");
@@ -63,6 +64,10 @@ export class ScreenManager {
         this.#actions[action](e);
       }
     });
+  }
+
+  closeScreen(event) {
+    event.target.closest("[data-screen]").classList.add("hide");
   }
 
   openAbout() {
