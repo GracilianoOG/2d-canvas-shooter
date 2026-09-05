@@ -38,3 +38,9 @@
     text-shadow: 0 0 0.75rem currentColor;
   }
 }
+
+@keyframes move-vertical {
+  100% {
+    transform: translateX(1rem);
+  }
+}
