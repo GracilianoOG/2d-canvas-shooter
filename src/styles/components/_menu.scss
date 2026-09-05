@@ -3,7 +3,6 @@
 
   &__title {
     text-shadow: 0 0 0.75rem currentColor;
-    text-transform: uppercase;
     font-size: 5rem;
     margin-bottom: 92px;
   }
@@ -22,7 +21,6 @@
     padding: 16px;
     text-align: center;
     text-shadow: 0 0 0.25rem currentColor;
-    text-transform: capitalize;
 
     &:hover,
     &:focus-visible {

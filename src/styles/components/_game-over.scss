@@ -4,14 +4,15 @@
   animation: blink 0.08s;
   background-color: var(--color-black);
   border: 8px double var(--color-white);
-  text-transform: uppercase;
 
   &__title {
     color: var(--color-white);
     font-size: 4rem;
     letter-spacing: 0.625rem;
     margin-bottom: 5rem;
-    text-shadow: 0 0 0.313rem currentColor, -0.188rem 0 0 var(--color-red);
+    text-shadow:
+      0 0 0.313rem currentColor,
+      -0.188rem 0 0 var(--color-red);
   }
 
   &__btn {
@@ -22,8 +23,9 @@
     color: var(--color-white);
     font-size: 2rem;
     padding: 15px 20px;
-    transition: background-color 0.2s, color 0.2s;
-    text-transform: inherit;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
 
     &:focus,
     &:hover {
