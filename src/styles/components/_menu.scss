@@ -26,6 +26,16 @@
     &:focus-visible {
       color: var(--color-gold);
     }
+
+    &:focus-visible {
+      outline: none;
+
+      &::before {
+        content: ">";
+        position: absolute;
+        margin-left: -2.5rem;
+      }
+    }
   }
 
   &__copy {
