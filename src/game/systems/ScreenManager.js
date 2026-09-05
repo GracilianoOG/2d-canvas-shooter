@@ -19,6 +19,7 @@ export class ScreenManager {
       restart: this.restartGame.bind(this),
       start: this.openMenu.bind(this),
       play: this.startGame.bind(this),
+      info: this.openAbout.bind(this),
     };
 
     const screens = document.querySelectorAll("[data-screen]");
@@ -62,6 +63,10 @@ export class ScreenManager {
         this.#actions[action]();
       }
     });
+  }
+
+  openAbout() {
+    this.show("info");
   }
 
   openMenu() {
