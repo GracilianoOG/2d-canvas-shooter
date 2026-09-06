@@ -15,8 +15,23 @@
   transition: scale 0.1s;
   width: $size;
   z-index: 1000;
+
+  &::before {
+    border-radius: 50%;
+    background-color: var(--color-white);
+    content: "";
+    height: $size;
+    left: 50%;
+    position: absolute;
+    scale: var(--dot-scale, 0);
+    translate: -50% -50%;
+    transition: scale 0.1s;
+    top: 50%;
+    width: $size;
+  }
 }
 
 body:has(:is(button, a):hover) {
   --cursor-scale: 1.5;
+  --dot-scale: 1;
 }
