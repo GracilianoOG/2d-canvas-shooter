@@ -3,16 +3,17 @@
 @use "./base/fonts";
 @use "./base/base";
 
-@use "./components/game-container";
-@use "./components/screen";
-@use "./components/menu";
-@use "./components/game-over";
+@use "./layout/screen";
+@use "./layout/game-container";
+@use "./layout/start-screen";
+@use "./layout/about-screen";
+@use "./layout/pause-screen";
+@use "./layout/menu";
+@use "./layout/game-over";
+
 @use "./components/pause-btn";
 @use "./components/scoreboard";
 @use "./components/highscore";
-@use "./components/start-screen";
-@use "./components/about-screen";
-@use "./components/pause-screen";
 @use "./components/indicator";
 @use "./components/key";
 @use "./components/bar";
