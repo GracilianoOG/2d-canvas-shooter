@@ -17,6 +17,6 @@
   z-index: 1000;
 }
 
-body:has(button:hover, a:hover) .cursor {
+body:has(:is(button, a):hover) .cursor {
   --cursor-scale: 1.5;
 }
