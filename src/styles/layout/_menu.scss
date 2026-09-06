@@ -1,6 +1,17 @@
 .menu-screen {
   background-color: var(--color-black);
 
+  &::before {
+    animation: scale-out 0.25s ease forwards;
+    background-color: var(--color-black);
+    border-radius: 50%;
+    content: "";
+    height: 100vw;
+    width: 100vw;
+    position: absolute;
+    pointer-events: none;
+  }
+
   &__title {
     text-shadow: 0 0 0.75rem currentColor;
     font-size: 5rem;
