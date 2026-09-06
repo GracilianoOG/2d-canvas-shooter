@@ -183,6 +183,12 @@ These resources helped me to understand many things regarding game development i
 - [Nullish coalescing assignment (??=)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment)
 - [Env Variables and Modes ](https://vite.dev/guide/env-and-mode)
 - [Vanilla JavaScript Game Development Course](https://www.youtube.com/playlist?list=PLYElE_rzEw_tjnJ_5gzRw0ZM5HRn7AIS0)
+- [20 Pure CSS and Javascript Custom Cursor Effects](designbeep.com/2025/06/13/20-pure-css-and-javascript-custom-cursor-effects-with-code/)
+- [Custom cursor doesn't move with page when scroll](https://stackoverflow.com/questions/74536812/custom-cursor-doesnt-move-with-page-when-scroll)
+- [translate CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/translate)
+- [:has() CSS pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has)
+- [:is() CSS pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:is)
+- [How TO - Range Sliders](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
 
 ## 🧑🏻‍💻 Author
 
