@@ -19,6 +19,7 @@ export class ScreenManager {
       restart: this.restartGame.bind(this),
       start: this.openMenu.bind(this),
       play: this.startGame.bind(this),
+      options: this.openSettings.bind(this),
       info: this.openAbout.bind(this),
       close: this.closeScreen.bind(this),
     };
@@ -68,6 +69,10 @@ export class ScreenManager {
 
   closeScreen(event) {
     event.target.closest("[data-screen]").classList.add("hide");
+  }
+
+  openSettings() {
+    this.show("settings");
   }
 
   openAbout() {
