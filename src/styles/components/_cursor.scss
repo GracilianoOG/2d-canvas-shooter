@@ -1,0 +1,11 @@
+.cursor {
+  $size: 12px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  height: $size;
+  mix-blend-mode: difference;
+  position: fixed;
+  pointer-events: none;
+  width: $size;
+  z-index: 1000;
+}
