@@ -35,3 +35,7 @@ body:has(:is(button, a):hover) {
   --cursor-scale: 1.5;
   --dot-scale: 1;
 }
+
+body:has(:is(button, a):active) {
+  --dot-scale: 0.2;
+}
