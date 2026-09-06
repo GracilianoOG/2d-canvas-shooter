@@ -7,6 +7,16 @@
   }
 }
 
+@keyframes scale-out {
+  from {
+    scale: 1;
+  }
+
+  to {
+    scale: 0;
+  }
+}
+
 @keyframes scoring {
   0% {
     transform: translate(-50%, -100%);
