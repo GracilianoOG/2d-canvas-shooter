@@ -27,6 +27,7 @@ import { Particle } from "../entities/Particle";
 import { Orb } from "../entities/collectibles/Orb";
 import { orbData, orbIds } from "@/data/orbData";
 import { randomInt } from "@/game/utils/math";
+import { Cursor } from "../ui/Cursor";
 
 export class Game {
   #engine;
@@ -175,6 +176,8 @@ export class Game {
 
     this.#screens.remove("loading");
     this.#screens.show("start");
+
+    new Cursor();
   }
 
   startLoop() {
