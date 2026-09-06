@@ -10,9 +10,7 @@ export class Cursor {
     this.#cursor = cursor;
   }
 
-  move(e) {
-    const mouseY = e.clientY;
-    const mouseX = e.clientX;
+  move({ clientX: mouseX, clientY: mouseY }) {
     const space = 6;
     this.#cursor.style.translate = `${mouseX - space}px ${mouseY - space}px`;
   }
