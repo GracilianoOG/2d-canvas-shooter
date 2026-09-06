@@ -6,6 +6,12 @@
   mix-blend-mode: difference;
   position: fixed;
   pointer-events: none;
+  scale: var(--cursor-scale, 1);
+  transition: scale 0.1s;
   width: $size;
   z-index: 1000;
+}
+
+body:has(button:hover, a:hover) .cursor {
+  --cursor-scale: 1.5;
 }
