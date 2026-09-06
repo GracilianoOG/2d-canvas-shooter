@@ -78,6 +78,7 @@ export class ScreenManager {
     this.remove("start");
     this.show("container");
     this.show("menu");
+    this.get("menu").querySelector("[data-action='play']").focus();
   }
 
   startGame() {
