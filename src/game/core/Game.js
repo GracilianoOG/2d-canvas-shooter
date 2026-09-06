@@ -212,6 +212,7 @@ export class Game {
   start() {
     this.#audio.playMusic("battle");
     this.#enemyCreator.start();
+    this.#canvas.resize();
     this.startLoop();
 
     document.addEventListener("keydown", (e) => {
