@@ -47,6 +47,60 @@
           <h2 class="menu-screen__copy">Circle Chaos @ 2026</h2>
         </div>
 
+        <!-- Settings Screen -->
+        <div class="screen modal hide" data-screen="settings">
+          <div class="modal__window">
+            <header class="modal__header">
+              <div class="modal__title">Settings</div>
+              <button class="modal__close" data-action="close">X</button>
+            </header>
+            <div class="modal__content settings-screen">
+              <section class="settings-screen__category">
+                <h3 class="settings-screen__title">Audio</h3>
+                <div class="settings-screen__options">
+                  <div class="settings-screen__box">
+                    <h4 class="settings-screen__volume">Master</h4>
+                    <h5 class="settings-screen__value">100%</h5>
+                  </div>
+                  <input
+                    class="settings-screen__slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                  />
+                </div>
+                <div class="settings-screen__options">
+                  <div class="settings-screen__box">
+                    <h4 class="settings-screen__volume">Sfx</h4>
+                    <h5 class="settings-screen__value">100%</h5>
+                  </div>
+                  <input
+                    class="settings-screen__slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                  />
+                </div>
+                <div class="settings-screen__options">
+                  <div class="settings-screen__box">
+                    <h4 class="settings-screen__volume">Music</h4>
+                    <h5 class="settings-screen__value">100%</h5>
+                  </div>
+                  <input
+                    class="settings-screen__slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                  />
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
         <!-- About Screen -->
         <div class="screen modal hide" data-screen="info">
           <div class="modal__window">
