@@ -192,7 +192,7 @@ export class Game {
     if (this.#player.isDead) return;
     const shouldPause = this.state === States.RUNNING;
     Indicator.toggle(!shouldPause);
-    this.#screens.toggle("menu", !shouldPause);
+    this.#screens.toggleMenu();
     shouldPause ? this.stopLoop() : this.startLoop();
   }
 
