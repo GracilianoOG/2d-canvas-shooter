@@ -89,6 +89,7 @@ export class ScreenManager {
   startGame() {
     this.toggle("menu", true);
     this.show("hud");
+    this.get("menu").classList.add("menu-screen--paused");
     this.#events.emit("startGame");
   }
 
