@@ -16,6 +16,7 @@ export class ScreenManager {
     this.#screens = new Map();
     this.#actions = {
       pause: this.pauseGame.bind(this),
+      resume: this.pauseGame.bind(this),
       restart: this.restartGame.bind(this),
       start: this.openMenu.bind(this),
       play: this.startGame.bind(this),
@@ -91,7 +92,7 @@ export class ScreenManager {
     this.show("hud");
     this.get("menu").classList.add("menu-screen--paused");
     e.target.textContent = "Resume Game";
-    e.target.dataset.action = "pause";
+    e.target.dataset.action = "resume";
     this.#events.emit("startGame");
   }
 
