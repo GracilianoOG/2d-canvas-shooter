@@ -7,7 +7,7 @@ export class Indicator {
   }
 
   static create(position, text, color = "#fff") {
-    const container = document.querySelector("#status-container");
+    const container = document.querySelector("#hud");
 
     const indicator = document.createElement("div");
     indicator.setAttribute("class", "indicator");
