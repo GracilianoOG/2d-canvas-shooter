@@ -10,6 +10,7 @@
     width: 100vw;
     position: absolute;
     pointer-events: none;
+    z-index: 999;
   }
 
   &__title {
