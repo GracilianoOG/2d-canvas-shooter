@@ -88,6 +88,7 @@ export class ScreenManager {
 
   startGame() {
     this.toggle("menu", true);
+    this.show("hud");
     this.#events.emit("startGame");
   }
 
