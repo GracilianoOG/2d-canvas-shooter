@@ -17,11 +17,11 @@ export class Indicator {
     container.appendChild(indicator);
   }
 
-  static toggle(state) {
+  static toggleAll() {
     const indicators = document.querySelectorAll(".indicator");
 
     for (const ind of indicators) {
-      ind.classList.toggle("indicator--paused", !state);
+      ind.classList.toggle("indicator--paused");
     }
   }
 }
