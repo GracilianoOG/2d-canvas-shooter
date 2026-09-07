@@ -34,6 +34,7 @@
       <div id="game-container" class="hide" data-screen="container">
         <!-- Game Menu -->
         <div class="screen menu-screen hide" data-screen="menu">
+          <!-- Menu Screen -->
           <h1 class="menu-screen__title">Circle chaos</h1>
           <div class="menu-screen__buttons">
             <button class="menu-screen__btn" data-action="play">
@@ -45,114 +46,114 @@
             <button class="menu-screen__btn" data-action="info">About</button>
           </div>
           <h2 class="menu-screen__copy">Circle Chaos @ 2026</h2>
-        </div>
 
-        <!-- Settings Screen -->
-        <div class="screen modal hide" data-screen="settings">
-          <div class="modal__window">
-            <header class="modal__header">
-              <div class="modal__title">Settings</div>
-              <button class="modal__close" data-action="close">X</button>
-            </header>
-            <div class="modal__content settings-screen">
-              <section class="settings-screen__category">
-                <h3 class="settings-screen__title">Audio</h3>
-                <div class="settings-screen__options">
-                  <div class="settings-screen__box">
-                    <h4 class="settings-screen__volume">Master</h4>
-                    <h5 class="settings-screen__value">100%</h5>
+          <!-- Settings Screen -->
+          <div class="screen modal hide" data-screen="settings">
+            <div class="modal__window">
+              <header class="modal__header">
+                <div class="modal__title">Settings</div>
+                <button class="modal__close" data-action="close">X</button>
+              </header>
+              <div class="modal__content settings-screen">
+                <section class="settings-screen__category">
+                  <h3 class="settings-screen__title">Audio</h3>
+                  <div class="settings-screen__options">
+                    <div class="settings-screen__box">
+                      <h4 class="settings-screen__volume">Master</h4>
+                      <h5 class="settings-screen__value">100%</h5>
+                    </div>
+                    <input
+                      class="settings-screen__slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
                   </div>
-                  <input
-                    class="settings-screen__slider"
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                </div>
-                <div class="settings-screen__options">
-                  <div class="settings-screen__box">
-                    <h4 class="settings-screen__volume">Sfx</h4>
-                    <h5 class="settings-screen__value">100%</h5>
+                  <div class="settings-screen__options">
+                    <div class="settings-screen__box">
+                      <h4 class="settings-screen__volume">Sfx</h4>
+                      <h5 class="settings-screen__value">100%</h5>
+                    </div>
+                    <input
+                      class="settings-screen__slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
                   </div>
-                  <input
-                    class="settings-screen__slider"
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                </div>
-                <div class="settings-screen__options">
-                  <div class="settings-screen__box">
-                    <h4 class="settings-screen__volume">Music</h4>
-                    <h5 class="settings-screen__value">100%</h5>
+                  <div class="settings-screen__options">
+                    <div class="settings-screen__box">
+                      <h4 class="settings-screen__volume">Music</h4>
+                      <h5 class="settings-screen__value">100%</h5>
+                    </div>
+                    <input
+                      class="settings-screen__slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
                   </div>
-                  <input
-                    class="settings-screen__slider"
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                </div>
-              </section>
+                </section>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- About Screen -->
-        <div class="screen modal hide" data-screen="info">
-          <div class="modal__window">
-            <header class="modal__header">
-              <div class="modal__title">About</div>
-              <button class="modal__close" data-action="close">X</button>
-            </header>
-            <div class="modal__content about-screen">
-              <img
-                class="about-screen__avatar"
-                src="https://avatars.githubusercontent.com/u/72778164?v=4"
-                alt="Profile"
-              />
-              <div>
-                <h2 class="about-screen__name">I'm Gabriel!</h2>
-                <p class="about-screen__desc">
-                  Hello there! I'm the developer of Circle Chaos. It started as
-                  an experiment to see if I could create a game with Canvas API
-                  from scratch.
-                </p>
-                <p class="about-screen__desc">
-                  It became a sandbox of sorts where I used it to test several
-                  design patterns, game patterns, coding strategies, etc.
-                  Creating a game from zero is not easy!
-                </p>
-                <p class="about-screen__desc">
-                  Thank you for playing my messy little game!
-                </p>
-                <hr class="divider" />
-                <ul class="about-screen__socials">
-                  <li>
-                    <a
-                      class="about-screen__link"
-                      href="https://github.com/GracilianoOG"
-                      >Github</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="about-screen__link"
-                      href="https://www.linkedin.com/in/gabrielgmbarros"
-                      >LinkedIn</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="about-screen__link"
-                      href="https://github.com/GracilianoOG/2d-canvas-shooter"
-                      >Source code</a
-                    >
-                  </li>
-                </ul>
+          <!-- About Screen -->
+          <div class="screen modal hide" data-screen="info">
+            <div class="modal__window">
+              <header class="modal__header">
+                <div class="modal__title">About</div>
+                <button class="modal__close" data-action="close">X</button>
+              </header>
+              <div class="modal__content about-screen">
+                <img
+                  class="about-screen__avatar"
+                  src="https://avatars.githubusercontent.com/u/72778164?v=4"
+                  alt="Profile"
+                />
+                <div>
+                  <h2 class="about-screen__name">I'm Gabriel!</h2>
+                  <p class="about-screen__desc">
+                    Hello there! I'm the developer of Circle Chaos. It started
+                    as an experiment to see if I could create a game with Canvas
+                    API from scratch.
+                  </p>
+                  <p class="about-screen__desc">
+                    It became a sandbox of sorts where I used it to test several
+                    design patterns, game patterns, coding strategies, etc.
+                    Creating a game from zero is not easy!
+                  </p>
+                  <p class="about-screen__desc">
+                    Thank you for playing my messy little game!
+                  </p>
+                  <hr class="divider" />
+                  <ul class="about-screen__socials">
+                    <li>
+                      <a
+                        class="about-screen__link"
+                        href="https://github.com/GracilianoOG"
+                        >Github</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="about-screen__link"
+                        href="https://www.linkedin.com/in/gabrielgmbarros"
+                        >LinkedIn</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="about-screen__link"
+                        href="https://github.com/GracilianoOG/2d-canvas-shooter"
+                        >Source code</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
