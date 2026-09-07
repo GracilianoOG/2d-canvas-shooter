@@ -2,7 +2,7 @@ export class Cursor {
   #cursor;
 
   constructor() {
-    const CLICKABLES = "a,button";
+    const CLICKABLES = "a,button,input";
     const cursor = document.createElement("div");
     cursor.classList.add("cursor");
 
