@@ -104,6 +104,10 @@ export class ScreenManager {
     this.#events.emit("restartGame");
   }
 
+  toggleMenu() {
+    this.toggle("menu");
+  }
+
   get(name) {
     return this.#screens.get(name);
   }
