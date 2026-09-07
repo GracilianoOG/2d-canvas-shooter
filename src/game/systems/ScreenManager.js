@@ -86,10 +86,12 @@ export class ScreenManager {
     this.get("menu").querySelector("[data-action='play']").focus();
   }
 
-  startGame() {
+  startGame(e) {
     this.toggle("menu", true);
     this.show("hud");
     this.get("menu").classList.add("menu-screen--paused");
+    e.target.textContent = "Resume Game";
+    e.target.dataset.action = "pause";
     this.#events.emit("startGame");
   }
 
