@@ -57,4 +57,13 @@
     bottom: 16px;
     text-shadow: 0 0 0.2rem currentColor;
   }
+
+  &--paused {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+
+    &::before {
+      content: none;
+    }
+  }
 }
