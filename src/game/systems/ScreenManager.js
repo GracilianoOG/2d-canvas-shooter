@@ -35,7 +35,7 @@ export class ScreenManager {
   }
 
   #initHudElements() {
-    const hud = document.querySelector("#hud");
+    const hud = this.get("hud");
     new Scoreboard(hud, this.#events);
     new FuryMeter(
       {
