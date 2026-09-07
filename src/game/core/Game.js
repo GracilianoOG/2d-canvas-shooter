@@ -188,12 +188,16 @@ export class Game {
     this.#engine.stop();
   }
 
+  toggleLoop() {
+    const loopState = this.state === States.RUNNING;
+    loopState ? this.stopLoop() : this.startLoop();
+  }
+
   pause() {
     if (this.#player.isDead) return;
-    const shouldPause = this.state === States.RUNNING;
     Indicator.toggleAll();
     this.#screens.toggleMenu();
-    shouldPause ? this.stopLoop() : this.startLoop();
+    this.toggleLoop();
   }
 
   shakeScreen(strength, duration) {
