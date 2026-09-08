@@ -7,10 +7,10 @@ export class Cursor {
     cursor.classList.add("cursor");
 
     document.body.prepend(cursor);
-    document.addEventListener("mousedown", (e) => {
+    document.addEventListener("mousedown", () => {
       cursor.classList.add("cursor__down");
     });
-    document.addEventListener("mouseup", (e) => {
+    document.addEventListener("mouseup", () => {
       cursor.classList.remove("cursor__hover");
       cursor.classList.remove("cursor__down");
     });
