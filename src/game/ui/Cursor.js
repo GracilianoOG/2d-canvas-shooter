@@ -15,7 +15,9 @@ export class Cursor {
       cursor.classList.remove("cursor__down");
     });
     document.addEventListener("mousemove", (e) => {
-      cursor.classList.toggle("cursor__hover", e.target.closest(CLICKABLES));
+      if (e.target.closest) {
+        cursor.classList.toggle("cursor__hover", e.target.closest(CLICKABLES));
+      }
       this.move(e);
     });
     document.addEventListener("mouseover", (e) => this.move(e), { once: true });
