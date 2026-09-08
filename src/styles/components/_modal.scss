@@ -6,6 +6,8 @@
     border: 2px solid #ffffff;
     box-shadow: 6px 6px 0 white;
     background-color: black;
+    max-height: 90%;
+    overflow-y: auto;
     width: min(650px, 100%);
   }
 
