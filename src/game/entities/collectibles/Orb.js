@@ -66,6 +66,10 @@ export class Orb extends Projectile {
   update(delta) {
     switch (this.#state) {
       case "follow":
+        if (this.#target.isDead) {
+          this.#state = "stop";
+          return;
+        }
         this.#followTarget(delta);
         break;
       case "scatter":
@@ -76,6 +80,7 @@ export class Orb extends Projectile {
           this.#state = "follow";
           return;
         }
+      case "stop":
         this.#deaccelerate(delta);
         break;
     }
