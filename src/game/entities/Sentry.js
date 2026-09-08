@@ -14,6 +14,7 @@ export class Sentry extends Entity {
   #state;
   #entities;
   #events;
+  #gameoverEvent;
 
   constructor(entities, events) {
     const { radius, color, range, duration } = sentryData;
@@ -29,6 +30,7 @@ export class Sentry extends Entity {
       this.#cooldown.remove();
       this.destroy();
     });
+    this.#gameoverEvent = events.on("playerDeath", () => (this.#state = "off"));
   }
 
   #shoot() {
@@ -57,6 +59,10 @@ export class Sentry extends Entity {
   #targetInRange() {
     const { x, y, destroyed } = this.#target;
     return !destroyed && this.distanceTo({ x, y }) <= this.#range;
+  }
+
+  onDestroy() {
+    this.#gameoverEvent();
   }
 
   draw(ctx) {
