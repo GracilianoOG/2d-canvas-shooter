@@ -8,6 +8,7 @@ export class EventManager {
   /** Subscribe a listener to an event */
   on(event, listener) {
     (this.#listeners[event] ??= []).push(listener);
+    return () => this.off(event, listener);
   }
 
   /** Unsubscribe a listener from an event */
